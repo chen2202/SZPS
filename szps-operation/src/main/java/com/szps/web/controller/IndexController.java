@@ -17,7 +17,7 @@ import com.szps.system.service.ISysMenuService;
 /**
  * 首页 业务处理
  * 
- * @author ruoyi
+ * @author jack
  */
 @Controller
 public class IndexController extends BaseController

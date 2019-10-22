@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('公司列表')" />
+</head>
+<body class="gray-bg">
+	<div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="factory-form">
+					<div class="select-list">
+						<ul>
+							<li>
+								公司名称：<input type="text" name="company_name"/>
+							</li>
+							<li>
+								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							    <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+		
+			<div class="btn-group-sm" id="toolbar" role="group">
+				<!-- <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="employee:worker:add">
+	                <i class="fa fa-plus"></i> 新增
+	            </a>
+				<a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="employee:worker:remove">
+		            <i class="fa fa-remove"></i> 删除
+		        </a> -->
+	        </div>
+	        
+	        <div class="col-sm-12 select-table table-striped">
+			    <table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+	<th:block th:include="include :: footer" />
+	<script th:inline="javascript">
+		var editFlag = [[${@permission.hasPermi('employee:company:edit')}]];
+		/*var removeFlag = [[${@permission.hasPermi('employee:worker:remove')}]]; */
+		//var detailsFlag = ""; //详情权限
+		var prefix = ctx + "employee/company";
+
+		$(function() {
+		    var options = {
+		        url: prefix + "/list",
+		        /* createUrl: prefix + "/add",
+		        updateUrl: prefix + "/edit/{id}",
+		        removeUrl: prefix + "/remove", */
+		        sortName: "company_name",
+		        modalName: "公司",
+		        columns: [{
+		            checkbox: true
+		        },
+		        {
+		            field: 'company_id',
+		            title: '公司代码',
+		        },
+		        {
+		            field: 'company_name',
+		            title: '公司名称',
+		            sortable: true
+		        },
+		        {
+		            field: 'address',
+		            title: '地址',
+		            sortable: true
+		        },
+		        {
+		            field: 'representative',
+		            title: '法人',
+		            sortable: true
+		        },
+		        {
+		            field: 'business_scope',
+		            title: '经营范围',
+		            sortable: true
+		        },
+		        {
+		            field: 'registered_capital',
+		            title: '注册资本/万元',
+		            sortable: true
+		        },
+		        {
+		            field: 'qualification',
+		            title: '企业资质',
+		            sortable: true
+		        },
+		        {
+		            field: 'pipe_project',
+		            title: '运营项目',
+		            sortable: false
+		        },
+		        {
+		            field: 'project_scope',
+		            title: '项目范围',
+		            sortable: true
+		        },
+		        {
+		        	field:'pipe_stop_time',
+		        	title:'运营截止时间',
+		        	sortable:true
+		        },
+		        {
+		        	field:'project_company_name',
+		        	title:'项目公司',
+		        	sortable:true
+		        },
+		        {
+		        	field:'project_company_address',
+		        	title:'项目公司地址',
+		        	sortable:true
+		        },
+		        {
+		        	field:'project_people',
+		        	title:'项目人数/人',
+		        	sortable:true
+		        },
+		        {
+		        	field:'project_header',
+		        	title:'项目负责人',
+		        	sortable:true
+		        },
+		        {
+		        	field:'telephone',
+		        	title:'联系电话',
+		        	sortable:true
+		        },
+		        {
+		            title: '操作',
+		            align: 'center',
+		            formatter: function(value, row, index) {
+		                var actions = [];
+		                actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.company_id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+		                /* actions.push('<a class="btn btn-info btn-xs " href="javascript:void(0)" onclick=""><i class="fa fa-user"></i>详情</a>'); */
+		                /* actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.idCard + '\')"><i class="fa fa-remove"></i>删除</a> '); */
+		                return actions.join('');
+		            }
+		        }]
+		    };
+		    $.table.init(options);
+		});
+	</script>
+</body>
+</html>

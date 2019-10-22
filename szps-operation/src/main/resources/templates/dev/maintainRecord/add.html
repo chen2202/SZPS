@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('申请设备')" />
+	<th:block th:include="include :: select2-css" />
+</head>
+<body>
+    <div class="main-content">
+      <form id="form" class="form-horizontal">
+		
+		<div class="control-group" align="center">
+			<label class="lbl" >设备定期保养记录表</label><br>
+		</div>
+		<div class="control-group">
+		<!-- required -->
+		<table  class="table table-striped table-bordered table-condensed">
+		  <tr >
+		    <td >设备使用部门：</td>
+		    <td colspan="4"><input name="useDept" htmlEscape="false"   style="width: 90%; " class="form-control"/></td>
+		    <td>填写日期：</td>
+		    <td>
+		    <input id="recordDate" name="recordDate" type="text" class="time-input form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td >设备名称：</td>
+		    <td colspan="2"><input name="devName" htmlEscape="false"   style="width: 90%; " class="form-control"/></td>
+		    <td>设备编号：</td>
+		    <td><input name="devNumber" htmlEscape="false"   style="width: 90%; " class="form-control"/></td>
+		    <td>设备型号：</td>
+		    <td><input name="devModel" htmlEscape="false"   style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td >设备规格：</td>
+		    <td colspan="2"><input name="devSpec" htmlEscape="false"   style="width: 90%; " class="form-control"/></td>
+		    <td>保养类别：</td>
+		    <td><input name="mType" htmlEscape="false"   style="width: 90%; " class="form-control"/></td>
+		    <td>保养周期：</td>
+		    <td><input name="mCycle" htmlEscape="false"  style="width: 80%; " class="form-control"/>月</td>
+		  </tr>
+		  <tr >
+		    <td >安装地点：</td>
+		    <td colspan="2"><input name="installPlace" htmlEscape="false"   style="width: 90%; " class="form-control"/></td>
+		    <td>设备类别：</td>
+		    <td><input name="devType" htmlEscape="false"   style="width: 90%; " class="form-control"/></td>
+		    <td>上次保养时间：</td>
+		    <td><input name="lastDate" htmlEscape="false"   style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td rowspan="2" >保养内容</td>
+		    <td colspan="6" ><textarea name="content" htmlEscape="false"   style="width: 90%; height: 100px;"></textarea></td>
+		  </tr>
+		  <tr >
+		    <td colspan="6" >备注：<textarea name="maintainRemarks" htmlEscape="false"   style="width: 90%; height: 100px;"></textarea>
+		  </tr>
+		  <tr >
+		    <td  colspan="2">　计划保养日期:</td>
+		    <td>
+		    <input id="planStartTime" name="planStartTime" class="time-input form-control"/></td>
+		    <td>至</td>
+		    <td>
+		    <input id="planEndTime" name="planEndTime" type="text" class="time-input form-control"/></td>
+		    <td>计划耗时:</td>
+		    <td><input name="planUseTime" htmlEscape="false"  style="width: 80%; " class="form-control"/>天</td>
+		  </tr>
+		  <tr >
+		    <td colspan="2" >　实际保养时间：</td>
+		    <td>
+		    <input id="startTime" name="startTime" type="text" class="time-input form-control"/></td>
+		    <td>至</td>
+		    <td>
+		    <input id="endTime" name="endTime" type="text" class="time-input form-control"/></td>
+		    <td>实际耗时:</td>
+		    <td><input name="useTime" htmlEscape="false"  style="width: 80%; " class="form-control"/>天</td>
+		  </tr>
+		  <tr >
+		    <td colspan="7">保养耗材</td>
+		  </tr>
+		  <tr >
+		    <td colspan="7" rowspan="6" ><textarea name="commodities" htmlEscape="false"   style="width: 90%; height: 100px;"></textarea></td>
+		  </tr>
+		  <tr > </tr>
+		  <tr > </tr>
+		  <tr > </tr>
+		  <tr > </tr>
+		  <tr > </tr>
+		  <tr >
+		    <td >　</td>
+		    <td>　</td>
+		    <td>　</td>
+		    <td>　</td>
+		    <td>维修班长确认:</td>
+		    <td><input name="monitor" htmlEscape="false"   style="width: 90%; " class="form-control"/></td>
+		    <td>　</td>
+		  </tr>
+		  <tr >
+		    <td >保养后运行结果：</td>
+		    <td colspan="4" rowspan="2"><textarea name="result" htmlEscape="false"  style="width: 90%; height: 100px;"></textarea></td>
+		    <td>　</td>
+		    <td>　</td>
+		  </tr>
+		  <tr >
+		    <td >　</td>
+		    <td>保养人：</td>
+		    <td><input name="maintainPerson" htmlEscape="false"   style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td >操作员确认：</td>
+		    <td colspan="2"><input name="operator" htmlEscape="false"   style="width: 90%; " class="form-control"/></td>
+		    <td>生产主管确认：</td>
+		    <td><input name="prodSupr" htmlEscape="false"   style="width: 90%; " class="form-control"/></td>
+		    <td>设备主管确认：</td>
+		    <td><input name="faciSuper" htmlEscape="false"   style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td >时间：</td>
+		    <td colspan="2">
+		    <input id="operatorConfirmTime" name="operatorConfirmTime" class="time-input form-control"/></td>
+		    </td>
+		    <td>时间：</td>
+		    <td>
+		    <input id="prodSuperConfirmTime" name="prodSuperConfirmTime" class="time-input form-control"/></td></td>
+		    <td>时间：</td>
+		    <td>
+		    <input id="faciSuperConfirmTime" name="faciSuperConfirmTime" class="time-input form-control"/></td></td>
+		  </tr>
+		</table>
+		</div>
+		
+	</form>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-5 col-sm-10">
+            <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>保 存</button>&nbsp;
+            <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
+        </div>
+    </div>
+	<th:block th:include="include :: footer" />
+	<th:block th:include="include :: select2-js" />
+	<script>
+	    var prefix = ctx + "op/dev/maintainRecord";
+	
+        $("#form").validate({
+        	onkeyup: false,
+        	rules:{
+        		
+        	},
+        	messages: {
+                "loginName": {
+                    remote: "用户已经存在"
+                },
+        		"email": {
+                    remote: "Email已经存在"
+                },
+        		"phonenumber":{
+                	remote: "手机号码已经存在"
+        		}
+            },
+            focusCleanup: true
+        });
+        
+        function submitHandler() {
+	        if ($.validate.form()) {
+	        	var data = $("#form").serializeArray();
+	        	/* var status = $("input[id='status']").is(':checked') == true ? 0 : 1;
+	        	var roleIds = $.form.selectCheckeds("role");
+	        	var postIds = $.form.selectSelects("post");
+	        	data.push({"name": "status", "value": status});
+	        	data.push({"name": "roleIds", "value": roleIds});
+	        	data.push({"name": "postIds", "value": postIds}); */
+	        	$.operate.saveTab(prefix + "/add", data);
+	        }
+	    }
+         
+        /*用户管理-新增-选择部门树*/
+        function selectDeptTree() {
+        	var treeId = $("#treeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmit
+			};
+			$.modal.openOptions(options);
+		}
+		
+		function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+		}
+		
+		
+		function selectDeptTree2() {
+        	var treeId = $("#treeId2").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId2").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmit2
+			};
+			$.modal.openOptions(options);
+		}
+		
+		function doSubmit2(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+			var body = layer.getChildFrame('body', index);
+   			$("#treeId2").val(body.find('#treeId2').val());
+   			$("#treeName2").val(body.find('#treeName2').val());
+   			layer.close(index);
+		}
+
+		$(function() {
+            $('#post').select2({
+                placeholder:"请选择岗位",
+                allowClear: true
+            });
+        })
+    </script>
+</body>
+</html>

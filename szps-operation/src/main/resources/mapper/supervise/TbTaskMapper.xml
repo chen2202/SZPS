@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.supervise.TbTaskMapper">
+  <resultMap id="BaseResultMap" type="com.szps.web.domain.supervise.TbTask">
+    <id column="TASK_NUMBER" jdbcType="VARCHAR" property="taskNumber" />
+    <result column="TASK_NAME" jdbcType="VARCHAR" property="taskName" />
+    <result column="TASK_REGION" jdbcType="VARCHAR" property="taskRegion" />
+    <result column="TASK_STREET" jdbcType="VARCHAR" property="taskStreet" />
+    <result column="TASK_PARTITION" jdbcType="VARCHAR" property="taskPartition" />
+    <result column="TASK_GRADE" jdbcType="VARCHAR" property="taskGrade" />
+    <result column="TASK_TYPE" jdbcType="VARCHAR" property="taskType" />
+    <result column="TASK_CONNECTING" jdbcType="VARCHAR" property="taskConnecting" />
+    <result column="TASK_TIME" jdbcType="VARCHAR" property="taskTime" />
+    <result column="TASK_HOUSE" jdbcType="VARCHAR" property="taskHouse"/>
+    <result column="TASK_HOUSENAME" jdbcType="VARCHAR" property="taskHousename"/>
+    <result column="TASK_HOUSEPHONE" jdbcType="VARCHAR" property="taskHousephone"/>
+  </resultMap>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TB_TASK
+    where TASK_NUMBER = #{taskNumber,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.szps.web.domain.supervise.TbTask">
+    insert into TB_TASK (TASK_NUMBER, TASK_NAME, TASK_REGION, 
+      TASK_STREET, TASK_PARTITION, TASK_GRADE, 
+      TASK_TYPE, TASK_CONNECTING,
+      TASK_TIME, TASK_HOUSE, TASK_HOUSENAME, TASK_HOUSEPHONE
+      )
+    values (#{taskNumber,jdbcType=VARCHAR}, #{taskName,jdbcType=VARCHAR}, #{taskRegion,jdbcType=VARCHAR}, 
+      #{taskStreet,jdbcType=VARCHAR}, #{taskPartition,jdbcType=VARCHAR}, #{taskGrade,jdbcType=VARCHAR}, 
+      #{taskType,jdbcType=VARCHAR}, #{taskConnecting,jdbcType=VARCHAR},
+      #{taskTime,jdbcType=VARCHAR}, #{taskHouse,jdbcType=VARCHAR},#{taskHousename,jdbcType=VARCHAR},
+      #{taskHousephone,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.szps.web.domain.supervise.TbTask">
+    update TB_TASK
+    set TASK_NAME = #{taskName,jdbcType=VARCHAR},
+      TASK_REGION = #{taskRegion,jdbcType=VARCHAR},
+      TASK_STREET = #{taskStreet,jdbcType=VARCHAR},
+      TASK_PARTITION = #{taskPartition,jdbcType=VARCHAR},
+      TASK_GRADE = #{taskGrade,jdbcType=VARCHAR},
+      TASK_TYPE = #{taskType,jdbcType=VARCHAR},
+      TASK_CONNECTING = #{taskConnecting,jdbcType=VARCHAR},
+      TASK_TIME = #{taskTime,jdbcType=VARCHAR},
+      TASK_HOUSE = #{taskHouse,jdbcType=VARCHAR},
+      TASK_HOUSENAME= #{taskHousename,jdbcType=VARCHAR},
+      TASK_HOUSEPHONE= #{taskHousephone,jdbcType=VARCHAR}
+
+    where TASK_NUMBER = #{taskNumber,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select TASK_NUMBER, TASK_NAME, TASK_REGION, TASK_STREET, TASK_PARTITION, TASK_GRADE, 
+    TASK_TYPE,  TASK_CONNECTING, TASK_TIME, TASK_HOUSE,  TASK_HOUSENAME, TASK_HOUSEPHONE
+    from TB_TASK
+    where TASK_NUMBER = #{taskNumber,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectTaskByTaskName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select TASK_NUMBER, TASK_NAME, TASK_REGION, TASK_STREET, TASK_PARTITION, TASK_GRADE,
+    TASK_TYPE,  TASK_CONNECTING, TASK_TIME, TASK_HOUSE,  TASK_HOUSENAME, TASK_HOUSEPHONE
+    from TB_TASK
+    where  TASK_NAME= #{taskName,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select TASK_NUMBER, TASK_NAME, TASK_REGION, TASK_STREET, TASK_PARTITION, TASK_GRADE, 
+    TASK_TYPE,  TASK_CONNECTING, TASK_TIME, TASK_HOUSE,  TASK_HOUSENAME, TASK_HOUSEPHONE
+    from TB_TASK
+  </select>
+
+  <select id="selectTaskRandom" resultMap="BaseResultMap">
+    select TASK_NUMBER, TASK_NAME, TASK_REGION, TASK_STREET, TASK_PARTITION, TASK_GRADE,
+    TASK_TYPE,  TASK_CONNECTING, TASK_TIME, TASK_HOUSE,  TASK_HOUSENAME, TASK_HOUSEPHONE
+    from TB_TASK
+    WHERE TB_TASK.TASK_HOUSE is NULL
+  </select>
+
+  <select id="selectTaskList" parameterType="com.szps.web.domain.supervise.TbTask" resultMap="BaseResultMap">
+    select TASK_NUMBER, TASK_NAME, TASK_REGION, TASK_STREET, TASK_PARTITION, TASK_GRADE,
+    TASK_TYPE, TASK_CONNECTING, TASK_TIME, TASK_HOUSE, TASK_HOUSENAME, TASK_HOUSEPHONE
+    from TB_TASK
+
+   <where>
+    <if test="taskPartition != null and taskPartition != ''">
+       TB_TASK.TASK_PARTITION like concat(concat('%',#{taskPartition}),'%')
+    </if>
+    <if test="taskRegion != null and taskRegion != ''">
+      AND TB_TASK.TASK_REGION = #{taskRegion}
+    </if>
+    <if test="taskStreet != null and taskStreet != ''">
+      AND TB_TASK.TASK_STREET = #{taskStreet}
+    </if>
+    <if test="taskTime != null and taskTime != ''">
+      and TB_TASK.TASK_TIME = #{taskTime}
+    </if>
+   </where>
+  </select>
+
+
+  <delete id="deleteTaskByIds" parameterType="Long">
+    delete from  TB_TASK where TASK_NUMBER in
+    <foreach collection="array" item="taskNumber" open="(" separator="," close=")">
+      #{taskNumber}
+    </foreach>
+  </delete>
+
+  <select id="selectTaskCount" parameterType="java.lang.String" resultType="int">
+    SELECT COUNT(1)
+    FROM TB_TASK
+
+    <where>
+
+      <if test="taskRegion != null and taskRegion != ''">
+         TB_TASK.TASK_REGION = #{taskRegion}
+      </if>
+      <if test="taskStreet != null and taskStreet != ''">
+        AND TB_TASK.TASK_STREET = #{taskStreet}
+      </if>
+      <if test="taskTime != null and taskTime != ''">
+        and TB_TASK.TASK_TIME = #{taskTime}
+      </if>
+    </where>
+  </select>
+
+  <select id="CheckdTask" parameterType="String" resultType="int">
+    select count(1) from TB_TASK where TB_TASK.TASK_NUMBER=#{taskNumber}
+  </select>
+
+  <select id="selectMonthTaskCount" parameterType="java.lang.String"  resultType="int">
+    SELECT COUNT(1)
+    FROM TB_TASK
+
+    <where>
+
+      <if test="taskRegion != null and taskRegion != ''">
+        TB_TASK.TASK_REGION = #{taskRegion}
+      </if>
+      <if test="taskStreet != null and taskStreet != ''">
+        AND TB_TASK.TASK_STREET = #{taskStreet}
+      </if>
+      <if test="taskTime != null and taskTime != ''">
+        and TB_TASK.TASK_TIME like concat(#{taskTime},'%')
+      </if>
+    </where>
+  </select>
+
+
+</mapper>

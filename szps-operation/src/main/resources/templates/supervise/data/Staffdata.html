@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('人员列表')" />
+</head>
+<body class="gray-bg">
+<div class="container-div">
+	<div class="row">
+
+		<div class="col-sm-12 search-collapse">
+			<form id="role-form">
+				<div class="select-list">
+					<ul>
+						<li>
+							人员名称：<input type="text" name="staffName" maxlength="8"/>
+						</li>
+						<li>
+							部门：<select  name="staffDept" id="staffDept">
+							<option value="">请选择</option>
+							<option value="检查部门">检查部门</option>
+							<option value="后勤部门">后勤部门</option>
+							<option value="外勤部门">外勤部门</option>
+							<option value="维修部门">维修部门</option>
+						</select>
+						</li>
+						<li class="select-time">
+							<label>出生年月： </label>
+							<input type="text" class="time-input" id="staffBirthday" placeholder="出生年月" name="staffBirthday"/>
+						</li>
+						<li>
+							<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+						</li>
+					</ul>
+				</div>
+			</form>
+		</div>
+
+		<div class="btn-group-sm" id="toolbar" role="group">
+			<div class="select-list">
+				<a class="btn"  th:href="'/supervise/data/data'"  style="border-color: #1a7bb9">
+					任务库管理
+				</a>
+				<a class="btn btn-success" th:href="'/supervise/data1/data1'" style="margin-left: 30px">
+					人员库管理
+				</a>
+				<a class="btn" th:href="'/supervise/data2/data2'"  style="margin-left: 30px;border-color: #1a7bb9">
+					随机规则管理
+				</a>
+			</div>
+			<br/>
+			<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="supervise:data1:add">
+				<i class="fa fa-plus"></i> 新增
+			</a>
+			<a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="supervise:data1:edit">
+				<i class="fa fa-edit"></i> 修改
+			</a>
+			<a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="supervise:data1:remove">
+				<i class="fa fa-remove"></i> 删除
+			</a>
+		</div>
+
+		<div class="col-sm-12 select-table table-striped">
+			<table id="bootstrap-table" data-mobile-responsive="true"></table>
+		</div>
+	</div>
+</div>
+<th:block th:include="include :: footer" />
+<script th:inline="javascript">
+    var editFlag = [[${@permission.hasPermi('supervise:data1:edit')}]];
+    var removeFlag = [[${@permission.hasPermi('supervise:data1:remove')}]];
+    var prefix = ctx + "supervise/data1";
+
+
+    $(function() {
+        var options = {
+            url: prefix + "/list",
+            createUrl: prefix + "/Staffadd",
+            updateUrl: prefix + "/edit/{id}",
+            removeUrl: prefix + "/remove",
+            exportUrl: prefix + "/export",
+            sortName: "staffNumber",
+            modalName: "检查人员",
+            columns: [{
+                checkbox: true
+            },
+                {
+                    field: 'staffNumber',
+                    title: '人员编号',
+                    sortable: true
+                },
+                {
+                    field: 'staffName',
+                    title: '姓名'
+
+                },
+                {
+                    field: 'staffGender',
+                    title: '性别'
+
+                },
+                {
+                    field: 'staffTelephone',
+                    title: '手机号码'
+
+                },
+                {
+                    field: 'staffDept',
+                    title: '部门'
+
+                },
+                {
+                    field: 'staffPost',
+                    title: '职务'
+
+                },
+                {
+                    field: 'staffBirthday',
+                    title: '生日'
+
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.staffNumber + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.staffNumber + '\')"><i class="fa fa-remove"></i>删除</a> ');
+                        return actions.join('');
+                    }
+                }]
+        };
+        $.table.init(options);
+    });
+
+    /* 角色管理-分配数据权限 */
+    function authDataScope(roleId) {
+        var url = prefix + '/authDataScope/' + roleId;
+        $.modal.open("分配数据权限", url);
+    }
+
+    /* 角色管理-分配用户 */
+    function authUser(roleId) {
+        var url = prefix + '/authUser/' + roleId;
+        $.modal.openTab("分配用户", url);
+    }
+
+    /* 角色状态显示 */
+    function statusTools(row) {
+        if (row.status == 1) {
+            return '<i class=\"fa fa-toggle-off text-info fa-2x\" onclick="enable(\'' + row.roleId + '\')"></i> ';
+        } else {
+            return '<i class=\"fa fa-toggle-on text-info fa-2x\" onclick="disable(\'' + row.roleId + '\')"></i> ';
+        }
+    }
+
+    /* 角色管理-停用 */
+    function disable(roleId) {
+        $.modal.confirm("确认要停用角色吗？", function() {
+            $.operate.post(prefix + "/changeStatus", { "roleId": roleId, "status": 1 });
+        })
+    }
+
+    /* 角色管理启用 */
+    function enable(roleId) {
+        $.modal.confirm("确认要启用角色吗？", function() {
+            $.operate.post(prefix + "/changeStatus", { "roleId": roleId, "status": 0 });
+        })
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.szps.web.mapper.dm.DmLogMapper">
+    <resultMap type="DmLog" id="DmLogResult">
+        <id     property="logId"       column="log_id"        />
+        <result property="logDate"     column="log_date"      />
+        <result property="logContent"      column="log_content"       />
+        <result property="userAccount"     column="user_account"      />
+        <result property="logIp"    column="log_ip"     />
+        <result property="logResult"       column="log_result"         />
+        <result property="logFlag"      column="log_flag"       />
+    </resultMap>
+
+    <sql id="selectLogVo">
+		select l.log_id,l.log_date,l.log_content,l.user_account,l.log_ip,l.log_result,l.log_flag
+        from dm_log l
+	</sql>
+
+    <select id="selectLogList" parameterType="DmLog" resultMap="DmLogResult">
+        <include refid="selectLogVo"/>
+        where l.log_flag = '0'
+        <if test="userAccount != null and userAccount != ''">
+            AND l.user_account like concat(concat('%',#{userAccount}),'%')
+        </if>
+        <if test="logContent != null and logContent != ''">
+            AND l.log_content like concat(concat('%',#{logContent}),'%')
+        </if>
+        <if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+            AND l.log_date &gt;= to_date(#{params.beginTime},'yyyy-MM-dd HH24:mi:ss')
+        </if>
+        <if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+            AND l.log_date &lt;= to_date(#{params.endTime},'yyyy-MM-dd HH24:mi:ss')
+        </if>
+        <!-- 数据范围过滤 -->
+        ${params.dataScope}
+    </select>
+</mapper>

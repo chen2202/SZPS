@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.report.DayReportMapper">
+
+	<resultMap type="DayReport" id="ReportResult">
+    		<id     property="id"    column="id"    />
+			<result property="deptId"    column="deptId"    />
+			<result property="deptName"    column="deptName"    />
+			<result property="reportDate"    column="reportDate"    />
+			<result property="weather"    column="weather"    />
+			<result property="temperature"    column="temperature"    />
+			<result property="humidity"    column="humidity"    />
+			<result property="earlyWorker"    column="earlyWorker"    />
+			<result property="middleWorker"    column="middleWorker"    />
+			<result property="lastWorker"    column="lastWorker"    />
+			<result property="dwt1"    column="dwt1"    />
+			<result property="dwt2"    column="dwt2"    />
+			<result property="sq1"    column="sq1"    />
+			<result property="sq2"    column="sq2"    />
+			<result property="meter"    column="meter"    />
+			<result property="electricity"    column="electricity"    />
+			<result property="waterMeter"    column="waterMeter"    />
+			<result property="water"    column="water"    />
+			<result property="pac"    column="pac"    />
+			<result property="ipra"    column="ipra"    />
+			<result property="pam1"    column="pam1"    />
+			<result property="pam2"    column="pam2"    />
+			<result property="disin"    column="disin"    />
+			<result property="disin3"    column="disin3"    />
+			<result property="disin2"    column="disin2"    />
+			<result property="stopwatertime"    column="stopwatertime"    />
+			<result property="stopreason"    column="stopreason"    />
+			<result property="recoverytime"    column="recoverytime"    />
+			<result property="reportDesc"    column="reportDesc"    />
+			<result property="cod1"    column="cod1"    />
+			<result property="cod2"    column="cod2"    />
+			<result property="cod3"    column="cod3"    />
+			<result property="cod4"    column="cod4"    />
+			<result property="cod5"    column="cod5"    />
+			<result property="cod6"    column="cod6"    />
+			<result property="cod7"    column="cod7"    />
+			<result property="cod8"    column="cod8"    />
+			<result property="an1"    column="an1"    />
+			<result property="an2"    column="an2"    />
+			<result property="an3"    column="an3"    />
+			<result property="an4"    column="an4"    />
+			<result property="an5"    column="an5"    />
+			<result property="an6"    column="an6"    />
+			<result property="an7"    column="an7"    />
+			<result property="an8"    column="an8"    />
+			<result property="tn1"    column="tn1"    />
+			<result property="tn2"    column="tn2"    />
+			<result property="tn3"    column="tn3"    />
+			<result property="tn4"    column="tn4"    />
+			<result property="tn5"    column="tn5"    />
+			<result property="tn6"    column="tn6"    />
+			<result property="tn7"    column="tn7"    />
+			<result property="tn8"    column="tn8"    />
+			<result property="tp1"    column="tp1"    />
+			<result property="tp2"    column="tp2"    />
+			<result property="tp3"    column="tp3"    />
+			<result property="tp4"    column="tp4"    />
+			<result property="tp5"    column="tp5"    />
+			<result property="tp6"    column="tp6"    />
+			<result property="tp7"    column="tp7"    />
+			<result property="tp8"    column="tp8"    />
+			<result property="stss1"    column="stss1"    />
+			<result property="stss2"    column="stss2"    />
+			<result property="stss3"    column="stss3"    />
+			<result property="stss4"    column="stss4"    />
+			<result property="stss5"    column="stss5"    />
+			<result property="stss6"    column="stss6"    />
+			<result property="stss7"    column="stss7"    />
+			<result property="stss8"    column="stss8"    />
+			<result property="sttp1"    column="sttp1"    />
+			<result property="sttp2"    column="sttp2"    />
+			<result property="sttp3"    column="sttp3"    />
+			<result property="sttp4"    column="sttp4"    />
+			<result property="sttp5"    column="sttp5"    />
+			<result property="sttp6"    column="sttp6"    />
+			<result property="sttp7"    column="sttp7"    />
+			<result property="sttp8"    column="sttp8"    />
+			<result property="color1"    column="color1"    />
+			<result property="color2"    column="color2"    />
+			<result property="color3"    column="color3"    />
+			<result property="color4"    column="color4"    />
+			<result property="color5"    column="color5"    />
+			<result property="color6"    column="color6"    />
+			<result property="color7"    column="color7"    />
+			<result property="color8"    column="color8"    />
+			<result property="smell1"    column="smell1"    />
+			<result property="smell2"    column="smell2"    />
+			<result property="smell3"    column="smell3"    />
+			<result property="smell4"    column="smell4"    />
+			<result property="smell5"    column="smell5"    />
+			<result property="smell6"    column="smell6"    />
+			<result property="smell7"    column="smell7"    />
+			<result property="smell8"    column="smell8"    />
+			<result property="pumpFirst1"    column="pumpFirst1"    />
+			<result property="pumpFirst2"    column="pumpFirst2"    />
+			<result property="pumpFirst3"    column="pumpFirst3"    />
+			<result property="pumpFirst4"    column="pumpFirst4"    />
+			<result property="pumpFirst5"    column="pumpFirst5"    />
+			<result property="pumpFirst6"    column="pumpFirst6"    />
+			<result property="pumpFirst7"    column="pumpFirst7"    />
+			<result property="pumpSecond1"    column="pumpSecond1"    />
+			<result property="pumpSecond2"    column="pumpSecond2"    />
+			<result property="pumpSecond3"    column="pumpSecond3"    />
+			<result property="pumpSecond4"    column="pumpSecond4"    />
+			<result property="pumpSecond5"    column="pumpSecond5"    />
+			<result property="pumpSecond6"    column="pumpSecond6"    />
+			<result property="pumpSecond7"    column="pumpSecond7"    />
+			<result property="pumpThird1"    column="pumpThird1"    />
+			<result property="pumpThird2"    column="pumpThird2"    />
+			<result property="pumpThird3"    column="pumpThird3"    />
+			<result property="pumpThird4"    column="pumpThird4"    />
+			<result property="pumpThird5"    column="pumpThird5"    />
+			<result property="pumpThird6"    column="pumpThird6"    />
+			<result property="pumpThird7"    column="pumpThird7"    />
+			<result property="stsos1"    column="stsos1"    />
+			<result property="stsos2"    column="stsos2"    />
+			<result property="stsos3"    column="stsos3"    />
+			<result property="stsos4"    column="stsos4"    />
+			<result property="stsos5"    column="stsos5"    />
+			<result property="stsos6"    column="stsos6"    />
+			<result property="stsos7"    column="stsos7"    />
+			<result property="lamp1"    column="lamp1"    />
+			<result property="lamp2"    column="lamp2"    />
+			<result property="lamp3"    column="lamp3"    />
+			<result property="lamp4"    column="lamp4"    />
+			<result property="lamp5"    column="lamp5"    />
+			<result property="lamp6"    column="lamp6"    />
+			<result property="lamp7"    column="lamp7"    />
+			<result property="pmm1"    column="pmm1"    />
+			<result property="pmm2"    column="pmm2"    />
+			<result property="pmm3"    column="pmm3"    />
+			<result property="pmm4"    column="pmm4"    />
+			<result property="pmm5"    column="pmm5"    />
+			<result property="pmm6"    column="pmm6"    />
+			<result property="pmm7"    column="pmm7"    />
+			<result property="sv30"    column="sv30"    />
+			<result property="sludge"    column="sludge"    />
+			<result property="oxygen"    column="oxygen"    />
+			<result property="mixture"    column="mixture"    />
+			<result property="reflux"    column="reflux"    />
+			<result property="conditionDesc"    column="conditionDesc"    />
+			<result property="lt60"    column="lt60"    />
+			<result property="g6l12"    column="g6l12"    />
+			<result property="g12l18"    column="g12l18"    />
+			<result property="gt180"    column="gt180"    />
+			<result property="equipment"    column="equipment"    />
+			<result property="instrument"    column="instrument"    />
+			<result property="handicraft"    column="handicraft"    />
+			<result property="problem"    column="problem"    />
+			<result property="firstOpinion"    column="firstOpinion"    />
+			<result property="replyOpinion"    column="replyOpinion"    />
+	        <result property="createBy"      column="create_by"      />
+	        <result property="createTime"    column="create_time"    />
+	        <result property="updateBy"      column="update_by"      />
+	        <result property="updateTime"    column="update_time"    />
+			<result property="remark"    column="remark"    />
+			<result property="delFlag"    column="delFlag"    />
+
+    </resultMap>
+
+	<sql id="selectReportVo">
+        select * from report_day r
+    </sql>	
+	
+	<!-- 查询条件 -->
+	<sql id="sqlwhereSearch">
+		<where>
+			<if test="id !=null">
+				and id = #{id}
+			</if>
+			<if test="reportDate !=null and reportDate != ''">
+				and reportDate = #{reportDate}
+			</if>
+		</where>
+	</sql>
+	
+
+    
+    <select id="selectReport" parameterType="DayReport" resultMap="ReportResult">
+        <include refid="selectReportVo"/>
+        <include refid="sqlwhereSearch"/>
+    </select>
+    
+    <select id="selectReportList" parameterType="DayReport" resultMap="ReportResult">
+        <include refid="selectReportVo"/>
+         where delFlag = '1'
+        <if test="deptId != null and deptId != 0">
+			AND deptId = #{deptId}
+		</if>
+		<if test="reportDate != null and reportDate != ''">
+			AND reportDate = #{reportDate}
+		</if>
+		order by r.id, r.reportDate
+    </select>
+    
+    
+    <select id="selectReportById" parameterType="Long" resultMap="ReportResult">
+		<include refid="selectReportVo"/>
+		where r.id = #{id}
+	</select>
+	
+    <delete id="deleteReportById" parameterType="Long">
+		update report_day set delFlag = '2' where id = #{id}
+	</delete>
+	 <delete id="deleteReportByIds" parameterType="Long">
+ 		delete from report_day where id in
+ 		<foreach collection="array" item="id" open="(" separator="," close=")">
+ 			#{id}
+        </foreach> 
+ 	</delete>
+ 	
+ <!-- 	<select id="getRangeReport" parameterType="DayReport" resultType="ReportResult">
+		<include refid="selectReportVo"/>
+		where delFlag = '1'
+        <if test="deptId != null and deptId != 0">
+			AND deptId = #{deptId}
+		</if>
+		and STR_TO_DATE(a.reportDate,'%Y-%m-%d') <![CDATA[ >= ]]> STR_TO_DATE(#{startDate},'%Y-%m-%d')
+		and STR_TO_DATE(a.reportDate,'%Y-%m-%d') <![CDATA[ <= ]]> STR_TO_DATE(#{endDate},'%Y-%m-%d')
+	</select> -->
+ 	
+	<update id="updateReport" parameterType="DayReport">
+ 		update report_day
+ 		<set>
+			<if test=" reportDate != null and reportDate!= ''">reportDate = #{reportDate},</if>
+			<if test=" weather != null and weather!= ''">weather = #{weather},</if>
+			<if test=" temperature != null and temperature!= ''">temperature = #{temperature},</if>
+			<if test=" humidity != null and humidity!= ''">humidity = #{humidity},</if>
+			<if test=" earlyWorker != null and earlyWorker!= ''">earlyWorker = #{earlyWorker},</if>
+			<if test=" middleWorker != null and middleWorker!= ''">middleWorker = #{middleWorker},</if>
+			<if test=" lastWorker != null and lastWorker!= ''">lastWorker = #{lastWorker},</if>
+			<if test=" dwt1 != null and dwt1!= ''">dwt1 = #{dwt1},</if>
+			<if test=" dwt2 != null and dwt2!= ''">dwt2 = #{dwt2},</if>
+			<if test=" sq1 != null and sq1!= ''">sq1 = #{sq1},</if>
+			<if test=" sq2 != null and sq2!= ''">sq2 = #{sq2},</if>
+			<if test=" meter != null and meter!= ''">meter = #{meter},</if>
+			<if test=" electricity != null and electricity!= ''">electricity = #{electricity},</if>
+			<if test=" waterMeter != null and waterMeter!= ''">waterMeter = #{waterMeter},</if>
+			<if test=" water != null and water!= ''">water = #{water},</if>
+			<if test=" pac != null and pac!= ''">pac = #{pac},</if>
+			<if test=" ipra != null and ipra!= ''">ipra = #{ipra},</if>
+			<if test=" pam1 != null and pam1!= ''">pam1 = #{pam1},</if>
+			<if test=" pam2 != null and pam2!= ''">pam2 = #{pam2},</if>
+			<if test=" disin != null and disin!= ''">disin = #{disin},</if>
+			<if test=" disin2 != null and disin2!= ''">disin2 = #{disin2},</if>
+			<if test=" disin3 != null and disin3!= ''">disin3 = #{disin3},</if>
+			<if test=" stopwatertime != null and stopwatertime!= ''">stopwatertime = #{stopwatertime},</if>
+			<if test=" stopreason != null and stopreason!= ''">stopreason = #{stopreason},</if>
+			<if test=" recoverytime != null and recoverytime!= ''">recoverytime = #{recoverytime},</if>
+			<if test=" reportDesc != null and reportDesc!= ''">reportDesc = #{reportDesc},</if>
+			<if test=" cod1 != null and cod1!= ''">cod1 = #{cod1},</if>
+			<if test=" cod2 != null and cod2!= ''">cod2 = #{cod2},</if>
+			<if test=" cod3 != null and cod3!= ''">cod3 = #{cod3},</if>
+			<if test=" cod4 != null and cod4!= ''">cod4 = #{cod4},</if>
+			<if test=" cod5 != null and cod5!= ''">cod5 = #{cod5},</if>
+			<if test=" cod6 != null and cod6!= ''">cod6 = #{cod6},</if>
+			<if test=" cod7 != null and cod7!= ''">cod7 = #{cod7},</if>
+			<if test=" cod8 != null and cod8!= ''">cod8 = #{cod8},</if>
+			<if test=" an1 != null and an1!= ''">an1 = #{an1},</if>
+			<if test=" an2 != null and an2!= ''">an2 = #{an2},</if>
+			<if test=" an3 != null and an3!= ''">an3 = #{an3},</if>
+			<if test=" an4 != null and an4!= ''">an4 = #{an4},</if>
+			<if test=" an5 != null and an5!= ''">an5 = #{an5},</if>
+			<if test=" an6 != null and an6!= ''">an6 = #{an6},</if>
+			<if test=" an7 != null and an7!= ''">an7 = #{an7},</if>
+			<if test=" an8 != null and an8!= ''">an8 = #{an8},</if>
+			<if test=" tn1 != null and tn1!= ''">tn1 = #{tn1},</if>
+			<if test=" tn2 != null and tn2!= ''">tn2 = #{tn2},</if>
+			<if test=" tn3 != null and tn3!= ''">tn3 = #{tn3},</if>
+			<if test=" tn4 != null and tn4!= ''">tn4 = #{tn4},</if>
+			<if test=" tn5 != null and tn5!= ''">tn5 = #{tn5},</if>
+			<if test=" tn6 != null and tn6!= ''">tn6 = #{tn6},</if>
+			<if test=" tn7 != null and tn7!= ''">tn7 = #{tn7},</if>
+			<if test=" tn8 != null and tn8!= ''">tn8 = #{tn8},</if>
+			<if test=" tp1 != null and tp1!= ''">tp1 = #{tp1},</if>
+			<if test=" tp2 != null and tp2!= ''">tp2 = #{tp2},</if>
+			<if test=" tp3 != null and tp3!= ''">tp3 = #{tp3},</if>
+			<if test=" tp4 != null and tp4!= ''">tp4 = #{tp4},</if>
+			<if test=" tp5 != null and tp5!= ''">tp5 = #{tp5},</if>
+			<if test=" tp6 != null and tp6!= ''">tp6 = #{tp6},</if>
+			<if test=" tp7 != null and tp7!= ''">tp7 = #{tp7},</if>
+			<if test=" tp8 != null and tp8!= ''">tp8 = #{tp8},</if>
+			<if test=" stss1 != null and stss1!= ''">stss1 = #{stss1},</if>
+			<if test=" stss2 != null and stss2!= ''">stss2 = #{stss2},</if>
+			<if test=" stss3 != null and stss3!= ''">stss3 = #{stss3},</if>
+			<if test=" stss4 != null and stss4!= ''">stss4 = #{stss4},</if>
+			<if test=" stss5 != null and stss5!= ''">stss5 = #{stss5},</if>
+			<if test=" stss6 != null and stss6!= ''">stss6 = #{stss6},</if>
+			<if test=" stss7 != null and stss7!= ''">stss7 = #{stss7},</if>
+			<if test=" stss8 != null and stss8!= ''">stss8 = #{stss8},</if>
+			<if test=" sttp1 != null and sttp1!= ''">sttp1 = #{sttp1},</if>
+			<if test=" sttp2 != null and sttp2!= ''">sttp2 = #{sttp2},</if>
+			<if test=" sttp3 != null and sttp3!= ''">sttp3 = #{sttp3},</if>
+			<if test=" sttp4 != null and sttp4!= ''">sttp4 = #{sttp4},</if>
+			<if test=" sttp5 != null and sttp5!= ''">sttp5 = #{sttp5},</if>
+			<if test=" sttp6 != null and sttp6!= ''">sttp6 = #{sttp6},</if>
+			<if test=" sttp7 != null and sttp7!= ''">sttp7 = #{sttp7},</if>
+			<if test=" sttp8 != null and sttp8!= ''">sttp8 = #{sttp8},</if>
+			<if test=" color1 != null and color1!= ''">color1 = #{color1},</if>
+			<if test=" color2 != null and color2!= ''">color2 = #{color2},</if>
+			<if test=" color3 != null and color3!= ''">color3 = #{color3},</if>
+			<if test=" color4 != null and color4!= ''">color4 = #{color4},</if>
+			<if test=" color5 != null and color5!= ''">color5 = #{color5},</if>
+			<if test=" color6 != null and color6!= ''">color6 = #{color6},</if>
+			<if test=" color7 != null and color7!= ''">color7 = #{color7},</if>
+			<if test=" color8 != null and color8!= ''">color8 = #{color8},</if>
+			<if test=" smell1 != null and smell1!= ''">smell1 = #{smell1},</if>
+			<if test=" smell2 != null and smell2!= ''">smell2 = #{smell2},</if>
+			<if test=" smell3 != null and smell3!= ''">smell3 = #{smell3},</if>
+			<if test=" smell4 != null and smell4!= ''">smell4 = #{smell4},</if>
+			<if test=" smell5 != null and smell5!= ''">smell5 = #{smell5},</if>
+			<if test=" smell6 != null and smell6!= ''">smell6 = #{smell6},</if>
+			<if test=" smell7 != null and smell7!= ''">smell7 = #{smell7},</if>
+			<if test=" smell8 != null and smell8!= ''">smell8 = #{smell8},</if>
+			<if test=" pumpFirst1 != null and pumpFirst1!= ''">pumpFirst1 = #{pumpFirst1},</if>
+			<if test=" pumpFirst2 != null and pumpFirst2!= ''">pumpFirst2 = #{pumpFirst2},</if>
+			<if test=" pumpFirst3 != null and pumpFirst3!= ''">pumpFirst3 = #{pumpFirst3},</if>
+			<if test=" pumpFirst4 != null and pumpFirst4!= ''">pumpFirst4 = #{pumpFirst4},</if>
+			<if test=" pumpFirst5 != null and pumpFirst5!= ''">pumpFirst5 = #{pumpFirst5},</if>
+			<if test=" pumpFirst6 != null and pumpFirst6!= ''">pumpFirst6 = #{pumpFirst6},</if>
+			<if test=" pumpFirst7 != null and pumpFirst7!= ''">pumpFirst7 = #{pumpFirst7},</if>
+			<if test=" pumpSecond1 != null and pumpSecond1!= ''">pumpSecond1 = #{pumpSecond1},</if>
+			<if test=" pumpSecond2 != null and pumpSecond2!= ''">pumpSecond2 = #{pumpSecond2},</if>
+			<if test=" pumpSecond3 != null and pumpSecond3!= ''">pumpSecond3 = #{pumpSecond3},</if>
+			<if test=" pumpSecond4 != null and pumpSecond4!= ''">pumpSecond4 = #{pumpSecond4},</if>
+			<if test=" pumpSecond5 != null and pumpSecond5!= ''">pumpSecond5 = #{pumpSecond5},</if>
+			<if test=" pumpSecond6 != null and pumpSecond6!= ''">pumpSecond6 = #{pumpSecond6},</if>
+			<if test=" pumpSecond7 != null and pumpSecond7!= ''">pumpSecond7 = #{pumpSecond7},</if>
+			<if test=" pumpThird1 != null and pumpThird1!= ''">pumpThird1 = #{pumpThird1},</if>
+			<if test=" pumpThird2 != null and pumpThird2!= ''">pumpThird2 = #{pumpThird2},</if>
+			<if test=" pumpThird3 != null and pumpThird3!= ''">pumpThird3 = #{pumpThird3},</if>
+			<if test=" pumpThird4 != null and pumpThird4!= ''">pumpThird4 = #{pumpThird4},</if>
+			<if test=" pumpThird5 != null and pumpThird5!= ''">pumpThird5 = #{pumpThird5},</if>
+			<if test=" pumpThird6 != null and pumpThird6!= ''">pumpThird6 = #{pumpThird6},</if>
+			<if test=" pumpThird7 != null and pumpThird7!= ''">pumpThird7 = #{pumpThird7},</if>
+			<if test=" stsos1 != null and stsos1!= ''">stsos1 = #{stsos1},</if>
+			<if test=" stsos2 != null and stsos2!= ''">stsos2 = #{stsos2},</if>
+			<if test=" stsos3 != null and stsos3!= ''">stsos3 = #{stsos3},</if>
+			<if test=" stsos4 != null and stsos4!= ''">stsos4 = #{stsos4},</if>
+			<if test=" stsos5 != null and stsos5!= ''">stsos5 = #{stsos5},</if>
+			<if test=" stsos6 != null and stsos6!= ''">stsos6 = #{stsos6},</if>
+			<if test=" stsos7 != null and stsos7!= ''">stsos7 = #{stsos7},</if>
+			<if test=" lamp1 != null and lamp1!= ''">lamp1 = #{lamp1},</if>
+			<if test=" lamp2 != null and lamp2!= ''">lamp2 = #{lamp2},</if>
+			<if test=" lamp3 != null and lamp3!= ''">lamp3 = #{lamp3},</if>
+			<if test=" lamp4 != null and lamp4!= ''">lamp4 = #{lamp4},</if>
+			<if test=" lamp5 != null and lamp5!= ''">lamp5 = #{lamp5},</if>
+			<if test=" lamp6 != null and lamp6!= ''">lamp6 = #{lamp6},</if>
+			<if test=" lamp7 != null and lamp7!= ''">lamp7 = #{lamp7},</if>
+			<if test=" pmm1 != null and pmm1!= ''">pmm1 = #{pmm1},</if>
+			<if test=" pmm2 != null and pmm2!= ''">pmm2 = #{pmm2},</if>
+			<if test=" pmm3 != null and pmm3!= ''">pmm3 = #{pmm3},</if>
+			<if test=" pmm4 != null and pmm4!= ''">pmm4 = #{pmm4},</if>
+			<if test=" pmm5 != null and pmm5!= ''">pmm5 = #{pmm5},</if>
+			<if test=" pmm6 != null and pmm6!= ''">pmm6 = #{pmm6},</if>
+			<if test=" pmm7 != null and pmm7!= ''">pmm7 = #{pmm7},</if>
+			<if test=" sv30 != null and sv30!= ''">sv30 = #{sv30},</if>
+			<if test=" sludge != null and sludge!= ''">sludge = #{sludge},</if>
+			<if test=" oxygen != null and oxygen!= ''">oxygen = #{oxygen},</if>
+			<if test=" mixture != null and mixture!= ''">mixture = #{mixture},</if>
+			<if test=" reflux != null and reflux!= ''">reflux = #{reflux},</if>
+			<if test=" conditionDesc != null and conditionDesc!= ''">conditionDesc = #{conditionDesc},</if>
+			<if test=" lt60 != null and lt60!= ''">lt60 = #{lt60},</if>
+			<if test=" g6l12 != null and g6l12!= ''">g6l12 = #{g6l12},</if>
+			<if test=" g12l18 != null and g12l18!= ''">g12l18 = #{g12l18},</if>
+			<if test=" gt180 != null and gt180!= ''">gt180 = #{gt180},</if>
+			<if test=" equipment != null and equipment!= ''">equipment = #{equipment},</if>
+			<if test=" instrument != null and instrument!= ''">instrument = #{instrument},</if>
+			<if test=" handicraft != null and handicraft!= ''">handicraft = #{handicraft},</if>
+			<if test=" problem != null and problem!= ''">problem = #{problem},</if>
+			<if test=" firstOpinion != null and firstOpinion!= ''">firstOpinion = #{firstOpinion},</if>
+			<if test=" replyOpinion != null and replyOpinion!= ''">replyOpinion = #{replyOpinion},</if>
+			<if test=" remark != null and remark != ''">remark = #{remark},</if>
+ 			<if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+ 			update_time = sysdate
+ 		</set>
+ 		where id = #{id}
+	</update>
+	
+    <insert id="insertReport" parameterType="DayReport">
+    	 <selectKey keyProperty="id" resultType="long" order="BEFORE">
+			SELECT seq_report_day.NEXTVAL as id FROM DUAL
+		</selectKey>
+    
+		INSERT INTO report_day(
+				<if test=" id != null and id!= 0">id,</if>
+				<if test=" deptId != null and deptId!= ''">deptId,</if>
+				<if test=" deptName != null and deptName!= ''">deptName,</if>
+				<if test=" reportDate != null and reportDate!= ''">reportDate,</if>
+				<if test=" weather != null and weather!= ''">weather,</if>
+				<if test=" temperature != null and temperature!= ''">temperature,</if>
+				<if test=" humidity != null and humidity!= ''">humidity,</if>
+				<if test=" earlyWorker != null and earlyWorker!= ''">earlyWorker,</if>
+				<if test=" middleWorker != null and middleWorker!= ''">middleWorker,</if>
+				<if test=" lastWorker != null and lastWorker!= ''">lastWorker,</if>
+				<if test=" dwt1 != null and dwt1!= ''">dwt1,</if>
+				<if test=" dwt2 != null and dwt2!= ''">dwt2,</if>
+				<if test=" sq1 != null and sq1!= ''">sq1,</if>
+				<if test=" sq2 != null and sq2!= ''">sq2,</if>
+				<if test=" meter != null and meter!= ''">meter,</if>
+				<if test=" electricity != null and electricity!= ''">electricity,</if>
+				<if test=" waterMeter != null and waterMeter!= ''">waterMeter,</if>
+				<if test=" water != null and water!= ''">water,</if>
+				<if test=" pac != null and pac!= ''">pac,</if>
+				<if test=" ipra != null and ipra!= ''">ipra,</if>
+				<if test=" pam1 != null and pam1!= ''">pam1,</if>
+				<if test=" pam2 != null and pam2!= ''">pam2,</if>
+				<if test=" disin != null and disin!= ''">disin,</if>
+				<if test=" disin2 != null and disin2!= ''">disin2,</if>
+				<if test=" disin3 != null and disin3!= ''">disin3,</if>
+				<if test=" stopwatertime != null and stopwatertime!= ''">stopwatertime,</if>
+				<if test=" stopreason != null and stopreason!= ''">stopreason,</if>
+				<if test=" recoverytime != null and recoverytime!= ''">recoverytime,</if>
+				<if test=" reportDesc != null and reportDesc!= ''">reportDesc,</if>
+				<if test=" cod1 != null and cod1!= ''">cod1,</if>
+				<if test=" cod2 != null and cod2!= ''">cod2,</if>
+				<if test=" cod3 != null and cod3!= ''">cod3,</if>
+				<if test=" cod4 != null and cod4!= ''">cod4,</if>
+				<if test=" cod5 != null and cod5!= ''">cod5,</if>
+				<if test=" cod6 != null and cod6!= ''">cod6,</if>
+				<if test=" cod7 != null and cod7!= ''">cod7,</if>
+				<if test=" cod8 != null and cod8!= ''">cod8,</if>
+				<if test=" an1 != null and an1!= ''">an1,</if>
+				<if test=" an2 != null and an2!= ''">an2,</if>
+				<if test=" an3 != null and an3!= ''">an3,</if>
+				<if test=" an4 != null and an4!= ''">an4,</if>
+				<if test=" an5 != null and an5!= ''">an5,</if>
+				<if test=" an6 != null and an6!= ''">an6,</if>
+				<if test=" an7 != null and an7!= ''">an7,</if>
+				<if test=" an8 != null and an8!= ''">an8,</if>
+				<if test=" tn1 != null and tn1!= ''">tn1,</if>
+				<if test=" tn2 != null and tn2!= ''">tn2,</if>
+				<if test=" tn3 != null and tn3!= ''">tn3,</if>
+				<if test=" tn4 != null and tn4!= ''">tn4,</if>
+				<if test=" tn5 != null and tn5!= ''">tn5,</if>
+				<if test=" tn6 != null and tn6!= ''">tn6,</if>
+				<if test=" tn7 != null and tn7!= ''">tn7,</if>
+				<if test=" tn8 != null and tn8!= ''">tn8,</if>
+				<if test=" tp1 != null and tp1!= ''">tp1,</if>
+				<if test=" tp2 != null and tp2!= ''">tp2,</if>
+				<if test=" tp3 != null and tp3!= ''">tp3,</if>
+				<if test=" tp4 != null and tp4!= ''">tp4,</if>
+				<if test=" tp5 != null and tp5!= ''">tp5,</if>
+				<if test=" tp6 != null and tp6!= ''">tp6,</if>
+				<if test=" tp7 != null and tp7!= ''">tp7,</if>
+				<if test=" tp8 != null and tp8!= ''">tp8,</if>
+				<if test=" stss1 != null and stss1!= ''">stss1,</if>
+				<if test=" stss2 != null and stss2!= ''">stss2,</if>
+				<if test=" stss3 != null and stss3!= ''">stss3,</if>
+				<if test=" stss4 != null and stss4!= ''">stss4,</if>
+				<if test=" stss5 != null and stss5!= ''">stss5,</if>
+				<if test=" stss6 != null and stss6!= ''">stss6,</if>
+				<if test=" stss7 != null and stss7!= ''">stss7,</if>
+				<if test=" stss8 != null and stss8!= ''">stss8,</if>
+				<if test=" sttp1 != null and sttp1!= ''">sttp1,</if>
+				<if test=" sttp2 != null and sttp2!= ''">sttp2,</if>
+				<if test=" sttp3 != null and sttp3!= ''">sttp3,</if>
+				<if test=" sttp4 != null and sttp4!= ''">sttp4,</if>
+				<if test=" sttp5 != null and sttp5!= ''">sttp5,</if>
+				<if test=" sttp6 != null and sttp6!= ''">sttp6,</if>
+				<if test=" sttp7 != null and sttp7!= ''">sttp7,</if>
+				<if test=" sttp8 != null and sttp8!= ''">sttp8,</if>
+				<if test=" color1 != null and color1!= ''">color1,</if>
+				<if test=" color2 != null and color2!= ''">color2,</if>
+				<if test=" color3 != null and color3!= ''">color3,</if>
+				<if test=" color4 != null and color4!= ''">color4,</if>
+				<if test=" color5 != null and color5!= ''">color5,</if>
+				<if test=" color6 != null and color6!= ''">color6,</if>
+				<if test=" color7 != null and color7!= ''">color7,</if>
+				<if test=" color8 != null and color8!= ''">color8,</if>
+				<if test=" smell1 != null and smell1!= ''">smell1,</if>
+				<if test=" smell2 != null and smell2!= ''">smell2,</if>
+				<if test=" smell3 != null and smell3!= ''">smell3,</if>
+				<if test=" smell4 != null and smell4!= ''">smell4,</if>
+				<if test=" smell5 != null and smell5!= ''">smell5,</if>
+				<if test=" smell6 != null and smell6!= ''">smell6,</if>
+				<if test=" smell7 != null and smell7!= ''">smell7,</if>
+				<if test=" smell8 != null and smell8!= ''">smell8,</if>
+				<if test=" pumpFirst1 != null and pumpFirst1!= ''">pumpFirst1,</if>
+				<if test=" pumpFirst2 != null and pumpFirst2!= ''">pumpFirst2,</if>
+				<if test=" pumpFirst3 != null and pumpFirst3!= ''">pumpFirst3,</if>
+				<if test=" pumpFirst4 != null and pumpFirst4!= ''">pumpFirst4,</if>
+				<if test=" pumpFirst5 != null and pumpFirst5!= ''">pumpFirst5,</if>
+				<if test=" pumpFirst6 != null and pumpFirst6!= ''">pumpFirst6,</if>
+				<if test=" pumpFirst7 != null and pumpFirst7!= ''">pumpFirst7,</if>
+				<if test=" pumpSecond1 != null and pumpSecond1!= ''">pumpSecond1,</if>
+				<if test=" pumpSecond2 != null and pumpSecond2!= ''">pumpSecond2,</if>
+				<if test=" pumpSecond3 != null and pumpSecond3!= ''">pumpSecond3,</if>
+				<if test=" pumpSecond4 != null and pumpSecond4!= ''">pumpSecond4,</if>
+				<if test=" pumpSecond5 != null and pumpSecond5!= ''">pumpSecond5,</if>
+				<if test=" pumpSecond6 != null and pumpSecond6!= ''">pumpSecond6,</if>
+				<if test=" pumpSecond7 != null and pumpSecond7!= ''">pumpSecond7,</if>
+				<if test=" pumpThird1 != null and pumpThird1!= ''">pumpThird1,</if>
+				<if test=" pumpThird2 != null and pumpThird2!= ''">pumpThird2,</if>
+				<if test=" pumpThird3 != null and pumpThird3!= ''">pumpThird3,</if>
+				<if test=" pumpThird4 != null and pumpThird4!= ''">pumpThird4,</if>
+				<if test=" pumpThird5 != null and pumpThird5!= ''">pumpThird5,</if>
+				<if test=" pumpThird6 != null and pumpThird6!= ''">pumpThird6,</if>
+				<if test=" pumpThird7 != null and pumpThird7!= ''">pumpThird7,</if>
+				<if test=" stsos1 != null and stsos1!= ''">stsos1,</if>
+				<if test=" stsos2 != null and stsos2!= ''">stsos2,</if>
+				<if test=" stsos3 != null and stsos3!= ''">stsos3,</if>
+				<if test=" stsos4 != null and stsos4!= ''">stsos4,</if>
+				<if test=" stsos5 != null and stsos5!= ''">stsos5,</if>
+				<if test=" stsos6 != null and stsos6!= ''">stsos6,</if>
+				<if test=" stsos7 != null and stsos7!= ''">stsos7,</if>
+				<if test=" lamp1 != null and lamp1!= ''">lamp1,</if>
+				<if test=" lamp2 != null and lamp2!= ''">lamp2,</if>
+				<if test=" lamp3 != null and lamp3!= ''">lamp3,</if>
+				<if test=" lamp4 != null and lamp4!= ''">lamp4,</if>
+				<if test=" lamp5 != null and lamp5!= ''">lamp5,</if>
+				<if test=" lamp6 != null and lamp6!= ''">lamp6,</if>
+				<if test=" lamp7 != null and lamp7!= ''">lamp7,</if>
+				<if test=" pmm1 != null and pmm1!= ''">pmm1,</if>
+				<if test=" pmm2 != null and pmm2!= ''">pmm2,</if>
+				<if test=" pmm3 != null and pmm3!= ''">pmm3,</if>
+				<if test=" pmm4 != null and pmm4!= ''">pmm4,</if>
+				<if test=" pmm5 != null and pmm5!= ''">pmm5,</if>
+				<if test=" pmm6 != null and pmm6!= ''">pmm6,</if>
+				<if test=" pmm7 != null and pmm7!= ''">pmm7,</if>
+				<if test=" sv30 != null and sv30!= ''">sv30,</if>
+				<if test=" sludge != null and sludge!= ''">sludge,</if>
+				<if test=" oxygen != null and oxygen!= ''">oxygen,</if>
+				<if test=" mixture != null and mixture!= ''">mixture,</if>
+				<if test=" reflux != null and reflux!= ''">reflux,</if>
+				<if test=" conditionDesc != null and conditionDesc!= ''">conditionDesc,</if>
+				<if test=" lt60 != null and lt60!= ''">lt60,</if>
+				<if test=" g6l12 != null and g6l12!= ''">g6l12,</if>
+				<if test=" g12l18 != null and g12l18!= ''">g12l18,</if>
+				<if test=" gt180 != null and gt180!= ''">gt180,</if>
+				<if test=" equipment != null and equipment!= ''">equipment,</if>
+				<if test=" instrument != null and instrument!= ''">instrument,</if>
+				<if test=" handicraft != null and handicraft!= ''">handicraft,</if>
+				<if test=" problem != null and problem!= ''">problem,</if>
+				<if test=" firstOpinion != null and firstOpinion!= ''">firstOpinion,</if>
+				<if test=" replyOpinion != null and replyOpinion!= ''">replyOpinion,</if>
+				<if test=" remark != null and remark != ''">REMARK,</if>
+				<if test=" delFlag != null and delFlag!= ''">delFlag,</if>
+				<if test="createBy != null and createBy != ''">create_by,</if>
+				create_time
+		) VALUES (
+			<if test=" id != null and id!= 0">#{id},</if>
+			<if test=" deptId != null and deptId!= ''">#{deptId},</if>
+			<if test=" deptName != null and deptName!= ''">#{deptName},</if>
+			<if test=" reportDate != null and reportDate!= ''">#{reportDate},</if>
+			<if test=" weather != null and weather!= ''">#{weather},</if>
+			<if test=" temperature != null and temperature!= ''">#{temperature},</if>
+			<if test=" humidity != null and humidity!= ''">#{humidity},</if>
+			<if test=" earlyWorker != null and earlyWorker!= ''">#{earlyWorker},</if>
+			<if test=" middleWorker != null and middleWorker!= ''">#{middleWorker},</if>
+			<if test=" lastWorker != null and lastWorker!= ''">#{lastWorker},</if>
+			<if test=" dwt1 != null and dwt1!= ''">#{dwt1},</if>
+			<if test=" dwt2 != null and dwt2!= ''">#{dwt2},</if>
+			<if test=" sq1 != null and sq1!= ''">#{sq1},</if>
+			<if test=" sq2 != null and sq2!= ''">#{sq2},</if>
+			<if test=" meter != null and meter!= ''">#{meter},</if>
+			<if test=" electricity != null and electricity!= ''">#{electricity},</if>
+			<if test=" waterMeter != null and waterMeter!= ''">#{waterMeter},</if>
+			<if test=" water != null and water!= ''">#{water},</if>
+			<if test=" pac != null and pac!= ''">#{pac},</if>
+			<if test=" ipra != null and ipra!= ''">#{ipra},</if>
+			<if test=" pam1 != null and pam1!= ''">#{pam1},</if>
+			<if test=" pam2 != null and pam2!= ''">#{pam2},</if>
+			<if test=" disin != null and disin!= ''">#{disin},</if>
+			<if test=" disin2 != null and disin2!= ''">#{disin2},</if>
+			<if test=" disin3 != null and disin3!= ''">#{disin3},</if>
+			<if test=" stopwatertime != null and stopwatertime!= ''">#{stopwatertime},</if>
+			<if test=" stopreason != null and stopreason!= ''">#{stopreason},</if>
+			<if test=" recoverytime != null and recoverytime!= ''">#{recoverytime},</if>
+			<if test=" reportDesc != null and reportDesc!= ''">#{reportDesc},</if>
+			<if test=" cod1 != null and cod1!= ''">#{cod1},</if>
+			<if test=" cod2 != null and cod2!= ''">#{cod2},</if>
+			<if test=" cod3 != null and cod3!= ''">#{cod3},</if>
+			<if test=" cod4 != null and cod4!= ''">#{cod4},</if>
+			<if test=" cod5 != null and cod5!= ''">#{cod5},</if>
+			<if test=" cod6 != null and cod6!= ''">#{cod6},</if>
+			<if test=" cod7 != null and cod7!= ''">#{cod7},</if>
+			<if test=" cod8 != null and cod8!= ''">#{cod8},</if>
+			<if test=" an1 != null and an1!= ''">#{an1},</if>
+			<if test=" an2 != null and an2!= ''">#{an2},</if>
+			<if test=" an3 != null and an3!= ''">#{an3},</if>
+			<if test=" an4 != null and an4!= ''">#{an4},</if>
+			<if test=" an5 != null and an5!= ''">#{an5},</if>
+			<if test=" an6 != null and an6!= ''">#{an6},</if>
+			<if test=" an7 != null and an7!= ''">#{an7},</if>
+			<if test=" an8 != null and an8!= ''">#{an8},</if>
+			<if test=" tn1 != null and tn1!= ''">#{tn1},</if>
+			<if test=" tn2 != null and tn2!= ''">#{tn2},</if>
+			<if test=" tn3 != null and tn3!= ''">#{tn3},</if>
+			<if test=" tn4 != null and tn4!= ''">#{tn4},</if>
+			<if test=" tn5 != null and tn5!= ''">#{tn5},</if>
+			<if test=" tn6 != null and tn6!= ''">#{tn6},</if>
+			<if test=" tn7 != null and tn7!= ''">#{tn7},</if>
+			<if test=" tn8 != null and tn8!= ''">#{tn8},</if>
+			<if test=" tp1 != null and tp1!= ''">#{tp1},</if>
+			<if test=" tp2 != null and tp2!= ''">#{tp2},</if>
+			<if test=" tp3 != null and tp3!= ''">#{tp3},</if>
+			<if test=" tp4 != null and tp4!= ''">#{tp4},</if>
+			<if test=" tp5 != null and tp5!= ''">#{tp5},</if>
+			<if test=" tp6 != null and tp6!= ''">#{tp6},</if>
+			<if test=" tp7 != null and tp7!= ''">#{tp7},</if>
+			<if test=" tp8 != null and tp8!= ''">#{tp8},</if>
+			<if test=" stss1 != null and stss1!= ''">#{stss1},</if>
+			<if test=" stss2 != null and stss2!= ''">#{stss2},</if>
+			<if test=" stss3 != null and stss3!= ''">#{stss3},</if>
+			<if test=" stss4 != null and stss4!= ''">#{stss4},</if>
+			<if test=" stss5 != null and stss5!= ''">#{stss5},</if>
+			<if test=" stss6 != null and stss6!= ''">#{stss6},</if>
+			<if test=" stss7 != null and stss7!= ''">#{stss7},</if>
+			<if test=" stss8 != null and stss8!= ''">#{stss8},</if>
+			<if test=" sttp1 != null and sttp1!= ''">#{sttp1},</if>
+			<if test=" sttp2 != null and sttp2!= ''">#{sttp2},</if>
+			<if test=" sttp3 != null and sttp3!= ''">#{sttp3},</if>
+			<if test=" sttp4 != null and sttp4!= ''">#{sttp4},</if>
+			<if test=" sttp5 != null and sttp5!= ''">#{sttp5},</if>
+			<if test=" sttp6 != null and sttp6!= ''">#{sttp6},</if>
+			<if test=" sttp7 != null and sttp7!= ''">#{sttp7},</if>
+			<if test=" sttp8 != null and sttp8!= ''">#{sttp8},</if>
+			<if test=" color1 != null and color1!= ''">#{color1},</if>
+			<if test=" color2 != null and color2!= ''">#{color2},</if>
+			<if test=" color3 != null and color3!= ''">#{color3},</if>
+			<if test=" color4 != null and color4!= ''">#{color4},</if>
+			<if test=" color5 != null and color5!= ''">#{color5},</if>
+			<if test=" color6 != null and color6!= ''">#{color6},</if>
+			<if test=" color7 != null and color7!= ''">#{color7},</if>
+			<if test=" color8 != null and color8!= ''">#{color8},</if>
+			<if test=" smell1 != null and smell1!= ''">#{smell1},</if>
+			<if test=" smell2 != null and smell2!= ''">#{smell2},</if>
+			<if test=" smell3 != null and smell3!= ''">#{smell3},</if>
+			<if test=" smell4 != null and smell4!= ''">#{smell4},</if>
+			<if test=" smell5 != null and smell5!= ''">#{smell5},</if>
+			<if test=" smell6 != null and smell6!= ''">#{smell6},</if>
+			<if test=" smell7 != null and smell7!= ''">#{smell7},</if>
+			<if test=" smell8 != null and smell8!= ''">#{smell8},</if>
+			<if test=" pumpFirst1 != null and pumpFirst1!= ''">#{pumpFirst1},</if>
+			<if test=" pumpFirst2 != null and pumpFirst2!= ''">#{pumpFirst2},</if>
+			<if test=" pumpFirst3 != null and pumpFirst3!= ''">#{pumpFirst3},</if>
+			<if test=" pumpFirst4 != null and pumpFirst4!= ''">#{pumpFirst4},</if>
+			<if test=" pumpFirst5 != null and pumpFirst5!= ''">#{pumpFirst5},</if>
+			<if test=" pumpFirst6 != null and pumpFirst6!= ''">#{pumpFirst6},</if>
+			<if test=" pumpFirst7 != null and pumpFirst7!= ''">#{pumpFirst7},</if>
+			<if test=" pumpSecond1 != null and pumpSecond1!= ''">#{pumpSecond1},</if>
+			<if test=" pumpSecond2 != null and pumpSecond2!= ''">#{pumpSecond2},</if>
+			<if test=" pumpSecond3 != null and pumpSecond3!= ''">#{pumpSecond3},</if>
+			<if test=" pumpSecond4 != null and pumpSecond4!= ''">#{pumpSecond4},</if>
+			<if test=" pumpSecond5 != null and pumpSecond5!= ''">#{pumpSecond5},</if>
+			<if test=" pumpSecond6 != null and pumpSecond6!= ''">#{pumpSecond6},</if>
+			<if test=" pumpSecond7 != null and pumpSecond7!= ''">#{pumpSecond7},</if>
+			<if test=" pumpThird1 != null and pumpThird1!= ''">#{pumpThird1},</if>
+			<if test=" pumpThird2 != null and pumpThird2!= ''">#{pumpThird2},</if>
+			<if test=" pumpThird3 != null and pumpThird3!= ''">#{pumpThird3},</if>
+			<if test=" pumpThird4 != null and pumpThird4!= ''">#{pumpThird4},</if>
+			<if test=" pumpThird5 != null and pumpThird5!= ''">#{pumpThird5},</if>
+			<if test=" pumpThird6 != null and pumpThird6!= ''">#{pumpThird6},</if>
+			<if test=" pumpThird7 != null and pumpThird7!= ''">#{pumpThird7},</if>
+			<if test=" stsos1 != null and stsos1!= ''">#{stsos1},</if>
+			<if test=" stsos2 != null and stsos2!= ''">#{stsos2},</if>
+			<if test=" stsos3 != null and stsos3!= ''">#{stsos3},</if>
+			<if test=" stsos4 != null and stsos4!= ''">#{stsos4},</if>
+			<if test=" stsos5 != null and stsos5!= ''">#{stsos5},</if>
+			<if test=" stsos6 != null and stsos6!= ''">#{stsos6},</if>
+			<if test=" stsos7 != null and stsos7!= ''">#{stsos7},</if>
+			<if test=" lamp1 != null and lamp1!= ''">#{lamp1},</if>
+			<if test=" lamp2 != null and lamp2!= ''">#{lamp2},</if>
+			<if test=" lamp3 != null and lamp3!= ''">#{lamp3},</if>
+			<if test=" lamp4 != null and lamp4!= ''">#{lamp4},</if>
+			<if test=" lamp5 != null and lamp5!= ''">#{lamp5},</if>
+			<if test=" lamp6 != null and lamp6!= ''">#{lamp6},</if>
+			<if test=" lamp7 != null and lamp7!= ''">#{lamp7},</if>
+			<if test=" pmm1 != null and pmm1!= ''">#{pmm1},</if>
+			<if test=" pmm2 != null and pmm2!= ''">#{pmm2},</if>
+			<if test=" pmm3 != null and pmm3!= ''">#{pmm3},</if>
+			<if test=" pmm4 != null and pmm4!= ''">#{pmm4},</if>
+			<if test=" pmm5 != null and pmm5!= ''">#{pmm5},</if>
+			<if test=" pmm6 != null and pmm6!= ''">#{pmm6},</if>
+			<if test=" pmm7 != null and pmm7!= ''">#{pmm7},</if>
+			<if test=" sv30 != null and sv30!= ''">#{sv30},</if>
+			<if test=" sludge != null and sludge!= ''">#{sludge},</if>
+			<if test=" oxygen != null and oxygen!= ''">#{oxygen},</if>
+			<if test=" mixture != null and mixture!= ''">#{mixture},</if>
+			<if test=" reflux != null and reflux!= ''">#{reflux},</if>
+			<if test=" conditionDesc != null and conditionDesc!= ''">#{conditionDesc},</if>
+			<if test=" lt60 != null and lt60!= ''">#{lt60},</if>
+			<if test=" g6l12 != null and g6l12!= ''">#{g6l12},</if>
+			<if test=" g12l18 != null and g12l18!= ''">#{g12l18},</if>
+			<if test=" gt180 != null and gt180!= ''">#{gt180},</if>
+			<if test=" equipment != null and equipment!= ''">#{equipment},</if>
+			<if test=" instrument != null and instrument!= ''">#{instrument},</if>
+			<if test=" handicraft != null and handicraft!= ''">#{handicraft},</if>
+			<if test=" problem != null and problem!= ''">#{problem},</if>
+			<if test=" firstOpinion != null and firstOpinion!= ''">#{firstOpinion},</if>
+			<if test=" replyOpinion != null and replyOpinion!= ''">#{replyOpinion},</if>
+			<if test=" remark != null and remark != ''">#{remark},</if>
+			<if test=" delFlag != null and delFlag!= ''">#{delFlag},</if>
+			<if test="createBy != null and createBy != ''">#{createBy},</if>
+			sysdate			
+		)
+	</insert>
+    
+</mapper>

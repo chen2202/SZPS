@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.szps.web.mapper.supervise.TbHouseMapper" >
+  <resultMap id="BaseResultMap" type="com.szps.web.domain.supervise.TbHouse" >
+    <id column="HOUSE_NUMBER" property="houseNumber" jdbcType="VARCHAR" />
+    <result column="HOUSE_NAME" property="houseName" jdbcType="VARCHAR" />
+    <result column="HOUSE_REGION" property="houseRegion" jdbcType="VARCHAR" />
+    <result column="HOUSE_STREET" property="houseStreet" jdbcType="VARCHAR" />
+    <result column="HOUSE_BASIN" property="houseBasin" jdbcType="VARCHAR" />
+    <result column="HOUSE_ROLE" property="houseRole" jdbcType="VARCHAR" />
+    <result column="HOUSE_TYPE" property="houseType" jdbcType="VARCHAR" />
+    <result column="HOUSE_POINT" property="housePoint" jdbcType="VARCHAR" />
+    <result column="HOUSE_CONNECTING" property="houseConnecting" jdbcType="VARCHAR" />
+    <result column="HOUSE_PHONE" property="housePhone" jdbcType="VARCHAR" />
+    <result column="HOUSE_FLAG" property="houseFlag" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_HOUSE
+    where HOUSE_NUMBER = #{houseNumber,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.szps.web.domain.supervise.TbHouse" >
+    insert into TB_HOUSE (HOUSE_NUMBER, HOUSE_NAME, HOUSE_REGION, 
+      HOUSE_STREET, HOUSE_BASIN, HOUSE_ROLE,
+      HOUSE_TYPE, HOUSE_POINT, HOUSE_CONNECTING, HOUSE_PHONE
+      )
+    values (#{houseNumber,jdbcType=VARCHAR}, #{houseName,jdbcType=VARCHAR}, #{houseRegion,jdbcType=VARCHAR}, 
+      #{houseStreet,jdbcType=VARCHAR}, #{houseBasin,jdbcType=VARCHAR}, #{houseRole,jdbcType=VARCHAR},
+      #{houseType,jdbcType=VARCHAR}, #{housePoint,jdbcType=VARCHAR}, #{houseConnecting,jdbcType=VARCHAR}, #{housePhone,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.szps.web.domain.supervise.TbHouse" >
+    update TB_HOUSE
+    set HOUSE_NAME = #{houseName,jdbcType=VARCHAR},
+      HOUSE_REGION = #{houseRegion,jdbcType=VARCHAR},
+      HOUSE_STREET = #{houseStreet,jdbcType=VARCHAR},
+      HOUSE_BASIN = #{houseBasin,jdbcType=VARCHAR},
+      HOUSE_ROLE = #{houseRole,jdbcType=VARCHAR},
+      HOUSE_TYPE = #{houseType,jdbcType=VARCHAR},
+      HOUSE_POINT = #{housePoint,jdbcType=VARCHAR},
+      HOUSE_CONNECTING = #{houseConnecting,jdbcType=VARCHAR},
+      HOUSE_PHONE = #{housePhone,jdbcType=VARCHAR},
+      HOUSE_FLAG =#{houseFlag,jdbcType=VARCHAR}
+    where HOUSE_NUMBER = #{houseNumber,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select HOUSE_NUMBER, HOUSE_NAME, HOUSE_REGION, HOUSE_STREET, HOUSE_BASIN, HOUSE_ROLE,
+    HOUSE_TYPE, HOUSE_POINT, HOUSE_CONNECTING, HOUSE_PHONE,HOUSE_FLAG
+    from TB_HOUSE
+    where HOUSE_NUMBER = #{houseNumber,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select HOUSE_NUMBER, HOUSE_NAME, HOUSE_REGION, HOUSE_STREET, HOUSE_BASIN, HOUSE_ROLE,
+    HOUSE_TYPE, HOUSE_POINT, HOUSE_CONNECTING, HOUSE_PHONE,HOUSE_FLAG
+    from TB_HOUSE
+  </select>
+
+  <select id="selectHouse" resultMap="BaseResultMap" >
+    select * from (select * from TB_HOUSE order by dbms_random.value) where rownum &lt;=1
+  </select>
+
+
+  <select id="selectByRegionAndStreet" resultMap="BaseResultMap">
+    select HOUSE_NUMBER, HOUSE_NAME, HOUSE_REGION, HOUSE_STREET, HOUSE_BASIN, HOUSE_ROLE,
+    HOUSE_TYPE, HOUSE_POINT, HOUSE_CONNECTING, HOUSE_PHONE,HOUSE_FLAG
+    from TB_HOUSE
+    where TB_HOUSE.HOUSE_FLAG = '0'
+      <if test="houseRegion != null and houseRegion != ''">
+        AND TB_HOUSE.HOUSE_REGION = #{houseRegion}
+      </if>
+      <if test="houseStreet != null and houseStreet != ''">
+        AND TB_HOUSE.HOUSE_STREET = #{houseStreet}
+      </if>
+
+
+  </select>
+</mapper>

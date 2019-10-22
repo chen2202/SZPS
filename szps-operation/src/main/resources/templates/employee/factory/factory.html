@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('水厂列表')" />
+</head>
+<body class="gray-bg">
+	<div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="factory-form">
+					<div class="select-list">
+						<ul>
+							<li>
+								水厂名称：<input type="text" name="name"/>
+							</li>
+							<li>
+								归属区域：<input type="text" name="attribution_area"/>
+							</li>
+							<li>
+								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							    <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+		
+			<div class="btn-group-sm" id="toolbar" role="group">
+				<!-- <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="employee:worker:add">
+	                <i class="fa fa-plus"></i> 新增
+	            </a>
+				<a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="employee:worker:remove">
+		            <i class="fa fa-remove"></i> 删除
+		        </a> -->
+	        </div>
+	        
+	        <div class="col-sm-12 select-table table-striped">
+			    <table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+	<th:block th:include="include :: footer" />
+	<script th:inline="javascript">
+		var editFlag = [[${@permission.hasPermi('employee:factory:edit')}]];
+		/*var removeFlag = [[${@permission.hasPermi('employee:worker:remove')}]]; */
+		//var detailsFlag = ""; //详情权限
+		var prefix = ctx + "employee/factory";
+
+		$(function() {
+		    var options = {
+		        url: prefix + "/list",
+		        /* createUrl: prefix + "/add",
+		        updateUrl: prefix + "/edit/{id}",
+		        removeUrl: prefix + "/remove", */
+		        sortName: "name",
+		        modalName: "水质净化厂",
+		        columns: [{
+		            checkbox: true
+		        },
+		        {
+		            field: 'factory_id',
+		            title: '水厂代码',
+		        },
+		        {
+		            field: 'name',
+		            title: '厂名',
+		            sortable: true
+		        },
+		        {
+		            field: 'address',
+		            title: '地址',
+		            sortable: true
+		        },
+		        {
+		            field: 'attribution_area',
+		            title: '归属区域',
+		            sortable: true
+		        },
+		        {
+		            field: 'factory_director',
+		            title: '厂长',
+		            sortable: true
+		        },
+		        {
+		            field: 'deputy_director',
+		            title: '副厂长',
+		            sortable: true
+		        },
+		        {
+		            field: 'daily_water',
+		            title: '日处理水量/吨',
+		            sortable: true
+		        },
+		        {
+		            field: 'telephone',
+		            title: '联系电话',
+		            sortable: false
+		        },
+		        {
+		            field: 'introduction',
+		            title: '简介',
+		            sortable: true
+		        },
+		        {
+		            title: '操作',
+		            align: 'center',
+		            formatter: function(value, row, index) {
+		                var actions = [];
+		                actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.factory_id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+		                /* actions.push('<a class="btn btn-info btn-xs " href="javascript:void(0)" onclick=""><i class="fa fa-user"></i>详情</a>'); */
+		                /* actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.idCard + '\')"><i class="fa fa-remove"></i>删除</a> '); */
+		                return actions.join('');
+		            }
+		        }]
+		    };
+		    $.table.init(options);
+		});
+	</script>
+</body>
+</html>

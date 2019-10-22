@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.szps.web.mapper.employee.FactoryMapper">
+	<resultMap type="Factory" id="factoryResult">
+		<id     property="factory_id"       column="FACTORY_ID"        />
+		<result property="name"     column="NAME"      />
+		<result property="address"           column="ADDRESS"           />
+		<result property="attribution_area"   column="ATTRIBUTION_AREA"    />
+		<result property="factory_director"   column="FACTORY_DIRECTOR"    />
+		<result property="deputy_director" column="DEPUTY_DIRECTOR"/>
+		<result property="daily_water" column="DAILY_WATER" />
+		<result property="telephone" column="TELEPHONE"          />
+		<result property="introduction" column="INTRODUCTION"        />
+	</resultMap>
+	
+	<!-- 查询全部水厂名称代码 -->
+	<select id="selectAllFactoryName" parameterType="Factory" resultMap="factoryResult">
+		select * from EMPLOYEE_T_FACTORY
+	</select>
+	
+	<!-- 查询全部水厂信息 -->
+	<select id="selectAllFactory" parameterType="Factory" resultMap="factoryResult">
+		select * from EMPLOYEE_T_FACTORY
+		<if test="name != null and name !='' and attribution_area != null and attribution_area != ''">
+			where NAME = #{name} and ATTRIBUTION_AREA = #{attribution_area}
+		</if>
+		<if test="name != null and name !='' and (attribution_area == null or attribution_area == '')">
+			where NAME = #{name}
+		</if>
+		<if test="(name == null or name =='') and attribution_area != null and attribution_area != ''">
+			where ATTRIBUTION_AREA = #{attribution_area}
+		</if>
+	</select>
+	
+</mapper>

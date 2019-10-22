@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('修改规则')" />
+	<th:block th:include="include :: ztree-css" />
+</head>
+<body class="white-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+		<form class="form-horizontal m" id="form-role-edit" th:object="${rule}">
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label ">规则编号：</label>
+				<div class="col-sm-10">
+					<input class="form-control" readonly="readonly" type="text" name="ruleNumber" id="ruleNumber" th:field="*{ruleNumber}" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">规则内容：</label>
+				<div class="col-sm-10">
+					<textarea type="text" name="ruleContent"  id="ruleContent" class="form-control" th:field="*{ruleContent}" required></textarea>
+				</div>
+			</div>
+
+		</form>
+	</div>
+	<th:block th:include="include :: footer" />
+	<th:block th:include="include :: ztree-js" />
+	<script type="text/javascript">
+
+	
+		$("#form-role-edit").validate({
+			onkeyup: false,
+			rules:{
+				roleName:{
+					remote: {
+		                url: ctx + "system/role/checkRoleNameUnique",
+		                type: "post",
+		                dataType: "json",
+		                data: {
+							"roleId": function() {
+							    return $("#roleId").val();
+							},
+							"roleName": function() {
+							    return $.common.trim($("#roleName").val());
+							}
+		                },
+		                dataFilter: function(data, type) {
+		                	return $.validate.unique(data);
+		                }
+		            }
+				},
+				roleKey:{
+					remote: {
+		                url: ctx + "system/role/checkRoleKeyUnique",
+		                type: "post",
+		                dataType: "json",
+		                data: {
+							"roleId": function() {
+								return $("#roleId").val();
+							},
+							"roleKey": function() {
+							    return $.common.trim($("#roleKey").val());
+							}
+		                },
+		                dataFilter: function(data, type) {
+		                	return $.validate.unique(data);
+		                }
+		            }
+				},
+				roleSort:{
+					digits:true
+				},
+			},
+			messages: {
+		        "roleName": {
+		            remote: "角色名称已经存在"
+		        },
+		        "roleKey": {
+		            remote: "角色权限已经存在"
+		        }
+		    },
+		    focusCleanup: true
+		});
+
+		function edit() {
+			var ruleNumber = $("input[name='ruleNumber']").val();
+            var ruleContent = $("textarea[name='ruleContent']").val();
+			$.ajax({
+				cache : true,
+				type : "POST",
+				url : ctx + "supervise/data2/edit",
+				data : {
+					"ruleNumber": ruleNumber,
+					"ruleContent": ruleContent,
+				},
+				async : false,
+				error : function(request) {
+					$.modal.alertError("系统错误");
+				},
+				success : function(data) {
+					$.operate.successCallback(data);
+				}
+			});
+		}
+		
+		function submitHandler() {
+	        if ($.validate.form()) {
+	        	edit();
+	        }
+	    }
+	</script>
+</body>
+</html>

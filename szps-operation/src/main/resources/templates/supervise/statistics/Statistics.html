@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('数据统计')" />
+	<script th:src="@{/js/plugins/echarts.min.js}"></script>
+</head>
+<body class="gray-bg">
+<div class="container-div">
+	<div class="row">
+
+		<div class="col-sm-12 search-collapse">
+			<form id="form-data-add" action="/supervise/statistics/list" method="post">
+				<div class="select-list">
+					<ul>
+						<li>
+							行政区：
+							<select  name="taskRegion">
+							<option value="">请选择</option>
+							<option value="南山区">南山区</option>
+							<option value="福田区">福田区</option>
+							<option value="盐田区">盐田区</option>
+							<option value="罗湖区">罗湖区</option>
+						</select>
+						</li>
+						<li>
+							街道：<select name="taskStreet">
+							<option value="">请选择</option>
+							<option value="南山街道">南山街道</option>
+							<option value="南头街道">南头街道</option>
+							<option value="西丽街道">西丽街道</option>
+							<option value="沙河街道">沙河街道</option>
+						</select>
+						</li>
+
+						<li>
+							报表类型：<select name="report">
+							<option value="月报">月报</option>
+							<option value="季报">季报</option>
+							<option value="年报">年报</option>
+						</select>
+						</li>
+						<li class="select-time">
+							<label>日期：</label>
+							<input type="text" class="time-input" id="taskTime" placeholder="检查时间" name="taskTime" data-format="yyyy-MM" required/>
+						</li>
+						<li>
+							<a class="btn btn-primary btn-rounded btn-sm" onclick="list()"><i class="fa fa-search"></i>&nbsp;查看</a>
+							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+						</li>
+					</ul>
+				</div>
+			</form>
+		</div>
+
+	</div>
+</div>
+<th:block th:include="include :: footer" />
+<script type="text/javascript">
+
+
+	function list() {
+        if ($.validate.form()) {
+
+            $("#form-data-add").submit();
+
+        }
+
+    }
+
+
+</script>
+</body>
+</html>

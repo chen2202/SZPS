@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('审批列表')" />
+</head>
+<body class="gray-bg">
+<div class="container-div">
+    <div class="row">
+
+        <div class="col-sm-12 search-collapse">
+            <form id="data-form">
+                <div class="select-list">
+                    <ul>
+                        <li>主题：
+                            <input type="text" name="dataTheme" />
+                        <li>行政区：
+                            <input type="text" name="dataBorough" />
+                        </li>
+                        <li class="select-time">
+                            <label>创建时间：</label>
+                            <input type="text" class="time-input" id="startTime" placeholder="开始时间" name="params[beginTime]" lay-key="3">
+                            <span>-</span>
+                            <input type="text" class="time-input" id="endTime" placeholder="结束时间" name="params[endTime]" lay-key="4"></li>
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()">
+                                <i class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()">
+                                <i class="fa fa-refresh"></i>&nbsp;重置</a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+
+        <div class="btn-group-sm" id="toolbar" role="group">
+        <!--<a class="btn btn-success" onclick="$.operate.addTab()">-->
+        <!--<i class="fa fa-plus"></i> 新增-->
+        <!--</a>-->
+        <a class="btn btn-primary " onclick="recoveryAll()">
+        <i class="fa fa-check-square-o"></i> 全部恢复
+        </a>
+        <a class="btn btn-danger" onclick="$.operate.removeAll()">
+        <i class="fa fa-remove"></i> 全部删除
+        </a>
+        <!--<a class="btn btn-warning" onclick="$.table.exportExcel()">-->
+        <!--<i class="fa fa-download"></i> 导出-->
+        <!--</a>-->
+        </div>
+
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+        </div>
+
+    </div>
+
+</div>
+
+<th:block th:include="include :: footer" />
+<script th:inline="javascript">
+    var prefix = ctx+"dm/recycle";
+    var file_prefix = ctx+"dm/file";
+    $(function() {
+        var options = {
+            url: prefix + "/list",
+            recoveryUrl: prefix + "/recovery",
+            removeUrl: prefix+"/remove",
+            modalName: "资料",
+            columns: [{
+                checkbox: true
+            },
+                {
+                    field: 'dataId',
+                    title: '资料编号',
+                    sortable: true
+                },
+                {
+                    field: 'dataDate',
+                    title: '录入日期',
+                    sortable: true
+                },
+                {
+                    field: 'dataTheme',
+                    title: '主题',
+                    sortable: true
+                },
+                {
+                    field: 'dataType',
+                    title: '所属类别',
+                    sortable: true
+                },
+                {
+                    field: 'dataBorough',
+                    title: '行政区',
+                    sortable: true
+                },
+                {
+                    field: 'dataStreet',
+                    title: '所属街道',
+                    sortable: true
+                },
+                {
+                    field: 'dataLevel',
+                    title: '密级',
+                    sortable: true
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-info btn-xs" href="javascript:void(0)" onclick="userView(\'' + row.dataId + '\')"><i class="fa fa-edit"></i>查看</a> ');
+                        actions.push('<a class="btn btn-primary btn-xs" href="javascript:void(0)" onclick="recovery(\'' + row.dataId + '\')"><i class="fa fa-check-square-o"></i>恢复</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.dataId + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        return actions.join('');
+                    }
+                }]
+        };
+        $.table.init(options);
+    });
+
+    /* 查看资料*/
+    function userView(dataId) {
+        var url = file_prefix+ '/userView/' + dataId;
+        $.modal.openTab("浏览规划资料", url);
+    }
+
+    function recovery(dataId){
+        $.modal.confirm("确定恢复该条" + $.table._option.modalName + "信息吗？", function() {
+            var url = $.common.isEmpty(dataId) ? $.table._option.recoveryUrl : $.table._option.recoveryUrl.replace("{id}", dataId);
+            if($.table._option.type == table_type.bootstrapTreeTable) {
+                $.operate.get(url);
+            } else {
+                var data = { "ids": dataId };
+                $.operate.submit(url, "post", "json", data);
+            }
+        });
+    }
+
+    function recoveryAll(){
+        var rows = $.common.isEmpty($.table._option.uniqueId) ? $.table.selectFirstColumns() : $.table.selectColumns($.table._option.uniqueId);
+        if (rows.length == 0) {
+            $.modal.alertWarning("请至少选择一条记录");
+            return;
+        }
+        $.modal.confirm("确认要恢复选中的" + rows.length + "条数据吗?", function() {
+            var url = $.table._option.recoveryUrl;
+            var data = { "ids": rows.join() };
+            $.operate.submit(url, "post", "json", data);
+        });
+    }
+
+</script>
+</body>
+</html>

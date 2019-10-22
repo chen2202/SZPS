@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.szps.web.mapper.employee.WorkerMapper">
+	<resultMap type="Worker" id="WorkerResult">
+		<id     property="idCard"       column="IDCARD"        />
+		<result property="name"     column="NAME"          />
+		<result property="sex"      column="SEX"           />
+		<result property="birthday"     column="BIRTHDAY"      />
+		<result property="telephone"    column="TELEPHONE"     />
+		<result property="email"       column="EMAIL"         />
+		<result property="title"      column="TITLE"         />
+		<result property="profession"     column="PROFESSION"    />
+		<result property="company_name"   column="COMPANY_NAME"  />
+		<result property="position"     column="POSITION"      />
+		<result property="department_name"   column="DEPARTMENT_NAME" />
+	</resultMap>
+
+	<select id="selectAllWorker" resultType="com.szps.web.domain.employee.Worker">
+        SELECT IDCARD,NAME,SEX,to_char(BIRTHDAY,'yyyy-mm-dd') as BIRTHDAY,TELEPHONE,EMAIL,TITLE,PROFESSION,COMPANY_NAME,POSITION,DEPARTMENT_NAME FROM T_WORKER,T_DEPARTMENT WHERE T_WORKER.DEPARTMENT_ID = T_DEPARTMENT.DEPARTMENT_ID
+	</select>
+	
+	<sql id="selectWorkerVo">
+		select w.IDCARD, w.NAME, w.SEX, w.BIRTHDAY, r., r.status, r.del_flag, r.create_time, r.remark 
+        from T_WORKER w
+	</sql>
+	
+	<insert id="insertWorker" parameterType="com.szps.web.domain.employee.Worker" keyProperty="idCard">
+		<selectKey resultType="String" order="BEFORE" keyProperty="idCard">
+              select seq_user_id.nextval as id from dual
+        </selectKey>
+ 		insert into T_WORKER(IDCARD,NAME,SEX,BIRTHDAY,TELEPHONE,EMAIL,TITLE,PROFESSION,
+ 		COMPANY_NAME,POSITION,DEPARTMENT_ID) values(#{idCard},#{name},#{sex},#{birthday},
+ 		#{telephone},#{email},#{title},#{profession},#{company_name},#{position},#{departemnt_name})
+	</insert>
+	
+</mapper>

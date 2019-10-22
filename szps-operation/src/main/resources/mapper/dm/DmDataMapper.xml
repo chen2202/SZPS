@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.dm.DmDataMapper">
+
+	<resultMap type="DmData" id="DmDataResult">
+		<id     property="dataId"       column="data_id"        />
+		<result property="dataUuid"     column="data_uuid"      />
+		<result property="dataDate"      column="data_date"       />
+		<result property="dataApplicant"     column="data_applicant"      />
+		<result property="dataCompany"    column="data_company"     />
+		<result property="dataBorough"       column="data_borough"         />
+		<result property="dataStreet"      column="data_street"       />
+		<result property="dataType"     column="data_type"      />
+		<result property="dataLevel"   column="data_level"    />
+		<result property="dataTheme"     column="data_theme"      />
+		<result property="dataDesc"   column="data_desc"    />
+		<result property="dataFlag"       column="data_flag"         />
+		<association property="audit"    column="audit_id" javaType="DmAudit" resultMap="DmAuditResult" />
+	</resultMap>
+
+	<resultMap type="DmAudit" id="DmAuditResult">
+		<id     property="auditId"       column="audit_id"        />
+		<result property="dataId"     column="data_id"      />
+		<result property="userId"     column="user_id"      />
+		<result property="userName"     column="user_name"      />
+		<result property="auditStatus"      column="audit_status"       />
+		<result property="auditResult"    column="audit_result"     />
+		<result property="auditDate"    column="audit_date"     />
+		<result property="auditCreate"    column="audit_create"     />
+	</resultMap>
+
+    <sql id="selectDataVo">
+		select d.data_id,d.data_uuid,d.data_date,d.data_applicant,d.data_company,d.data_borough,d.data_street,d.data_type,d.data_level,d.data_theme,d.data_desc,d.data_flag,
+				a.audit_id,a.data_id,a.user_id,a.user_name,a.audit_status,a.audit_result,a.audit_date,a.audit_create
+        from dm_data d
+        left join dm_audit a on d.data_id = a.data_id
+	</sql>
+
+	<select id="selectDataList" parameterType="DmData" resultMap="DmDataResult">
+		select d.data_id,d.data_uuid,d.data_date,d.data_applicant,d.data_company,d.data_borough,d.data_street,d.data_type,d.data_level,d.data_theme,d.data_desc,d.data_flag
+		from dm_data d
+		left join dm_audit a on d.data_id = a.data_id
+		where d.data_flag = '0' and a.audit_status='1'
+		<if test="dataTheme != null and dataTheme != ''">
+			AND d.data_theme like concat(concat('%',#{dataTheme}),'%')
+		</if>
+		<if test="dataBorough != null and dataBorough != ''">
+			AND d.data_borough like concat(concat('%',#{dataBorough}),'%')
+		</if>
+		<if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+			AND d.data_date &gt;= to_date(#{params.beginTime},'yyyy-MM-dd HH24:mi:ss')
+		</if>
+		<if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+			AND d.data_date &lt;= to_date(#{params.endTime},'yyyy-MM-dd HH24:mi:ss')
+		</if>
+		<!-- 数据范围过滤 -->
+		${params.dataScope}
+	</select>
+
+	<select id="selectNotApprovalDataList" parameterType="DmData" resultMap="DmDataResult">
+		select d.data_id,d.data_uuid,d.data_date,d.data_applicant,d.data_company,d.data_borough,d.data_street,d.data_type,d.data_level,d.data_theme,d.data_desc,d.data_flag
+		from dm_data d
+		left join dm_audit a on d.data_id = a.data_id
+		where d.data_flag = '0' and a.audit_status='0'
+		<if test="dataTheme != null and dataTheme != ''">
+			AND d.data_theme like concat(concat('%',#{dataTheme}),'%')
+		</if>
+		<if test="dataBorough != null and dataBorough != ''">
+			AND d.data_borough like concat(concat('%',#{dataBorough}),'%')
+		</if>
+		<if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+			AND d.data_date &gt;= to_date(#{params.beginTime},'yyyy-MM-dd HH24:mi:ss')
+		</if>
+		<if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+			AND d.data_date &lt;= to_date(#{params.endTime},'yyyy-MM-dd HH24:mi:ss')
+		</if>
+		<!-- 数据范围过滤 -->
+		${params.dataScope}
+	</select>
+
+	<select id="selectPassDataList" parameterType="DmData" resultMap="DmDataResult">
+		select d.data_id,d.data_uuid,d.data_date,d.data_applicant,d.data_company,d.data_borough,d.data_street,d.data_type,d.data_level,d.data_theme,d.data_desc,d.data_flag
+		from dm_data d
+		left join dm_audit a on d.data_id = a.data_id
+		where a.audit_status='1'
+		<if test="dataTheme != null and dataTheme != ''">
+			AND d.data_theme like concat(concat('%',#{dataTheme}),'%')
+		</if>
+		<if test="dataBorough != null and dataBorough != ''">
+			AND d.data_borough like concat(concat('%',#{dataBorough}),'%')
+		</if>
+		<if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+			AND d.data_date &gt;= to_date(#{params.beginTime},'yyyy-MM-dd HH24:mi:ss')
+		</if>
+		<if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+			AND d.data_date &lt;= to_date(#{params.endTime},'yyyy-MM-dd HH24:mi:ss')
+		</if>
+		<!-- 数据范围过滤 -->
+		${params.dataScope}
+	</select>
+
+	<select id="selectRejectDataList" parameterType="DmData" resultMap="DmDataResult">
+		select d.data_id,d.data_uuid,d.data_date,d.data_applicant,d.data_company,d.data_borough,d.data_street,d.data_type,d.data_level,d.data_theme,d.data_desc,d.data_flag
+		from dm_data d
+		left join dm_audit a on d.data_id = a.data_id
+		where a.audit_status='2'
+		<if test="dataTheme != null and dataTheme != ''">
+			AND d.data_theme like concat(concat('%',#{dataTheme}),'%')
+		</if>
+		<if test="dataBorough != null and dataBorough != ''">
+			AND d.data_borough like concat(concat('%',#{dataBorough}),'%')
+		</if>
+		<if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+			AND d.data_date &gt;= to_date(#{params.beginTime},'yyyy-MM-dd HH24:mi:ss')
+		</if>
+		<if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+			AND d.data_date &lt;= to_date(#{params.endTime},'yyyy-MM-dd HH24:mi:ss')
+		</if>
+		<!-- 数据范围过滤 -->
+		${params.dataScope}
+	</select>
+
+	<select id="selectDeletedDataList" parameterType="DmData" resultMap="DmDataResult">
+		select d.data_id,d.data_uuid,d.data_date,d.data_applicant,d.data_company,d.data_borough,d.data_street,d.data_type,d.data_level,d.data_theme,d.data_desc,d.data_flag
+		from dm_data d
+		left join dm_audit a on d.data_id = a.data_id
+		where d.data_flag='2'
+		<if test="dataTheme != null and dataTheme != ''">
+			AND d.data_theme like concat(concat('%',#{dataTheme}),'%')
+		</if>
+		<if test="dataBorough != null and dataBorough != ''">
+			AND d.data_borough like concat(concat('%',#{dataBorough}),'%')
+		</if>
+		<if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+			AND d.data_date &gt;= to_date(#{params.beginTime},'yyyy-MM-dd HH24:mi:ss')
+		</if>
+		<if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+			AND d.data_date &lt;= to_date(#{params.endTime},'yyyy-MM-dd HH24:mi:ss')
+		</if>
+		<!-- 数据范围过滤 -->
+		${params.dataScope}
+	</select>
+
+	<select id="selectDataById" parameterType="Long" resultMap="DmDataResult">
+		<include refid="selectDataVo"/>
+		where d.data_id=#{dataId}
+	</select>
+
+	<select id="selectDataByUuid" parameterType="String" resultMap="DmDataResult">
+		<include refid="selectDataVo"/>
+		where d.data_uuid = #{dataUuid}
+	</select>
+
+	<insert id="insertData" parameterType="DmData" useGeneratedKeys="true" keyProperty="dataId">
+		<selectKey keyProperty="dataId" order="BEFORE" resultType="Long">
+			select seq_dm_data.nextval as dataId from DUAL
+		</selectKey>
+		insert into dm_data(
+		<if test="dataId != null and dataId != 0">data_id,</if>
+		<if test="dataUuid != null and dataUuid != ''">data_uuid,</if>
+		<if test="dataApplicant != null and dataApplicant != ''">data_applicant,</if>
+		<if test="dataCompany != null and dataCompany != ''">data_company,</if>
+		<if test="dataBorough != null and dataBorough != ''">data_borough,</if>
+		<if test="dataStreet != null and dataStreet != ''">data_street,</if>
+		<if test="dataType != null and dataType != ''">data_type,</if>
+		<if test="dataLevel != null and dataLevel != ''">data_level,</if>
+		<if test="dataTheme != null and dataTheme != ''">data_theme,</if>
+		<if test="dataDesc != null and dataDesc != ''">data_desc,</if>
+		data_date
+		)values(
+		<if test="dataId != null and dataId != 0">#{dataId},</if>
+		<if test="dataUuid != null and dataUuid != ''">#{dataUuid},</if>
+		<if test="dataApplicant != null and dataApplicant != ''">#{dataApplicant},</if>
+		<if test="dataCompany != null and dataCompany != ''">#{dataCompany},</if>
+		<if test="dataBorough != null and dataBorough != ''">#{dataBorough},</if>
+		<if test="dataStreet != null and dataStreet != ''">#{dataStreet},</if>
+		<if test="dataType != null and dataType != ''">#{dataType},</if>
+		<if test="dataLevel != null and dataLevel != ''">#{dataLevel},</if>
+		<if test="dataTheme != null and dataTheme != ''">#{dataTheme},</if>
+		<if test="dataDesc != null and dataDesc != ''">#{dataDesc},</if>
+		sysdate
+		)
+	</insert>
+
+	<update id="updateData" parameterType="DmData">
+		update dm_data
+		<set>
+			<if test="dataApplicant != null and dataApplicant != ''">data_applicant = #{dataApplicant},</if>
+			<if test="dataCompany != null and dataCompany != ''">data_company = #{dataCompany},</if>
+			<if test="dataBorough != null and dataBorough != ''">data_borough = #{dataBorough},</if>
+			<if test="dataStreet != null and dataStreet != ''">data_street = #{dataStreet},</if>
+			<if test="dataType != null and dataType != ''">data_type = #{dataType},</if>
+			<if test="dataLevel != null and dataLevel != ''">data_level = #{dataLevel},</if>
+			<if test="dataTheme != null and dataTheme != ''">data_theme = #{dataTheme},</if>
+			<if test="dataDesc != null and dataDesc != ''">data_desc = #{dataDesc},</if>
+		</set>
+		where data_id = #{dataId}
+	</update>
+
+	<update id="changeDataFlagByIds">
+		update dm_data set data_flag = #{dataFlag} where data_id in
+		<foreach collection="ids" item="dataId" open="(" separator="," close=")">
+			#{dataId}
+		</foreach>
+	</update>
+
+	<delete id="deleteDataByIds" parameterType="Long">
+		delete from dm_data d
+		where d.data_id in
+		<foreach collection="array" item="dataId" open="(" separator="," close=")">
+			#{dataId}
+		</foreach>
+	</delete>
+
+</mapper>

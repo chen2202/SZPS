@@ -1,0 +1,13 @@
+
+*.class
+/.classpath
+/.launch
+/.project
+/.settings
+/*.launch
+/*.tmproj
+/ivy*
+/eclipse
+target/
+out/
+build/

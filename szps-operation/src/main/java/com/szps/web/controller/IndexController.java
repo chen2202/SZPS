@@ -42,6 +42,7 @@ public class IndexController extends BaseController
         mmap.put("demoEnabled", Global.isDemoEnabled());
         return "index";
     }
+    
     // 系统介绍
     @GetMapping("/system/main")
     public String main(ModelMap mmap)

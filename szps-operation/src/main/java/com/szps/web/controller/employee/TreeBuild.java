@@ -3,6 +3,12 @@ package com.szps.web.controller.employee;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ * 树形结构建立
+ * @author zxc
+ *
+ */
 public class TreeBuild {
 	/**
      * 方式一：使用两层循环实现
@@ -44,7 +50,7 @@ public class TreeBuild {
         return retList;
     }
 
-    /*
+    /**
      * 查询父节点下的所有子节点
      * */
      private static TreeNode findChildren(TreeNode parent, List<TreeNode> treeList) {

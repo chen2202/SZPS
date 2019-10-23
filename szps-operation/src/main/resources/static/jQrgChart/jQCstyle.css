@@ -7,9 +7,6 @@ a {
 }
 /*节点*/
 .jOrgChart .node {
-	width: auto;
-	height: 30px;
-	line-height: 30px;
 	border-radius: 0px;
 	border: 2px solid gainsboro;
 	margin: 0 8px;

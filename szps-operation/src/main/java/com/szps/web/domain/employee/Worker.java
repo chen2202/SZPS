@@ -1,24 +1,21 @@
 package com.szps.web.domain.employee;
 
-import java.util.Date;
-
 /**
- * 数据库表T_WORKER和T_DEPARTMENT组成的worker实体类
- * 
+ * 数据库表EMPLOYEE_T_WORKER和EMPLOYEE_T_DEPARTMENT组成的Worker实体类
  * @author zxc
  */
 public class Worker {
 	private String idCard; //身份证号
 	private String name; //名字
 	private String sex; //性别
-	private String birthday; //出生日期
-	private long telephone; //电话
-	private String email; //邮箱
+	private String join_work_time; //参加工作时间
+	private String education; //受教育程度
 	private String title; //职称
-	private String profession; //专业资质
-	private String company_name; //所属公司
-	private String position; //职位
+	private String profession; //专业
+	private String company_name; //所属企业名称
+	private String position; //职务
 	private String department_name; //部门名称
+	private String qualification_certificate; //资质证书
 	public String getIdCard() {
 		return idCard;
 	}
@@ -37,23 +34,17 @@ public class Worker {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-	public String getBirthday() {
-		return birthday;
+	public String getJoin_work_time() {
+		return join_work_time;
 	}
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
+	public void setJoin_work_time(String join_work_time) {
+		this.join_work_time = join_work_time;
 	}
-	public long getTelephone() {
-		return telephone;
+	public String getEducation() {
+		return education;
 	}
-	public void setTelephone(long telephone) {
-		this.telephone = telephone;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEducation(String education) {
+		this.education = education;
 	}
 	public String getTitle() {
 		return title;
@@ -85,4 +76,12 @@ public class Worker {
 	public void setDepartment_name(String department_name) {
 		this.department_name = department_name;
 	}
+	public String getQualification_certificate() {
+		return qualification_certificate;
+	}
+	public void setQualification_certificate(String qualification_certificate) {
+		this.qualification_certificate = qualification_certificate;
+	}
+	
+	
 }

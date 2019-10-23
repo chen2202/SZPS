@@ -32,4 +32,9 @@
 		</if>
 	</select>
 	
+	<!-- 查询某个水厂的名称(用于组织结构图) -->
+	<select id="selectFactoryById" parameterType="String" resultType="String">
+		select NAME from EMPLOYEE_T_FACTORY where FACTORY_ID = #{factory_id}
+	</select>
+	
 </mapper>

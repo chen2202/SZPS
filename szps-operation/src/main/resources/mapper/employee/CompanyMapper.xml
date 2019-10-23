@@ -9,33 +9,67 @@
 		<result property="business_scope"   column="BUSINESS_SCOPE"    />
 		<result property="registered_capital" column="REGISTERED_CAPITAL"/>
 		<result property="qualification" column="QUALIFICATION" />
-		<result property="pipe_project" column="PIPE_PROJECT"          />
-		<result property="project_scope" column="PROJECT_SCOPE"        />
-		<result property="pipe_stop_time" column="PIPE_STOP_TIME" />
-		<result property="project_company_name" column="PROJECT_COMPANY_NAME" />
-		<result property="project_company_address" column="PROJECT_COMPANY_ADDRESS" />
-		<result property="project_people" column="PROJECT_PEOPLE" />
-		<result property="project_header" column="PROJECT_HEADER" />
-		<result property="telephone" column="TELEPHONE" />
 	</resultMap>
 	
-	<!-- 查询全部公司名称和代码 -->
+	<!-- 查询全部公司名称和代码(用于下拉菜单) -->
 	<select id="selectAllCompanyName" parameterType="Company" resultMap="companyResult">
 		select COMPANY_ID,COMPANY_NAME,ADDRESS,REPRESENTATIVE,BUSINESS_SCOPE,
-		REGISTERED_CAPITAL,QUALIFICATION,PIPE_PROJECT,PROJECT_SCOPE,
-		to_char(PIPE_STOP_TIME,'yyyy-mm-dd') as PIPE_STOP_TIME,PROJECT_COMPANY_NAME,
-		PROJECT_COMPANY_ADDRESS,PROJECT_PEOPLE,PROJECT_HEADER,TELEPHONE from EMPLOYEE_T_COMPANY
+		REGISTERED_CAPITAL,QUALIFICATION from EMPLOYEE_T_COMPANY
 	</select>
 	
 	<!-- 查询全部公司信息 -->
 	<select id="selectAllCompany" parameterType="Company" resultMap="companyResult">
 		select COMPANY_ID,COMPANY_NAME,ADDRESS,REPRESENTATIVE,BUSINESS_SCOPE,
-		REGISTERED_CAPITAL,QUALIFICATION,PIPE_PROJECT,PROJECT_SCOPE,
-		to_char(PIPE_STOP_TIME,'yyyy-mm-dd') as PIPE_STOP_TIME,PROJECT_COMPANY_NAME,
-		PROJECT_COMPANY_ADDRESS,PROJECT_PEOPLE,PROJECT_HEADER,TELEPHONE from EMPLOYEE_T_COMPANY
+		REGISTERED_CAPITAL,QUALIFICATION from EMPLOYEE_T_COMPANY
 		<if test="company_name != null and company_name != ''">
 			where COMPANY_NAME = #{company_name}
 		</if>
 	</select>
+	
+	<!-- 查询某个公司名称 (用于组织结构图) -->
+	<select id="selectCompanyById" parameterType="String" resultType="String">
+		select COMPANY_NAME from EMPLOYEE_T_COMPANY where COMPANY_ID = #{company_id}
+	</select>
+	
+	<!-- 添加，修改公司时判断公司代码是否重复 -->
+	<select id="checkCompanyIdUnique" parameterType="String" resultMap="companyResult">
+		select * from EMPLOYEE_T_COMPANY c where c.COMPANY_ID = #{company_id}
+	</select>
+	
+	<!-- 添加公司 -->
+	<insert id="insertCompany" parameterType="com.szps.web.domain.employee.Company" keyProperty="company_id">
+ 		insert into EMPLOYEE_T_COMPANY(COMPANY_ID,COMPANY_NAME,ADDRESS,REPRESENTATIVE,BUSINESS_SCOPE,
+ 		REGISTERED_CAPITAL,QUALIFICATION) values(#{company_id},#{company_name},#{address},#{representative},
+ 		 #{business_scope},#{registered_capital},#{qualification})
+	</insert>
+	
+	<!-- 通过公司代码查询某个公司信息 -->
+	<select id="selectCompanyById2" parameterType="String" resultMap="companyResult">
+		select COMPANY_ID,COMPANY_NAME,ADDRESS,REPRESENTATIVE,BUSINESS_SCOPE,
+		REGISTERED_CAPITAL,QUALIFICATION from EMPLOYEE_T_COMPANY where COMPANY_ID = #{company_id}
+	</select>
+	
+	<!-- 修改保存公司信息 -->
+	<update id="updateCompany" parameterType="Company">
+		update EMPLOYEE_T_COMPANY
+		<set>
+ 			<if test="company_id != null and company_id != ''">COMPANY_ID = #{company_id},</if>
+ 			<if test="company_name != null and company_name != ''">COMPANY_NAME = #{company_name},</if>
+ 			<if test="address != null and address != ''">ADDRESS = #{address},</if>
+ 			<if test="representative != null and representative != ''">REPRESENTATIVE = #{representative},</if>
+ 			<if test="business_scope != null and business_scope != ''">BUSINESS_SCOPE = #{business_scope},</if>
+ 			<if test="registered_capital != null and registered_capital != ''">REGISTERED_CAPITAL = #{registered_capital},</if>
+ 			<if test="qualification != null and qualification != ''">QUALIFICATION = #{qualification} </if>
+ 		</set>
+ 		where COMPANY_ID = #{company_id}
+	</update>
+	
+	<!-- 删除公司信息 -->
+	<delete id="deleteCompanyById" parameterType="String">
+		delete from EMPLOYEE_T_COMPANY where COMPANY_ID in 
+ 		<foreach collection="array" item="company_id" open="(" separator="," close=")">
+ 			#{company_id}
+ 		</foreach>
+	</delete>
 	
 </mapper>

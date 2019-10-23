@@ -26,4 +26,11 @@ public class FactoryServiceImpl implements FactoryService{
 	public List<Factory> selectAllFactory(Factory factory){
 		return factoryMapper.selectAllFactory(factory);
 	}
+	
+	/**
+	 * 查询某个水厂名称
+	 */
+	public String selectFactoryById(String factory_id) {
+		return factoryMapper.selectFactoryById(factory_id);
+	}
 }

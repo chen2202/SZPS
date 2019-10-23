@@ -15,7 +15,5 @@ public class OPApplication {
 		// System.setProperty("spring.devtools.restart.enabled", "false");
 		SpringApplication.run(OPApplication.class, args);
 		System.out.println("-----------------启动成功-----------------\n");
-		
-		
 	}
 }

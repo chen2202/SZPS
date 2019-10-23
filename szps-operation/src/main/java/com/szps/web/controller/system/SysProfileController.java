@@ -155,7 +155,7 @@ public class SysProfileController extends BaseController
         {
             if (!file.isEmpty())
             {
-                String avatar = FileUploadUtils.upload2(Global.getAvatarPath(), file,Global.AVATAR_TYPE);
+                String avatar = FileUploadUtils.upload(Global.getAvatarPath(), file);
                 currentUser.setAvatar(avatar);
                 if (userService.updateUserInfo(currentUser) > 0)
                 {

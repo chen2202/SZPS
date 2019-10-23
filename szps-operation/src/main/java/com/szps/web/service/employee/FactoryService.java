@@ -14,4 +14,9 @@ public interface FactoryService {
 	 * 查询全部水厂信息
 	 */
 	public List<Factory> selectAllFactory(Factory factory);
+	
+	/**
+	 * 查询某个水厂名称
+	 */
+	public String selectFactoryById(String factory_id);
 }

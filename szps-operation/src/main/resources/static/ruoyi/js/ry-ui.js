@@ -247,7 +247,6 @@
             // 搜索-默认第一个form
             search: function(formId, data) {
             	var currentId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
-            	
     		    var params = $.btTable.bootstrapTable('getOptions');
     		    params.queryParams = function(params) {
                     var search = $.common.formToJSON(currentId);
@@ -812,8 +811,7 @@
             // 删除信息
             remove: function(id) {
             	$.modal.confirm("确定删除该条" + $.table._option.modalName + "信息吗？", function() {
-            		var url = $.common.isEmpty(id) ? $.table._option.removeUrl : $.table._option.removeUrl.replace("{id}", id);
-                    
+                    var url = $.common.isEmpty(id) ? $.table._option.removeUrl : $.table._option.removeUrl.replace("{id}", id);
                     if($.table._option.type == table_type.bootstrapTreeTable) {
                     	$.operate.get(url);
                     } else {
@@ -957,25 +955,6 @@
         	        url: url,
         	        type: "post",
         	        dataType: "json",
-        	        data: data,
-        	        beforeSend: function () {
-        	        	$.modal.loading("正在处理中，请稍后...");
-        	        },
-        	        success: function(result) {
-        	        	if (typeof callback == "function") {
-        	        	    callback(result);
-        	        	}
-        	        	$.operate.successTabCallback(result);
-        	        }
-        	    };
-        	    $.ajax(config)
-            },
-            saveTabFile: function(url, data, callback) {
-            	var config = {
-        	        url: url,
-        	        type: "post",
-        	        dataType: "json",
-        	        enctype: 'multipart/form-data',
         	        data: data,
         	        beforeSend: function () {
         	        	$.modal.loading("正在处理中，请稍后...");

@@ -17,7 +17,7 @@ import com.szps.system.service.ISysMenuService;
 /**
  * 首页 业务处理
  * 
- * @author jack
+ * @author ruoyi
  */
 @Controller
 public class IndexController extends BaseController
@@ -42,7 +42,6 @@ public class IndexController extends BaseController
         mmap.put("demoEnabled", Global.isDemoEnabled());
         return "index";
     }
-    
     // 系统介绍
     @GetMapping("/system/main")
     public String main(ModelMap mmap)

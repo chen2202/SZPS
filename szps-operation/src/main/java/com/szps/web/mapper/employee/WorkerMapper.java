@@ -31,7 +31,6 @@ public interface WorkerMapper {
     /**
      * 通过身份证号查询从业人员
      * @param 查询的身份证号
-     * @return 从业人员对象信息
      */
     public Worker selectWorkerById(String idCard);
  

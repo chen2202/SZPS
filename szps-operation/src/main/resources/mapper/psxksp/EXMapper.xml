@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.psxksp.EXMapper">
+  <resultMap id="BaseResultMap" type="com.szps.web.domain.psxksp.EX_GDBS_SB">
+    <result column="SBLSH" jdbcType="VARCHAR" property="SBLSH" />
+    <result column="SBLSH_SHORT" jdbcType="VARCHAR" property="SBLSH_SHORT" />
+    <result column="SXBM" jdbcType="VARCHAR" property="SXBM" />
+    <result column="SXMC" jdbcType="VARCHAR" property="SXMC" />
+    <result column="SXQXBM" jdbcType="VARCHAR" property="SXQXBM" />
+    <result column="FSXBM" jdbcType="VARCHAR" property="FSXBM" />
+    <result column="FSXMC" jdbcType="VARCHAR" property="FSXMC" />
+    <result column="SQRLX" jdbcType="VARCHAR" property="SQRLX" />
+    <result column="SQRMC" jdbcType="VARCHAR" property="SQRMC"/>
+    <result column="SQRZJLX" jdbcType="VARCHAR" property="SQRZJLX"/>
+    <result column="SQRZJHM" jdbcType="VARCHAR" property="SQRZJHM"/>
+    <result column="LXRXM" jdbcType="VARCHAR" property="LXRXM" />
+    <result column="LXRZJLX" jdbcType="VARCHAR" property="LXRZJLX" />
+    <result column="LXRSFZJHM" jdbcType="VARCHAR" property="LXRSFZJHM" />
+    <result column="LXRSJ" jdbcType="VARCHAR" property="LXRSJ" />
+    <result column="LXRYX" jdbcType="VARCHAR" property="LXRYX" />
+    <result column="SBXMMC" jdbcType="VARCHAR" property="SBXMMC" />
+    <result column="SBCLQD" jdbcType="VARCHAR" property="SBCLQD" />
+    <result column="TJFS" jdbcType="VARCHAR" property="TJFS" />
+    <result column="SBHZH" jdbcType="VARCHAR" property="SBHZH"/>
+    <result column="SBSJ" jdbcType="DATE" property="SBSJ"/>
+    <result column="SBJTWD" jdbcType="VARCHAR" property="SBJTWD"/>
+    <result column="XZQHDM" jdbcType="VARCHAR" property="XZQHDM" />
+    <result column="YSBLSH" jdbcType="VARCHAR" property="YSBLSH" />
+    <result column="BZ" jdbcType="VARCHAR" property="BZ" />
+    <result column="F_XZQHDM" jdbcType="VARCHAR" property="F_XZQHDM" />
+    <result column="USERIDCODE" jdbcType="VARCHAR" property="USERIDCODE" />
+    <result column="PROJECT_CODE" jdbcType="VARCHAR" property="PROJECT_CODE" />
+    <result column="WSSBQD" jdbcType="VARCHAR" property="WSSBQD" />
+    <result column="OBTAIN_PAPER_WAY" jdbcType="VARCHAR" property="OBTAIN_PAPER_WAY" />
+    <result column="OBTAIN_DELIVER_WAY" jdbcType="VARCHAR" property="OBTAIN_DELIVER_WAY"/>
+    <result column="VERSION" jdbcType="VARCHAR" property="VERSION"/>
+    <result column="REC_FLAG" jdbcType="DECIMAL" property="REC_FLAG"/>
+    <result column="XML_DATA" jdbcType="VARCHAR" property="XML_DATA" />
+    <result column="D_ZZJGDM" jdbcType="VARCHAR" property="D_ZZJGDM" />
+    <result column="SXBM_SHORT" jdbcType="VARCHAR" property="SXBM_SHORT" />
+    <result column="INSERTTIME" jdbcType="DATE" property="INSERTTIME" />
+    <result column="RESPONSETIME" jdbcType="DATE" property="RESPONSETIME" />
+    <result column="FLAG" jdbcType="DECIMAL" property="FLAG" />
+    <result column="SYNC" jdbcType="DECIMAL" property="SYNC" />
+    <result column="DWDM" jdbcType="VARCHAR" property="DWDM" />
+    <result column="BYZD1" jdbcType="VARCHAR" property="BYZD1"/>
+    <result column="BYZD2" jdbcType="DATE" property="BYZD2"/>
+    <result column="BYZD4" jdbcType="VARCHAR" property="BYZD4"/>
+    <result column="BYZD3" jdbcType="VARCHAR" property="BYZD3"/>
+    <result column="BMMC" jdbcType="VARCHAR" property="BMMC" />
+    <result column="BMZZJGDM" jdbcType="VARCHAR" property="BMZZJGDM" />
+    <result column="BYZD" jdbcType="VARCHAR" property="BYZD" />
+    <result column="SFSXDDDL" jdbcType="VARCHAR" property="SFSXDDDL" />
+    <result column="DDDLYHID" jdbcType="VARCHAR" property="DDDLYHID" />
+    <result column="CLZT" jdbcType="VARCHAR" property="CLZT" />
+    <result column="CLSJ" jdbcType="DATE" property="CLSJ" />
+    <result column="ID" jdbcType="DECIMAL" property="ID" />
+    <result column="ISTOSPJC" jdbcType="DECIMAL" property="ISTOSPJC"/>
+    <result column="SXBBH" jdbcType="VARCHAR" property="SXBBH"/>
+    <result column="SYNCTIME" jdbcType="DATE" property="SYNCTIME"/>
+    <result column="SXBBBM" jdbcType="VARCHAR" property="SXBBBM" />
+    <result column="SXBDBM" jdbcType="VARCHAR" property="SXBDBM" />
+    <result column="SJSXBM" jdbcType="VARCHAR" property="SJSXBM" />
+    <result column="SJSXBBH" jdbcType="VARCHAR" property="SJSXBBH" />
+  </resultMap>
+
+  <!--<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TB_TASK
+    where TASK_NUMBER = #{taskNumber,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.szps.web.domain.supervise.TbTask">
+    insert into TB_TASK (TASK_NUMBER, TASK_NAME, TASK_REGION, 
+      TASK_STREET, TASK_PARTITION, TASK_GRADE, 
+      TASK_TYPE, TASK_CONNECTING,
+      TASK_TIME, TASK_HOUSE, TASK_HOUSENAME, TASK_HOUSEPHONE
+      )
+    values (#{taskNumber,jdbcType=VARCHAR}, #{taskName,jdbcType=VARCHAR}, #{taskRegion,jdbcType=VARCHAR}, 
+      #{taskStreet,jdbcType=VARCHAR}, #{taskPartition,jdbcType=VARCHAR}, #{taskGrade,jdbcType=VARCHAR}, 
+      #{taskType,jdbcType=VARCHAR}, #{taskConnecting,jdbcType=VARCHAR},
+      #{taskTime,jdbcType=VARCHAR}, #{taskHouse,jdbcType=VARCHAR},#{taskHousename,jdbcType=VARCHAR},
+      #{taskHousephone,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.szps.web.domain.supervise.TbTask">
+    update TB_TASK
+    set TASK_NAME = #{taskName,jdbcType=VARCHAR},
+      TASK_REGION = #{taskRegion,jdbcType=VARCHAR},
+      TASK_STREET = #{taskStreet,jdbcType=VARCHAR},
+      TASK_PARTITION = #{taskPartition,jdbcType=VARCHAR},
+      TASK_GRADE = #{taskGrade,jdbcType=VARCHAR},
+      TASK_TYPE = #{taskType,jdbcType=VARCHAR},
+      TASK_CONNECTING = #{taskConnecting,jdbcType=VARCHAR},
+      TASK_TIME = #{taskTime,jdbcType=VARCHAR},
+      TASK_HOUSE = #{taskHouse,jdbcType=VARCHAR},
+      TASK_HOUSENAME= #{taskHousename,jdbcType=VARCHAR},
+      TASK_HOUSEPHONE= #{taskHousephone,jdbcType=VARCHAR}
+
+    where TASK_NUMBER = #{taskNumber,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select TASK_NUMBER, TASK_NAME, TASK_REGION, TASK_STREET, TASK_PARTITION, TASK_GRADE, 
+    TASK_TYPE,  TASK_CONNECTING, TASK_TIME, TASK_HOUSE,  TASK_HOUSENAME, TASK_HOUSEPHONE
+    from TB_TASK
+    where TASK_NUMBER = #{taskNumber,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectTaskByTaskName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select TASK_NUMBER, TASK_NAME, TASK_REGION, TASK_STREET, TASK_PARTITION, TASK_GRADE,
+    TASK_TYPE,  TASK_CONNECTING, TASK_TIME, TASK_HOUSE,  TASK_HOUSENAME, TASK_HOUSEPHONE
+    from TB_TASK
+    where  TASK_NAME= #{taskName,jdbcType=VARCHAR}
+  </select>-->
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select SBLSH,SBLSH_SHORT,SXBM,SXMC,SXQXBM,FSXBM,FSXMC,SQRLX,SQRMC,SQRZJLX,SQRZJHM,LXRXM,LXRZJLX,LXRSFZJHM,LXRSJ,LXRYX,SBXMMC,SBCLQD,TJFS,SBHZH,SBSJ
+,SBJTWD,XZQHDM,YSBLSH,BZ,F_XZQHDM,USERIDCODE,PROJECT_CODE,WSSBQD,OBTAIN_PAPER_WAY,OBTAIN_DELIVER_WAY,VERSION,REC_FLAG,XML_DATA,D_ZZJGDM,SXBM_SHORT,INSERTTIME
+,RESPONSETIME,FLAG,SYNC,DWDM,BYZD1,BYZD2,BYZD4,BYZD3,BMMC,BMZZJGDM,BYZD,SFSXDDDL,DDDLYHID,CLZT,CLSJ,ID,ISTOSPJC,SXBBH,SYNCTIME,SXBBBM,SXBDBM,SJSXBM,SJSXBBH
+    from EX_GDBS_SB
+  </select>
+<!--
+
+  <select id="selectTaskRandom" resultMap="BaseResultMap">
+    select TASK_NUMBER, TASK_NAME, TASK_REGION, TASK_STREET, TASK_PARTITION, TASK_GRADE,
+    TASK_TYPE,  TASK_CONNECTING, TASK_TIME, TASK_HOUSE,  TASK_HOUSENAME, TASK_HOUSEPHONE
+    from TB_TASK
+    WHERE TB_TASK.TASK_HOUSE is NULL
+  </select>
+
+  <select id="selectTaskList" parameterType="com.szps.web.domain.supervise.TbTask" resultMap="BaseResultMap">
+    select TASK_NUMBER, TASK_NAME, TASK_REGION, TASK_STREET, TASK_PARTITION, TASK_GRADE,
+    TASK_TYPE, TASK_CONNECTING, TASK_TIME, TASK_HOUSE, TASK_HOUSENAME, TASK_HOUSEPHONE
+    from TB_TASK
+
+   <where>
+    <if test="taskPartition != null and taskPartition != ''">
+       TB_TASK.TASK_PARTITION like concat(concat('%',#{taskPartition}),'%')
+    </if>
+    <if test="taskRegion != null and taskRegion != ''">
+      AND TB_TASK.TASK_REGION = #{taskRegion}
+    </if>
+    <if test="taskStreet != null and taskStreet != ''">
+      AND TB_TASK.TASK_STREET = #{taskStreet}
+    </if>
+    <if test="taskTime != null and taskTime != ''">
+      and TB_TASK.TASK_TIME = #{taskTime}
+    </if>
+   </where>
+  </select>
+
+
+  <delete id="deleteTaskByIds" parameterType="Long">
+    delete from  TB_TASK where TASK_NUMBER in
+    <foreach collection="array" item="taskNumber" open="(" separator="," close=")">
+      #{taskNumber}
+    </foreach>
+  </delete>
+
+  <select id="selectTaskCount" parameterType="java.lang.String" resultType="int">
+    SELECT COUNT(1)
+    FROM TB_TASK
+
+    <where>
+
+      <if test="taskRegion != null and taskRegion != ''">
+         TB_TASK.TASK_REGION = #{taskRegion}
+      </if>
+      <if test="taskStreet != null and taskStreet != ''">
+        AND TB_TASK.TASK_STREET = #{taskStreet}
+      </if>
+      <if test="taskTime != null and taskTime != ''">
+        and TB_TASK.TASK_TIME = #{taskTime}
+      </if>
+    </where>
+  </select>
+
+  <select id="CheckdTask" parameterType="String" resultType="int">
+    select count(1) from TB_TASK where TB_TASK.TASK_NUMBER=#{taskNumber}
+  </select>
+
+  <select id="selectMonthTaskCount" parameterType="java.lang.String"  resultType="int">
+    SELECT COUNT(1)
+    FROM TB_TASK
+
+    <where>
+
+      <if test="taskRegion != null and taskRegion != ''">
+        TB_TASK.TASK_REGION = #{taskRegion}
+      </if>
+      <if test="taskStreet != null and taskStreet != ''">
+        AND TB_TASK.TASK_STREET = #{taskStreet}
+      </if>
+      <if test="taskTime != null and taskTime != ''">
+        and TB_TASK.TASK_TIME like concat(#{taskTime},'%')
+      </if>
+    </where>
+  </select>
+-->
+
+
+</mapper>

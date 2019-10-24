@@ -107,7 +107,7 @@ public class CompleteController extends BaseController {
             List<TbStaff> tbStaffs =new ArrayList<TbStaff>();
             for(int k=0;k<tbTaskStaffs.size();k++)
             {
-                //System.out.println(tbTaskStaffs.get(k));
+
                 TbStaff staff=staffService.selectStaffById(tbTaskStaffs.get(k).getStaffNumber());
                 if(staff!=null)
                     tbStaffs.add(staff);
@@ -143,7 +143,7 @@ public class CompleteController extends BaseController {
         String url[] = new String[10];
         for(int i=0;i<multipartFile.length;i++){
             fileName[i]=FileUploadUtils.upload(filePath, multipartFile[i]);
-            url[i]=serverConfig.getUrl() + fileName[i];
+            url[i]= fileName[i];
             int radomInt = new Random().nextInt(999999);
             String s=String.valueOf(radomInt);
             while (pictureService.checkPicture(s)==1)
@@ -175,7 +175,7 @@ public class CompleteController extends BaseController {
 
             for(int i=0;i<multipartFile.length;i++){
                 fileName[i]=FileUploadUtils.upload(filePath, multipartFile[i]);
-                url[i]=serverConfig.getUrl() + fileName[i];
+                url[i]= fileName[i];
                 int radomInt = new Random().nextInt(999999);
                 String s=String.valueOf(radomInt);
                 while (enclosureService.checkEnclosure(s)==1)

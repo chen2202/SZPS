@@ -120,14 +120,14 @@
     function submitHandler() {
 
         if ($.validate.form()) {
-            if ($('#picture')[0].files[0] == null) {
+           /* if ($('#picture')[0].files[0] == null) {
                 $.modal.alertWarning("请先选择文件路径");
                 return false;
             }
             if ($('#enclosure')[0].files[0] == null) {
                 $.modal.alertWarning("请先选择文件路径");
                 return false;
-            }
+            }*/
             $("#picture").fileinput("upload");
             $("#enclosure").fileinput("upload");
             var data = $("#form-data-add").serializeArray();

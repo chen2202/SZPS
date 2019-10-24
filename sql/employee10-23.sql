@@ -5,7 +5,7 @@
 --
 --SYS——MENU表有添加一些缺失的数据，可以直接导入
 --
---EMPLOYEE_T_DEPARTMENT表结构有变化，需要重新导入
+--T_WORKER,T_COMPANY,T_DEPARTMENT,T_FACTORY是无用表，可以删除
 --
 
 -- ----------------------------
@@ -111,70 +111,6 @@ ALTER TABLE "RY"."EMPLOYEE_T_CP_PROJECT" ADD CHECK ("PROJECT_COMPANY_ADDRESS" IS
 ALTER TABLE "RY"."EMPLOYEE_T_CP_PROJECT" ADD CHECK ("PROJECT_PEOPLE" IS NOT NULL);
 ALTER TABLE "RY"."EMPLOYEE_T_CP_PROJECT" ADD CHECK ("PROJECT_HEADER" IS NOT NULL);
 ALTER TABLE "RY"."EMPLOYEE_T_CP_PROJECT" ADD CHECK ("TELEPHONE" IS NOT NULL);
-
-
-
--- ----------------------------
--- Table structure for EMPLOYEE_T_DEPARTMENT
--- ----------------------------
-DROP TABLE "RY"."EMPLOYEE_T_DEPARTMENT";
-CREATE TABLE "RY"."EMPLOYEE_T_DEPARTMENT" (
-"DEPARTMENT_ID" VARCHAR2(10 CHAR) NOT NULL ,
-"DEPARTMENT_NAME" VARCHAR2(20 CHAR) NOT NULL ,
-"COMPANY_ID" VARCHAR2(8 CHAR) NOT NULL ,
-"PARENT_DEPARTMENT_ID" VARCHAR2(10 CHAR) NOT NULL 
-)
-LOGGING
-NOCOMPRESS
-NOCACHE
-
-;
-COMMENT ON COLUMN "RY"."EMPLOYEE_T_DEPARTMENT"."DEPARTMENT_ID" IS '部门代码';
-COMMENT ON COLUMN "RY"."EMPLOYEE_T_DEPARTMENT"."DEPARTMENT_NAME" IS '部门名';
-COMMENT ON COLUMN "RY"."EMPLOYEE_T_DEPARTMENT"."COMPANY_ID" IS '公司/水厂代码';
-COMMENT ON COLUMN "RY"."EMPLOYEE_T_DEPARTMENT"."PARENT_DEPARTMENT_ID" IS '上级部门代码';
-
--- ----------------------------
--- Records of EMPLOYEE_T_DEPARTMENT
--- ----------------------------
-INSERT INTO "RY"."EMPLOYEE_T_DEPARTMENT" VALUES ('dspscppsb1', '排水子部1', 'szdspscp', 'dspscppsb');
-INSERT INTO "RY"."EMPLOYEE_T_DEPARTMENT" VALUES ('dspscpyy2', '运营2', 'szdspscp', 'dspscpyyb1');
-INSERT INTO "RY"."EMPLOYEE_T_DEPARTMENT" VALUES ('dyfpsb1', '排水部1', 'szdyf', 'dyfpsb');
-INSERT INTO "RY"."EMPLOYEE_T_DEPARTMENT" VALUES ('rjgccpwhb', '维护部', 'szrjgccp', 'no');
-INSERT INTO "RY"."EMPLOYEE_T_DEPARTMENT" VALUES ('dyfpsb', '排水部', 'szdyf', 'no');
-INSERT INTO "RY"."EMPLOYEE_T_DEPARTMENT" VALUES ('dyfsgb', '施工部', 'szdyf', 'no');
-INSERT INTO "RY"."EMPLOYEE_T_DEPARTMENT" VALUES ('dyfqxb', '抢修部', 'szdyf', 'no');
-INSERT INTO "RY"."EMPLOYEE_T_DEPARTMENT" VALUES ('dspscpyyb', '运营部', 'szdspscp', 'no');
-INSERT INTO "RY"."EMPLOYEE_T_DEPARTMENT" VALUES ('dspscpwhb', '维护部', 'szdspscp', 'no');
-INSERT INTO "RY"."EMPLOYEE_T_DEPARTMENT" VALUES ('dspscppsb', '排水部', 'szdspscp', 'no');
-INSERT INTO "RY"."EMPLOYEE_T_DEPARTMENT" VALUES ('defpsb', '排水部', 'szdef', 'no');
-INSERT INTO "RY"."EMPLOYEE_T_DEPARTMENT" VALUES ('defsgb', '施工部', 'szdef', 'no');
-INSERT INTO "RY"."EMPLOYEE_T_DEPARTMENT" VALUES ('defhqb', '后勤部', 'szdef', 'no');
-INSERT INTO "RY"."EMPLOYEE_T_DEPARTMENT" VALUES ('defwhb', '维护部', 'szdef', 'no');
-INSERT INTO "RY"."EMPLOYEE_T_DEPARTMENT" VALUES ('dspscpyyb1', '运营子部1', 'szdspscp', 'dspscpyyb');
-INSERT INTO "RY"."EMPLOYEE_T_DEPARTMENT" VALUES ('dspscpyyb2', '运营子部2', 'szdspscp', 'dspscpyyb');
-INSERT INTO "RY"."EMPLOYEE_T_DEPARTMENT" VALUES ('ltcpwhb', '维护部', 'szltkjcp', 'no');
-INSERT INTO "RY"."EMPLOYEE_T_DEPARTMENT" VALUES ('ltcpyyb', '运营部', 'szltkjcp', 'no');
-INSERT INTO "RY"."EMPLOYEE_T_DEPARTMENT" VALUES ('ltcpxsb', '销售部', 'szltkjcp', 'no');
-INSERT INTO "RY"."EMPLOYEE_T_DEPARTMENT" VALUES ('rjgccpkfb', '开发部', 'szrjgccp', 'no');
-INSERT INTO "RY"."EMPLOYEE_T_DEPARTMENT" VALUES ('dspscpyy1', '运营1', 'szdspscp', 'dspscpyyb1');
-
--- ----------------------------
--- Indexes structure for table EMPLOYEE_T_DEPARTMENT
--- ----------------------------
-
--- ----------------------------
--- Checks structure for table EMPLOYEE_T_DEPARTMENT
--- ----------------------------
-ALTER TABLE "RY"."EMPLOYEE_T_DEPARTMENT" ADD CHECK ("DEPARTMENT_ID" IS NOT NULL);
-ALTER TABLE "RY"."EMPLOYEE_T_DEPARTMENT" ADD CHECK ("DEPARTMENT_NAME" IS NOT NULL);
-ALTER TABLE "RY"."EMPLOYEE_T_DEPARTMENT" ADD CHECK ("COMPANY_ID" IS NOT NULL);
-ALTER TABLE "RY"."EMPLOYEE_T_DEPARTMENT" ADD CHECK ("PARENT_DEPARTMENT_ID" IS NOT NULL);
-
--- ----------------------------
--- Primary Key structure for table EMPLOYEE_T_DEPARTMENT
--- ----------------------------
-ALTER TABLE "RY"."EMPLOYEE_T_DEPARTMENT" ADD PRIMARY KEY ("DEPARTMENT_ID", "COMPANY_ID");
 
 
 

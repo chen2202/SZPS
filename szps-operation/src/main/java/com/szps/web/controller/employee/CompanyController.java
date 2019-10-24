@@ -141,7 +141,7 @@ public class CompanyController extends BaseController{
     }
     
     /**
-     * 保存新增从业人员
+     * 保存新增公司
      */
     @RequiresPermissions("employee:company:add")
     @Log(title = "公司添加", businessType = BusinessType.INSERT)
@@ -153,7 +153,7 @@ public class CompanyController extends BaseController{
     }
     
     /**
-     * 修改从业人员
+     * 修改公司
      * 跳转到edit.html
      */
     @GetMapping("/company/edit/{company_id}")
@@ -163,7 +163,7 @@ public class CompanyController extends BaseController{
     }
     
     /**
-     * 修改保存从业人员
+     * 修改保存公司
      * 
      */
     @RequiresPermissions("employee:company:edit")
@@ -191,7 +191,7 @@ public class CompanyController extends BaseController{
     }
     
     /**
-     * 校验从业人员身份证号唯一性
+     * 校验公司代码唯一性
      */
     @PostMapping("/company/checkCompanyIdUnique")
     @ResponseBody

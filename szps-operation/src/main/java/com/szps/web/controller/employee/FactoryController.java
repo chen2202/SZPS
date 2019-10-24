@@ -7,14 +7,18 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.szps.common.core.controller.BaseController;
-import com.szps.common.core.page.TableDataInfo;
 
+import com.szps.common.annotation.Log;
+import com.szps.common.core.controller.BaseController;
+import com.szps.common.core.domain.AjaxResult;
+import com.szps.common.core.page.TableDataInfo;
+import com.szps.common.enums.BusinessType;
 import com.szps.web.domain.employee.Department;
 import com.szps.web.domain.employee.Factory;
 import com.szps.web.service.employee.DepartmentService;
@@ -124,5 +128,73 @@ public class FactoryController extends BaseController{
 		String cpOrgChart = "{\"data\": " + list2.toString() + "}"; //树结构json数据进一步完善
 		
 		return cpOrgChart;
+    }
+    
+    /**
+     * 新增水厂
+     * 跳转到add.html
+     */
+    @GetMapping("/factory/add")
+    public String add(){
+        return prefix + "/add";
+    }
+    
+    /**
+     * 保存新增水厂
+     */
+    @RequiresPermissions("employee:factory:add")
+    @Log(title = "水厂添加", businessType = BusinessType.INSERT)
+    @PostMapping("/factory/add")
+    @ResponseBody
+    public AjaxResult addSave(@Validated Factory factory) {
+    	factoryService.insertFactory(factory);
+    	return toAjax(1);
+    }
+    
+    /**
+     * 修改水厂
+     * 跳转到edit.html
+     */
+    @GetMapping("/factory/edit/{factory_id}")
+    public String edit(@PathVariable("factory_id") String factory_id,ModelMap mmap) {
+    	mmap.put("factory", factoryService.selectFactoryById2(factory_id));
+    	return prefix + "/edit";
+    }
+    
+    /**
+     * 修改保存水厂
+     * @param factory 要修改的水厂对象
+     */
+    @RequiresPermissions("employee:factory:edit")
+    @Log(title = "水厂修改", businessType = BusinessType.UPDATE)
+    @PostMapping("/factory/edit")
+    @ResponseBody
+    public AjaxResult editSave(@Validated Factory factory) {
+    	factoryService.updateFactory(factory);
+    	return toAjax(1);
+    }
+    
+    /**
+     * 根据水厂代码删除水厂信息
+     */
+    @RequiresPermissions("employee:factory:remove")
+    @Log(title = "水厂删除", businessType = BusinessType.DELETE)
+    @PostMapping("/factory/remove")
+    @ResponseBody
+    public AjaxResult remove(String ids) {
+    	try {
+    		return toAjax(factoryService.deleteFactoryById(ids));
+    	} catch (Exception e) {
+	        return error(e.getMessage());
+	    }
+    }
+    
+    /**
+     * 校验水厂代码唯一性
+     */
+    @PostMapping("/factory/checkFactoryIdUnique")
+    @ResponseBody
+    public String checkFactoryIdUnique(Factory factory) {
+    	return factoryService.checkFactoryIdUnique(factory);
     }
 }

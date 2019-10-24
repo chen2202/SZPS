@@ -62,8 +62,8 @@ public class CompanyServiceImpl implements CompanyService{
 	/**
      * 通过公司代码查询公司
      * 
-     * @param company_id 从业人员身份证号
-     * @return 从业人员对象信息
+     * @param company_id 公司代码
+     * @return 公司对象信息
      */
     @Override
 	public Company selectCompanyById2(String company_id) {

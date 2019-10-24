@@ -16,6 +16,7 @@ public interface EXMapper {
 
     List<EX_GDBS_SB> selectAll();
 
+    EX_GDBS_SB selectById(String sblsh);
     //int updateByPrimaryKey(TbTask record);
 
    // List<TbTask> selectTaskList(TbTask task);

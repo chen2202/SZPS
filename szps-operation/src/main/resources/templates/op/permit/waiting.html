@@ -63,6 +63,7 @@
 </div>
 <th:block th:include="include :: footer" />
 <script th:inline="javascript">
+    var editFlag = [[${@permission.hasPermi('op:permit:edit')}]];
     var prefix = ctx + "op/permit";
 
     $(function() {
@@ -72,7 +73,7 @@
             updateUrl: prefix + "/edit/{id}",
             removeUrl: prefix + "/remove",
             exportUrl: prefix + "/export",
-            sortName: "SBLSH",
+            sortName: "sblsh",
             modalName: "排水许可审批",
             columns: [
                 {
@@ -148,9 +149,14 @@
 
                 },
                 {
-                    field: 'sbclqd',
-                    title: '申报材料清单'
-
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.sblsh + '\')"><i class="fa fa-edit"></i>查看详情</a> ');
+                        //actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.taskNumber + '\')"><i class="fa fa-remove"></i>删除</a> ');
+                        return actions.join('');
+                    }
                 }
 
                 ]

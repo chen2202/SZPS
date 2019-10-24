@@ -21,6 +21,8 @@ public interface EXService
 
     public List<EX_GDBS_SB> selectTaskAll();
 
+    public EX_GDBS_SB selectById(String sblsh);
+
 
    /* public TbTask selectTaskById(String taskNumber);
 

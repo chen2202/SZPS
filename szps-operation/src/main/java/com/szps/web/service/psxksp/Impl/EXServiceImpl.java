@@ -18,4 +18,10 @@ public class EXServiceImpl implements EXService{
     public List<EX_GDBS_SB> selectTaskAll() {
         return exMapper.selectAll();
     }
+
+    @Override
+    public EX_GDBS_SB selectById(String sblsh) {
+        return exMapper.selectById(sblsh);
+    }
+
 }

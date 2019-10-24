@@ -9,7 +9,7 @@
 	<div class="row">
 
 		<div class="col-sm-12 search-collapse">
-			<form id="role-form">
+			<form id="form-data-add" action="/supervise/statistics/list" method="post">
 				<div class="select-list">
 					<ul>
 						<li>
@@ -41,7 +41,7 @@
 						</li>
 						<li class="select-time">
 							<label>日期：</label>
-							<input type="text" class="time-input" id="taskTime" placeholder="检查时间" name="taskTime" required/>
+							<input type="text" class="time-input" id="taskTime" placeholder="检查时间" name="taskTime" data-format="yyyy-MM" required/>
 						</li>
 						<li>
 							<a class="btn btn-primary btn-rounded btn-sm" onclick="list()"><i class="fa fa-search"></i>&nbsp;查看</a>

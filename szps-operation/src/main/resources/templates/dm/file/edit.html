@@ -32,7 +32,13 @@
                 <div class="form-group">
                     <label class="col-sm-4 control-label"><span style="color: red; ">*</span>行政区：</label>
                     <div class="col-sm-8">
-                        <input type="text" name="dataBorough" class="form-control" placeholder="请输入行政区" th:field="*{dataBorough}" required>
+                        <!--<input type="text" name="dataBorough" class="form-control" placeholder="请输入行政区" th:field="*{dataBorough}" required>-->
+                        <select class="form-control" name="dataBorough">
+                            <option value="南山区" th:selected="*{dataBorough=='南山区'}">南山区</option>
+                            <option value="福田区" th:selected="*{dataBorough=='福田区'}">福田区</option>
+                            <option value="盐田区" th:selected="*{dataBorough=='盐田区'}">盐田区</option>
+                            <option value="罗湖区" th:selected="*{dataBorough=='罗湖区'}">罗湖区</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -40,7 +46,13 @@
                 <div class="form-group">
                     <label class="col-sm-4 control-label"><span style="color: red; ">*</span>街道：</label>
                     <div class="col-sm-8">
-                        <input type="text" name="dataStreet" class="form-control" placeholder="请输入街道" th:field="*{dataStreet}" required>
+                        <!--<input type="text" name="dataStreet" class="form-control" placeholder="请输入街道" th:field="*{dataStreet}" required>-->
+                        <select class="form-control" name="dataStreet">
+                            <option value="南山街道" th:selected="*{dataStreet=='南山街道'}">南山街道</option>
+                            <option value="南头街道" th:selected="*{dataStreet=='南头街道'}">南头街道</option>
+                            <option value="西丽街道" th:selected="*{dataStreet=='西丽街道'}">西丽街道</option>
+                            <option value="沙河街道" th:selected="*{dataStreet=='沙河街道'}">沙河街道</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -58,7 +70,13 @@
                 <div class="form-group">
                     <label class="col-sm-4 control-label"><span style="color: red; ">*</span>密级：</label>
                     <div class="col-sm-8">
-                        <input type="text" name="dataLevel" class="form-control" placeholder="请输入密级" th:field="*{dataLevel}" required>
+                        <!--<input type="text" name="dataLevel" class="form-control" placeholder="请输入密级" th:field="*{dataLevel}" required>-->
+                        <select class="form-control" name="dataLevel">
+                            <option value="普通" th:selected="*{dataLevel=='普通'}">普通</option>
+                            <option value="密" th:selected="*{dataLevel=='密'}">密</option>
+                            <option value="机密" th:selected="*{dataLevel=='机密'}">机密</option>
+                            <option value="极机密" th:selected="*{dataLevel=='极机密'}">极机密</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -72,14 +90,22 @@
                     </div>
                 </div>
             </div>
-            <!--<div class="col-sm-6">-->
-            <!--<div class="form-group">-->
-            <!--<label class="col-sm-4 control-label"><span style="color: red; ">*</span>审批人：</label>-->
-            <!--<div class="col-sm-8">-->
-            <!--<input type="text" name="" class="form-control" placeholder="请输入审批人" th:field="*{dataApprover}" required>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label"><span style="color: red; ">*</span>流域：</label>
+                    <div class="col-sm-8">
+                        <!--<input type="text" name="dataRiver" class="form-control" placeholder="请输入流域" th:field="*{dataRiver}" required>-->
+                        <select class="form-control" name="dataRiver">
+                            <option value="茅洲河" th:selected="*{dataRiver=='茅洲河'}">茅洲河</option>
+                            <option value="观澜河" th:selected="*{dataRiver=='观澜河'}">观澜河</option>
+                            <option value="龙岗河" th:selected="*{dataRiver=='龙岗河'}">龙岗河</option>
+                            <option value="深圳河湾" th:selected="*{dataRiver=='深圳河湾'}">深圳河湾</option>
+                            <option value="坪山河" th:selected="*{dataRiver=='坪山河'}">坪山河</option>
+                            <option value="大亚湾" th:selected="*{dataRiver=='大亚湾'}">大亚湾</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-sm-12">

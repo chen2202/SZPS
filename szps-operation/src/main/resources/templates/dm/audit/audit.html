@@ -13,8 +13,28 @@
 					<ul>
 						<li>主题：
 							<input type="text" name="dataTheme" />
-						<li>行政区：
-							<input type="text" name="dataBorough" />
+						</li>
+						<li>
+							<label>行政区：</label>
+							<select  name="dataBorough">
+								<option value="">所有</option>
+								<option value="南山区">南山区</option>
+								<option value="福田区">福田区</option>
+								<option value="盐田区">盐田区</option>
+								<option value="罗湖区">罗湖区</option>
+							</select>
+						</li>
+						<li>
+							<label>流域：</label>
+							<select  name="dataRiver">
+								<option value="">所有</option>
+								<option value="茅洲河">茅洲河</option>
+								<option value="观澜河">观澜河</option>
+								<option value="龙岗河">龙岗河</option>
+								<option value="深圳河湾">深圳河湾</option>
+								<option value="坪山河">坪山河</option>
+								<option value="大亚湾">大亚湾</option>
+							</select>
 						</li>
 						<li class="select-time">
 							<label>创建时间：</label>
@@ -113,10 +133,16 @@
                     sortable: true
                 },
                 {
+                    field: 'dataRiver',
+                    title: '流域',
+                    sortable: true
+                },
+                {
                     field: 'dataLevel',
                     title: '密级',
                     sortable: true
                 },
+
                 {
                     title: '操作',
                     align: 'center',

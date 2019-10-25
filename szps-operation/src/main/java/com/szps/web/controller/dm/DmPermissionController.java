@@ -88,7 +88,12 @@ public class DmPermissionController extends BaseController {
         if(perService.checkPerExist(per.getDataId(),userId)<1){
             per.setUserId(ShiroUtils.getUserId());
             per.setPerStatus("0");
-            return toAjax(perService.insertPer(per));
+            int result = perService.insertPer(per);
+            if(result>0){
+                return success("申请成功,请等待审批!");
+            }else{
+                return error("申请失败!");
+            }
         }else{
             return error("您已具有该资料访问权限,请勿重复申请!");
         }

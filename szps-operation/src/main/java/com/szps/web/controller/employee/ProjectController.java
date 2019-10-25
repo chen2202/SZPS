@@ -37,7 +37,7 @@ public class ProjectController extends BaseController{
 	/**
 	 * 跳转到employee/project/project.html
 	 */
-	@RequiresPermissions("employee:company:view")
+	//@RequiresPermissions("employee:company:view")
 	@GetMapping("/project/project/{company_id}")
 	public String project(@PathVariable("company_id") String company_id, ModelMap mmap) {
 		companyId = company_id; //查看某公司的项目时，获取该公司代码
@@ -47,7 +47,7 @@ public class ProjectController extends BaseController{
 	/**
 	 * 根据公司代码显示该公司项目信息
 	 */
-	@RequiresPermissions("employee:company:list")
+	//@RequiresPermissions("employee:company:list")
     @PostMapping("/project/project/list")
 	@ResponseBody
 	public TableDataInfo projectList(Project project) { //这个参数没有属性值！
@@ -70,7 +70,7 @@ public class ProjectController extends BaseController{
     /**
      * 保存新增从业人员
      */
-    @RequiresPermissions("employee:company:add")
+    //@RequiresPermissions("employee:company:add")
     @Log(title = "项目添加", businessType = BusinessType.INSERT)
     @PostMapping("/project/add")
     @ResponseBody
@@ -94,7 +94,7 @@ public class ProjectController extends BaseController{
      * 修改保存项目信息
      * 
      */
-    @RequiresPermissions("employee:company:edit")
+    //@RequiresPermissions("employee:company:edit")
     @Log(title = "项目修改", businessType = BusinessType.UPDATE)
     @PostMapping("/project/edit")
     @ResponseBody
@@ -106,7 +106,7 @@ public class ProjectController extends BaseController{
     /**
      * 根据项目名删除项目
      */
-    @RequiresPermissions("employee:company:remove")
+    //@RequiresPermissions("employee:company:remove")
     @Log(title = "项目删除", businessType = BusinessType.DELETE)
     @PostMapping("/project/remove")
     @ResponseBody

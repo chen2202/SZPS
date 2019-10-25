@@ -70,7 +70,7 @@ public class ProjectController extends BaseController{
     /**
      * 保存新增从业人员
      */
-    //@RequiresPermissions("employee:company:add")
+   // @RequiresPermissions("employee:company:add")
     @Log(title = "项目添加", businessType = BusinessType.INSERT)
     @PostMapping("/project/add")
     @ResponseBody
@@ -94,7 +94,7 @@ public class ProjectController extends BaseController{
      * 修改保存项目信息
      * 
      */
-    //@RequiresPermissions("employee:company:edit")
+   // @RequiresPermissions("employee:company:edit")
     @Log(title = "项目修改", businessType = BusinessType.UPDATE)
     @PostMapping("/project/edit")
     @ResponseBody
@@ -106,7 +106,7 @@ public class ProjectController extends BaseController{
     /**
      * 根据项目名删除项目
      */
-    //@RequiresPermissions("employee:company:remove")
+   // @RequiresPermissions("employee:company:remove")
     @Log(title = "项目删除", businessType = BusinessType.DELETE)
     @PostMapping("/project/remove")
     @ResponseBody

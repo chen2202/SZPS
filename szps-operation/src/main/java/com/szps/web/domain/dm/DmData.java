@@ -69,6 +69,9 @@ public class DmData extends BaseEntity{
 	/** 删除标志 （0代表存在 2代表删除） */
 	private String dataFlag;
 
+	/** 流域 */
+	private String dataRiver;
+
 	/** 审批信息 */
 	private DmAudit audit;
 
@@ -180,6 +183,14 @@ public class DmData extends BaseEntity{
 		this.dataFlag = dataFlag;
 	}
 
+	public String getDataRiver() {
+		return dataRiver;
+	}
+
+	public void setDataRiver(String dataRiver) {
+		this.dataRiver = dataRiver;
+	}
+
 	@Override
 	public String toString() {
 		return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
@@ -195,6 +206,7 @@ public class DmData extends BaseEntity{
 	            .append("dataTheme", getDataTheme())
 	            .append("dataDesc", getDataDesc())
 	            .append("dataFlag", getDataFlag())
+	            .append("dataRiver", getDataRiver())
 	            .append("audit", getAudit())
 	            .toString();
 	}

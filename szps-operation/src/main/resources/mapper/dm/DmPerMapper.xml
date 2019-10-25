@@ -25,6 +25,7 @@
         <result property="dataTheme"     column="data_theme"      />
         <result property="dataDesc"   column="data_desc"    />
         <result property="dataFlag"       column="data_flag"         />
+        <result property="dataRiver"       column="data_river"         />
     </resultMap>
 
     <resultMap type="SysUser" id="SysUserResult">
@@ -148,7 +149,7 @@
     </delete>
 
     <select id="selectDataListByUserId" resultMap="DmDataResult">
-        select d.data_id,d.data_uuid,d.data_date,d.data_applicant,d.data_company,d.data_borough,d.data_street,d.data_type,d.data_level,d.data_theme,d.data_desc,d.data_flag
+        select d.data_id,d.data_uuid,d.data_date,d.data_applicant,d.data_company,d.data_borough,d.data_street,d.data_type,d.data_level,d.data_theme,d.data_desc,d.data_flag,d.data_river
         from dm_data d
         left join dm_permission p on d.data_id=p.data_id
         where p.per_status='1' and p.user_id=#{per_userId} and d.data_flag='0'

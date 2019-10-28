@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.szps.web.mapper.drainage.HouseholdMapper">
+	<resultMap type="Household" id="householdResult">
+		<id     property="household_id"       column="HOUSEHOLD_ID"        />
+		<result property="household_name"     column="HOUSEHOLD_NAME"          />
+		<result property="record_state"      column="RECORD_STATE"           />
+		<result property="doorplate_detail_address"     column="DOORPLATE_DETAIL_ADDRESS"      />
+		<result property="longitude"    column="LONGITUDE"     />
+		<result property="latitude"      column="LATITUDE"         />
+		<result property="administrative_name"     column="ADMINISTRATIVE_NAME"    />
+		<result property="street_name"   column="STREET_NAME"  />
+		<result property="committees"     column="COMMITTEES"      />
+		<result property="lane_name"   column="LANE_NAME" />
+		<result property="doorplate_number" column="DOORPLATE_NUMBER" />
+		<result property="household_level" column="HOUSEHOLD_LEVEL" />
+		<result property="parent_household_name" column="PARENT_HOUSEHOLD_NAME" />
+		<result property="linkman" column="LINKMAN" />
+		<result property="telephone" column="TELEPHONE" />
+		<result property="cover_area" column="COVER_AREA" />
+		<result property="water_meter_id" column="WATER_METER_ID" />
+		<result property="sewage_category" column="SEWAGE_CATEGORY" />
+		<result property="unit_type" column="UNIT_TYPE" />
+		<result property="other_unit_type" column="OTHER_UNIT_TYPE" />
+		<result property="industrial_water_composition" column="INDUSTRIAL_WATER_COMPOSITION" />
+		<result property="other_composition" column="OTHER_COMPOSITION" />
+		<result property="water_diversion" column="WATER_DIVERSION" />
+		<result property="business_license" column="BUSINESS_LICENSE" />
+		<result property="social_credit_id" column="SOCIAL_CREDIT_ID" />
+		<result property="drainage_license" column="DRAINAGE_LICENSE" />
+		<result property="drainage_license_number" column="DRAINAGE_LICENSE_NUMBER" />
+		<result property="drainage_license_begin_time" column="DRAINAGE_LICENSE_BEGIN_TIME" />
+		<result property="drainage_license_end_time" column="DRAINAGE_LICENSE_END_TIME" />
+		<result property="sewage_license" column="SEWAGE_LICENSE" />
+		<result property="sewage_license_number" column="SEWAGE_LICENSE_NUMBER" />
+		<result property="sewage_license_begin_time" column="SEWAGE_LICENSE_BEGIN_TIME" />
+		<result property="sewage_license_end_time" column="SEWAGE_LICENSE_END_TIME" />
+		<result property="note" column="NOTE" />
+		<result property="registration_time" column="REGISTRATION_TIME" />
+		<result property="registration_person" column="REGISTRATION_PERSON" />
+		<result property="update_time" column="UPDATE_TIME" />
+		<result property="update_person" column="UPDATE_PERSON" />
+	</resultMap>
+	
+	<sql id="selectHouseholdVo">
+		select * from DRAINAGE_T_HOUSEHOLD h
+	</sql>
+	<sql id="selectHouseholdVo2">
+		select HOUSEHOLD_ID,HOUSEHOLD_NAME,RECORD_STATE,DOORPLATE_DETAIL_ADDRESS,LONGITUDE,
+		LATITUDE,ADMINISTRATIVE_NAME,STREET_NAME,COMMITTEES,LANE_NAME,DOORPLATE_NUMBER,
+		HOUSEHOLD_LEVEL,PARENT_HOUSEHOLD_NAME,LINKMAN,TELEPHONE,COVER_AREA,WATER_METER_ID,
+		SEWAGE_CATEGORY,UNIT_TYPE,OTHER_UNIT_TYPE,INDUSTRIAL_WATER_COMPOSITION,OTHER_COMPOSITION,
+		WATER_DIVERSION,BUSINESS_LICENSE,SOCIAL_CREDIT_ID,DRAINAGE_LICENSE,DRAINAGE_LICENSE_NUMBER,
+		to_char(DRAINAGE_LICENSE_BEGIN_TIME,'yyyy-mm-dd') as DRAINAGE_LICENSE_BEGIN_TIME,
+		to_char(DRAINAGE_LICENSE_END_TIME,'yyyy-mm-dd') as DRAINAGE_LICENSE_END_TIME,SEWAGE_LICENSE,
+		SEWAGE_LICENSE_NUMBER,to_char(SEWAGE_LICENSE_BEGIN_TIME,'yyyy-mm-dd') as SEWAGE_LICENSE_BEGIN_TIME,
+		to_char(SEWAGE_LICENSE_END_TIME,'yyyy-mm-dd') as SEWAGE_LICENSE_END_TIME,NOTE,
+		to_char(REGISTRATION_TIME,'yyyy-mm-dd') as REGISTRATION_TIME,REGISTRATION_PERSON,
+		to_char(UPDATE_TIME,'yyyy-mm-dd') as UPDATE_TIME,UPDATE_PERSON from DRAINAGE_T_HOUSEHOLD
+		 where HOUSEHOLD_ID like '%%'
+	</sql>
+	
+	<!-- 查询全部排水户信息 -->
+	<select id="selectAllHousehold" parameterType="Household" resultMap="householdResult">
+        <include refid="selectHouseholdVo2" />
+        <if test="household_name != null and household_name !=''">
+        	AND HOUSEHOLD_NAME = #{household_name}
+        </if>
+        <if test="administrative_name != null and administrative_name !=''">
+        	AND ADMINISTRATIVE_NAME = #{administrative_name}
+        </if>
+        <if test="street_name != null and street_name !=''">
+        	AND STREET_NAME = #{street_name}
+        </if>
+        <if test="committees != null and committees !=''">
+        	AND COMMITTEES = #{committees}
+        </if>
+    </select>
+    
+    <!-- 添加，修改排水户时判断id是否重复 -->
+	<select id="checkHouseholdIdUnique" parameterType="String" resultMap="householdResult">
+		<include refid="selectHouseholdVo"/>
+		  where h.HOUSEHOLD_ID = #{household_id}
+	</select>
+	
+	<!-- 添加排水户 -->
+	<insert id="insertHousehold" parameterType="com.szps.web.domain.drainage.Household" keyProperty="household_id">
+ 		insert into DRAINAGE_T_HOUSEHOLD(HOUSEHOLD_ID,HOUSEHOLD_NAME,RECORD_STATE,DOORPLATE_DETAIL_ADDRESS,LONGITUDE,
+		LATITUDE,ADMINISTRATIVE_NAME,STREET_NAME,COMMITTEES,LANE_NAME,DOORPLATE_NUMBER,HOUSEHOLD_LEVEL,PARENT_HOUSEHOLD_NAME,
+		LINKMAN,TELEPHONE,COVER_AREA,WATER_METER_ID,SEWAGE_CATEGORY,UNIT_TYPE,OTHER_UNIT_TYPE,INDUSTRIAL_WATER_COMPOSITION,
+		OTHER_COMPOSITION,WATER_DIVERSION,BUSINESS_LICENSE,SOCIAL_CREDIT_ID,DRAINAGE_LICENSE,DRAINAGE_LICENSE_NUMBER,
+		DRAINAGE_LICENSE_BEGIN_TIME,DRAINAGE_LICENSE_END_TIME,SEWAGE_LICENSE,SEWAGE_LICENSE_NUMBER,SEWAGE_LICENSE_BEGIN_TIME,
+		SEWAGE_LICENSE_END_TIME,NOTE,REGISTRATION_TIME,REGISTRATION_PERSON,UPDATE_TIME,UPDATE_PERSON)
+ 		 values(#{household_id},#{household_name},#{record_state},#{doorplate_detail_address},#{longitude},#{latitude},
+ 		 #{administrative_name},#{street_name},#{committees},#{lane_name},#{doorplate_number},#{household_level},
+ 		 #{parent_household_name},#{linkman},#{telephone},#{cover_area},#{water_meter_id},#{sewage_category},#{unit_type},
+ 		 #{other_unit_type},#{industrial_water_composition},#{other_composition},#{water_diversion},#{business_license},
+ 		 #{social_credit_id},#{drainage_license},#{drainage_license_number},to_date(#{drainage_license_begin_time},'yyyy-mm-dd'),
+ 		 to_date(#{drainage_license_end_time},'yyyy-mm-dd'),#{sewage_license},#{sewage_license_number},
+ 		 to_date(#{sewage_license_begin_time},'yyyy-mm-dd'),to_date(#{sewage_license_end_time},'yyyy-mm-dd'),#{note},
+ 		 to_date(#{registration_time},'yyyy-mm-dd'),#{registration_person},to_date(#{update_time},'yyyy-mm-dd'),#{update_person})
+	</insert>
+	
+	<!-- 通过排水户编号查询某个排水户 -->
+	<select id="selectHouseholdById" parameterType="String" resultMap="householdResult">
+         <include refid="selectHouseholdVo2" />
+         and HOUSEHOLD_ID = #{household_id}
+	</select>
+	
+	<!-- 修改保存排水户信息 -->
+	<update id="updateHousehold" parameterType="Household">
+ 		update DRAINAGE_T_HOUSEHOLD
+ 		<set>
+ 			<if test="household_id != null and household_id != ''">HOUSEHOLD_ID = #{household_id},</if>
+ 			<if test="household_name != null and household_name != ''">HOUSEHOLD_NAME = #{household_name},</if>
+ 			<if test="record_state != null and record_state != ''">RECORD_STATE = #{record_state},</if>
+ 			<if test="doorplate_detail_address != null and doorplate_detail_address != ''">DOORPLATE_DETAIL_ADDRESS = #{doorplate_detail_address},</if>
+ 			<if test="longitude != null and longitude != ''">LONGITUDE = #{longitude},</if>
+ 			<if test="latitude != null and latitude != ''">LATITUDE = #{latitude},</if>
+ 			<if test="administrative_name != null and administrative_name != ''">ADMINISTRATIVE_NAME = #{administrative_name},</if>
+ 			<if test="street_name != null and street_name != ''">STREET_NAME = #{street_name},</if>
+ 			<if test="committees != null and committees != ''">COMMITTEES = #{committees},</if>
+ 			<if test="lane_name != null and lane_name != ''">LANE_NAME = #{lane_name},</if>
+ 			<if test="doorplate_number != null and doorplate_number != ''">DOORPLATE_NUMBER = #{doorplate_number}, </if>
+ 			<if test="household_level != null and household_level != ''">HOUSEHOLD_LEVEL = #{household_level}, </if>
+ 			<if test="parent_household_name != null and parent_household_name != ''">PARENT_HOUSEHOLD_NAME = #{parent_household_name},</if>
+ 			<if test="linkman != null and linkman != ''">LINKMAN = #{linkman},</if>
+ 			<if test="telephone != null and telephone != ''">TELEPHONE = #{telephone},</if>
+ 			<if test="cover_area != null and cover_area != ''">COVER_AREA = #{cover_area},</if>
+ 			<if test="water_meter_id != null and water_meter_id != ''">WATER_METER_ID = #{water_meter_id},</if>
+ 			<if test="sewage_category != null and sewage_category != ''">SEWAGE_CATEGORY = #{sewage_category},</if>
+ 			<if test="unit_type != null and unit_type != ''">UNIT_TYPE = #{unit_type},</if>
+ 			<if test="other_unit_type != null and other_unit_type != ''">OTHER_UNIT_TYPE = #{other_unit_type},</if>
+ 			<if test="industrial_water_composition != null and industrial_water_composition != ''">INDUSTRIAL_WATER_COMPOSITION = #{industrial_water_composition},</if>
+ 			<if test="other_composition != null and other_composition != ''">OTHER_COMPOSITION = #{other_composition},</if>
+ 			<if test="water_diversion != null and water_diversion != ''">WATER_DIVERSION = #{water_diversion}, </if>
+ 			<if test="business_license != null and business_license != ''">BUSINESS_LICENSE = #{business_license}, </if>
+ 			<if test="social_credit_id != null and social_credit_id != ''">SOCIAL_CREDIT_ID = #{social_credit_id},</if>
+ 			<if test="drainage_license != null and drainage_license != ''">DRAINAGE_LICENSE = #{drainage_license},</if>
+ 			<if test="drainage_license_number != null and drainage_license_number != ''">DRAINAGE_LICENSE_NUMBER = #{drainage_license_number},</if>
+ 			<if test="drainage_license_begin_time != null and drainage_license_begin_time != ''">DRAINAGE_LICENSE_BEGIN_TIME = to_date(#{drainage_license_begin_time},'yyyy-mm-dd'),</if>
+ 			<if test="drainage_license_end_time != null and drainage_license_end_time != ''">DRAINAGE_LICENSE_END_TIME = to_date(#{drainage_license_end_time},'yyyy-mm-dd'),</if>
+ 			<if test="sewage_license != null and sewage_license != ''">SEWAGE_LICENSE = #{sewage_license},</if>
+ 			<if test="sewage_license_number != null and sewage_license_number != ''">SEWAGE_LICENSE_NUMBER = #{sewage_license_number},</if>
+ 			<if test="sewage_license_begin_time != null and sewage_license_begin_time != ''">SEWAGE_LICENSE_BEGIN_TIME = to_date(#{sewage_license_begin_time},'yyyy-mm-dd'),</if>
+ 			<if test="sewage_license_end_time != null and sewage_license_end_time != ''">SEWAGE_LICENSE_END_TIME = to_date(#{sewage_license_end_time},'yyyy-mm-dd'),</if>
+ 			<if test="note != null and note != ''">NOTE = #{note},</if>
+ 			<if test="registration_time != null and registration_time != ''">REGISTRATION_TIME = to_date(#{registration_time},'yyyy-mm-dd'), </if>
+ 			<if test="registration_person != null and registration_person != ''">REGISTRATION_PERSON = #{registration_person}, </if>
+ 			<if test="update_time != null and update_time != ''">UPDATE_TIME = to_date(#{update_time},'yyyy-mm-dd'), </if>
+ 			<if test="update_person != null and update_person != ''">UPDATE_PERSON = #{update_person} </if>
+ 		</set>
+ 		where HOUSEHOLD_ID = #{household_id}
+	</update>
+	
+	<!-- 删除排水户以及排水户下排水口 -->
+	<delete id="deleteHouseholdById" parameterType="String">
+ 		delete from DRAINAGE_T_HOUSEHOLD where HOUSEHOLD_ID in 
+ 		<foreach collection="array" item="household_id" open="(" separator="," close=")">
+ 			#{household_id}
+ 		</foreach>
+ 	</delete>
+ 	<delete id="deleteDrainById" parameterType="String">
+ 		delete from DRAINAGE_T_DRAIN where HOUSEHOLD_ID in 
+ 		<foreach collection="array" item="household_id" open="(" separator="," close=")">
+ 			#{household_id}
+ 		</foreach>
+ 	</delete>
+	
+</mapper>

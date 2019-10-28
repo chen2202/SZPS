@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.szps.common.annotation.DataScope;
 import com.szps.common.core.text.Convert;
 import com.szps.common.exception.BusinessException;
 import com.szps.web.domain.employee.Project;
@@ -22,7 +21,7 @@ public class ProjectServiceImpl implements ProjectService{
 	 * @param company_id 公司代码
 	 * @return 查询到的某公司全部项目信息
 	 */
-	@DataScope
+	//@DataScope
 	public List<Project> selectProjectById(Project project) {
 		return projectMapper.selectProjectById(project);
 	}

@@ -68,7 +68,7 @@ public class ProjectController extends BaseController{
     }
 	
     /**
-     * 保存新增从业人员
+     * 保存新增项目
      */
    // @RequiresPermissions("employee:company:add")
     @Log(title = "项目添加", businessType = BusinessType.INSERT)

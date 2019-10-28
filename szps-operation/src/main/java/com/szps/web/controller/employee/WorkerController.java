@@ -22,7 +22,7 @@ import com.szps.web.domain.employee.Worker;
 import com.szps.web.service.employee.WorkerService;
 
 /**
- * 从业人员信息管理
+ * 从业人员 控制器
  * @author zxc
  *
  */

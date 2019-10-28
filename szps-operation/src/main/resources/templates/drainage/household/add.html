@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="include :: header('新增排水户')" />
+</head>
+<body class="white-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+		<form class="form-horizontal m" id="form-household-add">
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">排水户编号：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="household_id" id="household_id" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">排水户名称：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="household_name" id="household_name" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">记录状态：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="record_state" id="record_state" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">门牌详细地址：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="doorplate_detail_address" id="doorplate_detail_address" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">经度：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="longitude" id="longitude" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">纬度：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="latitude" id="latitude" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">行政区名：</label>
+				<div class="col-sm-8">
+					<!-- <input class="form-control" type="text" name="administrative_name" id="administrative_name" required> -->
+					<select class="form-control" name="administrative_name" id="administrative_name" required>
+						<option value="">-- 请选择行政区 --</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">街道名：</label>
+				<div class="col-sm-8">
+					<!-- <input class="form-control" type="text" name="street_name" id="street_name" required> -->
+					<select class="form-control" name="street_name" id="street_name" required>
+						<option value="">-- 请先选择行政区 --</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">居委会：</label>
+				<div class="col-sm-8">
+					<!-- <input class="form-control" type="text" name="committees" id="committees" required> -->
+					<select class="form-control" name="committees" id="committees" required>
+						<option value="">-- 请先选择街道 --</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">街路巷名：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="lane_name" id="lane_name" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">门牌号码：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="doorplate_number" id="doorplate_number" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">排水户级别：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="household_level" id="household_level" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">上级排水户：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="parent_household_name" id="parent_household_name" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">联系人：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="linkman" id="linkman" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">联系电话：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="telephone" id="telephone" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">占地面积 /㎡：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="number" name="cover_area" id="cover_area" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">水表编号：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="water_meter_id" id="water_meter_id" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">污水类别：</label>
+				<div class="col-sm-8">
+					<select class="form-control" name="sewage_category" id="sewage_category" required>
+						<option value="">-- 请选择 --</option>
+						<option value="有毒有害排污类">有毒有害排污类</option>
+						<option value="生活污水">生活污水</option>
+						<option value="雨水">雨水</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">单位类型：</label>
+				<div class="col-sm-8">
+					<select class="form-control" name="unit_type" id="unit_type" required>
+						<option value="">-- 请选择 --</option>
+						<option value="工业">工业</option>
+						<option value="生活">生活</option>
+						<option value="其他">其他</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">其他单位类型：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="other_unit_type" id="other_unit_type" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">工业废水主要成分：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="industrial_water_composition" id="industrial_water_composition" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">其他成分：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="other_composition" id="other_composition" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">内部废、污、雨是否分流：</label>
+				<div class="col-sm-8">
+					<select class="form-control" name="water_diversion" id="water_diversion" required>
+						<option value="">-- 请选择 --</option>
+						<option value="是">是</option>
+						<option value="否">否</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">是否取得营业执照：</label>
+				<div class="col-sm-8">
+					<select class="form-control" name="business_license" id="business_license" required>
+						<option value="">-- 请选择 --</option>
+						<option value="是">是</option>
+						<option value="否">否</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">统一社会信用代码：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="social_credit_id" id="social_credit_id" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">是否取得排水许可证：</label>
+				<div class="col-sm-8">
+					<select class="form-control" name="drainage_license" id="drainage_license" required>
+						<option value="">-- 请选择 --</option>
+						<option value="是">是</option>
+						<option value="否">否</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">排水许可证号：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="drainage_license_number" id="drainage_license_number" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">排水许可证开始日期：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="date" name="drainage_license_begin_time" id="drainage_license_begin_time" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">排水许可证结束日期：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="date" name="drainage_license_end_time" id="drainage_license_end_time" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">是否取得排污许可证：</label>
+				<div class="col-sm-8">
+					<select class="form-control" name="sewage_license" id="sewage_license" required>
+						<option value="">-- 请选择 --</option>
+						<option value="是">是</option>
+						<option value="否">否</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">排污许可证号：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="sewage_license_number" id="sewage_license_number" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">排污许可证开始日期：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="date" name="sewage_license_begin_time" id="sewage_license_begin_time" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">排污许可证结束日期：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="date" name="sewage_license_end_time" id="sewage_license_end_time" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">备注：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="note" id="note" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">登记时间：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="date" name="registration_time" id="registration_time" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">登记人：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="registration_person" id="registration_person" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">最新修改时间：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="date" name="update_time" id="update_time" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">上一修改人：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="update_person" id="update_person" required>
+				</div>
+			</div>
+		</form>
+	</div>
+	<th:block th:include="include :: footer" />
+	<script type="text/javascript">	
+		//行政区名称select添加option
+		getAdministrativeName()
+		
+		//当行政区名称select选项变化时
+		var oldStreetNameLength = 0; //旧select长度初始化，赋值在getStreetName()中进行
+		$("#administrative_name").change(function(){
+			for(var i=1;i<oldStreetNameLength;i++){ //删除select中旧option
+				$("#street_name option:last").remove();
+			}
+			getStreetName(); //添加新option
+		});
+		
+		//当街道名称select选项变化时
+		var oldCommitteesNameLength = 0; //旧select长度初始化，赋值在getCommitteesName()中进行
+		$("#street_name").change(function(){
+			for(var i=1;i<oldCommitteesNameLength;i++){ //删除select中旧option
+				$("#committees option:last").remove();
+			}
+			getCommitteesName(); //添加新option
+		});
+	
+		//提交新增排水户信息
+		function submitHandler() {
+	        if ($.validate.form()) {
+	        	add();
+	        }
+	    }
+		
+		//------------------------主程序结束--------------------------
+		
+		//获取行政区名称
+		function getAdministrativeName(){
+			var optionJson=[];
+			$.ajax({
+				type: "post",
+			    url: "/drainage/household/administrativeNameList",
+			    dataType:"json",
+			    data: {},
+			    async:false,
+			    error:function(){
+			    	alert("获取行政区信息出错，请联系系统管理员");
+			    },
+		        success : function(data){
+                	optionJson = data;
+                	var selectObj = document.getElementById("administrative_name"); //获取行政区下拉菜单对象
+			    	for(var i=0;i<optionJson.length;){
+			        	selectObj.add(new Option(optionJson[i],optionJson[i+1])); //行政区名text，行政区名value
+			        	i += 2;
+		        	}
+		        }
+			 });
+		}
+		
+		//获取街道名称
+		function getStreetName(){
+			var optionJson=[];
+			$.ajax({
+				type: "post",
+			    url: "/drainage/household/streetNameList",
+			    dataType:"json",
+			    data:{"administrative_name":$("#administrative_name option:selected").val()},
+			    async:false,
+			    error:function(){
+			    	alert("获取街道信息出错，请联系系统管理员");
+			    },
+		        success : function(data){
+                	optionJson = data;
+	            	var selectObj = document.getElementById("street_name");
+	            	var i;
+			    	for(i=0;i<optionJson.length;){ //添加选项
+			        	selectObj.add(new Option(optionJson[i],optionJson[i+1])); //街道名text，街道名value
+			        	i += 2;
+		        	}
+			    	oldStreetNameLength = i/2 + 1; //+1是因为提示占一个option
+		        }
+			 });
+		}
+		
+		//获取居委会名称
+		function getCommitteesName(){
+			var optionJson=[];
+			$.ajax({
+				type: "post",
+			    url: "/drainage/household/committeesNameList",
+			    dataType:"json",
+			    data:{"street_name":$("#street_name option:selected").val()},
+			    async:false,
+			    error:function(){
+			    	alert("获取居委会信息出错，请联系系统管理员");
+			    },
+		        success : function(data){
+                	optionJson = data;
+	            	var selectObj = document.getElementById("committees");
+	            	var i;
+			    	for(i=0;i<optionJson.length;){ //添加选项
+			        	selectObj.add(new Option(optionJson[i],optionJson[i+1])); //居委会text，居委会value
+			        	i += 2;
+		        	}
+			    	oldCommitteesNameLength = i/2 + 1; //+1是因为提示占一个option
+		        }
+			 });
+		}
+		
+		//检查表单中排水户编号是否重复
+		$("#form-household-add").validate({
+			rules:{
+				onkeyup: false,
+				household_id:{
+					remote: {
+		                url: ctx + "drainage/household/checkHouseholdIdUnique",
+		                type: "post",
+		                dataType: "json",
+		                data: {
+		                	"household_id" : function() {
+		                		return $.common.trim($("#household_id").val());
+		                    }
+		                },
+		                dataFilter: function(data, type) {
+		                	return $.validate.unique(data);
+		                }
+		            }
+				}
+			},
+			messages: {
+		        "household_id": {
+		            remote: "排水户编号重复"
+		        }
+		    },
+		    focusCleanup: true
+		});
+	
+		//ajax添加排水户
+		function add() {
+			var household_id = $("input[name='household_id']").val();
+			var household_name = $("input[name='household_name']").val();
+			var record_state = $("input[name='record_state']").val();
+			var doorplate_detail_address = $("input[name='doorplate_detail_address']").val();
+			var longitude = $("input[name='longitude']").val();
+			var latitude = $("input[name='latitude']").val();
+			var administrative_name = $("#administrative_name option:selected").val();
+			var street_name = $("#street_name option:selected").val();
+			var committees = $("#committees option:selected").val();
+			var lane_name = $("input[name='lane_name']").val();
+			var doorplate_number = $("input[name='doorplate_number']").val();
+			var household_level = $("input[name='household_level']").val();
+			var parent_household_name = $("input[name='parent_household_name']").val();
+			var linkman = $("input[name='linkman']").val();
+			var telephone = $("input[name='telephone']").val();
+			var cover_area = $("input[name='cover_area']").val();
+			var water_meter_id = $("input[name='water_meter_id']").val();
+			var sewage_category = $("#sewage_category option:selected").val();
+			var unit_type = $("#unit_type option:selected").val();
+			var other_unit_type = $("input[name='other_unit_type']").val();
+			var industrial_water_composition = $("input[name='industrial_water_composition']").val();
+			var other_composition = $("input[name='other_composition']").val();
+			var water_diversion = $("#water_diversion option:selected").val();
+			var business_license = $("#business_license option:selected").val();
+			var social_credit_id = $("input[name='social_credit_id']").val();
+			var drainage_license = $("#drainage_license option:selected").val();
+			var drainage_license_number = $("input[name='drainage_license_number']").val();
+			var drainage_license_begin_time = $("input[name='drainage_license_begin_time']").val();
+			var drainage_license_end_time = $("input[name='drainage_license_end_time']").val();
+			var sewage_license = $("#sewage_license option:selected").val();
+			var sewage_license_number = $("input[name='sewage_license_number']").val();
+			var sewage_license_begin_time = $("input[name='sewage_license_begin_time']").val();
+			var sewage_license_end_time = $("input[name='sewage_license_end_time']").val();
+			var note = $("input[name='note']").val();
+			var registration_time = $("input[name='registration_time']").val();
+			var registration_person = $("input[name='registration_person']").val();
+			var update_time = $("input[name='update_time']").val();
+			var update_person = $("input[name='update_person']").val();
+			$.ajax({
+				cache : true,
+				type : "POST",
+				url : ctx + "drainage/household/add",
+				data : {
+					"household_id": household_id,
+					"household_name": household_name,
+					"record_state": record_state,
+					"doorplate_detail_address": doorplate_detail_address,
+					"longitude": longitude,
+					"latitude":latitude,
+					"administrative_name":administrative_name,
+					"street_name":street_name,
+					"committees":committees,
+					"lane_name":lane_name,
+					"doorplate_number":doorplate_number,
+					"household_level":household_level,
+					"parent_household_name":parent_household_name,
+					"linkman":linkman,
+					"telephone":telephone,
+					"cover_area":cover_area,
+					"water_meter_id":water_meter_id,
+					"sewage_category":sewage_category,
+					"unit_type":unit_type,
+					"other_unit_type":other_unit_type,
+					"industrial_water_composition":industrial_water_composition,
+					"other_composition":other_composition,
+					"water_diversion":water_diversion,
+					"business_license":business_license,
+					"social_credit_id":social_credit_id,
+					"drainage_license":drainage_license,
+					"drainage_license_number":drainage_license_number,
+					"drainage_license_begin_time":drainage_license_begin_time,
+					"drainage_license_end_time":drainage_license_end_time,
+					"sewage_license":sewage_license,
+					"sewage_license_number":sewage_license_number,
+					"sewage_license_begin_time":sewage_license_begin_time,
+					"sewage_license_end_time":sewage_license_end_time,
+					"note":note,
+					"registration_time":registration_time,
+					"registration_person":registration_person,
+					"update_time":update_time,
+					"update_person":update_person,
+				},
+				async : false,
+				error : function(request) {
+					$.modal.alertError("添加新排水户发生错误"); 
+				},
+				success : function(data) {
+					$.operate.successCallback(data);
+				}
+			});
+		} 
+	</script>
+</body>
+</html>

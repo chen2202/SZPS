@@ -63,7 +63,7 @@
 		
 		//--------------------------------------主程序结束---------------------------------------
 
-		//从业人员信息修改保存
+		//项目信息修改保存
 		function edit() {
 			var company_id = $("input[name='company_id']").val();
 			var pipe_project = $("input[name='pipe_project']").val();
@@ -91,7 +91,7 @@
 				},
 				async : false,
 				error : function(request) {
-					$.modal.alertError("修改公司信息发生错误"); 
+					$.modal.alertError("修改项目信息发生错误"); 
 				},
 				success : function(data) {
 					$.operate.successCallback(data);

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="include :: header('新增项目')" />
+</head>
+<body class="white-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+		<form class="form-horizontal m" id="form-drain-add">
+			<input id="household_id" name="household_id" type="hidden" value="0"/>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">排水口类型：</label>
+				<div class="col-sm-8">
+					<select class="form-control" name="drain_type" id="drain_type" required>
+						<option value="">-- 请选择 --</option>
+						<option value="雨水排污口">雨水排污口</option>
+						<option value="工业废水排污口">工业废水排污口</option>
+						<option value="生活污水排污口">生活污水排污口</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">排水口编号：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="drain_id" id="drain_id" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">预处理设施列表：</label>
+				<div class="col-sm-8">
+			    	<input class="form-control" type="text" name="pretreatment_facility" id="pretreatment_facility">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">其他预处理设施：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="other_pretreatment_facility" id="other_pretreatment_facility"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">预处理设施数量：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="number" name="pretreatment_facility_number" id="pretreatment_facility_number" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">预处理设施备注：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="pretreatment_facility_note" id="pretreatment_facility_note">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">是否安装监测设备：</label>
+				<div class="col-sm-8">
+					<select class="form-control" name="monitoring_facility" id="monitoring_facility" required>
+						<option value="">-- 请选择 --</option>
+						<option value="是">是</option>
+						<option value="否">否</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">排水去向：</label>
+				<div class="col-sm-8">
+					<select class="form-control" name="water_to" id="water_to" required>
+						<option value="">-- 请选择 --</option>
+						<option value="河流">河流</option>
+						<option value="废水处理厂">废水处理厂</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">水体名称：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="water_name" id="water_name" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">其他备注：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="other_note" id="other_note" required>
+				</div>
+			</div>
+		</form>
+	</div>
+	<th:block th:include="include :: footer" />
+	<script type="text/javascript">
+		//提交新增排水口信息
+		function submitHandler() {
+	        if ($.validate.form()) {
+	        	add();
+	        }
+	    }
+		
+		//---------------------------主程序结束-----------------------------
+	
+		//检查表单中排水口编码是否重复
+		$("#form-drain-add").validate({
+			rules:{
+				onkeyup: false,
+				drain_id:{
+					remote: {
+		                url: ctx + "drainage/drain/checkDrainUnique",
+		                type: "post",
+		                dataType: "json",
+		                data: {
+		                	"drain_id" : function() {
+		                		return $.common.trim($("#drain_id").val());
+		                    }
+		                },
+		                dataFilter: function(data, type) {
+		                	return $.validate.unique(data);
+		                }
+		            }
+				}
+			},
+			messages: {
+		        "drain_id": {
+		            remote: "排水口编号重复"
+		        }
+		    },
+		    focusCleanup: true
+		});
+	
+		//ajax添加排水口
+		function add() {
+			var household_id = $("input[name='household_id']").val();
+			var drain_type = $("#drain_type option:selected").val();
+			var drain_id = $("input[name='drain_id']").val();
+			var pretreatment_facility = $("input[id='pretreatment_facility']").val();
+			var other_pretreatment_facility = $("input[name='other_pretreatment_facility']").val();
+			var pretreatment_facility_number = $("input[name='pretreatment_facility_number']").val();
+			var pretreatment_facility_note = $("input[name='pretreatment_facility_note']").val();
+			var monitoring_facility = $("#monitoring_facility option:selected").val();
+			var water_to = $("#water_to option:selected").val();
+			var water_name = $("input[name='water_name']").val();
+			var other_note = $("input[name='other_note']").val();
+			$.ajax({
+				cache : true,
+				type : "POST",
+				url : ctx + "drainage/drain/add",
+				data : {
+					"household_id": household_id,
+					"drain_type": drain_type,
+					"drain_id": drain_id,
+					"pretreatment_facility": pretreatment_facility,
+					"other_pretreatment_facility": other_pretreatment_facility,
+					"pretreatment_facility_number":pretreatment_facility_number,
+					"pretreatment_facility_note":pretreatment_facility_note,
+					"monitoring_facility":monitoring_facility,
+					"water_to":water_to,
+					"water_name":water_name,
+					"other_note":other_note,
+				},
+				async : false,
+				error : function(request) {
+					$.modal.alertError("添加新排水口发生错误"); 
+				},
+				success : function(data) {
+					$.operate.successCallback(data);
+				}
+			});
+		} 
+	</script>
+</body>
+</html>

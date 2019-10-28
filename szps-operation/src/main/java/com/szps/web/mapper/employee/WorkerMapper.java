@@ -5,7 +5,7 @@ import java.util.List;
 import com.szps.web.domain.employee.Worker;
 
 /**
- * Worker模型数据层
+ * Worker持久层
  * */
 public interface WorkerMapper {
 	/**

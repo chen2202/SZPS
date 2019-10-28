@@ -10,14 +10,14 @@ szps:
   # 实例演示开关
   demoEnabled: false
   # 文件路径 示例（ Windows配置D:/ruoyi/uploadPath，Linux配置 /home/ruoyi/uploadPath）
-  profile: D:/szps/uploadPath
+  profile: C:/szpsinfo/uploadfile
   # 获取ip地址开关
   addressEnabled: true
 
 # 开发环境配置
 server:
   # 服务器的HTTP端口，默认为80
-  port: 8089
+  port: 8087
   servlet:
     # 应用的访问路径
     context-path: /
@@ -70,8 +70,11 @@ spring:
     restart:
       # 热部署开关
       enabled: true
-
-# MyBatis
+  jmx:
+    enabled: false
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${szps.profile}
+# MyBatis 
 mybatis:
     # 搜索指定包别名
     typeAliasesPackage: com.szps
@@ -96,8 +99,8 @@ shiro:
     unauthorizedUrl: /unauth
     # 首页地址
     indexUrl: /index
-    # 验证码开关
-    captchaEnabled: true
+    # 验证码开关true false
+    captchaEnabled: false
     # 验证码类型 math 数组计算 char 字符
     captchaType: char
   cookie:
@@ -129,3 +132,5 @@ xss:
   excludes: /system/notice/*
   # 匹配链接
   urlPatterns: /system/*,/monitor/*,/tool/*
+  
+

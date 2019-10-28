@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:include="include :: header('新增资料')" />
+    <th:block th:include="include :: bootstrap-fileinput-css" />
+</head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-role-add">
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">来源：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="costSource" id="costSource" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">编码：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="costCode" id="costCode" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">区域：</label>
+            <div class="col-sm-8">
+                <select  id="costArea" name="costArea">
+                    <option value="污水厂">污水厂</option>
+                    <option value="区水务局">区水务局</option>
+                    <option value="市排水管理处">市排水管理处</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">附件：</label>
+            <div class="col-sm-8">
+                <input id="filePath" name="filePath" class="select-file file-loading" type="file">
+            </div>
+        </div>
+    </form>
+</div>
+<th:block th:include="include :: footer" />
+<th:block th:include="include :: bootstrap-fileinput-js" />
+<script type="text/javascript">
+
+    var prefix = ctx+"dm/cost";
+
+    $(document).ready(function () {
+        $("#filePath").fileinput({
+            'uploadUrl': '#',
+            overwriteInitial: false,
+            initialPreviewAsData: true,
+            showPreview : false,	//预览
+            showUpload: false		//上传按钮
+        });
+    });
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            uploadFile();
+        }
+    }
+
+    function uploadFile() {
+        var formData = new FormData();
+        if ($('#filePath')[0].files[0] == null) {
+            $.modal.alertWarning("请先选择文件路径");
+            return false;
+        }
+
+        formData.append('costSource',$("#costSource").val());
+        formData.append('costCode',$("#costCode").val());
+        formData.append('costArea',$("#costArea").val());
+        formData.append('fileName', $("#fileName").val());
+        formData.append('file', $('#filePath')[0].files[0]);
+
+        $.ajax({
+            url: prefix + "/add",
+            type: 'post',
+            cache: false,
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            success: function(result) {
+                $.operate.successCallback(result);
+            }
+        });
+    }
+</script>
+</body>
+</html>

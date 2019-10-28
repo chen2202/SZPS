@@ -111,7 +111,7 @@ public class DmFileController extends BaseController {
      * 文件下载请求
      * 支持单文件与多文件,用资料主题当名字压缩成一个包
      */
-    @Log(title = "下载资料文件", businessType = BusinessType.OTHER)
+    @Log(title = "下载规划资料文件", businessType = BusinessType.OTHER)
     @GetMapping("/download")
     @ResponseBody
     public void resourceDownload(@Param("ids") String ids, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -150,9 +150,6 @@ public class DmFileController extends BaseController {
     public AjaxResult delete(@Param("fileId") Long fileId, @Param("filePath") String filePath) {
         try {
             filePath = Global.getUploadPath() + filePath.replace("/profile/upload", "");
-
-//            System.out.println("输出");
-//            System.out.println(filePath);
 
             FileUtils.deleteFile(filePath);
 
@@ -194,7 +191,6 @@ public class DmFileController extends BaseController {
 
             //设置压缩级别
             zos.setLevel(Deflater.BEST_COMPRESSION);
-
 
             for (DmFile f : files) {
                 // 数据库资源地址

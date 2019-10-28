@@ -291,3 +291,73 @@ NOCYCLE;      -- 不循环
 
 
 
+
+/*
+	2019/10/28修改  新添加污水资料表和污水资料序列
+*/
+
+/*
+Navicat Oracle Data Transfer
+Oracle Client Version : 10.2.0.5.0
+
+Source Server         : RY
+Source Server Version : 110200
+Source Host           : 192.168.71.1:1521
+Source Schema         : RY
+
+Target Server Type    : ORACLE
+Target Server Version : 110200
+File Encoding         : 65001
+
+Date: 2019-10-28 22:46:45
+*/
+
+
+-- ----------------------------
+-- Table structure for DM_COST
+-- ----------------------------
+CREATE TABLE "RY"."DM_COST" (
+"COST_ID" NUMBER(20) NOT NULL ,
+"COST_NAME" VARCHAR2(100 BYTE) NULL ,
+"COST_PATH" VARCHAR2(255 BYTE) NULL ,
+"COST_AREA" VARCHAR2(30 BYTE) NULL ,
+"COST_CREATE" VARCHAR2(30 BYTE) NULL ,
+"COST_DATE" DATE NULL ,
+"COST_SOURCE" VARCHAR2(100 BYTE) NULL ,
+"COST_CODE" VARCHAR2(100 BYTE) NULL 
+)
+LOGGING
+NOCOMPRESS
+NOCACHE
+
+;
+
+-- ----------------------------
+-- Indexes structure for table DM_COST
+-- ----------------------------
+
+-- ----------------------------
+-- Checks structure for table DM_COST
+-- ----------------------------
+ALTER TABLE "RY"."DM_COST" ADD CHECK ("COST_ID" IS NOT NULL);
+
+-- ----------------------------
+-- Primary Key structure for table DM_COST
+-- ----------------------------
+ALTER TABLE "RY"."DM_COST" ADD PRIMARY KEY ("COST_ID");
+
+
+/*
+	序列
+*/
+CREATE SEQUENCE SEQ_DM_COST  
+increment by 1    -- 每次递增1  
+start with 1       -- 从1开始  
+nomaxvalue      -- 没有最大值  
+minvalue 1       -- 最小值=1  
+NOCYCLE;      -- 不循环
+
+
+
+
+

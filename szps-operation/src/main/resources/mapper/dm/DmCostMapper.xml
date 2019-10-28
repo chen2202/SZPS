@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.szps.web.mapper.dm.DmCostMapper">
+
+    <resultMap type="DmCost" id="DmCostResult">
+        <id     property="costId"       column="cost_id"        />
+        <result property="costName"     column="cost_name"      />
+        <result property="costPath"      column="cost_path"       />
+        <result property="costArea"      column="cost_area"       />
+        <result property="costCreate"     column="cost_create"      />
+        <result property="costDate"    column="cost_date"     />
+        <result property="costSource"       column="cost_source"         />
+        <result property="costCode"       column="cost_code"         />
+    </resultMap>
+
+    <select id="selectCostList" parameterType="DmCost" resultMap="DmCostResult">
+        select c.cost_id,c.cost_name,c.cost_path,c.cost_area,c.cost_create,c.cost_date,c.cost_source,c.cost_code
+        from dm_cost c
+        <where>
+            <if test="costCode != null and costCode != ''">
+                c.cost_code like concat(concat('%',#{costCode}),'%')
+            </if>
+            <if test="costArea != null and costArea != ''">
+                AND c.cost_area like concat(concat('%',#{costArea}),'%')
+            </if>
+            <if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+                AND c.cost_create &gt;= to_date(#{params.beginTime},'yyyy-MM-dd HH24:mi:ss')
+            </if>
+            <if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+                AND c.cost_create &lt;= to_date(#{params.endTime},'yyyy-MM-dd HH24:mi:ss')
+            </if>
+        </where>
+    </select>
+
+
+    <insert id="insertCost" parameterType="DmCost" useGeneratedKeys="true" keyProperty="costId">
+        <selectKey keyProperty="costId" order="BEFORE" resultType="Long">
+            select seq_dm_cost.nextval as costId from DUAL
+        </selectKey>
+        insert into dm_cost(
+        <if test="costId != null and costId != 0">cost_id,</if>
+        <if test="costName != null and costName != ''">cost_name,</if>
+        <if test="costPath != null and costPath != ''">cost_path,</if>
+        <if test="costArea != null and costArea != ''">cost_area,</if>
+        <if test="costCreate != null and costCreate != ''">cost_create,</if>
+        <if test="costSource != null and costSource != ''">cost_source,</if>
+        <if test="costCode != null and costCode != ''">cost_code,</if>
+        cost_date
+        )values(
+        <if test="costId != null and costId != 0">#{costId},</if>
+        <if test="costName != null and costName != ''">#{costName},</if>
+        <if test="costPath != null and costPath != ''">#{costPath},</if>
+        <if test="costArea != null and costArea != ''">#{costArea},</if>
+        <if test="costCreate != null and costCreate != ''">#{costCreate},</if>
+        <if test="costSource != null and costSource != ''">#{costSource},</if>
+        <if test="costCode != null and costCode != ''">#{costCode},</if>
+        sysdate
+        )
+    </insert>
+
+    <delete id="deleteCostByIds" parameterType="Long">
+        delete from dm_cost c
+        where c.cost_id in
+        <foreach collection="array" item="costId" open="(" separator="," close=")">
+            #{costId}
+        </foreach>
+    </delete>
+
+    <select id="selectCostById" parameterType="Long" resultMap="DmCostResult">
+        select c.cost_id,c.cost_name,c.cost_path,c.cost_area,c.cost_create,c.cost_date,c.cost_source,c.cost_code
+        from dm_cost c
+        where c.cost_id=#{costId}
+    </select>
+
+    <select id="selectCostByCode" parameterType="String" resultMap="DmCostResult">
+        select c.cost_id,c.cost_name,c.cost_path,c.cost_area,c.cost_create,c.cost_date,c.cost_source,c.cost_code
+        from dm_cost c
+        where c.cost_code=#{costCode}
+    </select>
+
+</mapper>

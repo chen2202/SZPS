@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.dev.fixedasset.DevInfoMapper">
+ 
+	<resultMap type="DevInfo" id="result">
+		<id     property="id"    column="id"    />
+<result     property="deptid"   column="deptid"   />
+<result     property="deptname"   column="deptname"   />
+<result     property="licenseaccount"   column="licenseaccount"   />
+<result     property="carnumber"   column="carnumber"   />
+<result     property="carname"   column="carname"   />
+<result     property="dtype"   column="dtype"   />
+<result     property="manufacturer"   column="manufacturer"   />
+<result     property="measurement"   column="measurement"   />
+<result     property="purchasedate"   column="purchasedate"   />
+<result     property="registrationdate"   column="registrationdate"   />
+<result     property="mileage"   column="mileage"   />
+<result     property="displacement"   column="displacement"   />
+<result     property="fueltypes"   column="fueltypes"   />
+<result     property="carcolour"   column="carcolour"   />
+<result     property="dstatus"   column="dstatus"   />
+<result     property="effectivedeadline"   column="effectivedeadline"   />
+<result     property="bookquantity"   column="bookquantity"   />
+<result     property="realquantity"   column="realquantity"   />
+<result     property="originalvalue"   column="originalvalue"   />
+
+
+
+        <result property="createBy"      column="create_by"      />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"      column="update_by"      />
+        <result property="updateTime"    column="update_time"    />
+		<result property="remark"    column="remark"    />
+    </resultMap> 
+
+	<sql id="selectVo">
+        select *
+        from dev_info r
+    </sql>	
+	
+	<!-- 查询条件 -->
+	<sql id="sqlwhereSearch">
+		<where>
+			<if test=" id !=null">
+				and id = #{id}
+			</if>
+			<if test=" dname != null and dname != ''">
+				AND dname  like concat(concat('%',#{dname}),'%')
+			</if>
+			<if test=" dnumber !=null and dnumber != ''">
+				and dnumber = #{dnumber}
+			</if>
+			<if test=" dalias !=null and dalias != ''">
+				AND dalias  like concat(concat('%',#{dalias}),'%')
+			</if>
+		</where>
+	</sql>
+	
+
+    
+    <select id="select" parameterType="DevInfo" resultMap="result">
+        <include refid="selectVo"/>
+        <include refid="sqlwhereSearch"/>
+    </select>
+    
+    <select id="selectList" parameterType="DevInfo" resultMap="result">
+        <include refid="selectVo"/>
+        where  1 = 1
+        <if test=" id != null and id != 0">
+			AND id = #{id}
+		</if>
+		<if test=" dname != null and dname != ''">
+				AND dname  like concat(concat('%',#{dname}),'%')
+		</if>
+		<if test=" dnumber !=null and dnumber != ''">
+			and dnumber = #{dnumber}
+		</if>
+		<if test=" dalias !=null and dalias != ''">
+			AND dalias  like concat(concat('%',#{dalias}),'%')
+		</if>
+		
+		order by r.id
+    </select>
+      <select id="selectByName" parameterType="Long" resultMap="result">
+		<include refid="selectVo"/>
+		where  1 = 1
+		<if test=" dname != null and dname != ''">
+				AND dname  like concat(concat('%',#{dname}),'%')
+		</if>
+	</select>
+	
+	<select id="selectById" parameterType="Long" resultMap="result">
+		<include refid="selectVo"/>
+		where r.id = #{id}
+	</select>
+	
+    <delete id="deleteById" parameterType="Long">
+		delete from dev_info where id = #{id}
+	</delete>
+	 <delete id="deleteByIds" parameterType="Long">
+ 		delete from dev_info where id in
+ 		<foreach collection="array" item="id" open="(" separator="," close=")">
+ 			#{id}
+        </foreach> 
+ 	</delete>
+    
+    <update id="update" parameterType="DevInfo">
+ 		update dev_info
+ 		<set>
+<if test=" deptid != null and deptid != ''">deptid = #{deptid},</if>
+<if test=" deptname != null and deptname != ''">deptname = #{deptname},</if>
+<if test=" licenseaccount != null and licenseaccount != ''">licenseaccount = #{licenseaccount},</if>
+<if test=" carnumber != null and carnumber != ''">carnumber = #{carnumber},</if>
+<if test=" carname != null and carname != ''">carname = #{carname},</if>
+<if test=" dtype != null and dtype != ''">dtype = #{dtype},</if>
+<if test=" manufacturer != null and manufacturer != ''">manufacturer = #{manufacturer},</if>
+<if test=" measurement != null and measurement != ''">measurement = #{measurement},</if>
+<if test=" purchasedate != null and purchasedate != ''">purchasedate = #{purchasedate},</if>
+<if test=" registrationdate != null and registrationdate != ''">registrationdate = #{registrationdate},</if>
+<if test=" mileage != null and mileage != ''">mileage = #{mileage},</if>
+<if test=" displacement != null and displacement != ''">displacement = #{displacement},</if>
+<if test=" fueltypes != null and fueltypes != ''">fueltypes = #{fueltypes},</if>
+<if test=" carcolour != null and carcolour != ''">carcolour = #{carcolour},</if>
+<if test=" dstatus != null and dstatus != ''">dstatus = #{dstatus},</if>
+<if test=" effectivedeadline != null and effectivedeadline != ''">effectivedeadline = #{effectivedeadline},</if>
+<if test=" bookquantity != null and bookquantity != ''">bookquantity = #{bookquantity},</if>
+<if test=" realquantity != null and realquantity != ''">realquantity = #{realquantity},</if>
+<if test=" originalvalue != null and originalvalue != ''">originalvalue = #{originalvalue},</if>
+
+
+			
+			<if test=" remark != null and remark != ''">remark = #{remark},</if>
+ 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+ 			update_time = sysdate
+ 		</set>
+ 		where id = #{id}
+	</update>
+	  
+    <insert id="insert" parameterType="DevInfo">
+    	 <selectKey keyProperty="id" resultType="long" order="BEFORE">
+			SELECT seq_dev_info.NEXTVAL as id FROM DUAL
+		</selectKey>
+    
+		INSERT INTO dev_info(
+			<if test=" id != null and id!= 0">id,</if>
+<if test=" deptid != null and  deptid != ''">deptid,</if>
+<if test=" deptname != null and  deptname != ''">deptname,</if>
+<if test=" licenseaccount != null and  licenseaccount != ''">licenseaccount,</if>
+<if test=" carnumber != null and  carnumber != ''">carnumber,</if>
+<if test=" carname != null and  carname != ''">carname,</if>
+<if test=" dtype != null and  dtype != ''">dtype,</if>
+<if test=" manufacturer != null and  manufacturer != ''">manufacturer,</if>
+<if test=" measurement != null and  measurement != ''">measurement,</if>
+<if test=" purchasedate != null and  purchasedate != ''">purchasedate,</if>
+<if test=" registrationdate != null and  registrationdate != ''">registrationdate,</if>
+<if test=" mileage != null and  mileage != ''">mileage,</if>
+<if test=" displacement != null and  displacement != ''">displacement,</if>
+<if test=" fueltypes != null and  fueltypes != ''">fueltypes,</if>
+<if test=" carcolour != null and  carcolour != ''">carcolour,</if>
+<if test=" dstatus != null and  dstatus != ''">dstatus,</if>
+<if test=" effectivedeadline != null and  effectivedeadline != ''">effectivedeadline,</if>
+<if test=" bookquantity != null and  bookquantity != ''">bookquantity,</if>
+<if test=" realquantity != null and  realquantity != ''">realquantity,</if>
+<if test=" originalvalue != null and  originalvalue != ''">originalvalue,</if>
+
+
+			
+			<if test=" remark != null and remark != ''">REMARK,</if>
+			<if test=" createBy != null and createBy != ''">create_by,</if>
+			create_time
+		) VALUES (
+			<if test=" id != null and id!= 0">#{id},</if>
+<if test=" deptid != null and deptid != ''">#{deptid},</if>
+<if test=" deptname != null and deptname != ''">#{deptname},</if>
+<if test=" licenseaccount != null and licenseaccount != ''">#{licenseaccount},</if>
+<if test=" carnumber != null and carnumber != ''">#{carnumber},</if>
+<if test=" carname != null and carname != ''">#{carname},</if>
+<if test=" dtype != null and dtype != ''">#{dtype},</if>
+<if test=" manufacturer != null and manufacturer != ''">#{manufacturer},</if>
+<if test=" measurement != null and measurement != ''">#{measurement},</if>
+<if test=" purchasedate != null and purchasedate != ''">#{purchasedate},</if>
+<if test=" registrationdate != null and registrationdate != ''">#{registrationdate},</if>
+<if test=" mileage != null and mileage != ''">#{mileage},</if>
+<if test=" displacement != null and displacement != ''">#{displacement},</if>
+<if test=" fueltypes != null and fueltypes != ''">#{fueltypes},</if>
+<if test=" carcolour != null and carcolour != ''">#{carcolour},</if>
+<if test=" dstatus != null and dstatus != ''">#{dstatus},</if>
+<if test=" effectivedeadline != null and effectivedeadline != ''">#{effectivedeadline},</if>
+<if test=" bookquantity != null and bookquantity != ''">#{bookquantity},</if>
+<if test=" realquantity != null and realquantity != ''">#{realquantity},</if>
+<if test=" originalvalue != null and originalvalue != ''">#{originalvalue},</if>
+
+
+			
+			<if test=" remark != null and remark != ''">#{remark},</if>
+			<if test=" createBy != null and createBy != ''">#{createBy},</if>
+			sysdate			
+		)
+	</insert>
+    
+</mapper>

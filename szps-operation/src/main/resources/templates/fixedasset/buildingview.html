@@ -12,8 +12,12 @@
 					<div class="select-list">
 						<ul>
 							<li>
+		                        <label >单位名称：</label>
+                            	<input name="deptname" onclick="selectDeptTree()" id="treeName" type="text" placeholder="" >
+							</li>
+							<li>
 		                        <label >所在地点：</label>
-                            	<input name="deptName" onclick="selectDeptTree()" id="treeName" type="text" placeholder="" >
+                            	<input name="dlocation" onclick="selectDeptTree()" id="treeName" type="text" placeholder="" >
 							</li>
 							<li>
 		                        <label >建筑物名称：</label>
@@ -92,51 +96,51 @@
 		        	title : '序号' 
 		        },
 		        {
-		        	field : 'devType', 
+		        	field : 'deptname', 
 		        	title : '单位名称' 
 		        },
 		        {
-		        	field : 'devType', 
+		        	field : 'dlocation', 
 		        	title : '所在地点' 
 		        },
 		        {
-		        	field: 'applyDate',
+		        	field: 'assetname',
 		        	title: '建筑物名称',
 		        },
 		        {
-		        	field: 'applyDept',
+		        	field: 'structure',
 		        	title: '结构',
 		        },
 		        {
-		        	field: 'applyDate',
+		        	field: 'builttime',
 		        	title: '建成年月',
 		        },
 		        {
-		        	field : 'devType', 
+		        	field : 'howmany', 
 		        	title : '数量（栋）' 
 		        },
 		        {
-		        	field: 'applyDate',
+		        	field: 'floors',
 		        	title: '层数',
 		        },
 		        {
-		        	field: 'applyDept',
+		        	field: 'darea',
 		        	title: '占地面积(m2)',
 		        },
 		        {
-		        	field: 'applyDept',
+		        	field: 'floorage',
 		        	title: '建筑面积(m2)',
 		        },
 		        {
-		        	field : 'devType', 
+		        	field : 'dstatus', 
 		        	title : '房屋现状' 
 		        },
 		        {
-		        	field: 'applyDept',
+		        	field: 'originalvalue',
 		        	title: '原值',
 		        },
 		        {
-		        	field : 'devType', 
+		        	field : 'remark', 
 		        	title : '备注' 
 		        },
 		        {

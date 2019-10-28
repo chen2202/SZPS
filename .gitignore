@@ -11,3 +11,7 @@
 target/
 out/
 build/
+.settings/org.eclipse.core.resources.prefs
+szps-operation/.classpath
+szps-operation/.project
+*.prefs

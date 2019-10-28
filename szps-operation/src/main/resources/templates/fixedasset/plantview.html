@@ -12,8 +12,8 @@
 					<div class="select-list">
 						<ul>
 							<li>
-		                        <label >所在地点：</label>
-                            	<input name="deptName" id="treeName" type="text" placeholder="" >
+		                        <label >单位名称：</label>
+                            	<input name="deptName" onclick="selectDeptTree()" id="treeName" type="text" placeholder="" >
 							</li>
 							<li>
 		                        <label >名称：</label>
@@ -92,39 +92,43 @@
 		        	title : '序号' 
 		        },
 		        {
-		        	field : 'devType', 
+		        	field : 'deptname', 
+		        	title : '单位名称' 
+		        },
+		        {
+		        	field : 'dlocation', 
 		        	title : '所在地点' 
 		        },
 		        {
-		        	field: 'applyDate',
+		        	field: 'assetname',
 		        	title: '名称',
 		        },
 		        {
-		        	field: 'applyDept',
+		        	field: 'height',
 		        	title: '高度(m)',
 		        },
 		        {
-		        	field: 'applyDate',
+		        	field: 'dbh',
 		        	title: '胸径（cm）',
 		        },
 		        {
-		        	field: 'applyDate',
+		        	field: 'crowndiameter',
 		        	title: '蓬径（m）',
 		        },
 		        {
-		        	field: 'applyDept',
+		        	field: 'measurement',
 		        	title: '计量单位',
 		        },
 		        {
-		        	field: 'applyDept',
+		        	field: 'realquantity',
 		        	title: '实际数量',
 		        },
 		        {
-		        	field: 'applyDept',
+		        	field: 'originalvalue',
 		        	title: '原值',
 		        },
 		        {
-		        	field : 'devType', 
+		        	field : 'remark', 
 		        	title : '备注' 
 		        },
 		        {

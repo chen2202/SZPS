@@ -13,11 +13,15 @@
 						<ul>
 							<li>
 		                        <label >单位名称：</label>
-                            	<input name="deptName" onclick="selectDeptTree()" id="treeName" type="text" placeholder="" >
+                            	<input name="deptname" onclick="selectDeptTree()" id="treeName" type="text" placeholder="" >
+							</li>
+							<li>
+		                        <label >所在地点：</label>
+                            	<input name="dlocation"  id="dlocation" type="text" placeholder="" >
 							</li>
 							<li>
 		                        <label >名称：</label>
-                            	<input name="assetName"  id="assetName" type="text" placeholder="" >
+                            	<input name="assetname"  id="assetname" type="text" placeholder="" >
 							</li>
 							
 							<li>
@@ -30,13 +34,13 @@
 			</div>
 			
 	        <div class="btn-group-sm" id="toolbar" role="group">
-		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:asset:add">
+		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="fixedasset:structure:add">
 		            <i class="fa fa-plus"></i> 新增
 		        </a>
-		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="dev:asset:delete">
+		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="fixedasset:structure:delete">
 		            <i class="fa fa-remove"></i> 删除
 		        </a>
-		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="dev:asset:export">
+		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="fixedasset:structure:export">
 		            <i class="fa fa-download"></i> 导出
 		        </a> -->
 	        </div>
@@ -48,10 +52,10 @@
     </div>
     <th:block th:include="include :: footer" />
     <script th:inline="javascript">
-        var prefix = ctx + "op/dev/asset";
-        var viewFlag = [[${@permission.hasPermi('dev:asset:view')}]];
-        var editFlag = [[${@permission.hasPermi('dev:asset:edit')}]];
-        var removeFlag = [[${@permission.hasPermi('dev:asset:delete')}]];
+        var prefix = ctx + "op/fixedasset/structure";
+        var viewFlag = [[${@permission.hasPermi('fixedasset:structure:view')}]];
+        var editFlag = [[${@permission.hasPermi('fixedasset:structure:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('fixedasset:structure:delete')}]];
         
         /*用户管理-新增-选择部门树*/
         function selectDeptTree() {
@@ -83,7 +87,7 @@
                 updateUrl: prefix + "/edit/{id}",
                 removeUrl: prefix + "/remove",
                 
-                modalName: "申请列表",
+                modalName: "构筑物",
                 columns: [{
 		            checkbox: true
 		        },
@@ -129,7 +133,7 @@
 		        },
 		        {
 		        	field : 'dvolume', 
-		        	title : '体积（m3）' 
+		        	title : '体积（m<sup>3</sup>）' 
 		        },
 		        {
 		        	field: 'dstatus',

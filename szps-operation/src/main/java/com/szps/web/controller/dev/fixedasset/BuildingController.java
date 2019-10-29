@@ -19,7 +19,6 @@ import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
 import com.szps.framework.util.ShiroUtils;
-import com.szps.system.domain.SysDept;
 import com.szps.system.domain.SysUser;
 import com.szps.web.domain.dev.fixedasset.Building;
 import com.szps.web.service.dev.fixedasset.IBuildingService;
@@ -64,16 +63,13 @@ public class BuildingController extends BaseController {
      * 新增保存日报
      */
     @RequiresPermissions("fixedasset:building:add")
-    @Log(title = "添加日报", businessType = BusinessType.INSERT)
+    @Log(title = "添加固定资产-房屋建筑物", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
     public AjaxResult addSave( Building obj)
     {
     	SysUser user = ShiroUtils.getSysUser();
-    	SysDept sysDept = user.getDept();
-//    	obj.setDeptid(sysDept.getDeptId());
     	obj.setCreateBy(user.getLoginName());
-//    	obj.setDelFlag(Building.DEL_FLAG_NORMAL);
         return toAjax(service.insert(obj));
     }
     
@@ -90,7 +86,7 @@ public class BuildingController extends BaseController {
     /**
      * 保存
      */
-    @Log(title = "日报修改", businessType = BusinessType.UPDATE)
+    @Log(title = "固定资产-房屋建筑物修改", businessType = BusinessType.UPDATE)
     @RequiresPermissions("fixedasset:building:edit")
     @PostMapping("/edit")
     @ResponseBody
@@ -101,7 +97,7 @@ public class BuildingController extends BaseController {
     }
 
     @RequiresPermissions("fixedasset:building:delete")
-    @Log(title = "日报删除", businessType = BusinessType.DELETE)
+    @Log(title = "固定资产-房屋建筑物删除", businessType = BusinessType.DELETE)
     @PostMapping("/remove")
     @ResponseBody
     public AjaxResult remove(String ids)

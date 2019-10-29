@@ -1,7 +1,5 @@
 package com.szps.web.domain.dev.fixedasset;
 
-import java.util.Date;
-
 import com.szps.common.core.domain.BaseEntity;
 
 public class Structure extends BaseEntity {
@@ -15,7 +13,7 @@ public class Structure extends BaseEntity {
 	String dlocation;
 	String assetname;
 	String structure;
-	Date builttime;
+	String builttime;
 	String dlength;
 	String dwidth;
 	String dhigh;
@@ -72,11 +70,11 @@ public class Structure extends BaseEntity {
 		this.structure = structure;
 	}
 
-	public Date getBuilttime() {
+	public String getBuilttime() {
 		return builttime;
 	}
 
-	public void setBuilttime(Date builttime) {
+	public void setBuilttime(String builttime) {
 		this.builttime = builttime;
 	}
 

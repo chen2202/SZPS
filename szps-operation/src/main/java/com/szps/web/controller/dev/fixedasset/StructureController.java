@@ -19,16 +19,15 @@ import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
 import com.szps.framework.util.ShiroUtils;
-import com.szps.system.domain.SysDept;
 import com.szps.system.domain.SysUser;
-import com.szps.web.domain.dev.Fix;
-import com.szps.web.service.dev.IFixService;
+import com.szps.web.domain.dev.fixedasset.Structure;
+import com.szps.web.service.dev.fixedasset.IStructureService;
 
 @Controller
 @RequestMapping("/op/fixedasset/structure")
 public class StructureController extends BaseController {
 	 @Autowired
-	private IFixService service;
+	private IStructureService service;
 	
 	private String prefix = "/fixedasset";
 	
@@ -44,10 +43,10 @@ public class StructureController extends BaseController {
     @RequiresPermissions("fixedasset:structure:view")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(Fix obj)
+    public TableDataInfo list(Structure obj)
     {
         startPage();
-        List<Fix> list = service.selectList(obj);
+        List<Structure> list = service.selectList(obj);
         return getDataTable(list);
     }
     /**
@@ -64,24 +63,20 @@ public class StructureController extends BaseController {
      * 新增保存日报
      */
     @RequiresPermissions("fixedasset:structure:add")
-    @Log(title = "添加日报", businessType = BusinessType.INSERT)
+    @Log(title = "添加固定资产-构筑物", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
-    public AjaxResult addSave( Fix obj)
+    public AjaxResult addSave( Structure obj)
     {
     	SysUser user = ShiroUtils.getSysUser();
-    	SysDept sysDept = user.getDept();
-    	obj.setDeptId(sysDept.getDeptId());
     	obj.setCreateBy(user.getLoginName());
-    	obj.setDelFlag(Fix.DEL_FLAG_NORMAL);
         return toAjax(service.insert(obj));
     }
     
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Long id, ModelMap mmap)
     {
-    	Fix obj = service.selectById(id);
-        
+    	Structure obj = service.selectById(id);
         mmap.put("obj", obj);
         return prefix + "/structureedit";
     }
@@ -90,18 +85,18 @@ public class StructureController extends BaseController {
     /**
      * 保存
      */
-    @Log(title = "日报修改", businessType = BusinessType.UPDATE)
+    @Log(title = "固定资产-构筑物修改", businessType = BusinessType.UPDATE)
     @RequiresPermissions("fixedasset:structure:edit")
     @PostMapping("/edit")
     @ResponseBody
-    public AjaxResult editSave(@Validated Fix obj)
+    public AjaxResult editSave(@Validated Structure obj)
     {
     	obj.setUpdateBy(ShiroUtils.getLoginName());
         return toAjax(service.update(obj));
     }
 
     @RequiresPermissions("fixedasset:structure:delete")
-    @Log(title = "日报删除", businessType = BusinessType.DELETE)
+    @Log(title = "固定资产-构筑物删除", businessType = BusinessType.DELETE)
     @PostMapping("/remove")
     @ResponseBody
     public AjaxResult remove(String ids)

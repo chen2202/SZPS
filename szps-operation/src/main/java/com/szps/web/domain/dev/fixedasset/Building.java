@@ -1,7 +1,5 @@
 package com.szps.web.domain.dev.fixedasset;
 
-import java.util.Date;
-
 import com.szps.common.core.domain.BaseEntity;
 
 public class Building extends BaseEntity {

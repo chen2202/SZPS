@@ -12,7 +12,7 @@
 		<result     property="builttime"   column="builttime"   />
 		<result     property="howmany"   column="howmany"   />
 		<result     property="floors "   column="floors "   />
-		<result     property="darea "   column="darea "   />
+		<result     property="darea"   column="darea"   />
 		<result     property="floorage"   column="floorage"   />
 		<result     property="dstatus"   column="dstatus"   />
 		<result     property="originalvalue"   column="originalvalue"   />
@@ -111,8 +111,8 @@
 			<if test=" structure != null and structure != ''">structure = #{structure},</if>
 			<if test=" builttime != null ">builttime = #{builttime},</if>
 			<if test=" howmany != null and howmany != ''">howmany = #{howmany},</if>
-			<if test=" floors  != null and floors  != ''">floors  = #{floors },</if>
-			<if test=" darea  != null and darea  != ''">darea  = #{darea },</if>
+			<if test=" floors  != null and floors  != ''">floors  = #{floors},</if>
+			<if test=" darea  != null and darea  != ''">darea  = #{darea},</if>
 			<if test=" floorage != null and floorage != ''">floorage = #{floorage},</if>
 			<if test=" dstatus != null and dstatus != ''">dstatus = #{dstatus},</if>
 			<if test=" originalvalue != null and originalvalue != ''">originalvalue = #{originalvalue},</if>
@@ -138,8 +138,8 @@
 			<if test=" structure != null and  structure != ''">structure,</if>
 			<if test=" builttime != null">builttime,</if>
 			<if test=" howmany != null and  howmany != ''">howmany,</if>
-			<if test=" floors  != null and  floors  != ''">floors ,</if>
-			<if test=" darea  != null and  darea  != ''">darea ,</if>
+			<if test=" floors  != null and  floors  != ''">floors,</if>
+			<if test=" darea  != null and  darea  != ''">darea,</if>
 			<if test=" floorage != null and  floorage != ''">floorage,</if>
 			<if test=" dstatus != null and  dstatus != ''">dstatus,</if>
 			<if test=" originalvalue != null and  originalvalue != ''">originalvalue,</if>
@@ -157,7 +157,7 @@
 			<if test=" builttime != null ">#{builttime},</if>
 			<if test=" howmany != null and howmany != ''">#{howmany},</if>
 			<if test=" floors  != null and floors  != ''">#{floors },</if>
-			<if test=" darea  != null and darea  != ''">#{darea },</if>
+			<if test=" darea  != null and darea  != ''">#{darea},</if>
 			<if test=" floorage != null and floorage != ''">#{floorage},</if>
 			<if test=" dstatus != null and dstatus != ''">#{dstatus},</if>
 			<if test=" originalvalue != null and originalvalue != ''">#{originalvalue},</if>

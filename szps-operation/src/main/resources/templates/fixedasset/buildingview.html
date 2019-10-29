@@ -17,11 +17,11 @@
 							</li>
 							<li>
 		                        <label >所在地点：</label>
-                            	<input name="dlocation"  id="treeName" type="text" placeholder="" >
+                            	<input name="dlocation"  id="dlocation" type="text" placeholder="" >
 							</li>
 							<li>
 		                        <label >建筑物名称：</label>
-                            	<input name="assetName"  id="assetName" type="text" placeholder="" >
+                            	<input name="assetname"  id="assetname" type="text" placeholder="" >
 							</li>
 							
 							<li>
@@ -34,13 +34,13 @@
 			</div>
 			
 	        <div class="btn-group-sm" id="toolbar" role="group">
-		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:asset:add">
+		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="fixedasset:building:add">
 		            <i class="fa fa-plus"></i> 新增
 		        </a>
-		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="dev:asset:delete">
+		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="fixedasset:building:delete">
 		            <i class="fa fa-remove"></i> 删除
 		        </a>
-		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="dev:asset:export">
+		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="fixedasset:building:export">
 		            <i class="fa fa-download"></i> 导出
 		        </a> -->
 	        </div>
@@ -52,10 +52,10 @@
     </div>
     <th:block th:include="include :: footer" />
     <script th:inline="javascript">
-        var prefix = ctx + "op/dev/asset";
-        var viewFlag = [[${@permission.hasPermi('dev:asset:view')}]];
-        var editFlag = [[${@permission.hasPermi('dev:asset:edit')}]];
-        var removeFlag = [[${@permission.hasPermi('dev:asset:delete')}]];
+        var prefix = ctx + "op/fixedasset/building";
+        var viewFlag = [[${@permission.hasPermi('fixedasset:building:view')}]];
+        var editFlag = [[${@permission.hasPermi('fixedasset:building:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('fixedasset:building:delete')}]];
         
         /*用户管理-新增-选择部门树*/
         function selectDeptTree() {
@@ -87,7 +87,7 @@
                 updateUrl: prefix + "/edit/{id}",
                 removeUrl: prefix + "/remove",
                 
-                modalName: "申请列表",
+                modalName: "房屋建筑物",
                 columns: [{
 		            checkbox: true
 		        },

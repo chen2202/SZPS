@@ -21,14 +21,14 @@ import com.szps.common.enums.BusinessType;
 import com.szps.framework.util.ShiroUtils;
 import com.szps.system.domain.SysDept;
 import com.szps.system.domain.SysUser;
-import com.szps.web.domain.dev.Fix;
-import com.szps.web.service.dev.IFixService;
+import com.szps.web.domain.dev.fixedasset.Building;
+import com.szps.web.service.dev.fixedasset.IBuildingService;
 
 @Controller
 @RequestMapping("/op/fixedasset/building")
 public class BuildingController extends BaseController {
 	 @Autowired
-	private IFixService service;
+	private IBuildingService service;
 	
 	private String prefix = "/fixedasset";
 	
@@ -44,10 +44,10 @@ public class BuildingController extends BaseController {
     @RequiresPermissions("fixedasset:building:view")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(Fix obj)
+    public TableDataInfo list(Building obj)
     {
         startPage();
-        List<Fix> list = service.selectList(obj);
+        List<Building> list = service.selectList(obj);
         return getDataTable(list);
     }
     /**
@@ -67,20 +67,20 @@ public class BuildingController extends BaseController {
     @Log(title = "添加日报", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
-    public AjaxResult addSave( Fix obj)
+    public AjaxResult addSave( Building obj)
     {
     	SysUser user = ShiroUtils.getSysUser();
     	SysDept sysDept = user.getDept();
-    	obj.setDeptId(sysDept.getDeptId());
+//    	obj.setDeptid(sysDept.getDeptId());
     	obj.setCreateBy(user.getLoginName());
-    	obj.setDelFlag(Fix.DEL_FLAG_NORMAL);
+//    	obj.setDelFlag(Building.DEL_FLAG_NORMAL);
         return toAjax(service.insert(obj));
     }
     
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Long id, ModelMap mmap)
     {
-    	Fix obj = service.selectById(id);
+    	Building obj = service.selectById(id);
         
         mmap.put("obj", obj);
         return prefix + "/buildingedit";
@@ -94,7 +94,7 @@ public class BuildingController extends BaseController {
     @RequiresPermissions("fixedasset:building:edit")
     @PostMapping("/edit")
     @ResponseBody
-    public AjaxResult editSave(@Validated Fix obj)
+    public AjaxResult editSave(@Validated Building obj)
     {
     	obj.setUpdateBy(ShiroUtils.getLoginName());
         return toAjax(service.update(obj));

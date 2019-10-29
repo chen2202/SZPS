@@ -15,7 +15,7 @@ public class Building extends BaseEntity {
 	String dlocation;
 	String assetname;
 	String structure;
-	Date builttime;
+	String builttime;
 	String howmany;
 	String floors;
 	String darea;
@@ -71,11 +71,11 @@ public class Building extends BaseEntity {
 		this.structure = structure;
 	}
 
-	public Date getBuilttime() {
+	public String getBuilttime() {
 		return builttime;
 	}
 
-	public void setBuilttime(Date builttime) {
+	public void setBuilttime(String builttime) {
 		this.builttime = builttime;
 	}
 

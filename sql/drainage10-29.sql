@@ -2,6 +2,14 @@
 --排水户模块 2019-10-28 添加5个表，和部分sys_mean中语句
 --
 
+
+-- 无法显示排水户模块页面问题，修改了路径，这两条语句不能直接插入数据库
+INSERT INTO "RY"."SYS_MENU" VALUES ('4220', '排水户列表', '4214', '1', '/drainage/household', 'menuItem', 'C', '0', 'drainage:household:view', '#', 'admin', TO_DATE('2019-09-15 13:00:01', 'YYYY-MM-DD HH24:MI:SS'), 'admin', TO_DATE('2019-09-17 15:10:17', 'YYYY-MM-DD HH24:MI:SS'), null, 'op');
+INSERT INTO "RY"."SYS_MENU" VALUES ('4221', '排水户统计', '4214', '2', '/drainage/statistics', 'menuItem', 'C', '0', null, '#', 'admin', TO_DATE('2019-09-15 13:00:27', 'YYYY-MM-DD HH24:MI:SS'), 'admin', TO_DATE('2019-09-17 15:10:47', 'YYYY-MM-DD HH24:MI:SS'), null, 'op');
+
+--------------------------------------------
+
+
 -- ----------------------------
 -- Table structure for DRAINAGE_T_HOUSEHOLD
 -- ----------------------------

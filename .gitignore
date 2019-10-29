@@ -15,3 +15,6 @@ build/
 szps-operation/.classpath
 szps-operation/.project
 *.prefs
+*.prefs
+szps-operation/.classpath
+szps-operation/.project

@@ -16,7 +16,14 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">记录状态：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="record_state" id="record_state" th:field="*{record_state}" required>
+					<!-- <input class="form-control" type="text" name="record_state" id="record_state" th:field="*{record_state}" required> -->
+					<select class="form-control" name="record_state" id="record_state" th:field="*{record_state}" required>
+						<option value="">-- 请选择 --</option>
+						<option th:selected="${household.record_state=='已审核'}" value="已审核">已审核</option>
+						<option th:selected="${household.record_state=='待修改'}" value="待修改">待修改</option>
+						<option th:selected="${household.record_state=='待审核'}" value="待审核">待审核</option>
+						<option th:selected="${household.record_state=='待提交'}" value="待提交">待提交</option>
+					</select>
 				</div>
 			</div>
 			<div class="form-group">
@@ -118,8 +125,9 @@
 					<select class="form-control" name="sewage_category" id="sewage_category" th:field="*{sewage_category}" required>
 						<option value="">-- 请选择 --</option>
 						<option th:selected="${household.sewage_category=='有毒有害排污类'}" value="有毒有害排污类">有毒有害排污类</option>
-						<option th:selected="${household.sewage_category=='生活污水'}" value="生活污水">生活污水</option>
-						<option th:selected="${household.sewage_category=='雨水'}" value="雨水">雨水</option>
+						<option th:selected="${household.sewage_category=='沉淀物排污类'}" value="沉淀物排污类">沉淀物排污类</option>
+						<option th:selected="${household.sewage_category=='餐饮排污类'}" value="餐饮排污类">餐饮排污类</option>
+						<option th:selected="${household.sewage_category=='生活排污类'}" value="生活排污类">生活排污类</option>
 					</select>
 				</div>
 			</div>
@@ -401,7 +409,7 @@
 		function edit() {
 			var household_id = $("input[name='household_id']").val();
 			var household_name = $("input[name='household_name']").val();
-			var record_state = $("input[name='record_state']").val();
+			var record_state = $("#record_state option:selected").val();
 			var doorplate_detail_address = $("input[name='doorplate_detail_address']").val();
 			var longitude = $("input[name='longitude']").val();
 			var latitude = $("input[name='latitude']").val();

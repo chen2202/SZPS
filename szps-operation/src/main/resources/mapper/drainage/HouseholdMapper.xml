@@ -75,6 +75,14 @@
         <if test="committees != null and committees !=''">
         	AND COMMITTEES = #{committees}
         </if>
+        <if test="drainage_license_end_time != null and drainage_license_end_time !=''">
+        	AND DRAINAGE_LICENSE_END_TIME &gt;= to_date(#{drainage_license_end_time},'yyyy-mm-dd') and
+        	 DRAINAGE_LICENSE_END_TIME &lt;= ADD_MONTHS(to_date(#{drainage_license_end_time},'yyyy-mm-dd'),2)
+        </if>
+        <if test="sewage_license_end_time != null and sewage_license_end_time !=''">
+        	AND SEWAGE_LICENSE_END_TIME &gt;= to_date(#{sewage_license_end_time},'yyyy-mm-dd') and
+        	 SEWAGE_LICENSE_END_TIME &lt;= ADD_MONTHS(to_date(#{sewage_license_end_time},'yyyy-mm-dd'),2)
+        </if>
     </select>
     
     <!-- 添加，修改排水户时判断id是否重复 -->
@@ -166,5 +174,25 @@
  			#{household_id}
  		</foreach>
  	</delete>
+	
+	<!-- 查询全部排水户所在行政区（用于饼图） -->
+	<select id="selectAllHouseholdAdministrative" parameterType="String" resultType="String">
+		select ADMINISTRATIVE_NAME from DRAINAGE_T_HOUSEHOLD
+	</select>
+	
+	<!-- 查询排水户污水类别（用于饼图） -->
+	<select id="selectAllSewageCategory" parameterType="String" resultType="String">
+		select SEWAGE_CATEGORY from DRAINAGE_T_HOUSEHOLD
+	</select>
+	
+	<!-- 查询各行政区污水类别(用于堆叠柱状图) -->
+	<select id="selectAllAdminiSewage" resultMap="householdResult">
+		select ADMINISTRATIVE_NAME,SEWAGE_CATEGORY from DRAINAGE_T_HOUSEHOLD
+	</select>
+	
+	<!-- 查询各行政区排水户记录状态（用于堆叠柱状图） -->
+	<select id="selectAllAdminiRecord" resultMap="householdResult">
+		select ADMINISTRATIVE_NAME,RECORD_STATE from DRAINAGE_T_HOUSEHOLD
+	</select>
 	
 </mapper>

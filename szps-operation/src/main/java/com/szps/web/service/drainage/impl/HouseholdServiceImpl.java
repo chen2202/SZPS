@@ -76,4 +76,33 @@ public class HouseholdServiceImpl implements HouseholdService{
 		String[] household_ids = Convert.toStrArray(ids);
 		return householdMapper.deleteDrainById(household_ids);
 	}
+	
+	/**
+	 * 查询全部排水户所在行政区（用于饼图）
+	 */
+	public List<String> selectAllHouseholdAdministrative(){
+		return householdMapper.selectAllHouseholdAdministrative();
+	}
+	
+	/**
+	 *  查询排水户污水类别（用于饼图）
+	 * @return
+	 */
+	public List<String> selectAllSewageCategory(){
+		return householdMapper.selectAllSewageCategory();
+	}
+	
+	/**
+	 * 查询各行政区污水类别(用于堆叠柱状图)
+	 */
+	public List<Household> selectAllAdminiSewage(){
+		return householdMapper.selectAllAdminiSewage();
+	}
+	
+	/**
+	 * 查询各行政区排水户记录状态（用于堆叠柱状图）
+	 */
+	public List<Household> selectAllAdminiRecord(){
+		return householdMapper.selectAllAdminiRecord();
+	}
 }

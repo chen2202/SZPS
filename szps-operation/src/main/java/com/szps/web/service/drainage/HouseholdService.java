@@ -43,4 +43,25 @@ public interface HouseholdService {
 	 */
 	public int deleteHouseholdById(String ids) throws Exception;
 	public int deleteDrainById(String ids) throws Exception;
+	
+	/**
+	 * 查询全部排水户所在行政区（用于饼图）
+	 */
+	public List<String> selectAllHouseholdAdministrative();
+	
+	/**
+	 *  查询排水户污水类别（用于饼图）
+	 * @return
+	 */
+	public List<String> selectAllSewageCategory();
+	
+	/**
+	 * 查询各行政区污水类别(用于堆叠柱状图)
+	 */
+	public List<Household> selectAllAdminiSewage();
+	
+	/**
+	 * 查询各行政区排水户记录状态（用于堆叠柱状图）
+	 */
+	public List<Household> selectAllAdminiRecord();
 }

@@ -13,15 +13,15 @@
 		        	<div class="form-group">
 						<label class="col-sm-3 control-label ">单位名称：</label>
 						<div class="col-sm-8">
-								<input name="deptname" onclick="selectDeptTree()" type="text" id="treeName" class="form-control" th:field="*{deptname}"/>
+								<input name="deptname" id="treeName"  th:field="*{deptname}" onclick="selectDeptTree()" type="text"  class="form-control" />
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label class="col-sm-3 control-label">所在地点：</label>
+						<label class="col-sm-3 control-label">所在地点/部门：</label>
 						<div class="col-sm-8">
-							<input class="form-control" type="text" name="dlocation" id="dlocation" th:field="*{dlocation}" />
+							<input  name="dlocation" id="dlocation" th:field="*{dlocation}"  class="form-control" type="text"  >
 						</div>
 					</div>
 				</div>
@@ -29,90 +29,138 @@
 			<div class="row">
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-3 control-label ">名称：</label>
+						<label class="col-sm-3 control-label ">管道和沟槽名称：</label>
 						<div class="col-sm-8">
-								<input name="assetname"  type="text" id="assetname" class="form-control" th:field="*{assetname}"/>
+								<input name="assetname"  id="assetname"  th:field="*{assetname}"  type="text" class="form-control" />
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label class="col-sm-3 control-label">结构：</label>
+						<label class="col-sm-3 control-label">起始地点：</label>
 						<div class="col-sm-8">
-							<input class="form-control" type="text" name="structure" id="structure" th:field="*{structure}"/>
+							<input  name="startingplace"  id="startingplace" th:field="*{startingplace}"   class="form-control" type="text" >
 						</div>
 					</div>
 				</div>
+			</div>						
+			<div class="row">
+				<div class="col-sm-6">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">终止地点：</label>
+							<div class="col-sm-8">
+								<input  name="endplace"  id="endplace"  th:field="*{endplace}"  class="form-control" type="text" >
+							</div>
+						</div>
+				</div>
+	        	<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">长度(m)：</label>
+						<div class="col-sm-8">
+							<input  name="dlength"  id="dlength"  th:field="*{dlength}"  class="form-control" type="number" >
+						</div>
+					</div>
+				</div>
+				
 			</div>
 			<div class="row">
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-3 control-label ">建成年月：</label>
+						<label class="col-sm-3 control-label ">槽深(m)：</label>
 						<div class="col-sm-8">
-								<input name="builttime"  class="time-input form-control"  type="text" id="builttime"  data-type="date" data-format="yyyy-MM-dd" th:field="*{builttime}"/>
+								<input name="ddepth"  id="ddepth"  th:field="*{ddepth}"  type="number" class="form-control" />
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label class="col-sm-3 control-label">长度/直径（m）：</label>
+						<label class="col-sm-3 control-label">沟宽*沟厚(mm2)/管径*壁厚(mm2)：</label>
 						<div class="col-sm-8">
-							<input class="form-control" type="number" name="dlength" id="dlength" th:field="*{dlength}"/>
+							<input  name="dhigh"  id="dhigh"  th:field="*{dhigh}"  class="form-control" type="text" >
 						</div>
 					</div>
 				</div>
 			</div>
+			
+			
 			<div class="row">
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-3 control-label ">宽度（m）：</label>
+						<label class="col-sm-3 control-label ">主要材质：</label>
 						<div class="col-sm-8">
-								<input name="dwidth"  type="number" id="dwidth" class="form-control" th:field="*{dwidth}"/>
+							<input name="material"  id="material"  th:field="*{material}"  type="text" class="form-control" />
+							<span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 如”砖、砼、钢管、砼管”等</span>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label class="col-sm-3 control-label">高/深度（m）：</label>
+						<label class="col-sm-3 control-label">绝缘方式：</label>
 						<div class="col-sm-8">
-							<input class="form-control" type="number" name="dhigh" id="dhigh" th:field="*{dhigh}"/>
+							<input  name="insulation"  id="insulation"  th:field="*{insulation}"  class="form-control" type="text" >
 						</div>
 					</div>
 				</div>
 			</div>
+			
 			<div class="row">
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-3 control-label ">数量（座）：</label>
+						<label class="col-sm-3 control-label ">铺设方式：</label>
 						<div class="col-sm-8">
-								<input name="howmany"  type="number" id="howmany" class="form-control" th:field="*{howmany}"/>
+							<input name="layway"  id="layway"  th:field="*{layway}"  type="text" class="form-control" />
+							<span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 架空、埋地</span>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label class="col-sm-3 control-label">体积（m<sup>3</sup>）：</label>
+						<label class="col-sm-3 control-label">防腐方式：</label>
 						<div class="col-sm-8">
-							<input class="form-control" type="number" name="dvolume" id="dvolume" th:field="*{dvolume}"/ >
+							<input name="aczoiling"  id="aczoiling"  th:field="*{aczoiling}"  type="text" class="form-control" />
+							<span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 防锈油漆</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">保温绝热材料：</label>
+						<div class="col-sm-8">
+							<input  name="heatinsulatingmaterial"  th:field="*{heatinsulatingmaterial}"  id="heatinsulatingmaterial"  class="form-control" type="text" >
+							<span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 珍珠岩等</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">原始建成日期：</label>
+						<div class="col-sm-8">
+							
+							<input name="builttime" id="builttime" th:field="*{builttime}"  class="time-input form-control"  type="text"   data-type="date" data-format="yyyy-MM-dd"/>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-6">
+			<div class="col-sm-6">
 					<div class="form-group">
-						<label class="col-sm-3 control-label">构筑物现状：</label>
+						<label class="col-sm-3 control-label">管沟现状：</label>
 						<div class="col-sm-8">
-							<input class="form-control" type="text" name="dstatus" id="dstatus" th:field="*{dstatus}"/>
-						<span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 按正常使用、待报废、闲置、已拆除、待修理等现状填列</span>
+							<input  name="dstatus"  id="dstatus"  th:field="*{dstatus}"  class="form-control" type="text" >
+							<span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 按正常使用、待报废、闲置、已拆除、待修理等现状填列</span>
 						</div>
 					</div>
 				</div>
-	        	<div class="col-sm-6">
+			</div>
+			<div class="row">
+			<div class="col-sm-6">
 		        	<div class="form-group">
 						<label class="col-sm-3 control-label ">原值（元）：</label>
 						<div class="col-sm-8">
-								<input name="originalvalue"  type="number" id="originalvalue" class="form-control" th:field="*{originalvalue}"/>
+								<input  name="originalvalue"  id="originalvalue"  th:field="*{originalvalue}"  type="text"  class="form-control" />
 						</div>
 					</div>
 				</div>
@@ -122,7 +170,7 @@
 					<div class="form-group">
 						<label class="col-sm-3 control-label">备注：</label>
 						<div class="col-sm-8">
-							<textarea class="form-control" type="text" name="remark" id="remark" th:field="*{remark}"></textarea>
+							<textarea  name="remark"  id="remark"  th:field="*{remark}"   class="form-control" type="text"></textarea>
 						</div>
 					</div>
 				</div>
@@ -137,7 +185,7 @@
     </div>
 	<th:block th:include="include :: footer" />
 	<script>
-	    var prefix = ctx + "op/fixedasset/structure";
+	var prefix = ctx + "op/fixedasset/pipeline";
 	
         $("#form").validate({
         	onkeyup: false,

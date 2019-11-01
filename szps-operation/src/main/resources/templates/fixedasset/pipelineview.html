@@ -13,7 +13,7 @@
 						<ul>
 							<li>
 		                        <label >单位名称：</label>
-                            	<input name="deptName" onclick="selectDeptTree()" id="treeName" type="text" placeholder="" >
+                            	<input name="deptname" onclick="selectDeptTree()" id="treeName" type="text" placeholder="" >
 							</li>
 							<li>
 		                        <label >管道和沟槽名称：</label>
@@ -30,13 +30,13 @@
 			</div>
 			
 	        <div class="btn-group-sm" id="toolbar" role="group">
-		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:asset:add">
+		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="fixedasset:pipeline:add">
 		            <i class="fa fa-plus"></i> 新增
 		        </a>
-		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="dev:asset:delete">
+		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="fixedasset:pipeline:delete">
 		            <i class="fa fa-remove"></i> 删除
 		        </a>
-		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="dev:asset:export">
+		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="fixedasset:pipeline:export">
 		            <i class="fa fa-download"></i> 导出
 		        </a> -->
 	        </div>
@@ -48,10 +48,10 @@
     </div>
     <th:block th:include="include :: footer" />
     <script th:inline="javascript">
-        var prefix = ctx + "op/dev/asset";
-        var viewFlag = [[${@permission.hasPermi('dev:asset:view')}]];
-        var editFlag = [[${@permission.hasPermi('dev:asset:edit')}]];
-        var removeFlag = [[${@permission.hasPermi('dev:asset:delete')}]];
+        var prefix = ctx + "op/fixedasset/pipeline";
+        var viewFlag = [[${@permission.hasPermi('fixedasset:pipeline:view')}]];
+        var editFlag = [[${@permission.hasPermi('fixedasset:pipeline:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('fixedasset:pipeline:delete')}]];
         
         /*用户管理-新增-选择部门树*/
         function selectDeptTree() {
@@ -69,12 +69,10 @@
 		}
         function doSubmit(index, layero){
 			var tree = layero.find("iframe")[0].contentWindow.$._tree;
-			if ($.tree.notAllowParents(tree)) {
 				var body = layer.getChildFrame('body', index);
     			$("#treeId").val(body.find('#treeId').val());
     			$("#treeName").val(body.find('#treeName').val());
     			layer.close(index);
-			}
 		}
         $(function() {
             var options = {
@@ -83,7 +81,7 @@
                 updateUrl: prefix + "/edit/{id}",
                 removeUrl: prefix + "/remove",
                 
-                modalName: "申请列表",
+                modalName: "固定资产-管道和沟槽",
                 columns: [{
 		            checkbox: true
 		        },
@@ -121,7 +119,7 @@
 		        },
 		        {
 		        	field: 'dhigh',
-		        	title: '沟宽*沟厚(mm2)/管径*壁厚(mm2)',
+		        	title: '沟宽*沟厚(mm<sup>2</sup>)/管径*壁厚(mm<sup>2</sup>)',
 		        },
 		        {
 		        	field : 'material', 

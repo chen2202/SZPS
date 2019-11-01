@@ -12,11 +12,11 @@
 					<div class="select-list">
 						<ul>
 							<li>
-		                        <label >使用部门：</label>
-                            	<input name="deptName" onclick="selectDeptTree()" id="treeName" type="text" placeholder="" >
+		                        <label >单位名称：</label>
+                            	<input name="deptname" onclick="selectDeptTree()" id="treeName" type="text" placeholder="" >
 							</li>
 							<li>
-		                        <label >资产名称：</label>
+		                        <label >设备名称：</label>
                             	<input name="assetName"  id="assetName" type="text" placeholder="" >
 							</li>
 							
@@ -30,13 +30,13 @@
 			</div>
 			
 	        <div class="btn-group-sm" id="toolbar" role="group">
-		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:asset:add">
+		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="fixedasset:officeequipment:add">
 		            <i class="fa fa-plus"></i> 新增
 		        </a>
-		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="dev:asset:delete">
+		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="fixedasset:officeequipment:delete">
 		            <i class="fa fa-remove"></i> 删除
 		        </a>
-		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="dev:asset:export">
+		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="fixedasset:officeequipment:export">
 		            <i class="fa fa-download"></i> 导出
 		        </a> -->
 	        </div>
@@ -48,10 +48,10 @@
     </div>
     <th:block th:include="include :: footer" />
     <script th:inline="javascript">
-        var prefix = ctx + "op/dev/asset";
-        var viewFlag = [[${@permission.hasPermi('dev:asset:view')}]];
-        var editFlag = [[${@permission.hasPermi('dev:asset:edit')}]];
-        var removeFlag = [[${@permission.hasPermi('dev:asset:delete')}]];
+        var prefix = ctx + "op/fixedasset/officeequipment";
+        var viewFlag = [[${@permission.hasPermi('fixedasset:officeequipment:view')}]];
+        var editFlag = [[${@permission.hasPermi('fixedasset:officeequipment:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('fixedasset:officeequipment:delete')}]];
         
         /*用户管理-新增-选择部门树*/
         function selectDeptTree() {
@@ -69,12 +69,10 @@
 		}
         function doSubmit(index, layero){
 			var tree = layero.find("iframe")[0].contentWindow.$._tree;
-			if ($.tree.notAllowParents(tree)) {
 				var body = layer.getChildFrame('body', index);
     			$("#treeId").val(body.find('#treeId').val());
     			$("#treeName").val(body.find('#treeName').val());
     			layer.close(index);
-			}
 		}
         $(function() {
             var options = {
@@ -83,7 +81,7 @@
                 updateUrl: prefix + "/edit/{id}",
                 removeUrl: prefix + "/remove",
                 
-                modalName: "申请列表",
+                modalName: "固定资产-电子办公设备",
                 columns: [{
 		            checkbox: true
 		        },
@@ -98,6 +96,10 @@
 		        {
 		        	field : 'dlocation', 
 		        	title : '所在地点' 
+		        },
+		        {
+		        	field : 'deptname2', 
+		        	title : '所在部门' 
 		        },
 		        
 		        {

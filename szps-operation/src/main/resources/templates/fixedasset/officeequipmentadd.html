@@ -12,7 +12,7 @@
 		        	<div class="form-group">
 						<label class="col-sm-3 control-label ">单位名称：</label>
 						<div class="col-sm-8">
-								<input name="deptname" onclick="selectDeptTree()" type="text" id="treeName" class="form-control" />
+								<input name="deptname" id="treeName" onclick="selectDeptTree()" type="text"  class="form-control" />
 						</div>
 					</div>
 				</div>
@@ -20,7 +20,7 @@
 					<div class="form-group">
 						<label class="col-sm-3 control-label">所在地点：</label>
 						<div class="col-sm-8">
-							<input class="form-control" type="text" name="dlocation" id="dlocation" >
+							<input  name="dlocation" id="dlocation" class="form-control" type="text"  >
 						</div>
 					</div>
 				</div>
@@ -28,90 +28,123 @@
 			<div class="row">
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-3 control-label ">名称：</label>
+						<label class="col-sm-3 control-label ">所在部门：</label>
 						<div class="col-sm-8">
-								<input name="assetname"  type="text" id="assetname" class="form-control" />
+								<input name="deptname2"  id="deptname2"  type="text" class="form-control" />
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label class="col-sm-3 control-label">结构：</label>
+						<label class="col-sm-3 control-label">设备编号：</label>
 						<div class="col-sm-8">
-							<input class="form-control" type="text" name="structure" id="structure" >
+							<input  name="dnumber"  id="dnumber"  class="form-control" type="text" >
 						</div>
 					</div>
 				</div>
+			</div>						
+			<div class="row">
+				<div class="col-sm-6">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">设备名称：</label>
+							<div class="col-sm-8">
+								<input  name="assetname"  id="assetname"  class="form-control" type="text" >
+							</div>
+						</div>
+				</div>
+	        	<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">规格型号：</label>
+						<div class="col-sm-8">
+							<input  name="dtype"  id="dtype"  class="form-control" type="text" >
+						</div>
+					</div>
+				</div>
+				
 			</div>
 			<div class="row">
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-3 control-label ">建成年月：</label>
+						<label class="col-sm-3 control-label ">主要技术参数：</label>
 						<div class="col-sm-8">
-								<input name="builttime"  class="time-input form-control"  type="text" id="builttime"  data-type="date" data-format="yyyy-MM-dd"/>
+								<input name="dparameter"  id="dparameter"  type="text" class="form-control" />
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label class="col-sm-3 control-label">长度/直径（m）：</label>
+						<label class="col-sm-3 control-label">生产厂家：</label>
 						<div class="col-sm-8">
-							<input class="form-control" type="number" name="dlength" id="dlength" >
+							<input  name="manufacturer"  id="manufacturer"  class="form-control" type="text" >
 						</div>
 					</div>
 				</div>
 			</div>
+			
+			
 			<div class="row">
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-3 control-label ">宽度（m）：</label>
+						<label class="col-sm-3 control-label ">计量单位：</label>
 						<div class="col-sm-8">
-								<input name="dwidth"  type="number" id="dwidth" class="form-control" />
+								<input name="measurement"  id="measurement"  type="text" class="form-control" />
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label class="col-sm-3 control-label">高/深度（m）：</label>
+						<label class="col-sm-3 control-label">账面数量：</label>
 						<div class="col-sm-8">
-							<input class="form-control" type="number" name="dhigh" id="dhigh" >
+							<input  name="bookquantity"  id="bookquantity"  class="form-control" type="number" >
 						</div>
 					</div>
 				</div>
 			</div>
+			
 			<div class="row">
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-3 control-label ">数量（座）：</label>
+						<label class="col-sm-3 control-label ">实际数量：</label>
 						<div class="col-sm-8">
-								<input name="howmany"  type="number" id="howmany" class="form-control" />
+								<input name="realquantity"  id="realquantity"  type="number" class="form-control" />
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label class="col-sm-3 control-label">体积（m<sup>3</sup>）：</label>
+						<label class="col-sm-3 control-label">购置日期：</label>
 						<div class="col-sm-8">
-							<input class="form-control" type="number" name="dvolume" id="dvolume" >
+							<input name="purchasedate" id="purchasedate" class="time-input form-control"  type="text"   data-type="date" data-format="yyyy-MM-dd"/>
 						</div>
 					</div>
 				</div>
 			</div>
+			
 			<div class="row">
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label class="col-sm-3 control-label">构筑物现状：</label>
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">启用日期：</label>
 						<div class="col-sm-8">
-							<input class="form-control" type="text" name="dstatus" id="dstatus" >
-						<span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 按正常使用、待报废、闲置、已拆除、待修理等现状填列</span>
+							<input name="introductiondate" id="introductiondate" class="time-input form-control"  type="text"   data-type="date" data-format="yyyy-MM-dd"/>
 						</div>
 					</div>
 				</div>
-	        	<div class="col-sm-6">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">设备现状：</label>
+						<div class="col-sm-8">
+							<input  name="dstatus"  id="dstatus"  class="form-control" type="text" >
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+			<div class="col-sm-6">
 		        	<div class="form-group">
 						<label class="col-sm-3 control-label ">原值（元）：</label>
 						<div class="col-sm-8">
-								<input name="originalvalue"  type="number" id="originalvalue" class="form-control" />
+								<input  name="originalvalue"  id="originalvalue"  type="number"  class="form-control" />
 						</div>
 					</div>
 				</div>
@@ -121,7 +154,7 @@
 					<div class="form-group">
 						<label class="col-sm-3 control-label">备注：</label>
 						<div class="col-sm-8">
-							<textarea class="form-control" type="text" name="remark" id="remark" ></textarea>
+							<textarea  name="remark"  id="remark"   class="form-control" type="text"></textarea>
 						</div>
 					</div>
 				</div>
@@ -136,7 +169,7 @@
     </div>
 	<th:block th:include="include :: footer" />
 	<script>
-	    var prefix = ctx + "op/fixedasset/structure";
+	    var prefix = ctx + "op/fixedasset/officeequipment";
 	
         $("#form").validate({
         	onkeyup: false,

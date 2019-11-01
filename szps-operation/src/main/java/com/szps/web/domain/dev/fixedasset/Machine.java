@@ -12,6 +12,7 @@ public class Machine extends BaseEntity {
 	Long id;
 	Long deptid;
 	String deptname;
+	String deptname2;//所在部门
 	String dlocation;
 	String dnumber;
 	String dlocation2;
@@ -23,8 +24,8 @@ public class Machine extends BaseEntity {
 	String measurement;
 	String bookquantity;
 	String realquantity;
-	Date purchasedate;
-	Date introductiondate;
+	String purchasedate;
+	String introductiondate;
 	String dstatus;
 	String originalvalue;
 
@@ -50,6 +51,14 @@ public class Machine extends BaseEntity {
 
 	public void setDeptname(String deptname) {
 		this.deptname = deptname;
+	}
+
+	public String getDeptname2() {
+		return deptname2;
+	}
+
+	public void setDeptname2(String deptname2) {
+		this.deptname2 = deptname2;
 	}
 
 	public String getDlocation() {
@@ -140,19 +149,19 @@ public class Machine extends BaseEntity {
 		this.realquantity = realquantity;
 	}
 
-	public Date getPurchasedate() {
+	public String getPurchasedate() {
 		return purchasedate;
 	}
 
-	public void setPurchasedate(Date purchasedate) {
+	public void setPurchasedate(String purchasedate) {
 		this.purchasedate = purchasedate;
 	}
 
-	public Date getIntroductiondate() {
+	public String getIntroductiondate() {
 		return introductiondate;
 	}
 
-	public void setIntroductiondate(Date introductiondate) {
+	public void setIntroductiondate(String introductiondate) {
 		this.introductiondate = introductiondate;
 	}
 

@@ -10,6 +10,7 @@ public class Car extends BaseEntity {
 	Long id;
 	Long deptid;
 	String deptname;
+	String deptname2;//所属部门
 	String licenseaccount;
 	String carnumber;
 	String carname;
@@ -46,6 +47,14 @@ public class Car extends BaseEntity {
 
 	public String getDeptname() {
 		return deptname;
+	}
+
+	public String getDeptname2() {
+		return deptname2;
+	}
+
+	public void setDeptname2(String deptname2) {
+		this.deptname2 = deptname2;
 	}
 
 	public void setDeptname(String deptname) {

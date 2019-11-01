@@ -6,6 +6,7 @@
 		<id     property="id"    column="id"    />
 		<result     property="deptid"   column="deptid"   />
 		<result     property="deptname"   column="deptname"   />
+		<result     property="deptname2"   column="deptname2"   />
 		<result     property="dlocation"   column="dlocation"   />
 		<result     property="dnumber"   column="dnumber"   />
 		<result     property="dlocation2"   column="dlocation2"   />
@@ -105,6 +106,7 @@
  		<set>
 			<if test=" deptid != null ">deptid = #{deptid},</if>
 			<if test=" deptname != null and deptname != ''">deptname = #{deptname},</if>
+			<if test=" deptname2 != null and deptname2 != ''">deptname2 = #{deptname2},</if>
 			<if test=" dlocation != null and dlocation != ''">dlocation = #{dlocation},</if>
 			<if test=" dnumber != null and dnumber != ''">dnumber = #{dnumber},</if>
 			<if test=" dlocation2 != null and dlocation2 != ''">dlocation2 = #{dlocation2},</if>
@@ -137,6 +139,7 @@
 			<if test=" id != null and id!= 0">id,</if>
 			<if test=" deptid != null ">deptid,</if>
 			<if test=" deptname != null and  deptname != ''">deptname,</if>
+			<if test=" deptname2 != null and  deptname2 != ''">deptname2,</if>
 			<if test=" dlocation != null and  dlocation != ''">dlocation,</if>
 			<if test=" dnumber != null and  dnumber != ''">dnumber,</if>
 			<if test=" dlocation2 != null and  dlocation2 != ''">dlocation2,</if>
@@ -160,6 +163,7 @@
 			<if test=" id != null and id!= 0">#{id},</if>
 			<if test=" deptid != null ">#{deptid},</if>
 			<if test=" deptname != null and deptname != ''">#{deptname},</if>
+			<if test=" deptname2 != null and deptname2 != ''">#{deptname2},</if>
 			<if test=" dlocation != null and dlocation != ''">#{dlocation},</if>
 			<if test=" dnumber != null and dnumber != ''">#{dnumber},</if>
 			<if test=" dlocation2 != null and dlocation2 != ''">#{dlocation2},</if>

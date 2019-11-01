@@ -6,6 +6,7 @@
 		<id     property="id"    column="id"    />
 		<result     property="deptid"   column="deptid"   />
 		<result     property="deptname"   column="deptname"   />
+		<result     property="deptname2"   column="deptname2"   />
 		<result     property="licenseaccount"   column="licenseaccount"   />
 		<result     property="carnumber"   column="carnumber"   />
 		<result     property="carname"   column="carname"   />
@@ -107,6 +108,7 @@
  		<set>
 			<if test=" deptid != null ">deptid = #{deptid},</if>
 			<if test=" deptname != null and deptname != ''">deptname = #{deptname},</if>
+			<if test=" deptname2 != null and deptname2 != ''">deptname2 = #{deptname2},</if>
 			<if test=" licenseaccount != null and licenseaccount != ''">licenseaccount = #{licenseaccount},</if>
 			<if test=" carnumber != null and carnumber != ''">carnumber = #{carnumber},</if>
 			<if test=" carname != null and carname != ''">carname = #{carname},</if>
@@ -141,6 +143,7 @@
 			<if test=" id != null and id!= 0">id,</if>
 			<if test=" deptid != null and  deptid != ''">deptid,</if>
 			<if test=" deptname != null and  deptname != ''">deptname,</if>
+			<if test=" deptname2 != null and  deptname2 != ''">deptname2,</if>
 			<if test=" licenseaccount != null and  licenseaccount != ''">licenseaccount,</if>
 			<if test=" carnumber != null and  carnumber != ''">carnumber,</if>
 			<if test=" carname != null and  carname != ''">carname,</if>
@@ -166,6 +169,7 @@
 			<if test=" id != null and id!= 0">#{id},</if>
 			<if test=" deptid != null ">#{deptid},</if>
 			<if test=" deptname != null and deptname != ''">#{deptname},</if>
+			<if test=" deptname2 != null and deptname2 != ''">#{deptname2},</if>
 			<if test=" licenseaccount != null and licenseaccount != ''">#{licenseaccount},</if>
 			<if test=" carnumber != null and carnumber != ''">#{carnumber},</if>
 			<if test=" carname != null and carname != ''">#{carname},</if>

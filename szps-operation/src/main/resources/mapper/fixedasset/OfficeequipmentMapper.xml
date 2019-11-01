@@ -6,6 +6,7 @@
 		<id     property="id"    column="id"    />
 		<result     property="deptid"   column="deptid"   />
 		<result     property="deptname"   column="deptname"   />
+		<result     property="deptname2"   column="deptname2"   />
 		<result     property="dlocation"   column="dlocation"   />
 		<result     property="dnumber"   column="dnumber"   />
 		<result     property="assetname"   column="assetname"   />
@@ -29,7 +30,7 @@
 
 	<sql id="selectVo">
         select *
-        from dev_asset_fficeequipment r
+        from dev_asset_officeequipment r
     </sql>	
 	
 	<!-- 查询条件 -->
@@ -89,20 +90,21 @@
 	</select>
 	
     <delete id="deleteById" parameterType="Long">
-		delete from dev_asset_fficeequipment where id = #{id}
+		delete from dev_asset_officeequipment where id = #{id}
 	</delete>
 	 <delete id="deleteByIds" parameterType="Long">
- 		delete from dev_asset_fficeequipment where id in
+ 		delete from dev_asset_officeequipment where id in
  		<foreach collection="array" item="id" open="(" separator="," close=")">
  			#{id}
         </foreach> 
  	</delete>
     
     <update id="update" parameterType="Officeequipment">
- 		update dev_asset_fficeequipment
+ 		update dev_asset_officeequipment
  		<set>
 			<if test=" deptid != null ">deptid = #{deptid},</if>
 			<if test=" deptname != null and deptname != ''">deptname = #{deptname},</if>
+			<if test=" deptname2 != null and deptname2 != ''">deptname2 = #{deptname2},</if>
 			<if test=" dlocation != null and dlocation != ''">dlocation = #{dlocation},</if>
 			<if test=" dnumber != null and dnumber != ''">dnumber = #{dnumber},</if>
 			<if test=" assetname != null and assetname != ''">assetname = #{assetname},</if>
@@ -126,13 +128,14 @@
 	  
     <insert id="insert" parameterType="Officeequipment">
     	 <selectKey keyProperty="id" resultType="long" order="BEFORE">
-			SELECT seq_dev_asset_fficeequipment.NEXTVAL as id FROM DUAL
+			SELECT seq_dev_asset_officeequipment.NEXTVAL as id FROM DUAL
 		</selectKey>
     
-		INSERT INTO dev_asset_fficeequipment(
+		INSERT INTO dev_asset_officeequipment(
 			<if test=" id != null and id!= 0">id,</if>
 			<if test=" deptid != null ">deptid,</if>
 			<if test=" deptname != null and  deptname != ''">deptname,</if>
+			<if test=" deptname2 != null and  deptname2 != ''">deptname2,</if>
 			<if test=" dlocation != null and  dlocation != ''">dlocation,</if>
 			<if test=" dnumber != null and  dnumber != ''">dnumber,</if>
 			<if test=" assetname != null and  assetname != ''">assetname,</if>
@@ -154,6 +157,7 @@
 			<if test=" id != null and id!= 0">#{id},</if>
 			<if test=" deptid != null ">#{deptid},</if>
 			<if test=" deptname != null and deptname != ''">#{deptname},</if>
+			<if test=" deptname2 != null and deptname2 != ''">#{deptname2},</if>
 			<if test=" dlocation != null and dlocation != ''">#{dlocation},</if>
 			<if test=" dnumber != null and dnumber != ''">#{dnumber},</if>
 			<if test=" assetname != null and assetname != ''">#{assetname},</if>

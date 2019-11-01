@@ -1,7 +1,5 @@
 package com.szps.web.domain.dev.fixedasset;
 
-import java.util.Date;
-
 import com.szps.common.core.domain.BaseEntity;
 
 public class Officeequipment extends BaseEntity {
@@ -12,6 +10,7 @@ public class Officeequipment extends BaseEntity {
 	Long id;
 	Long deptid;
 	String deptname;
+	String deptname2;
 	String dlocation;
 	String dnumber;
 	String assetname;
@@ -21,8 +20,8 @@ public class Officeequipment extends BaseEntity {
 	String measurement;
 	String bookquantity;
 	String realquantity;
-	Date purchasedate;
-	Date introductiondate;
+	String purchasedate;
+	String introductiondate;
 	String dstatus;
 	String originalvalue;
 
@@ -48,6 +47,14 @@ public class Officeequipment extends BaseEntity {
 
 	public void setDeptname(String deptname) {
 		this.deptname = deptname;
+	}
+
+	public String getDeptname2() {
+		return deptname2;
+	}
+
+	public void setDeptname2(String deptname2) {
+		this.deptname2 = deptname2;
 	}
 
 	public String getDlocation() {
@@ -122,19 +129,19 @@ public class Officeequipment extends BaseEntity {
 		this.realquantity = realquantity;
 	}
 
-	public Date getPurchasedate() {
+	public String getPurchasedate() {
 		return purchasedate;
 	}
 
-	public void setPurchasedate(Date purchasedate) {
+	public void setPurchasedate(String purchasedate) {
 		this.purchasedate = purchasedate;
 	}
 
-	public Date getIntroductiondate() {
+	public String getIntroductiondate() {
 		return introductiondate;
 	}
 
-	public void setIntroductiondate(Date introductiondate) {
+	public void setIntroductiondate(String introductiondate) {
 		this.introductiondate = introductiondate;
 	}
 

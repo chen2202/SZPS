@@ -1,7 +1,5 @@
 package com.szps.web.domain.dev.fixedasset;
 
-import java.util.Date;
-
 import com.szps.common.core.domain.BaseEntity;
 
 public class Pipeline extends BaseEntity {
@@ -24,7 +22,7 @@ public class Pipeline extends BaseEntity {
 	String layway;
 	String aczoiling;
 	String heatinsulatingmaterial;
-	Date builttime;
+	String builttime;
 	String dstatus;
 	String originalvalue;
 
@@ -148,11 +146,11 @@ public class Pipeline extends BaseEntity {
 		this.heatinsulatingmaterial = heatinsulatingmaterial;
 	}
 
-	public Date getBuilttime() {
+	public String getBuilttime() {
 		return builttime;
 	}
 
-	public void setBuilttime(Date builttime) {
+	public void setBuilttime(String builttime) {
 		this.builttime = builttime;
 	}
 

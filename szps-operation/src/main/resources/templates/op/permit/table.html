@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
-	<th:block th:include="include :: header('待审批任务')" />
+	<th:block th:include="include :: header('各区审批表')" />
 </head>
 <body class="gray-bg">
 <div class="container-div">
@@ -68,20 +68,24 @@
 
     $(function() {
         var options = {
-            url: prefix + "/waiting",
+            url: prefix + "/table",
             createUrl: prefix + "/TaskCheck",
-            updateUrl: prefix + "/edit/{id}",
+            updateUrl: prefix + "/editTable/{id}",
             removeUrl: prefix + "/remove",
             exportUrl: prefix + "/export",
             sortName: "sblsh",
-            modalName: "待审批任务",
+            modalName: "各区审批表",
             columns: [
                 {
                     field: 'sblsh',
                     title: '省级申办流水号',
                     sortable: true
                 },
-                {
+				{
+                    field: 'byzd2',
+                    title: '所属分区'
+				},
+                /*{
                     field: 'sblsh_SHORT',
                     title: '市级统一申办流水号',
                     visible:false
@@ -147,7 +151,7 @@
                     field: 'lxrsj',
                     title: '联系人手机'
 
-                },
+                },*/
                 {
                     title: '操作',
                     align: 'center',

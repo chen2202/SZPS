@@ -95,7 +95,7 @@ public class TaskController extends BaseController {
 
     @PostMapping("/add")
     @ResponseBody
-    public AjaxResult add(String ids)
+    public AjaxResult add(String ids,String c)
     {
         String[] strs = ids.split(",");
         Random random = new Random();
@@ -119,7 +119,7 @@ public class TaskController extends BaseController {
                 ArrayList<String> list = new ArrayList<String>();
                 ArrayList<String> list_for_random = new ArrayList<String>();
                 int max=staff.size();
-                int val=3;
+                int val= Integer.parseInt(c);
                 for(int k=0;k<max;k++){
                     list_for_random.add(staff.get(k).getStaffNumber());
                 }

@@ -39,6 +39,31 @@ public class SpController extends BaseController {
         return prefix+"/waiting";
     }
 
+    @GetMapping("/done")
+    public String dataview1()
+    {
+        return prefix+"/done";
+    }
+
+    @GetMapping("/remind")
+    public String dataview2()
+    {
+        return prefix+"/remind";
+    }
+
+    @GetMapping("/table")
+    public String dataview3()
+    {
+        return prefix+"/table";
+    }
+
+    @GetMapping("/statistic")
+    public String dataview4()
+    {
+        return prefix+"/statistic";
+    }
+
+
 
     @RequiresPermissions("op:permit:waiting")
     @PostMapping("/waiting")
@@ -61,4 +86,79 @@ public class SpController extends BaseController {
         return prefix + "/looking";
     }
 
+    @RequiresPermissions("op:permit:done")
+    @PostMapping("/done")
+    @ResponseBody
+    public TableDataInfo listDone(EX_GDBS_SB exGdbsSb)
+    {
+        startPage();
+        List<EX_GDBS_SB> list = exService.selectTaskAll();
+
+        return getDataTable(list);
+    }
+
+    @GetMapping("/editDone/{sblsh}")
+    public String editDone(@PathVariable("sblsh") String sblsh, ModelMap mmap)
+    {
+
+
+        mmap.put("look", exService.selectById(sblsh));
+
+        return prefix + "/Donelooking";
+    }
+
+
+    @RequiresPermissions("op:permit:remind")
+    @PostMapping("/remind")
+    @ResponseBody
+    public TableDataInfo listRemind(EX_GDBS_SB exGdbsSb)
+    {
+        startPage();
+        List<EX_GDBS_SB> list = exService.selectTaskAll();
+        list.get(0).setBYZD1("2019-11-22");
+        list.get(1).setBYZD1("2020-10-22");
+        list.get(2).setBYZD1("2019-12-25");
+        list.get(3).setBYZD1("2021-11-22");
+        return getDataTable(list);
+    }
+
+
+    @RequiresPermissions("op:permit:table")
+    @PostMapping("/table")
+    @ResponseBody
+    public TableDataInfo listTable(EX_GDBS_SB exGdbsSb)
+    {
+        startPage();
+        List<EX_GDBS_SB> list = exService.selectTaskAll();
+        list.get(0).setBYZD2("南山区");
+        list.get(1).setBYZD2("罗湖区");
+        list.get(2).setBYZD2("福田区");
+        list.get(3).setBYZD2("盐田区");
+        return getDataTable(list);
+    }
+
+    @GetMapping("/editTable/{sblsh}")
+    public String editTable(@PathVariable("sblsh") String sblsh, ModelMap mmap)
+    {
+
+
+        mmap.put("look", exService.selectById(sblsh));
+
+        return prefix + "/Tablelooking";
+    }
+
+
+    @RequiresPermissions("op:permit:statistic")
+    @PostMapping("/statistic")
+    @ResponseBody
+    public TableDataInfo listStatistic(EX_GDBS_SB exGdbsSb)
+    {
+        startPage();
+        List<EX_GDBS_SB> list = exService.selectTaskAll();
+        list.get(0).setBYZD3("测试1");
+        list.get(1).setBYZD3("测试2");
+        list.get(2).setBYZD3("测试3");
+        list.get(3).setBYZD3("测试4");
+        return getDataTable(list);
+    }
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
-	<th:block th:include="include :: header('待审批任务')" />
+	<th:block th:include="include :: header('已审批任务')" />
 </head>
 <body class="gray-bg">
 <div class="container-div">
@@ -63,18 +63,18 @@
 </div>
 <th:block th:include="include :: footer" />
 <script th:inline="javascript">
-    var editFlag = [[${@permission.hasPermi('op:permit:edit')}]];
+    var editFlag = [[${@permission.hasPermi('op:permit:editDone')}]];
     var prefix = ctx + "op/permit";
 
     $(function() {
         var options = {
-            url: prefix + "/waiting",
+            url: prefix + "/done",
             createUrl: prefix + "/TaskCheck",
-            updateUrl: prefix + "/edit/{id}",
+            updateUrl: prefix + "/editDone/{id}",
             removeUrl: prefix + "/remove",
             exportUrl: prefix + "/export",
             sortName: "sblsh",
-            modalName: "待审批任务",
+            modalName: "已审批任务",
             columns: [
                 {
                     field: 'sblsh',

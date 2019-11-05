@@ -10,7 +10,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label">姓名：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="name" id="name" th:field="*{name}" required>
+					<input class="form-control" type="text" name="name" id="name" maxlength="20" th:field="*{name}" required>
 				</div>
 			</div>
 			<div class="form-group">
@@ -57,7 +57,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label">专业：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="profession" id="profession" th:field="*{profession}" required>
+					<input class="form-control" type="text" name="profession" id="profession" maxlength="20" th:field="*{profession}" required>
 				</div>
 			</div>
 			<div class="form-group">
@@ -100,7 +100,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label">资质证书：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="qualification_certificate" id="qualification_certificate" th:field="*{qualification_certificate}" required/>
+					<input class="form-control" type="text" name="qualification_certificate" id="qualification_certificate" maxlength="12" th:field="*{qualification_certificate}" required/>
 				</div>
 			</div>
 		</form>

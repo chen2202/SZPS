@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.szps.web.domain.drainage.Administrative;
 import com.szps.web.service.drainage.AdministrativeService;
 
+/**
+ * 行政区 控制器
+ * @author zxc
+ *
+ */
 @Controller
 @RequestMapping("/drainage") 
 public class AdministrativeController {
-	//private String prefix = "drainage/household"; //前缀路径
-	
 	@Autowired
 	private AdministrativeService administrativeService;
 	

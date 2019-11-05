@@ -2,7 +2,6 @@ package com.szps.web.controller.drainage;
 
 import java.util.List;
 
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,9 +18,13 @@ import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
 import com.szps.web.domain.drainage.Drain;
-import com.szps.web.domain.employee.Project;
 import com.szps.web.service.drainage.DrainService;
 
+/**
+ * 排水口管理 控制器
+ * @author zxc
+ *
+ */
 @Controller
 @RequestMapping("/drainage")
 public class DrainController extends BaseController{

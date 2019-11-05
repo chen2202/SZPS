@@ -2,7 +2,6 @@ package com.szps.web.controller.employee;
 
 import java.util.List;
 
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,7 +21,7 @@ import com.szps.web.domain.employee.Project;
 import com.szps.web.service.employee.ProjectService;
 
 /**
- * 公司的项目信息
+ * 公司的项目信息页面 控制器
  * @author zxc
  */
 @Controller

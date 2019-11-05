@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.szps.web.domain.drainage.Committees;
 import com.szps.web.service.drainage.CommitteesService;
 
+/**
+ * 居委会 控制器
+ * @author zxc
+ *
+ */
 @Controller
 @RequestMapping("/drainage")
 public class CommitteesController {

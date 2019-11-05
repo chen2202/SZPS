@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.szps.web.domain.drainage.Street;
 import com.szps.web.service.drainage.StreetService;
 
+/**
+ * 街道 控制器
+ * @author zxc
+ *
+ */
 @Controller
 @RequestMapping("/drainage")
 public class StreetController {

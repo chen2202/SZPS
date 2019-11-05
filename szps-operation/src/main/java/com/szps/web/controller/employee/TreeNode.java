@@ -1,12 +1,10 @@
 package com.szps.web.controller.employee;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 组织结构图树形json转化节点类
+ * 组织结构图 树的节点类
  * @author zxc
- *
  */
 public class TreeNode {
 	private String id;

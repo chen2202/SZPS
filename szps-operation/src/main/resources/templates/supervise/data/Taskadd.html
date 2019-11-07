@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('新增任务库')" />
+	<th:block th:include="include :: ztree-css" />
+</head>
+<body class="white-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+		<form class="form-horizontal m" id="form-role-add">
+			<div class="form-group">
+				<label class="col-sm-2 control-label ">任务名称：</label>
+				<div class="col-sm-4">
+					<input class="form-control" type="text" name="taskName" id="taskName" maxlength="8" required>
+				</div>
+				<label class="col-sm-2 control-label">行政区：</label>
+				<div class="col-sm-4">
+					<select class="form-control" name="taskRegion">
+						<option value="南山区">南山区</option>
+						<option value="福田区">福田区</option>
+						<option value="盐田区">盐田区</option>
+						<option value="罗湖区">罗湖区</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">街道：</label>
+				<div class="col-sm-4">
+					<select class="form-control" name="taskStreet">
+						<option value="南山街道">南山街道</option>
+						<option value="南头街道">南头街道</option>
+						<option value="西丽街道">西丽街道</option>
+						<option value="沙河街道">沙河街道</option>
+					</select>
+				</div>
+				<label class="col-sm-2 control-label">排水类型：</label>
+				<div class="col-sm-4">
+					<input class="form-control" type="text" name="taskType" id="taskType" maxlength="10" required>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">检查人员编号：</label>
+				<div class="col-sm-4">
+					<input class="form-control" type="text" name="taskStaff" placeholder="添加2名以上检查人员用“,”隔开"  maxlength="30" id="taskStaff" >
+				</div>
+				<label class="col-sm-2 control-label">排水户编号：</label>
+				<div class="col-sm-4">
+					<input class="form-control" type="text" name="taskHouse"  maxlength="11" id="taskHouse" >
+				</div>
+
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label" >任务等级：</label>
+				<div class="col-sm-10">
+					<label class="radio-box" for="g">
+							<input type="radio"  checked="checked" value="高" id="g" name="taskGrade" >
+						高</label>
+					<label class="radio-box" for="z">
+							<input type="radio" value="中" id="z" name="taskGrade"  >
+						中</label>
+					<label class="radio-box" for="d">
+						<input type="radio" value="低" id="d" name="taskGrade">
+						低</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">创建时间：</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control time-input" id="startTime" placeholder="点击弹出日历" name="taskTime" required/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">任务内容：</label>
+				<div class="col-sm-10">
+					<textarea type="text" name="taskConnecting" class="form-control" placeholder="请输入任务内容" required></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+	<th:block th:include="include :: footer" />
+	<th:block th:include="include :: ztree-js" />
+	<script type="text/javascript">
+
+		
+		$("#form-role-add").validate({
+			rules:{
+				onkeyup: false,
+				roleName:{
+					remote: {
+		                url: ctx + "system/role/checkRoleNameUnique",
+		                type: "post",
+		                dataType: "json",
+		                data: {
+		                	"roleName" : function() {
+		                		return $.common.trim($("#roleName").val());
+		                    }
+		                },
+		                dataFilter: function(data, type) {
+		                	return $.validate.unique(data);
+		                }
+		            }
+				},
+				roleKey:{
+					remote: {
+		                url: ctx + "system/role/checkRoleKeyUnique",
+		                type: "post",
+		                dataType: "json",
+		                data: {
+                            "roleKey" : function() {
+                                return $.common.trim($("#roleKey").val());
+                            }
+		                },
+		                dataFilter: function(data, type) {
+		                	return $.validate.unique(data);
+		                }
+		            }
+				},
+				roleSort:{
+					digits:true
+				},
+			},
+			messages: {
+		        "roleName": {
+		            remote: "角色名称已经存在"
+		        },
+		        "roleKey": {
+		            remote: "角色权限已经存在"
+		        }
+		    },
+		    focusCleanup: true
+		});
+		
+		function submitHandler() {
+	        if ($.validate.form()) {
+	        	add();
+	        }
+	    }
+	
+		function add() {
+			var taskName = $("input[name='taskName']").val();
+			var taskRegion = $("select[name='taskRegion']").val();
+			var taskStreet = $("select[name='taskStreet']").val();
+            var taskType = $("input[name='taskType']").val();
+            var taskStaff = $("input[name='taskStaff']").val();
+            var taskHouse = $("input[name='taskHouse']").val();
+            var taskConnecting = $("textarea[name='taskConnecting']").val();
+            var taskGrade = $("input[name='taskGrade']:checked").val();
+            var taskTime = $("input[name='taskTime']").val();
+			$.ajax({
+				cache : true,
+				type : "POST",
+				url : ctx + "supervise/data/add",
+				data : {
+					"taskName": taskName,
+					"taskRegion": taskRegion,
+					"taskStreet": taskStreet,
+					"taskType": taskType,
+                    "taskStaff":taskStaff,
+					"taskHouse":taskHouse,
+					"taskConnecting":taskConnecting,
+					"taskGrade":taskGrade,
+					"taskTime":taskTime
+				},
+				async : false,
+				error : function(request) {
+					$.modal.alertError("系统错误");
+				},
+				success : function(data) {
+					$.operate.successCallback(data);
+				}
+			});
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,447 @@
+-- ---------------------------------------
+-- 排水户模块 5个表数据的重新录入
+-- 世界导入文件即可，自动删除旧表
+-- ---------------------------------------
+
+-- ----------------------------
+-- Table structure for DRAINAGE_T_HOUSEHOLD
+-- ----------------------------
+DROP TABLE "RY"."DRAINAGE_T_HOUSEHOLD";
+CREATE TABLE "RY"."DRAINAGE_T_HOUSEHOLD" (
+"HOUSEHOLD_ID" VARCHAR2(10 CHAR) NOT NULL ,
+"HOUSEHOLD_NAME" VARCHAR2(20 CHAR) NOT NULL ,
+"RECORD_STATE" VARCHAR2(4 CHAR) NOT NULL ,
+"DOORPLATE_DETAIL_ADDRESS" VARCHAR2(35 CHAR) NOT NULL ,
+"LONGITUDE" NUMBER NOT NULL ,
+"LATITUDE" NUMBER NOT NULL ,
+"ADMINISTRATIVE_NAME" VARCHAR2(8 CHAR) NOT NULL ,
+"STREET_NAME" VARCHAR2(10 CHAR) NOT NULL ,
+"COMMITTEES" VARCHAR2(15 CHAR) NOT NULL ,
+"LANE_NAME" VARCHAR2(8 CHAR) NOT NULL ,
+"DOORPLATE_NUMBER" VARCHAR2(8 CHAR) NOT NULL ,
+"HOUSEHOLD_LEVEL" VARCHAR2(3 CHAR) NOT NULL ,
+"PARENT_HOUSEHOLD_NAME" VARCHAR2(20 CHAR) NULL ,
+"LINKMAN" VARCHAR2(4 CHAR) NOT NULL ,
+"TELEPHONE" NUMBER(11) NOT NULL ,
+"COVER_AREA" NUMBER(4) NOT NULL ,
+"WATER_METER_ID" VARCHAR2(25 CHAR) NOT NULL ,
+"SEWAGE_CATEGORY" VARCHAR2(10 CHAR) NOT NULL ,
+"UNIT_TYPE" VARCHAR2(6 CHAR) NOT NULL ,
+"OTHER_UNIT_TYPE" VARCHAR2(8 CHAR) NULL ,
+"INDUSTRIAL_WATER_COMPOSITION" VARCHAR2(15 CHAR) NULL ,
+"OTHER_COMPOSITION" VARCHAR2(10 CHAR) NULL ,
+"WATER_DIVERSION" VARCHAR2(2 CHAR) NULL ,
+"BUSINESS_LICENSE" VARCHAR2(2 CHAR) NOT NULL ,
+"SOCIAL_CREDIT_ID" VARCHAR2(20 CHAR) NULL ,
+"DRAINAGE_LICENSE" VARCHAR2(2 CHAR) NOT NULL ,
+"DRAINAGE_LICENSE_NUMBER" VARCHAR2(15 CHAR) NULL ,
+"DRAINAGE_LICENSE_BEGIN_TIME" DATE NULL ,
+"DRAINAGE_LICENSE_END_TIME" DATE NULL ,
+"SEWAGE_LICENSE" VARCHAR2(2 CHAR) NOT NULL ,
+"SEWAGE_LICENSE_NUMBER" VARCHAR2(15 CHAR) NULL ,
+"SEWAGE_LICENSE_BEGIN_TIME" DATE NULL ,
+"SEWAGE_LICENSE_END_TIME" DATE NULL ,
+"NOTE" VARCHAR2(25 CHAR) NOT NULL ,
+"REGISTRATION_TIME" DATE NOT NULL ,
+"REGISTRATION_PERSON" VARCHAR2(4 CHAR) NOT NULL ,
+"UPDATE_TIME" DATE NOT NULL ,
+"UPDATE_PERSON" VARCHAR2(4 CHAR) NOT NULL 
+)
+LOGGING
+NOCOMPRESS
+NOCACHE
+
+;
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."HOUSEHOLD_ID" IS '排水户编号';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."HOUSEHOLD_NAME" IS '排水户名称';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."RECORD_STATE" IS '记录状态';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."DOORPLATE_DETAIL_ADDRESS" IS '门牌详细地址';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."LONGITUDE" IS '经度';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."LATITUDE" IS '纬度';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."ADMINISTRATIVE_NAME" IS '行政区名';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."STREET_NAME" IS '街道名';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."COMMITTEES" IS '居委会';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."LANE_NAME" IS '街路巷名';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."DOORPLATE_NUMBER" IS '门牌号码';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."HOUSEHOLD_LEVEL" IS '排水户级别';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."PARENT_HOUSEHOLD_NAME" IS '上级排水户';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."LINKMAN" IS '联系人';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."TELEPHONE" IS '联系电话';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."COVER_AREA" IS '占地面积 /㎡';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."WATER_METER_ID" IS '水表编号';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."SEWAGE_CATEGORY" IS '污水类别';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."UNIT_TYPE" IS '单位类型';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."OTHER_UNIT_TYPE" IS '其他单位类型';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."INDUSTRIAL_WATER_COMPOSITION" IS '工业废水主要成分';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."OTHER_COMPOSITION" IS '其他成分';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."WATER_DIVERSION" IS '内部废、污、雨是否分流';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."BUSINESS_LICENSE" IS '是否取得营业执照';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."SOCIAL_CREDIT_ID" IS '统一社会信用代码';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."DRAINAGE_LICENSE" IS '是否取得排水许可证';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."DRAINAGE_LICENSE_NUMBER" IS '排水许可证号';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."DRAINAGE_LICENSE_BEGIN_TIME" IS '排水许可证开始日期';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."DRAINAGE_LICENSE_END_TIME" IS '排水许可证结束日期';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."SEWAGE_LICENSE" IS '是否取得排污许可证';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."SEWAGE_LICENSE_NUMBER" IS '排污许可证号';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."SEWAGE_LICENSE_BEGIN_TIME" IS '排污许可证开始日期';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."SEWAGE_LICENSE_END_TIME" IS '排污许可证结束日期';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."NOTE" IS '备注';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."REGISTRATION_TIME" IS '登记时间';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."REGISTRATION_PERSON" IS '登记人';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."UPDATE_TIME" IS '最新修改时间';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_HOUSEHOLD"."UPDATE_PERSON" IS '上一修改人';
+
+-- ----------------------------
+-- Records of DRAINAGE_T_HOUSEHOLD
+-- ----------------------------
+INSERT INTO "RY"."DRAINAGE_T_HOUSEHOLD" VALUES ('gmsqpsh', '光明社区排水户', '已审核', '光明区光明街道办事处光明社区工作站', '234.214675', '-122.123454', '光明区', '光明街道办事处', '光明社区工作站', '光明巷', '1号', '一级', null, 'xxx', '999999999', '2', 'gmsq1|gmsq2', '生活排污类', '生活', null, null, null, '是', '是', 'xxxxxxxx234', '是', '23534534545', TO_DATE('2019-10-03 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-10-07 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '否', null, null, null, '光明社区的全部生活污水排出口', TO_DATE('2019-10-17 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'xxx', TO_DATE('2019-10-04 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'xxx');
+INSERT INTO "RY"."DRAINAGE_T_HOUSEHOLD" VALUES ('a', 'aaaa', '待修改', 'aaaaaaaaaaaaaaaaaaaaaa', '-123.222778', '-12.334456', '光明区', '凤凰街道办事处', '塘尾社区工作站', 'aa', '2a', '二级', 'b', 'a', '12234234', '1', 'a1', '生活排污类', '其他', '雨水', '水s', '水', '是', '否', 'asdf', '是', '123455334434', TO_DATE('2019-10-19 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-10-18 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '是', 'sdf', TO_DATE('2019-10-05 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-10-23 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'sdf', TO_DATE('2019-10-05 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'zzz', TO_DATE('2019-10-09 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'df12');
+INSERT INTO "RY"."DRAINAGE_T_HOUSEHOLD" VALUES ('btjd', 'bt', '待审核', 'w', '234', '43', '龙岗区', '坂田街道办事处', '大发埔社区里石排居委会', '12', '3', '二级', null, 'sdf', '23451', '1', 'sd', '有毒有害排污类', '其他', null, null, null, '否', '是', null, '否', null, TO_DATE('2019-10-17 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-10-06 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '否', '34', null, null, 'erw', TO_DATE('2019-10-11 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '郑整整', TO_DATE('2019-10-09 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '归海一二');
+INSERT INTO "RY"."DRAINAGE_T_HOUSEHOLD" VALUES ('nsjd', '234', '待审核', '34', '3', '4', '南山区', '南山街道办事处', '南光社区工作站', '3', '3', '3', null, '3', '3', '1', '3', '有毒有害排污类', '工业', null, null, null, '否', '是', null, '否', null, TO_DATE('2019-07-02 08:27:53', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-07-28 08:27:59', 'YYYY-MM-DD HH24:MI:SS'), '否', null, null, null, 'we', TO_DATE('2019-10-03 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '3', TO_DATE('2019-10-17 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '3');
+INSERT INTO "RY"."DRAINAGE_T_HOUSEHOLD" VALUES ('sdf', '34', '待审核', '3', '23', '3', '福田区', '华富街道办事处', '田面社区工作站', '23', '4', 's', null, 'er', '466', '1', '3', '沉淀物排污类', '工业', null, null, null, '是', '是', null, '是', null, null, null, '否', null, null, null, '3', TO_DATE('2019-10-19 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '4', TO_DATE('2019-10-12 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '4');
+INSERT INTO "RY"."DRAINAGE_T_HOUSEHOLD" VALUES ('s', 'aaa120', '待修改', 'sdf', '405', '5', '深汕合作区', '赤石镇', '园林社区居民委员会', '23', '2', '4', null, '24', '24', '24', '24', '沉淀物排污类', '工业', null, null, null, '否', '是', null, '否', null, null, null, '是', null, null, null, '2', TO_DATE('2019-10-12 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '24', TO_DATE('2019-10-11 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'we');
+INSERT INTO "RY"."DRAINAGE_T_HOUSEHOLD" VALUES ('jztsqpsh', '甲子塘社区排水户', '已审核', '光明区凤凰街道办事处甲子塘社区工作站', '23.675576', '234.333567', '光明区', '凤凰街道办事处', '甲子塘社区工作站', '甲子塘巷', '3号', '一级', null, '郑某', '2343454556', '3', 'jztsq1|jztsq2', '有毒有害排污类', '其他', '污染物', '铜，铬，铅，镍，砷，其他', '重铬酸钾', '是', '否', null, '否', null, null, null, '否', null, null, null, '无', TO_DATE('2019-10-26 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '张xx', TO_DATE('2019-10-26 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '张xx');
+INSERT INTO "RY"."DRAINAGE_T_HOUSEHOLD" VALUES ('lhmj', '龙华民治排水户', '待审核', '龙华区民治街道办事处丰润社区居委会', '12.331234', '-234.344563', '龙华区', '民治街道办事处', '丰润社区居委会', '无', '1号', '二级', 'xxx', 'zxc', '1230495', '1', 'lhmz1|lhmz2|lhmz3', '生活排污类', '生活', null, null, null, '是', '是', '3423523436', '否', null, null, null, '是', '345345145', TO_DATE('2019-10-11 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-10-05 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '无', TO_DATE('2019-10-25 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'zxc', TO_DATE('2019-10-16 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'zxc');
+INSERT INTO "RY"."DRAINAGE_T_HOUSEHOLD" VALUES ('qhkf', 'xx', '已审核', 'xxxxxxxx', '342.3330', '44.3220', '前海开发区', '前海合作区', '前海合作区虚拟社区', 'a', 'aa', 'a', null, 'zxc', '234345', '1', 'ad', '有毒有害排污类', '工业', null, null, null, '是', '否', null, '否', null, null, null, '否', null, null, null, 'w', TO_DATE('2019-10-18 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'w', TO_DATE('2019-10-11 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'w');
+INSERT INTO "RY"."DRAINAGE_T_HOUSEHOLD" VALUES ('ns', 'asdf', '已审核', 'sdf', '234', '234', '南山区', '南头街道办事处', '南头城社区工作站', '1', '1', '2', null, '23', '4324', '1', '345', '有毒有害排污类', '工业', null, null, null, '是', '是', null, '是', null, null, null, '否', null, null, null, 'wer', TO_DATE('2019-10-25 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'wer', TO_DATE('2019-10-06 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'er');
+INSERT INTO "RY"."DRAINAGE_T_HOUSEHOLD" VALUES ('dxjd', 'wewe', '待审核', 're', '23', '43', '罗湖区', '东晓街道办事处', '木棉岭社区工作站', '23', '434', '二级', '234', '324', '423', '1', '234', '沉淀物排污类', '工业', '23', '43', '34', '是', '是', 'werwet', '是', '34234', TO_DATE('2019-10-12 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-10-08 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '是', '234234', TO_DATE('2019-10-18 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-10-14 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'wer', TO_DATE('2019-10-17 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'wer', TO_DATE('2019-10-06 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'iuio');
+INSERT INTO "RY"."DRAINAGE_T_HOUSEHOLD" VALUES ('xqjd', 'sdf', '待审核', 'aaaaaasss', '234', '543', '宝安区', '新桥街道办事处', '万丰社区', '1', '23', '234', null, '34', '234', '1', '234', '沉淀物排污类', '工业', '23', '5', '34', '是', '否', null, '否', null, null, null, '否', null, null, null, '23', TO_DATE('2019-10-05 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '34', TO_DATE('2019-10-07 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '34');
+INSERT INTO "RY"."DRAINAGE_T_HOUSEHOLD" VALUES ('sd', '2', '待修改', '2', '2', '2', '深汕合作区', '赤石镇', '园林社区居民委员会', '2', '2', '2', null, '2', '2', '2', '2', '沉淀物排污类', '生活', null, null, null, '是', '是', null, '否', null, TO_DATE('2019-10-06 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-10-02 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '否', null, null, null, '23', TO_DATE('2019-10-19 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '2', TO_DATE('2019-10-14 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '2');
+INSERT INTO "RY"."DRAINAGE_T_HOUSEHOLD" VALUES ('wer', 'wer', '待审核', 'er', '23', '4', '坪山区', '坪山街道办事处', '六联社区居委会', '0', '9', '9', null, '9', '9', '9', '9', '沉淀物排污类', '工业', null, null, null, '是', '否', null, '是', null, null, null, '否', null, null, null, '9', TO_DATE('2019-10-05 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '9', TO_DATE('2019-10-15 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '9');
+INSERT INTO "RY"."DRAINAGE_T_HOUSEHOLD" VALUES ('aa', 'q', '待修改', '4', '23', '43', '宝安区', '松岗街道办事处', '潭头社区', '23', '5', '34', null, '2', '2', '6', 'er', '沉淀物排污类', '其他', null, null, null, '是', '否', null, '是', null, TO_DATE('2019-10-18 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), null, '否', null, null, null, 'er', TO_DATE('2019-10-13 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'erw', TO_DATE('2019-10-18 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'wer');
+INSERT INTO "RY"."DRAINAGE_T_HOUSEHOLD" VALUES ('sdfsdf', 'df', '待修改', '234', '23', '4', '盐田区', '梅沙街道办事处', '东海岸居委会', '3', '3', '3', null, '2', '32', '1', '3', '沉淀物排污类', '工业', null, null, null, '否', '否', null, '是', null, null, null, '否', null, null, null, '234', TO_DATE('2019-10-19 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '234', TO_DATE('2019-10-10 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'wer');
+INSERT INTO "RY"."DRAINAGE_T_HOUSEHOLD" VALUES ('sdfw', '23', '待修改', '23', '242', '24', '坪山区', '坪山街道办事处', '六联社区居委会', '3', '234', '23', null, '12', '343', '1', '123', '有毒有害排污类', '工业', null, null, null, '是', '是', null, '是', null, null, null, '是', null, null, null, '1111', TO_DATE('2019-10-18 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '3423', TO_DATE('2019-10-12 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '324');
+INSERT INTO "RY"."DRAINAGE_T_HOUSEHOLD" VALUES ('w', 'w', '待修改', 'w', '4', '4', '大鹏新区', '大鹏办事处', '王母社区居委会', '3', '3', '3', '3', '3', '3', '3', '3', '沉淀物排污类', '工业', null, null, null, '是', '是', null, '否', null, null, null, '是', null, null, null, '3', TO_DATE('2019-10-03 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 's', TO_DATE('2019-10-17 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'f');
+INSERT INTO "RY"."DRAINAGE_T_HOUSEHOLD" VALUES ('we', 'r', '待修改', 'er', '77', '8', '宝安区', '新安街道办事处', '安乐社区', 'u', 'o', 'i', null, 'u', '789', '8', '9', '沉淀物排污类', '生活', null, null, null, '否', '是', null, '否', null, null, null, '是', null, null, null, '90', TO_DATE('2019-10-19 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '90', TO_DATE('2019-10-12 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '90');
+INSERT INTO "RY"."DRAINAGE_T_HOUSEHOLD" VALUES ('gmbh', '光明区白花社区排水户', '待修改', 'aaaaaa', '-23.334578', '495.409567', '光明区', '光明街道办事处', '白花社区工作站', '无', '1号', '一级', null, '啊哈', '12309567', '2', 'gmbh1|gmbh2|gmbh3', '餐饮排污类', '其他', '餐饮排污类', null, null, '是', '否', null, '否', null, null, null, '否', null, null, null, '无', TO_DATE('2019-10-31 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'zxc', TO_DATE('2019-10-31 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'zxc');
+INSERT INTO "RY"."DRAINAGE_T_HOUSEHOLD" VALUES ('dzsqpsh', '东周社区排水户', '待提交', '光明区光明街道办事处东周社区工作站', '123.124456', '212.112223', '光明区', '光明街道办事处', '东周社区工作站', '东周巷', '22号', '一级', null, '郑某', '18833345924', '5', 'dzsq1|dzsq2|dzsq3', '生活排污类', '其他', null, '铜, 铬, 铅, 镍, 砷', null, '是', '是', '1234562374', '是', '1243235343', TO_DATE('2019-10-24 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-10-02 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '是', '646234646465', TO_DATE('2019-10-15 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2019-10-28 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '无', TO_DATE('2019-10-08 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '郑xc', TO_DATE('2019-10-25 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '赵xx');
+
+-- ----------------------------
+-- Indexes structure for table DRAINAGE_T_HOUSEHOLD
+-- ----------------------------
+
+-- ----------------------------
+-- Checks structure for table DRAINAGE_T_HOUSEHOLD
+-- ----------------------------
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("HOUSEHOLD_ID" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("HOUSEHOLD_NAME" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("RECORD_STATE" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("DOORPLATE_DETAIL_ADDRESS" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("LONGITUDE" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("LATITUDE" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("ADMINISTRATIVE_NAME" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("STREET_NAME" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("COMMITTEES" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("LANE_NAME" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("DOORPLATE_NUMBER" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("HOUSEHOLD_LEVEL" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("LINKMAN" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("TELEPHONE" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("COVER_AREA" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("WATER_METER_ID" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("SEWAGE_CATEGORY" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("UNIT_TYPE" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("BUSINESS_LICENSE" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("DRAINAGE_LICENSE" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("SEWAGE_LICENSE" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("NOTE" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("REGISTRATION_TIME" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("REGISTRATION_PERSON" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("UPDATE_TIME" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD CHECK ("UPDATE_PERSON" IS NOT NULL);
+
+-- ----------------------------
+-- Primary Key structure for table DRAINAGE_T_HOUSEHOLD
+-- ----------------------------
+ALTER TABLE "RY"."DRAINAGE_T_HOUSEHOLD" ADD PRIMARY KEY ("HOUSEHOLD_ID");
+
+
+
+
+-- ----------------------------
+-- Table structure for DRAINAGE_T_DRAIN
+-- ----------------------------
+DROP TABLE "RY"."DRAINAGE_T_DRAIN";
+CREATE TABLE "RY"."DRAINAGE_T_DRAIN" (
+"HOUSEHOLD_ID" VARCHAR2(10 CHAR) NOT NULL ,
+"DRAIN_TYPE" VARCHAR2(8 CHAR) NOT NULL ,
+"DRAIN_ID" VARCHAR2(10 CHAR) NOT NULL ,
+"PRETREATMENT_FACILITY" VARCHAR2(15 CHAR) NULL ,
+"OTHER_PRETREATMENT_FACILITY" VARCHAR2(15 CHAR) NULL ,
+"PRETREATMENT_FACILITY_NUMBER" NUMBER(2) NOT NULL ,
+"PRETREATMENT_FACILITY_NOTE" VARCHAR2(20 CHAR) NULL ,
+"MONITORING_FACILITY" VARCHAR2(2 CHAR) NOT NULL ,
+"WATER_TO" VARCHAR2(10 CHAR) NOT NULL ,
+"WATER_NAME" VARCHAR2(10 CHAR) NOT NULL ,
+"OTHER_NOTE" VARCHAR2(20 CHAR) NOT NULL 
+)
+LOGGING
+NOCOMPRESS
+NOCACHE
+
+;
+COMMENT ON COLUMN "RY"."DRAINAGE_T_DRAIN"."HOUSEHOLD_ID" IS '排水户编号';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_DRAIN"."DRAIN_TYPE" IS '排水口类型';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_DRAIN"."DRAIN_ID" IS '排水口编码/位置';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_DRAIN"."PRETREATMENT_FACILITY" IS '预处理设施列表';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_DRAIN"."OTHER_PRETREATMENT_FACILITY" IS '其他预处理设施';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_DRAIN"."PRETREATMENT_FACILITY_NUMBER" IS '预处理设施数量';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_DRAIN"."PRETREATMENT_FACILITY_NOTE" IS '预处理设施相关备注';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_DRAIN"."MONITORING_FACILITY" IS '是否安装监测设备';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_DRAIN"."WATER_TO" IS '排水去向';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_DRAIN"."WATER_NAME" IS '水体名称';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_DRAIN"."OTHER_NOTE" IS '其他备注';
+
+-- ----------------------------
+-- Records of DRAINAGE_T_DRAIN
+-- ----------------------------
+INSERT INTO "RY"."DRAINAGE_T_DRAIN" VALUES ('a', '雨水排污口', 'ays3', null, null, '0', null, '是', '河流', '雨水', 'aad');
+INSERT INTO "RY"."DRAINAGE_T_DRAIN" VALUES ('a', '雨水排污口', 'ays', null, null, '0', null, '是', '河流', '雨水', '无');
+INSERT INTO "RY"."DRAINAGE_T_DRAIN" VALUES ('a', '雨水排污口', 'ays2', null, null, '0', null, '是', '河流', '雨水', 'aa');
+INSERT INTO "RY"."DRAINAGE_T_DRAIN" VALUES ('gmsqpsh', '雨水', 'gmsqys', null, null, '0', null, '是', '河流', '雨水', '光明社区排水口');
+INSERT INTO "RY"."DRAINAGE_T_DRAIN" VALUES ('dzsqpsh', '雨水排污口', 'dzsqpsk1', null, null, '0', null, '是', '河流', '雨', '无');
+INSERT INTO "RY"."DRAINAGE_T_DRAIN" VALUES ('a', '工业废水排污口', 'ays4', '过滤器，沉淀池', null, '2', '有两个预处理设备', '是', '废水处理厂', '工业废水', '无');
+INSERT INTO "RY"."DRAINAGE_T_DRAIN" VALUES ('jztsqpsh', '生活污水排污口', 'jztsqpsk1', '过滤器', '无', '1', '无', '是', '废水处理厂', '生活污水', '无');
+
+-- ----------------------------
+-- Checks structure for table DRAINAGE_T_DRAIN
+-- ----------------------------
+ALTER TABLE "RY"."DRAINAGE_T_DRAIN" ADD CHECK ("HOUSEHOLD_ID" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_DRAIN" ADD CHECK ("DRAIN_TYPE" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_DRAIN" ADD CHECK ("DRAIN_ID" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_DRAIN" ADD CHECK ("MONITORING_FACILITY" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_DRAIN" ADD CHECK ("WATER_TO" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_DRAIN" ADD CHECK ("WATER_NAME" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_DRAIN" ADD CHECK ("OTHER_NOTE" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_DRAIN" ADD CHECK ("PRETREATMENT_FACILITY_NUMBER" IS NOT NULL);
+
+
+
+
+
+
+-- ----------------------------
+-- Table structure for DRAINAGE_T_ADMINISTRATIVE
+-- ----------------------------
+DROP TABLE "RY"."DRAINAGE_T_ADMINISTRATIVE";
+CREATE TABLE "RY"."DRAINAGE_T_ADMINISTRATIVE" (
+"ADMINISTRATIVE_NAME" VARCHAR2(8 CHAR) NOT NULL 
+)
+LOGGING
+NOCOMPRESS
+NOCACHE
+
+;
+COMMENT ON COLUMN "RY"."DRAINAGE_T_ADMINISTRATIVE"."ADMINISTRATIVE_NAME" IS '行政区';
+
+-- ----------------------------
+-- Records of DRAINAGE_T_ADMINISTRATIVE
+-- ----------------------------
+INSERT INTO "RY"."DRAINAGE_T_ADMINISTRATIVE" VALUES ('光明区');
+INSERT INTO "RY"."DRAINAGE_T_ADMINISTRATIVE" VALUES ('前海开发区');
+INSERT INTO "RY"."DRAINAGE_T_ADMINISTRATIVE" VALUES ('南山区');
+INSERT INTO "RY"."DRAINAGE_T_ADMINISTRATIVE" VALUES ('坪山区');
+INSERT INTO "RY"."DRAINAGE_T_ADMINISTRATIVE" VALUES ('大鹏新区');
+INSERT INTO "RY"."DRAINAGE_T_ADMINISTRATIVE" VALUES ('宝安区');
+INSERT INTO "RY"."DRAINAGE_T_ADMINISTRATIVE" VALUES ('深汕合作区');
+INSERT INTO "RY"."DRAINAGE_T_ADMINISTRATIVE" VALUES ('盐田区');
+INSERT INTO "RY"."DRAINAGE_T_ADMINISTRATIVE" VALUES ('福田区');
+INSERT INTO "RY"."DRAINAGE_T_ADMINISTRATIVE" VALUES ('罗湖区');
+INSERT INTO "RY"."DRAINAGE_T_ADMINISTRATIVE" VALUES ('龙华区');
+INSERT INTO "RY"."DRAINAGE_T_ADMINISTRATIVE" VALUES ('龙岗区');
+
+-- ----------------------------
+-- Checks structure for table DRAINAGE_T_ADMINISTRATIVE
+-- ----------------------------
+ALTER TABLE "RY"."DRAINAGE_T_ADMINISTRATIVE" ADD CHECK ("ADMINISTRATIVE_NAME" IS NOT NULL);
+
+
+
+
+
+
+-- ----------------------------
+-- Table structure for DRAINAGE_T_STREET
+-- ----------------------------
+DROP TABLE "RY"."DRAINAGE_T_STREET";
+CREATE TABLE "RY"."DRAINAGE_T_STREET" (
+"ADMINISTRATIVE_NAME" VARCHAR2(8 CHAR) NOT NULL ,
+"STREET_NAME" VARCHAR2(10 CHAR) NOT NULL 
+)
+LOGGING
+NOCOMPRESS
+NOCACHE
+
+;
+COMMENT ON COLUMN "RY"."DRAINAGE_T_STREET"."ADMINISTRATIVE_NAME" IS '行政区';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_STREET"."STREET_NAME" IS '街道名';
+
+-- ----------------------------
+-- Records of DRAINAGE_T_STREET
+-- ----------------------------
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('光明区', '光明街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('光明区', '公明街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('光明区', '凤凰街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('光明区', '新湖街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('光明区', '玉塘街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('光明区', '马田街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('前海开发区', '前海合作区');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('南山区', '南头街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('南山区', '南山街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('南山区', '招商街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('南山区', '桃源街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('南山区', '沙河街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('南山区', '粤海街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('南山区', '蛇口街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('南山区', '西丽街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('坪山区', '坑梓街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('坪山区', '坪山街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('坪山区', '深圳市大工业区');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('坪山区', '石井街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('坪山区', '碧岭街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('坪山区', '马峦街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('坪山区', '龙田街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('大鹏新区', '南澳办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('大鹏新区', '大鹏办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('大鹏新区', '葵涌办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('宝安区', '新安街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('宝安区', '新桥街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('宝安区', '松岗街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('宝安区', '沙井街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('宝安区', '燕罗街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('宝安区', '石岩街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('宝安区', '福永街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('宝安区', '福海街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('宝安区', '航城街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('宝安区', '西乡街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('深汕合作区', '小漠镇');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('深汕合作区', '赤石镇');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('深汕合作区', '鮜门镇');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('深汕合作区', '鹅埠镇');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('盐田区', '中英街管理局');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('盐田区', '梅沙街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('盐田区', '沙头角街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('盐田区', '海山街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('盐田区', '盐田街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('福田区', '华富街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('福田区', '华强北街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('福田区', '南园街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('福田区', '园岭街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('福田区', '梅林街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('福田区', '沙头街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('福田区', '福保街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('福田区', '福田街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('福田区', '莲花街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('福田区', '香蜜湖街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('罗湖区', '东晓街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('罗湖区', '东湖街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('罗湖区', '东门街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('罗湖区', '南湖街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('罗湖区', '桂园街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('罗湖区', '清水河街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('罗湖区', '笋岗街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('罗湖区', '翠竹街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('罗湖区', '莲塘街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('罗湖区', '黄贝街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('龙华区', '大浪街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('龙华区', '民治街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('龙华区', '福城街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('龙华区', '观湖街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('龙华区', '观澜街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('龙华区', '龙华街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('龙岗区', '南湾街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('龙岗区', '吉华街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('龙岗区', '园山街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('龙岗区', '坂田街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('龙岗区', '坪地街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('龙岗区', '宝龙街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('龙岗区', '布吉街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('龙岗区', '平湖街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('龙岗区', '横岗街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('龙岗区', '龙城街道办事处');
+INSERT INTO "RY"."DRAINAGE_T_STREET" VALUES ('龙岗区', '龙岗街道办事处');
+
+-- ----------------------------
+-- Checks structure for table DRAINAGE_T_STREET
+-- ----------------------------
+ALTER TABLE "RY"."DRAINAGE_T_STREET" ADD CHECK ("STREET_NAME" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_STREET" ADD CHECK ("ADMINISTRATIVE_NAME" IS NOT NULL);
+
+
+
+
+
+
+
+
+-- ----------------------------
+-- Table structure for DRAINAGE_T_COMMITTEES
+-- ----------------------------
+DROP TABLE "RY"."DRAINAGE_T_COMMITTEES";
+CREATE TABLE "RY"."DRAINAGE_T_COMMITTEES" (
+"STREET_NAME" VARCHAR2(10 CHAR) NOT NULL ,
+"COMMITTEES" VARCHAR2(15 CHAR) NOT NULL 
+)
+LOGGING
+NOCOMPRESS
+NOCACHE
+
+;
+COMMENT ON COLUMN "RY"."DRAINAGE_T_COMMITTEES"."STREET_NAME" IS '街道名';
+COMMENT ON COLUMN "RY"."DRAINAGE_T_COMMITTEES"."COMMITTEES" IS '居委会';
+
+-- ----------------------------
+-- Records of DRAINAGE_T_COMMITTEES
+-- ----------------------------
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('光明街道办事处', '东周社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('光明街道办事处', '光明社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('光明街道办事处', '白花社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('光明街道办事处', '碧眼社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('光明街道办事处', '翠湖社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('光明街道办事处', '迳口社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('公明街道办事处', '上村社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('公明街道办事处', '下村社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('公明街道办事处', '公明社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('公明街道办事处', '李松蓢社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('公明街道办事处', '西田社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('凤凰街道办事处', '东坑社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('凤凰街道办事处', '凤凰社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('凤凰街道办事处', '塘家社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('凤凰街道办事处', '塘尾社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('凤凰街道办事处', '甲子塘社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('新湖街道办事处', '新羌社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('玉塘街道办事处', '田寮社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('马田街道办事处', '大围社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('前海合作区', '前海合作区虚拟社区');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('南头街道办事处', '南头城社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('南山街道办事处', '南光社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('招商街道办事处', '四海社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('桃源街道办事处', '平山社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('沙河街道办事处', '中新社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('粤海街道办事处', '南油社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('蛇口街道办事处', '南水社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('西丽街道办事处', '丽湖社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('坑梓街道办事处', '沙田社区居委会');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('坪山街道办事处', '六联社区居委会');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('深圳市大工业区', '深圳市大工业区虚拟社区');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('石井街道办事处', '田心社区居委会');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('南澳办事处', '南隆社区居委会');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('大鹏办事处', '王母社区居委会');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('新安街道办事处', '安乐社区');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('新桥街道办事处', '万丰社区');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('松岗街道办事处', '潭头社区');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('赤石镇', '园林社区居民委员会');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('梅沙街道办事处', '东海岸居委会');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('华富街道办事处', '田面社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('华强北街道办事处', '福强社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('东晓街道办事处', '木棉岭社区工作站');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('大浪街道办事处', '上早社区居委会');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('民治街道办事处', '丰润社区居委会');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('南湾街道办事处', '康乐社区居委会');
+INSERT INTO "RY"."DRAINAGE_T_COMMITTEES" VALUES ('坂田街道办事处', '大发埔社区里石排居委会');
+
+-- ----------------------------
+-- Checks structure for table DRAINAGE_T_COMMITTEES
+-- ----------------------------
+ALTER TABLE "RY"."DRAINAGE_T_COMMITTEES" ADD CHECK ("COMMITTEES" IS NOT NULL);
+ALTER TABLE "RY"."DRAINAGE_T_COMMITTEES" ADD CHECK ("STREET_NAME" IS NOT NULL);

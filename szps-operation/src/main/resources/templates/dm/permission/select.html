@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:include="include :: header('资料数据权限申请')" />
+</head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-role-edit" th:object="${data}">
+        <input id="dataId" name="dataId" type="hidden" th:field="*{dataId}"/>
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">主题：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="dataTheme" id="dataTheme" th:field="*{dataTheme}" readonly="true"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">权限：</label>
+            <div class="col-sm-8">
+                <input type="checkbox" name="permission" id="perView"/>查看
+                <input type="checkbox" name="permission" id="perDownload"/>下载
+            </div>
+        </div>
+    </form>
+</div>
+<th:block th:include="include :: footer" />
+<script type="text/javascript">
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            edit();
+        }
+    }
+
+    function edit() {
+        var dataId = $("input[name='dataId']").val();
+        var perView =$("#perView").prop("checked")?"1":"0";
+        var perDownload = $("#perDownload").prop("checked")?"1":"0";
+        $.ajax({
+            cache : true,
+            type : "POST",
+            url : ctx + "dm/permission/getPermission",
+            data : {
+                "dataId": dataId,
+                "perView": perView,
+                "perDownload": perDownload
+            },
+            async : false,
+            error : function(request) {
+                $.modal.alertError("系统错误");
+            },
+            success : function(data) {
+                $.operate.successCallback(data);
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

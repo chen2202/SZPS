@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('任务列表')" />
+	<script th:src="@{/js/plugins/echarts.min.js}"></script>
+</head>
+<body class="gray-bg">
+<div class="container-div">
+	<div class="row">
+
+		<div class="col-sm-12 search-collapse">
+			<form id="form-data-add" action="/supervise/statistics/list" method="post">
+				<div class="select-list">
+					<ul>
+						<li>
+							行政区：
+							<select  name="taskRegion">
+							<option value="">请选择</option>
+							<option value="南山区">南山区</option>
+							<option value="福田区">福田区</option>
+							<option value="盐田区">盐田区</option>
+							<option value="罗湖区">罗湖区</option>
+						</select>
+						</li>
+						<li>
+							街道：<select name="taskStreet">
+							<option value="">请选择</option>
+							<option value="南山街道">南山街道</option>
+							<option value="南头街道">南头街道</option>
+							<option value="西丽街道">西丽街道</option>
+							<option value="沙河街道">沙河街道</option>
+						</select>
+						</li>
+
+						<li>
+							报表类型：<select name="report">
+							<option value="年报">年报</option>
+							<option value="月报">月报</option>
+							<option value="季报">季报</option>
+						</select>
+						</li>
+						<li class="select-time">
+							<label>日期：</label>
+							<input type="text" class="time-input" id="taskTime" placeholder="检查时间" name="taskTime" data-format="yyyy-MM" required/>
+						</li>
+						<li>
+							<a class="btn btn-primary btn-rounded btn-sm" onclick="list()"><i class="fa fa-search"></i>&nbsp;查看</a>
+							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+						</li>
+					</ul>
+				</div>
+			</form>
+		</div>
+
+
+
+		<div class="col-sm-12 select-table table-striped">
+			<table id="bootstrap-table" data-mobile-responsive="true">
+			</table>
+			<div id="Main" style="position: relative; overflow: hidden;width: 1200px;height: 500px;"></div>
+		</div>
+	</div>
+</div>
+<th:block th:include="include :: footer" />
+<script type="text/javascript">
+    function list() {
+        if ($.validate.form()) {
+
+            $("#form-data-add").submit();
+
+        }
+
+    }
+
+    var time='[[${taskTime}]]';
+    var all='[[${all}]]';
+    var complete='[[${complete}]]';
+    var alls=new Array();
+    var completes=new  Array();
+    alls=all.replace("[","").replace("]","").split(",");
+    completes=complete.replace("[","").replace("]","").split(",");
+
+    var myChart = echarts.init(document.getElementById('Main'));
+    var option ={
+            title: {
+                text: time+'年任务完成统计年报表'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['年下发任务数量', '年完成数量']
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    dataView: {readOnly: false},
+                    magicType: {type: ['line', 'bar']},
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+            },
+            yAxis: {
+                type: 'value',
+                axisLabel: {
+                    formatter: '{value} 个'
+                }
+            },
+            series: [
+                {
+                    name: '年下发任务数量',
+                    type: 'line',
+                    data: alls,
+                    markPoint: {
+                        data: [
+                            {type: 'max', name: '最大值'},
+                            {type: 'min', name: '最小值'}
+                        ]
+                    },
+                    markLine: {
+                        data: [
+                            {type: 'average', name: '平均值'}
+                        ]
+                    }
+                },
+                {
+                    name: '年完成数量',
+                    type: 'line',
+                    data:completes,
+                    markPoint: {
+                        data: [
+                            {name: '年最低', value: 0, xAxis: 1, yAxis: -1.5}
+                        ]
+                    },
+                    markLine: {
+                        data: [
+                            {type: 'average', name: '平均值'},
+                            [{
+                                symbol: 'none',
+                                x: '90%',
+                                yAxis: 'max'
+                            }, {
+                                symbol: 'circle',
+                                label: {
+                                    normal: {
+                                        position: 'start',
+                                        formatter: '最大值'
+                                    }
+                                },
+                                type: 'max',
+                                name: '最高点'
+                            }]
+                        ]
+                    }
+                }
+            ]
+        }
+        myChart.setOption(option);
+
+</script>
+</body>
+</html>

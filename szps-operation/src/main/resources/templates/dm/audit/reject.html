@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('驳回列表')" />
+</head>
+<body class="gray-bg">
+<div class="container-div">
+    <div class="row">
+
+        <div class="col-sm-12 search-collapse">
+            <form id="data-form">
+                <div class="select-list">
+                    <ul>
+                        <li>主题：
+                            <input type="text" name="dataTheme" />
+                        </li>
+                        <li>
+                            <label>行政区：</label>
+                            <select  name="dataBorough">
+                                <option value="">所有</option>
+                                <option value="南山区">南山区</option>
+                                <option value="福田区">福田区</option>
+                                <option value="盐田区">盐田区</option>
+                                <option value="罗湖区">罗湖区</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label>流域：</label>
+                            <select  name="dataRiver">
+                                <option value="">所有</option>
+                                <option value="茅洲河">茅洲河</option>
+                                <option value="观澜河">观澜河</option>
+                                <option value="龙岗河">龙岗河</option>
+                                <option value="深圳河湾">深圳河湾</option>
+                                <option value="坪山河">坪山河</option>
+                                <option value="大亚湾">大亚湾</option>
+                            </select>
+                        </li>
+                        <li class="select-time">
+                            <label>创建时间：</label>
+                            <input type="text" class="time-input" id="startTime" placeholder="开始时间" name="params[beginTime]" lay-key="3">
+                            <span>-</span>
+                            <input type="text" class="time-input" id="endTime" placeholder="结束时间" name="params[endTime]" lay-key="4"></li>
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()">
+                                <i class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()">
+                                <i class="fa fa-refresh"></i>&nbsp;重置</a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+
+        <div class="btn-group-sm" id="toolbar" role="group">
+            <!--<a class="btn btn-success" onclick="$.operate.addTab()">-->
+            <!--<i class="fa fa-plus"></i> 新增-->
+            <!--</a>-->
+            <!--<a class="btn btn-primary single disabled" onclick="$.operate.editTab()">-->
+            <!--<i class="fa fa-edit"></i> 修改-->
+            <!--</a>-->
+            <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()">
+                <i class="fa fa-remove"></i> 删除记录
+            </a>
+            <!--<a class="btn btn-warning" onclick="$.table.exportExcel()">-->
+            <!--<i class="fa fa-download"></i> 导出-->
+            <!--</a>-->
+        </div>
+
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+        </div>
+
+    </div>
+</div>
+
+<th:block th:include="include :: footer" />
+<script th:inline="javascript">
+    var prefix = ctx+"dm/audit";
+    var file_prefix = ctx+"dm/file";
+    $(function() {
+        var options = {
+            url: prefix + "/reject",
+            removeUrl: ctx+"dm/recycle"+"/remove",
+            modalName: "审批任务",
+            columns: [{
+                checkbox: true
+            },
+                {
+                    field: 'dataId',
+                    title: '资料编号',
+                    sortable: true
+                },
+                {
+                    field: 'dataDate',
+                    title: '录入日期',
+                    sortable: true
+                },
+                {
+                    field: 'dataTheme',
+                    title: '主题',
+                    sortable: true
+                },
+                {
+                    field: 'dataType',
+                    title: '所属类别',
+                    sortable: true
+                },
+                {
+                    field: 'dataBorough',
+                    title: '行政区',
+                    sortable: true
+                },
+                {
+                    field: 'dataStreet',
+                    title: '所属街道',
+                    sortable: true
+                },
+                {
+                    field: 'dataRiver',
+                    title: '流域',
+                    sortable: true
+                },
+                {
+                    field: 'dataLevel',
+                    title: '密级',
+                    sortable: true
+                },
+                {
+                    title: '状态',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push("<span class=\"badge badge-danger\">驳回</span>");
+                        return actions.join('');
+                    }
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-success btn-xs" href="javascript:void(0)" onclick="auditView(\'' + row.dataId + '\')"><i class="fa fa-edit"></i>查看</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.dataId + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        return actions.join('');
+                    }
+                }]
+        };
+        $.table.init(options);
+    });
+
+    function auditView(dataId){
+        var url = file_prefix+ '/userView/' + dataId;
+        $.modal.openTab("查看记录", url);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('排水口')" />
+</head>
+<body class="gray-bg">
+	<div class="container-div">
+		<!-- <div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="role-form">
+				    
+				</form>
+			</div> -->
+	        
+	        <div class="btn-group-sm" id="toolbar" role="group">
+				<!-- <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="employee:company:add">
+	                <i class="fa fa-plus"></i> 新增
+	            </a>
+				<a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="employee:company:remove">
+		            <i class="fa fa-remove"></i> 删除
+		        </a> -->
+		        <a class="btn btn-success" onclick="$.operate.add()">
+	                <i class="fa fa-plus"></i> 新增
+	            </a>
+				<a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()">
+		            <i class="fa fa-remove"></i> 删除
+		        </a>
+	        </div>
+	        
+	        <div class="col-sm-12 select-table table-striped">
+			    <table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+	<th:block th:include="include :: footer" />
+	<script th:inline="javascript">
+		//var editFlag = [[${@permission.hasPermi('employee:company:edit')}]];
+		var prefix = ctx + "drainage/drain";
+
+		$(function() {
+			var options = {
+		        url: prefix + "/drain/list",
+		        createUrl: prefix + "/add",
+		        updateUrl: prefix + "/edit/{id}",
+		        removeUrl: prefix + "/remove",
+		        sortName: "drain_id",
+		        sortOrder: "desc",
+		        modalName: "排水口",
+		        columns: [{
+		            checkbox: true
+		        },
+		        {
+		            field: 'drain_id',
+		            title: '排水口编码',
+		            sortable: true
+		        },
+		        {
+		            field: 'household_id',
+		            title: '排水户编号',
+		            sortable: true,
+		            visible: false
+		        },
+		        {
+		            field: 'drain_type',
+		            title: '排水口类型',
+		            sortable: true
+		        },
+		        {
+		            field: 'pretreatment_facility',
+		            title: '预处理设施列表',
+		            sortable: true
+		        },
+		        {
+		            field: 'other_pretreatment_facility',
+		            title: '其他预处理设施',
+		            sortable: true
+		        },
+		        {
+		            field: 'pretreatment_facility_number',
+		            title: '预处理设施数量',
+		            sortable: true
+		        },
+		        {
+		            field: 'pretreatment_facility_note',
+		            title: '预处理设施备注',
+		            sortable: true
+		        },
+		        {
+		            field: 'monitoring_facility',
+		            title: '是否安装监测设备',
+		            sortable: true
+		        },
+		        {
+		            field: 'water_to',
+		            title: '排水去向',
+		            sortable: true
+		        },
+		        {
+		            field: 'water_name',
+		            title: '水体名称',
+		            sortable: true
+		        },
+		        {
+		            field: 'other_note',
+		            title: '其他备注',
+		            sortable: true
+		        },
+		        {
+		            title: '操作',
+		            align: 'center',
+		            formatter: function(value, row, index) {
+		                var actions = [];
+		                //actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.pipe_project + '\')"><i class="fa fa-edit"></i>编辑</a>');
+		                actions.push('<a class="btn btn-success btn-xs" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.drain_id + '\')"><i class="fa fa-edit"></i>编辑</a>');
+		                return actions.join('');
+		            }
+		        }]
+		    };
+		    $.table.init(options);
+		});
+	</script>
+</body>
+</html>

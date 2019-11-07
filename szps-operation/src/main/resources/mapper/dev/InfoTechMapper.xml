@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.dev.InfoTechMapper">
+
+	<resultMap type="InfoTech" id="result">
+		<result property="devid"     column="devid"      />
+		<result property="techid"     column="techid"      />
+	</resultMap>
+
+	<sql id="selectVo">
+        select *
+        from dev_info_tech r
+    </sql>	
+	
+	<!-- 查询条件 -->
+	<sql id="sqlwhereSearch">
+		<where>
+			<if test=" devid !=null">
+				and devid = #{devid}
+			</if>
+			<if test=" techid !=null">
+				and techid = #{techid}
+			</if>
+		</where>
+	</sql>
+	
+
+    
+    <select id="select" parameterType="TechInfo" resultMap="result">
+        <include refid="selectVo"/>
+        <include refid="sqlwhereSearch"/>
+    </select>
+    
+    <select id="selectList" parameterType="TechInfo" resultMap="result">
+        <include refid="selectVo"/>
+        where  1 = 1
+        <if test=" devid !=null">
+				and devid = #{devid}
+			</if>
+			<if test=" techid !=null">
+				and techid = #{techid}
+			</if>
+		
+    </select>
+      <select id="selectById" parameterType="Long" resultMap="result">
+		<include refid="selectVo"/>
+		where r.devid = #{devid}
+	</select>
+	
+    <delete id="deleteById" parameterType="Long">
+		delete from dev_info_tech where devid = #{devid}
+	</delete>
+	 <delete id="deleteByIds" parameterType="Long">
+ 		delete from dev_info_tech where devid in
+ 		<foreach collection="array" item="id" open="(" separator="," close=")">
+ 			#{devid}
+        </foreach> 
+ 	</delete>
+    
+    <update id="update" parameterType="TechInfo">
+ 		update dev_info_tech
+ 		<set>
+			<if test=" devid != null ">devid = #{devid},</if>
+
+ 		</set>
+ 		where devid = #{devid}
+	</update>
+	  
+    <insert id="insert" parameterType="TechInfo">
+    
+		INSERT INTO dev_info_tech(
+			<if test=" devid != null">devid,</if>
+			<if test=" techid != null ">techid,</if>
+		) VALUES (
+			<if test=" devid != null ">#{devid},</if>
+			<if test=" techid != null ">#{techid},</if>
+		)
+	</insert>
+</mapper> 

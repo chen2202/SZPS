@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.check.PlantCheckContentMapper">
+
+
+    <resultMap type="com.szps.web.domain.check.PlantCheckDevice" id="PlantCheckDeviceResult">
+        <result property="deviceSid"    column="device_sid"    />
+        <result property="plantId"    column="plant_id"    />
+        <result property="plantName"    column="plant_name"    />
+        <result property="deviceId"    column="device_id"    />
+        <result property="deviceName"    column="device_name"    />
+        <result property="checkId"    column="check_id"    />
+        <result property="deviceCreateuser"    column="device_createuser"    />
+        <result property="deviceCreatetime"    column="device_createtime"    />
+    </resultMap>
+
+    <sql id="selectPlantCheckDeviceVo">
+        select device_sid, plant_id, plant_name, device_id, device_name, check_id, device_createuser, device_createtime from PLANT_CHECK_DEVICE
+    </sql>
+
+    <select id="getALL"  resultMap="PlantCheckDeviceResult" parameterType="com.szps.system.domain.SysUser">
+        <include refid="selectPlantCheckDeviceVo"/>
+       where device_createuser=#{userName}
+
+    </select>
+
+
+
+    <resultMap type="com.szps.web.domain.check.PlantCheckContent" id="PlantCheckContentResult">
+        <result property="contentSid"    column="content_sid"    />
+        <result property="plantId"    column="plant_id"    />
+        <result property="checkId"    column="check_id"    />
+        <result property="checkName"    column="check_name"    />
+        <result property="contentCreateuser"    column="content_createuser"    />
+        <result property="contentCreatetime"    column="content_createtime"    />
+    </resultMap>
+
+    <sql id="selectPlantCheckContentVo">
+        select content_sid, plant_id, check_id, check_name, content_createuser, content_createtime from PLANT_CHECK_CONTENT
+    </sql>
+
+    <select id="selectPlantCheckContentList" parameterType="com.szps.web.domain.check.PlantCheckContent" resultMap="PlantCheckContentResult">
+        <include refid="selectPlantCheckContentVo"/>
+        <where>
+            <if test="plantId != null  and plantId != ''"> and plant_id = #{plantId}</if>
+            <if test="checkId != null  and checkId != ''"> and check_id = #{checkId}</if>
+            <if test="checkName != null  and checkName != ''"> and check_name like concat(concat('%', #{checkName}), '%')</if>
+            <if test="contentCreateuser != null  and contentCreateuser != ''"> and content_createuser = #{contentCreateuser}</if>
+            <if test="contentCreatetime != null "> and content_createtime = #{contentCreatetime}</if>
+        </where>
+    </select>
+
+    <select id="selectPlantCheckContentById" parameterType="java.lang.Long" resultMap="PlantCheckContentResult">
+        <include refid="selectPlantCheckContentVo"/>
+        where content_sid = #{contentSid}
+    </select>
+
+    <insert id="insertPlantCheckContent" parameterType="com.szps.web.domain.check.PlantCheckContent">
+        <selectKey keyProperty="contentSid" resultType="long" order="BEFORE">
+            SELECT seq_PLANT_CHECK_CONTENT.NEXTVAL as contentSid FROM DUAL
+        </selectKey>
+        insert into PLANT_CHECK_CONTENT
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="contentSid != null ">content_sid,</if>
+            <if test="plantId != null  and plantId != ''">plant_id,</if>
+            <if test="checkId != null  and checkId != ''">check_id,</if>
+            <if test="checkName != null  and checkName != ''">check_name,</if>
+            <if test="contentCreateuser != null  and contentCreateuser != ''">content_createuser,</if>
+            <if test="contentCreatetime != null ">content_createtime,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="contentSid != null ">#{contentSid},</if>
+            <if test="plantId != null  and plantId != ''">#{plantId},</if>
+            <if test="checkId != null  and checkId != ''">#{checkId},</if>
+            <if test="checkName != null  and checkName != ''">#{checkName},</if>
+            <if test="contentCreateuser != null  and contentCreateuser != ''">#{contentCreateuser},</if>
+            <if test="contentCreatetime != null ">#{contentCreatetime},</if>
+         </trim>
+    </insert>
+
+    <update id="updatePlantCheckContent" parameterType="com.szps.web.domain.check.PlantCheckContent">
+        update PLANT_CHECK_CONTENT
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="plantId != null  and plantId != ''">plant_id = #{plantId},</if>
+            <if test="checkId != null  and checkId != ''">check_id = #{checkId},</if>
+            <if test="checkName != null  and checkName != ''">check_name = #{checkName},</if>
+            <if test="contentCreateuser != null  and contentCreateuser != ''">content_createuser = #{contentCreateuser},</if>
+            <if test="contentCreatetime != null ">content_createtime = #{contentCreatetime},</if>
+        </trim>
+        where content_sid = #{contentSid}
+    </update>
+
+    <delete id="deletePlantCheckContentById" parameterType="java.lang.Long">
+        delete from PLANT_CHECK_CONTENT where content_sid = #{contentSid}
+    </delete>
+
+    <delete id="deletePlantCheckContentByIds" parameterType="java.lang.String">
+        delete from PLANT_CHECK_CONTENT where content_sid in
+        <foreach item="contentSid" collection="array" open="(" separator="," close=")">
+            #{contentSid}
+        </foreach>
+    </delete>
+
+</mapper>

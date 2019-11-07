@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="include :: header('新增污水厂事件')"/>
+    <th:block th:include="include :: datetimepicker-css"/>
+    <script src="../../../static/ajax/libs/validate/jquery.validate.extend.js"></script>
+    <script src="../../../static/ajax/libs/validate/jquery.validate.min.js"></script>
+    <script src="../../../static/ajax/libs/validate/messages_zh.min.js"></script>
+
+</head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-submit-add" th:object="${user}" >
+        <div class="form-group">
+            <label class="col-sm-3 control-label">事件名称：</label>
+            <div class="col-sm-8">
+                <input id="eventName" name="eventName" class="form-control" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">事件地点：</label>
+            <div class="col-sm-8">
+                <input id="eventPlace" name="eventPlace" class="form-control" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">事件时间：</label>
+            <div class="col-sm-8">
+                <div class="input-group date">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input type="text" class="form-control" id="laydate-demo-3" placeholder="yyyy-MM-dd HH:mm:ss"  name="eventTime"   required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">事件内容：</label>
+            <div class="col-sm-8">
+                <textarea id="eventContent" name="eventContent" class="form-control"
+                          style="resize: none; height: 150px"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">事件属性：</label>
+            <div class="col-sm-8">
+                <select name="eventAttribute" class="form-control m-b" >
+                    <option th:each="result : ${emailList}" th:value="${result.eventAttribute}" th:text="${result.eventAttribute}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">上传者：</label>
+            <div class="col-sm-8">
+                <input th:field="*{eventCreateuser}" id="eventCreateuser" name="eventCreateuser" class="form-control" type="text" readonly="readonly">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">上传时间：</label>
+            <div class="col-sm-8">
+                <div class="input-group date">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input type="text" class="form-control" id="laydate-demo-4" placeholder="yyyy-MM-dd HH:mm:ss"  name="eventCreatetime"   required>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<th:block th:include="include :: footer"/>
+<th:block th:include="include :: datetimepicker-js"/>
+<script type="text/javascript">
+
+    var prefix = ctx + "event/submit"
+    // $("#form-submit-add").validate({
+    //     focusCleanup: true
+    // });
+
+    $(function () {
+        var icon = "<i class='fa fa-times-circle'></i> ";
+        $("#form-submit-add").validate({
+            rules: {
+                eventName: "required",
+                eventPlace: "required",
+                eventTime: "required",
+                eventContent: "required",
+                eventCreateuser: "required",
+                eventCreatetime: "required",
+            },
+            messages: {
+                eventName: icon + "请输入事件名称",
+                eventPlace: "请输入事件地点",
+                eventTime: "请输入事件时间",
+                eventContent: "请输入事件内容",
+                eventCreateuser: "请输入上传者",
+                eventCreatetime: "请输入上传时间",
+            }
+        });
+    });
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            $.operate.save(prefix + "/add", $('#form-submit-add').serialize());
+        }
+    };
+
+
+
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#laydate-demo-3',
+            type: 'datetime',
+            trigger: 'click'
+        });
+
+    });
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#laydate-demo-4',
+            type: 'datetime',
+            trigger: 'click'
+        });
+
+    })
+</script>
+</body>
+</html>

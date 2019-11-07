@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('添加日报')" />
+	<th:block th:include="include :: select2-css" />
+</head>
+<body>
+    <div class="main-content">
+       <form id="form-report-add"  class="form-horizontal">
+		<div class="control-group">
+			<label class="lbl">生产月报表</label><br>
+			<label class="input-label" >汇报时间</label>
+			<input type="text" class="time-input" id="reportDate" name="reportDate"/>
+			<label class="input-label" >汇报月度</label>
+			<input type="text"  class="time-input" id="reportMonth" name="reportMonth" pattern="yyyy-MM"/>
+		</div>
+		<div class="control-group">
+			<label class="lbl">一,厂区基本运营情况</label><br>
+			<label class="lbl">（1）处理水量及成本</label><br>
+			<table class="table table-striped table-bordered table-condensed">
+			  <tr>
+			    <td colspan="2">处理水量（m<sup>3</sup>）</td>
+			    <td>月度总计成本（元）</td>
+			  </tr>
+			  <tr>
+			    <td><input id="waterTreatment1"  name="waterTreatment1" class="form-control"  type="text"/></td>
+			    <td><input id="waterTreatment2"  name="waterTreatment2" class="form-control"  type="text"/></td>
+			    <td><input id="monthCost"        name="monthCost"      class="form-control"  type="text"/></td>
+			  </tr>
+			  <tr>
+			    <td>应收水费（元）</td>
+			    <td>实收水费（元）</td>
+			    <td>历史欠款（元）</td>
+			  </tr>
+			  <tr>
+			    <td><input id="receivableWaterRent"  name="receivableWaterRent" class="form-control"  type="text"/></td>
+			    <td><input id="netWaterRent" 		 name="netWaterRent" 		class="form-control"  type="text"/></td>
+			    <td><input id="arrears" 			 name="arrears" 			class="form-control"  type="text"/></td>
+			  </tr>
+			</table>
+			<label class="lbl">进出水水质</label><br>
+			<table class="table table-striped table-bordered table-condensed">
+			  <tr>
+			    <td>自测月均值</td>
+			    <td>COD</td>
+			    <td>NH<sub>3</sub>-N</td>
+			    <td>TP</td>
+			    <td>TN</td>
+			    <td>SS</td>
+			    <td>pH</td>
+			  </tr>
+			  <tr>
+			    <td>进水浓度（mg/L）</td>
+			    <td><input id="codSelfAverageIn"  name="codSelfAverageIn"	class="form-control"  type="text"/></td>
+			    <td><input id="nhhSelfAverageIn"  name="nhhSelfAverageIn"	class="form-control"  type="text"/></td>
+			    <td><input id="tpSelfAverageIn"   name="tpSelfAverageIn" 	class="form-control"  type="text"/></td>
+			    <td><input id="tnSelfAverageIn"   name="tnSelfAverageIn" 	class="form-control"  type="text"/></td>
+			    <td><input id="ssSelfAverageIn"   name="ssSelfAverageIn" 	class="form-control"  type="text"/></td>
+			    <td><input id="phSelfAverageIn"   name="phSelfAverageIn" 	class="form-control"  type="text"/></td>
+			  </tr>
+			  <tr>
+			    <td>出水浓度（mg/L）</td>
+			    <td><input id="codSelfAverageOut"  name="codSelfAverageOut"	class="form-control"  type="text"/></td>
+			    <td><input id="nhhSelfAverageOut"  name="nhhSelfAverageOut"	class="form-control"  type="text"/></td>
+			    <td><input id="tpSelfAverageOut"   name="tpSelfAverageOut" 	class="form-control"  type="text"/></td>
+			    <td><input id="tnSelfAverageOut"   name="tnSelfAverageOut" 	class="form-control"  type="text"/></td>
+			    <td><input id="ssSelfAverageOut"   name="ssSelfAverageOut" 	class="form-control"  type="text"/></td>
+			    <td><input id="phSelfAverageOut"   name="phSelfAverageOut" 	class="form-control"  type="text"/></td>
+			  </tr>
+			</table>
+			<table class="table table-striped table-bordered table-condensed">
+			  <tr>
+			    <td>在线监测月均值</td>
+			    <td>COD</td>
+			    <td>NH<sub>3</sub>-N</td>
+			    <td>TP</td>
+			    <td>TN</td>
+			    <td>SS</td>
+			    <td>pH</td>
+			  </tr>
+			  <tr>
+			    <td>进水浓度（mg/L）</td>
+			    <td><input id="codOnLineAverageIn" 	name="codOnLineAverageIn"	class="form-control"  type="text"/></td>
+			    <td><input id="nhhOnLineAverageIn" 	name="nhhOnLineAverageIn"	class="form-control"  type="text"/></td>
+			    <td><input id="tpOnLineAverageIn" 	name="tpOnLineAverageIn" class="form-control"  type="text"/></td>
+			    <td><input id="tnOnLineAverageIn" 	name="tnOnLineAverageIn" class="form-control"  type="text"/></td>
+			    <td><input id="ssOnLineAverageIn" 	name="ssOnLineAverageIn" class="form-control"  type="text"/></td>
+			    <td><input id="phOnLineAverageIn" 	name="phOnLineAverageIn" class="form-control"  type="text"/></td>
+			  </tr>
+			  <tr>
+			    <td>出水浓度（mg/L）</td>
+			    <td><input id="codOnLineAverageOut" name="codOnLineAverageOut"	class="form-control"  type="text"/></td>
+			    <td><input id="nhhOnLineAverageOut" name="nhhOnLineAverageOut"	class="form-control"  type="text"/></td>
+			    <td><input id="tpOnLineAverageOut" 	name="tpOnLineAverageOut" class="form-control"  type="text"/></td>
+			    <td><input id="tnOnLineAverageOut" 	name="tnOnLineAverageOut" class="form-control"  type="text"/></td>
+			    <td><input id="ssOnLineAverageOut" 	name="ssOnLineAverageOut" class="form-control"  type="text"/></td>
+			    <td><input id="phOnLineAverageOut" 	name="phOnLineAverageOut" class="form-control"  type="text"/></td>
+			  </tr>
+			</table>
+			<label class="lbl">超标情况</label><br>
+			<table  id ="tblIn" class="table table-striped table-bordered table-condensed">
+			  <tr>
+			    <td colspan="8">进水</td>
+			  </tr>
+			  <tr>
+			    <td>日期</td>
+			    <td>COD</td>
+			    <td>NH<sub>3</sub>-N</td>
+			    <td>TP</td>
+			    <td>TN</td>
+			    <td>SS</td>
+			    <td>pH</td>
+			    <th><a href="javascript:" onclick="addClomnIn();" class="btn"><i class="icon-plus"></i></a></th>
+			  </tr>
+			  <tr>
+			    <td><input  id="inDate" name="inDate"  class="form-control"  type="text"/></td>
+			    <td><input 	id="inCOD"  name="inCOD"  	class="form-control"  type="text"/></td>
+			    <td><input 	id="inNh3h" name="inNh3h"  class="form-control"  type="text"/></td>
+			    <td><input  id="inTp"  	name="inTp"  	class="form-control"  type="text"/></td>
+			    <td><input  id="inTn" 	name="inTn" 	class="form-control"  type="text"/></td>
+			    <td><input  id="inSs"   name="inSs"   class="form-control"  type="text"/></td>
+			    <td><input  id="inPh"   name="inPh"   class="form-control"  type="text"/></td>
+			    <td><a href="javascript:" onclick="deleteClomn(this);" class="btn"><i class="icon-minus"></i></a> </td>
+			  </tr>
+			</table>
+			<table  id ="tblOut" class="table table-striped table-bordered table-condensed">
+			  <tr>
+			    <td colspan="8">出水</td>
+			  </tr>
+			  <tr>
+			    <td>日期</td>
+			    <td>COD</td>
+			    <td>NH<sub>3</sub>-N</td>
+			    <td>TP</td>
+			    <td>TN</td>
+			    <td>SS</td>
+			    <td>pH</td>
+			    <th><a href="javascript:" onclick="addClomnOut();" class="btn"><i class="icon-plus"></i></a></th>
+			  </tr>
+			  <tr>
+			    <td><input  id="outDate"  	name="outDate"	class="form-control"  type="text"/></td>
+			    <td><input  id="outCOD"   	name="outCOD" 	class="form-control"  type="text"/></td>
+			    <td><input  id="outNh3h"  	name="outNh3h"	class="form-control"  type="text"/></td>
+			    <td><input  id="outTp"  	name="outTp"  class="form-control"  type="text"/></td>
+			    <td><input  id="outTn"  	name="outTn"  class="form-control"  type="text"/></td>
+			    <td><input  id="outSs"  	name="outSs"  class="form-control"  type="text"/></td>
+			    <td><input  id="outPh"  	name="outPh"  class="form-control"  type="text"/></td>
+			    <td><a href="javascript:" onclick="deleteClomn(this);" class="btn"><i class="icon-minus"></i></a> </td>
+			  </tr>
+			</table>
+ 
+		</div>
+		
+		<div class="control-group">
+			<label class="lbl">二,运行能耗及污泥产量</label><br>
+			<table class="table table-striped table-bordered table-condensed">
+			  <tr>
+			    <td>PAC(吨) </td>
+			    <td>铁盐/除磷剂(吨)</td>
+			    <td>PAM-(kg)</td>
+			    <td>PAM+(kg)</td>
+			    <td>消毒药剂(m<sup>3</sup>/kg)</td>
+			    <td>用电量(kw.h)</td>
+			    <td>用水量(吨)</td>
+			    <td>污泥量(吨)</td>
+			  </tr>
+			  <tr>
+			    <td><input id="pac" 		name="pac" 		class="form-control"  type="text"/></td>
+			    <td><input id="ipra" 		name="ipra" 		class="form-control"  type="text"/></td>
+			    <td><input id="pam1" 		name="pam1" 		class="form-control"  type="text"/></td>
+			    <td><input id="pam2" 		name="pam2" 		class="form-control"  type="text"/></td>
+			    <td><input id="disin" 		name="disin" 		class="form-control"  type="text"/></td>
+			    <td><input id="electricity" name="electricity" class="form-control"  type="text"/></td>
+			    <td><input id="water" 		name="water" 		class="form-control"  type="text"/></td>
+			    <td><input id="sq1" 		name="sq1" 		class="form-control"  type="text"/></td>
+			  </tr>
+			</table>
+		</div>
+		<div class="control-group">
+			<label class="lbl">三、本月完成的主要工作</label><br>
+			<textarea id="monthFinishWork"  name="monthFinishWork" htmlEscape="true" class="form-control"></textarea>
+		</div>
+		<div class="control-group">
+			<label class="lbl">四，运行存在问题及解决措施</label><br>
+			<label class="lbl">运行存在问题</label><br>
+			<div class="controls">
+				<textarea id="problemDesc"  name="problemDesc" htmlEscape="true" class="form-control"></textarea>
+			</div>
+			<label class="lbl">解决措施</label><br>
+			<div class="controls">
+				<textarea id="actionDesc"  name="actionDesc" htmlEscape="true" class="form-control"></textarea>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="lbl">五、下月工作计划</label><br>
+			<textarea id="nextMonthPlan"  name="nextMonthPlan" htmlEscape="true" class="form-control"></textarea>
+		</div>
+		<div class="control-group">
+			<label class="lbl">六、报表初审意见</label><br>
+			<textarea id="firstOpinion"  name="firstOpinion" htmlEscape="true" class="form-control"></textarea>
+		</div>
+		<div class="control-group">
+			<label class="lbl">七、厂区回复意见</label><br>
+			<textarea id="replyOpinion"  name="replyOpinion" htmlEscape="true" class="form-control"></textarea>
+		</div>
+	</form>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-5 col-sm-10">
+            <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>保 存</button>&nbsp;
+            <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
+        </div>
+    </div>
+	<th:block th:include="include :: footer" />
+	<th:block th:include="include :: select2-js" />
+	<script>
+	    var prefix = ctx + "op/report/month";
+	
+        $("#form-report-add").validate({
+        	onkeyup: false,
+        	rules:{
+        		
+        	},
+        	messages: {
+                "loginName": {
+                    remote: "用户已经存在"
+                },
+        		"email": {
+                    remote: "Email已经存在"
+                },
+        		"phonenumber":{
+                	remote: "手机号码已经存在"
+        		}
+            },
+            focusCleanup: true
+        });
+        
+        function submitHandler() {
+	        if ($.validate.form()) {
+	        	var data = $("#form-report-add").serializeArray();
+	        	/* var status = $("input[id='status']").is(':checked') == true ? 0 : 1;
+	        	var roleIds = $.form.selectCheckeds("role");
+	        	var postIds = $.form.selectSelects("post");
+	        	data.push({"name": "status", "value": status});
+	        	data.push({"name": "roleIds", "value": roleIds});
+	        	data.push({"name": "postIds", "value": postIds}); */
+	        	$.operate.saveTab(prefix + "/add", data);
+	        }
+	    }
+         
+        /*用户管理-新增-选择部门树*/
+        function selectDeptTree() {
+        	var treeId = $("#treeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmit
+			};
+			$.modal.openOptions(options);
+		}
+		
+		function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+			if ($.tree.notAllowParents(tree)) {
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+			}
+		}
+
+		$(function() {
+            $('#post').select2({
+                placeholder:"请选择岗位",
+                allowClear: true
+            });
+        })
+    </script>
+</body>
+</html>

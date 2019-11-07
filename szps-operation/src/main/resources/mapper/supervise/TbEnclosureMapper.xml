@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.szps.web.mapper.supervise.TbEnclosureMapper" >
+  <resultMap id="BaseResultMap" type="com.szps.web.domain.supervise.TbEnclosure" >
+    <id column="ENCLOSURE_ID" property="enclosureId" jdbcType="VARCHAR" />
+    <result column="ENCLOSURE_LOCATION" property="enclosureLocation" jdbcType="VARCHAR" />
+    <result column="FEEDBACK_ID" property="feedbackId" jdbcType="VARCHAR" />
+    <result column="ENCLOSURE_NAME" property="enclosureName" jdbcType="VARCHAR" />
+    <result column="ENCLOSURE_REALNAME" property="enclosurerealName" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_ENCLOSURE
+    where ENCLOSURE_ID = #{enclosureId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.szps.web.domain.supervise.TbEnclosure" >
+    insert into TB_ENCLOSURE (ENCLOSURE_ID, ENCLOSURE_LOCATION,FEEDBACK_ID,ENCLOSURE_NAME,ENCLOSURE_REALNAME)
+    values (#{enclosureId,jdbcType=VARCHAR}, #{enclosureLocation,jdbcType=VARCHAR},#{feedbackId,jdbcType=VARCHAR},#{enclosureName,jdbcType=VARCHAR},#{enclosurerealName,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.szps.web.domain.supervise.TbEnclosure" >
+    update TB_ENCLOSURE
+    set ENCLOSURE_LOCATION = #{enclosureLocation,jdbcType=VARCHAR}
+    where ENCLOSURE_ID = #{enclosureId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select ENCLOSURE_ID, ENCLOSURE_LOCATION,FEEDBACK_ID,ENCLOSURE_NAME,ENCLOSURE_REALNAME
+    from TB_ENCLOSURE
+    where FEEDBACK_ID = #{feedbackId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select ENCLOSURE_ID, ENCLOSURE_LOCATION
+    from TB_ENCLOSURE
+  </select>
+
+  <select id="Checkdec" parameterType="String" resultType="int">
+    select count(1) from TB_ENCLOSURE where TB_ENCLOSURE.ENCLOSURE_ID=#{enclosureId}
+  </select>
+</mapper>

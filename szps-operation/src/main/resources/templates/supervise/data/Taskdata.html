@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('任务列表')" />
+</head>
+<body class="gray-bg">
+<div class="container-div">
+	<div class="row">
+
+		<div class="col-sm-12 search-collapse">
+			<form id="role-form">
+				<div class="select-list">
+					<ul>
+						<li>
+							任务区域：<input type="text" name="taskPartition" maxlength="11"/>
+						</li>
+						<li>
+							行政区：
+							<select  name="taskRegion">
+							<option value="">请选择</option>
+							<option value="南山区">南山区</option>
+							<option value="福田区">福田区</option>
+							<option value="盐田区">盐田区</option>
+							<option value="罗湖区">罗湖区</option>
+						</select>
+						</li>
+						<li>
+							街道：<select name="taskStreet">
+							<option value="">请选择</option>
+							<option value="南山街道">南山街道</option>
+							<option value="南头街道">南头街道</option>
+							<option value="西丽街道">西丽街道</option>
+							<option value="沙河街道">沙河街道</option>
+						</select>
+						</li>
+						<li class="select-time">
+							<label>创建时间： </label>
+							<input type="text" class="time-input" id="taskTime" placeholder="检查时间" name="taskTime"/>
+						</li>
+						<li>
+							<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+						</li>
+					</ul>
+				</div>
+			</form>
+		</div>
+
+		<div class="btn-group-sm" id="toolbar" role="group">
+			<div class="select-list">
+
+				<a class="btn btn-success"  th:href="'/supervise/data/data'" >
+					任务库管理
+				</a>
+				<a class="btn" th:href="'/supervise/data1/data1'"  style="margin-left: 30px;border-color: #1a7bb9">
+					人员库管理
+				</a>
+				<a class="btn" th:href="'/supervise/data2/data2'" style="margin-left: 30px;border-color: #1a7bb9">
+					随机规则管理
+				</a>
+			</div>
+			<br/>
+			<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="supervise:data:add">
+				<i class="fa fa-plus"></i> 新增
+			</a>
+			<a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="supervise:data:edit">
+				<i class="fa fa-edit"></i> 修改
+			</a>
+			<a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="supervise:data:remove">
+				<i class="fa fa-remove"></i> 删除
+			</a>
+		</div>
+
+		<div class="col-sm-12 select-table table-striped">
+			<table id="bootstrap-table" data-mobile-responsive="true"></table>
+		</div>
+	</div>
+</div>
+<th:block th:include="include :: footer" />
+<script th:inline="javascript">
+    var editFlag = [[${@permission.hasPermi('supervise:data:edit')}]];
+    var removeFlag = [[${@permission.hasPermi('supervise:data:remove')}]];
+    var prefix = ctx + "supervise/data";
+
+
+    $(function() {
+        var options = {
+            url: prefix + "/list",
+            createUrl: prefix + "/Taskadd",
+            updateUrl: prefix + "/edit/{id}",
+            removeUrl: prefix + "/remove",
+            exportUrl: prefix + "/export",
+            sortName: "taskNumber",
+            modalName: "任务",
+            columns: [{
+                checkbox: true
+            },
+                {
+                    field: 'taskNumber',
+                    title: '任务编号',
+                    sortable: true
+                },
+                {
+                    field: 'taskPartition',
+                    title: '任务区域',
+                    sortable: true
+                },
+                {
+                    field: 'taskRegion',
+                    title: '所属行政区'
+
+                },
+                {
+                    field: 'taskStreet',
+                    title: '所属街道'
+
+                },
+                {
+                    field: 'taskHousename',
+                    title: '检查对象'
+
+                },
+                {
+                    field: 'taskHousephone',
+                    title: '检查对象法人电话'
+
+                },
+                {
+                    field: 'tbStaffList',
+                    title: '检查人员',
+                    formatter:function(value,row,index){
+                        var s=[];
+                        for(var i=0;i<value.length;i++)
+                        {
+                            var b=JSON.stringify(value[i]);
+                            var a=JSON.parse(b);
+                            s.push('<span >'+a.staffName+'</span>&nbsp;&nbsp;&nbsp;');
+
+                        }
+                        return s.join('');
+                    }
+                },
+
+                {
+                    field: 'taskConnecting',
+                    title: '任务内容'
+
+                },
+                {
+                    field: 'taskTime',
+                    title: '创建时间'
+
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.taskNumber + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.taskNumber + '\')"><i class="fa fa-remove"></i>删除</a> ');
+                        return actions.join('');
+                    }
+                }]
+        };
+        $.table.init(options);
+    });
+
+
+</script>
+</body>
+</html>

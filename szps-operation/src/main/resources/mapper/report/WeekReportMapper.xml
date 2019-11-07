@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.report.WeekReportMapper">
+ 
+	<resultMap type="WeekReport" id="ReportResult">
+		<id     property="id"    column="id"    />
+		<result     property="deptId"   column="deptId"   />
+		<result     property="deptName"   column="deptName"   />
+		<result     property="reportDate"   column="reportDate"   />
+		<result     property="waterTreatment1"   column="waterTreatment1"   />
+		<result     property="waterTreatment2"   column="waterTreatment2"   />
+		<result     property="pac"   column="pac"   />
+		<result     property="ipra"   column="ipra"   />
+		<result     property="pam1"   column="pam1"   />
+		<result     property="pam2"   column="pam2"   />
+		<result     property="disin"   column="disin"   />
+		<result     property="electricity"   column="electricity"   />
+		<result     property="water"   column="water"   />
+		<result     property="sq1"   column="sq1"   />
+		<result     property="codSelfAverageIn"   column="codSelfAverageIn"   />
+		<result     property="nhhSelfAverageIn"   column="nhhSelfAverageIn"   />
+		<result     property="tpSelfAverageIn"   column="tpSelfAverageIn"   />
+		<result     property="tnSelfAverageIn"   column="tnSelfAverageIn"   />
+		<result     property="ssSelfAverageIn"   column="ssSelfAverageIn"   />
+		<result     property="phSelfAverageIn"   column="phSelfAverageIn"   />
+		<result     property="codSelfAverageOut"   column="codSelfAverageOut"   />
+		<result     property="nhhSelfAverageOut"   column="nhhSelfAverageOut"   />
+		<result     property="tpSelfAverageOut"   column="tpSelfAverageOut"   />
+		<result     property="tnSelfAverageOut"   column="tnSelfAverageOut"   />
+		<result     property="ssSelfAverageOut"   column="ssSelfAverageOut"   />
+		<result     property="phSelfAverageOut"   column="phSelfAverageOut"   />
+		<result     property="codOnLineAverageIn"   column="codOnLineAverageIn"   />
+		<result     property="nhhOnLineAverageIn"   column="nhhOnLineAverageIn"   />
+		<result     property="tpOnLineAverageIn"   column="tpOnLineAverageIn"   />
+		<result     property="tnOnLineAverageIn"   column="tnOnLineAverageIn"   />
+		<result     property="ssOnLineAverageIn"   column="ssOnLineAverageIn"   />
+		<result     property="phOnLineAverageIn"   column="phOnLineAverageIn"   />
+		<result     property="codOnLineAverageOut"   column="codOnLineAverageOut"   />
+		<result     property="nhhOnLineAverageOut"   column="nhhOnLineAverageOut"   />
+		<result     property="tpOnLineAverageOut"   column="tpOnLineAverageOut"   />
+		<result     property="tnOnLineAverageOut"   column="tnOnLineAverageOut"   />
+		<result     property="ssOnLineAverageOut"   column="ssOnLineAverageOut"   />
+		<result     property="phOnLineAverageOut"   column="phOnLineAverageOut"   />
+		<result     property="weekFinishWork"   column="weekFinishWork"   />
+		<result     property="problemDesc"   column="problemDesc"   />
+		<result     property="actionDesc"   column="actionDesc"   />
+		<result     property="nextWeekPlan"   column="nextWeekPlan"   />
+		<result     property="firstOpinion"   column="firstOpinion"   />
+		<result     property="replyOpinion"   column="replyOpinion"   />
+        <result property="createBy"      column="create_by"      />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"      column="update_by"      />
+        <result property="updateTime"    column="update_time"    />
+		<result property="remark"    column="remark"    />
+		<result property="delFlag"    column="delFlag"    />
+    </resultMap> 
+
+	<sql id="selectReportVo">
+        select *
+        from report_week r
+    </sql>	
+	
+	<!-- 查询条件 -->
+	<sql id="sqlwhereSearch">
+		<where>
+			<if test=" id !=null">
+				and id = #{id}
+			</if>
+			<if test=" reportDate !=null and reportDate != ''">
+				and reportDate = #{reportDate}
+			</if>
+		</where>
+	</sql>
+	
+
+    
+    <select id="selectReport" parameterType="WeekReport" resultMap="ReportResult">
+        <include refid="selectReportVo"/>
+        <include refid="sqlwhereSearch"/>
+    </select>
+    
+    <select id="selectReportList" parameterType="WeekReport" resultMap="ReportResult">
+        <include refid="selectReportVo"/>
+        where  delFlag = '1'
+        <if test=" deptId != null and deptId != 0">
+			AND deptId = #{deptId}
+		</if>
+		<if test=" reportDate != null and reportDate != ''">
+			AND reportDate = #{reportDate}
+		</if>
+		order by r.id, r.reportDate
+    </select>
+      <select id="selectReportById" parameterType="Long" resultMap="ReportResult">
+		<include refid="selectReportVo"/>
+		where r.id = #{id}
+	</select>
+	
+    <delete id="deleteReportById" parameterType="Long">
+		update report_week set delFlag = '2' where id = #{id}
+	</delete>
+	 <delete id="deleteReportByIds" parameterType="Long">
+ 		delete from report_week where id in
+ 		<foreach collection="array" item="id" open="(" separator="," close=")">
+ 			#{id}
+        </foreach> 
+ 	</delete>
+    
+    <update id="updateReport" parameterType="WeekReport">
+ 		update report_week
+ 		<set>
+			<if test=" reportDate != null and reportDate!= ''">reportDate = #{reportDate},</if>
+			<if test=" waterTreatment1 != null and waterTreatment1!= ''">waterTreatment1 = #{waterTreatment1},</if>
+			<if test=" waterTreatment2 != null and waterTreatment2!= ''">waterTreatment2 = #{waterTreatment2},</if>
+			<if test=" pac != null and pac!= ''">pac = #{pac},</if>
+			<if test=" ipra != null and ipra!= ''">ipra = #{ipra},</if>
+			<if test=" pam1 != null and pam1!= ''">pam1 = #{pam1},</if>
+			<if test=" pam2 != null and pam2!= ''">pam2 = #{pam2},</if>
+			<if test=" disin != null and disin!= ''">disin = #{disin},</if>
+			<if test=" electricity != null and electricity!= ''">electricity = #{electricity},</if>
+			<if test=" water != null and water!= ''">water = #{water},</if>
+			<if test=" sq1 != null and sq1!= ''">sq1 = #{sq1},</if>
+			<if test=" codSelfAverageIn != null and codSelfAverageIn!= ''">codSelfAverageIn = #{codSelfAverageIn},</if>
+			<if test=" nhhSelfAverageIn != null and nhhSelfAverageIn!= ''">nhhSelfAverageIn = #{nhhSelfAverageIn},</if>
+			<if test=" tpSelfAverageIn != null and tpSelfAverageIn!= ''">tpSelfAverageIn = #{tpSelfAverageIn},</if>
+			<if test=" tnSelfAverageIn != null and tnSelfAverageIn!= ''">tnSelfAverageIn = #{tnSelfAverageIn},</if>
+			<if test=" ssSelfAverageIn != null and ssSelfAverageIn!= ''">ssSelfAverageIn = #{ssSelfAverageIn},</if>
+			<if test=" phSelfAverageIn != null and phSelfAverageIn!= ''">phSelfAverageIn = #{phSelfAverageIn},</if>
+			<if test=" codSelfAverageOut != null and codSelfAverageOut!= ''">codSelfAverageOut = #{codSelfAverageOut},</if>
+			<if test=" nhhSelfAverageOut != null and nhhSelfAverageOut!= ''">nhhSelfAverageOut = #{nhhSelfAverageOut},</if>
+			<if test=" tpSelfAverageOut != null and tpSelfAverageOut!= ''">tpSelfAverageOut = #{tpSelfAverageOut},</if>
+			<if test=" tnSelfAverageOut != null and tnSelfAverageOut!= ''">tnSelfAverageOut = #{tnSelfAverageOut},</if>
+			<if test=" ssSelfAverageOut != null and ssSelfAverageOut!= ''">ssSelfAverageOut = #{ssSelfAverageOut},</if>
+			<if test=" phSelfAverageOut != null and phSelfAverageOut!= ''">phSelfAverageOut = #{phSelfAverageOut},</if>
+			<if test=" codOnLineAverageIn != null and codOnLineAverageIn!= ''">codOnLineAverageIn = #{codOnLineAverageIn},</if>
+			<if test=" nhhOnLineAverageIn != null and nhhOnLineAverageIn!= ''">nhhOnLineAverageIn = #{nhhOnLineAverageIn},</if>
+			<if test=" tpOnLineAverageIn != null and tpOnLineAverageIn!= ''">tpOnLineAverageIn = #{tpOnLineAverageIn},</if>
+			<if test=" tnOnLineAverageIn != null and tnOnLineAverageIn!= ''">tnOnLineAverageIn = #{tnOnLineAverageIn},</if>
+			<if test=" ssOnLineAverageIn != null and ssOnLineAverageIn!= ''">ssOnLineAverageIn = #{ssOnLineAverageIn},</if>
+			<if test=" phOnLineAverageIn != null and phOnLineAverageIn!= ''">phOnLineAverageIn = #{phOnLineAverageIn},</if>
+			<if test=" codOnLineAverageOut != null and codOnLineAverageOut!= ''">codOnLineAverageOut = #{codOnLineAverageOut},</if>
+			<if test=" nhhOnLineAverageOut != null and nhhOnLineAverageOut!= ''">nhhOnLineAverageOut = #{nhhOnLineAverageOut},</if>
+			<if test=" tpOnLineAverageOut != null and tpOnLineAverageOut!= ''">tpOnLineAverageOut = #{tpOnLineAverageOut},</if>
+			<if test=" tnOnLineAverageOut != null and tnOnLineAverageOut!= ''">tnOnLineAverageOut = #{tnOnLineAverageOut},</if>
+			<if test=" ssOnLineAverageOut != null and ssOnLineAverageOut!= ''">ssOnLineAverageOut = #{ssOnLineAverageOut},</if>
+			<if test=" phOnLineAverageOut != null and phOnLineAverageOut!= ''">phOnLineAverageOut = #{phOnLineAverageOut},</if>
+			<if test=" weekFinishWork != null and weekFinishWork!= ''">weekFinishWork = #{weekFinishWork},</if>
+			<if test=" problemDesc != null and problemDesc!= ''">problemDesc = #{problemDesc},</if>
+			<if test=" actionDesc != null and actionDesc!= ''">actionDesc = #{actionDesc},</if>
+			<if test=" nextWeekPlan != null and nextWeekPlan!= ''">nextWeekPlan = #{nextWeekPlan},</if>
+			<if test=" firstOpinion != null and firstOpinion!= ''">firstOpinion = #{firstOpinion},</if>
+			<if test=" replyOpinion != null and replyOpinion!= ''">replyOpinion = #{replyOpinion},</if>
+			<if test=" remark != null and remark != ''">remark = #{remark},</if>
+			<if test=" delFlag != null and delFlag!= ''">delFlag = #{delFlag},</if>
+			<if test="  remark != null and remark != ''">remark = #{remark},</if>
+ 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+ 			update_time = sysdate
+ 		</set>
+ 		where id = #{id}
+	</update>
+	  
+    <insert id="insertReport" parameterType="WeekReport">
+    	 <selectKey keyProperty="id" resultType="long" order="BEFORE">
+			SELECT seq_report_week.NEXTVAL as id FROM DUAL
+		</selectKey>
+    
+		INSERT INTO report_week(
+			<if test=" id != null and id!= 0">id,</if>
+			<if test=" deptId != null and deptId!= ''">deptId,</if>
+			<if test=" deptName != null and deptName!= ''">deptName,</if>
+			<if test=" reportDate != null and reportDate!= ''">reportDate,</if>
+			<if test=" waterTreatment1 != null and waterTreatment1!= ''">waterTreatment1,</if>
+			<if test=" waterTreatment2 != null and waterTreatment2!= ''">waterTreatment2,</if>
+			<if test=" pac != null and pac!= ''">pac,</if>
+			<if test=" ipra != null and ipra!= ''">ipra,</if>
+			<if test=" pam1 != null and pam1!= ''">pam1,</if>
+			<if test=" pam2!= null and pam2!= ''">pam2,</if>
+			<if test=" disin!= null and disin!= ''">disin,</if>
+			<if test=" electricity!= null and electricity!= ''">electricity,</if>
+			<if test=" water!= null and water!= ''">water,</if>
+			<if test=" sq1!= null and sq1!= ''">sq1,</if>
+			<if test=" codSelfAverageIn!= null and codSelfAverageIn!= ''">codSelfAverageIn,</if>
+			<if test=" nhhSelfAverageIn!= null and nhhSelfAverageIn!= ''">nhhSelfAverageIn,</if>
+			<if test=" tpSelfAverageIn!= null and tpSelfAverageIn!= ''">tpSelfAverageIn,</if>
+			<if test=" tnSelfAverageIn!= null and tnSelfAverageIn!= ''">tnSelfAverageIn,</if>
+			<if test=" ssSelfAverageIn!= null and ssSelfAverageIn!= ''">ssSelfAverageIn,</if>
+			<if test=" phSelfAverageIn!= null and phSelfAverageIn!= ''">phSelfAverageIn,</if>
+			<if test=" codSelfAverageOut!= null and codSelfAverageOut!= ''">codSelfAverageOut,</if>
+			<if test=" nhhSelfAverageOut!= null and nhhSelfAverageOut!= ''">nhhSelfAverageOut,</if>
+			<if test=" tpSelfAverageOut!= null and tpSelfAverageOut!= ''">tpSelfAverageOut,</if>
+			<if test=" tnSelfAverageOut!= null and tnSelfAverageOut!= ''">tnSelfAverageOut,</if>
+			<if test=" ssSelfAverageOut!= null and ssSelfAverageOut!= ''">ssSelfAverageOut,</if>
+			<if test=" phSelfAverageOut!= null and phSelfAverageOut!= ''">phSelfAverageOut,</if>
+			<if test=" codOnLineAverageIn!= null and codOnLineAverageIn!= ''">codOnLineAverageIn,</if>
+			<if test=" nhhOnLineAverageIn!= null and nhhOnLineAverageIn!= ''">nhhOnLineAverageIn,</if>
+			<if test=" tpOnLineAverageIn!= null and tpOnLineAverageIn!= ''">tpOnLineAverageIn,</if>
+			<if test=" tnOnLineAverageIn!= null and tnOnLineAverageIn!= ''">tnOnLineAverageIn,</if>
+			<if test=" ssOnLineAverageIn!= null and ssOnLineAverageIn!= ''">ssOnLineAverageIn,</if>
+			<if test=" phOnLineAverageIn!= null and phOnLineAverageIn!= ''">phOnLineAverageIn,</if>
+			<if test=" codOnLineAverageOut!= null and codOnLineAverageOut!= ''">codOnLineAverageOut,</if>
+			<if test=" nhhOnLineAverageOut!= null and nhhOnLineAverageOut!= ''">nhhOnLineAverageOut,</if>
+			<if test=" tpOnLineAverageOut!= null and tpOnLineAverageOut!= ''">tpOnLineAverageOut,</if>
+			<if test=" tnOnLineAverageOut!= null and tnOnLineAverageOut!= ''">tnOnLineAverageOut,</if>
+			<if test=" ssOnLineAverageOut!= null and ssOnLineAverageOut!= ''">ssOnLineAverageOut,</if>
+			<if test=" phOnLineAverageOut!= null and phOnLineAverageOut!= ''">phOnLineAverageOut,</if>
+			<if test=" weekFinishWork!= null and weekFinishWork!= ''">weekFinishWork,</if>
+			<if test=" problemDesc!= null and problemDesc!= ''">problemDesc,</if>
+			<if test=" actionDesc!= null and actionDesc!= ''">actionDesc,</if>
+			<if test=" nextWeekPlan!= null and nextWeekPlan!= ''">nextWeekPlan,</if>
+			<if test=" firstOpinion!= null and firstOpinion!= ''">firstOpinion,</if>
+			<if test=" replyOpinion!= null and replyOpinion!= ''">replyOpinion,</if>
+			<if test=" remark != null and remark != ''">REMARK,</if>
+			<if test=" delFlag != null and delFlag!= ''">delFlag,</if>
+			<if test=" createBy != null and createBy != ''">create_by,</if>
+			create_time
+		) VALUES (
+			<if test=" id != null and id!= 0">#{id},</if>
+			<if test=" deptId != null and deptId!= ''">#{deptId},</if>
+			<if test=" deptName != null and deptName!= ''">#{deptName},</if>
+			<if test=" reportDate != null and reportDate!= ''">#{reportDate},</if>
+			<if test=" waterTreatment1 != null and waterTreatment1!= ''">#{waterTreatment1},</if>
+			<if test=" waterTreatment2 != null and waterTreatment2!= ''">#{waterTreatment2},</if>
+			<if test=" pac != null and pac!= ''">#{pac},</if>
+			<if test=" ipra != null and ipra!= ''">#{ipra},</if>
+			<if test=" pam1 != null and pam1!= ''">#{pam1},</if>
+			<if test=" pam2 != null and pam2!= ''">#{pam2},</if>
+			<if test=" disin != null and disin!= ''">#{disin},</if>
+			<if test=" electricity != null and electricity!= ''">#{electricity},</if>
+			<if test=" water != null and water!= ''">#{water},</if>
+			<if test=" sq1 != null and sq1!= ''">#{sq1},</if>
+			<if test=" codSelfAverageIn != null and codSelfAverageIn!= ''">#{codSelfAverageIn},</if>
+			<if test=" nhhSelfAverageIn != null and nhhSelfAverageIn!= ''">#{nhhSelfAverageIn},</if>
+			<if test=" tpSelfAverageIn != null and tpSelfAverageIn!= ''">#{tpSelfAverageIn},</if>
+			<if test=" tnSelfAverageIn != null and tnSelfAverageIn!= ''">#{tnSelfAverageIn},</if>
+			<if test=" ssSelfAverageIn != null and ssSelfAverageIn!= ''">#{ssSelfAverageIn},</if>
+			<if test=" phSelfAverageIn != null and phSelfAverageIn!= ''">#{phSelfAverageIn},</if>
+			<if test=" codSelfAverageOut != null and codSelfAverageOut!= ''">#{codSelfAverageOut},</if>
+			<if test=" nhhSelfAverageOut != null and nhhSelfAverageOut!= ''">#{nhhSelfAverageOut},</if>
+			<if test=" tpSelfAverageOut != null and tpSelfAverageOut!= ''">#{tpSelfAverageOut},</if>
+			<if test=" tnSelfAverageOut != null and tnSelfAverageOut!= ''">#{tnSelfAverageOut},</if>
+			<if test=" ssSelfAverageOut != null and ssSelfAverageOut!= ''">#{ssSelfAverageOut},</if>
+			<if test=" phSelfAverageOut != null and phSelfAverageOut!= ''">#{phSelfAverageOut},</if>
+			<if test=" codOnLineAverageIn != null and codOnLineAverageIn!= ''">#{codOnLineAverageIn},</if>
+			<if test=" nhhOnLineAverageIn != null and nhhOnLineAverageIn!= ''">#{nhhOnLineAverageIn},</if>
+			<if test=" tpOnLineAverageIn != null and tpOnLineAverageIn!= ''">#{tpOnLineAverageIn},</if>
+			<if test=" tnOnLineAverageIn != null and tnOnLineAverageIn!= ''">#{tnOnLineAverageIn},</if>
+			<if test=" ssOnLineAverageIn != null and ssOnLineAverageIn!= ''">#{ssOnLineAverageIn},</if>
+			<if test=" phOnLineAverageIn != null and phOnLineAverageIn!= ''">#{phOnLineAverageIn},</if>
+			<if test=" codOnLineAverageOut != null and codOnLineAverageOut!= ''">#{codOnLineAverageOut},</if>
+			<if test=" nhhOnLineAverageOut != null and nhhOnLineAverageOut!= ''">#{nhhOnLineAverageOut},</if>
+			<if test=" tpOnLineAverageOut != null and tpOnLineAverageOut!= ''">#{tpOnLineAverageOut},</if>
+			<if test=" tnOnLineAverageOut != null and tnOnLineAverageOut!= ''">#{tnOnLineAverageOut},</if>
+			<if test=" ssOnLineAverageOut != null and ssOnLineAverageOut!= ''">#{ssOnLineAverageOut},</if>
+			<if test=" phOnLineAverageOut != null and phOnLineAverageOut!= ''">#{phOnLineAverageOut},</if>
+			<if test=" weekFinishWork != null and weekFinishWork!= ''">#{weekFinishWork},</if>
+			<if test=" problemDesc != null and problemDesc!= ''">#{problemDesc},</if>
+			<if test=" actionDesc != null and actionDesc!= ''">#{actionDesc},</if>
+			<if test=" nextWeekPlan != null and nextWeekPlan!= ''">#{nextWeekPlan},</if>
+			<if test=" firstOpinion != null and firstOpinion!= ''">#{firstOpinion},</if>
+			<if test=" replyOpinion != null and replyOpinion!= ''">#{replyOpinion},</if>
+			<if test=" remark != null and remark != ''">#{remark},</if>
+			<if test=" delFlag != null and delFlag!= ''">#{delFlag},</if>
+			<if test=" createBy != null and createBy != ''">#{createBy},</if>
+			sysdate			
+		)
+	</insert>
+    
+</mapper>

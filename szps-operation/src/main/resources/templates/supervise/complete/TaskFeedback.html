@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('新增任务库')" />
+	<th:block th:include="include :: ztree-css" />
+	<th:block th:include="include :: bootstrap-fileinput-css" />
+</head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+	<form class="form-horizontal m" id="form-data-add" method="post">
+		<input id="feedbackId" name="feedbackId" type="hidden" th:value="*{feedbackId}"/>
+		<div class="form-group">
+			<label class="col-sm-2 control-label ">任务编号：</label>
+			<div class="col-sm-4">
+				<input class="form-control" type="text" name="taskNumber" id="taskNumber" required>
+			</div>
+			<label class="col-sm-2 control-label">创建日期：</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control time-input" id="feedbackTime" placeholder="点击弹出日历" name="feedbackTime" required/>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label">反馈信息：</label>
+			<div class="col-sm-10">
+				<textarea type="text" name="feedbackInformation" class="form-control" placeholder="请输入反馈信息" required></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">现场图片：</label>
+			<div class="col-sm-10">
+				<div class="file-loading">
+					<input id="picture" name="picture" type="file" multiple>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">附件：</label>
+			<div class="col-sm-10">
+				<div class="file-loading">
+					<input id="enclosure" name="enclosure" type="file" multiple>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<th:block th:include="include :: footer" />
+<th:block th:include="include :: ztree-js" />
+<th:block th:include="include :: bootstrap-fileinput-js" />
+<script type="text/javascript">
+
+	 var prefix= ctx +"supervise/complete";
+
+        $("#picture").fileinput({
+            'theme': 'explorer-fas',
+            language: 'zh', //设置语言
+            uploadUrl: prefix+'/uploadPicture',
+            overwriteInitial: false,
+            uploadExtraData:{"feedbackId":'[[${feedbackId}]]'},
+            initialPreviewAsData: true,
+            allowedFileExtensions:['jpg', 'gif', 'png'],
+            uploadAsync: false, //默认异步上传
+            showUpload: false, //是否显示上传按钮
+            showRemove : true, //显示移除按钮
+            showPreview : true, //是否显示预览
+            shn: true,//是否显示标题
+            broowCaptiowseClass: "btn btn-primary", //按钮样式     
+            dropZoneEnabled: true,//是否显示拖拽区域
+            maxFileCount: 10, //表示允许同时上传的最大文件个数
+            enctype: 'multipart/form-data',
+            validateInitialCount:true,
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！"
+        });
+
+        $("#enclosure").fileinput({
+            'theme': 'explorer-fas',
+            language: 'zh', //设置语言
+            uploadUrl: prefix+'/uploadEnclosure',
+            overwriteInitial: false,
+            uploadExtraData:{"feedbackId":'[[${feedbackId}]]'},
+            initialPreviewAsData: true,
+            allowedFileExtensions: ['jpg', 'gif', 'png','dwg','pdf','doc','docx','xlsx','xls','txt'],
+            uploadAsync: false, //默认异步上传
+            showUpload: false, //是否显示上传按钮
+            showRemove : true, //显示移除按钮
+            showPreview : true, //是否显示预览
+            shn: true,//是否显示标题
+            broowCaptiowseClass: "btn btn-primary", //按钮样式     
+            dropZoneEnabled: true,//是否显示拖拽区域
+            maxFileCount: 10, //表示允许同时上传的最大文件个数
+            enctype: 'multipart/form-data',
+            validateInitialCount:true,
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！"
+        });
+
+
+     $("#taskNumber").change(function () {
+         //发送ajax请求校验用户名是否可用
+         var taskNumber=this.value;
+         $.ajax({
+             url: prefix + "/checkTask",
+             data:"taskNumber="+taskNumber,
+             type:"POST",
+             dataType: 'json',
+             success:function(result) {
+                 if(result.code==200){
+                     $("#taskNumber").addClass("error");
+                     $.modal.alertError("该任务已完成，请选择其他未完成任务");
+				 }
+				 else {
+                     $("#taskNumber").removeClass("error");
+				 }
+             }
+         });
+     });
+
+
+    function submitHandler() {
+
+        if ($.validate.form()) {
+           /* if ($('#picture')[0].files[0] == null) {
+                $.modal.alertWarning("请先选择文件路径");
+                return false;
+            }
+            if ($('#enclosure')[0].files[0] == null) {
+                $.modal.alertWarning("请先选择文件路径");
+                return false;
+            }*/
+            $("#picture").fileinput("upload");
+            $("#enclosure").fileinput("upload");
+            var data = $("#form-data-add").serializeArray();
+            $.operate.save(prefix + "/add", data);
+        }
+    }
+
+
+
+
+</script>
+</body>
+</html>

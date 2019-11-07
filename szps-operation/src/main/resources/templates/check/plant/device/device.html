@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('点检设备资料列表')" />
+</head>
+<body class="gray-bg">
+     <div class="container-div">
+        <div class="row">
+            <div class="btn-group-sm" id="toolbar" role="group">
+                <a class="btn btn-warning" href="/check/plant/plant">
+                    </i> 返回
+                </a>
+                <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="check:device:add">
+                    <i class="fa fa-plus"></i> 添加
+                </a>
+                <a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="check:device:edit">
+                    <i class="fa fa-edit"></i> 修改
+                </a>
+                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="check:device:remove">
+                    <i class="fa fa-remove"></i> 删除
+                </a>
+                <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="check:device:export">
+                    <i class="fa fa-download"></i> 导出
+                 </a>
+
+            </div>
+            <div class="col-sm-12 select-table table-striped">
+                <table id="bootstrap-table"></table>
+            </div>
+        </div>
+    </div>
+    <th:block th:include="include :: footer" />
+    <script th:inline="javascript">
+        var editFlag = [[${@permission.hasPermi('check:device:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('check:device:remove')}]];
+        var prefix = ctx + "check/plant/device";
+
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+                exportUrl: prefix + "/export",
+                modalName: "点检设备资料",
+                columns: [{
+                    checkbox: true
+                },
+                {
+                    field : 'deviceSid',
+                    title : '系统流水号',
+                    visible: false
+                },
+                {
+                    field : 'plantId',
+                    title : '污水厂代码'
+                },
+                {
+                    field : 'plantName',
+                    title : '污水厂名称'
+                },
+                {
+                    field : 'deviceId',
+                    title : '设备ID'
+                },
+                {
+                    field : 'deviceName',
+                    title : '设备名称'
+                },
+                {
+                    field : 'checkId',
+                    title : '点检ID'
+                },
+                {
+                    field : 'deviceCreateuser',
+                    title : '创建者'
+                },
+                {
+                    field : 'deviceCreatetime',
+                    title : '创建时间'
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.deviceSid + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.deviceSid + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        return actions.join('');
+                    }
+                }]
+            };
+            $.table.init(options);
+        });
+    </script>
+</body>
+</html>

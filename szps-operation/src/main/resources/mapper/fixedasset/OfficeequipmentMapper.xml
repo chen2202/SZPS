@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.dev.fixedasset.OfficeequipmentMapper">
+ 
+	<resultMap type="Officeequipment" id="result">
+		<id     property="id"    column="id"    />
+		<result     property="deptid"   column="deptid"   />
+		<result     property="deptname"   column="deptname"   />
+		<result     property="deptname2"   column="deptname2"   />
+		<result     property="dlocation"   column="dlocation"   />
+		<result     property="dnumber"   column="dnumber"   />
+		<result     property="assetname"   column="assetname"   />
+		<result     property="dtype"   column="dtype"   />
+		<result     property="dparameter"   column="dparameter"   />
+		<result     property="manufacturer"   column="manufacturer"   />
+		<result     property="measurement"   column="measurement"   />
+		<result     property="bookquantity"   column="bookquantity"   />
+		<result     property="realquantity"   column="realquantity"   />
+		<result     property="purchasedate"   column="purchasedate"   />
+		<result     property="introductiondate"   column="introductiondate"   />
+		<result     property="dstatus"   column="dstatus"   />
+		<result     property="originalvalue"   column="originalvalue"   />
+
+        <result property="createBy"      column="create_by"      />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"      column="update_by"      />
+        <result property="updateTime"    column="update_time"    />
+		<result property="remark"    column="remark"    />
+    </resultMap> 
+
+	<sql id="selectVo">
+        select *
+        from dev_asset_officeequipment r
+    </sql>	
+	
+	<!-- 查询条件 -->
+	<sql id="sqlwhereSearch">
+		<where>
+			<if test=" deptid !=null">
+				and deptid = #{deptid}
+			</if>
+			<if test=" deptname != null and deptname != ''">
+				AND deptname  like concat(concat('%',#{deptname}),'%')
+			</if>
+			<if test=" assetname !=null and assetname != ''">
+				AND assetname  like concat(concat('%',#{assetname}),'%')
+			</if>
+			<if test=" dlocation !=null and dlocation != ''">
+				AND dlocation  like concat(concat('%',#{dlocation}),'%')
+			</if>
+		</where>
+	</sql>
+	
+
+    
+    <select id="select" parameterType="Officeequipment" resultMap="result">
+        <include refid="selectVo"/>
+        <include refid="sqlwhereSearch"/>
+    </select>
+    
+    <select id="selectList" parameterType="Officeequipment" resultMap="result">
+        <include refid="selectVo"/>
+        where  1 = 1
+        <if test=" deptid !=null">
+				and deptid = #{deptid}
+			</if>
+			<if test=" deptname != null and deptname != ''">
+				AND deptname  like concat(concat('%',#{deptname}),'%')
+			</if>
+			<if test=" assetname !=null and assetname != ''">
+				AND assetname  like concat(concat('%',#{assetname}),'%')
+			</if>
+			<if test=" dlocation !=null and dlocation != ''">
+				AND dlocation  like concat(concat('%',#{dlocation}),'%')
+			</if>
+		
+		order by r.id
+    </select>
+      <select id="selectByName" parameterType="Long" resultMap="result">
+		<include refid="selectVo"/>
+		where  1 = 1
+		<if test=" assetname != null and assetname != ''">
+				AND assetname  like concat(concat('%',#{assetname}),'%')
+		</if>
+	</select>
+	
+	<select id="selectById" parameterType="Long" resultMap="result">
+		<include refid="selectVo"/>
+		where r.id = #{id}
+	</select>
+	
+    <delete id="deleteById" parameterType="Long">
+		delete from dev_asset_officeequipment where id = #{id}
+	</delete>
+	 <delete id="deleteByIds" parameterType="Long">
+ 		delete from dev_asset_officeequipment where id in
+ 		<foreach collection="array" item="id" open="(" separator="," close=")">
+ 			#{id}
+        </foreach> 
+ 	</delete>
+    
+    <update id="update" parameterType="Officeequipment">
+ 		update dev_asset_officeequipment
+ 		<set>
+			<if test=" deptid != null ">deptid = #{deptid},</if>
+			<if test=" deptname != null and deptname != ''">deptname = #{deptname},</if>
+			<if test=" deptname2 != null and deptname2 != ''">deptname2 = #{deptname2},</if>
+			<if test=" dlocation != null and dlocation != ''">dlocation = #{dlocation},</if>
+			<if test=" dnumber != null and dnumber != ''">dnumber = #{dnumber},</if>
+			<if test=" assetname != null and assetname != ''">assetname = #{assetname},</if>
+			<if test=" dtype != null and dtype != ''">dtype = #{dtype},</if>
+			<if test=" dparameter != null and dparameter != ''">dparameter = #{dparameter},</if>
+			<if test=" manufacturer != null and manufacturer != ''">manufacturer = #{manufacturer},</if>
+			<if test=" measurement != null and measurement != ''">measurement = #{measurement},</if>
+			<if test=" bookquantity != null and bookquantity != ''">bookquantity = #{bookquantity},</if>
+			<if test=" realquantity != null and realquantity != ''">realquantity = #{realquantity},</if>
+			<if test=" purchasedate != null ">purchasedate = #{purchasedate},</if>
+			<if test=" introductiondate != null ">introductiondate = #{introductiondate},</if>
+			<if test=" dstatus != null and dstatus != ''">dstatus = #{dstatus},</if>
+			<if test=" originalvalue != null and originalvalue != ''">originalvalue = #{originalvalue},</if>
+			
+			<if test=" remark != null and remark != ''">remark = #{remark},</if>
+ 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+ 			update_time = sysdate
+ 		</set>
+ 		where id = #{id}
+	</update>
+	  
+    <insert id="insert" parameterType="Officeequipment">
+    	 <selectKey keyProperty="id" resultType="long" order="BEFORE">
+			SELECT seq_dev_asset_officeequipment.NEXTVAL as id FROM DUAL
+		</selectKey>
+    
+		INSERT INTO dev_asset_officeequipment(
+			<if test=" id != null and id!= 0">id,</if>
+			<if test=" deptid != null ">deptid,</if>
+			<if test=" deptname != null and  deptname != ''">deptname,</if>
+			<if test=" deptname2 != null and  deptname2 != ''">deptname2,</if>
+			<if test=" dlocation != null and  dlocation != ''">dlocation,</if>
+			<if test=" dnumber != null and  dnumber != ''">dnumber,</if>
+			<if test=" assetname != null and  assetname != ''">assetname,</if>
+			<if test=" dtype != null and  dtype != ''">dtype,</if>
+			<if test=" dparameter != null and  dparameter != ''">dparameter,</if>
+			<if test=" manufacturer != null and  manufacturer != ''">manufacturer,</if>
+			<if test=" measurement != null and  measurement != ''">measurement,</if>
+			<if test=" bookquantity != null and  bookquantity != ''">bookquantity,</if>
+			<if test=" realquantity != null and  realquantity != ''">realquantity,</if>
+			<if test=" purchasedate != null ">purchasedate,</if>
+			<if test=" introductiondate != null ">introductiondate,</if>
+			<if test=" dstatus != null and  dstatus != ''">dstatus,</if>
+			<if test=" originalvalue != null and  originalvalue != ''">originalvalue,</if>
+			
+			<if test=" remark != null and remark != ''">REMARK,</if>
+			<if test=" createBy != null and createBy != ''">create_by,</if>
+			create_time
+		) VALUES (
+			<if test=" id != null and id!= 0">#{id},</if>
+			<if test=" deptid != null ">#{deptid},</if>
+			<if test=" deptname != null and deptname != ''">#{deptname},</if>
+			<if test=" deptname2 != null and deptname2 != ''">#{deptname2},</if>
+			<if test=" dlocation != null and dlocation != ''">#{dlocation},</if>
+			<if test=" dnumber != null and dnumber != ''">#{dnumber},</if>
+			<if test=" assetname != null and assetname != ''">#{assetname},</if>
+			<if test=" dtype != null and dtype != ''">#{dtype},</if>
+			<if test=" dparameter != null and dparameter != ''">#{dparameter},</if>
+			<if test=" manufacturer != null and manufacturer != ''">#{manufacturer},</if>
+			<if test=" measurement != null and measurement != ''">#{measurement},</if>
+			<if test=" bookquantity != null and bookquantity != ''">#{bookquantity},</if>
+			<if test=" realquantity != null and realquantity != ''">#{realquantity},</if>
+			<if test=" purchasedate != null ">#{purchasedate},</if>
+			<if test=" introductiondate != null ">#{introductiondate},</if>
+			<if test=" dstatus != null and dstatus != ''">#{dstatus},</if>
+			<if test=" originalvalue != null and originalvalue != ''">#{originalvalue},</if>
+			
+			<if test=" remark != null and remark != ''">#{remark},</if>
+			<if test=" createBy != null and createBy != ''">#{createBy},</if>
+			sysdate			
+		)
+	</insert>
+    
+</mapper>

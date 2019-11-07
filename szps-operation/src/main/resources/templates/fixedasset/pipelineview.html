@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('资产列表')" />
+</head>
+<body class="gray-bg">
+    <div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="asset-form">
+				<input name="deptId" type="hidden" id="treeId"/>
+					<div class="select-list">
+						<ul>
+							<li>
+		                        <label >单位名称：</label>
+                            	<input name="deptname" onclick="selectDeptTree()" id="treeName" type="text" placeholder="" >
+							</li>
+							<li>
+		                        <label >管道和沟槽名称：</label>
+                            	<input name="assetName"  id="assetName" type="text" placeholder="" >
+							</li>
+							
+							<li>
+								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+			
+	        <div class="btn-group-sm" id="toolbar" role="group">
+		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="fixedasset:pipeline:add">
+		            <i class="fa fa-plus"></i> 新增
+		        </a>
+		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="fixedasset:pipeline:delete">
+		            <i class="fa fa-remove"></i> 删除
+		        </a>
+		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="fixedasset:pipeline:export">
+		            <i class="fa fa-download"></i> 导出
+		        </a> -->
+	        </div>
+	        
+	        <div class="col-sm-12 select-table table-striped">
+	            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+	        </div>
+    	</div>
+    </div>
+    <th:block th:include="include :: footer" />
+    <script th:inline="javascript">
+        var prefix = ctx + "op/fixedasset/pipeline";
+        var viewFlag = [[${@permission.hasPermi('fixedasset:pipeline:view')}]];
+        var editFlag = [[${@permission.hasPermi('fixedasset:pipeline:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('fixedasset:pipeline:delete')}]];
+        
+        /*用户管理-新增-选择部门树*/
+        function selectDeptTree() {
+        	
+        	var treeId = $("#treeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmit
+			};
+			$.modal.openOptions(options);
+		}
+        function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+		}
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+                
+                modalName: "固定资产-管道和沟槽",
+                columns: [{
+		            checkbox: true
+		        },
+		        {
+		        	field : 'id', 
+		        	title : '序号' 
+		        },
+		        {
+		        	field : 'deptname', 
+		        	title : '单位名称' 
+		        },
+		        {
+		        	field : 'dlocation', 
+		        	title : '所在地点/部门' 
+		        },
+		        {
+		        	field: 'assetname',
+		        	title: '管道和沟槽名称',
+		        },
+		        {
+		        	field: 'startingplace',
+		        	title: '起始地点',
+		        },
+		        {
+		        	field: 'endplace',
+		        	title: '终止地点',
+		        },
+		        {
+		        	field: 'dlength',
+		        	title: '长度(m)',
+		        },
+		        {
+		        	field: 'ddepth',
+		        	title: '槽深(m)',
+		        },
+		        {
+		        	field: 'dhigh',
+		        	title: '沟宽*沟厚(mm<sup>2</sup>)/管径*壁厚(mm<sup>2</sup>)',
+		        },
+		        {
+		        	field : 'material', 
+		        	title : '主要材质' 
+		        },
+		        {
+		        	field : 'insulation', 
+		        	title : '绝缘方式' 
+		        },
+		        {
+		        	field: 'layway',
+		        	title: '铺设方式',
+		        },
+		        {
+		        	field: 'aczoiling',
+		        	title: '防腐方式',
+		        },
+		        {
+		        	field: 'heatinsulatingmaterial',
+		        	title: '保温绝热材料',
+		        },
+		        {
+		        	field : 'builttime', 
+		        	title : '原始建成日期' 
+		        },
+		        {
+		        	field: 'dstatus',
+		        	title: '管沟现状',
+		        },
+		        {
+		        	field: 'originalvalue',
+		        	title: '原值',
+		        },
+		        {
+		        	field : 'remark', 
+		        	title : '备注' 
+		        },
+		        {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.editTab(\'' + row.id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.id + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        return actions.join('');
+                    }
+                }]
+            };
+            $.table.init(options);
+        });
+    </script>
+</body>
+</html>

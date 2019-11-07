@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="include :: header('新增规划任务')" />
+	<th:block th:include="include :: bootstrap-fileinput-css" />
+	<th:block th:include="include :: select2-css" />
+</head>
+<body>
+	<div class="main-content">
+		<form class="form-horizontal m" id="form-data-add">
+			<input type="hidden" id="dataUuid" name="dataUuid" class="form-control" readonly="readonly" th:value="${dataUuid}">
+			<h4 class="form-header h4">基本信息</h4>
+			<div class="row">
+            	<div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label"><span style="color: red; ">*</span>申请人：</label>
+				        <div class="col-sm-8">
+				            <input type="text" id="dataApplicant" name="dataApplicant" class="form-control" placeholder="请输入名字" required value="测试" />
+				        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label"><span style="color: red; ">*</span>规划单位：</label>
+				        <div class="col-sm-8">
+				            <input type="text" id="dataCompany" name="dataCompany" class="form-control" placeholder="请输入公司名" required value="测试" />
+				        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            	<div class="col-sm-6">
+                    <div class="form-group">
+			        <label class="col-sm-4 control-label"><span style="color: red; ">*</span>行政区：</label>
+			        <div class="col-sm-8">
+			            <!--<input type="text" id="dataBorough" name="dataBorough" class="form-control" placeholder="请输入行政区" required value="测试" />-->
+						<select class="form-control" id="dataBorough" name="dataBorough">
+							<option value="南山区">南山区</option>
+							<option value="福田区">福田区</option>
+							<option value="盐田区">盐田区</option>
+							<option value="罗湖区">罗湖区</option>
+						</select>
+			        </div>
+			    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+			        <label class="col-sm-4 control-label"><span style="color: red; ">*</span>街道：</label>
+			        <div class="col-sm-8">
+			            <!--<input type="text" id="dataStreet" name="dataStreet" class="form-control" placeholder="请输入街道" required value="测试" />-->
+						<select class="form-control" id="dataStreet" name="dataStreet">
+							<option value="南山街道">南山街道</option>
+							<option value="南头街道">南头街道</option>
+							<option value="西丽街道">西丽街道</option>
+							<option value="沙河街道">沙河街道</option>
+						</select>
+			        </div>
+			    </div>
+                </div>
+            </div>
+            <div class="row">
+            	<div class="col-sm-6">
+                    <div class="form-group">
+			        <label class="col-sm-4 control-label"><span style="color: red; ">*</span>所属类别：</label>
+			        <div class="col-sm-8">
+			            <input type="text" id="dataType" name="dataType" class="form-control" placeholder="请输入类别" required value="测试" />
+			        </div>
+			    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+			        <label class="col-sm-4 control-label"><span style="color: red; ">*</span>密级：</label>
+			        <div class="col-sm-8">
+			            <!--<input type="text" id="dataLevel" name="dataLevel" class="form-control" placeholder="请输入密级" required value="测试" />-->
+						<select class="form-control" id="dataLevel" name="dataLevel">
+							<option value="普通">普通</option>
+							<option value="密">密</option>
+							<option value="机密">机密</option>
+							<option value="极机密">极机密</option>
+						</select>
+			        </div>
+			    </div>
+                </div>
+            </div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label"><span style="color: red; ">*</span>主题：</label>
+						<div class="col-sm-8">
+							<input type="text" id="dataTheme" name="dataTheme" class="form-control" placeholder="请输入主题" required value="测试"/>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label"><span style="color: red; ">*</span>流域：</label>
+						<div class="col-sm-8">
+							<!--<input type="text" id="dataRiver" name="dataRiver" class="form-control" placeholder="请输入流域" value="测试"/>-->
+							<select class="form-control" id="dataRiver" name="dataRiver">
+								<option value="茅洲河">茅洲河</option>
+								<option value="观澜河">观澜河</option>
+								<option value="龙岗河">龙岗河</option>
+								<option value="深圳河湾">深圳河湾</option>
+								<option value="坪山河">坪山河</option>
+								<option value="大亚湾">大亚湾</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">简介：</label>
+						<div class="col-sm-10">
+							<textarea type="text" id="dataDesc" name="dataDesc" class="form-control" placeholder="请输入简介">测试</textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">附属文件：</label>
+						<div class="col-sm-10">
+							<input id="filePath" name="filePath" class="select-file file-loading" multiple type="file">
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="row">
+		<div class="col-sm-offset-5 col-sm-10">
+			<button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>提 交</button>&nbsp;
+			<button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
+		</div>
+	</div>
+
+	<th:block th:include="include :: footer" />
+	<th:block th:include="include :: bootstrap-fileinput-js" />
+	<script>
+        var prefix = ctx + "dm/data";
+
+		// 防止表单重复提交
+		var flag = true;
+
+        $("#form-data-add").validate({
+            onkeyup: false,
+            focusCleanup: true
+        });
+
+        $(document).ready(function () {
+            $("#filePath").fileinput({
+                'uploadUrl': '#',
+                overwriteInitial: false,
+                initialPreviewAsData: true,
+                showPreview : false,	//预览
+                showUpload: false		//上传按钮
+            });
+        });
+
+        function submitHandler() {
+            if ($.validate.form()) {
+                if(flag){
+                    flag = false;
+                    uploadFile();
+				}else{
+                    $.modal.alertWarning("请勿重复提交!");
+				}
+
+            }
+        }
+
+        function uploadFile() {
+            var formData = new FormData();
+            if ($('#filePath')[0].files[0] == null) {
+                $.modal.alertWarning("请先选择文件路径");
+                flag = true;		// 没有选择文件，此时虽点击提交，但并未提交
+                return false;
+            }
+
+            var fileInput = document.getElementById("filePath");
+            var filess = fileInput.files;
+            for (var i = 0; i < filess.length; i++) {
+                formData.append("file",filess[i],filess[i].name);
+            }
+
+            formData.append('dataApplicant',$("#dataApplicant").val());
+            formData.append('dataCompany',$("#dataCompany").val());
+            formData.append('dataBorough',$("#dataBorough").val());
+            formData.append('dataStreet',$("#dataStreet").val());
+            formData.append('dataType',$("#dataType").val());
+            formData.append('dataLevel',$("#dataLevel").val());
+            formData.append('dataTheme',$("#dataTheme").val());
+            formData.append('dataDesc',$("#dataDesc").val());
+            formData.append('dataUuid',$("#dataUuid").val());
+            formData.append('dataRiver',$("#dataRiver").val());
+
+            // formData.append('file[]', $('.select-file')[i].file[0]);
+
+            $.ajax({
+                url: prefix + "/add",
+                type: 'post',
+                cache: false,
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                beforeSend:function(){
+                    //请求前的处理
+                    $.modal.loading("上传中...");
+                },
+                success: function(result) {
+                    //$.operate.successCallback(result);
+                    $.modal.closeLoading();
+
+                    if (result.code == web_status.SUCCESS) {
+                        $.modal.msgSuccess("上传成功!");
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1200);
+                    } else if (result.code == web_status.WARNING) {
+                        $.modal.alertWarning(result.msg)
+                    }  else {
+                        $.modal.alertError(result.msg);
+                    }
+                }
+            });
+        }
+	</script>
+</body>
+</html>

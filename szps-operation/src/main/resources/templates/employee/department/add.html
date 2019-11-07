@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:include="include :: header('新增部门')" />
+</head>
+<body class="white-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+		<form class="form-horizontal m" id="form-department-add">
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">部门代码：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="department_id" id="department_id" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">部门名称：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="department_name" id="department_name" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">公司/水厂代码：</label>
+				<div class="col-sm-8">
+					<select id="company_id" name="company_id" required>
+						<option value="">--请选择公司/水厂--</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">上级部门代码：</label>
+				<div class="col-sm-8">
+					<select id="parent_department_id" name="parent_department_id" required>
+						<option value="">--请先选择公司/水厂--</option>
+						<option value="no">无</option>
+					</select>
+				</div>
+			</div>
+		</form>
+	</div>
+	<th:block th:include="include :: footer" />
+	<script type="text/javascript">
+		//公司/水厂名称select添加option
+		getCompanyName();
+		getFactoryName();
+		
+		//当公司/水厂名称select选项变化时
+		var oldDepartmentNameLength = 0; //旧select长度初始化，赋值在getDepartmentName()中进行
+		$("#company_id").change(function(){
+			for(var i=1;i<oldDepartmentNameLength;i++){ //删除select中旧option
+				$("#parent_department_id option:last").remove();
+			}
+			getDepartmentName(); //添加新option
+		});
+		
+		//------------------------主程序结束--------------------------
+		
+		//提交新增部门信息
+		function submitHandler() {
+	        if ($.validate.form()) {
+	        	add();
+	        }
+	    }
+		
+		//获取公司名称
+		function getCompanyName(){
+			var optionJson=[];
+			$.ajax({
+				type: "post",
+			    url: "/employee/department/companyNameList",
+			    dataType:"json",
+			    data: {},
+			    async:false,
+			    error:function(){
+			    	alert("获取公司信息出错，请联系系统管理员");
+			    },
+		        success : function(data){
+                	optionJson = data;
+                	var selectObj = document.getElementById("company_id"); //获取公司/厂下拉菜单对象
+			    	for(var i=0;i<optionJson.length;){
+			        	selectObj.add(new Option(optionJson[i],optionJson[i+1])); //公司名text，公司代码value
+			        	i += 2;
+		        	}
+		        }
+			 });
+		}
+		
+		//获取水厂名称
+		function getFactoryName(){
+			var optionJson=[];
+			$.ajax({
+				type: "post",
+			    url: "/employee/department/factoryNameList",
+			    dataType:"json",
+			    data: {},
+			    async:false,
+			    error:function(){
+			    	alert("获取水厂信息出错，请联系系统管理员");
+			    },
+		        success : function(data){
+                	optionJson = data;
+	            	var selectObj = document.getElementById("company_id");
+			    	for(var i=0;i<optionJson.length;){
+			        	selectObj.add(new Option(optionJson[i],optionJson[i+1])); 
+			        	i += 2;
+		        	}
+		        }
+			 });
+		}
+		
+		//获取部门名称
+		function getDepartmentName(){
+			var optionJson=[];
+			$.ajax({
+				type: "post",
+			    url: "/employee/department/departmentNameList",
+			    dataType:"json",
+			    data:{"company_id":$("#company_id option:selected").val()},
+			    async:false,
+			    error:function(){
+			    	alert("获取部门信息出错，请联系系统管理员");
+			    },
+		        success : function(data){
+                	optionJson = data;
+	            	var selectObj = document.getElementById("parent_department_id");
+	            	var i;
+			    	for(i=0;i<optionJson.length;){ //添加选项
+			        	selectObj.add(new Option(optionJson[i],optionJson[i+1])); //部门名text，部门代码value
+			        	i += 2;
+		        	}
+			    	oldDepartmentNameLength = i/2 + 1; //+1是因为提示占一个option
+		        }
+			 });
+		}
+	
+		//检查表单中新部门是否唯一
+		$("#form-department-add").validate({
+			rules:{
+				onkeyup: false,
+				department_id:{
+					remote: {
+		                url: ctx + "employee/department/checkDepartmentIdUnique",
+		                type: "post",
+		                dataType: "json",
+		                data: {
+		                	"department_id" : function() {
+		                		return $.common.trim($("#department_id").val());
+		                    }
+		                },
+		                dataFilter: function(data, type) {
+		                	return $.validate.unique(data);
+		                }
+		            }
+				}
+			},
+			messages: {
+		        "department_id": {
+		            remote: "部门代码已经添加"
+		        }
+		    },
+		    focusCleanup: true
+		});
+	
+		//ajax添加新从业人员
+		function add() {
+			var department_id = $("input[name='department_id']").val();
+			var department_name = $("input[name='department_name']").val();
+			var company_id = $("#company_id option:selected").val();
+			var parent_department_id = $("#parent_department_id").val();
+			$.ajax({
+				cache : true,
+				type : "POST",
+				url : ctx + "employee/department/add",
+				data : {
+					"department_id": department_id,
+					"department_name": department_name,
+					"company_id":company_id,
+					"parent_department_id":parent_department_id,
+				},
+				async : false,
+				error : function(request) {
+					$.modal.alertError("添加新部门发生错误"); 
+				},
+				success : function(data) {
+					$.operate.successCallback(data);
+				}
+			});
+		} 
+	</script>
+</body>
+</html>

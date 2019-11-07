@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.check.PlantCheckRecordMapper">
+
+    <resultMap type="com.szps.web.domain.check.PlantCheckRecord" id="PlantCheckRecordResult">
+        <result property="systemId"    column="system_id"    />
+        <result property="plantId"    column="plant_id"    />
+        <result property="plantName"    column="plant_name"    />
+        <result property="deviceId"    column="device_id"    />
+        <result property="deviceName"    column="device_name"    />
+        <result property="checkId"    column="check_id"    />
+        <result property="sloveRecord"    column="slove_record"    />
+        <result property="checkDate"    column="check_date"    />
+        <result property="systemCreateuser"    column="system_createuser"    />
+        <result property="systemCreatetime"    column="system_createtime"    />
+    </resultMap>
+
+    <sql id="selectPlantCheckRecordVo">
+        select system_id, plant_id, plant_name, device_id, device_name, check_id, slove_record, check_date, system_createuser, system_createtime from PLANT_CHECK_RECORD
+    </sql>
+
+    <select id="selectPlantCheckRecordList" parameterType="com.szps.web.domain.check.PlantCheckRecord" resultMap="PlantCheckRecordResult">
+        <include refid="selectPlantCheckRecordVo"/>
+        <where>
+            <if test="plantId != null  and plantId != ''"> and plant_id = #{plantId}</if>
+            <if test="plantName != null  and plantName != ''"> and plant_name like concat(concat('%', #{plantName}), '%')</if>
+            <if test="deviceId != null  and deviceId != ''"> and device_id = #{deviceId}</if>
+            <if test="deviceName != null  and deviceName != ''"> and device_name like concat(concat('%', #{deviceName}), '%')</if>
+            <if test="checkId != null  and checkId != ''"> and check_id = #{checkId}</if>
+            <if test="sloveRecord != null  and sloveRecord != ''"> and slove_record = #{sloveRecord}</if>
+            <if test="checkDate != null "> and check_date = #{checkDate}</if>
+            <if test="systemCreateuser != null  and systemCreateuser != ''"> and system_createuser = #{systemCreateuser}</if>
+            <if test="systemCreatetime != null "> and system_createtime = #{systemCreatetime}</if>
+        </where>
+    </select>
+
+    <select id="selectPlantCheckRecordList2" parameterType="com.szps.system.domain.SysUser" resultMap="PlantCheckRecordResult">
+        <include refid="selectPlantCheckRecordVo"/>
+            where system_createuser=#{userName}
+    </select>
+
+    <select id="selectPlantCheckRecordById" parameterType="java.lang.Long" resultMap="PlantCheckRecordResult">
+        <include refid="selectPlantCheckRecordVo"/>
+        where system_id = #{systemId}
+    </select>
+
+    <insert id="insertPlantCheckRecord" parameterType="com.szps.web.domain.check.PlantCheckRecord">
+        <selectKey keyProperty="systemId" resultType="long" order="BEFORE">
+            SELECT seq_PLANT_CHECK_RECORD.NEXTVAL as systemId FROM DUAL
+        </selectKey>
+        insert into PLANT_CHECK_RECORD
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="systemId != null ">system_id,</if>
+            <if test="plantId != null  and plantId != ''">plant_id,</if>
+            <if test="plantName != null  and plantName != ''">plant_name,</if>
+            <if test="deviceId != null  and deviceId != ''">device_id,</if>
+            <if test="deviceName != null  and deviceName != ''">device_name,</if>
+            <if test="checkId != null  and checkId != ''">check_id,</if>
+            <if test="sloveRecord != null  and sloveRecord != ''">slove_record,</if>
+            <if test="checkDate != null ">check_date,</if>
+            <if test="systemCreateuser != null  and systemCreateuser != ''">system_createuser,</if>
+            <if test="systemCreatetime != null ">system_createtime,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="systemId != null ">#{systemId},</if>
+            <if test="plantId != null  and plantId != ''">#{plantId},</if>
+            <if test="plantName != null  and plantName != ''">#{plantName},</if>
+            <if test="deviceId != null  and deviceId != ''">#{deviceId},</if>
+            <if test="deviceName != null  and deviceName != ''">#{deviceName},</if>
+            <if test="checkId != null  and checkId != ''">#{checkId},</if>
+            <if test="sloveRecord != null  and sloveRecord != ''">#{sloveRecord},</if>
+            <if test="checkDate != null ">#{checkDate},</if>
+            <if test="systemCreateuser != null  and systemCreateuser != ''">#{systemCreateuser},</if>
+            <if test="systemCreatetime != null ">#{systemCreatetime},</if>
+         </trim>
+    </insert>
+
+    <update id="updatePlantCheckRecord" parameterType="com.szps.web.domain.check.PlantCheckRecord">
+        update PLANT_CHECK_RECORD
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="plantId != null  and plantId != ''">plant_id = #{plantId},</if>
+            <if test="plantName != null  and plantName != ''">plant_name = #{plantName},</if>
+            <if test="deviceId != null  and deviceId != ''">device_id = #{deviceId},</if>
+            <if test="deviceName != null  and deviceName != ''">device_name = #{deviceName},</if>
+            <if test="checkId != null  and checkId != ''">check_id = #{checkId},</if>
+            <if test="sloveRecord != null  and sloveRecord != ''">slove_record = #{sloveRecord},</if>
+            <if test="checkDate != null ">check_date = #{checkDate},</if>
+            <if test="systemCreateuser != null  and systemCreateuser != ''">system_createuser = #{systemCreateuser},</if>
+            <if test="systemCreatetime != null ">system_createtime = #{systemCreatetime},</if>
+        </trim>
+        where system_id = #{systemId}
+    </update>
+
+    <delete id="deletePlantCheckRecordById" parameterType="java.lang.Long">
+        delete from PLANT_CHECK_RECORD where system_id = #{systemId}
+    </delete>
+
+    <delete id="deletePlantCheckRecordByIds" parameterType="java.lang.String">
+        delete from PLANT_CHECK_RECORD where system_id in
+        <foreach item="systemId" collection="array" open="(" separator="," close=")">
+            #{systemId}
+        </foreach>
+    </delete>
+
+</mapper>

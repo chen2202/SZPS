@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('申请设备')" />
+	<th:block th:include="include :: select2-css" />
+</head>
+<body>
+    <div class="main-content">
+       <form id="form"  class="form-horizontal">
+		<input name="deptId" type="hidden" id="treeId" th:value="${sysDept.deptId}"/>
+		<div class="control-group" align="center">
+			<label class="lbl" >设备日常保养/点检记录表</label><br>
+		</div>
+		<div class="control-group">
+		<!-- required -->
+		<table  class="table table-striped table-bordered table-condensed">
+		   <tr >
+		    <td colspan="4"  ></td>
+		    <td >记录日期：</td>
+		    <td >
+		    <input id="recordDate" name="recordDate" class="time-input form-control"/> </td>
+		  </tr>
+		  <tr >
+		    <td >设备名称：</td>
+		    <td><input name="devName" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		    <td>设备编号：</td>
+		    <td><input name="devNumber" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		    <td>设备型号：</td>
+		    <td><input name="devModel" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td >使用部门：</td>
+		    <td><input name="useDept" th:value="${sysDept.deptName}" onclick="selectDeptTree()" id="treeName"  htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		    <td>保养负责人：</td>
+		    <td><input name="checkManager" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		    <td>责任人：</td>
+		    <td><input name="manager" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="5" >保养项目：</td>
+		    <td>保养结果：</td>
+		  </tr>
+		  <tr >
+		    <td colspan="5" >1.设备周围地面卫生：干净，整洁。</td>
+		    <td><input name="maintainResult1" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="5" >2.机台表面干净，无油污，无工、量具及杂物</td>
+		    <td><input name="maintainResult2" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="5" >3.加注润滑油,具体润滑点见《保养规程》</td>
+		    <td><input name="maintainResult3" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="5" >4.紧固螺丝，无松脱现象，机体完好无损</td>
+		    <td><input name="maintainResult4" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="5" >5.皮带等各传动机构张紧合适，调节得当</td>
+		    <td><input name="maintainResult5" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="5" >6.各种控制开关,仪器仪表完好;控制精确</td>
+		    <td><input name="maintainResult6" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="5" >7.各安全开关,保护装置完好,可靠</td>
+		    <td><input name="maintainResult7" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="5" >8.排水排气装置正常:无松脱泄漏和堵塞</td>
+		    <td><input name="maintainResult8" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="5" >9.油路、管道系统正常，无松脱、滴漏和堵塞</td>
+		    <td><input name="maintainResult9" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="5" >10.电器电缆完好，无异味、冒烟等现象</td>
+		    <td><input name="maintainResult10" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="5" >11.设备、电机的防水，防腐蚀盖或密封</td>
+		    <td><input name="maintainResult11" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="2" >保养人签名</td>
+		    <td colspan="4"><input name="maintainPeople" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="2" >保养结果评价</td>
+		    <td colspan="4"><input name="maintainResult" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="2" >设备部监督人签名</td>
+		    <td colspan="4"><input name="custodian" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="2" >抽查人总体评价效果</td>
+		    <td colspan="4"><input name="spotCheckResult" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="2" >抽查人签名</td>
+		    <td colspan="4"><input name="spotCheckSign" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="2" >备注</td>
+		    <td colspan="4"><input name="remarks" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="6" rowspan="10" >操作工：做过保养打“∨”发现异常打“X”停用设备不必填写．操作工只须按以上要求项目保养设备并签名，由设备设施部人员监督并作评价记录。     <br />
+		      维修/检查人员：根据保养项目的要求对操作工的保养结果进行检查，并复查处理和收集异常设备信息；保养结果：良好：Ａ　一般：Ｂ　差：Ｃ     <br />
+		      1.以上表格为日常保养/点检内容，保养责任人是设备的操作人员（一人或几人）     <br />
+		      2.保养人须严格按照其保养内容进行点检和保养工作，开机前，运行中，停机后都要进行检查和保养工作。     <br />
+		      3.不同的设备其保养内容会有所不同，其具体内容会写在《设备操作/保养规程内》。     <br />
+		      4.此表格中对保养项目的评价由设备设施部的维修人员每天对每台设备进行检查后填写，并签名。     <br />
+		      5.由相关领导或指定抽查人员每月对设备进行抽检，以核实其真实性和时效，体现其监督性。备注栏可作相关说明。     <br />
+		      6.设备设施部每月底收集各部门表格进行统计分析，并将统计结果以邮件形式进行公布，以达公共监督之目的。     <br />
+		      7.以上工作请认真对待，力争将维修工作做在设备因故障停机之前；此项工作完成的好坏直接关系到设备的故障率以及故障所造成的财产损失比。     <br />
+		      8.可以此为依据，参照设备现状，对设备运行时数，设备故障率，维修成本，以及产品质量和设备直接操作人员起到一定的追朔作用。     <br />
+		    </td>
+		  </tr>
+		  <tr > </tr>
+		  <tr > </tr>
+		  <tr > </tr>
+		  <tr > </tr>
+		  <tr > </tr>
+		  <tr > </tr>
+		  <tr > </tr>
+		  <tr > </tr>
+		  <tr > </tr>
+		</table>
+		</div>
+		
+	</form>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-5 col-sm-10">
+            <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>保 存</button>&nbsp;
+            <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
+        </div>
+    </div>
+	<th:block th:include="include :: footer" />
+	<th:block th:include="include :: select2-js" />
+	<script>
+	    var prefix = ctx + "op/dev/routineCheck";
+	
+        $("#form").validate({
+        	onkeyup: false,
+        	rules:{
+        		
+        	},
+        	messages: {
+                "loginName": {
+                    remote: "用户已经存在"
+                },
+        		"email": {
+                    remote: "Email已经存在"
+                },
+        		"phonenumber":{
+                	remote: "手机号码已经存在"
+        		}
+            },
+            focusCleanup: true
+        });
+        
+        function submitHandler() {
+	        if ($.validate.form()) {
+	        	var data = $("#form").serializeArray();
+	        	/* var status = $("input[id='status']").is(':checked') == true ? 0 : 1;
+	        	var roleIds = $.form.selectCheckeds("role");
+	        	var postIds = $.form.selectSelects("post");
+	        	data.push({"name": "status", "value": status});
+	        	data.push({"name": "roleIds", "value": roleIds});
+	        	data.push({"name": "postIds", "value": postIds}); */
+	        	$.operate.saveTab(prefix + "/add", data);
+	        }
+	    }
+         
+        /*用户管理-新增-选择部门树*/
+        function selectDeptTree() {
+        	var treeId = $("#treeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmit
+			};
+			$.modal.openOptions(options);
+		}
+		
+		function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+		}
+		
+		
+
+		$(function() {
+            $('#post').select2({
+                placeholder:"请选择岗位",
+                allowClear: true
+            });
+        })
+    </script>
+</body>
+</html>

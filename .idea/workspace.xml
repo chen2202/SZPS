@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="61cc3298-3ade-4956-9ec5-1f82781edc6f" name="Default Changelist" comment="" />
+    <list default="true" id="61cc3298-3ade-4956-9ec5-1f82781edc6f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/event/GlobalResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/event/HttpClientUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/event/WeChatUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/event/WeChatMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/event/IWeChatService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/event/impl/WeChatServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/event/WeChatMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/PipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/PipeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/SludgeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/SludgeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/event/EvnetSendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/event/EvnetSendController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/event/WeChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/event/WeChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/event/EventAll.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/event/EventAll.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/event/EventSend.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/event/EventSend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/static/ruoyi/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/static/ruoyi/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/pipe/pipe.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/pipe/pipe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/content/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/content/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/sludge/sludge.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/sludge/sludge.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/send/send.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/send/send.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/send/sendmail.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/send/sendmail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/detail.html" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +55,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -39,6 +68,11 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
     <option name="ruleStates">
       <list>
         <RuleState>
@@ -66,6 +100,27 @@
       </method>
     </configuration>
   </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <option name="contentProportion" value="0.11004785" />
+        <treeState>
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@88b7b638" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@88b7b638" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@4269964b" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -78,6 +133,7 @@
       <updated>1573134295583</updated>
       <workItem from="1573134297789" duration="1859000" />
       <workItem from="1573172238416" duration="498000" />
+      <workItem from="1573180968025" duration="1434000" />
     </task>
     <servers />
   </component>
@@ -89,7 +145,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

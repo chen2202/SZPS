@@ -27,8 +27,17 @@ public class DevInfo extends BaseEntity {
 	String supplierStr;
 	String buytimeStr;
 	String beganusetimeStr;
+	String district;
 	List<TechInfo> techInfos;
 	
+	public String getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(String district) {
+		this.district = district;
+	}
+
 	public Long getId() {
 		return id;
 	}

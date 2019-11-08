@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('资产列表')" />
+	<link href="../static/ruoyi/css/tundra.css"	th:href="@{/ruoyi/css/tundra.css}" rel="stylesheet" />
+<link href="../static/ruoyi/css/jsapi.css"	th:href="@{/ruoyi/css/jsapi.css}" rel="stylesheet" />
+	
+</head>
+<body class="gray-bg">
+			
+
+    <div dojotype="dijit.layout.BorderContainer" design="headline"
+		gutters="true" style="width: 100%; height: 100%; margin: 0;">
+		
+		<div id="map" dojotype="dijit.layout.ContentPane" region="center">
+		</div>
+	</div>
+    <th:block th:include="include :: footer" />
+    <script type="text/javascript">
+		var djConfig = {
+			parseOnLoad : true
+		};
+	</script>
+	<script type="text/javascript"
+		src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.6">
+		
+	</script>
+	<script type="text/javascript">
+		dojo.require("dijit.layout.BorderContainer");
+		dojo.require("dijit.layout.ContentPane");
+		dojo.require("esri.map");
+		var map;
+		function init() {
+			map = new esri.Map("map");
+			var layer = new esri.layers.ArcGISDynamicMapServiceLayer(
+					"http://120.79.27.112:6080/arcgis/rest/services/SZPS/basemapBlue/MapServer");
+			map.addLayer(layer);
+			var resizeTimer;
+			dojo.connect(map, 'onLoad', function(theMap) {
+				dojo.connect(dijit.byId('map'), 'resize', function() {
+					clearTimeout(resizeTimer);
+					resizeTimer = setTimeout(function() {
+						map.resize();
+						map.reposition();
+					}, 500);
+				});
+			});
+		}
+		dojo.addOnLoad(init);
+	</script>
+</body>
+</html>

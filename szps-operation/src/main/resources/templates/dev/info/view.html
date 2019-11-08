@@ -8,12 +8,12 @@
 		<div class="row">
 			<div class="col-sm-12 search-collapse">
 				<form id="info-form">
-				<input name="areaId" type="hidden" id="treeId2"/>
+				<input name="districtId" type="hidden" id="treeId2"/>
 					<div class="select-list">
 						<ul>
 							<li>
 		                        <label >所属区：</label>
-                            	<input name="areaName" onclick="selectAreaTree()" id="treeName2" type="text" placeholder="" >
+                            	<input name="district" onclick="selectAreaTree()" id="treeName2" type="text" placeholder="" >
 							</li>
 							
 							<li>
@@ -81,6 +81,10 @@
 					field : 'dname', 
 					title : '名称' 
 				},
+				{
+		            field: 'district',
+		            title: '所属区',
+		        },
 				{
 		            field: 'dnumber',
 		            title: '编号',

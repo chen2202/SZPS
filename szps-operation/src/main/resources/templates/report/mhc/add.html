@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('增加供应商')" />
+</head>
+<body class="white-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form id="form"  class="form-horizontal m">
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">所属省：</label>
+						<div class="col-sm-6">
+							<input name="dprovince" id="dprovince" class="form-control" type="text" value="广东" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">所属市：</label>
+						<div class="col-sm-6">
+							<input name="dcity" id="dcity" class="form-control" type="text" value="440300" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">项目代码：</label>
+						<div class="col-sm-6">
+							<input name="projectcode" id="projectcode" class="form-control" type="text"  />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">项目名称：</label>
+						<div class="col-sm-6">
+							<input name="projectname" id="treeName"  class="form-control" type="text" onclick="selectDeptTree()"/>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">上报期号：</label>
+						<div class="col-sm-6">
+							<input name="reportnumber" id="reportnumber" class="time-input form-control" type="text"  data-type="date" data-format="yyyy-MM" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">设计规模(万立方米/月)：</label>
+						<div class="col-sm-6">
+							<input name="designscale" id="designscale" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">累计处理水量(万立方米)：</label>
+						<div class="col-sm-6">
+							<input name="awtc" id="awtc" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">最高日处理量(万立方米)：</label>
+						<div class="col-sm-6">
+							<input name="mdtc" id="mdtc" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">负荷率( % )：</label>
+						<div class="col-sm-6">
+							<input name="loadrate" id="loadrate" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">COD削减能力(吨/日)：</label>
+						<div class="col-sm-6">
+							<input name="codrc" id="codrc" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">COD削减量( 吨 )：</label>
+						<div class="col-sm-6">
+							<input name="codr" id="codr" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">吨水COD削减能力(公斤/立方米)：</label>
+						<div class="col-sm-6">
+							<input name="codcptw" id="codcptw" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">吨水削减量(公斤/立方米)：</label>
+						<div class="col-sm-6">
+							<input name="twr" id="twr" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">累计用电量(千瓦.时)：</label>
+						<div class="col-sm-6">
+							<input name="cec" id="cec" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">直接成本(元/立方米)：</label>
+						<div class="col-sm-6">
+							<input name="directcost" id="directcost" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">再生水利用量(万立方米)：</label>
+						<div class="col-sm-6">
+							<input name="rwc" id="rwc" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">累计湿污泥产生量( 吨 )：</label>
+						<div class="col-sm-6">
+							<input name="awsp" id="awsp" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">污泥含水率( % )：</label>
+						<div class="col-sm-6">
+							<input name="mcs" id="mcs" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">污泥处理量(吨)：</label>
+						<div class="col-sm-6">
+							<input name="stc" id="stc" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">土地利用量(吨)：</label>
+						<div class="col-sm-6">
+							<input name="landuse" id="landuse" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">建材利用量(吨)：</label>
+						<div class="col-sm-6">
+							<input name="ubm" id="ubm" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">焚烧利用量(吨)：</label>
+						<div class="col-sm-6">
+							<input name="iu" id="iu" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">卫生填埋量(吨)：</label>
+						<div class="col-sm-6">
+							<input name="slc" id="slc" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">其他处置量(吨)：</label>
+						<div class="col-sm-6">
+							<input name="odc" id="odc" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+				
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">正常运行天数：</label>
+						<div class="col-sm-6">
+							<input name="normaldays" id="normaldays" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">达标排放天数：</label>
+						<div class="col-sm-6">
+							<input name="standarddays" id="standarddays" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+				
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">不达标原因：</label>
+						<div class="col-sm-6">
+							<textarea name="reasons" id="reasons" class="form-control" type="text"  ></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">超标项目：</label>
+						<div class="col-sm-6">
+							<textarea name="esp" id="esp" class="form-control" type="text"  ></textarea>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">COD进水( mg/L )：</label>
+						<div class="col-sm-6">
+							<input name="codin" id="codin" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">COD出水( mg/L )：</label>
+						<div class="col-sm-6">
+							<input name="codout" id="codout" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+				
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">BOD进水( mg/L )：</label>
+						<div class="col-sm-6">
+							<input name="bodin" id="bodin" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">BOD出水( mg/L )：</label>
+						<div class="col-sm-6">
+							<input name="bodout" id="bodout" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+				
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">SS进水( mg/L )：</label>
+						<div class="col-sm-6">
+							<input name="ssin" id="ssin" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">SS出水( mg/L )：</label>
+						<div class="col-sm-6">
+							<input name="ssout" id="ssout" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+				
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">AD进水( mg/L )：</label>
+						<div class="col-sm-6">
+							<input name="adin" id="adin" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">AD出水( mg/L )：</label>
+						<div class="col-sm-6">
+							<input name="adout" id="adout" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+				
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">TN进水( mg/L )：</label>
+						<div class="col-sm-6">
+							<input name="tnin" id="tnin" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">TN出水( mg/L )：</label>
+						<div class="col-sm-6">
+							<input name="tnout" id="tnout" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+				
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">TP进水( mg/L )：</label>
+						<div class="col-sm-6">
+							<input name="tpin" id="tpin" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">TP出水( mg/L )：</label>
+						<div class="col-sm-6">
+							<input name="tpout" id="tpout" class="form-control" type="number"  />
+						</div>
+					</div>
+				</div>
+				
+			</div>
+
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">填报人：</label>
+						<div class="col-sm-6">
+							<input name="applicant" id="applicant" class="form-control" type="text"  />
+						</div>
+					</div>
+				</div>
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">填报日期：</label>
+						<div class="col-sm-6">
+							<input name="submissiondate" id="submissiondate" class="time-input form-control" type="text"  data-type="date" data-format="yyyy-MM-dd" />
+						</div>
+					</div>
+				</div>
+				
+			</div>
+	</form>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-5 col-sm-10">
+            <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>保 存</button>&nbsp;
+            <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
+        </div>
+    </div>
+	<th:block th:include="include :: footer" />
+	<script>
+	    var prefix = ctx + "op/report/mhc";
+	
+        $("#form").validate({
+        	onkeyup: false,
+        	rules:{
+        		
+        	},
+        	messages: {
+                "loginName": {
+                    remote: "用户已经存在"
+                },
+        		"email": {
+                    remote: "Email已经存在"
+                },
+        		"phonenumber":{
+                	remote: "手机号码已经存在"
+        		}
+            },
+            focusCleanup: true
+        });
+        
+        function submitHandler() {
+	        if ($.validate.form()) {
+	        	var data = $("#form").serializeArray();
+	        	$.operate.saveTab(prefix + "/add", data);
+	        }
+	    }
+        
+        /*用户管理-新增-选择部门树*/
+        function selectDeptTree() {
+        	
+        	var treeId = $("#treeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmit
+			};
+			$.modal.openOptions(options);
+		}
+        function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+		}
+         
+    </script>
+</body>
+</html>

@@ -49,6 +49,21 @@ public class PlantController extends BaseController {
         List<Plant> list = service.selectList(obj);
         return getDataTable(list);
     }
+<<<<<<< HEAD
+=======
+    
+    @RequiresPermissions("fixedasset:plant:view")
+    @GetMapping("/list2/{deptid}")
+    public String list2(@PathVariable("deptid") Long deptid, ModelMap mmap)
+    {
+        startPage();
+        Plant obj = new Plant();
+        obj.setDeptid(deptid);
+        List<Plant> list = service.selectList(obj);
+        mmap.put("obj", getDataTable(list));
+        return prefix + "/plantview";
+    }
+>>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
     /**
      * 新增参数配置
      */

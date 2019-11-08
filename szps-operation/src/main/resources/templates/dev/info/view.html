@@ -8,9 +8,21 @@
 		<div class="row">
 			<div class="col-sm-12 search-collapse">
 				<form id="info-form">
+<<<<<<< HEAD
 					<div class="select-list">
 						<ul>
 							<li>
+=======
+				<input name="areaId" type="hidden" id="treeId2"/>
+					<div class="select-list">
+						<ul>
+							<li>
+		                        <label >所属区：</label>
+                            	<input name="areaName" onclick="selectAreaTree()" id="treeName2" type="text" placeholder="" >
+							</li>
+							
+							<li>
+>>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
 		                         <label >名称：</label>
                             	<input name="dname"  id="dname" type="text" >
 							</li>
@@ -108,6 +120,34 @@
             };
             $.table.init(options);
         });
+<<<<<<< HEAD
+=======
+        
+        
+        /*用户管理-新增-选择部门树*/
+        function selectAreaTree() {
+        	
+        	var treeId = $("#treeId2").val();
+        	var deptId = $.common.isEmpty(treeId) ? "3" : $("#treeId2").val();
+        	var url = ctx + "system/area/selectAreaTree/" + deptId;
+			var options = {
+				title: '选择区域',
+				width: "380",
+				url: url,
+				callBack: doSubmit
+			};
+			$.modal.openOptions(options);
+		}
+        function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+			if ($.tree.notAllowParents(tree)) {
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId2").val(body.find('#treeId2').val());
+    			$("#treeName2").val(body.find('#treeName2').val());
+    			layer.close(index);
+			}
+		}
+>>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
     </script>
 </body>
 </html>

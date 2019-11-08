@@ -69,7 +69,11 @@
     <if test="staffName != null and staffName != ''">
        TB_STAFF.STAFF_NAME like concat(concat('%',#{staffName}),'%')
     </if>
+<<<<<<< HEAD
     <if test="staffDe pt != null and staffDept != ''">
+=======
+    <if test="staffDept != null and staffDept != ''">
+>>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
       AND TB_STAFF.STAFF_DEPT = #{staffDept}
     </if>
       <if test="staffBirthday != null and staffBirthday != ''">

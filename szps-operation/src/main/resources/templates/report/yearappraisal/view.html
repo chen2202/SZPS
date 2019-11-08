@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('申请列表')" />
+</head>
+<body class="gray-bg">
+    <div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="apply-form">
+				<input name="deptId" type="hidden" id="treeId"/>
+					<div class="select-list">
+						<ul>
+							<li>
+		                        <label >水质净化厂名称：</label>
+                            	<input name="deptname" onclick="selectDeptTree()" id="treeName" type="text" placeholder="" >
+							</li>
+							<li class="select-time">
+								<label>年度： </label>
+								<input type="text" class="time-input form-control" id="dyear"  name="dyear" data-type="date" data-format="yyyy"/>
+							</li>
+							<li>
+								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+			
+	        <div class="btn-group-sm" id="toolbar" role="group">
+		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="report:yearappraisal:add">
+		            <i class="fa fa-plus"></i> 新增
+		        </a>
+		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="report:yearappraisal:delete">
+		            <i class="fa fa-remove"></i> 删除
+		        </a>
+		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="report:yearappraisal:export">
+		            <i class="fa fa-download"></i> 导出
+		        </a> -->
+	        </div>
+	        
+	        <div class="col-sm-12 select-table table-striped">
+	            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+	        </div>
+    	</div>
+    </div>
+    <th:block th:include="include :: footer" />
+    <script th:inline="javascript">
+        var prefix = ctx + "op/report/yearappraisal";
+        var viewFlag = [[${@permission.hasPermi('report:yearappraisal:view')}]];
+        var editFlag = [[${@permission.hasPermi('report:yearappraisal:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('report:yearappraisal:delete')}]];
+        
+        /*用户管理-新增-选择部门树*/
+        function selectDeptTree() {
+        	
+        	var treeId = $("#treeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmit
+			};
+			$.modal.openOptions(options);
+		}
+        function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+			if ($.tree.notAllowParents(tree)) {
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+			}
+		}
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+                
+                modalName: "考核总评表",
+                columns: [{
+		            checkbox: true
+		        },
+		        {
+		        	field : 'id', 
+		        	title : '序号' 
+		        },
+		        {
+		        	field: 'deptname',
+		        	title: '水质净化厂名称',
+		        },
+		        {
+		        	field : 'dyear', 
+		        	title : '年度' 
+		        },
+		        {
+		        	field: 'project1',
+		        	title: '检查项目',
+		        },
+		        {
+		        	field: 'content1',
+		        	title: '检查内容',
+		        },
+		        {
+		        	field: 'shortage1',
+		        	title: '不足概述',
+		        },
+		        {
+		        	field: 'strongpoint1',
+		        	title: '亮点概述',
+		        },
+		        {
+		        	field: 'overall1',
+		        	title: '总体评价',
+		        },
+		        {
+		        	field: 'project2',
+		        	title: '检查项目',
+		        },
+		        {
+		        	field: 'content2',
+		        	title: '检查内容',
+		        },
+		        {
+		        	field: 'shortage2',
+		        	title: '不足概述',
+		        },
+		        {
+		        	field: 'strongpoint2',
+		        	title: '亮点概述',
+		        },
+		        {
+		        	field: 'overall2',
+		        	title: '总体评价',
+		        },
+		        {
+		        	field: 'project3',
+		        	title: '检查项目',
+		        },
+		        {
+		        	field: 'content3',
+		        	title: '检查内容',
+		        },
+		        {
+		        	field: 'shortage3',
+		        	title: '不足概述',
+		        },
+		        {
+		        	field: 'strongpoint3',
+		        	title: '亮点概述',
+		        },
+		        {
+		        	field: 'overall3',
+		        	title: '总体评价',
+		        },
+		        {
+		        	field: 'project4',
+		        	title: '检查项目',
+		        },
+		        {
+		        	field: 'content14',
+		        	title: '检查内容',
+		        },
+		        {
+		        	field: 'shortage4',
+		        	title: '不足概述',
+		        },
+		        {
+		        	field: 'strongpoint4',
+		        	title: '亮点概述',
+		        },
+		        {
+		        	field: 'overall4',
+		        	title: '总体评价',
+		        },
+		        {
+		        	field: 'project5',
+		        	title: '检查项目',
+		        },
+		        {
+		        	field: 'content5',
+		        	title: '检查内容',
+		        },
+		        {
+		        	field: 'shortage5',
+		        	title: '不足概述',
+		        },
+		        {
+		        	field: 'strongpoint5',
+		        	title: '亮点概述',
+		        },
+		        {
+		        	field: 'overall5',
+		        	title: '总体评价',
+		        },
+		        {
+		        	field: 'project6',
+		        	title: '检查项目',
+		        },
+		        {
+		        	field: 'content6',
+		        	title: '检查内容',
+		        },
+		        {
+		        	field: 'shortage6',
+		        	title: '不足概述',
+		        },
+		        {
+		        	field: 'strongpoint6',
+		        	title: '亮点概述',
+		        },
+		        {
+		        	field: 'overall6',
+		        	title: '总体评价',
+		        },
+		        {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.editTab(\'' + row.id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.id + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        return actions.join('');
+                    }
+                }]
+            };
+            $.table.init(options);
+        });
+    </script>
+</body>
+</html>

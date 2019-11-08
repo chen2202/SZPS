@@ -19,11 +19,23 @@ import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
+<<<<<<< HEAD
+=======
+
+>>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
 import com.szps.web.domain.employee.Company;
 import com.szps.web.domain.employee.Department;
 import com.szps.web.service.employee.CompanyService;
 import com.szps.web.service.employee.DepartmentService;
 
+<<<<<<< HEAD
+=======
+/**
+ * 公司页面 控制器
+ * @author zxc
+ *
+ */
+>>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
 @Controller
 @RequestMapping("/employee") //请求的根路径
 public class CompanyController extends BaseController{
@@ -124,7 +136,10 @@ public class CompanyController extends BaseController{
 					departmentInfo.get(i).getParent_department_id()));
 		}
 		List<TreeNode> list2 = TreeBuild.toTree02(list,"0"); //所有节点成树
+<<<<<<< HEAD
 		
+=======
+>>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
 		String cpOrgChart = "{\"data\": " + list2.toString() + "}"; //树结构json数据进一步完善
 		
 		return cpOrgChart;

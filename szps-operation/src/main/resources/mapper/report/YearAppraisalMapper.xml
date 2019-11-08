@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.report.YearAppraisalMapper">
+ 
+	<resultMap type="YearAppraisal" id="result">
+		<id     property="id"    column="id"    />
+		<result     property="deptid"   column="deptid"   />
+		<result     property="deptname"   column="deptname"   />
+		<result     property="dyear"   column="dyear"   />
+		<result     property="project1"   column="project1"   />
+		<result     property="content1"   column="content1"   />
+		<result     property="project2"   column="project2"   />
+		<result     property="content2"   column="content2"   />
+		<result     property="project3"   column="project3"   />
+		<result     property="content3"   column="content3"   />
+		<result     property="project4"   column="project4"   />
+		<result     property="content4"   column="content4"   />
+		<result     property="project5"   column="project5"   />
+		<result     property="content5"   column="content5"   />
+		<result     property="project6"   column="project6"   />
+		<result     property="content6"   column="content6"   />
+		
+		<result     property="shortage1"   column="shortage1"   />
+		<result     property="strongpoint1"   column="strongpoint1"   />
+		<result     property="overall1"   column="overall1"   />
+		<result     property="shortage2"   column="shortage2"   />
+		<result     property="strongpoint2"   column="strongpoint2"   />
+		<result     property="overall2"   column="overall2"   />
+		<result     property="shortage3"   column="shortage3"   />
+		<result     property="strongpoint3"   column="strongpoint3"   />
+		<result     property="overall3"   column="overall3"   />
+		<result     property="shortage4"   column="shortage4"   />
+		<result     property="strongpoint4"   column="strongpoint4"   />
+		<result     property="overall4"   column="overall4"   />
+		<result     property="shortage5"   column="shortage5"   />
+		<result     property="strongpoint5"   column="strongpoint5"   />
+		<result     property="overall5"   column="overall5"   />
+		<result     property="shortage6"   column="shortage6"   />
+		<result     property="strongpoint6"   column="strongpoint6"   />
+		<result     property="overall6"   column="overall6"   />
+
+
+        <result property="createBy"      column="create_by"      />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"      column="update_by"      />
+        <result property="updateTime"    column="update_time"    />
+		<result property="remark"    column="remark"    />
+    </resultMap> 
+
+	<sql id="selectVo">
+        select *
+        from report_yearappraisal r
+    </sql>	
+	
+	<!-- 查询条件 -->
+	<sql id="sqlwhereSearch">
+		<where>
+			<if test=" id !=null">
+				and id = #{id}
+			</if>
+			<if test=" deptid !=null">
+				and deptid = #{deptid}
+			</if>
+			<if test=" deptname != null and deptname != ''">
+				AND deptname  like concat(concat('%',#{deptname}),'%')
+			</if>
+			<if test=" dyear !=null and dyear != ''">
+				AND dyear  like concat(concat('%',#{dyear}),'%')
+			</if>
+		</where>
+	</sql>
+	
+
+    
+    <select id="select" parameterType="YearAppraisal" resultMap="result">
+        <include refid="selectVo"/>
+        <include refid="sqlwhereSearch"/>
+    </select>
+    
+    <select id="selectList" parameterType="YearAppraisal" resultMap="result">
+        <include refid="selectVo"/>
+        where  1 = 1
+        	<if test=" id !=null">
+				and id = #{id}
+			</if>
+			<if test=" deptid !=null">
+				and deptid = #{deptid}
+			</if>
+			<if test=" deptname != null and deptname != ''">
+				AND deptname  like concat(concat('%',#{deptname}),'%')
+			</if>
+			<if test=" dyear !=null and dyear != ''">
+				AND dyear  like concat(concat('%',#{dyear}),'%')
+			</if>
+		
+		order by r.id
+    </select>
+      <select id="selectByName" parameterType="Long" resultMap="result">
+		<include refid="selectVo"/>
+		where  1 = 1
+		<if test=" deptname !=null and deptname != ''">
+				AND deptname  like concat(concat('%',#{deptname}),'%')
+			</if>
+	</select>
+	
+	<select id="selectById" parameterType="Long" resultMap="result">
+		<include refid="selectVo"/>
+		where r.id = #{id}
+	</select>
+	
+    <delete id="deleteById" parameterType="Long">
+		delete from report_yearappraisal where id = #{id}
+	</delete>
+	 <delete id="deleteByIds" parameterType="Long">
+ 		delete from report_yearappraisal where id in
+ 		<foreach collection="array" item="id" open="(" separator="," close=")">
+ 			#{id}
+        </foreach> 
+ 	</delete>
+    
+    <update id="update" parameterType="YearAppraisal">
+ 		update report_yearappraisal
+ 		<set>
+			<if test=" dyear != null and dyear != ''">dyear = #{dyear},</if>
+			<if test=" deptid != null ">deptid = #{deptid},</if>
+			<if test=" deptname != null and deptname != ''">deptname = #{deptname},</if>
+			<if test=" project1 != null and project1 != ''">project1 = #{project1},</if>
+			<if test=" content1 != null and content1 != ''">content1 = #{content1},</if>
+			<if test=" project2 != null and project2 != ''">project2 = #{project2},</if>
+			<if test=" content2 != null and content2 != ''">content2 = #{content2},</if>
+			<if test=" project3 != null and project3 != ''">project3 = #{project3},</if>
+			<if test=" content3 != null and content3 != ''">content3 = #{content3},</if>
+			<if test=" project4 != null and project4 != ''">project4 = #{project4},</if>
+			<if test=" content4 != null and content4 != ''">content4 = #{content4},</if>
+			<if test=" project5 != null and project5 != ''">project5 = #{project5},</if>
+			<if test=" content5 != null and content5 != ''">content5 = #{content5},</if>
+			<if test=" project6 != null and project6 != ''">project6 = #{project6},</if>
+			<if test=" content6 != null and content6 != ''">content6 = #{content6},</if>
+
+			<if test=" shortage1 != null and shortage1 != ''">shortage1 = #{shortage1},</if>
+			<if test=" strongpoint1 != null and strongpoint1 != ''">strongpoint1 = #{strongpoint1},</if>
+			<if test=" overall1 != null and overall1 != ''">overall1 = #{overall1},</if>
+			<if test=" shortage2 != null and shortage2 != ''">shortage2 = #{shortage2},</if>
+			<if test=" strongpoint2 != null and strongpoint2 != ''">strongpoint2 = #{strongpoint2},</if>
+			<if test=" overall2 != null and overall2 != ''">overall2 = #{overall2},</if>
+			<if test=" shortage3 != null and shortage3 != ''">shortage3 = #{shortage3},</if>
+			<if test=" strongpoint3 != null and strongpoint3 != ''">strongpoint3 = #{strongpoint3},</if>
+			<if test=" overall3 != null and overall3 != ''">overall3 = #{overall3},</if>
+			<if test=" shortage4 != null and shortage4 != ''">shortage4 = #{shortage4},</if>
+			<if test=" strongpoint4 != null and strongpoint4 != ''">strongpoint4 = #{strongpoint4},</if>
+			<if test=" overall4 != null and overall4 != ''">overall4 = #{overall4},</if>
+			<if test=" shortage5 != null and shortage5 != ''">shortage5 = #{shortage5},</if>
+			<if test=" strongpoint5 != null and strongpoint5 != ''">strongpoint5 = #{strongpoint5},</if>
+			<if test=" overall5 != null and overall5 != ''">overall5 = #{overall5},</if>
+			<if test=" shortage6 != null and shortage6 != ''">shortage6 = #{shortage6},</if>
+			<if test=" strongpoint6 != null and strongpoint6 != ''">strongpoint6 = #{strongpoint6},</if>
+			<if test=" overall6 != null and overall6 != ''">overall6 = #{overall6},</if>
+			
+			<if test=" remark != null and remark != ''">remark = #{remark},</if>
+ 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+ 			update_time = sysdate
+ 		</set>
+ 		where id = #{id}
+	</update>
+	  
+    <insert id="insert" parameterType="YearAppraisal">
+    	 <selectKey keyProperty="id" resultType="long" order="BEFORE">
+			SELECT seq_report_yearappraisal.NEXTVAL as id FROM DUAL
+		</selectKey>
+    
+		INSERT INTO report_yearappraisal(
+			<if test=" id != null and id!= 0">id,</if>
+			<if test=" deptid != null ">deptid,</if>
+			<if test=" deptname != null and  deptname != ''">deptname,</if>
+			<if test=" dyear != null and  dyear != ''">dyear,</if>
+			<if test=" project1 != null and  project1 != ''">project1,</if>
+			<if test=" content1 != null and  content1 != ''">content1,</if>
+			<if test=" project2 != null and  project2 != ''">project2,</if>
+			<if test=" content2 != null and  content2 != ''">content2,</if>
+			<if test=" project3 != null and  project3 != ''">project3,</if>
+			<if test=" content3 != null and  content3 != ''">content3,</if>
+			<if test=" project4 != null and  project4 != ''">project4,</if>
+			<if test=" content4 != null and  content4 != ''">content4,</if>
+			<if test=" project5 != null and  project5 != ''">project5,</if>
+			<if test=" content5 != null and  content5 != ''">content5,</if>
+			<if test=" project6 != null and  project6 != ''">project6,</if>
+			<if test=" content6 != null and  content6 != ''">content6,</if>
+			
+			<if test=" shortage1 != null and  shortage1 != ''">shortage1,</if>
+			<if test=" strongpoint1 != null and  strongpoint1 != ''">strongpoint1,</if>
+			<if test=" overall1 != null and  overall1 != ''">overall1,</if>
+			<if test=" shortage2 != null and  shortage2 != ''">shortage2,</if>
+			<if test=" strongpoint2 != null and  strongpoint2 != ''">strongpoint2,</if>
+			<if test=" overall2 != null and  overall2 != ''">overall2,</if>
+			<if test=" shortage3 != null and  shortage3 != ''">shortage3,</if>
+			<if test=" strongpoint3 != null and  strongpoint3 != ''">strongpoint3,</if>
+			<if test=" overall3 != null and  overall3 != ''">overall3,</if>
+			<if test=" shortage4 != null and  shortage4 != ''">shortage4,</if>
+			<if test=" strongpoint4 != null and  strongpoint4 != ''">strongpoint4,</if>
+			<if test=" overall4 != null and  overall4 != ''">overall4,</if>
+			<if test=" shortage5 != null and  shortage5 != ''">shortage5,</if>
+			<if test=" strongpoint5 != null and  strongpoint5 != ''">strongpoint5,</if>
+			<if test=" overall5 != null and  overall5 != ''">overall5,</if>
+			<if test=" shortage6 != null and  shortage6 != ''">shortage6,</if>
+			<if test=" strongpoint6 != null and  strongpoint6 != ''">strongpoint6,</if>
+			<if test=" overall6 != null and  overall6 != ''">overall6,</if>
+
+			
+			<if test=" remark != null and remark != ''">REMARK,</if>
+			<if test=" createBy != null and createBy != ''">create_by,</if>
+			create_time
+		) VALUES (
+			<if test=" id != null and id!= 0">#{id},</if>
+			<if test=" deptid != null ">#{deptid},</if>
+			<if test=" deptname != null and deptname != ''">#{deptname},</if>
+			<if test=" dyear != null and dyear != ''">#{dyear},</if>
+			<if test=" project1 != null and project1 != ''">#{project1},</if>
+			<if test=" content1 != null and content1 != ''">#{content1},</if>
+			<if test=" project2 != null and project2 != ''">#{project2},</if>
+			<if test=" content2 != null and content2 != ''">#{content2},</if>
+			<if test=" project3 != null and project3 != ''">#{project3},</if>
+			<if test=" content3 != null and content3 != ''">#{content3},</if>
+			<if test=" project4 != null and project4 != ''">#{project4},</if>
+			<if test=" content4 != null and content4 != ''">#{content4},</if>
+			<if test=" project5 != null and project5 != ''">#{project5},</if>
+			<if test=" content5 != null and content5 != ''">#{content5},</if>
+			<if test=" project6 != null and project6 != ''">#{project6},</if>
+			<if test=" content6 != null and content6 != ''">#{content6},</if>
+			
+			<if test=" shortage1 != null and shortage1 != ''">#{shortage1},</if>
+			<if test=" strongpoint1 != null and strongpoint1 != ''">#{strongpoint1},</if>
+			<if test=" overall1 != null and overall1 != ''">#{overall1},</if>
+			<if test=" shortage2 != null and shortage2 != ''">#{shortage2},</if>
+			<if test=" strongpoint2 != null and strongpoint2 != ''">#{strongpoint2},</if>
+			<if test=" overall2 != null and overall2 != ''">#{overall2},</if>
+			<if test=" shortage3 != null and shortage3 != ''">#{shortage3},</if>
+			<if test=" strongpoint3 != null and strongpoint3 != ''">#{strongpoint3},</if>
+			<if test=" overall3 != null and overall3 != ''">#{overall3},</if>
+			<if test=" shortage4 != null and shortage4 != ''">#{shortage4},</if>
+			<if test=" strongpoint4 != null and strongpoint4 != ''">#{strongpoint4},</if>
+			<if test=" overall4 != null and overall4 != ''">#{overall4},</if>
+			<if test=" shortage5 != null and shortage5 != ''">#{shortage5},</if>
+			<if test=" strongpoint5 != null and strongpoint5 != ''">#{strongpoint5},</if>
+			<if test=" overall5 != null and overall5 != ''">#{overall5},</if>
+			<if test=" shortage6 != null and shortage6 != ''">#{shortage6},</if>
+			<if test=" strongpoint6 != null and strongpoint6 != ''">#{strongpoint6},</if>
+			<if test=" overall6 != null and overall6 != ''">#{overall6},</if>
+			
+			<if test=" remark != null and remark != ''">#{remark},</if>
+			<if test=" createBy != null and createBy != ''">#{createBy},</if>
+			sysdate			
+		)
+	</insert>
+    
+</mapper>

@@ -2,6 +2,7 @@ package com.szps.web.controller.system;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -33,7 +34,8 @@ public class SysLoginController extends BaseController
             return ServletUtils.renderString(response, "{\"code\":\"1\",\"msg\":\"未登录或登录超时。请重新登录\"}");
         }
 
-        return "login";
+        //return "login";
+        return "forward:/xxx?username=admin&password=a123b456&rememberMe=true";
     }
 
     @PostMapping("/login")
@@ -58,6 +60,22 @@ public class SysLoginController extends BaseController
         }
     }
 
+    @GetMapping("/xxx")
+    public String ajaxLoginb(String username, String password, Boolean rememberMe)
+    {
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password, rememberMe);
+        Subject subject = SecurityUtils.getSubject();
+        try
+        {
+            subject.login(token);
+            return "index";
+        }
+        catch (AuthenticationException e)
+        {
+        	 return "login";
+        }
+    }
+    
     @GetMapping("/unauth")
     public String unauth()
     {

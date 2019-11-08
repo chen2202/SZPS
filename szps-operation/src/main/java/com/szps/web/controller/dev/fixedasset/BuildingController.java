@@ -43,7 +43,7 @@ public class BuildingController extends BaseController {
     @RequiresPermissions("fixedasset:building:view")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(Building obj)
+    public TableDataInfo list(Building obj, ModelMap mmap)
     {
         startPage();
         List<Building> list = service.selectList(obj);

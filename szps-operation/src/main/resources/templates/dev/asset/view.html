@@ -8,16 +8,16 @@
 		<div class="row">
 			<div class="col-sm-12 search-collapse">
 				<form id="asset-form">
-				<input name="deptId" type="hidden" id="treeId"/>
+				<input name="deptId" type="hidden" id="plantTreeId"/>
 					<div class="select-list">
 						<ul>
 							<li>
 		                        <label >使用部门：</label>
-                            	<input name="deptName" onclick="selectDeptTree()" id="treeName" type="text" placeholder="" >
+                            	<input name="deptName" onclick="selectPurPlantTree()" id="plantTreeName" type="text" placeholder="" >
 							</li>
 							<li>
-		                        <label >资产名称：</label>
-                            	<input name="assetName"  id="assetName" type="text" placeholder="" >
+		                        <label >设备类型：</label>
+                            	<input name="devType"  id="devType" type="text" placeholder="" >
 							</li>
 							
 							<li>
@@ -104,6 +104,18 @@
 		            title: '使用部门',
 		        },
 		        {
+		            field: 'status',
+		            title: '设备状态',
+		        },
+		        {
+		            field: 'oValue',
+		            title: '设备原值',
+		        },
+		        {
+		            field: 'mCycle',
+		            title: '保养周期',
+		        },
+		        {
                     title: '操作',
                     align: 'center',
                     formatter: function(value, row, index) {
@@ -116,6 +128,29 @@
             };
             $.table.init(options);
         });
+        
+        function selectPurPlantTree() {
+        	
+        	var treeId = $("#plantTreeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "1" : $("#plantTreeId").val();
+        	var url = ctx + "system/purplant/selectPurPlantTree/" + deptId;
+        	var options = {
+        		title: '选择',
+        		width: "380",
+        		url: url,
+        		callBack: doSubmit2
+        	};
+        	$.modal.openOptions(options);
+        }
+        function doSubmit2(index, layero){
+        	var tree = layero.find("iframe")[0].contentWindow.$._tree;
+        	if ($.tree.notAllowParents(tree)) {
+        		var body = layer.getChildFrame('body', index);
+        		$("#plantTreeId").val(body.find('#plantTreeId').val());
+        		$("#plantTreeName").val(body.find('#plantTreeName').val());
+        		layer.close(index);
+        	}
+        }
     </script>
 </body>
 </html>

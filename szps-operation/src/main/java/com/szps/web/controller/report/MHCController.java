@@ -1,4 +1,4 @@
-package com.szps.web.controller.report.mhc;
+package com.szps.web.controller.report;
 
 import java.util.List;
 
@@ -19,102 +19,84 @@ import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
 import com.szps.framework.util.ShiroUtils;
-import com.szps.system.domain.SysDept;
 import com.szps.system.domain.SysUser;
-import com.szps.web.domain.report.DayReport;
-import com.szps.web.service.report.IDayReportService;
+import com.szps.web.domain.report.MHC;
+import com.szps.web.service.report.IMHCService;
 
 @Controller
 @RequestMapping("/op/report/mhc")
 public class MHCController extends BaseController {
 	 @Autowired
-	private IDayReportService reportService;
+	private IMHCService service;
 	
 	private String prefix = "/report/mhc";
 	
-    @RequiresPermissions("report:day:view")
+    @RequiresPermissions("report:mhc:view")
     @GetMapping()
     public String mhc()
     {
         return prefix + "/view";
     }
     
-    /**
-     * 查询日报列表
-     */
-    @RequiresPermissions("report:day:view")
+    @RequiresPermissions("report:mhc:view")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(DayReport dayReport)
+    public TableDataInfo list(MHC mhc)
     {
         startPage();
-        List<DayReport> list = reportService.selectReportList(dayReport);
+        List<MHC> list = service.selectReportList(mhc);
         return getDataTable(list);
     }
-    /**
-     * 新增参数配置
-     */
-    @GetMapping("/collect")
-    public String collect()
-    {
-        return prefix + "/collect";
-    }
+    
+
+    
     @GetMapping("/add")
     public String add()
     {
         return prefix + "/add";
     }
 
-    /**
-     * 新增保存日报
-     */
-    @RequiresPermissions("report:day:add")
-    @Log(title = "添加日报", businessType = BusinessType.INSERT)
+    @RequiresPermissions("report:mhc:add")
+    @Log(title = "添加", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
-    public AjaxResult addSave( DayReport dayReport)
+    public AjaxResult addSave( MHC mhc)
     {
     	SysUser user = ShiroUtils.getSysUser();
-    	SysDept sysDept = user.getDept();
-    	dayReport.setDeptId(sysDept.getDeptId());
-    	dayReport.setDeptName(sysDept.getDeptName());
-    	dayReport.setCreateBy(user.getLoginName());
-    	dayReport.setDelFlag(DayReport.DEL_FLAG_NORMAL);
-        return toAjax(reportService.insertReport(dayReport));
+    	mhc.setCreateBy(user.getLoginName());
+        return toAjax(service.insertReport(mhc));
     }
     
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Long id, ModelMap mmap)
     {
-    	DayReport dayReport = reportService.selectReportById(id);
+    	MHC mhc = service.selectReportById(id);
         
-        mmap.put("dayReport", dayReport);
+        mmap.put("obj", mhc);
         return prefix + "/edit";
     }
     
     
-    /**
-     * 保存
-     */
-    @Log(title = "日报修改", businessType = BusinessType.UPDATE)
-    @RequiresPermissions("report:day:edit")
+ 
+    @Log(title = "修改", businessType = BusinessType.UPDATE)
+    @RequiresPermissions("report:mhc:edit")
     @PostMapping("/edit")
     @ResponseBody
-    public AjaxResult editSave(@Validated DayReport report)
+    public AjaxResult editSave(@Validated MHC report)
     {
     	report.setUpdateBy(ShiroUtils.getLoginName());
-        return toAjax(reportService.updateReport(report));
+        return toAjax(service.updateReport(report));
     }
 
-    @RequiresPermissions("report:day:delete")
-    @Log(title = "日报删除", businessType = BusinessType.DELETE)
+    @RequiresPermissions("report:mhc:delete")
+    @Log(title = "删除", businessType = BusinessType.DELETE)
     @PostMapping("/remove")
     @ResponseBody
     public AjaxResult remove(String ids)
     {
         try
         {
-            return toAjax(reportService.deleteReportByIds(ids));
+            return toAjax(service.deleteReportByIds(ids));
         }
         catch (Exception e)
         {

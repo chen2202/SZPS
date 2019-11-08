@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('增加供应商')" />
+</head>
+<body class="white-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form id="form"  class="form-horizontal m">
+        <input name="deptid" type="hidden" id="treeId" />
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">年度：</label>
+						<div class="col-sm-8">
+							<input name="dyear" id="dyear"  type="text" class="time-input form-control" data-type="date" data-format="yyyy" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">水质净化厂：</label>
+						<div class="col-sm-8">
+							<input name="deptname" id="treeName" class="form-control" type="text" onclick="selectDeptTree()" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<h4 class="form-header h4"></h4>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">检查项目：</label>
+						<div class="col-sm-8">
+							<input name="project1" id="project1" class="form-control" type="text"  value="一" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">检查内容：</label>
+						<div class="col-sm-8">
+							<input name="content1" id="content1"  class="form-control" type="text"   readonly="readonly" value="财务及成本管理，档案及信息管理"/>					
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">不足概述：</label>
+						<div class="col-sm-8">
+							<textarea name="shortage1" id="shortage1" class=" form-control" type="text"  ></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">亮点概述：</label>
+						<div class="col-sm-8">
+							<textarea name="strongpoint1" id="strongpoint1" class="form-control" type="text" ></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">总体评价：</label>
+						<div class="col-sm-8">
+							<textarea name="overall1" id="overall1" class="form-control" type="text" ></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		<h4 class="form-header h4"></h4>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">检查项目：</label>
+						<div class="col-sm-8">
+							<input name="project2" id="project2" class="form-control" type="text"  value="二" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">检查内容：</label>
+						<div class="col-sm-8">
+							<input name="content2" id="content2"  class="form-control" type="text"   readonly="readonly" value="生产运行管理"/>					
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">不足概述：</label>
+						<div class="col-sm-8">
+							<textarea name="shortage2" id="shortage2" class=" form-control" type="text"  ></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">亮点概述：</label>
+						<div class="col-sm-8">
+							<textarea name="strongpoint2" id="strongpoint2" class="form-control" type="text" ></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">总体评价：</label>
+						<div class="col-sm-8">
+							<textarea name="overall2" id="overall2" class="form-control" type="text" ></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<h4 class="form-header h4"></h4>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">检查项目：</label>
+						<div class="col-sm-8">
+							<input name="project3" id="project3" class="form-control" type="text"  value="三" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">检查内容：</label>
+						<div class="col-sm-8">
+							<input name="content3" id="content3"  class="form-control" type="text"   readonly="readonly" value="与设备设施相关的台账和记录"/>					
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">不足概述：</label>
+						<div class="col-sm-8">
+							<textarea name="shortage3" id="shortage3" class=" form-control" type="text"  ></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">亮点概述：</label>
+						<div class="col-sm-8">
+							<textarea name="strongpoint3" id="strongpoint3" class="form-control" type="text" ></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">总体评价：</label>
+						<div class="col-sm-8">
+							<textarea name="overall3" id="overall3" class="form-control" type="text" ></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<h4 class="form-header h4"></h4>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">检查项目：</label>
+						<div class="col-sm-8">
+							<input name="project4" id="project4" class="form-control" type="text"  value="四" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">检查内容：</label>
+						<div class="col-sm-8">
+							<input name="content4" id="content4"  class="form-control" type="text"   readonly="readonly" value="设备设施"/>					
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">不足概述：</label>
+						<div class="col-sm-8">
+							<textarea name="shortage4" id="shortage4" class=" form-control" type="text"  ></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">亮点概述：</label>
+						<div class="col-sm-8">
+							<textarea name="strongpoint4" id="strongpoint4" class="form-control" type="text" ></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">总体评价：</label>
+						<div class="col-sm-8">
+							<textarea name="overall4" id="overall4" class="form-control" type="text" ></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<h4 class="form-header h4"></h4>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">检查项目：</label>
+						<div class="col-sm-8">
+							<input name="project5" id="project5" class="form-control" type="text"  value="五" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">检查内容：</label>
+						<div class="col-sm-8">
+							<input name="content5" id="content5"  class="form-control" type="text"   readonly="readonly" value="安全及环境管理"/>					
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">不足概述：</label>
+						<div class="col-sm-8">
+							<textarea name="shortage5" id="shortage5" class=" form-control" type="text"  ></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">亮点概述：</label>
+						<div class="col-sm-8">
+							<textarea name="strongpoint5" id="strongpoint5" class="form-control" type="text" ></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">总体评价：</label>
+						<div class="col-sm-8">
+							<textarea name="overall5" id="overall5" class="form-control" type="text" ></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<h4 class="form-header h4"></h4>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">检查项目：</label>
+						<div class="col-sm-8">
+							<input name="project6" id="project6" class="form-control" type="text"  value="六" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">检查内容：</label>
+						<div class="col-sm-8">
+							<input name="content6" id="content6"  class="form-control" type="text"   readonly="readonly" value="资质、化验及水质管理"/>					
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">不足概述：</label>
+						<div class="col-sm-8">
+							<textarea name="shortage6" id="shortage6" class=" form-control" type="text"  ></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">亮点概述：</label>
+						<div class="col-sm-8">
+							<textarea name="strongpoint6" id="strongpoint6" class="form-control" type="text" ></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">总体评价：</label>
+						<div class="col-sm-8">
+							<textarea name="overall6" id="overall6" class="form-control" type="text" ></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+	</form>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-5 col-sm-10">
+            <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>保 存</button>&nbsp;
+            <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
+        </div>
+    </div>
+	<th:block th:include="include :: footer" />
+	<script>
+	    var prefix = ctx + "op/report/yearappraisal";
+	
+        $("#form").validate({
+        	onkeyup: false,
+        	rules:{
+        		
+        	},
+        	messages: {
+                "loginName": {
+                    remote: "用户已经存在"
+                },
+        		"email": {
+                    remote: "Email已经存在"
+                },
+        		"phonenumber":{
+                	remote: "手机号码已经存在"
+        		}
+            },
+            focusCleanup: true
+        });
+        
+        function submitHandler() {
+	        if ($.validate.form()) {
+	        	var data = $("#form").serializeArray();
+	        	$.operate.saveTab(prefix + "/add", data);
+	        }
+	    }
+        
+        /*用户管理-新增-选择部门树*/
+        function selectDeptTree() {
+        	
+        	var treeId = $("#treeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmit
+			};
+			$.modal.openOptions(options);
+		}
+        function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+		}
+         
+    </script>
+</body>
+</html>

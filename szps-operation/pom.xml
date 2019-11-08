@@ -15,10 +15,8 @@
 	    web服务入口
 	</description>
     <dependencies>
-<<<<<<< HEAD
-
-
-        <!-- http请求工具包依赖 -->
+    
+     <!-- http请求工具包依赖 -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
@@ -32,10 +30,19 @@
         </dependency>
 
 
+        <dependency >
+            <groupId >javax.mail </groupId >
+            <artifactId >mail </artifactId >
+            <version >1.4.5 </version >
+        </dependency >
+        <dependency >
+            <groupId >com.sun.mail </groupId >
+            <artifactId >javax.mail </artifactId >
+            <version >1.5.4 </version >
+        </dependency >
 
-=======
-    
->>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
+
+
         <!-- SpringBoot集成thymeleaf模板 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -74,21 +81,6 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 		</dependency>
 
-<<<<<<< HEAD
-        <dependency >
-            <groupId >javax.mail </groupId >
-            <artifactId >mail </artifactId >
-            <version >1.4.5 </version >
-        </dependency >
-        <dependency >
-            <groupId >com.sun.mail </groupId >
-            <artifactId >javax.mail </artifactId >
-            <version >1.5.4 </version >
-        </dependency >
-
-
-=======
->>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
      <!-- 核心模块-->
         <dependency>
             <groupId>com.szps</groupId>

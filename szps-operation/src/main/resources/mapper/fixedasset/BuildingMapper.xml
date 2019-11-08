@@ -60,11 +60,7 @@
     <select id="selectList" parameterType="Building" resultMap="result">
         <include refid="selectVo"/>
         where  1 = 1
-<<<<<<< HEAD
-        <if test=" id !=null">
-=======
         	<if test=" id !=null">
->>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
 				and id = #{id}
 			</if>
 			<if test=" deptid !=null">

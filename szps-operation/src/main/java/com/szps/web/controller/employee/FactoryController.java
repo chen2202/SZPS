@@ -24,14 +24,11 @@ import com.szps.web.domain.employee.Factory;
 import com.szps.web.service.employee.DepartmentService;
 import com.szps.web.service.employee.FactoryService;
 
-<<<<<<< HEAD
-=======
 /**
  * 水厂页面
  * @author zxc
  *
  */
->>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
 @Controller
 @RequestMapping("/employee")
 public class FactoryController extends BaseController{

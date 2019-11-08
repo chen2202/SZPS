@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/szps.iml" filepath="$PROJECT_DIR$/szps.iml" />
+      <module fileurl="file://$PROJECT_DIR$/szps-admin/szps-admin.iml" filepath="$PROJECT_DIR$/szps-admin/szps-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/szps-common/szps-common.iml" filepath="$PROJECT_DIR$/szps-common/szps-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/szps-framework/szps-framework.iml" filepath="$PROJECT_DIR$/szps-framework/szps-framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/szps-operation/szps-operation.iml" filepath="$PROJECT_DIR$/szps-operation/szps-operation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/szps-system/szps-system.iml" filepath="$PROJECT_DIR$/szps-system/szps-system.iml" />
+    </modules>
+  </component>
+</project>

@@ -22,11 +22,7 @@ import com.szps.web.domain.drainage.Household;
 import com.szps.web.service.drainage.HouseholdService;
 
 /**
-<<<<<<< HEAD
- * 排水户 控制器
-=======
  * 排水户管理 控制器
->>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
  * @author zxc
  *
  */

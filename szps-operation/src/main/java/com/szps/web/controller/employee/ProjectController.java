@@ -2,10 +2,6 @@ package com.szps.web.controller.employee;
 
 import java.util.List;
 
-<<<<<<< HEAD
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-=======
->>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,11 +21,7 @@ import com.szps.web.domain.employee.Project;
 import com.szps.web.service.employee.ProjectService;
 
 /**
-<<<<<<< HEAD
- * 公司的项目信息
-=======
  * 公司的项目信息页面 控制器
->>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
  * @author zxc
  */
 @Controller

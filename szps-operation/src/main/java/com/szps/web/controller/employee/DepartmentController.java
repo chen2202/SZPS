@@ -20,14 +20,11 @@ import com.szps.common.enums.BusinessType;
 import com.szps.web.domain.employee.Department;
 import com.szps.web.service.employee.DepartmentService;
 
-<<<<<<< HEAD
-=======
 /**
  * 部门页面 控制器
  * @author zxc
  *
  */
->>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
 @Controller
 @RequestMapping("/employee")
 public class DepartmentController extends BaseController{

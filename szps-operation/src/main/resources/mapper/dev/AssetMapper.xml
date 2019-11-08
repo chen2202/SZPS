@@ -84,12 +84,9 @@
 			<if test=" deptId !=null and deptId != ''">
 				and deptId = #{deptId}
 			</if>
-<<<<<<< HEAD
-=======
 			<if test=" devType !=null and devType != ''">
 				and devType = #{devType}
 			</if>
->>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
 		</where>
 	</sql>
 	
@@ -102,11 +99,7 @@
     
     <select id="selectList" parameterType="Asset" resultMap="result">
         <include refid="selectVo"/>
-<<<<<<< HEAD
-        where  delFlag = '1'
-=======
         where  1 = 1
->>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
         <if test=" deptId != null and deptId != 0">
 			AND deptId = #{deptId}
 		</if>
@@ -116,13 +109,9 @@
 		<if test=" assetName != null and assetName != ''">
 			AND assetName  like concat(concat('%',#{assetName}),'%')
 		</if>
-<<<<<<< HEAD
-		
-=======
 		<if test=" devType !=null and devType != ''">
 			AND devType  like concat(concat('%',#{devType}),'%')
 		</if>
->>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
 		order by r.id
     </select>
       <select id="selectById" parameterType="Long" resultMap="result">

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="szps-operation:war">
+    <output-path>$PROJECT_DIR$/szps-operation/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>szps-operation</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="szps-operation.war">
+      <element id="artifact" artifact-name="szps-operation:war exploded" />
+    </root>
+  </artifact>
+</component>

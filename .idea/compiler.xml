@@ -13,5 +13,13 @@
         <module name="szps-system" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="szps" target="1.8" />
+      <module name="szps-admin" target="1.8" />
+      <module name="szps-common" target="1.8" />
+      <module name="szps-framework" target="1.8" />
+      <module name="szps-operation" target="1.8" />
+      <module name="szps-system" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

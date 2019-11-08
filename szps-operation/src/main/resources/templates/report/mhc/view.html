@@ -8,27 +8,15 @@
 		<div class="row">
 			<div class="col-sm-12 search-collapse">
 				<form id="apply-form">
-<<<<<<< HEAD
-				<input name="deptId" type="hidden" id="treeId"/>
-=======
->>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
 					<div class="select-list">
 						<ul>
 							<li>
 		                        <label >项目名称：</label>
-<<<<<<< HEAD
-                            	<input name="deptName" onclick="selectDeptTree()" id="treeName" type="text" placeholder="" >
-							</li>
-							<li class="select-time">
-								<label>上报期号： </label>
-								<input type="text" class="time-input" id="applyDate"  name="applyDate"/>
-=======
                             	<input name="projectname" onclick="selectDeptTree()" id="treeName" type="text" placeholder="" >
 							</li>
 							<li class="select-time">
 								<label>上报期号： </label>
 								<input type="text" class="time-input form-control" id="reportnumber"  name="reportnumber" data-type="date" data-format="yyyy-MM"/>
->>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
 							</li>
 							<li>
 								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
@@ -40,15 +28,6 @@
 			</div>
 			
 	        <div class="btn-group-sm" id="toolbar" role="group">
-<<<<<<< HEAD
-		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:apply:add">
-		            <i class="fa fa-plus"></i> 新增
-		        </a>
-		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="dev:apply:delete">
-		            <i class="fa fa-remove"></i> 删除
-		        </a>
-		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="dev:apply:export">
-=======
 		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="report:mhc:add">
 		            <i class="fa fa-plus"></i> 新增
 		        </a>
@@ -56,7 +35,6 @@
 		            <i class="fa fa-remove"></i> 删除
 		        </a>
 		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="report:mhc:export">
->>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
 		            <i class="fa fa-download"></i> 导出
 		        </a> -->
 	        </div>
@@ -68,17 +46,10 @@
     </div>
     <th:block th:include="include :: footer" />
     <script th:inline="javascript">
-<<<<<<< HEAD
-        var prefix = ctx + "op/dev/apply";
-        var viewFlag = [[${@permission.hasPermi('dev:apply:view')}]];
-        var editFlag = [[${@permission.hasPermi('dev:apply:edit')}]];
-        var removeFlag = [[${@permission.hasPermi('dev:apply:delete')}]];
-=======
         var prefix = ctx + "op/report/mhc";
         var viewFlag = [[${@permission.hasPermi('report:mhc:view')}]];
         var editFlag = [[${@permission.hasPermi('report:mhc:edit')}]];
         var removeFlag = [[${@permission.hasPermi('report:mhc:delete')}]];
->>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
         
         /*用户管理-新增-选择部门树*/
         function selectDeptTree() {
@@ -110,11 +81,7 @@
                 updateUrl: prefix + "/edit/{id}",
                 removeUrl: prefix + "/remove",
                 
-<<<<<<< HEAD
-                modalName: "申请列表",
-=======
                 modalName: "报住建部报表",
->>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
                 columns: [{
 		            checkbox: true
 		        },
@@ -123,77 +90,6 @@
 		        	title : '序号' 
 		        },
 		        {
-<<<<<<< HEAD
-		        	field : 'devType', 
-		        	title : '所属省' 
-		        },
-		        {
-		        	field: 'applyDate',
-		        	title: '所属市',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: '项目代码',
-		        },
-		        {
-		        	field: 'applyDate',
-		        	title: '项目名称',
-		        },
-		        {
-		        	field: 'applyDate',
-		        	title: '设计规模(万立方米/月)',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: '累计处理水量(万立方米)',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: '最高日处理量(万立方米)',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: '负荷率( % )	',
-		        },
-		        {
-		        	field : 'devType', 
-		        	title : 'COD削减能力(吨/日)' 
-		        },
-		        {
-		        	field : 'devType', 
-		        	title : 'COD削减量( 吨 )' 
-		        },
-		        {
-		        	field : 'devType', 
-		        	title : '吨水COD削减能力(公斤/立方米)' 
-		        },
-		        {
-		        	field: 'applyDate',
-		        	title: '吨水削减量(公斤/立方米)',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: '累计用电量(千瓦.时)',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: '直接成本(元/立方米)',
-		        },
-		        {
-		        	field : 'devType', 
-		        	title : '再生水利用量(万立方米)' 
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: '累计湿污泥产生量( 吨 )',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: '污泥含水率( % )',
-		        },
-		        {
-		        	field : 'devType', 
-=======
 		        	field : 'dprovince', 
 		        	title : '所属省' 
 		        },
@@ -267,103 +163,10 @@
 		        },
 		        {
 		        	field : 'stc', 
->>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
 		        	title : '污泥处理量(吨)' 
 		        }
 		        ,
 		        {
-<<<<<<< HEAD
-		        	field : 'devType', 
-		        	title : '土地利用量(吨)' 
-		        },
-		        {
-		        	field: 'applyDate',
-		        	title: '建材利用量(吨)',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: '焚烧利用量(吨)',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: '卫生填埋量(吨)',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: '其他处置量(吨)',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: '正常运行天数',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: '达标排放天数',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: '不达标原因',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: '超标项目',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: 'COD进水( mg/L )',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: 'COD出水( mg/L )',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: 'BOD进水( mg/L )',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: 'BOD出水( mg/L )',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: 'SS进水( mg/L )',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: 'SS出水( mg/L )',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: 'AD进水( mg/L )',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: 'AD出水( mg/L )',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: 'TN进水( mg/L )',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: 'TN出水( mg/L )',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: 'TP进水( mg/L )',
-		        },
-		        {
-		        	field: 'applyDept',
-		        	title: 'TP出水( mg/L )',
-		        },
-		        {
-		        	field : 'devType', 
-		        	title : '备注' 
-		        }
-		        ,
-		        {
-		        	field : 'devType', 
-=======
 		        	field : 'landuse', 
 		        	title : '土地利用量(吨)' 
 		        },
@@ -449,16 +252,11 @@
 		        },
 		        {
 		        	field : 'applicant', 
->>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
 		        	title : '填报人' 
 		        }
 		        ,
 		        {
-<<<<<<< HEAD
-		        	field : 'devType', 
-=======
 		        	field : 'submissiondate', 
->>>>>>> cc172c9ebff30d4594bca7e8bfd8d691701d16bb
 		        	title : '填报日期' 
 		        },
 		        {

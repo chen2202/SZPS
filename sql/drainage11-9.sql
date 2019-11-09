@@ -3,6 +3,18 @@
 -- 世界导入文件即可，自动删除旧表
 -- ---------------------------------------
 
+INSERT INTO "RY"."SYS_MENU" VALUES ('4214', '排水户管理', '2040', '3', '#', 'menuItem', 'M', '0', null, 'fa fa-address-book-o', 'admin', TO_DATE('2019-09-15 12:24:48', 'YYYY-MM-DD HH24:MI:SS'), 'admin', TO_DATE('2019-09-17 15:13:14', 'YYYY-MM-DD HH24:MI:SS'), null, 'op');
+INSERT INTO "RY"."SYS_MENU" VALUES ('4220', '排水户列表', '4214', '1', '/drainage/household', 'menuItem', 'C', '0', 'drainage:household:view', '#', 'admin', TO_DATE('2019-09-15 13:00:01', 'YYYY-MM-DD HH24:MI:SS'), 'admin', TO_DATE('2019-09-17 15:10:17', 'YYYY-MM-DD HH24:MI:SS'), null, 'op');
+INSERT INTO "RY"."SYS_MENU" VALUES ('4221', '排水户统计', '4214', '2', '/drainage/statistics', 'menuItem', 'C', '0', null, '#', 'admin', TO_DATE('2019-09-15 13:00:27', 'YYYY-MM-DD HH24:MI:SS'), 'admin', TO_DATE('2019-09-17 15:10:47', 'YYYY-MM-DD HH24:MI:SS'), null, 'op');
+INSERT INTO "RY"."SYS_MENU" VALUES ('4222', '排水户信息新增', '4214', '4', '#', null, 'F', '0', 'drainage:household:add', '#', 'admin', TO_DATE('2019-10-25 15:48:13', 'YYYY-MM-DD HH24:MI:SS'), null, TO_DATE('2019-10-25 15:48:16', 'YYYY-MM-DD HH24:MI:SS'), null, null);
+INSERT INTO "RY"."SYS_MENU" VALUES ('4223', '排水户信息编辑', '4214', '5', '#', null, 'F', '0', 'drainage:household:edit', '#', 'admin', TO_DATE('2019-10-25 15:49:14', 'YYYY-MM-DD HH24:MI:SS'), null, TO_DATE('2019-10-25 15:49:19', 'YYYY-MM-DD HH24:MI:SS'), null, null);
+INSERT INTO "RY"."SYS_MENU" VALUES ('4224', '排水户信息删除', '4214', '6', '#', null, 'F', '0', 'drainage:household:remove', '#', 'admin', TO_DATE('2019-10-25 15:50:04', 'YYYY-MM-DD HH24:MI:SS'), null, TO_DATE('2019-10-25 15:50:07', 'YYYY-MM-DD HH24:MI:SS'), null, null);
+INSERT INTO "RY"."SYS_MENU" VALUES ('4225', '排水户信息查询', '4214', '7', '#', null, 'F', '0', 'drainage:household:list', '#', 'admin', TO_DATE('2019-10-27 10:54:26', 'YYYY-MM-DD HH24:MI:SS'), null, TO_DATE('2019-10-27 10:54:29', 'YYYY-MM-DD HH24:MI:SS'), null, null);
+
+
+
+
+
 -- ----------------------------
 -- Table structure for DRAINAGE_T_HOUSEHOLD
 -- ----------------------------

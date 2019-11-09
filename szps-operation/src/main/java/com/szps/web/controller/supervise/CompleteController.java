@@ -31,6 +31,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -143,7 +144,7 @@ public class CompleteController extends BaseController {
         String url[] = new String[10];
         for(int i=0;i<multipartFile.length;i++){
             fileName[i]=FileUploadUtils.upload(filePath, multipartFile[i]);
-            url[i]= fileName[i];
+            url[i]=  fileName[i];
             int radomInt = new Random().nextInt(999999);
             String s=String.valueOf(radomInt);
             while (pictureService.checkPicture(s)==1)
@@ -217,7 +218,7 @@ public class CompleteController extends BaseController {
     {
         String fileName1=request.getParameter("fileName");
         String fileRealName=request.getParameter("fileRealName");
-        String fileName=fileName1.replace("/profile/upload","");
+        String fileName=fileName1.replace("uploadfile"+ File.separator+"upload","");
         try
         {
 

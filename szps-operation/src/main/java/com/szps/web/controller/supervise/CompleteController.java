@@ -1,6 +1,7 @@
 package com.szps.web.controller.supervise;
 
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.szps.common.annotation.Log;
 import com.szps.common.config.Global;
 import com.szps.common.config.ServerConfig;
@@ -11,6 +12,7 @@ import com.szps.common.enums.BusinessType;
 import com.szps.common.utils.StringUtils;
 import com.szps.common.utils.file.FileUploadUtils;
 import com.szps.common.utils.file.FileUtils;
+import com.szps.framework.web.domain.server.Sys;
 import com.szps.system.domain.SysUser;
 import com.szps.web.controller.common.CommonController;
 import com.szps.web.domain.supervise.*;
@@ -50,9 +52,6 @@ public class CompleteController extends BaseController {
 
     @Autowired
     private EnclosureService enclosureService;
-
-    @Autowired
-    private ServerConfig serverConfig;
 
     @Autowired
     private TaskStaffService taskStaffService;
@@ -142,9 +141,11 @@ public class CompleteController extends BaseController {
         String filePath = Global.getUploadPath();
         String fileName[] = new String[10];
         String url[] = new String[10];
+        System.out.println(filePath);
         for(int i=0;i<multipartFile.length;i++){
             fileName[i]=FileUploadUtils.upload(filePath, multipartFile[i]);
-            url[i]=  fileName[i];
+            url[i]="/profile"+fileName[i];
+
             int radomInt = new Random().nextInt(999999);
             String s=String.valueOf(radomInt);
             while (pictureService.checkPicture(s)==1)
@@ -176,7 +177,8 @@ public class CompleteController extends BaseController {
 
             for(int i=0;i<multipartFile.length;i++){
                 fileName[i]=FileUploadUtils.upload(filePath, multipartFile[i]);
-                url[i]= fileName[i];
+
+                url[i]= "/profile"+fileName[i];
                 int radomInt = new Random().nextInt(999999);
                 String s=String.valueOf(radomInt);
                 while (enclosureService.checkEnclosure(s)==1)
@@ -188,7 +190,6 @@ public class CompleteController extends BaseController {
                 enclosure.setEnclosureLocation(url[i]);
                 enclosure.setEnclosureName(multipartFile[i].getOriginalFilename());
                 enclosure.setFeedbackId(feedbackId);
-                enclosure.setEnclosurerealName(fileName[i]);
                 enclosureService.insertEnclosure(enclosure);
             }
         } catch (Exception e) {
@@ -216,14 +217,14 @@ public class CompleteController extends BaseController {
     @GetMapping("/download")
     public void fileDownload(HttpServletResponse response, HttpServletRequest request)
     {
-        String fileName1=request.getParameter("fileName");
-        String fileRealName=request.getParameter("fileRealName");
-        String fileName=fileName1.replace("uploadfile"+ File.separator+"upload","");
+        String enclosureId=request.getParameter("enclosureId");
+        TbEnclosure tb=enclosureService.selectEnclosureByIds(enclosureId);
+        String fileName1=tb.getEnclosureLocation();
+        String fileRealName=tb.getEnclosureName();
+        String fileName=fileName1.replace("/profile"+File.separator+"upload","");
         try
         {
-
             String filePath = Global.getUploadPath()+ fileName;
-
             response.setCharacterEncoding("utf-8");
             response.setContentType("multipart/form-data");
             response.setHeader("Content-Disposition",

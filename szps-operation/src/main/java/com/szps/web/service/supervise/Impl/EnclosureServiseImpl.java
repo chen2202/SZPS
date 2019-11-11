@@ -32,6 +32,11 @@ public class EnclosureServiseImpl implements EnclosureService {
     }
 
     @Override
+    public TbEnclosure selectEnclosureByIds(String enclosureId) {
+        return enclosureMapper.selectEnclosureByIds(enclosureId);
+    }
+
+    @Override
     public int deleteEnclosureById(String Number) {
         return 0;
     }

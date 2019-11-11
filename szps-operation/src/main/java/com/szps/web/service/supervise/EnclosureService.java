@@ -22,7 +22,7 @@ public interface EnclosureService
 
     public List<TbEnclosure> selectEnclosureById(String feedbackNumber);
 
-    public TbEnclosure selectEnclosureByIds(String enclosureId);
+
 
     public int deleteEnclosureById(String enclosureNumber);
 

@@ -76,8 +76,8 @@ public class HouseholdController extends BaseController{
     @ResponseBody
     public AjaxResult addSave(@Validated Household household){   
 	    householdService.insertHousehold(household);
-        return toAjax(1); 
-    }
+		return toAjax(1);
+	}
     
     /**
      * 修改排水户

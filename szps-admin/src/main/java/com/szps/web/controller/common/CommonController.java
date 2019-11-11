@@ -78,7 +78,7 @@ public class CommonController
             String filePath = Global.getUploadPath();
             
             // 上传并返回新文件名称
-            String fileName = FileUploadUtils.upload(filePath, file);
+            String fileName = FileUploadUtils.upload2(filePath, file,Global.UPLOAD_TYPE);
             String url =  fileName;//serverConfig.getUrl() +
             AjaxResult ajax = AjaxResult.success();
             ajax.put("fileName", fileName);

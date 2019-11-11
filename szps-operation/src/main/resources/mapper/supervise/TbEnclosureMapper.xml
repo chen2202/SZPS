@@ -6,14 +6,15 @@
     <result column="ENCLOSURE_LOCATION" property="enclosureLocation" jdbcType="VARCHAR" />
     <result column="FEEDBACK_ID" property="feedbackId" jdbcType="VARCHAR" />
     <result column="ENCLOSURE_NAME" property="enclosureName" jdbcType="VARCHAR" />
+    <result column="ENCLOSURE_REALNAME" property="enclosurerealName" jdbcType="VARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from TB_ENCLOSURE
     where ENCLOSURE_ID = #{enclosureId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.szps.web.domain.supervise.TbEnclosure" >
-    insert into TB_ENCLOSURE (ENCLOSURE_ID, ENCLOSURE_LOCATION,FEEDBACK_ID,ENCLOSURE_NAME)
-    values (#{enclosureId,jdbcType=VARCHAR}, #{enclosureLocation,jdbcType=VARCHAR},#{feedbackId,jdbcType=VARCHAR},#{enclosureName,jdbcType=VARCHAR})
+    insert into TB_ENCLOSURE (ENCLOSURE_ID, ENCLOSURE_LOCATION,FEEDBACK_ID,ENCLOSURE_NAME,ENCLOSURE_REALNAME)
+    values (#{enclosureId,jdbcType=VARCHAR}, #{enclosureLocation,jdbcType=VARCHAR},#{feedbackId,jdbcType=VARCHAR},#{enclosureName,jdbcType=VARCHAR},#{enclosurerealName,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.szps.web.domain.supervise.TbEnclosure" >
     update TB_ENCLOSURE
@@ -21,17 +22,10 @@
     where ENCLOSURE_ID = #{enclosureId,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select ENCLOSURE_ID, ENCLOSURE_LOCATION,FEEDBACK_ID,ENCLOSURE_NAME
+    select ENCLOSURE_ID, ENCLOSURE_LOCATION,FEEDBACK_ID,ENCLOSURE_NAME,ENCLOSURE_REALNAME
     from TB_ENCLOSURE
     where FEEDBACK_ID = #{feedbackId,jdbcType=VARCHAR}
   </select>
-
-  <select id="selectEnclosureByIds" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select ENCLOSURE_ID, ENCLOSURE_LOCATION,FEEDBACK_ID,ENCLOSURE_NAME
-    from TB_ENCLOSURE
-    where ENCLOSURE_ID = #{enclosureId,jdbcType=VARCHAR}
-  </select>
-
   <select id="selectAll" resultMap="BaseResultMap" >
     select ENCLOSURE_ID, ENCLOSURE_LOCATION
     from TB_ENCLOSURE

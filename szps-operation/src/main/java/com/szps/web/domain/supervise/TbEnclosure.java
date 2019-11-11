@@ -9,6 +9,7 @@ public class TbEnclosure {
 
     private String enclosureName;
 
+    private String enclosurerealName;
 
     public String getEnclosureId() {
         return enclosureId;
@@ -42,5 +43,11 @@ public class TbEnclosure {
         this.enclosureName = enclosureName;
     }
 
+    public String getEnclosurerealName() {
+        return enclosurerealName;
+    }
 
+    public void setEnclosurerealName(String enclosurerealName) {
+        this.enclosurerealName = enclosurerealName;
+    }
 }

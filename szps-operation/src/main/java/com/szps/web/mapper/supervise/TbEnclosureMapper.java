@@ -15,5 +15,4 @@ public interface TbEnclosureMapper {
 
     int updateByPrimaryKey(TbEnclosure record);
     int Checkdec(String enclosureId);
-    TbEnclosure selectEnclosureByIds(String enclosureId);
 }

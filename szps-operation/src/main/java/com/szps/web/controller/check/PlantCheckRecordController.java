@@ -125,6 +125,10 @@ public class PlantCheckRecordController extends BaseController {
         return toAjax(plantCheckRecordService.insertPlantCheckRecord(plantCheckRecord));
     }
 
+
+
+
+
     /**
      * 修改污水厂巡检
      */

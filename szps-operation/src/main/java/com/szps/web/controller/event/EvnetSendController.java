@@ -109,7 +109,7 @@ public class EvnetSendController extends BaseController {
 
         eventEmailService.updateEventStatus(eventSubmit);
 
-        return prefix + "/send";
+        return "event/submit/submit";
     }
 
     // 发件人的 邮箱 和 密码（替换为自己的邮箱和密码）

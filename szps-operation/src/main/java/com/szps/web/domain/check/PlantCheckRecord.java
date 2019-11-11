@@ -49,6 +49,10 @@ public class PlantCheckRecord extends BaseEntity
     @JsonFormat(pattern = "yyyy-MM-dd", timezone="GMT+8")
     private Date checkDate;
 
+    public PlantCheckRecord() {
+
+    }
+
     /** 创建者 */
     @Excel(name = "创建者")
     private String systemCreateuser;
@@ -57,6 +61,18 @@ public class PlantCheckRecord extends BaseEntity
     @Excel(name = "创建日期", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd", timezone="GMT+8")
     private Date systemCreatetime;
+
+    public PlantCheckRecord(String plantId, String plantName, String deviceId, String deviceName, String checkId, String sloveRecord, Date checkDate, String systemCreateuser, Date systemCreatetime) {
+        this.plantId = plantId;
+        this.plantName = plantName;
+        this.deviceId = deviceId;
+        this.deviceName = deviceName;
+        this.checkId = checkId;
+        this.sloveRecord = sloveRecord;
+        this.checkDate = checkDate;
+        this.systemCreateuser = systemCreateuser;
+        this.systemCreatetime = systemCreatetime;
+    }
 
     public void setSystemId(Long systemId)
     {

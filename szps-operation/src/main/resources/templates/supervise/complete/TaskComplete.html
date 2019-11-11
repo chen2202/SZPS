@@ -145,7 +145,7 @@
                             var b=JSON.stringify(value[i]);
                             var a=JSON.parse(b);
 
-                            s.push('<a  class = "aaa"  href="javascript:void(0)" kkk='+a.enclosureId+'><span >'+a.enclosureName+'</span>&nbsp;&nbsp;&nbsp;</a>');
+                            s.push('<a  class = "aaa"  href="javascript:void(0)" kkk='+a.enclosurerealName+'  ppp='+a.enclosureName+'><span >'+a.enclosureName+'</span>&nbsp;&nbsp;&nbsp;</a>');
 
                         }
                         return s.join('');
@@ -178,8 +178,9 @@
     };
     window.oEvents = {
         'click .aaa': function () {
-            var enclosureId=$(this).attr('kkk');
-            window.location.href = ctx + "supervise/complete/download?enclosureId=" +enclosureId;
+            var fileName=$(this).attr('kkk');
+            var fileRealName=$(this).attr('ppp');
+            window.location.href = ctx + "supervise/complete/download?fileName=" +fileName+"&fileRealName="+fileRealName;
         }
     };
 

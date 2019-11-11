@@ -17,7 +17,6 @@
 		<result     property="picurl"   column="picurl"   />
 		<result     property="deptid"   column="deptid"   />
 		<result     property="supplierid"   column="supplierid"   />
-		<result     property="district"   column="district"   />
 
         <result property="createBy"      column="create_by"      />
         <result property="createTime"    column="create_time"    />
@@ -46,9 +45,6 @@
 			<if test=" dalias !=null and dalias != ''">
 				AND dalias  like concat(concat('%',#{dalias}),'%')
 			</if>
-			<if test=" district !=null and district != ''">
-				AND district  like concat(concat('%',#{district}),'%')
-			</if>
 		</where>
 	</sql>
 	
@@ -73,9 +69,6 @@
 		</if>
 		<if test=" dalias !=null and dalias != ''">
 			AND dalias  like concat(concat('%',#{dalias}),'%')
-		</if>
-		<if test=" district !=null and district != ''">
-			AND district  like concat(concat('%',#{district}),'%')
 		</if>
 		
 		order by r.id
@@ -119,7 +112,6 @@
 			<if test=" picurl != null and picurl != ''">picurl = #{picurl},</if>
 			<if test=" deptid != null">deptid = #{deptid},</if>
 			<if test=" supplierid != null">supplierid = #{supplierid},</if>
-			<if test=" district != null and district != ''">district = #{district},</if>
 
 			
 			<if test=" remark != null and remark != ''">remark = #{remark},</if>
@@ -149,7 +141,6 @@
 			<if test=" picurl != null and  picurl != ''">picurl,</if>
 			<if test=" deptid != null ">deptid,</if>
 			<if test=" supplierid != null">supplierid,</if>
-			<if test=" district != null and  district != ''">district,</if>
 
 			
 			<if test=" remark != null and remark != ''">REMARK,</if>
@@ -170,7 +161,6 @@
 			<if test=" picurl != null and picurl != ''">#{picurl},</if>
 			<if test=" deptid != null ">#{deptid},</if>
 			<if test=" supplierid != null ">#{supplierid},</if>
-			<if test=" district != null and district != ''">#{district},</if>
 
 			
 			<if test=" remark != null and remark != ''">#{remark},</if>

@@ -16,6 +16,22 @@ import java.util.Date;
 public class EventSubmit extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
+     public EventSubmit(){}
+
+
+
+
+    public EventSubmit(String eventName, String eventPlace, Date eventTime, String eventContent, String eventAttribute, String eventCreateuser, Date eventCreatetime, String eventStatus) {
+        this.eventName = eventName;
+        this.eventPlace = eventPlace;
+        this.eventTime = eventTime;
+        this.eventContent = eventContent;
+        this.eventAttribute = eventAttribute;
+        this.eventCreateuser = eventCreateuser;
+        this.eventCreatetime = eventCreatetime;
+        this.eventStatus = eventStatus;
+    }
+
     /**
      * 事件编号
      */

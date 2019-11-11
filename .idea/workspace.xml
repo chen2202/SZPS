@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc7b956e-4cbc-4a6b-8b84-b165eb2e201f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/$PRODUCT_WORKSPACE_FILE$" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/application-druid.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +35,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/D-下载区域/C-谷歌下载/SZPS-master (1)/SZPS-master" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RunDashboard">
@@ -81,6 +78,7 @@
       <updated>1573195700021</updated>
       <workItem from="1573195702732" duration="1104000" />
       <workItem from="1573197049211" duration="369000" />
+      <workItem from="1573197465570" duration="480000" />
     </task>
     <servers />
   </component>

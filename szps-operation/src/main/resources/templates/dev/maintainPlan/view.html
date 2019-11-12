@@ -86,7 +86,7 @@
                 updateUrl: prefix + "/edit/{id}",
                 removeUrl: prefix + "/remove",
                 
-                modalName: "列表",
+                modalName: "保养计划",
                 columns: [{
 		            checkbox: true
 		        },
@@ -102,9 +102,50 @@
 		            field: 'devNumber',
 		            title: '设备编号',
 		        },
+		        
+		        {
+		            field: 'recordDate',
+		            title: '填写日期',
+		        },
 		        {
 		            field: 'devName',
 		            title: '设备名称',
+		        },
+		        {
+		            field: 'devProDate',
+		            title: '设备出厂日期',
+		        },
+		        {
+		            field: 'devType',
+		            title: '设备类别',
+		        },
+		        {
+		            field: 'mType',
+		            title: '保养类别',
+		        },
+		        {
+		            field: 'mCycle',
+		            title: '保养周期',
+		        },
+		        {
+		            field: 'lastDate',
+		            title: '上次保养时间',
+		        },
+		        {
+		            field: 'lastEffect',
+		            title: '上次保养效果',
+		        },
+		        {
+		            field: 'reason',
+		            title: '保养原因',
+		        },
+		        {
+		            field: 'planDate',
+		            title: '计划保养时间',
+		        },
+		        {
+		            field: 'effect',
+		            title: '保养效果',
 		        },
 		        {
                     title: '操作',

@@ -6,8 +6,9 @@
 </head>
 <body class="gray-bg">
     <div class="main-content">
-        <form id="form"  class="form-horizontal">
-		
+        <form id="form"  class="form-horizontal"th:object="${obj}">
+        <input name="id" type="hidden" id="id"  th:field="*{id}"/>
+		<input name="deptId" type="hidden" id="treeId" th:field="*{deptId}"/>
 		<div class="control-group" align="center">
 			<label class="lbl" >设 备（施）检 修 记　录</label><br>
 		</div>
@@ -18,27 +19,27 @@
 		  <tr >
 		    <td colspan="2" >记录日期</td>
 		    <td colspan="6" >
-		    <input id="recordDate" name="recordDate" class="time-input form-control"/></td>
+		    <input id="recordDate" name="recordDate" th:field="*{recordDate}" class="time-input form-control"/></td>
 		  </tr>
 		  <tr >
 		    <td >设备名称：</td>
-		    <td><input name="devName"  class="form-control"/></td>
+		    <td><input name="devName"  th:field="*{devName}" class="form-control"/></td>
 		    <td>设备编号：</td>
-		    <td><input name="devNumber"  class="form-control"/></td>
+		    <td><input name="devNumber"  th:field="*{devNumber}" class="form-control"/></td>
 		    <td>资产编号：</td>
-		    <td><input name="assetCode"  class="form-control"/></td>
+		    <td><input name="assetCode"  th:field="*{assetCode}" class="form-control"/></td>
 		    <td>设备型号：</td>
-		    <td><input name="devModel"  class="form-control"/></td>
+		    <td><input name="devModel"  th:field="*{devModel}" class="form-control"/></td>
 		  </tr>
 		  <tr >
 		    <td >设备地点：</td>
-		    <td><input name="installPlace"  class="form-control"/></td>
+		    <td><input name="installPlace"  th:field="*{installPlace}" class="form-control"/></td>
 		    <td>使用部门：</td>
-		    <td><input name="useDept" onclick="selectDeptTree()"   id="treeName" class="form-control"/></td>
+		    <td><input name="useDept" onclick="selectDeptTree()"  th:field="*{useDept}" id="treeName" class="form-control"/></td>
 		    <td>维修员：</td>
-		    <td><input name="maintainer"  class="form-control"/></td>
+		    <td><input name="maintainer"  th:field="*{maintainer}" class="form-control"/></td>
 		    <td>操作责任人：</td>
-		    <td><input name="operateDutyOfficer"  class="form-control"/></td>
+		    <td><input name="operateDutyOfficer"  th:field="*{operateDutyOfficer}" class="form-control"/></td>
 		  </tr>
 		  <tr >
 		    <td >故障现象描述：</td>
@@ -51,7 +52,7 @@
 		    <td>　</td>
 		  </tr>
 		  <tr >
-		    <td colspan="8" rowspan="3" ><textarea name="troubleSpec" class="form-control"></textarea></td>
+		    <td colspan="8" rowspan="3" ><textarea name="troubleSpec" th:field="*{troubleSpec}" class="form-control"></textarea></td>
 		  </tr>
 		  <tr > </tr>
 		  <tr > </tr>
@@ -63,22 +64,22 @@
 		    <td>　</td>
 		    <td>　</td>
 		    <td>分析人：</td>
-		    <td><input name="assayer"  class="form-control"/></td>
+		    <td><input name="assayer"  th:field="*{assayer}" class="form-control"/></td>
 		  </tr>
 		  <tr >
-		    <td colspan="6" rowspan="2" ><textarea name="reason"  class="form-control"></textarea></td>
+		    <td colspan="6" rowspan="2" ><textarea name="reason"  th:field="*{reason}" class="form-control"></textarea></td>
 		    <td>设备部主管：</td>
-		    <td><input name="equiHead"  class="form-control"/></td>
+		    <td><input name="equiHead"  th:field="*{equiHead}" class="form-control"/></td>
 		  </tr>
 		  <tr >
 		    <td >设备部经理：</td>
-		    <td><input name="equiManager"  class="form-control"/></td>
+		    <td><input name="equiManager"  th:field="*{equiManager}" class="form-control"/></td>
 		  </tr>
 		  <tr >
 		    <td >故障类型：</td>
-		    <td colspan="5"><input name="troubleType"  class="form-control"/></td>
+		    <td colspan="5"><input name="troubleType"  th:field="*{troubleType}" class="form-control"/></td>
 		    <td>责任人：</td>
-		    <td><input name="dutyPeople"  class="form-control"/></td>
+		    <td><input name="dutyPeople"  th:field="*{dutyPeople}" class="form-control"/></td>
 		  </tr>
 		  <tr >
 		    <td  colspan="2">维修过程及耗材：</td>
@@ -90,7 +91,7 @@
 		    <td>　</td>
 		  </tr>
 		  <tr >
-		    <td colspan="8" rowspan="10" ><textarea name="fixspec" class="form-control"></textarea></td>
+		    <td colspan="8" rowspan="10" ><textarea name="fixspec" th:field="*{fixspec}" class="form-control"></textarea></td>
 		  </tr>
 		  <tr > </tr>
 		  <tr > </tr>
@@ -109,7 +110,7 @@
 		    <td></td>
 		    <td></td>
 		    <td rowspan="2">维修人：</td>
-		    <td rowspan="2"><input name="mechanic"  class="form-control"/></td>
+		    <td rowspan="2"><input name="mechanic"  th:field="*{mechanic}" class="form-control"/></td>
 		  </tr>
 		  <tr >
 		    <td >　</td>
@@ -127,20 +128,20 @@
 		    <td>　</td>
 		    <td>　</td>
 		    <td>设备主管：</td>
-		    <td><input name="equiHeadOut"  class="form-control"/></td>
+		    <td><input name="equiHeadOut"  th:field="*{equiHeadOut}" class="form-control"/></td>
 		  </tr>
 		  <tr >
-		    <td colspan="6" rowspan="3" ><textarea name="outServiceOpinion" class="form-control"></textarea></td>
+		    <td colspan="6" rowspan="3" ><textarea name="outServiceOpinion" th:field="*{outServiceOpinion}" class="form-control"></textarea></td>
 		    <td>设备经理：</td>
-		    <td><input name="equiManagerOut"  class="form-control"/></td>
+		    <td><input name="equiManagerOut"  th:field="*{equiManagerOut}" class="form-control"/></td>
 		  </tr>
 		  <tr >
 		    <td >生产经理：</td>
-		    <td><input name="prodManager"  class="form-control"/></td>
+		    <td><input name="prodManager"  th:field="*{prodManager}" class="form-control"/></td>
 		  </tr>
 		  <tr >
 		    <td >备注：</td>
-		    <td><input name="outRemarks"  class="form-control"/></td>
+		    <td><input name="outRemarks"  th:field="*{outRemarks}" class="form-control"/></td>
 		  </tr>
 		  <tr >
 		    <td >维修结果：</td>
@@ -150,16 +151,16 @@
 		    <td>　</td>
 		    <td>　</td>
 		    <td>设备部主管</td>
-		    <td><input name="equiOwer"  class="form-control"/></td>
+		    <td><input name="equiOwer"  th:field="*{equiOwer}" class="form-control"/></td>
 		  </tr>
 		  <tr >
-		    <td colspan="6" rowspan="2" ><textarea name="result" class="form-control"></textarea></td>
+		    <td colspan="6" rowspan="2" ><textarea name="result" th:field="*{result}" class="form-control"></textarea></td>
 		    <td></td>
 		    <td>　</td>
 		  </tr>
 		  <tr >
 		    <td >使用部门主管</td>
-		    <td><input name="userManger"  class="form-control"/></td>
+		    <td><input name="userManger"  th:field="*{userManger}" class="form-control"/></td>
 		  </tr>
 		  <tr >
 		    <td >　</td>
@@ -167,21 +168,21 @@
 		    <td>　</td>
 		    <td>　</td>
 		    <td>维修班长确认：</td>
-		    <td><input name="monitor"  class="form-control" type="datetime"/></td>
+		    <td><input name="monitor"  th:field="*{monitor}" class="form-control" type="datetime"/></td>
 		    <td></td>
 		    <td>　</td>
 		  </tr>
 		  <tr >
 		    <td >计划时间：</td>
 		    <td>
-		    <input id="planTime" name="planTime" class="time-input form-control " data-type="datetime" data-format="yyyy-MM-dd HH:MM"/></td>
+		    <input id="planTime" name="planTime" th:field="*{planTime}"  class="time-input form-control " data-type="datetime" data-format="yyyy-MM-dd HH:MM"/></td>
 		    <td>　</td>
 		    <td>　</td>
 		    <td>完成时间：</td>
 		    <td>
-		    <input id="doneTime" name="doneTime" type="text" class="time-input form-control" data-type="datetime" data-format="yyyy-MM-dd HH:MM"/></td>
+		    <input id="doneTime" name="doneTime" type="text" th:field="*{doneTime}" class="time-input form-control" data-type="datetime" data-format="yyyy-MM-dd HH:MM"/></td>
 		    <td>维修耗时：</td>
-		    <td><input name="usesTime"  class="form-control"/></td>
+		    <td><input name="usesTime"  th:field="*{usesTime}" class="form-control"/></td>
 		  </tr>
 		</table>
 		</div>
@@ -227,7 +228,7 @@
 	        	data.push({"name": "status", "value": status});
 	        	data.push({"name": "roleIds", "value": roleIds});
 	        	data.push({"name": "postIds", "value": postIds}); */
-	        	$.operate.saveTab(prefix + "/add", data);
+	        	$.operate.saveTab(prefix + "/edit", data);
 	        }
 	    }
          

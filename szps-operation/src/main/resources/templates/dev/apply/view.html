@@ -82,7 +82,7 @@
                 updateUrl: prefix + "/edit/{id}",
                 removeUrl: prefix + "/remove",
                 
-                modalName: "申请列表",
+                modalName: "设备申请表",
                 columns: [{
 		            checkbox: true
 		        },
@@ -101,6 +101,30 @@
 		        {
 		            field: 'applyDept',
 		            title: '申请部门',
+		        },
+		        {
+		            field: 'applyDeptManager',
+		            title: '申请部门经理',
+		        },
+		        {
+		            field: 'requireDate',
+		            title: '要求购置时间',
+		        },
+		        {
+		            field: 'applyPrj',
+		            title: '申请项目',
+		        },
+		        {
+		            field: 'applySpec',
+		            title: '申请说明',
+		        },
+		        {
+		            field: 'verifier',
+		            title: '审核人',
+		        },
+		        {
+		            field: 'approver',
+		            title: '批准人',
 		        },
 		        {
                     title: '操作',

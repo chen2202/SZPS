@@ -6,9 +6,9 @@
 </head>
 <body>
     <div class="main-content">
-        <form id="form-apply-add"  class="form-horizontal">
+        <form id="form-apply-add"  class="form-horizontal"  th:object="${obj}">
 		<input name="deptId" type="hidden" id="treeId" />
-		
+		 <input name="id" type="hidden" id="id"  th:field="*{id}"/>
 		<div class="control-group" align="center">
 			<label class="lbl" >设　备（施）申    请    单</label><br>
 		</div>
@@ -17,24 +17,24 @@
 		<table  class="table table-striped table-bordered table-condensed">
 			  <tr>
 			    <td>设备类型</td>
-			    <td colspan="2"><input name="devType"    class="form-control"/></td>
+			    <td colspan="2"><input name="devType"     th:field="*{devType}"  class="form-control"/></td>
 			    <td>　</td>
 			    <td>申请时间</td>
 			    <td colspan="2">
-			    <input id="applyDate" name="applyDate" class="time-input form-control"/> </td>
+			    <input id="applyDate" name="applyDate" th:field="*{applyDate}"  class="time-input form-control"/> </td>
 			  </tr>
 			  <tr>
 			    <td>申请部门</td>
-			    <td colspan="2"><input name="applyDept"    onclick="selectDeptTree()" id="treeName"  class="form-control"/></td>
+			    <td colspan="2"><input name="applyDept"    onclick="selectDeptTree()" id="treeName"   th:field="*{applyDept}"  class="form-control"/></td>
 			    <td>申请部门经理</td>
-			    <td><input name="applyDeptManager"    class="form-control"/></td>
+			    <td><input name="applyDeptManager"     th:field="*{applyDeptManager}"  class="form-control"/></td>
 			    <td>要求购置时间</td>
 			    <td>
-			    <input id="requireDate" name="requireDate" type="text" class="time-input form-control"/> </td>
+			    <input id="requireDate" name="requireDate" th:field="*{requireDate}" type="text" class="time-input form-control"/> </td>
 			  </tr>
 			  <tr>
 			    <td>申</td>
-			    <td colspan="6" rowspan="4"><textarea id="applyPrj" htmlEscape="true" name="applyPrj"   style="width: 90%; height: 100px;" class="form-control"></textarea>
+			    <td colspan="6" rowspan="4"><textarea id="applyPrj" htmlEscape="true" name="applyPrj"   style="width: 90%; height: 100px;"  th:field="*{applyPrj}"  class="form-control"></textarea>
 			    </td>
 			  </tr>
 			  <tr>
@@ -49,7 +49,7 @@
 			  <tr>
 			    <td>申</td>
 			    <td colspan="6" rowspan="4">
-			    <textarea id="applySpec" htmlEscape="true" name="applySpec"   style="width: 90%; height: 100px;" class="form-control"></textarea></td>
+			    <textarea id="applySpec" htmlEscape="true" name="applySpec"   style="width: 90%; height: 100px;"  th:field="*{applySpec}"  class="form-control"></textarea></td>
 			  </tr>
 			  <tr>
 			    <td>请</td>
@@ -69,9 +69,9 @@
 			  <tr>
 			    <td>　</td>
 			    <td>审核：</td>
-			    <td colspan="2"><input name="verifier"    class="form-control"/></td>
+			    <td colspan="2"><input name="verifier"     th:field="*{verifier}"  class="form-control"/></td>
 			    <td>批准：</td>
-			    <td colspan="2"><input name="approver"   class="form-control"/></td>
+			    <td colspan="2"><input name="approver"    th:field="*{approver}"  class="form-control"/></td>
 			  </tr>
 		</table>
 		</div>
@@ -117,7 +117,7 @@
 	        	data.push({"name": "status", "value": status});
 	        	data.push({"name": "roleIds", "value": roleIds});
 	        	data.push({"name": "postIds", "value": postIds}); */
-	        	$.operate.saveTab(prefix + "/add", data);
+	        	$.operate.saveTab(prefix + "/edit", data);
 	        }
 	    }
          

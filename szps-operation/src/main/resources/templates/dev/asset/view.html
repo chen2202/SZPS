@@ -8,12 +8,12 @@
 		<div class="row">
 			<div class="col-sm-12 search-collapse">
 				<form id="asset-form">
-				<input name="deptId" type="hidden" id="plantTreeId"/>
+				<input name="deptId" type="hidden" id="treeId"/>
 					<div class="select-list">
 						<ul>
 							<li>
 		                        <label >使用部门：</label>
-                            	<input name="deptName" onclick="selectPurPlantTree()" id="plantTreeName" type="text" placeholder="" >
+                            	<input name="deptName" onclick="selectDeptTree()" id="treeName" type="text" placeholder="" >
 							</li>
 							<li>
 		                        <label >设备类型：</label>
@@ -83,7 +83,7 @@
                 updateUrl: prefix + "/edit/{id}",
                 removeUrl: prefix + "/remove",
                 
-                modalName: "申请列表",
+                modalName: "资产",
                 columns: [{
 		            checkbox: true
 		        },
@@ -92,8 +92,8 @@
 					title : '序号' 
 				},
 				{
-					field : 'assetName', 
-					title : '资产名称' 
+					field : 'name', 
+					title : '设备名称' 
 				},
 				{
 		            field: 'devType',

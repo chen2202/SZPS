@@ -6,9 +6,9 @@
 </head>
 <body>
     <div class="main-content">
-        <form id="form" class="form-horizontal">
-		<input name="deptId" type="hidden" id="treeId" />
-		<input name="deptId" type="hidden" id="treeId2" />
+        <form id="form" class="form-horizontal" th:object="${obj}">
+		<input name="deptId" type="hidden" id="treeId" th:field="*{deptId}" />
+		 <input name="id" type="hidden" id="id"  th:field="*{id}"/>
 		<div class="control-group" align="center">
 			<label class="lbl" >设 备（施） 报 废 申 请 单</label><br>
 		</div>
@@ -17,52 +17,52 @@
 		<table  class="table table-striped table-bordered table-condensed">
 		  <tr>
 		    <td>设备名称：</td>
-		    <td colspan="2"><input name="devName"  class="form-control"/></td>
+		    <td colspan="2"><input name="devName"  th:field="*{devName}"  class="form-control"/></td>
 		    <td >规格型号：</td>
-		    <td colspan="2"><input name="devSpecs"  class="form-control"/></td>
+		    <td colspan="2"><input name="devSpecs"  th:field="*{devSpecs}"  class="form-control"/></td>
 		  </tr>
 		  <tr>
 		    <td >生产厂家：</td>
-		    <td colspan="2"><input name="manufacturer"  class="form-control"/></td>
+		    <td colspan="2"><input name="manufacturer"  th:field="*{manufacturer}"  class="form-control"/></td>
 		    <td >设备编号：</td>
-		    <td colspan="2" ><input name="devNumber"  class="form-control"/></td>
+		    <td colspan="2" ><input name="devNumber"  th:field="*{devNumber}"  class="form-control"/></td>
 		  </tr>
 		  <tr >
 		    <td >购置日期：</td>
 		    <td colspan="2" >
-		    <input id="buyDate" name="buyDate"  class="time-input form-control"/> </td>
+		    <input id="buyDate" name="buyDate" th:field="*{buyDate}"   class="time-input form-control"/> </td>
 		    <td >购置价格：</td>
-		    <td colspan="2" ><input name="price"  class="form-control"/></td>
+		    <td colspan="2" ><input name="price"  th:field="*{price}"  class="form-control"/></td>
 		  </tr>
 		  <tr >
 		    <td >申请报废日期：</td>
 		    <td colspan="2" >
-		    <input id="applyScrapDate" name="applyScrapDate" class="time-input form-control"/></td>
+		    <input id="applyScrapDate" name="applyScrapDate"  th:field="*{applyScrapDate}" class="time-input form-control"/></td>
 		    <td >使用部门：</td>
-		    <td colspan="2" ><input name="useDept"  onclick="selectDeptTree()" id="treeName"  class="form-control"/></td>
+		    <td colspan="2" ><input name="useDept"  onclick="selectDeptTree()" id="treeName"  th:field="*{useDept}"  class="form-control"/></td>
 		  </tr>
 		  <tr >
 		    <td >报废原因及技术鉴定：</td>
-		    <td colspan="5" ><textarea name="scrapReason"  class="form-control"></textarea></td>
+		    <td colspan="5" ><textarea name="scrapReason" th:field="*{scrapReason}"  class="form-control"></textarea></td>
 		  </tr>
 		  <tr >
 		    <td >申请部门</td>
-		    <td ><input name="applyDept" class="form-control"/></td>
+		    <td ><input name="applyDept" id="treeName"   th:field="*{applyDept}"  class="form-control"/></td>
 		    <td >审核人</td>
-		    <td ><input name="verifier"  class="form-control"/></td>
+		    <td ><input name="verifier"  th:field="*{verifier}"  class="form-control"/></td>
 		    <td >批准人</td>
-		    <td ><input name="approver"  class="form-control"/></td>
+		    <td ><input name="approver"  th:field="*{approver}"  class="form-control"/></td>
 		  </tr>
 		  <tr >
 		    <td >申请日期</td>
 		    <td >
-		    <input id="applyDate" name="applyDate" class="time-input form-control"/> </td>
+		    <input id="applyDate" name="applyDate" th:field="*{applyDate}" class="time-input form-control"/> </td>
 		    <td >审核日期</td>
 		    <td >
-		    <input id="verifyDate" name="verifyDate" class="time-input form-control"/></td>
+		    <input id="verifyDate" name="verifyDate" th:field="*{verifyDate}"  class="time-input form-control"/></td>
 		    <td >批准日期</td>
 		    <td >
-		    <input id="approveDate" name="approveDate" class="time-input form-control"/> </td>
+		    <input id="approveDate" name="approveDate"  th:field="*{approveDate}" class="time-input form-control"/> </td>
 		    </td>
 		  </tr>
 		  <tr >
@@ -112,7 +112,7 @@
 	        	data.push({"name": "status", "value": status});
 	        	data.push({"name": "roleIds", "value": roleIds});
 	        	data.push({"name": "postIds", "value": postIds}); */
-	        	$.operate.saveTab(prefix + "/add", data);
+	        	$.operate.saveTab(prefix + "/edit", data);
 	        }
 	    }
          

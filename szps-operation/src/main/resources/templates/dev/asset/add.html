@@ -7,7 +7,7 @@
 <body>
     <div class="main-content">
        <form id="form-asset-add"  class="form-horizontal">
-		<input name="deptId" type="hidden" id="treeId" th:value="${sysDept.deptId}"/>
+		<input name="deptId" type="hidden" id="treeId" />
 		<div class="control-group" align="center">
 			<label class="lbl" >设　备　档　案</label><br>
 		</div>
@@ -40,7 +40,7 @@
 			    <td><input name="devType" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
 			    <td><input name="status" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
 			    <td><input name="purpost" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
-			    <td><input name="useDep" th:value="${sysDept.deptName}" onclick="selectDeptTree()" id="treeName" htmlEscape="false"  style="width: 90%; "  class="form-control"/></td>
+			    <td><input name="useDep" onclick="selectDeptTree()" id="treeName" htmlEscape="false"  style="width: 90%; "  class="form-control"/></td>
 			    <td colspan="2"><input name="installPlace" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
 			    <td><input name="code" htmlEscape="false"  style="width: 90%; " class="form-control"/></td>
 			  </tr>

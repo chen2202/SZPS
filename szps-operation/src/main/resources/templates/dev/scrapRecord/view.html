@@ -86,7 +86,7 @@
                 updateUrl: prefix + "/edit/{id}",
                 removeUrl: prefix + "/remove",
                 
-                modalName: "列表",
+                modalName: "报废申请",
                 columns: [{
 		            checkbox: true
 		        },
@@ -103,8 +103,48 @@
 		            title: '设备编号',
 		        },
 		        {
+		            field: 'buyDate',
+		            title: '购置日期',
+		        },
+		        {
+		            field: 'price',
+		            title: '购置价格',
+		        },
+		        {
+		            field: 'applyScrapDate',
+		            title: '申请报废日期',
+		        },
+		        {
+		            field: 'useDept',
+		            title: '使用部门',
+		        },
+		        {
+		            field: 'scrapReason',
+		            title: '报废原因及技术鉴定',
+		        },
+		        {
 		            field: 'applyDept',
 		            title: '申请部门',
+		        },
+		        {
+		            field: 'applyDate',
+		            title: '申请日期',
+		        },
+		        {
+		            field: 'verifier',
+		            title: '审核人',
+		        },
+		        {
+		            field: 'verifyDate',
+		            title: '审核日期',
+		        },
+		        {
+		            field: 'approver',
+		            title: '批准人',
+		        },
+		        {
+		            field: 'approveDate',
+		            title: '批准日期',
 		        },
 		        {
                     title: '操作',

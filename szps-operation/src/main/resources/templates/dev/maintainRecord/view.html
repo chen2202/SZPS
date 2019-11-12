@@ -86,7 +86,7 @@
                 updateUrl: prefix + "/edit/{id}",
                 removeUrl: prefix + "/remove",
                 
-                modalName: "列表",
+                modalName: "保养记录",
                 columns: [{
 		            checkbox: true
 		        },
@@ -106,6 +106,47 @@
 		            field: 'devName',
 		            title: '设备名称',
 		        },
+		        {
+		            field: 'recordDate',
+		            title: '填写日期',
+		        },
+		        {
+		            field: 'mType',
+		            title: '保养类别',
+		        },
+		        {
+		            field: 'mCycle',
+		            title: '保养周期',
+		        },
+		        {
+		            field: 'installPlace',
+		            title: '安装地点',
+		        },
+		        {
+		            field: 'lastDate',
+		            title: '上次保养时间',
+		        },
+		        {
+		            field: 'content',
+		            title: '保养内容',
+		        },
+		        {
+		            field: 'planUseTime',
+		            title: '计划耗时',
+		        },
+		        {
+		            field: 'useTime',
+		            title: '实际耗时',
+		        },
+		        {
+		            field: 'commodities',
+		            title: '保养耗材',
+		        },
+		        {
+		            field: 'maintainPerson',
+		            title: '保养人',
+		        },
+		        
 		        {
                     title: '操作',
                     align: 'center',

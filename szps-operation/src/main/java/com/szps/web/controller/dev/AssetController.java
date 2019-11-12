@@ -57,8 +57,6 @@ public class AssetController extends BaseController {
     public String add(ModelMap mmap)
     {
     	SysUser user = ShiroUtils.getSysUser();
-    	SysDept sysDept = user.getDept();
-    	mmap.put("sysDept",sysDept);
         return prefix + "/add";
     }
     

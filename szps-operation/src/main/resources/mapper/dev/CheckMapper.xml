@@ -125,8 +125,8 @@
     <update id="update" parameterType="Check">
  		update dev_check
  		<set>
-			<if test=" deptId != null and deptId != ''">deptId = #{deptId},</if>
-			<if test=" checkDate != null and checkDate != ''">checkDate = #{checkDate},</if>
+			<if test=" deptId != null ">deptId = #{deptId},</if>
+			<if test=" checkDate != null ">checkDate = #{checkDate},</if>
 			<if test=" chineseName != null and chineseName != ''">chineseName = #{chineseName},</if>
 			<if test=" englishName != null and englishName != ''">englishName = #{englishName},</if>
 			<if test=" nameplate != null and nameplate != ''">nameplate = #{nameplate},</if>
@@ -174,7 +174,6 @@
 			<if test=" useDeptSign != null and useDeptSign != ''">useDeptSign = #{useDeptSign},</if>
 			<if test=" facDeptSign != null and facDeptSign != ''">facDeptSign = #{facDeptSign},</if>
 			<if test=" leaderSign != null and leaderSign != ''">leaderSign = #{leaderSign},</if>
-
 			<if test=" delFlag != null and delFlag!= ''">delFlag = #{delFlag},</if>
 			<if test="  remark != null and remark != ''">remark = #{remark},</if>
  			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>

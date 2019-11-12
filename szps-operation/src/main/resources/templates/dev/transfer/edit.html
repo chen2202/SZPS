@@ -6,8 +6,9 @@
 </head>
 <body>
     <div class="main-content">
-        <form id="form"  class="form-horizontal">
-		<input name="deptId" type="hidden" id="treeId" />
+        <form id="form"  class="form-horizontal"  th:object="${obj}">
+        <input name="id" type="hidden" id="id"  th:field="*{id}"/>
+		<input name="deptId" type="hidden" id="treeId"  th:field="*{deptId}"/>
 		<div class="control-group" align="center">
 			<label class="lbl" >设备内部调拨申请单</label><br>
 		</div>
@@ -18,57 +19,57 @@
 			    <td  colspan="3">　　　　　　　　　　　　　　　　　　　　　　</td>
 			    <td>申请日期</td>
 			    <td colspan="2">
-			    <input id="applyDate" name="applyDate" class="time-input form-control"/> </td>
+			    <input id="applyDate" name="applyDate" th:field="*{applyDate}" class="time-input form-control"/> </td>
 			  </tr>
 			  <tr >
 			    <td >申请单位：</td>
-			    <td><input name="applyDept" onclick="selectDeptTree()" id="treeName"  class="form-control"/></td>
+			    <td><input name="applyDept" onclick="selectDeptTree()" id="treeName"  th:field="*{applyDept}"  class="form-control"/></td>
 			    <td>申请调拨设备：</td>
-			    <td><input name="applyEquip"  class="form-control"/></td>
+			    <td><input name="applyEquip"  th:field="*{applyEquip}"  class="form-control"/></td>
 			    <td>设备型号：</td>
-			    <td><input name="devModel"  class="form-control"/></td>
+			    <td><input name="devModel"  th:field="*{devModel}"  class="form-control"/></td>
 			  </tr>
 			  <tr >
 			    <td >设备原使用单位：</td>
-			    <td><input name="origDept"  class="form-control"/></td>
+			    <td><input name="origDept"  th:field="*{origDept}"  class="form-control"/></td>
 			    <td>设备状况：</td>
-			    <td><input name="devStatu"  class="form-control"/></td>
+			    <td><input name="devStatu"  th:field="*{devStatu}"  class="form-control"/></td>
 			    <td>设备编号：</td>
-			    <td><input name="devNumber"  class="form-control"/></td>
+			    <td><input name="devNumber"  th:field="*{devNumber}"  class="form-control"/></td>
 			  </tr>
 			  <tr >
 			    <td >调拨性质：长期　临时</td>
-			    <td><input name="transferType"  class="form-control"/></td>
+			    <td><input name="transferType"  th:field="*{transferType}"  class="form-control"/></td>
 			    <td>设备原值：</td>
-			    <td><input name="origValue"  class="form-control"/></td>
+			    <td><input name="origValue"  th:field="*{origValue}"  class="form-control"/></td>
 			    <td>设备类别：ＡＢＣ </td>
-			    <td><input name="devType"  class="form-control"/></td>
+			    <td><input name="devType"  th:field="*{devType}"  class="form-control"/></td>
 			  </tr>
 			  <tr >
 			    <td >计划迁移时间：</td>
 			    <td>
-			    <input id="planoutDate" name="planoutDate" type="text" class="time-input form-control"/>
+			    <input id="planoutDate" name="planoutDate"  th:field="*{planoutDate}" type="text" class="time-input form-control"/>
 				</td>
 			    <td>设备折旧年限：                  </td>
-			    <td><input name="depreciateYear"  class="form-control"/></td>
+			    <td><input name="depreciateYear"  th:field="*{depreciateYear}"  class="form-control"/></td>
 			    <td>设备供应商：</td>
-			    <td><input name="supplier"  class="form-control"/></td>
+			    <td><input name="supplier"  th:field="*{supplier}"  class="form-control"/></td>
 			  </tr>
 			  <tr >
 			    <td >计划归还时间：</td>
 			    <td>
-			    <input id="planReturnDate" name="planReturnDate" type="text" class="time-input form-control"/> 
+			    <input id="planReturnDate" name="planReturnDate" th:field="*{planReturnDate}" type="text" class="time-input form-control"/> 
 			    </td>
-			    <td>申请单位承担折旧费用(元)：</td>
-			    <td><input name="dutyCost"  class="form-control"/> </td>
+			    <td>申请单位承担折旧费用：</td>
+			    <td><input name="dutyCost" th:field="*{dutyCost}" class="form-control"/>  元</td>
 			    <td>购置日期：</td>
 			    <td>
-			    <input id="buyDate" name="buyDate" type="text" class="time-input form-control"/> 
+			    <input id="buyDate" name="buyDate" th:field="*{buyDate}" type="text" class="time-input form-control"/> 
 			    </td>
 			  </tr>
 			  <tr >
 			    <td >移交辅机配件：</td>
-			    <td colspan="5"><textarea name="tPart"  class="form-control"></textarea></td>
+			    <td colspan="5"><textarea name="tPart"  th:field="*{tPart}"  class="form-control"></textarea></td>
 			  </tr>
 			  <tr >
 			    <td >移交附件：   </td>
@@ -78,45 +79,45 @@
 			  </tr>
 			  <tr >
 			    <td rowspan="4" >申请理由</td>
-			    <td colspan="5" rowspan="3"><textarea name="applyReason"  class="form-control"></textarea></td>
+			    <td colspan="5" rowspan="3"><textarea name="applyReason"  th:field="*{applyReason}"  class="form-control"></textarea></td>
 			  </tr>
 			  <tr > </tr>
 			  <tr > </tr>
 			  <tr >
 			    <td colspan="3" >　</td>
 			    <td>签名：</td>
-			    <td><input name="applicant"  class="form-control"/></td>
+			    <td><input name="applicant"  th:field="*{applicant}"  class="form-control"/></td>
 			  </tr>
 			  <tr >
 			    <td rowspan="4" >原使用部门意见</td>
-			    <td colspan="5" rowspan="3"><textarea name="origDeptOpinion"  class="form-control"></textarea></td>
+			    <td colspan="5" rowspan="3"><textarea name="origDeptOpinion"  th:field="*{origDeptOpinion}"  class="form-control"></textarea></td>
 			  </tr>
 			  <tr > </tr>
 			  <tr > </tr>
 			  <tr >
 			    <td colspan="3" ></td>
 			    <td>签名：</td>
-			    <td><input name="origPeople"  class="form-control"/></td>
+			    <td><input name="origPeople"  th:field="*{origPeople}"  class="form-control"/></td>
 			  </tr>
 			  <tr >
 			    <td rowspan="4" >设备部意见</td>
-			    <td colspan="5" rowspan="3"><textarea name="equipDeptOpinion"  class="form-control"></textarea></td>
+			    <td colspan="5" rowspan="3"><textarea name="equipDeptOpinion"  th:field="*{equipDeptOpinion}"  class="form-control"></textarea></td>
 			  </tr>
 			  <tr > </tr>
 			  <tr > </tr>
 			  <tr >
 			    <td colspan="3" >　</td>
 			    <td>签名：</td>
-			    <td><input name="equipPeople"  class="form-control"/></td>
+			    <td><input name="equipPeople"  th:field="*{equipPeople}"  class="form-control"/></td>
 			  </tr>
 			  <tr >
 			    <td rowspan="2" >分管     领导</td>
-			    <td colspan="3" rowspan="2"><textarea name="leaderOpinion"  class="form-control"></textarea></td>
+			    <td colspan="3" rowspan="2"><textarea name="leaderOpinion"  th:field="*{leaderOpinion}"  class="form-control"></textarea></td>
 			    <td colspan="2">　</td>
 			  </tr>
 			  <tr >
 			    <td >签名：</td>
-			    <td><input name="leader"  class="form-control"/></td>
+			    <td><input name="leader"  th:field="*{leader}"  class="form-control"/></td>
 			  </tr>
 			  <tr >
 			    <td  colspan="3">注:电子档中对选择项将采用红色字体表示正确答案。</td>

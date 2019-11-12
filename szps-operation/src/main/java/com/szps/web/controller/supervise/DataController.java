@@ -101,7 +101,7 @@ public class DataController extends BaseController {
            s=String.valueOf(new Random().nextInt(999999));
         }
         task.setTaskNumber(s);
-        if(task.getTaskHouse()!=null&&taskStaff!=null)
+        if(!task.getTaskHouse().equals("")&&!taskStaff.equals(""))
         {
             String[] strs = taskStaff.split(",|，");
             TbHouse house=houseService.selectHouseById(task.getTaskHouse());
@@ -162,11 +162,7 @@ public class DataController extends BaseController {
             task.setTaskHousephone(houses.getHousePhone());
 
         }
-        else {
-            task.setTaskPartition(house.getHousePoint());
-            task.setTaskHousename(house.getHouseName());
-            task.setTaskHousephone(house.getHousePhone());
-        }
+
         String a="";
         String[] strs = taskStaff.split(",|，");
         for(int k=0;k<tbTaskStaffs.size();k++)

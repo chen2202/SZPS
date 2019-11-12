@@ -1,11 +1,10 @@
 package com.szps.web.controller.supervise;
 
 
-import com.szps.common.annotation.Log;
+
 import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
-import com.szps.common.enums.BusinessType;
 import com.szps.web.domain.supervise.TbHouse;
 import com.szps.web.domain.supervise.TbStaff;
 import com.szps.web.domain.supervise.TbTask;
@@ -106,6 +105,10 @@ public class TaskController extends BaseController {
                 String region=t.getTaskRegion();
                 String street=t.getTaskStreet();
                 List<TbHouse> houses=houseService.selectByRegionAndStreet(region,street);
+                if(houses.size()==0)
+                {
+                    return error("该区域没有排水户");
+                }
                 TbHouse house=houses.get(random.nextInt(houses.size()));
                 String s=house.getHouseNumber();
                 String p=house.getHouseName();
@@ -119,6 +122,7 @@ public class TaskController extends BaseController {
                 ArrayList<String> list = new ArrayList<String>();
                 ArrayList<String> list_for_random = new ArrayList<String>();
                 int max=staff.size();
+                System.out.println(max);
                 int val= Integer.parseInt(c);
                 for(int k=0;k<max;k++){
                     list_for_random.add(staff.get(k).getStaffNumber());

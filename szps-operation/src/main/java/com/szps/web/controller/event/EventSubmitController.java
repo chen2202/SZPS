@@ -65,13 +65,13 @@ public class EventSubmitController extends BaseController {
     }
 
 
-    @GetMapping("/list2")
-    @ResponseBody
-    public TableDataInfo list2(EventSubmit eventSubmit) {
-        startPage();
-        List<EventSubmit> list = eventSubmitService.selectEventSubmitList(eventSubmit);
-        return getDataTable(list);
-    }
+//    @GetMapping("/list2")
+//    @ResponseBody
+//    public TableDataInfo list2(EventSubmit eventSubmit) {
+//        startPage();
+//        List<EventSubmit> list = eventSubmitService.selectEventSubmitList(eventSubmit);
+//        return getDataTable(list);
+//    }
 
     /**
      * 导出污水厂事件列表

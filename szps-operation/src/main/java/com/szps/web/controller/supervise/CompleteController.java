@@ -135,28 +135,28 @@ public class CompleteController extends BaseController {
     @ResponseBody
     public AjaxResult uploadPicture(@RequestParam("picture") MultipartFile []multipartFile,@RequestParam("feedbackId")String feedbackId){
         try {
-        if(multipartFile.length==0){
-            return error("文件为空,上传失败");
-        }
-        String filePath = Global.getUploadPath();
-        String fileName[] = new String[10];
-        String url[] = new String[10];
-        for(int i=0;i<multipartFile.length;i++){
-            fileName[i]=FileUploadUtils.upload(filePath, multipartFile[i]);
-            url[i]= fileName[i];
-            int radomInt = new Random().nextInt(999999);
-            String s=String.valueOf(radomInt);
-            while (pictureService.checkPicture(s)==1)
-            {
-                s=String.valueOf(new Random().nextInt(999999));
+            if(multipartFile.length==0){
+                return error("文件为空,上传失败");
             }
-            TbPicture picture=new TbPicture();
-            picture.setFeedbackId(feedbackId);
-            picture.setPictureId(s);
-            picture.setPictureLocation(url[i]);
-            picture.setPictureName(multipartFile[i].getOriginalFilename());
-            pictureService.insertRule(picture);
-        }
+            String filePath = Global.getUploadPath();
+            String fileName[] = new String[10];
+            String url[] = new String[10];
+            for(int i=0;i<multipartFile.length;i++){
+                fileName[i]=FileUploadUtils.upload(filePath, multipartFile[i]);
+                url[i]= fileName[i];
+                int radomInt = new Random().nextInt(999999);
+                String s=String.valueOf(radomInt);
+                while (pictureService.checkPicture(s)==1)
+                {
+                    s=String.valueOf(new Random().nextInt(999999));
+                }
+                TbPicture picture=new TbPicture();
+                picture.setFeedbackId(feedbackId);
+                picture.setPictureId(s);
+                picture.setPictureLocation(url[i]);
+                picture.setPictureName(multipartFile[i].getOriginalFilename());
+                pictureService.insertRule(picture);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

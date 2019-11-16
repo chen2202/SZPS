@@ -46,6 +46,7 @@ public class StatisticsController extends BaseController {
         String taskStreet=request.getParameter("taskStreet");
         String report=request.getParameter("report");
         String taskTime=request.getParameter("taskTime");
+
         if(report.equals("月报"))
         {
             //完成的

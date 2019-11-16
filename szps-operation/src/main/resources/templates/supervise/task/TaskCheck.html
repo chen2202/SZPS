@@ -84,7 +84,7 @@
         }
         $.modal.confirm("确认要生成选中的" + rows.length + "条随机任务吗?", function() {
             var url = $.table._option.removeUrl;
-            var data = { "ids": rows.join(),"c":c };
+            var data = { "ids": rows.join() ,"c":c};
             $.operate.submit(url, "post", "json", data);
         });
     }

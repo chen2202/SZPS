@@ -5,22 +5,42 @@
 </head>
 <body class="white-bg">
 	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
-        <form id="form"  class="form-horizontal m"  th:object="${obj}">
-        <input name="id" type="hidden"  th:field="*{id}"/>
-        	<div class="row">
+        <form id="form"  class="form-horizontal m"th:object="${obj}">
+        <input name="id" type="hidden" id="id"  th:field="*{id}"/>
+        <input name="deptid" type="hidden" id="treeId" />
+			<div class="row">
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-4 control-label ">所属省：</label>
-						<div class="col-sm-6">
-							<input name="dprovince" id="dprovince"  th:field="*{dprovince}" class="form-control" type="text" value="广东"/>
+						<label class="col-sm-3 control-label ">年度：</label>
+						<div class="col-sm-8">
+							<input name="dyear" id="dyear" th:field="*{dyear}" type="text" class="time-input form-control" data-type="date" data-format="yyyy" />
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label class="col-sm-4 control-label">所属市：</label>
-						<div class="col-sm-6">
-							<input name="dcity" id="dcity"  th:field="*{dcity}"  class="form-control" type="text" value="440300" />
+						<label class="col-sm-3 control-label">水质净化厂：</label>
+						<div class="col-sm-8">
+							<input name="deptname" id="treeName" th:field="*{deptname}"  class="form-control" type="text" onclick="selectDeptTree()" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<h4 class="form-header h4"></h4>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">检查项目：</label>
+						<div class="col-sm-8">
+							<input name="project1" id="project1"  class="form-control" type="text"  value="一" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">检查内容：</label>
+						<div class="col-sm-8">
+							<input name="content1" id="content1"  class="form-control" type="text"   readonly="readonly" value="财务及成本管理，档案及信息管理"/>					
 						</div>
 					</div>
 				</div>
@@ -29,17 +49,17 @@
 			<div class="row">
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-4 control-label ">项目代码：</label>
-						<div class="col-sm-6">
-							<input name="projectcode" id="projectcode"   th:field="*{projectcode}" class="form-control" type="text"  />
+						<label class="col-sm-3 control-label ">不足概述：</label>
+						<div class="col-sm-8">
+							<textarea name="shortage1" id="shortage1" th:field="*{shortage1}"  class=" form-control" type="text"  ></textarea>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label class="col-sm-4 control-label">项目名称：</label>
-						<div class="col-sm-6">
-							<input name="projectname" id="treeName"   th:field="*{projectname}"  class="form-control" type="text" onclick="selectDeptTree()"/>
+						<label class="col-sm-3 control-label">亮点概述：</label>
+						<div class="col-sm-8">
+							<textarea name="strongpoint1" id="strongpoint1" th:field="*{strongpoint1}"  class="form-control" type="text" ></textarea>
 						</div>
 					</div>
 				</div>
@@ -48,17 +68,28 @@
 			<div class="row">
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-4 control-label ">上报期号：</label>
-						<div class="col-sm-6">
-							<input name="reportnumber" id="reportnumber"  th:field="*{reportnumber}"  class="time-input form-control" type="text"  data-type="date" data-format="yyyy-MM" />
+						<label class="col-sm-3 control-label ">总体评价：</label>
+						<div class="col-sm-8">
+							<textarea name="overall1" id="overall1" th:field="*{overall1}"  class="form-control" type="text" ></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		<h4 class="form-header h4"></h4>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">检查项目：</label>
+						<div class="col-sm-8">
+							<input name="project2" id="project2"  class="form-control" type="text"  value="二" readonly="readonly"/>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label class="col-sm-4 control-label">设计规模(万立方米/月)：</label>
-						<div class="col-sm-6">
-							<input name="designscale" id="designscale"  th:field="*{designscale}"  class="form-control" type="number"  />
+						<label class="col-sm-3 control-label">检查内容：</label>
+						<div class="col-sm-8">
+							<input name="content2" id="content2"  class="form-control" type="text"   readonly="readonly" value="生产运行管理"/>					
 						</div>
 					</div>
 				</div>
@@ -67,17 +98,17 @@
 			<div class="row">
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-4 control-label ">累计处理水量(万立方米)：</label>
-						<div class="col-sm-6">
-							<input name="awtc" id="awtc"  th:field="*{awtc}"  class="form-control" type="number"  />
+						<label class="col-sm-3 control-label ">不足概述：</label>
+						<div class="col-sm-8">
+							<textarea name="shortage2" id="shortage2" th:field="*{shortage2}"  class=" form-control" type="text"  ></textarea>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label class="col-sm-4 control-label">最高日处理量(万立方米)：</label>
-						<div class="col-sm-6">
-							<input name="mdtc" id="mdtc"  th:field="*{mdtc}"  class="form-control" type="number"  />
+						<label class="col-sm-3 control-label">亮点概述：</label>
+						<div class="col-sm-8">
+							<textarea name="strongpoint2" id="strongpoint2" th:field="*{strongpoint2}"  class="form-control" type="text" ></textarea>
 						</div>
 					</div>
 				</div>
@@ -86,344 +117,212 @@
 			<div class="row">
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-4 control-label ">负荷率( % )：</label>
-						<div class="col-sm-6">
-							<input name="loadrate" id="loadrate"  th:field="*{loadrate}"  class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label class="col-sm-4 control-label">COD削减能力(吨/日)：</label>
-						<div class="col-sm-6">
-							<input name="codrc" id="codrc"  th:field="*{codrc}"  class="form-control" type="number"  />
+						<label class="col-sm-3 control-label ">总体评价：</label>
+						<div class="col-sm-8">
+							<textarea name="overall2" id="overall2" th:field="*{overall2}"  class="form-control" type="text" ></textarea>
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<div class="row">
-				
-	        	<div class="col-sm-6">
-		        	<div class="form-group">
-						<label class="col-sm-4 control-label ">COD削减量( 吨 )：</label>
-						<div class="col-sm-6">
-							<input name="codr" id="codr"  th:field="*{codr}"  class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label class="col-sm-4 control-label">吨水COD削减能力(公斤/立方米)：</label>
-						<div class="col-sm-6">
-							<input name="codcptw" id="codcptw"  th:field="*{codcptw}"  class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				
-	        	<div class="col-sm-6">
-		        	<div class="form-group">
-						<label class="col-sm-4 control-label ">吨水削减量(公斤/立方米)：</label>
-						<div class="col-sm-6">
-							<input name="twr" id="twr"  th:field="*{twr}"  class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label class="col-sm-4 control-label">累计用电量(千瓦.时)：</label>
-						<div class="col-sm-6">
-							<input name="cec" id="cec"  th:field="*{cec}"  class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				
-	        	<div class="col-sm-6">
-		        	<div class="form-group">
-						<label class="col-sm-4 control-label ">直接成本(元/立方米)：</label>
-						<div class="col-sm-6">
-							<input name="directcost" id="directcost"  th:field="*{directcost}"  class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label class="col-sm-4 control-label">再生水利用量(万立方米)：</label>
-						<div class="col-sm-6">
-							<input name="rwc" id="rwc"  th:field="*{rwc}"  class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				
-	        	<div class="col-sm-6">
-		        	<div class="form-group">
-						<label class="col-sm-4 control-label ">累计湿污泥产生量( 吨 )：</label>
-						<div class="col-sm-6">
-							<input name="awsp" id="awsp"   th:field="*{awsp}" class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label class="col-sm-4 control-label">污泥含水率( % )：</label>
-						<div class="col-sm-6">
-							<input name="mcs" id="mcs"  th:field="*{mcs}"  class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				
-	        	<div class="col-sm-6">
-		        	<div class="form-group">
-						<label class="col-sm-4 control-label ">污泥处理量(吨)：</label>
-						<div class="col-sm-6">
-							<input name="stc" id="stc"  th:field="*{stc}"  class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label class="col-sm-4 control-label">土地利用量(吨)：</label>
-						<div class="col-sm-6">
-							<input name="landuse" id="landuse"  th:field="*{landuse}"  class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				
-	        	<div class="col-sm-6">
-		        	<div class="form-group">
-						<label class="col-sm-4 control-label ">建材利用量(吨)：</label>
-						<div class="col-sm-6">
-							<input name="ubm" id="ubm"  th:field="*{ubm}"  class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label class="col-sm-4 control-label">焚烧利用量(吨)：</label>
-						<div class="col-sm-6">
-							<input name="iu" id="iu"   th:field="*{iu}" class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label class="col-sm-4 control-label">卫生填埋量(吨)：</label>
-						<div class="col-sm-6">
-							<input name="slc" id="slc"   th:field="*{slc}" class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
-	        	<div class="col-sm-6">
-		        	<div class="form-group">
-						<label class="col-sm-4 control-label ">其他处置量(吨)：</label>
-						<div class="col-sm-6">
-							<input name="odc" id="odc"   th:field="*{odc}" class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
-				
-			</div>
-
-			<div class="row">
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label class="col-sm-4 control-label">正常运行天数：</label>
-						<div class="col-sm-6">
-							<input name="normaldays" id="normaldays"  th:field="*{normaldays}"  class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
-	        	<div class="col-sm-6">
-		        	<div class="form-group">
-						<label class="col-sm-4 control-label ">达标排放天数：</label>
-						<div class="col-sm-6">
-							<input name="standarddays" id="standarddays"  th:field="*{standarddays}"  class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
-				
-			</div>
-
-			<div class="row">
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label class="col-sm-4 control-label">不达标原因：</label>
-						<div class="col-sm-6">
-							<textarea name="reasons" id="reasons"   th:field="*{reasons}" class="form-control" type="text"  ></textarea>
-						</div>
-					</div>
-				</div>
-			</div>
+			
+			<h4 class="form-header h4"></h4>
 			<div class="row">
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-4 control-label ">超标项目：</label>
-						<div class="col-sm-6">
-							<textarea name="esp" id="esp"   th:field="*{esp}" class="form-control" type="text"  ></textarea>
+						<label class="col-sm-3 control-label ">检查项目：</label>
+						<div class="col-sm-8">
+							<input name="project3" id="project3"  class="form-control" type="text"  value="三" readonly="readonly"/>
 						</div>
 					</div>
 				</div>
-				
-			</div>
-
-
-			<div class="row">
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label class="col-sm-4 control-label">COD进水( mg/L )：</label>
-						<div class="col-sm-6">
-							<input name="codin" id="codin"  th:field="*{codin}"  class="form-control" type="number"  />
+						<label class="col-sm-3 control-label">检查内容：</label>
+						<div class="col-sm-8">
+							<input name="content3" id="content3"  class="form-control" type="text"   readonly="readonly" value="与设备设施相关的台账和记录"/>					
 						</div>
 					</div>
 				</div>
-	        	<div class="col-sm-6">
-		        	<div class="form-group">
-						<label class="col-sm-4 control-label ">COD出水( mg/L )：</label>
-						<div class="col-sm-6">
-							<input name="codout" id="codout"  th:field="*{codout}"  class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
-				
 			</div>
 
 			<div class="row">
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label class="col-sm-4 control-label">BOD进水( mg/L )：</label>
-						<div class="col-sm-6">
-							<input name="bodin" id="bodin"  th:field="*{bodin}"  class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-4 control-label ">BOD出水( mg/L )：</label>
-						<div class="col-sm-6">
-							<input name="bodout" id="bodout"  th:field="*{bodout}"  class="form-control" type="number"  />
+						<label class="col-sm-3 control-label ">不足概述：</label>
+						<div class="col-sm-8">
+							<textarea name="shortage3" id="shortage3" th:field="*{shortage3}" class=" form-control" type="text"  ></textarea>
 						</div>
 					</div>
 				</div>
-				
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">亮点概述：</label>
+						<div class="col-sm-8">
+							<textarea name="strongpoint3" id="strongpoint3" th:field="*{strongpoint3}"  class="form-control" type="text" ></textarea>
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<div class="row">
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label class="col-sm-4 control-label">SS进水( mg/L )：</label>
-						<div class="col-sm-6">
-							<input name="ssin" id="ssin"  th:field="*{ssin}"  class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-4 control-label ">SS出水( mg/L )：</label>
-						<div class="col-sm-6">
-							<input name="ssout" id="ssout"  th:field="*{ssout}"  class="form-control" type="number"  />
+						<label class="col-sm-3 control-label ">总体评价：</label>
+						<div class="col-sm-8">
+							<textarea name="overall3" id="overall3" th:field="*{overall3}"  class="form-control" type="text" ></textarea>
 						</div>
 					</div>
 				</div>
-				
+			</div>
+			
+			<h4 class="form-header h4"></h4>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">检查项目：</label>
+						<div class="col-sm-8">
+							<input name="project4" id="project4"  class="form-control" type="text"  value="四" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">检查内容：</label>
+						<div class="col-sm-8">
+							<input name="content4" id="content4"   class="form-control" type="text"   readonly="readonly" value="设备设施"/>					
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<div class="row">
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label class="col-sm-4 control-label">AD进水( mg/L )：</label>
-						<div class="col-sm-6">
-							<input name="adin" id="adin"  th:field="*{adin}"  class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-4 control-label ">AD出水( mg/L )：</label>
-						<div class="col-sm-6">
-							<input name="adout" id="adout"  th:field="*{adout}"  class="form-control" type="number"  />
+						<label class="col-sm-3 control-label ">不足概述：</label>
+						<div class="col-sm-8">
+							<textarea name="shortage4" id="shortage4" th:field="*{shortage4}"  class=" form-control" type="text"  ></textarea>
 						</div>
 					</div>
 				</div>
-				
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">亮点概述：</label>
+						<div class="col-sm-8">
+							<textarea name="strongpoint4" id="strongpoint4" th:field="*{strongpoint4}"  class="form-control" type="text" ></textarea>
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<div class="row">
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label class="col-sm-4 control-label">TN进水( mg/L )：</label>
-						<div class="col-sm-6">
-							<input name="tnin" id="tnin"  th:field="*{tnin}"  class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-4 control-label ">TN出水( mg/L )：</label>
-						<div class="col-sm-6">
-							<input name="tnout" id="tnout"  th:field="*{tnout}"  class="form-control" type="number"  />
+						<label class="col-sm-3 control-label ">总体评价：</label>
+						<div class="col-sm-8">
+							<textarea name="overall4" id="overall4" th:field="*{overall4}"  class="form-control" type="text" ></textarea>
 						</div>
 					</div>
 				</div>
-				
+			</div>
+			
+			<h4 class="form-header h4"></h4>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">检查项目：</label>
+						<div class="col-sm-8">
+							<input name="project5" id="project5"  class="form-control" type="text"  value="五" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">检查内容：</label>
+						<div class="col-sm-8">
+							<input name="content5" id="content5"   class="form-control" type="text"   readonly="readonly" value="安全及环境管理"/>					
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<div class="row">
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label class="col-sm-4 control-label">TP进水( mg/L )：</label>
-						<div class="col-sm-6">
-							<input name="tpin" id="tpin"  th:field="*{tpin}"  class="form-control" type="number"  />
-						</div>
-					</div>
-				</div>
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-4 control-label ">TP出水( mg/L )：</label>
-						<div class="col-sm-6">
-							<input name="tpout" id="tpout"  th:field="*{tpout}"  class="form-control" type="number"  />
+						<label class="col-sm-3 control-label ">不足概述：</label>
+						<div class="col-sm-8">
+							<textarea name="shortage5" id="shortage5" th:field="*{shortage5}"  class=" form-control" type="text"  ></textarea>
 						</div>
 					</div>
 				</div>
-				
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">亮点概述：</label>
+						<div class="col-sm-8">
+							<textarea name="strongpoint5" id="strongpoint5" th:field="*{strongpoint5}"  class="form-control" type="text" ></textarea>
+						</div>
+					</div>
+				</div>
 			</div>
 
-
 			<div class="row">
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label class="col-sm-4 control-label">填报人：</label>
-						<div class="col-sm-6">
-							<input name="applicant" id="applicant"  th:field="*{applicant}"  class="form-control" type="text"  />
-						</div>
-					</div>
-				</div>
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-4 control-label ">填报日期：</label>
-						<div class="col-sm-6">
-							<input name="submissiondate" id="submissiondate"  th:field="*{submissiondate}"  class="time-input form-control" type="text"  data-type="date" data-format="yyyy-MM-dd" />
+						<label class="col-sm-3 control-label ">总体评价：</label>
+						<div class="col-sm-8">
+							<textarea name="overall5" id="overall5" th:field="*{overall5}"  class="form-control" type="text" ></textarea>
 						</div>
 					</div>
 				</div>
-				
+			</div>
+			
+			<h4 class="form-header h4"></h4>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">检查项目：</label>
+						<div class="col-sm-8">
+							<input name="project6" id="project6" class="form-control" type="text"  value="六" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">检查内容：</label>
+						<div class="col-sm-8">
+							<input name="content6" id="content6"  class="form-control" type="text"   readonly="readonly" value="资质、化验及水质管理"/>					
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">不足概述：</label>
+						<div class="col-sm-8">
+							<textarea name="shortage6" id="shortage6" th:field="*{shortage6}"  class=" form-control" type="text"  ></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">亮点概述：</label>
+						<div class="col-sm-8">
+							<textarea name="strongpoint6" id="strongpoint6"  th:field="*{strongpoint6}" class="form-control" type="text" ></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">总体评价：</label>
+						<div class="col-sm-8">
+							<textarea name="overall6" id="overall6" th:field="*{overall6}"  class="form-control" type="text" ></textarea>
+						</div>
+					</div>
+				</div>
 			</div>
 	</form>
     </div>
@@ -435,7 +334,7 @@
     </div>
 	<th:block th:include="include :: footer" />
 	<script>
-	var prefix = ctx + "op/report/mhc";
+	    var prefix = ctx + "op/report/yearappraisal";
 	
         $("#form").validate({
         	onkeyup: false,

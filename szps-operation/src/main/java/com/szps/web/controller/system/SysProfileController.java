@@ -17,6 +17,7 @@ import com.szps.common.config.Global;
 import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.enums.BusinessType;
+import com.szps.common.utils.EncryptUtil;
 import com.szps.common.utils.StringUtils;
 import com.szps.common.utils.file.FileUploadUtils;
 import com.szps.framework.shiro.service.SysPasswordService;
@@ -85,6 +86,7 @@ public class SysProfileController extends BaseController
         if (StringUtils.isNotEmpty(newPassword) && passwordService.matches(user, oldPassword))
         {
             user.setSalt(ShiroUtils.randomSalt());
+            user.setNpwd(EncryptUtil.encrypt(newPassword));
             user.setPassword(passwordService.encryptPassword(user.getLoginName(), newPassword, user.getSalt()));
             if (userService.resetUserPwd(user) > 0)
             {

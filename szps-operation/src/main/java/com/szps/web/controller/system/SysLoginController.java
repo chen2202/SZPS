@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.domain.AjaxResult;
+import com.szps.common.utils.EncryptUtil;
 import com.szps.common.utils.ServletUtils;
 import com.szps.common.utils.StringUtils;
 
@@ -75,7 +76,23 @@ public class SysLoginController extends BaseController
         	 return "login";
         }
     }
-    
+    @GetMapping("/loginx")
+    public String ajaxLoginc(String username, String password)
+    {
+        try
+        {
+        	Boolean rememberMe = true;
+        	String pwd = EncryptUtil.decrypt(password);
+            UsernamePasswordToken token = new UsernamePasswordToken(username, pwd, rememberMe);
+            Subject subject = SecurityUtils.getSubject();
+            subject.login(token);
+            return "forward:/index";
+        }
+        catch (Exception e)
+        {
+        	 return "login";
+        }
+    }
     @GetMapping("/unauth")
     public String unauth()
     {

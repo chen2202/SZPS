@@ -12,6 +12,7 @@ import com.szps.common.annotation.DataScope;
 import com.szps.common.constant.UserConstants;
 import com.szps.common.core.text.Convert;
 import com.szps.common.exception.BusinessException;
+import com.szps.common.utils.EncryptUtil;
 import com.szps.common.utils.StringUtils;
 import com.szps.common.utils.security.Md5Utils;
 import com.szps.system.domain.SysPost;
@@ -418,6 +419,7 @@ public class SysUserServiceImpl implements ISysUserService
                 SysUser u = userMapper.selectUserByLoginName(user.getLoginName());
                 if (StringUtils.isNull(u))
                 {
+                	user.setNpwd(EncryptUtil.encrypt(password));
                     user.setPassword(Md5Utils.hash(user.getLoginName() + password));
                     user.setCreateBy(operName);
                     this.insertUser(user);

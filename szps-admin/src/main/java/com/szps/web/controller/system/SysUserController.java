@@ -19,6 +19,7 @@ import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
+import com.szps.common.utils.EncryptUtil;
 import com.szps.common.utils.StringUtils;
 import com.szps.common.utils.poi.ExcelUtil;
 import com.szps.framework.shiro.service.SysPasswordService;
@@ -134,8 +135,10 @@ public class SysUserController extends BaseController
             return error("新增用户'" + user.getLoginName() + "'失败，邮箱账号已存在");
         }
         user.setSalt(ShiroUtils.randomSalt());
+        user.setNpwd(EncryptUtil.encrypt(user.getPassword()));
         user.setPassword(passwordService.encryptPassword(user.getLoginName(), user.getPassword(), user.getSalt()));
         user.setCreateBy(ShiroUtils.getLoginName());
+        
         return toAjax(userService.insertUser(user));
     }
 
@@ -192,6 +195,7 @@ public class SysUserController extends BaseController
     public AjaxResult resetPwdSave(SysUser user)
     {
         user.setSalt(ShiroUtils.randomSalt());
+        user.setNpwd(EncryptUtil.encrypt(user.getPassword()));
         user.setPassword(passwordService.encryptPassword(user.getLoginName(), user.getPassword(), user.getSalt()));
         if (userService.resetUserPwd(user) > 0)
         {

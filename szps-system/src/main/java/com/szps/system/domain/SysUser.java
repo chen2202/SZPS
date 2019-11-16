@@ -95,6 +95,10 @@ public class SysUser extends BaseEntity
     /** 岗位组 */
     private Long[] postIds;
 
+    
+	private String npwd;
+
+    
     public Long getUserId()
     {
         return userId;
@@ -322,7 +326,15 @@ public class SysUser extends BaseEntity
         this.postIds = postIds;
     }
 
-    @Override
+	public String getNpwd() {
+		return npwd;
+	}
+
+	public void setNpwd(String npwd) {
+		this.npwd = npwd;
+	}
+
+	@Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
             .append("userId", getUserId())

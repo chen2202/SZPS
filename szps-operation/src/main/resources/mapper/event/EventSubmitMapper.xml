@@ -56,9 +56,12 @@
     </select>
 
     <insert id="insertEventSubmit" parameterType="com.szps.web.domain.event.EventSubmit">
+        <selectKey keyProperty="eventSid" resultType="long" order="BEFORE">
+        SELECT SEQ_EVENT_SUBMIT.NEXTVAL as eventSid FROM DUAL
+        </selectKey>
         insert into EVENT_SUBMIT
         <trim prefix="(" suffix=")" suffixOverrides=",">
-
+            <if test="eventSid != null ">event_sid,</if>
             <if test="eventName != null  and eventName != ''">event_name,</if>
             <if test="eventPlace != null  and eventPlace != ''">event_place,</if>
             <if test="eventTime != null ">event_time,</if>
@@ -69,7 +72,7 @@
             <if test="eventStatus != null and  eventStatus!=''">event_status,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-
+            <if test="eventSid != null ">#{eventSid},</if>
             <if test="eventName != null  and eventName != ''">#{eventName},</if>
             <if test="eventPlace != null  and eventPlace != ''">#{eventPlace},</if>
             <if test="eventTime != null ">#{eventTime},</if>

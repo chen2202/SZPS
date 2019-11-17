@@ -36,7 +36,7 @@ public class EventSubmit extends BaseEntity {
      * 事件编号
      */
     @Excel(name = "事件编号")
-    private Integer eventSid;
+    private Long eventSid;
 
     /**
      * 事件名称
@@ -96,11 +96,11 @@ public class EventSubmit extends BaseEntity {
     }
 
 
-    public void setEventSid(Integer eventSid) {
+    public void setEventSid(Long eventSid) {
         this.eventSid = eventSid;
     }
 
-    public Integer getEventSid() {
+    public Long getEventSid() {
         return eventSid;
     }
 

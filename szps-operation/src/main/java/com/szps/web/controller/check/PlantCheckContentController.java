@@ -104,8 +104,8 @@ public class PlantCheckContentController extends BaseController {
     /**
      * 修改点检内容
      */
-    @GetMapping("/edit/{contentSid}")
-    public String edit(@PathVariable("contentSid") Long contentSid, ModelMap mmap, Model model) {
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable("id") Long contentSid, ModelMap mmap, Model model) {
         SysUser user = ShiroUtils.getSysUser();
         PlantCheckContent plantCheckContent = plantCheckContentService.selectPlantCheckContentById(contentSid);
         mmap.put("plantCheckContent", plantCheckContent);
@@ -142,8 +142,8 @@ public class PlantCheckContentController extends BaseController {
     /**
      * 查看详细信息
      */
-    @GetMapping("/detail/{contentSid}")
-    public String detail(@PathVariable("contentSid") Long contentSid, ModelMap mmap, Model model) {
+    @GetMapping("/detail/{id}")
+    public String detail(@PathVariable("id") Long contentSid, ModelMap mmap, Model model) {
         SysUser user = ShiroUtils.getSysUser();
         PlantCheckContent plantCheckContent = plantCheckContentService.selectPlantCheckContentById(contentSid);
         mmap.put("plantCheckContent", plantCheckContent);

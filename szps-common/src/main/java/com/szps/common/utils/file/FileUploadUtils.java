@@ -85,6 +85,7 @@ public class FileUploadUtils
             throw new IOException(e.getMessage(), e);
         }
     }
+    /**
     public static final String upload2(String baseDir, MultipartFile file,String type) throws IOException
     {
         try
@@ -96,6 +97,7 @@ public class FileUploadUtils
             throw new IOException(e.getMessage(), e);
         }
     }
+    **/
     /**
      * 文件上传
      *
@@ -177,7 +179,7 @@ public class FileUploadUtils
     {
         int dirLastIndex = uploadDir.lastIndexOf("/") + 1;
         String currentDir = StringUtils.substring(uploadDir, dirLastIndex);
-        String pathFileName =  currentDir + File.separator + fileName;//"/profile/" +
+        String pathFileName =   File.separator + currentDir + File.separator + fileName;//"/profile/" +
         return pathFileName;
     }
 

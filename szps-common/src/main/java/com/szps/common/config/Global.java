@@ -142,7 +142,7 @@ public class Global
      */
     public static String getUploadPath()
     {
-        return getProfile() +File.separator+ "upload";
+        return getProfile() + "/upload";
     }
     public static String UPLOAD_TYPE = File.separator+ "upload";
     public static String getPath()

@@ -122,6 +122,7 @@ public class DataController extends BaseController {
     @GetMapping("/edit/{taskNumber}")
     public String edit(@PathVariable("taskNumber") String taskNumber, ModelMap mmap)
     {
+
         List <TbTaskStaff> tbTaskStaffs=taskStaffService.selectTbTaskStaffById(taskNumber);
         String a="";
         for(int k=0;k<tbTaskStaffs.size();k++)
@@ -149,46 +150,43 @@ public class DataController extends BaseController {
     @ResponseBody
     public AjaxResult editSave(@Validated TbTask task,String taskStaff)
     {
-        String s=task.getTaskNumber();
-        TbTask tbTask=taskService.selectTaskById(s);
-        TbHouse house=houseService.selectHouseById(tbTask.getTaskHouse());
-        List <TbTaskStaff> tbTaskStaffs=taskStaffService.selectTbTaskStaffById(task.getTaskNumber());
-        if(!Objects.equals(task.getTaskHouse(), house.getHouseNumber()))
-        {
-            TbHouse houses=houseService.selectHouseById(task.getTaskHouse());
+        if(!task.getTaskHouse().equals("")&&!taskStaff.equals("")) {
+            String s = task.getTaskNumber();
+            TbTask tbTask = taskService.selectTaskById(s);
+            TbHouse house = houseService.selectHouseById(tbTask.getTaskHouse());
+            List<TbTaskStaff> tbTaskStaffs = taskStaffService.selectTbTaskStaffById(task.getTaskNumber());
+            if (!Objects.equals(task.getTaskHouse(), house.getHouseNumber())) {
+                TbHouse houses = houseService.selectHouseById(task.getTaskHouse());
 
-            task.setTaskPartition(houses.getHousePoint());
-            task.setTaskHousename(houses.getHouseName());
-            task.setTaskHousephone(houses.getHousePhone());
+                task.setTaskPartition(houses.getHousePoint());
+                task.setTaskHousename(houses.getHouseName());
+                task.setTaskHousephone(houses.getHousePhone());
 
-        }
-
-        String a="";
-        String[] strs = taskStaff.split(",|，");
-        for(int k=0;k<tbTaskStaffs.size();k++)
-        {
-            TbStaff staff=staffService.selectStaffById(tbTaskStaffs.get(k).getStaffNumber());
-            if(staff!=null)
-            {
-                a=a+(staff.getStaffNumber());
             }
 
-        }
-        if(!Objects.equals(taskStaff.replaceAll(",|，",""),a))
-        {
-            taskStaffService.deleteTbTaskStaffById(s);
-            for(int i=0;i<strs.length;i++)
-            {
-                TbTaskStaff tbTaskStaff=new TbTaskStaff();
-                tbTaskStaff.setTaskNumber(s);
-                tbTaskStaff.setStaffNumber(strs[i]);
+            String a = "";
+            String[] strs = taskStaff.split(",|，");
+            for (int k = 0; k < tbTaskStaffs.size(); k++) {
+                TbStaff staff = staffService.selectStaffById(tbTaskStaffs.get(k).getStaffNumber());
+                if (staff != null) {
+                    a = a + (staff.getStaffNumber());
+                }
 
-                taskStaffService.insertTbTaskStaff(tbTaskStaff);
+            }
+            if (!Objects.equals(taskStaff.replaceAll(",|，", ""), a)) {
+                taskStaffService.deleteTbTaskStaffById(s);
+                for (int i = 0; i < strs.length; i++) {
+                    TbTaskStaff tbTaskStaff = new TbTaskStaff();
+                    tbTaskStaff.setTaskNumber(s);
+                    tbTaskStaff.setStaffNumber(strs[i]);
+
+                    taskStaffService.insertTbTaskStaff(tbTaskStaff);
+                }
             }
         }
 
+            return toAjax(taskService.updateTask(task));
 
-        return toAjax(taskService.updateTask(task));
     }
     @RequiresPermissions("supervise:data:remove")
     @Log(title = "任务管理", businessType = BusinessType.DELETE)

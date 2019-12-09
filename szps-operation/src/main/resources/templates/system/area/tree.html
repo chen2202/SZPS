@@ -9,8 +9,8 @@
 	button{font-family: "SimSun","Helvetica Neue",Helvetica,Arial;}
 </style>
 <body class="hold-transition box box-main">
-	<input id="treeId2"   name="treeId2"    type="hidden" th:value="${area.areaId}"/>
-	<input id="treeName2" name="treeName2"  type="hidden" th:value="${area.areaName}"/>
+	<input id="treeIdArea"   name="treeIdArea"    type="hidden" th:value="${area.areaId}"/>
+	<input id="treeNameArea" name="treeNameArea"  type="hidden" th:value="${area.areaName}"/>
 	<div class="wrapper"><div class="treeShowHideButton" onclick="$.tree.toggleSearch();">
 		<label id="btnShow" title="显示搜索" style="display:none;">︾</label>
 		<label id="btnHide" title="隐藏搜索">︽</label>
@@ -32,7 +32,7 @@
 			var url = ctx + "system/area/treeData";
 			var options = {
 		        url: url,
-		        expandLevel: 3,
+		        expandLevel: 1,
 		        onClick : zOnClick
 		    };
 			$.tree.init(options);
@@ -41,8 +41,8 @@
 		function zOnClick(event, treeId, treeNode) {
 		    var treeId = treeNode.id;
 		    var treeName = treeNode.name;
-		    $("#treeId2").val(treeId);
-		    $("#treeName2").val(treeName);
+		    $("#treeIdArea").val(treeId);
+		    $("#treeNameArea").val(treeName);
 		}
 	</script>
 </body>

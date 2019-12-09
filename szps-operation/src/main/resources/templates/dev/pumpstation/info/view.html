@@ -8,25 +8,17 @@
 		<div class="row">
 			<div class="col-sm-12 search-collapse">
 				<form id="info-form">
-				<input name="areaId" type="hidden" id="treeId2"/>
+				<input name="areaId" type="hidden" id="treeIdArea"/>
 					<div class="select-list">
 						<ul>
 							<li>
 		                        <label >所属区：</label>
-                            	<input name="areaName" onclick="selectAreaTree()" id="treeName2" type="text" placeholder="" >
+                            	<input name="areaName" onclick="selectAreaTree()" id="treeNameArea" type="text" placeholder="" >
 							</li>
 							
 							<li>
 		                         <label >名称：</label>
                             	<input name="dname"  id="dname" type="text" >
-							</li>
-							<li>
-		                         <label >别名：</label>
-                            	<input name="dalias"  id="dalias" type="text" >
-							</li>
-							<li>
-		                         <label >编号：</label>
-                            	<input name="dnumber"  id="dnumber" type="text" >
 							</li>
 							<li>
 								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
@@ -38,13 +30,13 @@
 			</div>
 			
 	        <div class="btn-group-sm" id="toolbar" role="group">
-		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:info:add">
+		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:pumpstationinfo:add">
 		            <i class="fa fa-plus"></i> 新增
 		        </a>
-		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="dev:info:delete">
+		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="dev:pumpstationinfo:delete">
 		            <i class="fa fa-remove"></i> 删除
 		        </a>
-		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="dev:info:export">
+		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="dev:pumpstationinfo:export">
 		            <i class="fa fa-download"></i> 导出
 		        </a> -->
 	        </div>
@@ -56,10 +48,10 @@
     </div>
     <th:block th:include="include :: footer" />
     <script th:inline="javascript">
-        var prefix = ctx + "op/dev/info";
-        var viewFlag = [[${@permission.hasPermi('dev:info:view')}]];
-        var editFlag = [[${@permission.hasPermi('dev:info:edit')}]];
-        var removeFlag = [[${@permission.hasPermi('dev:info:delete')}]];
+        var prefix = ctx + "op/dev/pumpstationinfo";
+        var viewFlag = [[${@permission.hasPermi('dev:pumpstationinfo:view')}]];
+        var editFlag = [[${@permission.hasPermi('dev:pumpstationinfo:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('dev:pumpstationinfo:delete')}]];
         
        
         $(function() {
@@ -69,7 +61,7 @@
                 updateUrl: prefix + "/edit/{id}",
                 removeUrl: prefix + "/remove",
                 
-                modalName: "列表",
+                modalName: "泵站设备",
                 columns: [{
 		            checkbox: true
 		        },
@@ -82,21 +74,29 @@
 					title : '名称' 
 				},
 				{
-		            field: 'dnumber',
-		            title: '编号',
+		            field: 'areaname',
+		            title: '所属区',
 		        },
 		        {
-		            field: 'dbrand',
-		            title: '品牌',
+		            field: 'dtype',
+		            title: '类型',
 		        },
 		        {
-		            field: 'dalias',
-		            title: '别名',
+		            field: 'dsupplier',
+		            title: '建设单位/生产厂家',
 		        },
 		        {
-		            field: 'dstatus',
-		            title: '状态',
-		        },		        
+		            field: 'dmodel',
+		            title: '规格型号',
+		        },
+		        {
+		            field: 'dunit',
+		            title: '单位',
+		        },
+		        {
+		            field: 'dqty',
+		            title: '面积/数量',
+		        },
 		        {
 		            field: 'remark',
 		            title: '备注',
@@ -119,8 +119,8 @@
         /*用户管理-新增-选择部门树*/
         function selectAreaTree() {
         	
-        	var treeId = $("#treeId2").val();
-        	var deptId = $.common.isEmpty(treeId) ? "3" : $("#treeId2").val();
+        	var treeId = $("#treeIdArea").val();
+        	var deptId = $.common.isEmpty(treeId) ? "3" : $("#treeIdArea").val();
         	var url = ctx + "system/area/selectAreaTree/" + deptId;
 			var options = {
 				title: '选择区域',
@@ -134,8 +134,8 @@
 			var tree = layero.find("iframe")[0].contentWindow.$._tree;
 			if ($.tree.notAllowParents(tree)) {
 				var body = layer.getChildFrame('body', index);
-    			$("#treeId2").val(body.find('#treeId2').val());
-    			$("#treeName2").val(body.find('#treeName2').val());
+    			$("#treeIdArea").val(body.find('#treeIdArea').val());
+    			$("#treeNameArea").val(body.find('#treeNameArea').val());
     			layer.close(index);
 			}
 		}

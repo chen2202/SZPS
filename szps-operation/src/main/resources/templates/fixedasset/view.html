@@ -4,6 +4,7 @@
 	<th:block th:include="include :: header('资产列表')" />
   <link rel="stylesheet" href="https://js.arcgis.com/3.28/dijit/themes/claro/claro.css">
   <link rel="stylesheet" href="https://js.arcgis.com/3.28/esri/css/esri.css">
+  
   <script src="https://js.arcgis.com/3.28/"></script>
 </head>
 <body class="gray-bg">
@@ -26,7 +27,7 @@
 			</div>
 
 	<div data-dojo-type="dijit/layout/BorderContainer" 
-         data-dojo-props="design:'headline',gutters:false" 
+         data-dojo-props="design:'headline',gutters:true" 
          style="width: 100%; height: 100%; margin: 0;">
       <div id="viewDiv" 
            data-dojo-type="dijit/layout/ContentPane" 
@@ -178,10 +179,7 @@
   	             map.on("extent-change", onExtentChange);
   	         // map.on("layer-add-result", addGraphicLayer);
   	          
-    	          map.scale = 220867.77496137837;
     	          map.setExtent(new Extent(80617.22443728315,8328.23133160757,170239.66431892154,55445.38700977585,spatialReference),true);
-  	          
-       
 
 	        function addStationLayer(url) {
 		    	/* var centreLayer = new FeatureLayer( url + '/0', {

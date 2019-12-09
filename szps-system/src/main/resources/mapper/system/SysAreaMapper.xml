@@ -16,6 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="createTime" column="create_time" />
 		<result property="updateBy"   column="update_by"   />
 		<result property="updateTime" column="update_time" />
+		<result property="delFlag"    column="delFlag"    />
 	</resultMap>
 	
 	<sql id="selectAreaVo">
@@ -32,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectAreaList" parameterType="SysArea" resultMap="SysAreaResult">
         <include refid="selectAreaVo"/>
-        where 1 = 1
+        where 1 = 1 and delFlag = '0'
         <if test="parentId != null and parentId != 0">
 			AND parent_id = #{parentId}
 		</if>
@@ -68,6 +69,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			<if test="areaCode != null and areaCode != ''">area_code,</if>
  			<if test="areaType != null and areaType != ''">area_type,</if>
  			<if test="createBy != null and createBy != ''">create_by,</if>
+ 			<if test="delFlag != null and delFlag != ''">create_by,</if>
  			create_time
  		)values(
  			<if test="areaId != null and areaId != 0">#{areaId},</if>
@@ -78,6 +80,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			<if test="areaCode != null and areaCode != ''">#{areaCode},</if>
  			<if test="areaType != null and areaType != ''">#{areaType},</if>
  			<if test="createBy != null and createBy != ''">#{createBy},</if>
+ 			<if test="delFlag != null and delFlag != ''">#{delFlag},</if>
  			sysdate
  		)
 	</insert>

@@ -13,6 +13,7 @@ public class Supplier extends BaseEntity {
 	private String contact;// 联系人
 	private String tel;// 联系电话
 	private String addr;// 地址
+	private Integer stype;
 
 	public Long getId() {
 		return id;
@@ -52,6 +53,14 @@ public class Supplier extends BaseEntity {
 
 	public void setAddr(String addr) {
 		this.addr = addr;
+	}
+
+	public Integer getStype() {
+		return stype;
+	}
+
+	public void setStype(Integer stype) {
+		this.stype = stype;
 	}
 
 }

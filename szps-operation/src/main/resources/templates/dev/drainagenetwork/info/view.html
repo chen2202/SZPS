@@ -38,13 +38,13 @@
 			</div>
 			
 	        <div class="btn-group-sm" id="toolbar" role="group">
-		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:info:add">
+		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:drainagenetworkinfo:add">
 		            <i class="fa fa-plus"></i> 新增
 		        </a>
-		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="dev:info:delete">
+		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="dev:drainagenetworkinfo:delete">
 		            <i class="fa fa-remove"></i> 删除
 		        </a>
-		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="dev:info:export">
+		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="dev:drainagenetworkinfo:export">
 		            <i class="fa fa-download"></i> 导出
 		        </a> -->
 	        </div>
@@ -56,10 +56,10 @@
     </div>
     <th:block th:include="include :: footer" />
     <script th:inline="javascript">
-        var prefix = ctx + "op/dev/info";
-        var viewFlag = [[${@permission.hasPermi('dev:info:view')}]];
-        var editFlag = [[${@permission.hasPermi('dev:info:edit')}]];
-        var removeFlag = [[${@permission.hasPermi('dev:info:delete')}]];
+        var prefix = ctx + "op/dev/drainagenetworkinfo";//
+        var viewFlag = [[${@permission.hasPermi('dev:drainagenetworkinfo:view')}]];
+        var editFlag = [[${@permission.hasPermi('dev:drainagenetworkinfo:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('dev:drainagenetworkinfo:delete')}]];
         
        
         $(function() {

@@ -69,11 +69,11 @@ public class SysLoginController extends BaseController
         try
         {
             subject.login(token);
-            return "index";
+            return "forward:/index";
         }
         catch (AuthenticationException e)
         {
-        	 return "login";
+        	return "login";
         }
     }
     

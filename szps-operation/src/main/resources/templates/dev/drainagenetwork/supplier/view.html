@@ -24,13 +24,13 @@
 			</div>
 			
 	        <div class="btn-group-sm" id="toolbar" role="group">
-		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:supplier:add">
+		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:drainagenetworksupplier:add">
 		            <i class="fa fa-plus"></i> 新增
 		        </a>
-		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="dev:supplier:delete">
+		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="dev:drainagenetworksupplier:delete">
 		            <i class="fa fa-remove"></i> 删除
 		        </a>
-		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="dev:supplier:export">
+		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="dev:drainagenetworksupplier:export">
 		            <i class="fa fa-download"></i> 导出
 		        </a> -->
 	        </div>
@@ -42,10 +42,10 @@
     </div>
     <th:block th:include="include :: footer" />
     <script th:inline="javascript">
-        var prefix = ctx + "op/dev/supplier";
-        var viewFlag = [[${@permission.hasPermi('dev:supplier:view')}]];
-        var editFlag = [[${@permission.hasPermi('dev:supplier:edit')}]];
-        var removeFlag = [[${@permission.hasPermi('dev:supplier:delete')}]];
+        var prefix = ctx + "op/dev/drainagenetworksupplier";
+        var viewFlag = [[${@permission.hasPermi('dev:drainagenetworksupplier:view')}]];
+        var editFlag = [[${@permission.hasPermi('dev:drainagenetworksupplier:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('dev:drainagenetworksupplier:delete')}]];
         
        
         $(function() {
@@ -54,8 +54,7 @@
                 createUrl: prefix + "/add",
                 updateUrl: prefix + "/edit/{id}",
                 removeUrl: prefix + "/remove",
-                
-                modalName: "列表",
+                modalName: "排水管网设备供应商",
                 columns: [{
 		            checkbox: true
 		        },

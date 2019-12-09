@@ -20,14 +20,14 @@ import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
 import com.szps.framework.util.ShiroUtils;
 import com.szps.system.domain.SysUser;
-import com.szps.web.domain.report.YearAppraisal;
-import com.szps.web.service.report.IYearAppraisalService;
+import com.szps.web.domain.dev.Drainagenetwork;
+import com.szps.web.service.dev.IDrainagenetworkService;
 
 @Controller
 @RequestMapping("/op/dev/drainagenetworkinfo")
 public class DrainagenetworkInfoController extends BaseController {
 	 @Autowired
-	private IYearAppraisalService service;
+	private IDrainagenetworkService service;
 	
 	private String prefix = "/dev/drainagenetwork/info";
 	
@@ -43,10 +43,10 @@ public class DrainagenetworkInfoController extends BaseController {
     @RequiresPermissions("dev:drainagenetworkinfo:view")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(YearAppraisal obj)
+    public TableDataInfo list(Drainagenetwork obj)
     {
         startPage();
-        List<YearAppraisal> list = service.selectList(obj);
+        List<Drainagenetwork> list = service.selectList(obj);
         return getDataTable(list);
     }
 
@@ -61,7 +61,7 @@ public class DrainagenetworkInfoController extends BaseController {
     @Log(title = "添加", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
-    public AjaxResult addSave( YearAppraisal obj)
+    public AjaxResult addSave( Drainagenetwork obj)
     {
     	SysUser user = ShiroUtils.getSysUser();
     	obj.setCreateBy(user.getLoginName());
@@ -71,7 +71,7 @@ public class DrainagenetworkInfoController extends BaseController {
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Long id, ModelMap mmap)
     {
-    	YearAppraisal obj = service.selectById(id);
+    	Drainagenetwork obj = service.selectById(id);
         
         mmap.put("obj", obj);
         return prefix + "/edit";
@@ -85,7 +85,7 @@ public class DrainagenetworkInfoController extends BaseController {
     @RequiresPermissions("dev:drainagenetworkinfo:edit")
     @PostMapping("/edit")
     @ResponseBody
-    public AjaxResult editSave(@Validated YearAppraisal obj)
+    public AjaxResult editSave(@Validated Drainagenetwork obj)
     {
     	obj.setUpdateBy(ShiroUtils.getLoginName());
         return toAjax(service.update(obj));

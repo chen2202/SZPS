@@ -153,53 +153,6 @@
 				   </div>
 			</div>
 		</div>
-			
-		<h4 class="form-header h4">技术资料</h4>
-		<div >
-			<div class="col-sm-10">
-			   <div class="form-group">
-					<table>
-			            <tr>
-			                <th>资料名称</th>
-			                <th>  </th>
-			                <th>版本</th>
-			                <th>  </th>
-			                <th>备注</th>
-			            </tr>
-			            <tr th:each="techInfo:${obj.techInfos}">
-			                <td ><a th:href="@{${techInfo.url}}">[[${techInfo.tname}]]</a></td>
-			                <td>  </td>
-			                <td th:text="${techInfo.tversion}"></td>
-			                <td>  </td>
-			                <td >[[${techInfo.remark}]]</td>
-			            </tr>
-					</table>
-				 </div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-10">
-				   <div class="form-group">
-					   <label class="col-sm-2 control-label">产品说明书:</label>
-					   <div class="col-sm-8 ">
-						   <input name="imgUrl" id="imgUrl" class="form-control" type="hidden">
-						   <input id="fileinput-demo-1" name="file" type="file" >
-					   </div>
-				   </div>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="col-sm-10">
-				   <div class="form-group">
-					   <label class="col-sm-2 control-label">操作手册:</label>
-					   <div class="col-sm-8 ">
-						   <input name="imgUrl2" id="imgUrl2" class="form-control" type="hidden">
-						   <input id="fileinput-demo-2" name="file" type="file" >
-					   </div>
-				   </div>
-			</div>
-		</div>
 	</form>
     </div>
     <div class="row">
@@ -213,7 +166,7 @@
     <th:block th:include="include :: bootstrap-fileinput-css" />
     <th:block th:include="include :: bootstrap-fileinput-js" />
 	<script>
-	    var prefix = ctx + "op/dev/info";
+	    var prefix = ctx + "op/dev/drainagenetworkinfo";
         $("#form").validate({
         	onkeyup: false,
         	rules:{
@@ -261,7 +214,7 @@
 		function submitHandler() {
 	        if ($.validate.form()) {
 	        	var data = $("#form").serializeArray();
-	        	$.operate.saveTabFile(prefix + "/edit", data);
+	        	$.operate.saveTab(prefix + "/edit", data);
 	        }
 	    }
 		 // 上传文件

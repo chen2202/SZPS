@@ -8,6 +8,7 @@
 		<result     property="contact"   column="contact"   />
 		<result     property="tel"   column="tel"   />
 		<result     property="addr"   column="addr"   />
+		<result     property="stype"   column="stype"   />
 
         <result property="createBy"      column="create_by"      />
         <result property="createTime"    column="create_time"    />
@@ -26,6 +27,9 @@
 		<where>
 			<if test=" id !=null">
 				and id = #{id}
+			</if>
+			<if test=" stype !=null">
+				and stype = #{stype}
 			</if>
 			<if test=" sname != null and sname != ''">
 				AND sname  like concat(concat('%',#{sname}),'%')
@@ -48,6 +52,9 @@
         where  1 = 1
         <if test=" id != null and id != 0">
 			AND id = #{id}
+		</if>
+        <if test=" stype != null ">
+			AND stype = #{stype}
 		</if>
 		<if test=" sname != null and sname != ''">
 				AND sname  like concat(concat('%',#{sname}),'%')
@@ -96,6 +103,7 @@
 			<if test=" contact != null and  contact != ''">contact,</if>
 			<if test=" tel != null and  tel != ''">tel,</if>
 			<if test=" addr != null and  addr != ''">addr,</if>
+			<if test=" stype != null ">stype,</if>
 			
 			<if test=" remark != null and remark != ''">REMARK,</if>
 			<if test=" createBy != null and createBy != ''">create_by,</if>
@@ -106,6 +114,7 @@
 			<if test=" contact != null and  contact != ''">#{contact},</if>
 			<if test=" tel != null and  tel != ''">#{tel},</if>
 			<if test=" addr != null and  addr != ''">#{addr},</if>
+			<if test=" stype != null ">#{stype},</if>
 			
 			<if test=" remark != null and remark != ''">#{remark},</if>
 			<if test=" createBy != null and createBy != ''">#{createBy},</if>

@@ -20,14 +20,14 @@ import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
 import com.szps.framework.util.ShiroUtils;
 import com.szps.system.domain.SysUser;
-import com.szps.web.domain.report.YearAppraisal;
-import com.szps.web.service.report.IYearAppraisalService;
+import com.szps.web.domain.dev.Csdt;
+import com.szps.web.service.dev.ICsdtService;
 
 @Controller
 @RequestMapping("/op/dev/csdtinfo")
 public class CsdtInfoController extends BaseController {
 	 @Autowired
-	private IYearAppraisalService service;
+	private ICsdtService service;
 	
 	private String prefix = "/dev/csdt/info";
 	
@@ -43,10 +43,10 @@ public class CsdtInfoController extends BaseController {
     @RequiresPermissions("dev:csdtinfo:view")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(YearAppraisal obj)
+    public TableDataInfo list(Csdt obj)
     {
         startPage();
-        List<YearAppraisal> list = service.selectList(obj);
+        List<Csdt> list = service.selectList(obj);
         return getDataTable(list);
     }
 
@@ -61,7 +61,7 @@ public class CsdtInfoController extends BaseController {
     @Log(title = "添加", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
-    public AjaxResult addSave( YearAppraisal obj)
+    public AjaxResult addSave( Csdt obj)
     {
     	SysUser user = ShiroUtils.getSysUser();
     	obj.setCreateBy(user.getLoginName());
@@ -71,7 +71,7 @@ public class CsdtInfoController extends BaseController {
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Long id, ModelMap mmap)
     {
-    	YearAppraisal obj = service.selectById(id);
+    	Csdt obj = service.selectById(id);
         
         mmap.put("obj", obj);
         return prefix + "/edit";
@@ -85,7 +85,7 @@ public class CsdtInfoController extends BaseController {
     @RequiresPermissions("dev:csdtinfo:edit")
     @PostMapping("/edit")
     @ResponseBody
-    public AjaxResult editSave(@Validated YearAppraisal obj)
+    public AjaxResult editSave(@Validated Csdt obj)
     {
     	obj.setUpdateBy(ShiroUtils.getLoginName());
         return toAjax(service.update(obj));

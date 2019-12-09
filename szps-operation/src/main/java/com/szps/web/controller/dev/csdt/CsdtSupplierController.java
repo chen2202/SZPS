@@ -16,14 +16,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.szps.common.annotation.Log;
 import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.domain.AjaxResult;
+import com.szps.common.core.domain.Ztree;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
 import com.szps.framework.util.ShiroUtils;
 import com.szps.system.domain.SysUser;
-import com.szps.web.domain.report.YearAppraisal;
-import com.szps.web.service.report.IYearAppraisalService;
+import com.szps.web.domain.dev.Supplier;
+import com.szps.web.service.dev.ISupplierService;
 /**
- * BO设备台账	设备清单	
+ * 调蓄池	设备清单	
  * @author Jack
  *
  */
@@ -31,7 +32,7 @@ import com.szps.web.service.report.IYearAppraisalService;
 @RequestMapping("/op/dev/csdtsupplier")
 public class CsdtSupplierController extends BaseController {
 	 @Autowired
-	private IYearAppraisalService service;
+	private ISupplierService service;
 	
 	private String prefix = "/dev/csdt/supplier";
 	
@@ -47,10 +48,11 @@ public class CsdtSupplierController extends BaseController {
     @RequiresPermissions("dev:csdtsupplier:view")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(YearAppraisal obj)
+    public TableDataInfo list(Supplier obj)
     {
         startPage();
-        List<YearAppraisal> list = service.selectList(obj);
+        obj.setStype(2);
+        List<Supplier> list = service.selectList(obj);
         return getDataTable(list);
     }
 
@@ -65,17 +67,18 @@ public class CsdtSupplierController extends BaseController {
     @Log(title = "添加", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
-    public AjaxResult addSave( YearAppraisal obj)
+    public AjaxResult addSave( Supplier obj)
     {
     	SysUser user = ShiroUtils.getSysUser();
     	obj.setCreateBy(user.getLoginName());
+    	obj.setStype(2);
         return toAjax(service.insert(obj));
     }
     
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Long id, ModelMap mmap)
     {
-    	YearAppraisal obj = service.selectById(id);
+    	Supplier obj = service.selectById(id);
         
         mmap.put("obj", obj);
         return prefix + "/edit";
@@ -89,7 +92,7 @@ public class CsdtSupplierController extends BaseController {
     @RequiresPermissions("dev:csdtsupplier:edit")
     @PostMapping("/edit")
     @ResponseBody
-    public AjaxResult editSave(@Validated YearAppraisal obj)
+    public AjaxResult editSave(@Validated Supplier obj)
     {
     	obj.setUpdateBy(ShiroUtils.getLoginName());
         return toAjax(service.update(obj));
@@ -109,5 +112,24 @@ public class CsdtSupplierController extends BaseController {
         {
             return error(e.getMessage());
         }
+    }
+    
+    @GetMapping("/selectSupplier/{sid}")
+    public String selectSupplier(@PathVariable("sid") Long sid, ModelMap mmap)
+    {
+        mmap.put("obj", service.selectById(sid));
+        return prefix + "/tree";
+    }
+    
+    /**
+     */
+    @GetMapping("/treeData")
+    @ResponseBody
+    public List<Ztree> treeData()
+    {
+    	Supplier supplier = new Supplier();
+    	supplier.setStype(2);
+        List<Ztree> ztrees = service.selectSuppliertTree(supplier);
+        return ztrees;
     }
 }

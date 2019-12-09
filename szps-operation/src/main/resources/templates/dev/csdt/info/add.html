@@ -8,18 +8,34 @@
 	<th:block th:include="include :: bootstrap-fileinput-css" />
 </head>
 <body class="gray-bg">
-	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+	<div class="wrapper wrapper-content animated ">
         <form id="form"  class="form-horizontal m">
-        <input name="supplierid" type="hidden" id="treeId" />
-        <h4 class="form-header h4">基本信息</h4>
-        
-        <div class="container">
-			<div class="row clearfix">
-				<div class="col-md-8">
+        <input name="supplierid" type="hidden" id="treeIdSupplier" />
+        <input name="areaid" type="hidden" id="treeIdArea"/>
+        <input name="usedeptid" type="hidden" id="treeId"/>
+        <div class="container ">
 					 <div class="row">
 						<div class="col-sm-6">
 							   <div class="form-group">
-								   <label class="col-sm-4 control-label">设备编号：</label>
+								   <label class="col-sm-3 control-label">资产位置：</label>
+								   <div class="col-sm-8">
+									   <input name="dlocation" class="form-control" type="text"  >
+								   </div>
+							   </div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label class="col-sm-3 control-label">所属区：</label>
+								<div class="col-sm-8">
+										<input name="areaname" onclick="selectAreaTree()" id="treeNameArea" class="form-control" type="text" >
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							   <div class="form-group">
+								   <label class="col-sm-3 control-label">资产编号：</label>
 								   <div class="col-sm-8">
 									   <input name="dnumber" class="form-control" type="text"  >
 								   </div>
@@ -27,31 +43,9 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label class="col-sm-4 control-label">设备类型：</label>
+								<label class="col-sm-3 control-label">资产名称：</label>
 								<div class="col-sm-8">
-									<div class="input-group">
-										<input name="dtype" class="form-control" type="text" >
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-6">
-							   <div class="form-group">
-								   <label class="col-sm-4 control-label">设备名称：</label>
-								   <div class="col-sm-8">
-									   <input name="dname" class="form-control" type="text"  >
-								   </div>
-							   </div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label class="col-sm-4 control-label">设备别名：</label>
-								<div class="col-sm-8">
-									<div class="input-group">
-										<input name="dalias" class="form-control" type="text" >
-									</div>
+										<input name="dname" class="form-control" type="text" >
 								</div>
 							</div>
 						</div>
@@ -60,19 +54,24 @@
 					 <div class="row">
 						<div class="col-sm-6">
 							   <div class="form-group">
-								   <label class="col-sm-4 control-label">设备品牌：</label>
+								   <label class="col-sm-3 control-label">资产类别：</label>
 								   <div class="col-sm-8">
-									   <input name="dbrand" class="form-control" type="text"  >
+									   <input name="dtype" class="form-control" type="text"  >
+									   <!-- <select name="dtype" class="form-control" type="text" >
+			                            	<option value="生产设备">生产设备</option>
+			                            	<option value="配套电气设备">配套电气设备</option>
+			                            	<option value="监控设备">监控设备</option>
+			                            	<option value="仪器仪表">仪器仪表</option>
+			                            </select> -->
+			                            
 								   </div>
 							   </div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label class="col-sm-4 control-label">设备型号：</label>
+								<label class="col-sm-3 control-label">规格型号：</label>
 								<div class="col-sm-8">
-									<div class="input-group">
 										<input name="dmodel" class="form-control" type="text" >
-									</div>
 								</div>
 							</div>
 						</div>
@@ -81,101 +80,84 @@
 					<div class="row">
 						<div class="col-sm-6">
 							   <div class="form-group">
-								   <label class="col-sm-4 control-label">购买时间：</label>
+								   <label class="col-sm-3 control-label">数量：</label>
 								   <div class="col-sm-8">
-									   <input id="buytime" name="buytime" class="time-input form-control " data-type="datetime" data-format="yyyy-MM-dd HH:MM"/>
+									   <input name="dqty" class="form-control" type="text" >
 								   </div>
 							   </div>
 						</div>
-						<div class="col-sm-6">
+						<!-- <div class="col-sm-6">
 							<div class="form-group">
-								<label class="col-sm-4 control-label">投用时间：</label>
+								<label class="col-sm-3 control-label">单位：</label>
 								<div class="col-sm-8">
-									<div class="input-group">
-										<input id="beganusetime" name="beganusetime" class="time-input form-control " data-type="datetime" data-format="yyyy-MM-dd HH:MM"/>
-									</div>
+										<input name="dunit" class="form-control" type="text" >
 								</div>
 							</div>
+						</div> -->
+						<div class="col-sm-6">
+							   <div class="form-group">
+								   <label class="col-sm-3 control-label">投产日期：</label>
+								   <div class="col-sm-8">
+									   <input id="producedate" name="producedate" class="time-input form-control " data-type="date" data-format="yyyy"/>
+								   </div>
+							   </div>
 						</div>
 					</div>
 			
 					<div class="row">
+						
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label class="col-sm-3 control-label">生产厂商：</label>
+								<div class="col-sm-8">
+										<input name="manufacturer" onclick="selectSupplier()" id="treeNameSupplier"  class="form-control" type="text" >
+								</div>
+							</div>
+						</div>
 						<div class="col-sm-6">
 							   <div class="form-group">
-								   <label class="col-sm-4 control-label">安装位置：</label>
+								   <label class="col-sm-3 control-label">购置日期：</label>
 								   <div class="col-sm-8">
-									   <input name="installationsite" class="form-control" type="text"  >
+									   <input id="purchasedate" name="purchasedate" class="time-input form-control " data-type="date" data-format="yyyy"/>
 								   </div>
 							   </div>
 						</div>
+					</div>
+			
+				<div class="row">
+						
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label class="col-sm-4 control-label">设备状态：</label>
+								<label class="col-sm-3 control-label">使用部门：</label>
 								<div class="col-sm-8">
-									<div class="input-group">
-										<input name="dstatus" class="form-control" type="text" >
-									</div>
+										<!-- <input name="usedept" onclick="selectDeptTree()" id="treeName"  class="form-control" type="text" > -->
+										<input name="usedept"   class="form-control" type="text" > 
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							   <div class="form-group">
+								   <label class="col-sm-3 control-label">使用年限：</label>
+								   <div class="col-sm-8">
+									   <input id="servicelife" name="servicelife" class=" form-control " />
+								   </div>
+							   </div>
+						</div>
+					</div>
+					
+			
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+							<label class="col-sm-3 control-label">资产参数：</label>
+							<div class="col-sm-8">
+									<textarea name="dparameter"  class="form-control" type="text" ></textarea>
 								</div>
 							</div>
 						</div>
 					</div>
-			
-			
-				</div>
-				<div class="col-md-4">
-					<div class="text-center">
-						<div class="row">
-	                        <img class=" img-lg" th:src=" @{/img/sample.jpg} ">
-	                    </div>
-	                    <div class="row">
-	                    	<a href="">修改</a>
-	                    </div>
-	                    <div class="row">
-	                    	<a href="">生产设备二维码</a>
-	                    </div>
-	                    <div class="row">
-	                        <img class=" img-sm" th:src=" @{/img/sample2.jpg} ">
-	                    </div>
-                    </div>
-				</div>
 			</div>
-		</div>
-        
-        <h4 class="form-header h4">供应商信息</h4>
-       	<div class="row">
-			<div class="col-sm-10">
-				   <div class="form-group">
-					   <label class="col-sm-2 control-label">选择供应商:</label>
-					   <div class="col-sm-8">
-					   	<textarea name="suppliername"  onclick="selectSupplier()" id="treeName" class="form-control" type="text"></textarea>
-					   </div>
-				   </div>
-			</div>
-		</div>
-			
-		<h4 class="form-header h4">技术资料</h4>
-		<div class="row">
-			<div class="col-sm-10">
-				   <div class="form-group">
-					   <label class="col-sm-2 control-label">产品说明书:</label>
-					   <div class="col-sm-8 ">
-						   <input name="imgUrl" id="imgUrl" class="form-control" type="hidden">
-						   <input id="fileinput-demo-1" name="file" type="file" >
-					   </div>
-				   </div>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="col-sm-10">
-				   <div class="form-group">
-					   <label class="col-sm-2 control-label">操作手册:</label>
-					   <div class="col-sm-8 ">
-						   <input name="imgUrl2" id="imgUrl2" class="form-control" type="hidden">
-						   <input id="fileinput-demo-2" name="file" type="file" >
-					   </div>
-				   </div>
-			</div>
+				
 		</div>
 	</form>
     </div>
@@ -190,7 +172,7 @@
     <th:block th:include="include :: bootstrap-fileinput-css" />
     <th:block th:include="include :: bootstrap-fileinput-js" />
 	<script>
-	    var prefix = ctx + "op/dev/info";
+	    var prefix = ctx + "op/dev/csdtinfo";
         $("#form").validate({
         	onkeyup: false,
         	rules:{
@@ -211,34 +193,12 @@
         });
         
 
-        /*用户管理-新增-选择部门树*/
-        function selectSupplier() {
-        	var treeId = $("#treeId").val();
-        	var sid = $.common.isEmpty(treeId) ? "0" : $("#treeId").val();
-        	var url = ctx + "op/dev/supplier/selectSupplier/" + sid;
-			var options = {
-				title: '选择供应商',
-				width: "380",
-				url: url,
-				callBack: doSubmit
-			};
-			$.modal.openOptions(options);
-		}
-		
         
-		
-		function doSubmit(index, layero){
-			var tree = layero.find("iframe")[0].contentWindow.$._tree;
-				var body = layer.getChildFrame('body', index);
-    			$("#treeId").val(body.find('#treeId').val());
-    			$("#treeName").val(body.find('#treeName').val());
-    			layer.close(index);
-		}
 		
 		function submitHandler() {
 	        if ($.validate.form()) {
 	        	var data = $("#form").serializeArray();
-	        	$.operate.saveTabFile(prefix + "/add", data);
+	        	$.operate.saveTab(prefix + "/add", data);
 	        }
 	    }
 		 // 上传文件
@@ -265,38 +225,69 @@
             });
         }
 		 
-        $(document).ready(function () {
-            $("#fileinput-demo-1").fileinput({
-                'theme': 'explorer-fas',
-                showPreview: false,
-                maxFileCount: 1,
-                'uploadUrl': '/common/upload',
-                overwriteInitial: false
-            });
-
-            $("#fileinput-demo-1").on("fileuploaded", function (event, data, previewId, index) {
-                console.log(data.response);
-                if(data.response.code == 0){
-                    $('#imgUrl').val(data.response.url);
-                }
-            });
-            
-            $("#fileinput-demo-2").fileinput({
-                'theme': 'explorer-fas',
-                showPreview: false,
-                maxFileCount: 1,
-                'uploadUrl':  '/common/upload',
-                overwriteInitial: false
-            });
-
-            $("#fileinput-demo-2").on("fileuploaded", function (event, data, previewId, index) {
-                console.log(data.response);
-                if(data.response.code == 0){
-                    $('#imgUrl2').val(data.response.url);
-                }
-            });
-
-        });
+        function selectAreaTree() {
+        	
+        	var treeId = $("#treeIdArea").val();
+        	var deptId = $.common.isEmpty(treeId) ? "3" : $("#treeIdArea").val();
+        	var url = ctx + "system/area/selectAreaTree/" + deptId;
+			var options = {
+				title: '选择区域',
+				width: "380",
+				url: url,
+				callBack: doSubmitArea
+			};
+			$.modal.openOptions(options);
+		}
+        function doSubmitArea(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+				var body = layer.getChildFrame('body', index);
+    			$("#treeIdArea").val(body.find('#treeIdArea').val());
+    			$("#treeNameArea").val(body.find('#treeNameArea').val());
+    			layer.close(index);
+		}
+        
+        /*用户管理-新增-选择部门树*/
+        function selectDeptTree() {
+        	
+        	var treeId = $("#treeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmitDept
+			};
+			$.modal.openOptions(options);
+		}
+        function doSubmitDept(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+		}
+        
+        function selectSupplier() {
+        	var treeId = $("#treeIdSupplier").val();
+        	var sid = $.common.isEmpty(treeId) ? "0" : $("#treeIdSupplier").val();
+        	var url = ctx + "op/dev/csdtsupplier/selectSupplier/" + sid;
+			var options = {
+				title: '选择供应商',
+				width: "380",
+				url: url,
+				callBack: doSubmitSupplier
+			};
+			$.modal.openOptions(options);
+		}
+		
+		function doSubmitSupplier(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+				var body = layer.getChildFrame('body', index);
+    			$("#treeIdSupplier").val(body.find('#treeIdSupplier').val());
+    			$("#treeNameSupplier").val(body.find('#treeNameSupplier').val());
+    			layer.close(index);
+		}
     </script>
 </body>
 </html>

@@ -39,6 +39,18 @@ public class SysLoginController extends BaseController
         return "forward:/xxx?username=admin&password=a123b456&rememberMe=true";
     }
 
+    @GetMapping("/loginb")
+    public String loginb(HttpServletRequest request, HttpServletResponse response)
+    {
+        // 如果是Ajax请求，返回Json字符串。
+        if (ServletUtils.isAjaxRequest(request))
+        {
+            return ServletUtils.renderString(response, "{\"code\":\"1\",\"msg\":\"未登录或登录超时。请重新登录\"}");
+        }
+
+        return "login";
+    }
+    
     @PostMapping("/login")
     @ResponseBody
     public AjaxResult ajaxLogin(String username, String password, Boolean rememberMe)
@@ -69,13 +81,14 @@ public class SysLoginController extends BaseController
         try
         {
             subject.login(token);
-            return "index";
+            return "forward:/index";
         }
         catch (AuthenticationException e)
         {
-        	 return "login";
+        	return "login";
         }
     }
+    
     @GetMapping("/loginx")
     public String ajaxLoginc(String username, String password)
     {

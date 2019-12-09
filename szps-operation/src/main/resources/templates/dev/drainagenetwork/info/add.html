@@ -152,7 +152,7 @@
 				   </div>
 			</div>
 		</div>
-			
+		<!-- 	
 		<h4 class="form-header h4">技术资料</h4>
 		<div class="row">
 			<div class="col-sm-10">
@@ -176,7 +176,7 @@
 					   </div>
 				   </div>
 			</div>
-		</div>
+		</div> -->
 	</form>
     </div>
     <div class="row">
@@ -190,7 +190,7 @@
     <th:block th:include="include :: bootstrap-fileinput-css" />
     <th:block th:include="include :: bootstrap-fileinput-js" />
 	<script>
-	    var prefix = ctx + "op/dev/info";
+	    var prefix = ctx + "op/dev/drainagenetworkinfo";
         $("#form").validate({
         	onkeyup: false,
         	rules:{
@@ -238,7 +238,7 @@
 		function submitHandler() {
 	        if ($.validate.form()) {
 	        	var data = $("#form").serializeArray();
-	        	$.operate.saveTabFile(prefix + "/add", data);
+	        	$.operate.saveTab(prefix + "/add", data);
 	        }
 	    }
 		 // 上传文件

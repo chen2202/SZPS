@@ -20,6 +20,11 @@ public class EXServiceImpl implements EXService{
     }
 
     @Override
+    public List<EX_GDBS_SB> selectTaskBytime(String BYZD4) {
+        return exMapper.selectTaskBytime(BYZD4);
+    }
+
+    @Override
     public EX_GDBS_SB selectById(String sblsh) {
         return exMapper.selectById(sblsh);
     }

@@ -7,11 +7,11 @@
 <div class="container-div">
 	<div class="row">
 
-		<!--<div class="col-sm-12 search-collapse">
+		<div class="col-sm-12 search-collapse">
 			<form id="role-form">
 				<div class="select-list">
 					<ul>
-						<li>
+						<!--<li>
 							任务区域：<input type="text" name="taskPartition" maxlength="11"/>
 						</li>
 						<li>
@@ -23,20 +23,20 @@
 								<option value="盐田区">盐田区</option>
 								<option value="罗湖区">罗湖区</option>
 							</select>
-						</li>
+						</li>-->
 						<li>
-							街道：<select name="taskStreet">
+							到期时间：<select name="BYZD4">
 							<option value="">请选择</option>
-							<option value="南山街道">南山街道</option>
-							<option value="南头街道">南头街道</option>
-							<option value="西丽街道">西丽街道</option>
-							<option value="沙河街道">沙河街道</option>
+							<option value="1">1个月内</option>
+							<option value="2">2个月内</option>
+							<option value="6">半年内</option>
+							<option value="12">一年内</option>
 						</select>
 						</li>
-						<li class="select-time">
+						<!--<li class="select-time">
 							<label>任务创建时间： </label>
 							<input type="text" class="time-input" id="taskTime" placeholder="创建时间" name="taskTime"/>
-						</li>
+						</li>-->
 						<li>
 							<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
 							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
@@ -44,13 +44,18 @@
 					</ul>
 				</div>
 			</form>
-		</div>-->
+		</div>
 
 	<!--	<div class="btn-group-sm" id="toolbar" role="group">
 			<div class="select-list">
-				<button class="btn btn-success " type="button" name="showSearch" title="高级筛选">高级筛选</button>
-				<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="supervise:task:add">
-					 双规则检查
+				<a class="btn"  th:href="'/supervise/data/data'"  style="border-color: #1a7bb9">
+					任务库管理
+				</a>
+				<a class="btn" th:href="'/supervise/data1/data1'"  style="margin-left: 30px;border-color: #1a7bb9">
+					人员库管理
+				</a>
+				<a class="btn btn-success" th:href="'/supervise/data2/data2'" style="margin-left: 30px" >
+					随机规则管理
 				</a>
 			</div>
 			<br/>
@@ -70,7 +75,7 @@
         var options = {
             url: prefix + "/remind",
             createUrl: prefix + "/TaskCheck",
-            updateUrl: prefix + "/editRemind/{id}",
+            updateUrl: prefix + "/editRemind/{RemindTime}",
             removeUrl: prefix + "/remove",
             exportUrl: prefix + "/export",
             sortName: "sblsh",

@@ -24,7 +24,7 @@ public interface EXMapper {
    // List<TbTask> selectTaskByTaskName(String taskName);
 
    // int deleteTaskByIds(Long[] ids);
-
+   List<EX_GDBS_SB> selectTaskBytime(String BYZD4);
 
 
 }

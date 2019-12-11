@@ -20,9 +20,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import javax.servlet.http.HttpServletRequest;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Controller
 @RequestMapping("/op/permit")
@@ -63,7 +64,7 @@ public class SpController extends BaseController {
         return prefix+"/statistic";
     }
 
-
+    private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
     @RequiresPermissions("op:permit:waiting")
     @PostMapping("/waiting")
@@ -113,13 +114,26 @@ public class SpController extends BaseController {
     @ResponseBody
     public TableDataInfo listRemind(EX_GDBS_SB exGdbsSb)
     {
-        startPage();
-        List<EX_GDBS_SB> list = exService.selectTaskAll();
-        list.get(0).setBYZD1("2019-11-22");
-        list.get(1).setBYZD1("2020-10-22");
-        list.get(2).setBYZD1("2019-12-25");
-        list.get(3).setBYZD1("2021-11-22");
-        return getDataTable(list);
+
+        String remindtime=exGdbsSb.getBYZD4();
+        if(remindtime!=null&&!Objects.equals(remindtime, ""))
+        {
+            int t= Integer.parseInt(remindtime);
+            System.out.println(t);
+
+            Date now = new Date();
+            Calendar c = Calendar.getInstance();
+            c.setTime(now);
+            c.add(Calendar.MONTH,t);
+            Date newDate =  c.getTime();
+            startPage();
+            List<EX_GDBS_SB> lists = exService.selectTaskBytime(DATE_FORMAT.format(newDate));
+            return getDataTable(lists);
+        }else {
+            startPage();
+            List<EX_GDBS_SB> list = exService.selectTaskAll();
+            return getDataTable(list);
+        }
     }
 
 
@@ -130,10 +144,6 @@ public class SpController extends BaseController {
     {
         startPage();
         List<EX_GDBS_SB> list = exService.selectTaskAll();
-        list.get(0).setBYZD2("南山区");
-        list.get(1).setBYZD2("罗湖区");
-        list.get(2).setBYZD2("福田区");
-        list.get(3).setBYZD2("盐田区");
         return getDataTable(list);
     }
 
@@ -155,10 +165,6 @@ public class SpController extends BaseController {
     {
         startPage();
         List<EX_GDBS_SB> list = exService.selectTaskAll();
-        list.get(0).setBYZD3("测试1");
-        list.get(1).setBYZD3("测试2");
-        list.get(2).setBYZD3("测试3");
-        list.get(3).setBYZD3("测试4");
         return getDataTable(list);
     }
 }

@@ -21,6 +21,7 @@ public interface EXService
 
     public List<EX_GDBS_SB> selectTaskAll();
 
+    public List<EX_GDBS_SB> selectTaskBytime(String BYZD4);
     public EX_GDBS_SB selectById(String sblsh);
 
 

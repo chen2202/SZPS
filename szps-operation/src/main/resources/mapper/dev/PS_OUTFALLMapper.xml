@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.dev.drainagenetwork.PS_OUTFALLMapper">
+ 
+	<resultMap type="PS_OUTFALL" id="result">
+		<id     property="exp_no"    column="Exp_No"    />
+		<!-- <id     property="prj_no"    column="Prj_No"    /> -->
+<result     property="prj_no"   column="Prj_No"   />
+<result     property="prj_name"   column="Prj_Name"   />
+<result     property="mapcode"   column="MapCode"   />
+<!-- <result     property="exp_no"   column="Exp_No"   /> -->
+<result     property="sewagesystem_id"   column="SewageSystem_ID"   />
+<result     property="stormsystem_id"   column="StormSystem_ID"   />
+<result     property="type"   column="Type"   />
+<result     property="x"   column="X"   />
+<result     property="y"   column="Y"   />
+<result     property="high"   column="High"   />
+<result     property="bottom_elev"   column="Bottom_Elev"   />
+<result     property="outfallshape"   column="OutfallShape"   />
+<result     property="outfalltype"   column="OutfallType"   />
+<result     property="offset"   column="Offset"   />
+<result     property="rotation"   column="Rotation"   />
+<result     property="code"   column="Code"   />
+<result     property="flap"   column="Flap"   />
+<result     property="flap_diameter"   column="Flap_Diameter"   />
+<result     property="flap_topele"   column="Flap_TopEle"   />
+<result     property="flap_botele"   column="Flap_BotEle"   />
+<result     property="flap_materail"   column="Flap_Materail"   />
+<result     property="receivewater"   column="ReceiveWater"   />
+<result     property="address"   column="Address"   />
+<result     property="pointposition"   column="PointPosition"   />
+<result     property="datasource"   column="DataSource"   />
+<result     property="visibility"   column="Visibility"   />
+<result     property="sunit"   column="SUnit"   />
+<result     property="sdate"   column="SDate"   />
+<result     property="updatetime"   column="UpdateTime"   />
+<result     property="mdate"   column="MDate"   />
+<result     property="outfall_type"   column="Outfall_Type"   />
+<result     property="status"   column="status"   />
+<result     property="ename"   column="Ename"   />
+<result     property="design_dept"   column="Design_Dept"   />
+<result     property="conster_dept"   column="Conster_Dept"   />
+<result     property="belong"   column="Belong"   />
+<result     property="operator"   column="Operator"   />
+<result     property="note"   column="Note"   />
+<result     property="objectid"   column="OBJECTID"   />
+<result     property="areaid"   column="AREAID"   />
+<result     property="areaname"   column="AREANAME"   />
+
+
+<!--         <result property="createBy"      column="create_by"      />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"      column="update_by"      />
+        <result property="updateTime"    column="update_time"    />
+		<result property="remark"    column="remark"    /> -->
+    </resultMap> 
+
+	<sql id="selectVo">
+        select *
+        from PS_OUTFALL r
+    </sql>	
+	
+	<!-- 查询条件 -->
+	<sql id="sqlwhereSearch">
+		<where>
+		<if test=" prj_no != null and prj_no != '' ">
+			AND "Prj_No" = #{prj_no}
+		</if>
+		<if test=" areaid !=null">
+				and AREAID = #{areaid}
+		</if>
+		<if test=" areaname != null and areaname != ''">
+			AND AREANAME  like concat(concat('%',#{areaname}),'%')
+		</if>
+		<if test=" prj_name != null and prj_name != ''">
+				AND "Prj_Name"  like concat(concat('%',#{prj_name}),'%')
+		</if>
+		<if test=" exp_no !=null and exp_no != ''">
+			and "Exp_No" = #{exp_no}
+		</if>
+		</where>
+	</sql>
+	
+
+    
+    <select id="select" parameterType="PS_OUTFALL" resultMap="result">
+        <include refid="selectVo"/>
+        <include refid="sqlwhereSearch"/>
+    </select>
+    
+    <select id="selectList" parameterType="PS_OUTFALL" resultMap="result">
+        <include refid="selectVo"/>
+        where  1 = 1
+        <if test=" prj_no != null and prj_no != '' ">
+			AND "Prj_No" = #{prj_no}
+		</if>
+		<if test=" areaid !=null">
+				and AREAID = #{areaid}
+		</if>
+		<if test=" areaname != null and areaname != ''">
+			AND AREANAME  like concat(concat('%',#{areaname}),'%')
+		</if>
+		<if test=" prj_name != null and prj_name != ''">
+				AND "Prj_Name"  like concat(concat('%',#{prj_name}),'%')
+		</if>
+		<if test=" exp_no !=null and exp_no != ''">
+			and "Exp_No" = #{exp_no}
+		</if>
+		
+    </select>
+	
+	<select id="selectByName" parameterType="String" resultMap="result">
+		<include refid="selectVo"/>
+		where  1 = 1
+		<if test=" prj_name != null and prj_name != ''">
+				AND "Prj_Name"  like concat(concat('%',#{prj_name}),'%')
+		</if>
+	</select>
+	
+	<select id="selectById" parameterType="String" resultMap="result">
+		<include refid="selectVo"/>
+		where r."Exp_No" = #{exp_no}
+	</select>
+	
+    <delete id="deleteById" parameterType="String">
+		delete from PS_OUTFALL where "Exp_No" = #{exp_no}
+	</delete>
+	 <delete id="deleteByIds" parameterType="String">
+ 		delete from PS_OUTFALL where "Exp_No" in
+ 		<foreach collection="array" item="exp_no" open="(" separator="," close=")">
+ 			#{exp_no}
+        </foreach> 
+ 	</delete>
+    
+    <update id="update" parameterType="PS_OUTFALL">
+ 		update PS_OUTFALL
+ 		<set>
+<if test=" prj_name != null and prj_name != ''">"Prj_Name" = #{prj_name},</if>
+<if test=" mapcode != null and mapcode != ''">"MapCode" = #{mapcode},</if>
+<if test=" exp_no != null and exp_no != ''">"Exp_No" = #{exp_no},</if>
+<if test=" sewagesystem_id != null and sewagesystem_id != ''">"SewageSystem_ID" = #{sewagesystem_id},</if>
+<if test=" stormsystem_id != null and stormsystem_id != ''">"StormSystem_ID" = #{stormsystem_id},</if>
+<if test=" type != null and type != ''">"Type" = #{type},</if>
+<if test=" x != null and x != ''">"X" = #{x},</if>
+<if test=" y != null and y != ''">"Y" = #{y},</if>
+<if test=" high != null and high != ''">"High" = #{high},</if>
+<if test=" bottom_elev != null and bottom_elev != ''">"Bottom_Elev" = #{bottom_elev},</if>
+<if test=" outfallshape != null and outfallshape != ''">"OutfallShape" = #{outfallshape},</if>
+<if test=" outfalltype != null and outfalltype != ''">"OutfallType" = #{outfalltype},</if>
+<if test=" offset != null and offset != ''">"Offset" = #{offset},</if>
+<if test=" rotation != null and rotation != ''">"Rotation" = #{rotation},</if>
+<if test=" code != null and code != ''">"Code" = #{code},</if>
+<if test=" flap != null and flap != ''">"Flap" = #{flap},</if>
+<if test=" flap_diameter != null and flap_diameter != ''">"Flap_Diameter" = #{flap_diameter},</if>
+<if test=" flap_topele != null and flap_topele != ''">"Flap_TopEle" = #{flap_topele},</if>
+<if test=" flap_botele != null and flap_botele != ''">"Flap_BotEle" = #{flap_botele},</if>
+<if test=" flap_materail != null and flap_materail != ''">"Flap_Materail" = #{flap_materail},</if>
+<if test=" receivewater != null and receivewater != ''">"ReceiveWater" = #{receivewater},</if>
+<if test=" address != null and address != ''">"Address" = #{address},</if>
+<if test=" pointposition != null and pointposition != ''">"PointPosition" = #{pointposition},</if>
+<if test=" datasource != null and datasource != ''">"DataSource" = #{datasource},</if>
+<if test=" visibility != null and visibility != ''">"Visibility" = #{visibility},</if>
+<if test=" sunit != null and sunit != ''">"SUnit" = #{sunit},</if>
+<if test=" sdate != null and sdate != ''">"SDate" = #{sdate},</if>
+<if test=" updatetime != null and updatetime != ''">"UpdateTime" = #{updatetime},</if>
+<if test=" mdate != null and mdate != ''">"MDate" = #{mdate},</if>
+<if test=" outfall_type != null and outfall_type != ''">"Outfall_Type" = #{outfall_type},</if>
+<if test=" status != null and status != ''">"status" = #{status},</if>
+<if test=" ename != null and ename != ''">"Ename" = #{ename},</if>
+<if test=" design_dept != null and design_dept != ''">"Design_Dept" = #{design_dept},</if>
+<if test=" conster_dept != null and conster_dept != ''">"Conster_Dept" = #{conster_dept},</if>
+<if test=" belong != null and belong != ''">"Belong" = #{belong},</if>
+<if test=" operator != null and operator != ''">"Operator" = #{operator},</if>
+<if test=" note != null and note != ''">"Note" = #{note},</if>
+<if test=" objectid != null and objectid != ''">"OBJECTID" = #{objectid},</if>
+<if test=" areaid != null and areaid != ''">"AREAID" = #{areaid},</if>
+<if test=" areaname != null and areaname != ''">"AREANAME" = #{areaname},</if>
+			
+			<!-- <if test=" remark != null and remark != ''">remark = #{remark},</if>
+ 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+ 			update_time = sysdate -->
+ 		</set>
+ 		where "Exp_No" = #{exp_no}
+	</update>
+	  
+    <insert id="insert" parameterType="PS_OUTFALL">
+    
+		INSERT INTO PS_OUTFALL(
+<if test=" prj_no != null and  prj_no != ''">"Prj_No",</if>
+<if test=" prj_name != null and  prj_name != ''">"Prj_Name",</if>
+<if test=" mapcode != null and  mapcode != ''">"MapCode",</if>
+<if test=" exp_no != null and  exp_no != ''">"Exp_No",</if>
+<if test=" sewagesystem_id != null and  sewagesystem_id != ''">"SewageSystem_ID",</if>
+<if test=" stormsystem_id != null and  stormsystem_id != ''">"StormSystem_ID",</if>
+<if test=" type != null and  type != ''">"Type",</if>
+<if test=" x != null and  x != ''">"X",</if>
+<if test=" y != null and  y != ''">"Y",</if>
+<if test=" high != null and  high != ''">"High",</if>
+<if test=" bottom_elev != null and  bottom_elev != ''">"Bottom_Elev",</if>
+<if test=" outfallshape != null and  outfallshape != ''">"OutfallShape",</if>
+<if test=" outfalltype != null and  outfalltype != ''">"OutfallType",</if>
+<if test=" offset != null and  offset != ''">"Offset",</if>
+<if test=" rotation != null and  rotation != ''">"Rotation",</if>
+<if test=" code != null and  code != ''">"Code",</if>
+<if test=" flap != null and  flap != ''">"Flap",</if>
+<if test=" flap_diameter != null and  flap_diameter != ''">"Flap_Diameter",</if>
+<if test=" flap_topele != null and  flap_topele != ''">"Flap_TopEle",</if>
+<if test=" flap_botele != null and  flap_botele != ''">"Flap_BotEle",</if>
+<if test=" flap_materail != null and  flap_materail != ''">"Flap_Materail",</if>
+<if test=" receivewater != null and  receivewater != ''">"ReceiveWater",</if>
+<if test=" address != null and  address != ''">"Address",</if>
+<if test=" pointposition != null and  pointposition != ''">"PointPosition",</if>
+<if test=" datasource != null and  datasource != ''">"DataSource",</if>
+<if test=" visibility != null and  visibility != ''">"Visibility",</if>
+<if test=" sunit != null and  sunit != ''">"SUnit",</if>
+<if test=" sdate != null and  sdate != ''">"SDate",</if>
+<if test=" updatetime != null and  updatetime != ''">"UpdateTime",</if>
+<if test=" mdate != null and  mdate != ''">"MDate",</if>
+<if test=" outfall_type != null and  outfall_type != ''">"Outfall_Type",</if>
+<if test=" status != null and  status != ''">"status",</if>
+<if test=" ename != null and  ename != ''">"Ename",</if>
+<if test=" design_dept != null and  design_dept != ''">"Design_Dept",</if>
+<if test=" conster_dept != null and  conster_dept != ''">"Conster_Dept",</if>
+<if test=" belong != null and  belong != ''">"Belong",</if>
+<if test=" operator != null and  operator != ''">"Operator",</if>
+<if test=" note != null and  note != ''">"Note",</if>
+<if test=" objectid != null and  objectid != ''">"OBJECTID",</if>
+<if test=" areaid != null and  areaid != ''">"AREAID",</if>
+<if test=" areaname != null and  areaname != ''">"AREANAME",</if>
+
+			
+			<!-- <if test=" remark != null and remark != ''">REMARK,</if>
+			<if test=" createBy != null and createBy != ''">create_by,</if>-->
+			create_time 
+		) VALUES (
+<if test=" prj_no != null and prj_no != ''">#{prj_no},</if>
+<if test=" prj_name != null and prj_name != ''">#{prj_name},</if>
+<if test=" mapcode != null and mapcode != ''">#{mapcode},</if>
+<if test=" exp_no != null and exp_no != ''">#{exp_no},</if>
+<if test=" sewagesystem_id != null and sewagesystem_id != ''">#{sewagesystem_id},</if>
+<if test=" stormsystem_id != null and stormsystem_id != ''">#{stormsystem_id},</if>
+<if test=" type != null and type != ''">#{type},</if>
+<if test=" x != null and x != ''">#{x},</if>
+<if test=" y != null and y != ''">#{y},</if>
+<if test=" high != null and high != ''">#{high},</if>
+<if test=" bottom_elev != null and bottom_elev != ''">#{bottom_elev},</if>
+<if test=" outfallshape != null and outfallshape != ''">#{outfallshape},</if>
+<if test=" outfalltype != null and outfalltype != ''">#{outfalltype},</if>
+<if test=" offset != null and offset != ''">#{offset},</if>
+<if test=" rotation != null and rotation != ''">#{rotation},</if>
+<if test=" code != null and code != ''">#{code},</if>
+<if test=" flap != null and flap != ''">#{flap},</if>
+<if test=" flap_diameter != null and flap_diameter != ''">#{flap_diameter},</if>
+<if test=" flap_topele != null and flap_topele != ''">#{flap_topele},</if>
+<if test=" flap_botele != null and flap_botele != ''">#{flap_botele},</if>
+<if test=" flap_materail != null and flap_materail != ''">#{flap_materail},</if>
+<if test=" receivewater != null and receivewater != ''">#{receivewater},</if>
+<if test=" address != null and address != ''">#{address},</if>
+<if test=" pointposition != null and pointposition != ''">#{pointposition},</if>
+<if test=" datasource != null and datasource != ''">#{datasource},</if>
+<if test=" visibility != null and visibility != ''">#{visibility},</if>
+<if test=" sunit != null and sunit != ''">#{sunit},</if>
+<if test=" sdate != null and sdate != ''">#{sdate},</if>
+<if test=" updatetime != null and updatetime != ''">#{updatetime},</if>
+<if test=" mdate != null and mdate != ''">#{mdate},</if>
+<if test=" outfall_type != null and outfall_type != ''">#{outfall_type},</if>
+<if test=" status != null and status != ''">#{status},</if>
+<if test=" ename != null and ename != ''">#{ename},</if>
+<if test=" design_dept != null and design_dept != ''">#{design_dept},</if>
+<if test=" conster_dept != null and conster_dept != ''">#{conster_dept},</if>
+<if test=" belong != null and belong != ''">#{belong},</if>
+<if test=" operator != null and operator != ''">#{operator},</if>
+<if test=" note != null and note != ''">#{note},</if>
+<if test=" objectid != null and objectid != ''">#{objectid},</if>
+<if test=" areaid != null and areaid != ''">#{areaid},</if>
+<if test=" areaname != null and areaname != ''">#{areaname},</if>
+		
+			<!-- <if test=" remark != null and remark != ''">#{remark},</if>
+			<if test=" createBy != null and createBy != ''">#{createBy},</if>-->
+			sysdate		
+		)
+	</insert>
+    
+</mapper>

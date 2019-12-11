@@ -4,7 +4,24 @@
 	<th:block th:include="include :: header('设备清单')" />
 </head>
 <body class="gray-bg">
-    <div class="container-div">
+	<div class="col-sm-12 search-collapse">
+		<div class="select-list">
+			<ul>
+				
+				<li>
+                   	<a class="btn"  th:href="'/op/dev/pscombinfo'"  style="border-color: #1a7bb9">雨水口</a>
+                   	<a class="btn"  th:href="'/op/dev/psconduitinfo'"  style="border-color: #1a7bb9">渠</a>
+                   	<a class="btn"  th:href="'/op/dev/psmanholeinfo'"  style="border-color: #1a7bb9">检查井</a>
+                   	<a class="btn"  th:href="'/op/dev/psoutfallinfo'"  style="border-color: #1a7bb9">排放口</a>
+                   	<a class="btn"  th:href="'/op/dev/pspipeinfo'"  style="border-color: #1a7bb9">管</a>
+                   	<a class="btn"  th:href="'/op/dev/pspointinfo'"  style="border-color: #1a7bb9">特征点</a>
+				</li>						
+				
+			</ul>
+		</div>
+	</div>
+
+   <!--  <div class="container-div">
 		<div class="row">
 			<div class="col-sm-12 search-collapse">
 				<form id="info-form">
@@ -44,16 +61,16 @@
 		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="dev:drainagenetworkinfo:delete">
 		            <i class="fa fa-remove"></i> 删除
 		        </a>
-		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="dev:drainagenetworkinfo:export">
+		        <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="dev:drainagenetworkinfo:export">
 		            <i class="fa fa-download"></i> 导出
-		        </a> -->
+		        </a>
 	        </div>
 	        
 	        <div class="col-sm-12 select-table table-striped">
 	            <table id="bootstrap-table" data-mobile-responsive="true"></table>
 	        </div>
     	</div>
-    </div>
+    </div> -->
     <th:block th:include="include :: footer" />
     <script th:inline="javascript">
         var prefix = ctx + "op/dev/drainagenetworkinfo";//

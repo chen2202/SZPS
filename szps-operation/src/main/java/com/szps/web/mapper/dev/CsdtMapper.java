@@ -2,7 +2,7 @@ package com.szps.web.mapper.dev;
 
 import java.util.List;
 
-import com.szps.web.domain.dev.Csdt;
+import com.szps.web.domain.dev.csdt.Csdt;
 
 public interface CsdtMapper {
 

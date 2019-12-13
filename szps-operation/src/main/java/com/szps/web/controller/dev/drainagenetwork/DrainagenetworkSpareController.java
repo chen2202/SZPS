@@ -20,8 +20,8 @@ import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
 import com.szps.framework.util.ShiroUtils;
 import com.szps.system.domain.SysUser;
-import com.szps.web.domain.report.YearAppraisal;
-import com.szps.web.service.report.IYearAppraisalService;
+import com.szps.web.domain.dev.drainagenetwork.DrainagenetworkSpare;
+import com.szps.web.service.dev.drainagenetwork.IDrainagenetworkSpareService;
 /**
  * BO设备台账	设备清单	
  * @author Jack
@@ -31,7 +31,7 @@ import com.szps.web.service.report.IYearAppraisalService;
 @RequestMapping("/op/dev/drainagenetworkspare")
 public class DrainagenetworkSpareController extends BaseController {
 	 @Autowired
-	private IYearAppraisalService service;
+	private IDrainagenetworkSpareService service;
 	
 	private String prefix = "/dev/drainagenetwork/spare";
 	
@@ -47,10 +47,10 @@ public class DrainagenetworkSpareController extends BaseController {
     @RequiresPermissions("dev:drainagenetworkspare:view")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(YearAppraisal obj)
+    public TableDataInfo list(DrainagenetworkSpare obj)
     {
         startPage();
-        List<YearAppraisal> list = service.selectList(obj);
+        List<DrainagenetworkSpare> list = service.selectList(obj);
         return getDataTable(list);
     }
 
@@ -65,7 +65,7 @@ public class DrainagenetworkSpareController extends BaseController {
     @Log(title = "添加", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
-    public AjaxResult addSave( YearAppraisal obj)
+    public AjaxResult addSave( DrainagenetworkSpare obj)
     {
     	SysUser user = ShiroUtils.getSysUser();
     	obj.setCreateBy(user.getLoginName());
@@ -75,7 +75,7 @@ public class DrainagenetworkSpareController extends BaseController {
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Long id, ModelMap mmap)
     {
-    	YearAppraisal obj = service.selectById(id);
+    	DrainagenetworkSpare obj = service.selectById(id);
         
         mmap.put("obj", obj);
         return prefix + "/edit";
@@ -89,7 +89,7 @@ public class DrainagenetworkSpareController extends BaseController {
     @RequiresPermissions("dev:drainagenetworkspare:edit")
     @PostMapping("/edit")
     @ResponseBody
-    public AjaxResult editSave(@Validated YearAppraisal obj)
+    public AjaxResult editSave(@Validated DrainagenetworkSpare obj)
     {
     	obj.setUpdateBy(ShiroUtils.getLoginName());
         return toAjax(service.update(obj));

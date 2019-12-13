@@ -1,4 +1,4 @@
-package com.szps.web.domain.dev;
+package com.szps.web.domain.dev.csdt;
 
 import com.szps.common.core.domain.BaseEntity;
 

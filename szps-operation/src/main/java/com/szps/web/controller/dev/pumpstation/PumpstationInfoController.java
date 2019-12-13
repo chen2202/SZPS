@@ -20,7 +20,7 @@ import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
 import com.szps.framework.util.ShiroUtils;
 import com.szps.system.domain.SysUser;
-import com.szps.web.domain.dev.Pumpstation;
+import com.szps.web.domain.dev.pumpstation.Pumpstation;
 import com.szps.web.service.dev.IPumpstationService;
 /**
  * BO设备台账	设备清单	

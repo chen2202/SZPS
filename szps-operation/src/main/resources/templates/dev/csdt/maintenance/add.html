@@ -10,173 +10,49 @@
 <body class="gray-bg">
 	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
         <form id="form"  class="form-horizontal m">
-        <input name="supplierid" type="hidden" id="treeId" />
-        <h4 class="form-header h4">基本信息</h4>
-        
-        <div class="container">
-			<div class="row clearfix">
-				<div class="col-md-8">
-					 <div class="row">
-						<div class="col-sm-6">
-							   <div class="form-group">
-								   <label class="col-sm-4 control-label">设备编号：</label>
-								   <div class="col-sm-8">
-									   <input name="dnumber" class="form-control" type="text"  >
-								   </div>
-							   </div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label class="col-sm-4 control-label">设备类型：</label>
-								<div class="col-sm-8">
-									<div class="input-group">
-										<input name="dtype" class="form-control" type="text" >
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-6">
-							   <div class="form-group">
-								   <label class="col-sm-4 control-label">设备名称：</label>
-								   <div class="col-sm-8">
-									   <input name="dname" class="form-control" type="text"  >
-								   </div>
-							   </div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label class="col-sm-4 control-label">设备别名：</label>
-								<div class="col-sm-8">
-									<div class="input-group">
-										<input name="dalias" class="form-control" type="text" >
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-			
-					 <div class="row">
-						<div class="col-sm-6">
-							   <div class="form-group">
-								   <label class="col-sm-4 control-label">设备品牌：</label>
-								   <div class="col-sm-8">
-									   <input name="dbrand" class="form-control" type="text"  >
-								   </div>
-							   </div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label class="col-sm-4 control-label">设备型号：</label>
-								<div class="col-sm-8">
-									<div class="input-group">
-										<input name="dmodel" class="form-control" type="text" >
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-			
-					<div class="row">
-						<div class="col-sm-6">
-							   <div class="form-group">
-								   <label class="col-sm-4 control-label">购买时间：</label>
-								   <div class="col-sm-8">
-									   <input id="buytime" name="buytime" class="time-input form-control " data-type="datetime" data-format="yyyy-MM-dd HH:MM"/>
-								   </div>
-							   </div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label class="col-sm-4 control-label">投用时间：</label>
-								<div class="col-sm-8">
-									<div class="input-group">
-										<input id="beganusetime" name="beganusetime" class="time-input form-control " data-type="datetime" data-format="yyyy-MM-dd HH:MM"/>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-			
-					<div class="row">
-						<div class="col-sm-6">
-							   <div class="form-group">
-								   <label class="col-sm-4 control-label">安装位置：</label>
-								   <div class="col-sm-8">
-									   <input name="installationsite" class="form-control" type="text"  >
-								   </div>
-							   </div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label class="col-sm-4 control-label">设备状态：</label>
-								<div class="col-sm-8">
-									<div class="input-group">
-										<input name="dstatus" class="form-control" type="text" >
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-			
-			
-				</div>
-				<div class="col-md-4">
-					<div class="text-center">
-						<div class="row">
-	                        <img class=" img-lg" th:src=" @{/img/sample.jpg} ">
-	                    </div>
-	                    <div class="row">
-	                    	<a href="">修改</a>
-	                    </div>
-	                    <div class="row">
-	                    	<a href="">生产设备二维码</a>
-	                    </div>
-	                    <div class="row">
-	                        <img class=" img-sm" th:src=" @{/img/sample2.jpg} ">
-	                    </div>
-                    </div>
-				</div>
-			</div>
-		</div>
-        
-        <h4 class="form-header h4">供应商信息</h4>
-       	<div class="row">
-			<div class="col-sm-10">
-				   <div class="form-group">
-					   <label class="col-sm-2 control-label">选择供应商:</label>
-					   <div class="col-sm-8">
-					   	<textarea name="suppliername"  onclick="selectSupplier()" id="treeName" class="form-control" type="text"></textarea>
+        <input name="supplierid" type="hidden" id="treeIdSupplier" />
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">时间：</label>
+						   <div class="col-sm-8">
+							    <input name="optime" class="time-input form-control " data-type="date" data-format="yyyy-MM-dd"  type="text"  >
+						   </div>
 					   </div>
-				   </div>
-			</div>
-		</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">设备名称：</label>
+						<div class="col-sm-8">
+								<input name="devname" class="form-control" type="text"  >
+						</div>
+					</div>
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">类型：</label>
+						   <div class="col-sm-8">
+							   <select class="selectpicker" name="optype"  id="optype" >
+                            	 <option selected value="维修">维修</option>
+								  <option value="保养">保养</option>
+								</select>
+						   </div>
+					   </div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">内容：</label>
+						<div class="col-sm-8">
+								<textarea name="opdetails" class="form-control" style=" height: 100px;" type="text"  ></textarea>
+						</div>
+					</div>
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">更换零配件：</label>
+						   <div class="col-sm-8">
+							   <textarea name="replaceparts" class="form-control" style=" height: 100px;" type="text"  ></textarea>
+						   </div>
+					   </div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">操作人员：</label>
+						<div class="col-sm-8">
+								<input name="operator" class="form-control" type="text"  >
+						</div>
+					</div>
 			
-		<h4 class="form-header h4">技术资料</h4>
-		<div class="row">
-			<div class="col-sm-10">
-				   <div class="form-group">
-					   <label class="col-sm-2 control-label">产品说明书:</label>
-					   <div class="col-sm-8 ">
-						   <input name="imgUrl" id="imgUrl" class="form-control" type="hidden">
-						   <input id="fileinput-demo-1" name="file" type="file" >
-					   </div>
-				   </div>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="col-sm-10">
-				   <div class="form-group">
-					   <label class="col-sm-2 control-label">操作手册:</label>
-					   <div class="col-sm-8 ">
-						   <input name="imgUrl2" id="imgUrl2" class="form-control" type="hidden">
-						   <input id="fileinput-demo-2" name="file" type="file" >
-					   </div>
-				   </div>
-			</div>
-		</div>
+			
+
 	</form>
     </div>
     <div class="row">
@@ -190,7 +66,7 @@
     <th:block th:include="include :: bootstrap-fileinput-css" />
     <th:block th:include="include :: bootstrap-fileinput-js" />
 	<script>
-	    var prefix = ctx + "op/dev/info";
+	    var prefix = ctx + "op/dev/csdtmaintenance";
         $("#form").validate({
         	onkeyup: false,
         	rules:{
@@ -213,9 +89,9 @@
 
         /*用户管理-新增-选择部门树*/
         function selectSupplier() {
-        	var treeId = $("#treeId").val();
-        	var sid = $.common.isEmpty(treeId) ? "0" : $("#treeId").val();
-        	var url = ctx + "op/dev/supplier/selectSupplier/" + sid;
+        	var treeId = $("#treeIdSupplier").val();
+        	var sid = $.common.isEmpty(treeId) ? "0" : $("#treeIdSupplier").val();
+        	var url = ctx + "op/dev/drainagenetworksupplier/selectSupplier/" + sid;
 			var options = {
 				title: '选择供应商',
 				width: "380",
@@ -230,73 +106,18 @@
 		function doSubmit(index, layero){
 			var tree = layero.find("iframe")[0].contentWindow.$._tree;
 				var body = layer.getChildFrame('body', index);
-    			$("#treeId").val(body.find('#treeId').val());
-    			$("#treeName").val(body.find('#treeName').val());
+    			$("#treeIdSupplier").val(body.find('#treeIdSupplier').val());
+    			$("#treeNameSupplier").val(body.find('#treeNameSupplier').val());
     			layer.close(index);
 		}
 		
 		function submitHandler() {
 	        if ($.validate.form()) {
 	        	var data = $("#form").serializeArray();
-	        	$.operate.saveTabFile(prefix + "/add", data);
+	        	$.operate.saveTab(prefix + "/add", data);
 	        }
 	    }
-		 // 上传文件
-        function sendFile(file, obj) {
-            var data = new FormData();
-            data.append("file", file);
-            $.ajax({
-                type: "POST",
-                url: ctx + "common/upload",
-                data: data,
-                cache: false,
-                contentType: false,
-                processData: false,
-                dataType: 'json',
-                success: function(result) {
-                    if (result.code == web_status.SUCCESS) {
-                    } else {
-                        $.modal.alertError(result.msg);
-                    }
-                },
-                error: function(error) {
-                    $.modal.alertWarning("上传失败。");
-                }
-            });
-        }
-		 
-        $(document).ready(function () {
-            $("#fileinput-demo-1").fileinput({
-                'theme': 'explorer-fas',
-                showPreview: false,
-                maxFileCount: 1,
-                'uploadUrl': '/common/upload',
-                overwriteInitial: false
-            });
 
-            $("#fileinput-demo-1").on("fileuploaded", function (event, data, previewId, index) {
-                console.log(data.response);
-                if(data.response.code == 0){
-                    $('#imgUrl').val(data.response.url);
-                }
-            });
-            
-            $("#fileinput-demo-2").fileinput({
-                'theme': 'explorer-fas',
-                showPreview: false,
-                maxFileCount: 1,
-                'uploadUrl':  '/common/upload',
-                overwriteInitial: false
-            });
-
-            $("#fileinput-demo-2").on("fileuploaded", function (event, data, previewId, index) {
-                console.log(data.response);
-                if(data.response.code == 0){
-                    $('#imgUrl2').val(data.response.url);
-                }
-            });
-
-        });
     </script>
 </body>
 </html>

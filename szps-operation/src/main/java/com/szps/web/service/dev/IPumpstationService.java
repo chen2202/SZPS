@@ -2,7 +2,7 @@ package com.szps.web.service.dev;
 
 import java.util.List;
 
-import com.szps.web.domain.dev.Pumpstation;
+import com.szps.web.domain.dev.pumpstation.Pumpstation;
 
 public interface IPumpstationService {
 

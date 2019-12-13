@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.szps.common.core.text.Convert;
-import com.szps.web.domain.dev.Csdt;
+import com.szps.web.domain.dev.csdt.Csdt;
 import com.szps.web.mapper.dev.CsdtMapper;
 import com.szps.web.service.dev.ICsdtService;
 @Service

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.szps.common.core.text.Convert;
-import com.szps.web.domain.dev.Pumpstation;
+import com.szps.web.domain.dev.pumpstation.Pumpstation;
 import com.szps.web.mapper.dev.PumpstationMapper;
 import com.szps.web.service.dev.IPumpstationService;
 @Service

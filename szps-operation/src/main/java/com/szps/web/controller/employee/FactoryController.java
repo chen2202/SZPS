@@ -19,6 +19,7 @@ import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
+import com.szps.common.utils.poi.ExcelUtil;
 import com.szps.web.domain.employee.Department;
 import com.szps.web.domain.employee.Factory;
 import com.szps.web.service.employee.DepartmentService;
@@ -99,6 +100,22 @@ public class FactoryController extends BaseController{
         List<Factory> list = factoryService.selectAllFactory(factory);
         return getDataTable(list);
     }
+	
+	/**
+	 * 导出水厂信息到excel表
+	 * @param factory
+	 * @return
+	 */
+	//@Log(title = "水厂管理", businessType = BusinessType.EXPORT)
+	@RequiresPermissions("employee:factory:export")
+	@PostMapping("/factory/export")
+	@ResponseBody
+	public AjaxResult export(Factory factory)
+	{
+	    List<Factory> list = factoryService.selectAllFactory(factory);
+	    ExcelUtil<Factory> util = new ExcelUtil<Factory>(Factory.class);
+	    return util.exportExcel(list, "水厂数据");
+	}
 	
 	 /**
      * 跳转factory/detail.html

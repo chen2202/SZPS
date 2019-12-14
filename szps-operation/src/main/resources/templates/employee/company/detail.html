@@ -35,8 +35,8 @@
 	
 	    function showall(menu_list, parent) {
 	        $.each(menu_list, function(index, val) {
-	            //if(val.childrens.length > 0){ //如果子节点是对象像是
-	            if(val.childrens != null){ //子节点用是数组形式
+	            //if(val.childrens.length > 0){ //如果子节点是对象时
+	            if(val.childrens != null){ //子节点是数组形式
 	                var li = $("<li></li>");
 	                li.append("<a href='javascript:void(0)' onclick=getOrgId("+val.id+");>"+val.name+"</a>").append("<ul></ul>").appendTo(parent);
 	                //递归显示

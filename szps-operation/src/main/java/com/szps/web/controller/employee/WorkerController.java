@@ -17,7 +17,7 @@ import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
-
+import com.szps.common.utils.poi.ExcelUtil;
 import com.szps.web.domain.employee.Worker;
 import com.szps.web.service.employee.WorkerService;
 
@@ -57,6 +57,22 @@ public class WorkerController extends BaseController{
         startPage();
         List<Worker> list = workerService.selectAllWorker(worker);
         return getDataTable(list);
+    }
+	
+	/**
+	 * 导出从业人员信息到excel表
+	 * @param worker
+	 * @return
+	 */
+	//@Log(title = "从业人员管理", businessType = BusinessType.EXPORT)
+	@RequiresPermissions("employee:worker:export")
+    @PostMapping("/export")
+    @ResponseBody
+    public AjaxResult export(Worker worker)
+    {
+        List<Worker> list = workerService.selectAllWorker(worker);
+        ExcelUtil<Worker> util = new ExcelUtil<Worker>(Worker.class);
+        return util.exportExcel(list, "从业人员数据");
     }
 	
 	/**

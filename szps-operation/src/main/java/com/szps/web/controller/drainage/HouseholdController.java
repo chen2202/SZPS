@@ -18,6 +18,7 @@ import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
+import com.szps.common.utils.poi.ExcelUtil;
 import com.szps.web.domain.drainage.Household;
 import com.szps.web.service.drainage.HouseholdService;
 
@@ -56,6 +57,17 @@ public class HouseholdController extends BaseController{
 		List<Household> list = householdService.selectAllHousehold(household);
 		return getDataTable(list);
 	}
+	
+	//@Log(title = "排水户管理", businessType = BusinessType.EXPORT)
+	@RequiresPermissions("drainage:household:export")
+    @PostMapping("/household/export")
+    @ResponseBody
+    public AjaxResult export(Household household)
+    {
+        List<Household> list = householdService.selectAllHousehold(household);
+        ExcelUtil<Household> util = new ExcelUtil<Household>(Household.class);
+        return util.exportExcel(list, "排水户数据");
+    }
     
 	/**
      * 新增排水户
@@ -76,8 +88,8 @@ public class HouseholdController extends BaseController{
     @ResponseBody
     public AjaxResult addSave(@Validated Household household){   
 	    householdService.insertHousehold(household);
-		return toAjax(1);
-	}
+        return toAjax(1); 
+    }
     
     /**
      * 修改排水户
@@ -127,7 +139,7 @@ public class HouseholdController extends BaseController{
         return householdService.checkHouseholdIdUnique(household); 
     }
     
-    //----------------以下是统计数据部分-----------------
+    //------------------------------以下是统计数据部分--------------------------------------
     
     /**
 	 * 跳转到drainage/statistics/statistics.html 统计数据页面

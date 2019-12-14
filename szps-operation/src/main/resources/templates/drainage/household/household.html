@@ -44,6 +44,9 @@
 				<a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="drainage:household:remove">
 		            <i class="fa fa-remove"></i> 删除
 		        </a>
+		        <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="drainage:household:export">
+		            <i class="fa fa-download"></i> 导出
+		        </a>
 	        </div>
 	        
 	        <div class="col-sm-12 select-table table-striped">
@@ -63,6 +66,7 @@
 		        createUrl: prefix + "/add",
 		        updateUrl: prefix + "/edit/{id}",
 		        removeUrl: prefix + "/remove",
+		        exportUrl: prefix + "/export",
 		        sortName: "household_id",
 		        modalName: "排水户",
 		        columns: [{

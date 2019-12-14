@@ -19,7 +19,7 @@ import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
-
+import com.szps.common.utils.poi.ExcelUtil;
 import com.szps.web.domain.employee.Company;
 import com.szps.web.domain.employee.Department;
 import com.szps.web.service.employee.CompanyService;
@@ -99,6 +99,22 @@ public class CompanyController extends BaseController{
     	startPage();
     	List<Company> list = companyService.selectAllCompany(company);
     	return getDataTable(list);
+    }
+    
+    /**
+     * 公司信息导出excel表
+     * @param company
+     * @return
+     */
+    //@Log(title = "公司管理", businessType = BusinessType.EXPORT)
+  	@RequiresPermissions("employee:company:export")
+    @PostMapping("/company/export")
+    @ResponseBody
+    public AjaxResult export(Company company)
+    {
+        List<Company> list = companyService.selectAllCompany(company);
+        ExcelUtil<Company> util = new ExcelUtil<Company>(Company.class);
+        return util.exportExcel(list, "公司数据");
     }
     
     /**

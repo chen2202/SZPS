@@ -1,49 +1,136 @@
 package com.szps.web.domain.drainage;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+import com.szps.common.annotation.Excel;
+
 /**
  * DRAINAGE_T_HOUSEHOLD表实体类
  * @author zxc
  *
  */
 public class Household {
+	@Excel(name = "编号")
 	private String household_id; //排水户编号
+	@Excel(name = "名称")
 	private String household_name; //排水户名称
+	@Excel(name = "记录状态")
 	private String record_state; //记录状态
+	@Excel(name = "门牌详细地址")
 	private String doorplate_detail_address; //门牌详细地址
+	@Excel(name = "经度")
 	private double longitude; //经度
+	@Excel(name = "纬度")
 	private double latitude; //纬度
+	@Excel(name = "行政区名")
 	private String administrative_name; //行政区名
+	@Excel(name = "街道名")
 	private String street_name; //街道名
+	@Excel(name = "居委会")
 	private String committees;  //居委会
+	@Excel(name = "街路巷名")
 	private String lane_name; //街路巷名
+	@Excel(name = "门牌号码")
 	private String doorplate_number; //门牌号码
+	@Excel(name = "排水户级别")
 	private String household_level; //排水户级别
+	@Excel(name = "上级排水户")
 	private String parent_household_name; //上级排水户
+	@Excel(name = "联系人")
 	private String linkman; //联系人
+	@Excel(name = "联系电话")
 	private long telephone; //联系电话
+	@Excel(name = "占地面积 /㎡")
 	private double cover_area; //占地面积 /㎡
+	@Excel(name = "水表编号")
 	private String water_meter_id; //水表编号
+	@Excel(name = "污水类别")
 	private String sewage_category; //污水类别
+	@Excel(name = "单位类型")
 	private String unit_type; //单位类型
+	@Excel(name = "其他单位类型")
 	private String other_unit_type; //其他单位类型
+	@Excel(name = "工业废水主要成分")
 	private String industrial_water_composition; //工业废水主要成分
+	@Excel(name = "其他成分")
 	private String other_composition; //其他成分
+	@Excel(name = "内部废、污、雨是否分流")
 	private String water_diversion; //内部废、污、雨是否分流
+	@Excel(name = "是否取得营业执照")
 	private String business_license; //是否取得营业执照
+	@Excel(name = "统一社会信用代码")
 	private String social_credit_id; //统一社会信用代码
+	@Excel(name = "是否取得排水许可证")
 	private String drainage_license; //是否取得排水许可证
+	@Excel(name = "排水许可证号")
 	private String drainage_license_number; //排水许可证号
+	@Excel(name = "排水许可证开始日期")
 	private String drainage_license_begin_time; //排水许可证开始日期
+	@Excel(name = "排水许可证结束日期")
 	private String drainage_license_end_time; //排水许可证结束日期
+	@Excel(name = "是否取得排污许可证")
 	private String sewage_license; //是否取得排污许可证
+	@Excel(name = "排污许可证号")
 	private String sewage_license_number; //排污许可证号
+	@Excel(name = "排污许可证开始日期")
 	private String sewage_license_begin_time; //排污许可证开始日期
+	@Excel(name = "排污许可证结束日期")
 	private String sewage_license_end_time; //排污许可证结束日期
+	@Excel(name = "备注")
 	private String note; //备注
+	@Excel(name = "登记时间")
 	private String registration_time; //登记时间
+	@Excel(name = "登记人")
 	private String registration_person; //登记人
+	@Excel(name = "最新修改时间")
 	private String update_time; //最新修改时间
+	@Excel(name = "上一修改人")
 	private String update_person; //上一修改人
+	
+	public String toString() {
+        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
+            .append("household_id", getHousehold_id())
+            .append("household_name", getHousehold_name())
+            .append("record_state", getRecord_state())
+            .append("doorplate_detail_address", getDoorplate_detail_address())
+            .append("longitude", getLongitude())
+            .append("latitude", getLatitude())
+            .append("administrative_name", getAdministrative_name())
+            .append("street_name", getStreet_name())
+            .append("committees", getCommittees())
+            .append("lane_name", getLane_name())
+            .append("doorplate_number", getDoorplate_number())
+            .append("household_level", getHousehold_level())
+            .append("parent_household_name", getParent_household_name())
+            .append("linkman", getLinkman())
+            .append("telephone", getTelephone())
+            .append("cover_area", getCover_area())
+            .append("water_meter_id", getWater_meter_id())
+            .append("sewage_category", getSewage_category())
+            .append("unit_type", getUnit_type())
+            .append("other_unit_type", getOther_unit_type())
+            .append("industrial_water_composition", getIndustrial_water_composition())
+            .append("other_composition", getOther_composition())
+            .append("water_diversion", getWater_diversion())
+            .append("business_license", getBusiness_license())
+            .append("social_credit_id", getSocial_credit_id())
+            .append("drainage_license", getDrainage_license())
+            .append("drainage_license_number", getDrainage_license_number())
+            .append("drainage_license_begin_time", getDrainage_license_begin_time())
+            .append("drainage_license_end_time", getDrainage_license_end_time())
+            .append("sewage_license", getSewage_license())
+            .append("sewage_license_number", getSewage_license_number())
+            .append("sewage_license_begin_time", getSewage_license_begin_time())
+            .append("sewage_license_end_time", getSewage_license_end_time())
+            .append("note", getNote())
+            .append("registration_time", getRegistration_time())
+            .append("registration_person", getRegistration_person())
+            .append("update_time", getUpdate_time())
+            .append("update_person", getUpdate_person())
+            .toString();
+    }
+	
 	public String getHousehold_id() {
 		return household_id;
 	}

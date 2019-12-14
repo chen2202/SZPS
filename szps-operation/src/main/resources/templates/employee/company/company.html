@@ -14,6 +14,12 @@
 								公司名称：<input type="text" name="company_name"/>
 							</li>
 							<li>
+								地址：<input type="text" name="address"/>
+							</li>
+							<li>
+								经营范围：<input type="text" name="business_scope"/>
+							</li>
+							<li>
 								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
 							    <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
 							</li>
@@ -28,6 +34,9 @@
 	            </a>
 				<a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="employee:worker:remove">
 		            <i class="fa fa-remove"></i> 删除
+		        </a>
+		        <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="system:company:export">
+		            <i class="fa fa-download"></i> 导出
 		        </a>
 	        </div>
 	        
@@ -50,6 +59,7 @@
 		        updateUrl: prefix + "/edit/{id}",
 		        removeUrl: prefix + "/remove",
 		        detailUrl: prefix + "/detail/{id}",
+		        exportUrl: prefix + "/export",
 		        sortName: "company_name",
 		        modalName: "公司",
 		        columns: [{

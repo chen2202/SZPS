@@ -38,8 +38,22 @@
 			    <td>资产代码</td>
 			  </tr>
 			  <tr>
-			    <td><input name="devType" th:field="*{devType}"  style="width: 90%; " class="form-control"/></td>
-			    <td><input name="status" th:field="*{status}"  style="width: 90%; " class="form-control"/></td>
+			    <td>
+			  <select class="selectpicker form-control" name="devType"  th:field="*{devType}"  id="devType" type="text" >
+					 <option value="机械设备">机械设备</option>
+					  <option value="电器电柜">电器电柜</option>
+					  <option value="自控仪表">自控仪表</option>
+					</select>  
+			    </td>
+			    <td>
+			    	<select class="selectpicker form-control" name="status" th:field="*{status}"  id="status" type="text" >
+					 <option value="正常运行">正常运行</option>
+					  <option value="停机保养">停机保养</option>
+					  <option value="设备停用">设备停用</option>
+					  <option value="设备故障">设备故障</option>
+					  <option value="设备封存">设备封存</option>
+					</select>			    
+			    </td>
 			    <td><input name="purpost" th:field="*{purpost}"  style="width: 90%; " class="form-control"/></td>
 			    <td><input name="useDep"  onclick="selectDeptTree()" id="treeName" th:field="*{useDep}"  style="width: 90%; "  class="form-control"/></td>
 			    <td colspan="2"><input name="installPlace" th:field="*{installPlace}"  style="width: 90%; " class="form-control"/></td>

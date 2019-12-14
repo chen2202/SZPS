@@ -43,7 +43,13 @@
 			    <td>设备原值：</td>
 			    <td><input name="origValue"  th:field="*{origValue}"  class="form-control"/></td>
 			    <td>设备类别：ＡＢＣ </td>
-			    <td><input name="devType"  th:field="*{devType}"  class="form-control"/></td>
+			    <td>
+	<select class="selectpicker form-control" name="devType"  id="devType" th:field="*{devType}"  type="text" >
+	 <option value="A">A</option>
+	  <option value="B">B</option>
+	  <option value="C">C</option>
+	</select>
+			    </td>
 			  </tr>
 			  <tr >
 			    <td >计划迁移时间：</td>

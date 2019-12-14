@@ -49,6 +49,17 @@ public class BuildingController extends BaseController {
         List<Building> list = service.selectList(obj);
         return getDataTable(list);
     }
+    
+    @GetMapping("/lista")
+    public String lista(String deptname, ModelMap mmap)
+    {
+    	Building obj = new Building();
+    	obj.setDeptname(deptname);
+    	mmap.put("deptname", deptname);
+        return prefix + "/buildingview";
+    }
+    
+    
     /**
      * 新增参数配置
      */

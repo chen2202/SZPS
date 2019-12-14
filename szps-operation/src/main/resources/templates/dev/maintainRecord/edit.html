@@ -42,7 +42,13 @@
 		    <td >安装地点：</td>
 		    <td colspan="2"><input name="installPlace"   th:field="*{installPlace}"  class="form-control"/></td>
 		    <td>设备类别：</td>
-		    <td><input name="devType"   th:field="*{devType}"  class="form-control"/></td>
+		    <td>
+		<select class="selectpicker form-control" name="devType"  id="devType" th:field="*{devType}" type="text" >
+	 <option value="机械设备">机械设备</option>
+	  <option value="电器电柜">电器电柜</option>
+	  <option value="自控仪表">自控仪表</option>
+	</select>		    
+		    </td>
 		    <td>上次保养时间：</td>
 		    <td><input name="lastDate"   th:field="*{lastDate}"  class="form-control"/></td>
 		  </tr>

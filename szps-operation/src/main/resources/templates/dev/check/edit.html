@@ -65,7 +65,13 @@
 		  <tr >
 		    <td  >　</td>
 		    <td >设备类型</td>
-		    <td colspan="13" ><input name="devType"  th:field="*{devType}"  class="form-control"/></td>
+		    <td colspan="13" >
+				<select class="selectpicker form-control" name="devType"  id="devType" th:field="*{devType}" type="text" >
+				 <option value="机械设备">机械设备</option>
+				  <option value="电器电柜">电器电柜</option>
+				  <option value="自控仪表">自控仪表</option>
+				</select>		    
+		    </td>
 		  </tr>
 		  <tr >
 		    <td  >　</td>

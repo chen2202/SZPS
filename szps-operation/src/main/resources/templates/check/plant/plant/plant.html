@@ -10,19 +10,12 @@
             <form id="formId">
                 <div class="select-list">
                     <ul>
-                        <li>
-                            <p>污水厂代码：</p>
-                            <select name="plantId">
-                                <option value=""></option>
-                                <option th:each="list : ${plantList}" th:text="${list.plantId}"
-                                        th:value="${list.plantId}"></option>
-                            </select>
-                        </li>
+                       
                         <li>
                             <p>污水厂名称：</p>
                             <select name="plantName" >
                                 <option value=""></option>
-                                <option th:each="list : ${plantList}" th:text="${list.plantName}"
+                                <option th:each="list : ${plantList1}" th:text="${list.plantName}"
                                         th:value="${list.plantName}"></option>
                             </select>
                         </li>

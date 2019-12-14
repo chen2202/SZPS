@@ -7,6 +7,7 @@ import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.utils.StringUtils;
 import com.szps.common.utils.file.FileUploadUtils;
+import com.szps.system.domain.SysUser;
 import com.szps.web.domain.check.PlantCheckDevice;
 import com.szps.web.domain.check.PlantCheckRecord;
 import com.szps.web.domain.drainage.Household;
@@ -140,6 +141,7 @@ public class WeChatController extends BaseController {
     @ResponseBody
     public TableDataInfo list(TbTask tbTask){
         List<TbTask> list = taskService.selectTaskList(tbTask);
+        SysUser user=new SysUser();
         for(int i=0;i<list.size();i++)
         {
             List <TbTaskStaff> tbTaskStaffs=taskStaffService.selectTbTaskStaffById(list.get(i).getTaskNumber());
@@ -151,6 +153,7 @@ public class WeChatController extends BaseController {
                     tbStaffs.add(staff);
             }
             list.get(i).setTbStaffList(tbStaffs);
+
         }
         return getDataTable(list);
     }

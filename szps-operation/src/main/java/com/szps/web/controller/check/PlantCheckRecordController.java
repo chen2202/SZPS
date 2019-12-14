@@ -12,7 +12,9 @@ import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
 import com.szps.common.utils.poi.ExcelUtil;
 import com.szps.framework.util.ShiroUtils;
+import com.szps.system.domain.SysDept;
 import com.szps.system.domain.SysUser;
+import com.szps.system.service.ISysDeptService;
 import com.szps.web.domain.check.PlantCheckDevice;
 import com.szps.web.service.check.IPlantCheckContentService;
 import com.szps.web.service.check.IPlantCheckDeviceService;
@@ -50,17 +52,29 @@ public class PlantCheckRecordController extends BaseController {
     @Autowired
     private IPlantCheckDeviceService plantCheckDeviceService;
 
+    @Autowired
+    private ISysDeptService iSysDeptService;
+
     @RequiresPermissions("check:plant:view")
     @GetMapping()
-    public String plant(PlantCheckDevice plantCheckDevice, Model model) {
+    public String plant(PlantCheckDevice plantCheckDevice, SysDept sysDept, Model model) {
         SysUser user = ShiroUtils.getSysUser();
         List<PlantCheckDevice> plantList = new ArrayList<>();
+        List<PlantCheckDevice> plantList2 = new ArrayList<>();
         if (user.getUserName().equals("admin")) {
+            List<SysDept> sysDepts = iSysDeptService.selectDeptList(sysDept);
+            for (int i = 0; i < sysDepts.size(); i++) {
+                PlantCheckDevice plant = new PlantCheckDevice();
+                plant.setPlantName(sysDepts.get(i).getDeptName());
+                plantList2.add(plant);
+            }
             plantList = plantCheckDeviceService.selectPlantCheckDeviceList(plantCheckDevice);
         } else {
             plantList = plantCheckContentService.getALL(user);
+            plantList2 = plantList;
         }
         model.addAttribute("plantList", plantList);
+        model.addAttribute("plantList1", plantList2);
         return prefix + "/plant";
     }
 
@@ -124,9 +138,6 @@ public class PlantCheckRecordController extends BaseController {
     public AjaxResult addSave(PlantCheckRecord plantCheckRecord) {
         return toAjax(plantCheckRecordService.insertPlantCheckRecord(plantCheckRecord));
     }
-
-
-
 
 
     /**

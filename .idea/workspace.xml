@@ -3,11 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="cc7b956e-4cbc-4a6b-8b84-b165eb2e201f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-admin/src/main/resources/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/application-druid.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/PlantCheckContentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/PlantCheckContentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/event/EventSubmit.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/event/EventSubmit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/PlantCheckDeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/PlantCheckDeviceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/PlantCheckRecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/PlantCheckRecordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/wechat/WeChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/wechat/WeChatController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/application-druid.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/event/EventSubmitMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/event/EventSubmitMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/device/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/device/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/plant/plant.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/plant/plant.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/submit.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/submit.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -123,7 +127,11 @@
       <workItem from="1573861879166" duration="1185000" />
       <workItem from="1573867790103" duration="677000" />
       <workItem from="1573869480153" duration="14000" />
-      <workItem from="1573951475133" duration="3893000" />
+      <workItem from="1573951475133" duration="4493000" />
+      <workItem from="1576062956738" duration="374000" />
+      <workItem from="1576211799115" duration="4812000" />
+      <workItem from="1576233805510" duration="2580000" />
+      <workItem from="1576311527133" duration="1551000" />
     </task>
     <servers />
   </component>

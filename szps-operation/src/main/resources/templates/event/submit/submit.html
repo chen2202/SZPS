@@ -20,11 +20,10 @@
                         </li>
                         <li>
                             <p>事件属性：</p>
-                            <select name="eventAttribute" th:with="type=${@dict.getType('')}">
+                            <select name="eventAttribute" >
                                 <option value=""></option>
                                 <option th:each="result : ${emailList}" th:value="${result.eventAttribute}" th:text="${result.eventAttribute}"></option>
-                                <option th:each="dict : ${type}" th:text="${dict.dictLabel}"
-                                        th:value="${dict.dictValue}"></option>
+
                             </select>
                         </li>
                         <li>
@@ -140,6 +139,17 @@
                 }]
         };
         $.table.init(options);
+    });
+
+
+    $("select").each(function (i, n) {
+        var options = "";
+        $(n).find("option").each(function (j, m) {
+            if (options.indexOf($(m)[0].outerHTML) == -1) {
+                options += $(m)[0].outerHTML;
+            }
+        });
+        $(n).html(options);
     });
 </script>
 </body>

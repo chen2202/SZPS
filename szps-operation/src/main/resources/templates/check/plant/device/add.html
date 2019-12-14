@@ -1,82 +1,88 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:include="include :: header('新增点检设备资料')" />
-    <th:block th:include="include :: datetimepicker-css" />
+    <th:block th:include="include :: header('新增点检设备资料')"/>
+    <th:block th:include="include :: datetimepicker-css"/>
 </head>
 <body class="white-bg">
-    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
-        <form class="form-horizontal m" id="form-device-add" th:object="${user}">
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">污水厂代码：</label>
-                <div class="col-sm-8">
-                    <input name="plantId" class="form-control" type="text" required>
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-device-add" th:object="${user}">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">污水厂代码：</label>
+            <div class="col-sm-8">
+                <input name="plantId" class="form-control" type="text" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">污水厂名称：</label>
+            <div class="col-sm-8">
+                <select name="plantName" class="form-control m-b" required>
+                    <option th:each="list : ${plantList1}" th:text="${list.plantName}"
+                            th:value="${list.plantName}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">设备ID：</label>
+            <div class="col-sm-8">
+                <input name="deviceId" class="form-control" type="text" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">设备名称：</label>
+            <div class="col-sm-8">
+                <input name="deviceName" class="form-control" type="text" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">点检ID：</label>
+            <div class="col-sm-8">
+                <input name="checkId" class="form-control" type="text" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">创建者：</label>
+            <div class="col-sm-8">
+                <input th:field="*{deviceCreateuser}" name="deviceCreateuser" class="form-control" type="text" readonly
+                       required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">创建时间：</label>
+            <div class="col-sm-8">
+                <div class="input-group date">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input name="deviceCreatetime" id="laydate-demo-3" class="form-control"
+                           placeholder="yyyy-MM-dd HH:mm:ss" type="text" required>
                 </div>
             </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">污水厂名称：</label>
-                <div class="col-sm-8">
-                    <input name="plantName" class="form-control" type="text" required>
-                </div>
-            </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">设备ID：</label>
-                <div class="col-sm-8">
-                    <input name="deviceId" class="form-control" type="text" required>
-                </div>
-            </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">设备名称：</label>
-                <div class="col-sm-8">
-                    <input name="deviceName" class="form-control" type="text" required>
-                </div>
-            </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">点检ID：</label>
-                <div class="col-sm-8">
-                    <input name="checkId" class="form-control" type="text" required>
-                </div>
-            </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">创建者：</label>
-                <div class="col-sm-8">
-                    <input  th:field="*{deviceCreateuser}" name="deviceCreateuser" class="form-control" type="text" readonly required>
-                </div>
-            </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">创建时间：</label>
-                <div class="col-sm-8">
-                    <div class="input-group date">
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                        <input name="deviceCreatetime" id="laydate-demo-3" class="form-control" placeholder="yyyy-MM-dd HH:mm:ss" type="text" required>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-    <th:block th:include="include :: footer" />
-    <th:block th:include="include :: datetimepicker-js" />
-    <script type="text/javascript">
-        var prefix = ctx + "check/plant/device"
-        $("#form-device-add").validate({
-            focusCleanup: true
-        });
+        </div>
+    </form>
+</div>
+<th:block th:include="include :: footer"/>
+<th:block th:include="include :: datetimepicker-js"/>
+<script type="text/javascript">
+    var prefix = ctx + "check/plant/device"
+    $("#form-device-add").validate({
+        focusCleanup: true
+    });
 
-        function submitHandler() {
-            if ($.validate.form()) {
-                $.operate.save(prefix + "/add", $('#form-device-add').serialize());
-            }
+    function submitHandler() {
+        if ($.validate.form()) {
+            $.operate.save(prefix + "/add", $('#form-device-add').serialize());
         }
-        layui.use('laydate', function () {
-            var laydate = layui.laydate;
+    }
 
-            laydate.render({
-                elem: '#laydate-demo-3',
-                type: 'datetime',
-                trigger: 'click'
-            });
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
 
+        laydate.render({
+            elem: '#laydate-demo-3',
+            type: 'datetime',
+            trigger: 'click'
         });
-    </script>
+
+    });
+</script>
 </body>
 </html>

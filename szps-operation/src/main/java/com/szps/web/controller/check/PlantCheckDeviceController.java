@@ -1,5 +1,6 @@
 package com.szps.web.controller.check;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.szps.common.annotation.Log;
@@ -9,10 +10,13 @@ import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
 import com.szps.common.utils.poi.ExcelUtil;
 import com.szps.framework.util.ShiroUtils;
+import com.szps.system.domain.SysDept;
 import com.szps.system.domain.SysUser;
+import com.szps.system.service.ISysDeptService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,6 +40,10 @@ public class PlantCheckDeviceController extends BaseController
 
     @Autowired
     private IPlantCheckDeviceService plantCheckDeviceService;
+
+
+    @Autowired
+    private ISysDeptService iSysDeptService;
 
     @RequiresPermissions("check:device:view")
     @GetMapping()
@@ -74,13 +82,21 @@ public class PlantCheckDeviceController extends BaseController
      * 新增点检设备资料
      */
     @GetMapping("/add")
-    public String add(ModelMap mmap)
+    public String add(ModelMap mmap, SysDept sysDept, Model model)
     {
 
         SysUser user = ShiroUtils.getSysUser();
 
         PlantCheckDevice device=new PlantCheckDevice();
         device.setDeviceCreateuser(user.getUserName());
+        List<SysDept> sysDepts = iSysDeptService.selectDeptList(sysDept);
+        List<PlantCheckDevice> plantList2 = new ArrayList<>();
+        for (int i = 0; i < sysDepts.size(); i++) {
+            PlantCheckDevice plant = new PlantCheckDevice();
+            plant.setPlantName(sysDepts.get(i).getDeptName());
+            plantList2.add(plant);
+        }
+        model.addAttribute("plantList1", plantList2);
         mmap.put("user",device);
 
         return prefix + "/add";

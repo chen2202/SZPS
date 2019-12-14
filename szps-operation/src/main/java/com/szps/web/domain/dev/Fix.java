@@ -41,6 +41,17 @@ public class Fix extends BaseEntity {
 	private String doneTime;// 完成时间
 	private String usesTime;// 维修耗时
 	private String delFlag;
+	private String jobnumber;//派工单号
+	
+	
+	public String getJobnumber() {
+		return jobnumber;
+	}
+
+	public void setJobnumber(String jobnumber) {
+		this.jobnumber = jobnumber;
+	}
+
 	public Long getId() {
 		return id;
 	}

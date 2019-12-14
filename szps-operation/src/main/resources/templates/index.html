@@ -74,7 +74,7 @@
 										<li th:each="dmenu : ${emenu.children}">
 											<a th:if="${#lists.isEmpty(dmenu.children)}" th:class="${dmenu.target == ''} ? |menuItem| : ${dmenu.target}" th:utext="${dmenu.menuName}" th:href="@{${dmenu.url}}">四级菜单</a>
 											<a th:if="${not #lists.isEmpty(dmenu.children)}" href="#">[[${dmenu.menuName}]]<span class="fa arrow"></span></a>
-											<ul th:if="${not #lists.isEmpty(dmenu.children)}" class="nav nav-fourth-level">
+											<ul th:if="${not #lists.isEmpty(dmenu.children)}" class="nav nav-fifth-level">
 												<li th:each="fmenu : ${dmenu.children}">
 													<a th:class="${fmenu.target == ''} ? |menuItem| : ${fmenu.target}" th:text="${fmenu.menuName}" th:href="@{${fmenu.url}}">五级菜单</a>
 												</li>

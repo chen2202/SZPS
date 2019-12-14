@@ -36,6 +36,7 @@
 		<result     property="usesTime"   column="usesTime"   />
 
 		<result     property="deptId"   column="deptId"   />
+		<result     property="jobnumber"   column="jobnumber"   />
 		
         <result property="createBy"      column="create_by"      />
         <result property="createTime"    column="create_time"    />
@@ -62,6 +63,9 @@
 			<if test=" deptId !=null and deptId != ''">
 				and deptId = #{deptId}
 			</if>
+			<if test=" jobnumber !=null and jobnumber != ''">
+				and jobnumber = #{jobnumber}
+			</if>
 		</where>
 	</sql>
 	
@@ -81,7 +85,9 @@
 		<if test=" recordDate != null and recordDate != ''">
 			AND recordDate = #{recordDate}
 		</if>
-		
+		<if test=" jobnumber !=null and jobnumber != ''">
+				and jobnumber = #{jobnumber}
+			</if>
 		order by r.id, r.recordDate
     </select>
       <select id="selectById" parameterType="Long" resultMap="result">
@@ -132,6 +138,7 @@
 			<if test=" planTime != null and planTime != ''">planTime = #{planTime},</if>
 			<if test=" doneTime != null and doneTime != ''">doneTime = #{doneTime},</if>
 			<if test=" usesTime != null and usesTime != ''">usesTime = #{usesTime},</if>
+			<if test=" jobnumber != null and jobnumber != ''">jobnumber = #{jobnumber},</if>
 
 			<if test=" deptId != null and deptId != 0">deptId = #{deptId},</if>
 			<if test=" delFlag != null and delFlag!= ''">delFlag = #{delFlag},</if>
@@ -179,6 +186,7 @@
 			<if test=" planTime != null and  planTime != ''">planTime,</if>
 			<if test=" doneTime != null and  doneTime != ''">doneTime,</if>
 			<if test=" usesTime != null and  usesTime != ''">usesTime,</if>
+			<if test=" jobnumber != null and  jobnumber != ''">jobnumber,</if>
 
 			<if test=" deptId != null and  deptId != 0">deptId,</if>
 			<if test=" remark != null and remark != ''">REMARK,</if>
@@ -217,6 +225,7 @@
 			<if test=" planTime != null and planTime != ''">#{planTime},</if>
 			<if test=" doneTime != null and doneTime != ''">#{doneTime},</if>
 			<if test=" usesTime != null and usesTime != ''">#{usesTime},</if>
+			<if test=" jobnumber != null and jobnumber != ''">#{jobnumber},</if>
 
 			<if test=" deptId != null and  deptId != ''">#{deptId},</if>
 			<if test=" remark != null and remark != ''">#{remark},</if>

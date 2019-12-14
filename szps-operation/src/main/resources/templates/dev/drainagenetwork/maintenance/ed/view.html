@@ -9,30 +9,22 @@
 			<ul>
 				
 				<li>
-                   	<a class="btn"  th:href="'/op/dev/ed'"  style="border-color: #1a7bb9">内窥检测数据</a>
+                   	<a class="btn"  th:href="'/op/dev/ed'"  style="border-color: #EE0000">内窥检测数据</a>
                    	<a class="btn"  th:href="'/op/dev/nm'"  style="border-color: #1a7bb9">管网养护数据</a>
-                   	<a class="btn"  th:href="'/op/dev/drainagenetworkmaintenance'"  style="border-color: #EE0000">维保数据</a>
+                   	<a class="btn"  th:href="'/op/dev/drainagenetworkmaintenance'"  style="border-color: #1a7bb9">维保数据</a>
 				</li>						
 				
 			</ul>
 		</div>
 		<div class="row">
 			<div class="col-sm-12 search-collapse">
-				<form id="drainagenetworkmaintenance-form">
+				<form id="form">
 					<input name=deptid type="hidden" id="treeId"/>
 					<div class="select-list">
 						<ul>
 							<li>
-		                         <label >设备名称：</label>
-                            	<input name="devname"  id="devname" type="text" >
-							</li>
-							<li>
-		                         <label >类型：</label>
-                            	<select class="selectpicker" name="optype"  id="optype">
-                            		<option selected value=""></option>
-                            	 	<option  value="维修">维修</option>
-								  	<option value="保养">保养</option>
-								</select>
+		                         <label >作业编号：</label>
+                            	<input name="workid"  id="workid" type="text" >
 							</li>
 <!-- 							<li>
 		                        <label >维保类别：</label>
@@ -53,13 +45,13 @@
 			</div>
 
 	        <div class="btn-group-sm" id="toolbar" role="group">
-		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:drainagenetworkmaintenance:add">
+		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:ed:add">
 		            <i class="fa fa-plus"></i> 新增
 		        </a>
-		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="dev:drainagenetworkmaintenance:delete">
+		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="dev:ed:delete">
 		            <i class="fa fa-remove"></i> 删除
 		        </a>
-		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="dev:drainagenetworkmaintenance:export">
+		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="dev:ed:export">
 		            <i class="fa fa-download"></i> 导出
 		        </a> -->
 	        </div>
@@ -71,10 +63,10 @@
     </div>
     <th:block th:include="include :: footer" />
     <script th:inline="javascript">
-        var prefix = ctx + "op/dev/drainagenetworkmaintenance";
-        var viewFlag = [[${@permission.hasPermi('dev:drainagenetworkmaintenance:view')}]];
-        var editFlag = [[${@permission.hasPermi('dev:drainagenetworkmaintenance:edit')}]];
-        var removeFlag = [[${@permission.hasPermi('dev:drainagenetworkmaintenance:delete')}]];
+        var prefix = ctx + "op/dev/ed";
+        var viewFlag = [[${@permission.hasPermi('dev:ed:view')}]];
+        var editFlag = [[${@permission.hasPermi('dev:ed:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('dev:ed:delete')}]];
         
        
         $(function() {
@@ -88,24 +80,36 @@
                 columns: [{
 		            checkbox: true
 		        },
-				{
-					field : 'id', 
-					title : '序号' 
-				},
-				{field: 'optime',title: '时间',},
-				{field: 'devname',title: '设备名称',},
-				{field: 'optype',title: '类型',},
-				{field: 'opdetails',title: '内容',},
-				{field: 'replaceparts',title: '更换零配件',},
-				{field: 'operator',title: '操作人员',},
+		        {field: 'workid',title: '作业编号',},
+		        {field: 'exp_no',title: '检测管渠编号',},
+		        {field: 's_point',title: '检测起点管线点号',},
+		        {field: 'e_point',title: '检测终点管线点号',},
+		        {field: 'sampletime',title: '检测时间',},
+		        {field: 'detectdep',title: '检测单位',},
+		        {field: 'detect_person',title: '检测人员',},
+		        {field: 'detect_method',title: '检测方法',},
+		        {field: 'detect_dir',title: '检测方向',},
+		        {field: 'pipe_block',title: '封堵情况',},
+		        {field: 'func_defect',title: '功能性缺陷',},
+		        {field: 'func_class',title: '功能性缺陷等级',},
+		        {field: 'struct_defect',title: '结构性缺陷',},
+		        {field: 'struct_class',title: '结构性缺陷等级',},
+		        {field: 'repair_index',title: '修复指数',},
+		        {field: 'maintain_index',title: '养护指数',},
+		        {field: 'problem',title: '缺陷描述',},
+		        {field: 'video_filename',title: '影像文件名',},
+		        {field: 'report_dept',title: '数据填报单位',},
+		        {field: 'reportdate',title: '填报日期',},
+		        {field: 'note',title: '备注',},
+
 
 		        {
                     title: '操作',
                     align: 'center',
                     formatter: function(value, row, index) {
                         var actions = [];
-                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.editTab(\'' + row.id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
-                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.id + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.editTab(\'' + row.workid + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.workid + '\')"><i class="fa fa-remove"></i>删除</a>');
                         return actions.join('');
                     }
                 }]

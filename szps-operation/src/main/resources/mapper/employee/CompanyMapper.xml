@@ -20,9 +20,15 @@
 	<!-- 查询全部公司信息 -->
 	<select id="selectAllCompany" parameterType="Company" resultMap="companyResult">
 		select COMPANY_ID,COMPANY_NAME,ADDRESS,REPRESENTATIVE,BUSINESS_SCOPE,
-		REGISTERED_CAPITAL,QUALIFICATION from EMPLOYEE_T_COMPANY
+		REGISTERED_CAPITAL,QUALIFICATION from EMPLOYEE_T_COMPANY where 1=1
 		<if test="company_name != null and company_name != ''">
-			where COMPANY_NAME = #{company_name}
+			and COMPANY_NAME = #{company_name}
+		</if>
+		<if test="address != null and address != ''">
+			and ADDRESS like '%${address}%'
+		</if>
+		<if test="business_scope != null and business_scope != ''">
+			and BUSINESS_SCOPE like '%${business_scope}%'
 		</if>
 	</select>
 	

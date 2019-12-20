@@ -59,8 +59,12 @@ public class DmAuditController extends BaseController{
     @ResponseBody
     public TableDataInfo list(DmData dmData)
     {
+
+        System.out.println("输出");
+        System.out.println(dmData);
+
         startPage();
-        List<DmData> list = dataService.selectNotApprovalDataList(dmData);
+        List<DmData> list = dataService.selectApprovalDataList(dmData);
         return getDataTable(list);
     }
 
@@ -87,30 +91,28 @@ public class DmAuditController extends BaseController{
         return error();
     }
 
+//    /**
+//     * 审批结果集合--->已通过
+//     * */
+//    @PostMapping("/pass")
+//    @ResponseBody
+//    public TableDataInfo pass(DmData dmData)
+//    {
+//        startPage();
+//        List<DmData> list = dataService.selectPassDataList(dmData);
+//        return getDataTable(list);
+//    }
 
-    /**
-     * 审批结果集合--->已通过
-     * */
-    @PostMapping("/pass")
-    @ResponseBody
-    public TableDataInfo pass(DmData dmData)
-    {
-        startPage();
-        List<DmData> list = dataService.selectPassDataList(dmData);
-        return getDataTable(list);
-    }
-
-
-    /**
-     * 审批结果集合--->驳回
-     */
-    @PostMapping("/reject")
-    @ResponseBody
-    public TableDataInfo reject(DmData dmData)
-    {
-        startPage();
-        List<DmData> list = dataService.selectRejectDataList(dmData);
-        return getDataTable(list);
-    }
+//    /**
+//     * 审批结果集合--->驳回
+//     */
+//    @PostMapping("/reject")
+//    @ResponseBody
+//    public TableDataInfo reject(DmData dmData)
+//    {
+//        startPage();
+//        List<DmData> list = dataService.selectRejectDataList(dmData);
+//        return getDataTable(list);
+//    }
 
 }

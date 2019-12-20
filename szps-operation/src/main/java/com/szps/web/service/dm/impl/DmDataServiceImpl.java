@@ -24,18 +24,13 @@ public class DmDataServiceImpl implements IDmDataService{
 	}
 
 	@Override
-	public List<DmData> selectNotApprovalDataList(DmData dmData) {
-		return dmDataMapper.selectNotApprovalDataList(dmData);
+	public List<DmData> selectApprovalDataList(DmData dmData) {
+		return dmDataMapper.selectApprovalDataList(dmData);
 	}
 
 	@Override
 	public List<DmData> selectPassDataList(DmData dmData) {
 		return dmDataMapper.selectPassDataList(dmData);
-	}
-
-	@Override
-	public List<DmData> selectRejectDataList(DmData dmData) {
-		return dmDataMapper.selectRejectDataList(dmData);
 	}
 
 	@Override

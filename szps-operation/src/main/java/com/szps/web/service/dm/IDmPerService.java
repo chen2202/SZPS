@@ -19,12 +19,12 @@ public interface IDmPerService {
 
 
     /**
-     * 根据条件分页查询未审批的资料权限申请列表
+     * 根据条件分页查询资料权限申请列表
      *
      * @param udp
      * @return 资料信息集合信息
      */
-    public List<DmUDP> selectNotApprovalPerList(DmUDP udp);
+    public List<DmUDP> selectApprovalPerList(DmUDP udp);
 
     /**
      * 根据条件分页查询审批通过的资料权限申请列表
@@ -33,14 +33,6 @@ public interface IDmPerService {
      * @return 资料信息集合信息
      */
     public List<DmUDP> selectPassPerList(DmUDP udp);
-
-    /**
-     * 根据条件分页查询审批驳回的资料权限申请列表
-     *
-     * @param udp
-     * @return 资料信息集合信息
-     */
-    public List<DmUDP> selectRejectPerList(DmUDP udp);
 
 
     /**

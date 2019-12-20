@@ -30,7 +30,7 @@ public interface DmDataMapper {
      * @param dmData 资料信息
      * @return 资料信息集合信息
      */
-    public List<DmData> selectNotApprovalDataList(DmData dmData);
+    public List<DmData> selectApprovalDataList(DmData dmData);
 
     /**
      * 根据条件分页查询审批通过的资料列表
@@ -39,14 +39,6 @@ public interface DmDataMapper {
      * @return 资料信息集合信息
      */
     public List<DmData> selectPassDataList(DmData dmData);
-
-    /**
-     * 根据条件分页查询审批驳回的资料列表
-     *
-     * @param dmData 资料信息
-     * @return 资料信息集合信息
-     */
-    public List<DmData> selectRejectDataList(DmData dmData);
 
     /**
      * 根据条件分页查询全部被删除的资料列表(状态被修改，实际未删除)

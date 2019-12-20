@@ -24,18 +24,13 @@ public class DmPerServiceImpl implements IDmPerService {
     }
 
     @Override
-    public List<DmUDP> selectNotApprovalPerList(DmUDP udp) {
-        return dmPerMapper.selectNotApprovalPerList(udp);
+    public List<DmUDP> selectApprovalPerList(DmUDP udp) {
+        return dmPerMapper.selectApprovalPerList(udp);
     }
 
     @Override
     public List<DmUDP> selectPassPerList(DmUDP udp) {
         return dmPerMapper.selectPassPerList(udp);
-    }
-
-    @Override
-    public List<DmUDP> selectRejectPerList(DmUDP udp) {
-        return dmPerMapper.selectRejectPerList(udp);
     }
 
     @Override

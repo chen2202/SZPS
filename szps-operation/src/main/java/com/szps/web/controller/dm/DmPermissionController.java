@@ -46,32 +46,7 @@ public class DmPermissionController extends BaseController {
     public TableDataInfo list(DmUDP udp)
     {
         startPage();
-        List<DmUDP> list = perService.selectNotApprovalPerList(udp);
-        return getDataTable(list);
-    }
-
-    /**
-     * 审批结果集合--->已通过
-     * */
-    @PostMapping("/pass")
-    @ResponseBody
-    public TableDataInfo pass(DmUDP udp)
-    {
-        startPage();
-        List<DmUDP> list = perService.selectPassPerList(udp);
-        return getDataTable(list);
-    }
-
-
-    /**
-     * 审批结果集合--->驳回
-     */
-    @PostMapping("/reject")
-    @ResponseBody
-    public TableDataInfo reject(DmUDP udp)
-    {
-        startPage();
-        List<DmUDP> list = perService.selectRejectPerList(udp);
+        List<DmUDP> list = perService.selectApprovalPerList(udp);
         return getDataTable(list);
     }
 

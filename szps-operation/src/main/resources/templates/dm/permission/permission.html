@@ -7,6 +7,12 @@
 <div class="container-div">
     <div class="row">
 
+        <div class="col-sm-12 search-collapse center">
+            <div class="col-sm-4" align="center"><a th:href="@{/dm/data}" class="btn-success btn">规划资料展示</a></div>
+            <div class="col-sm-4" align="center"><a th:href="@{/dm/audit}" class="btn-success btn">规划任务审批</a></div>
+            <div class="col-sm-4" align="center"><a th:href="@{/dm/permission}" class="btn-success btn">资料权限审批</a></div>
+        </div>
+
         <div class="col-sm-12 search-collapse">
             <form id="data-form">
                 <div class="select-list">
@@ -17,6 +23,15 @@
                         <!--<li>行政区：-->
                             <!--<input type="text" name="data.dataBorough" />-->
                         <!--</li>-->
+                        <li>
+                            <label>状态：</label>
+                            <select  name="perStatus">
+                                <option value="">所有</option>
+                                <option value="0">未审核</option>
+                                <option value="1">通过</option>
+                                <option value="2">驳回</option>
+                            </select>
+                        </li>
                         <li class="select-time">
                             <label>申请时间：</label>
                             <input type="text" class="time-input" id="startTime" placeholder="开始时间" name="params[beginTime]" lay-key="3">
@@ -40,12 +55,12 @@
         <!--<a class="btn btn-primary single disabled" onclick="$.operate.editTab()">-->
         <!--<i class="fa fa-edit"></i> 修改-->
         <!--</a>-->
-        <a class="btn btn-primary multiple disabled" onclick="passAll()">
-        <i class="fa fa-check-square-o"></i> 全部通过
-        </a>
-        <a class="btn btn-danger multiple disabled" onclick="rejectAll()">
-            <i class="fa fa-remove"></i> 全部驳回
-        </a>
+        <!--<a class="btn btn-primary multiple disabled" onclick="passAll()">-->
+        <!--<i class="fa fa-check-square-o"></i> 全部通过-->
+        <!--</a>-->
+        <!--<a class="btn btn-danger multiple disabled" onclick="rejectAll()">-->
+            <!--<i class="fa fa-remove"></i> 全部驳回-->
+        <!--</a>-->
         <!--<a class="btn btn-warning" onclick="$.table.exportExcel()">-->
         <!--<i class="fa fa-download"></i> 导出-->
         <!--</a>-->
@@ -65,6 +80,7 @@
         var options = {
             url: prefix + "/list",
             passAllUrl:prefix+"/passAll",
+            removeUrl: prefix + "/remove",
             rejectAllUrl:prefix+"/rejectAll",
             modalName: "资料权限审核",
             columns: [{
@@ -101,12 +117,34 @@
                     sortable: true
                 },
                 {
+                    field: 'perStatus',
+                    title: '状态',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        if(row.perStatus=='0'){
+                            actions.push("<span class=\"badge badge-warning\">未审核</span>");
+                        }else if(row.perStatus=='1'){
+                            actions.push("<span class=\"badge badge-primary\">通过</span>");
+                        }else{
+                            actions.push("<span class=\"badge badge-danger\">驳回</span>");
+                        }
+                        return actions.join('');
+                    }
+                },
+                {
                     title: '操作',
                     align: 'center',
                     formatter: function(value, row, index) {
                         var actions = [];
-                        actions.push('<a class="btn btn-primary btn-xs" href="javascript:void(0)" onclick="updateState(\'' + row.perId + '\',1)"><i class="fa fa-check-square-o"></i>通过</a> ');
-                        actions.push('<a class="btn btn-danger btn-xs" href="javascript:void(0)" onclick="updateState(\'' + row.perId + '\',2)"><i class="fa fa-remove"></i>驳回</a> ');
+
+                        if(row.perStatus=='0'){
+                            actions.push('<a class="btn btn-primary btn-xs" href="javascript:void(0)" onclick="updateState(\'' + row.perId + '\',1)"><i class="fa fa-check-square-o"></i>通过</a> ');
+                            actions.push('<a class="btn btn-danger btn-xs" href="javascript:void(0)" onclick="updateState(\'' + row.perId + '\',2)"><i class="fa fa-remove"></i>驳回</a> ');
+                        }else if(row.perStatus=='1'){
+                            actions.push('<a class="btn btn-success btn-xs" href="javascript:void(0)" onclick="cancel(\'' + row.perId + '\')"><i class="fa fa-remove"></i>取消权限</a>');
+                        }else{
+                            actions.push('<a class="btn btn-danger btn-xs" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.perId + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        }
                         return actions.join('');
                     }
                 }]
@@ -149,6 +187,19 @@
             var url = $.table._option.rejectAllUrl;
             var data = { "ids": rows.join() };
             $.operate.submit(url, "post", "json", data);
+        });
+    }
+
+    // 取消用户资料访问权限(删除)
+    function cancel(id){
+        $.modal.confirm("确认取消？", function() {
+            var url = $.common.isEmpty(id) ? $.table._option.removeUrl : $.table._option.removeUrl.replace("{id}", id);
+            if($.table._option.type == table_type.bootstrapTreeTable) {
+                $.operate.get(url);
+            } else {
+                var data = { "ids": id };
+                $.operate.submit(url, "post", "json", data);
+            }
         });
     }
 </script>

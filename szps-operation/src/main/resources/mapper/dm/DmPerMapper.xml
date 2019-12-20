@@ -51,7 +51,7 @@
     </resultMap>
 
     <sql id="selectListPrefix">
-        select distinct p.per_id,p.data_id,p.user_id,p.per_date,
+        select distinct p.per_id,p.data_id,p.user_id,p.per_date,p.per_status,
         d.data_date,d.data_level,d.data_theme,
         u.login_name,u.user_name
         from dm_permission p
@@ -78,18 +78,22 @@
         )
     </insert>
 
-    <select id="selectNotApprovalPerList" parameterType="DmUDP" resultMap="DmUDPResult">
+    <select id="selectApprovalPerList" parameterType="DmUDP" resultMap="DmUDPResult">
         <include refid="selectListPrefix"></include>
-        where p.per_status='0'
-        <if test="user.userName != null and user.userName != ''">
-            AND u.user_name like concat(concat('%',#{user.userName}),'%')
-        </if>
-        <if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
-            AND p.per_date &gt;= to_date(#{params.beginTime},'yyyy-MM-dd HH24:mi:ss')
-        </if>
-        <if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
-            AND p.per_date &lt;= to_date(#{params.endTime},'yyyy-MM-dd HH24:mi:ss')
-        </if>
+        <where>
+            <if test="perStatus != null and perStatus != ''">
+                AND p.per_status = #{perStatus}
+            </if>
+            <if test="user.userName != null and user.userName != ''">
+                AND u.user_name like concat(concat('%',#{user.userName}),'%')
+            </if>
+            <if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+                AND p.per_date &gt;= to_date(#{params.beginTime},'yyyy-MM-dd HH24:mi:ss')
+            </if>
+            <if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+                AND p.per_date &lt;= to_date(#{params.endTime},'yyyy-MM-dd HH24:mi:ss')
+            </if>
+        </where>
         <!-- 数据范围过滤 -->
         ${params.dataScope}
     </select>
@@ -97,22 +101,6 @@
     <select id="selectPassPerList" parameterType="DmUDP" resultMap="DmUDPResult">
         <include refid="selectListPrefix"></include>
         where p.per_status='1'
-        <if test="user.userName != null and user.userName != ''">
-            AND u.user_name like concat(concat('%',#{user.userName}),'%')
-        </if>
-        <if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
-            AND p.per_date &gt;= to_date(#{params.beginTime},'yyyy-MM-dd HH24:mi:ss')
-        </if>
-        <if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
-            AND p.per_date &lt;= to_date(#{params.endTime},'yyyy-MM-dd HH24:mi:ss')
-        </if>
-        <!-- 数据范围过滤 -->
-        ${params.dataScope}
-    </select>
-
-    <select id="selectRejectPerList" parameterType="DmUDP" resultMap="DmUDPResult">
-        <include refid="selectListPrefix"></include>
-        where p.per_status='2'
         <if test="user.userName != null and user.userName != ''">
             AND u.user_name like concat(concat('%',#{user.userName}),'%')
         </if>

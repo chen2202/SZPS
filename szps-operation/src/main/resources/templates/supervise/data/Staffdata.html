@@ -47,6 +47,10 @@
 				<a class="btn" th:href="'/supervise/data2/data2'"  style="margin-left: 30px;border-color: #1a7bb9">
 					随机规则管理
 				</a>
+				<button class="btn btn-success " type="button" name="showSearch" title="高级筛选" style="margin-left: 30px;">高级筛选</button>
+				<a class="btn btn-success" onclick="check()" shiro:hasPermission="supervise:task:add" >
+					双规则检查
+				</a>
 			</div>
 			<br/>
 			<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="supervise:data1:add">
@@ -132,41 +136,10 @@
         };
         $.table.init(options);
     });
-
-    /* 角色管理-分配数据权限 */
-    function authDataScope(roleId) {
-        var url = prefix + '/authDataScope/' + roleId;
-        $.modal.open("分配数据权限", url);
+    function check() {
+        $.modal.open("添加双随机检查任务" ,ctx + "supervise/task/TaskCheck");
     }
 
-    /* 角色管理-分配用户 */
-    function authUser(roleId) {
-        var url = prefix + '/authUser/' + roleId;
-        $.modal.openTab("分配用户", url);
-    }
-
-    /* 角色状态显示 */
-    function statusTools(row) {
-        if (row.status == 1) {
-            return '<i class=\"fa fa-toggle-off text-info fa-2x\" onclick="enable(\'' + row.roleId + '\')"></i> ';
-        } else {
-            return '<i class=\"fa fa-toggle-on text-info fa-2x\" onclick="disable(\'' + row.roleId + '\')"></i> ';
-        }
-    }
-
-    /* 角色管理-停用 */
-    function disable(roleId) {
-        $.modal.confirm("确认要停用角色吗？", function() {
-            $.operate.post(prefix + "/changeStatus", { "roleId": roleId, "status": 1 });
-        })
-    }
-
-    /* 角色管理启用 */
-    function enable(roleId) {
-        $.modal.confirm("确认要启用角色吗？", function() {
-            $.operate.post(prefix + "/changeStatus", { "roleId": roleId, "status": 0 });
-        })
-    }
 </script>
 </body>
 </html>

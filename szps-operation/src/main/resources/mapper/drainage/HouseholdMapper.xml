@@ -66,6 +66,9 @@
         <if test="household_name != null and household_name !=''">
         	AND HOUSEHOLD_NAME = #{household_name}
         </if>
+        <if test="record_state != null and record_state !=''">
+        	AND RECORD_STATE = #{record_state}
+        </if>
         <if test="administrative_name != null and administrative_name !=''">
         	AND ADMINISTRATIVE_NAME = #{administrative_name}
         </if>
@@ -74,6 +77,9 @@
         </if>
         <if test="committees != null and committees !=''">
         	AND COMMITTEES = #{committees}
+        </if>
+        <if test="sewage_category != null and sewage_category !=''">
+        	AND SEWAGE_CATEGORY = #{sewage_category}
         </if>
         <if test="drainage_license_end_time != null and drainage_license_end_time !=''">
         	AND DRAINAGE_LICENSE_END_TIME &gt;= to_date(#{drainage_license_end_time},'yyyy-mm-dd') and

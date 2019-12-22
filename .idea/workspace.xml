@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cc7b956e-4cbc-4a6b-8b84-b165eb2e201f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/resources/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/application-druid.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/PlantCheckDeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/PlantCheckDeviceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/PlantCheckRecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/PlantCheckRecordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/wechat/WeChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/wechat/WeChatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/application-druid.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/device/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/device/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/plant/plant.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/plant/plant.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/email/email.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/email/email.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/submit.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/submit.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -72,7 +65,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.OPApplication">
+  <component name="RunManager" selected="Spring Boot.SZPSApplication">
     <configuration name="OPApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="szps-operation" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.szps.OPApplication" />
@@ -132,6 +125,7 @@
       <workItem from="1576211799115" duration="4812000" />
       <workItem from="1576233805510" duration="2580000" />
       <workItem from="1576311527133" duration="1551000" />
+      <workItem from="1576972900306" duration="1351000" />
     </task>
     <servers />
   </component>

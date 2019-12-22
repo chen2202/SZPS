@@ -26,6 +26,12 @@
 			</div>
 		
 			<div class="btn-group-sm" id="toolbar" role="group">
+				<div class="select-list">
+		        	<a class="btn btn-info" href="/employee/worker" style="border-color: #EE0000">人员信息</a>
+		        	<a class="btn" href="/employee/factory" style="border-color: #1a7bb9">水厂信息</a>
+		        	<a class="btn" href="/employee/company" style="border-color: #1a7bb9">公司信息</a>
+		        	<a class="btn" href="/employee/department" style="border-color: #1a7bb9">部门信息</a>
+				</div>
 				<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="employee:worker:add">
 	                <i class="fa fa-plus"></i> 新增
 	            </a>
@@ -35,9 +41,6 @@
 		        <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="system:worker:export">
 		            <i class="fa fa-download"></i> 导出
 		        </a>
-		        <a class="btn btn-info" href="/employee/factory">水厂信息</a>
-		        <a class="btn btn-info" href="/employee/company">公司信息</a>
-		        <a class="btn btn-info" href="/employee/department">部门信息</a>
 	        </div>
 	        
 	        <div class="col-sm-12 select-table table-striped">

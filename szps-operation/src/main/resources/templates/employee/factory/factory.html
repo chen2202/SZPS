@@ -26,7 +26,12 @@
 			</div>
 		
 			<div class="btn-group-sm" id="toolbar" role="group">
-				<a class="btn btn-info" href="/employee/worker">返回</a>
+				<div class="select-list">
+		        	<a class="btn" href="/employee/worker" style="border-color: #1a7bb9">人员信息</a>
+		        	<a class="btn  btn-info" href="/employee/factory" style="border-color: #EE0000">水厂信息</a>
+		        	<a class="btn" href="/employee/company" style="border-color: #1a7bb9">公司信息</a>
+		        	<a class="btn" href="/employee/department" style="border-color: #1a7bb9">部门信息</a>
+				</div>
 				<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="employee:factory:add">
 	                <i class="fa fa-plus"></i> 新增
 	            </a>

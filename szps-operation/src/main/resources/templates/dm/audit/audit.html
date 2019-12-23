@@ -2,16 +2,15 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
 	<th:block th:include="include :: header('审批列表')" />
+	<style>
+		#btn-data-audit{
+			border: 2px solid red;
+		}
+	</style>
 </head>
 <body class="gray-bg">
 <div class="container-div">
 	<div class="row">
-
-		<div class="col-sm-12 search-collapse center">
-			<div class="col-sm-4" align="center"><a th:href="@{/dm/data}" class="btn-success btn">规划资料展示</a></div>
-			<div class="col-sm-4" align="center"><a th:href="@{/dm/audit}" class="btn-success btn">规划任务审批</a></div>
-			<div class="col-sm-4" align="center"><a th:href="@{/dm/permission}" class="btn-success btn">资料权限审批</a></div>
-		</div>
 
 		<div class="col-sm-12 search-collapse">
 			<form id="data-form">
@@ -66,6 +65,11 @@
 					</ul>
 				</div>
 			</form>
+		</div>
+
+		<div class="col-sm-12 search-collapse center" shiro:hasPermission="dm:data:add">
+			<div class="col-sm-6" align="center"><a th:href="@{/dm/data}" class="btn-success btn" id="btn-data-show">规划资料展示</a></div>
+			<div class="col-sm-6" align="center"><a th:href="@{/dm/audit}" class="btn-success btn" id="btn-data-audit">规划任务审批</a></div>
 		</div>
 
 		<div class="col-sm-12 select-table table-striped">

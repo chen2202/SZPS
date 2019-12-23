@@ -59,12 +59,6 @@
 	          </form>
 	        </div>
 
-
-			<div class="col-sm-12 search-collapse center" shiro:hasPermission="dm:data:add">
-				<div class="col-sm-6" align="center"><a th:href="@{/dm/data}" class="btn-success btn" id="btn-data-show">规划资料展示</a></div>
-				<div class="col-sm-6" align="center"><a th:href="@{/dm/audit}" class="btn-success btn" id="btn-data-audit">规划任务审批</a></div>
-			</div>
-
 			<div class="btn-group-sm" id="toolbar" role="group">
 				<a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dm:data:add">
 	                <i class="fa fa-plus"></i> 新增
@@ -78,6 +72,10 @@
 		        <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="dm:data:export">
 		            <i class="fa fa-download"></i> 导出
 		        </a>
+
+				<a th:href="@{/dm/data}" class="btn-success btn" id="btn-data-show" shiro:hasPermission="dm:data:add">规划资料展示</a>
+				<a th:href="@{/dm/audit}" class="btn-success btn" id="btn-data-audit" shiro:hasPermission="dm:data:add">规划任务审批</a>
+
 	        </div>
 
 	        <div class="col-sm-12 select-table table-striped">

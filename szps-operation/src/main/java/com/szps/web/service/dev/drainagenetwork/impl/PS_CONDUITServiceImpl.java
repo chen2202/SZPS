@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.szps.common.annotation.DataScope;
 import com.szps.common.core.text.Convert;
 import com.szps.web.domain.dev.drainagenetwork.PS_CONDUIT;
 import com.szps.web.mapper.dev.drainagenetwork.PS_CONDUITMapper;
@@ -14,6 +15,7 @@ public class PS_CONDUITServiceImpl implements IPS_CONDUITService {
 	@Autowired
 	private PS_CONDUITMapper mapper;
 	@Override
+	@DataScope(deptAlias = "r")
 	public List<PS_CONDUIT> selectList(PS_CONDUIT obj) {
 		// TODO Auto-generated method stub
 		return mapper.selectList(obj);

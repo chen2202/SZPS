@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.szps.common.annotation.DataScope;
 import com.szps.common.core.text.Convert;
 import com.szps.web.domain.dev.csdt.CsdtMaintenance;
 import com.szps.web.mapper.dev.CsdtMaintenanceMapper;
@@ -14,6 +15,7 @@ public class CsdtMaintenanceServiceImpl implements ICsdtMaintenanceService {
 	@Autowired
 	private CsdtMaintenanceMapper mapper;
 	@Override
+	@DataScope(deptAlias = "r")
 	public List<CsdtMaintenance> selectList(CsdtMaintenance obj) {
 		// TODO Auto-generated method stub
 		return mapper.selectList(obj);

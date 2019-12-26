@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.szps.common.annotation.DataScope;
 import com.szps.common.core.text.Convert;
 import com.szps.web.domain.report.WeekReport;
 import com.szps.web.mapper.report.WeekReportMapper;
@@ -20,6 +21,7 @@ public class WeekReportServiceImpl implements IWeekReportService {
 	private WeekReportMapper reportMapper;
 
 	@Override
+	@DataScope(deptAlias = "r")
 	public List<WeekReport> selectReportList(WeekReport report) {
 		return reportMapper.selectReportList(report);
 	}

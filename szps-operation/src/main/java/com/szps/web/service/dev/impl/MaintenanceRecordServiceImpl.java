@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.szps.common.annotation.DataScope;
 import com.szps.common.core.text.Convert;
 import com.szps.web.domain.dev.MaintenanceRecord;
 import com.szps.web.mapper.dev.MaintenanceRecordMapper;
@@ -14,6 +15,7 @@ public class MaintenanceRecordServiceImpl implements IMaintenanceRecordService {
 	@Autowired
 	private MaintenanceRecordMapper mapper;
 	@Override
+	@DataScope(deptAlias = "r")
 	public List<MaintenanceRecord> selectList(MaintenanceRecord obj) {
 		return mapper.selectList(obj);
 	}

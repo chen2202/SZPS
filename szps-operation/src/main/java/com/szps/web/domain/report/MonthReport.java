@@ -73,6 +73,15 @@ public class MonthReport extends BaseEntity {
 	String firstOpinion;//报表初审意见
 	String replyOpinion;//厂区回复意见
 	private String delFlag;
+	Long dept_id;//CREATE_BY 部门ID
+	
+	public Long getDept_id() {
+		return dept_id;
+	}
+
+	public void setDept_id(Long dept_id) {
+		this.dept_id = dept_id;
+	}
 	public String getFirstOpinion() {
 		return firstOpinion;
 	}

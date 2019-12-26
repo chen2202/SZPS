@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.szps.common.annotation.DataScope;
 import com.szps.common.constant.UserConstants;
 import com.szps.common.core.domain.Ztree;
 import com.szps.common.core.text.Convert;
@@ -21,6 +22,7 @@ public class SupplierServiceImpl implements ISupplierService {
 	private SupplierMapper mapper;
 
 	@Override
+	@DataScope(deptAlias = "r")
 	public List<Supplier> selectList(Supplier obj) {
 		// TODO Auto-generated method stub
 		return mapper.selectList(obj);

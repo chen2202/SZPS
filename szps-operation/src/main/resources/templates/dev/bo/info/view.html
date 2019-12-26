@@ -36,7 +36,16 @@
 					</div>
 				</form>
 			</div>
-			
+		<div class="select-list">
+			<ul>
+				<li>
+                   	<a class="btn"  th:href="'/op/dev/boinfo'"  style="border-color: #EE0000">设备清单</a>
+                   	<a class="btn"  th:href="'/op/dev/bosupplier'"  style="border-color: #1a7bb9">供应商</a>
+                   	<a class="btn"  th:href="'/op/dev/bospare'"  style="border-color: #1a7bb9">备品备件</a>
+                   	<a class="btn"  th:href="'/op/dev/bomaintenance'"  style="border-color: #1a7bb9">维保信息</a>
+				</li>
+			</ul>
+		</div>				
 	        <div class="btn-group-sm" id="toolbar" role="group">
 		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:info:add">
 		            <i class="fa fa-plus"></i> 新增

@@ -27,7 +27,16 @@
 					</div>
 				</form>
 			</div>
-			
+		<div class="select-list">
+			<ul>
+				<li>
+                   	<a class="btn"  th:href="'/op/report/day'"  style="border-color: #EE0000">日报</a>
+                   	<a class="btn"  th:href="'/op/report/week'"  style="border-color: #1a7bb9">周报</a>
+                   	<a class="btn"  th:href="'/op/report/month'"  style="border-color: #1a7bb9">月报</a>
+                   	<a class="btn"  th:href="'/op/report/collect/day'"  style="border-color: #1a7bb9">综合汇合</a>
+				</li>
+			</ul>
+		</div>				
 	        <div class="btn-group-sm" id="toolbar" role="group">
 		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="report:day:add">
 		            <i class="fa fa-plus"></i> 新增

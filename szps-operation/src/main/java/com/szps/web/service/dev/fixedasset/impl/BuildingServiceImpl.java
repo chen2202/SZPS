@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.szps.common.annotation.DataScope;
 import com.szps.common.core.text.Convert;
 import com.szps.web.domain.dev.fixedasset.Building;
 import com.szps.web.mapper.dev.fixedasset.BuildingMapper;
@@ -14,6 +15,7 @@ public class BuildingServiceImpl implements IBuildingService {
 	@Autowired
 	private BuildingMapper mapper;
 	@Override
+	@DataScope(deptAlias = "r")
 	public List<Building> selectList(Building obj) {
 		// TODO Auto-generated method stub
 		return mapper.selectList(obj);

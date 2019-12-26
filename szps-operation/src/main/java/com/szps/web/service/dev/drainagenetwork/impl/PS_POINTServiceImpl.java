@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.szps.common.annotation.DataScope;
 import com.szps.common.core.text.Convert;
 import com.szps.web.domain.dev.drainagenetwork.PS_POINT;
 import com.szps.web.mapper.dev.drainagenetwork.PS_POINTMapper;
@@ -14,6 +15,7 @@ public class PS_POINTServiceImpl implements IPS_POINTService {
 	@Autowired
 	private PS_POINTMapper mapper;
 	@Override
+	@DataScope(deptAlias = "r")
 	public List<PS_POINT> selectList(PS_POINT obj) {
 		// TODO Auto-generated method stub
 		return mapper.selectList(obj);

@@ -14,6 +14,16 @@ public class DrainagenetworkMaintenance extends BaseEntity {
 	String opdetails;// 内容
 	String replaceparts;// 更换零配件
 	String operator;// 操作人员
+	String attachmenturl;// 操作人员
+	Long dept_id;//CREATE_BY 部门ID
+	
+	public Long getDept_id() {
+		return dept_id;
+	}
+
+	public void setDept_id(Long dept_id) {
+		this.dept_id = dept_id;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -55,6 +65,12 @@ public class DrainagenetworkMaintenance extends BaseEntity {
 	}
 	public void setOperator(String operator) {
 		this.operator = operator;
+	}
+	public String getAttachmenturl() {
+		return attachmenturl;
+	}
+	public void setAttachmenturl(String attachmenturl) {
+		this.attachmenturl = attachmenturl;
 	}
 
 }

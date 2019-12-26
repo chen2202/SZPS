@@ -10,12 +10,14 @@
 		<result     property="opdetails"   column="opdetails"   />
 		<result     property="replaceparts"   column="replaceparts"   />
 		<result     property="operator"   column="operator"   />
+		<result     property="attachmenturl"   column="attachmenturl"   />
 
         <result property="createBy"      column="create_by"      />
         <result property="createTime"    column="create_time"    />
         <result property="updateBy"      column="update_by"      />
         <result property="updateTime"    column="update_time"    />
 		<result property="remark"    column="remark"    />
+		<result     property="dept_id"   column="dept_id"   />
     </resultMap> 
 
 	<sql id="selectVo">
@@ -57,6 +59,8 @@
 		<if test=" optype !=null and optype != ''">
 				and optype = #{optype}
 			</if>
+		<!-- 数据范围过滤 -->
+		${params.dataScope}	
 		order by r.id
     </select>
       <select id="selectByName" parameterType="Long" resultMap="result">
@@ -91,6 +95,7 @@
 			<if test=" opdetails != null and opdetails != ''">opdetails = #{opdetails},</if>
 			<if test=" replaceparts != null and replaceparts != ''">replaceparts = #{replaceparts},</if>
 			<if test=" operator != null and operator != ''">operator = #{operator},</if>
+			<if test=" attachmenturl != null and attachmenturl != ''">attachmenturl = #{attachmenturl},</if>
 			
 			<if test=" remark != null and remark != ''">remark = #{remark},</if>
  			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
@@ -112,11 +117,13 @@
 <if test=" opdetails != null and  opdetails != ''">opdetails,</if>
 <if test=" replaceparts != null and  replaceparts != ''">replaceparts,</if>
 <if test=" operator != null and  operator != ''">operator,</if>
+<if test=" attachmenturl != null and  attachmenturl != ''">attachmenturl,</if>
 
 
 			
 			<if test=" remark != null and remark != ''">REMARK,</if>
 			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
@@ -126,12 +133,14 @@
 <if test=" opdetails != null and opdetails != ''">#{opdetails},</if>
 <if test=" replaceparts != null and replaceparts != ''">#{replaceparts},</if>
 <if test=" operator != null and operator != ''">#{operator},</if>
+<if test=" attachmenturl != null and attachmenturl != ''">#{attachmenturl},</if>
 
 
 
 			
 			<if test=" remark != null and remark != ''">#{remark},</if>
 			<if test=" createBy != null and createBy != ''">#{createBy},</if>
+			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

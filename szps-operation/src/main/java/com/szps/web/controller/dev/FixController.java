@@ -73,6 +73,7 @@ public class FixController extends BaseController {
     	SysDept sysDept = user.getDept();
     	obj.setDeptId(sysDept.getDeptId());
     	obj.setCreateBy(user.getLoginName());
+    	obj.setDept_id(user.getDeptId());
     	obj.setDelFlag(Fix.DEL_FLAG_NORMAL);
         return toAjax(service.insert(obj));
     }

@@ -26,6 +26,15 @@ public class Pipeline extends BaseEntity {
 	String dstatus;
 	String originalvalue;
 
+	Long dept_id;//CREATE_BY 部门ID
+	
+	public Long getDept_id() {
+		return dept_id;
+	}
+
+	public void setDept_id(Long dept_id) {
+		this.dept_id = dept_id;
+	}
 	public Long getId() {
 		return id;
 	}

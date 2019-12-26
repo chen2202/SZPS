@@ -82,6 +82,7 @@ public class PlantController extends BaseController {
     {
     	SysUser user = ShiroUtils.getSysUser();
     	obj.setCreateBy(user.getLoginName());
+    	obj.setDept_id(user.getDeptId());
         return toAjax(service.insert(obj));
     }
     

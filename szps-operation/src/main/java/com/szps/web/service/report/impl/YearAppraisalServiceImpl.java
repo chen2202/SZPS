@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.szps.common.annotation.DataScope;
 import com.szps.common.core.text.Convert;
 import com.szps.web.domain.report.YearAppraisal;
 import com.szps.web.mapper.report.YearAppraisalMapper;
@@ -13,7 +14,9 @@ import com.szps.web.service.report.IYearAppraisalService;
 public class YearAppraisalServiceImpl implements IYearAppraisalService {
 	@Autowired
 	private YearAppraisalMapper mapper;
+	
 	@Override
+	@DataScope(deptAlias = "r")
 	public List<YearAppraisal> selectList(YearAppraisal obj) {
 		// TODO Auto-generated method stub
 		return mapper.selectList(obj);

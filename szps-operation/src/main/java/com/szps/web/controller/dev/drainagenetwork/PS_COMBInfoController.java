@@ -64,7 +64,8 @@ public class PS_COMBInfoController extends BaseController {
     public AjaxResult addSave( PS_COMB obj)
     {
     	SysUser user = ShiroUtils.getSysUser();
-    	//obj.setCreateBy(user.getLoginName());
+    	obj.setCreateBy(user.getLoginName());
+    	obj.setDept_id(user.getDeptId());
         return toAjax(service.insert(obj));
     }
     

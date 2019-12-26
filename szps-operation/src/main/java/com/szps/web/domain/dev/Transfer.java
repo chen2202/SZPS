@@ -36,6 +36,15 @@ public class Transfer extends BaseEntity {
 	private String leaderOpinion;// 分管领导意见
 	private String leader;// 分管领导
 	private String delFlag;
+	Long dept_id;//CREATE_BY 部门ID
+	
+	public Long getDept_id() {
+		return dept_id;
+	}
+
+	public void setDept_id(Long dept_id) {
+		this.dept_id = dept_id;
+	}
 	public Long getId() {
 		return id;
 	}

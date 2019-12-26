@@ -5,6 +5,7 @@
 </head>
 <body class="gray-bg">
     <div class="container-div">
+
 		<div class="row">
 			<div class="col-sm-12 search-collapse">
 				<form id="drainagenetworkspare-form">
@@ -24,7 +25,28 @@
 					</div>
 				</form>
 			</div>
-			
+    		<div class="select-list">
+			<ul>
+				
+				<li>
+                   	<a class="btn"  th:href="'/op/dev/pscombinfo'"  style="border-color: #1a7bb9">雨水口</a>
+                   	<a class="btn"  th:href="'/op/dev/psconduitinfo'"  style="border-color: #1a7bb9">渠</a>
+                   	<a class="btn"  th:href="'/op/dev/psmanholeinfo'"  style="border-color: #1a7bb9">检查井</a>
+                   	<a class="btn"  th:href="'/op/dev/psoutfallinfo'"  style="border-color: #1a7bb9">排放口</a>
+                   	<a class="btn"  th:href="'/op/dev/pspipeinfo'"  style="border-color: #1a7bb9">管</a>
+                   	<a class="btn"  th:href="'/op/dev/pspointinfo'"  style="border-color: #1a7bb9">特征点</a>
+				</li>
+				<li></li>
+				<li></li>
+				<li>
+                   	<a class="btn"  th:href="'/op/dev/ed'"  style="border-color: #1a7bb9">内窥检测数据</a>
+                   	<a class="btn"  th:href="'/op/dev/nm'"  style="border-color: #1a7bb9">管网养护数据</a>
+                   	<a class="btn"  th:href="'/op/dev/drainagenetworkmaintenance'"  style="border-color: #1a7bb9">维保数据</a>
+                   	<a class="btn"  th:href="'/op/dev/drainagenetworkspare'"  style="border-color: #EE0000">备品备件</a>
+                   	<a class="btn"  th:href="'/op/dev/drainagenetworksupplier'"  style="border-color: #1a7bb9">供应商</a>
+				</li>						
+			</ul>
+		</div>			
 	        <div class="btn-group-sm" id="toolbar" role="group">
 		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:drainagenetworkspare:add">
 		            <i class="fa fa-plus"></i> 新增

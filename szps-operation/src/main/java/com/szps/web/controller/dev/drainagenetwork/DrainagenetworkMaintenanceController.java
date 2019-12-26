@@ -1,8 +1,14 @@
 package com.szps.web.controller.dev.drainagenetwork;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,12 +20,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.szps.common.annotation.Log;
+import com.szps.common.config.Global;
 import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
+import com.szps.common.utils.StringUtils;
+import com.szps.common.utils.file.FileUtils;
 import com.szps.framework.util.ShiroUtils;
 import com.szps.system.domain.SysUser;
+import com.szps.web.controller.common.CommonController;
 import com.szps.web.domain.dev.drainagenetwork.DrainagenetworkMaintenance;
 import com.szps.web.service.dev.drainagenetwork.IDrainagenetworkMaintenanceService;
 /**
@@ -30,6 +40,7 @@ import com.szps.web.service.dev.drainagenetwork.IDrainagenetworkMaintenanceServi
 @Controller
 @RequestMapping("/op/dev/drainagenetworkmaintenance")
 public class DrainagenetworkMaintenanceController extends BaseController {
+	private static final Logger log = LoggerFactory.getLogger(CommonController.class);
 	 @Autowired
 	private IDrainagenetworkMaintenanceService service;
 	
@@ -69,6 +80,7 @@ public class DrainagenetworkMaintenanceController extends BaseController {
     {
     	SysUser user = ShiroUtils.getSysUser();
     	obj.setCreateBy(user.getLoginName());
+    	obj.setDept_id(user.getDeptId());
         return toAjax(service.insert(obj));
     }
     
@@ -109,5 +121,38 @@ public class DrainagenetworkMaintenanceController extends BaseController {
         {
             return error(e.getMessage());
         }
+    }
+    @GetMapping("download")
+    public void fileDownload(HttpServletResponse response, HttpServletRequest request)
+    {
+        try
+        {
+        	Long id=Long.valueOf(request.getParameter("id"));
+        	DrainagenetworkMaintenance obj = service.selectById(id);
+        	String fileName = obj.getAttachmenturl();
+			/*
+			 * if (fileName == null || fileName.equals("")) { fileName ="文件不存在,下载文件失败"; }
+			 */
+            String realFileName = System.currentTimeMillis() + fileName.substring(fileName.indexOf("_") + 1);
+            String filePath = Global.getPath() + fileName;
+
+            response.setCharacterEncoding("utf-8");
+            response.setContentType("multipart/form-data");
+            response.setHeader("Content-Disposition",
+                    "attachment;fileName=" + FileUtils.setFileDownloadHeader(request, fileName));
+            FileUtils.writeBytes(filePath, response.getOutputStream());
+        }
+        catch (Exception e)
+        {
+            log.error("下载文件失败", e);
+            try {
+            	response.setCharacterEncoding("utf-8");
+				response.getWriter().append("文件不存在,下载文件失败,请刷新");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+        }
+		
     }
 }

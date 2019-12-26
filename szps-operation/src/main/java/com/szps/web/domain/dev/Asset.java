@@ -67,6 +67,15 @@ public class Asset extends BaseEntity {
 	private String remark7;// 备注
 	private String delFlag;
 	private Long id;
+	Long dept_id;//CREATE_BY 部门ID
+	
+	public Long getDept_id() {
+		return dept_id;
+	}
+
+	public void setDept_id(Long dept_id) {
+		this.dept_id = dept_id;
+	}
 	public Long getId() {
 		return id;
 	}

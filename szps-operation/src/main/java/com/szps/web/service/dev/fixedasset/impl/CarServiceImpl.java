@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.szps.common.annotation.DataScope;
 import com.szps.common.core.text.Convert;
 import com.szps.web.domain.dev.fixedasset.Car;
 import com.szps.web.mapper.dev.fixedasset.CarMapper;
@@ -14,6 +15,7 @@ public class CarServiceImpl implements ICarService {
 	@Autowired
 	private CarMapper mapper;
 	@Override
+	@DataScope(deptAlias = "r")
 	public List<Car> selectList(Car obj) {
 		// TODO Auto-generated method stub
 		return mapper.selectList(obj);

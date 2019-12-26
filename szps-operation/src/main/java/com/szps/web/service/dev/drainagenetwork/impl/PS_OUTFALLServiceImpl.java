@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.szps.common.annotation.DataScope;
 import com.szps.common.core.text.Convert;
 import com.szps.web.domain.dev.drainagenetwork.PS_OUTFALL;
 import com.szps.web.mapper.dev.drainagenetwork.PS_OUTFALLMapper;
@@ -14,6 +15,7 @@ public class PS_OUTFALLServiceImpl implements IPS_OUTFALLService {
 	@Autowired
 	private PS_OUTFALLMapper mapper;
 	@Override
+	@DataScope(deptAlias = "r")
 	public List<PS_OUTFALL> selectList(PS_OUTFALL obj) {
 		// TODO Auto-generated method stub
 		return mapper.selectList(obj);

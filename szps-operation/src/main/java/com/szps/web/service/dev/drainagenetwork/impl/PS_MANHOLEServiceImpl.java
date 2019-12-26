@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.szps.common.annotation.DataScope;
 import com.szps.common.core.text.Convert;
 import com.szps.web.domain.dev.drainagenetwork.PS_MANHOLE;
 import com.szps.web.mapper.dev.drainagenetwork.PS_MANHOLEMapper;
@@ -14,6 +15,7 @@ public class PS_MANHOLEServiceImpl implements IPS_MANHOLEService {
 	@Autowired
 	private PS_MANHOLEMapper mapper;
 	@Override
+	@DataScope(deptAlias = "r")
 	public List<PS_MANHOLE> selectList(PS_MANHOLE obj) {
 		// TODO Auto-generated method stub
 		return mapper.selectList(obj);

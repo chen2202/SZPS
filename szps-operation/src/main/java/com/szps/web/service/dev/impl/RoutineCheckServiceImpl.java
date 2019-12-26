@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.szps.common.annotation.DataScope;
 import com.szps.common.core.text.Convert;
 import com.szps.web.domain.dev.RoutineCheck;
 import com.szps.web.mapper.dev.RoutineCheckMapper;
@@ -15,6 +16,7 @@ public class RoutineCheckServiceImpl implements IRoutineCheckService {
 	@Autowired
 	private RoutineCheckMapper mapper;
 	@Override
+	@DataScope(deptAlias = "r")
 	public List<RoutineCheck> selectList(RoutineCheck obj) {
 		// TODO Auto-generated method stub
 		return mapper.selectList(obj);

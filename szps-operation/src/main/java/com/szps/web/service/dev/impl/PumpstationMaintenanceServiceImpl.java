@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.szps.common.annotation.DataScope;
 import com.szps.common.core.text.Convert;
 import com.szps.web.domain.dev.pumpstation.PumpstationMaintenance;
 import com.szps.web.mapper.dev.PumpstationMaintenanceMapper;
@@ -14,6 +15,7 @@ public class PumpstationMaintenanceServiceImpl implements IPumpstationMaintenanc
 	@Autowired
 	private PumpstationMaintenanceMapper mapper;
 	@Override
+	@DataScope(deptAlias = "r")
 	public List<PumpstationMaintenance> selectList(PumpstationMaintenance obj) {
 		// TODO Auto-generated method stub
 		return mapper.selectList(obj);

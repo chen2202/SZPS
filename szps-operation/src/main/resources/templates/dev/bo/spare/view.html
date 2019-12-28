@@ -56,13 +56,13 @@
 			</ul>
 		</div>				
 	        <div class="btn-group-sm" id="toolbar" role="group">
-		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:maintenance:add">
+		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:bospare:add">
 		            <i class="fa fa-plus"></i> 新增
 		        </a>
-		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="dev:maintenance:delete">
+		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="dev:bospare:delete">
 		            <i class="fa fa-remove"></i> 删除
 		        </a>
-		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="dev:maintenance:export">
+		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="dev:bospare:export">
 		            <i class="fa fa-download"></i> 导出
 		        </a> -->
 	        </div>
@@ -74,10 +74,10 @@
     </div>
     <th:block th:include="include :: footer" />
     <script th:inline="javascript">
-        var prefix = ctx + "op/dev/maintenance";
-        var viewFlag = [[${@permission.hasPermi('dev:maintenance:view')}]];
-        var editFlag = [[${@permission.hasPermi('dev:maintenance:edit')}]];
-        var removeFlag = [[${@permission.hasPermi('dev:maintenance:delete')}]];
+        var prefix = ctx + "op/dev/bospare";
+        var viewFlag = [[${@permission.hasPermi('dev:bospare:view')}]];
+        var editFlag = [[${@permission.hasPermi('dev:bospare:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('dev:bospare:delete')}]];
         
        
         $(function() {
@@ -173,12 +173,12 @@
 		}
         function doSubmit(index, layero){
 			var tree = layero.find("iframe")[0].contentWindow.$._tree;
-			if ($.tree.notAllowParents(tree)) {
+			//if ($.tree.notAllowParents(tree)) {
 				var body = layer.getChildFrame('body', index);
     			$("#treeId").val(body.find('#treeId').val());
     			$("#treeName").val(body.find('#treeName').val());
     			layer.close(index);
-			}
+			//}
 		}
     </script>
 </body>

@@ -83,12 +83,12 @@
 		}
         function doSubmit(index, layero){
 			var tree = layero.find("iframe")[0].contentWindow.$._tree;
-			if ($.tree.notAllowParents(tree)) {
+			//if ($.tree.notAllowParents(tree)) {
 				var body = layer.getChildFrame('body', index);
     			$("#treeId").val(body.find('#treeId').val());
     			$("#treeName").val(body.find('#treeName').val());
     			layer.close(index);
-			}
+			//}
 		}
         $(function() {
             var options = {
@@ -158,12 +158,12 @@
         }
         function doSubmit2(index, layero){
         	var tree = layero.find("iframe")[0].contentWindow.$._tree;
-        	if ($.tree.notAllowParents(tree)) {
+        	//if ($.tree.notAllowParents(tree)) {
         		var body = layer.getChildFrame('body', index);
         		$("#plantTreeId").val(body.find('#plantTreeId').val());
         		$("#plantTreeName").val(body.find('#plantTreeName').val());
         		layer.close(index);
-        	}
+        	//}
         }
     </script>
 </body>

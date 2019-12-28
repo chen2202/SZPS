@@ -22,7 +22,7 @@ public class SupplierServiceImpl implements ISupplierService {
 	private SupplierMapper mapper;
 
 	@Override
-	@DataScope(deptAlias = "r")
+	//@DataScope(deptAlias = "r")
 	public List<Supplier> selectList(Supplier obj) {
 		// TODO Auto-generated method stub
 		return mapper.selectList(obj);

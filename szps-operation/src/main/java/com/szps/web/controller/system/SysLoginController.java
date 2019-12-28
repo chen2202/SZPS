@@ -27,7 +27,7 @@ import com.szps.common.utils.StringUtils;
 public class SysLoginController extends BaseController
 {
     @GetMapping("/login")
-    public String login(HttpServletRequest request, HttpServletResponse response)
+    public String login(HttpServletRequest request, HttpServletResponse response,String username, String password,String access_token,String refresh_token)
     {
         // 如果是Ajax请求，返回Json字符串。
         if (ServletUtils.isAjaxRequest(request))
@@ -35,21 +35,25 @@ public class SysLoginController extends BaseController
             return ServletUtils.renderString(response, "{\"code\":\"1\",\"msg\":\"未登录或登录超时。请重新登录\"}");
         }
 
-        //return "login";
-        return "forward:/xxx?username=admin&password=a123b456&rememberMe=true";
-    }
-
-    @GetMapping("/loginb")
-    public String loginb(HttpServletRequest request, HttpServletResponse response)
-    {
-        // 如果是Ajax请求，返回Json字符串。
-        if (ServletUtils.isAjaxRequest(request))
-        {
-            return ServletUtils.renderString(response, "{\"code\":\"1\",\"msg\":\"未登录或登录超时。请重新登录\"}");
-        }
-
+        if (username!=null && !username.equals("") && password!=null && !password.equals("")) {
+            try
+            {
+            	Boolean rememberMe = true;
+            	String pwd = EncryptUtil.decrypt(password);
+                UsernamePasswordToken token = new UsernamePasswordToken(username, pwd, rememberMe);
+                Subject subject = SecurityUtils.getSubject();
+                subject.login(token);
+                return "forward:/index";
+            }
+            catch (Exception e)
+            {
+            	 return "login";
+            }
+		}
         return "login";
+        //return "forward:/xxx?username=admin&password=a123b456&rememberMe=true";
     }
+
     
     @PostMapping("/login")
     @ResponseBody

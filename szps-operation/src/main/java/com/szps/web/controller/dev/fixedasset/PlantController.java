@@ -33,8 +33,9 @@ public class PlantController extends BaseController {
 	
     @RequiresPermissions("fixedasset:plant:view")
     @GetMapping()
-    public String view()
+    public String view(ModelMap mmap,String deptname)
     {
+    	mmap.put("deptname", deptname);
         return prefix + "/plantview";
     }
     
@@ -43,10 +44,12 @@ public class PlantController extends BaseController {
     @RequiresPermissions("fixedasset:plant:view")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(Plant obj)
+    public TableDataInfo list(Plant obj,ModelMap mmap,String deptname)
     {
         startPage();
+        obj.setDeptname(deptname);
         List<Plant> list = service.selectList(obj);
+        mmap.put("deptname", deptname);
         return getDataTable(list);
     }
     

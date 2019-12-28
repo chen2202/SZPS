@@ -33,8 +33,9 @@ public class CarController extends BaseController {
 	
     @RequiresPermissions("fixedasset:car:view")
     @GetMapping()
-    public String view()
+    public String view(ModelMap mmap,String deptname)
     {
+    	mmap.put("deptname", deptname);
         return prefix + "/carview";
     }
     
@@ -43,10 +44,12 @@ public class CarController extends BaseController {
     @RequiresPermissions("fixedasset:car:view")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(Car obj)
+    public TableDataInfo list(Car obj, ModelMap mmap,String deptname)
     {
         startPage();
+        obj.setDeptname(deptname);
         List<Car> list = service.selectList(obj);
+        mmap.put("deptname", deptname);
         return getDataTable(list);
     }
     /**

@@ -61,8 +61,8 @@
 				AND sname  like concat(concat('%',#{sname}),'%')
 		</if>
 		
-		<!-- 数据范围过滤 -->
-		${params.dataScope}	
+		<!-- 数据范围过滤
+		${params.dataScope}	 -->
 		order by r.id
     </select>
       <select id="selectById" parameterType="Long" resultMap="result">

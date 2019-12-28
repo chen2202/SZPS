@@ -33,8 +33,9 @@ public class OfficeequipmentController extends BaseController {
 	
     @RequiresPermissions("fixedasset:officeequipment:view")
     @GetMapping()
-    public String view()
+    public String view(ModelMap mmap,String deptname)
     {
+    	mmap.put("deptname", deptname);
         return prefix + "/officeequipmentview";
     }
     
@@ -43,10 +44,12 @@ public class OfficeequipmentController extends BaseController {
     @RequiresPermissions("fixedasset:officeequipment:view")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(Officeequipment obj)
+    public TableDataInfo list(Officeequipment obj,ModelMap mmap,String deptname)
     {
         startPage();
+        obj.setDeptname(deptname);
         List<Officeequipment> list = service.selectList(obj);
+        mmap.put("deptname", deptname);
         return getDataTable(list);
     }
     /**

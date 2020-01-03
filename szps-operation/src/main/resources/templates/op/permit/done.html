@@ -46,15 +46,29 @@
 			</form>
 		</div>-->
 
-	<!--	<div class="btn-group-sm" id="toolbar" role="group">
+		<div class="btn-group-sm" id="toolbar" role="group">
 			<div class="select-list">
-				<button class="btn btn-success " type="button" name="showSearch" title="高级筛选">高级筛选</button>
-				<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="supervise:task:add">
-					 双规则检查
+				<a class="btn"  th:href="'/op/permit/list'" style="margin-left: 30px;border-color: #1a7bb9">
+					任务列表
+				</a>
+				<a class="btn" th:href="'/op/permit/waiting'"  style="margin-left: 30px;border-color: #1a7bb9">
+					待审批任务
+				</a>
+				<a class="btn btn-success" th:href="'/op/permit/done'" style="margin-left: 30px" >
+					已审批任务
+				</a>
+				<a class="btn" th:href="'/op/permit/remind'" style="margin-left: 30px;border-color: #1a7bb9" >
+					到期许可提醒
+				</a>
+				<a class="btn" th:href="'/op/permit/table'" style="margin-left: 30px;border-color: #1a7bb9" >
+					各区审批表
+				</a>
+				<a class="btn" th:href="'/op/permit/statistic'" style="margin-left: 30px;border-color: #1a7bb9" >
+					数据统计
 				</a>
 			</div>
 			<br/>
-		</div>-->
+		</div>
 
 		<div class="col-sm-12 select-table table-striped">
 			<table id="bootstrap-table" data-mobile-responsive="true"></table>
@@ -80,6 +94,11 @@
                     field: 'sblsh',
                     title: '省级申办流水号',
                     sortable: true
+                },
+                {
+                    field: 'byzd4',
+                    title: '状态'
+
                 },
                 {
                     field: 'sblsh_SHORT',

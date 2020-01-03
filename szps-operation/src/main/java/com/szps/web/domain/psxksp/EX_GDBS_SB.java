@@ -63,6 +63,8 @@ public class EX_GDBS_SB {
     private String SXBDBM;
     private String SJSXBM;
     private String SJSXBBH;
+    private double WD;
+    private double JD;
 
     public String getSBLSH() {
         return SBLSH;
@@ -542,5 +544,20 @@ public class EX_GDBS_SB {
 
     public void setSJSXBBH(String SJSXBBH) {
         this.SJSXBBH = SJSXBBH;
+    }
+    public double getWD() {
+        return WD;
+    }
+
+    public void setWD(double WD) {
+        this.WD = WD;
+    }
+
+    public double getJD() {
+        return JD;
+    }
+
+    public void setJD(double JD) {
+        this.JD = JD;
     }
 }

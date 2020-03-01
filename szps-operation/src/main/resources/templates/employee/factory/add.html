@@ -2,6 +2,7 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<th:block th:include="include :: header('新增水厂')" />
+	<link rel="stylesheet" th:href="@{/css/employee/operation.css}"/>
 </head>
 <body class="white-bg">
 	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
@@ -9,37 +10,37 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">水厂代码：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="factory_id" id="factory_id" maxlength="10" required>
+					<input class="form-control" type="text" name="factory_id" id="factory_id" maxlength="10" placeholder="请输入" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label">厂名：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="name" id="name" maxlength="15" required>
+					<input class="form-control" type="text" name="name" id="name" maxlength="15" placeholder="请输入" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label">地址：</label>
 				<div class="col-sm-8">
-			    	<input class="form-control" type="text" name="address" id="address" maxlength="25" required>
+			    	<input class="form-control" type="text" name="address" id="address" maxlength="25" placeholder="请输入" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label">归属地区：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="attribution_area" id="attribution_area" maxlength="10" required>
+					<input class="form-control" type="text" name="attribution_area" id="attribution_area" maxlength="10" placeholder="请输入" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label">厂长：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="factory_director" id="factory_director" maxlength="4" required/>
+					<input class="form-control" type="text" name="factory_director" id="factory_director" maxlength="4" placeholder="请输入" required/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label">副厂长：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="deputy_director" id="deputy_director" maxlength="4" required/>
+					<input class="form-control" type="text" name="deputy_director" id="deputy_director" maxlength="4" placeholder="请输入" required/>
 				</div>
 			</div>
 			<div class="form-group">
@@ -51,13 +52,13 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label">联系电话：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="telephone" id="telephone" required/>
+					<input class="form-control" type="text" name="telephone" id="telephone" placeholder="请输入" required/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label">简介：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="introduction" id="introduction" maxlength="40" required/>
+					<input class="form-control" type="text" name="introduction" id="introduction" maxlength="40" placeholder="请输入/无" required/>
 				</div>
 			</div>
 		</form>

@@ -2,6 +2,7 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
 	<th:block th:include="include :: header('水厂列表')" />
+	<link th:href="@{/css/employee/employee.css}" rel="stylesheet"/>
 </head>
 <body class="gray-bg">
 	<div class="container-div">
@@ -11,10 +12,10 @@
 					<div class="select-list">
 						<ul>
 							<li>
-								水厂名称：<input type="text" name="name"/>
+								水厂名称：<input type="search" name="name" placeholder="请输入"/>
 							</li>
 							<li>
-								归属区域：<input type="text" name="attribution_area"/>
+								归属区域：<input type="search" name="attribution_area" placeholder="请输入"/>
 							</li>
 							<li>
 								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
@@ -27,20 +28,25 @@
 		
 			<div class="btn-group-sm" id="toolbar" role="group">
 				<div class="select-list">
-		        	<a class="btn" href="/employee/worker" style="border-color: #1a7bb9">人员信息</a>
-		        	<a class="btn  btn-info" href="/employee/factory" style="border-color: #EE0000">水厂信息</a>
-		        	<a class="btn" href="/employee/company" style="border-color: #1a7bb9">公司信息</a>
-		        	<a class="btn" href="/employee/department" style="border-color: #1a7bb9">部门信息</a>
+					<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="employee:factory:add">
+	                	<i class="fa fa-plus"></i> 新增
+		            </a>
+					<a class="btn btn-danger" onclick="$.operate.removeAll()" shiro:hasPermission="employee:factorys:remove">
+			            <i class="fa fa-remove"></i> 删除
+			        </a>
+			        <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="system:factory:export">
+			            <i class="fa fa-download"></i> 导出
+			        </a>
+			        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			        <table>
+			        	<tr>
+			        		<a class="btn" href="/employee/worker">人员信息</a>
+		        			<a class="btn btn-main" href="/employee/factory">水厂信息</a>
+		        			<a class="btn" href="/employee/company">公司信息</a>
+		        			<a class="btn" href="/employee/department">部门信息</a>
+			        	</tr>
+			        </table>
 				</div>
-				<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="employee:factory:add">
-	                <i class="fa fa-plus"></i> 新增
-	            </a>
-				<a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="employee:factorys:remove">
-		            <i class="fa fa-remove"></i> 删除
-		        </a>
-		        <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="system:factory:export">
-		            <i class="fa fa-download"></i> 导出
-		        </a>
 	        </div>
 	        
 	        <div class="col-sm-12 select-table table-striped">
@@ -117,8 +123,8 @@
 		            align: 'center',
 		            formatter: function(value, row, index) {
 		                var actions = [];
-		                actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.factory_id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
-		                actions.push('<a class="btn btn-info btn-xs ' + detailsFlag + ' " href="javascript:void(0)" onclick="$.operate.detail(\'' + row.factory_id + '\')"><i class="fa fa-user"></i>详情</a>');
+		                actions.push('<a class="' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.factory_id + '\')">编辑</a> ');
+		                actions.push('<a class="' + detailsFlag + ' " href="javascript:void(0)" onclick="$.operate.detail(\'' + row.factory_id + '\')">详情</a>');
 		                return actions.join('');
 		            }
 		        }]

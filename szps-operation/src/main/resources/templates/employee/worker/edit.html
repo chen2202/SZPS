@@ -2,6 +2,7 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" >
 <head>
 	<th:block th:include="include :: header('修改从业人员')" />
+	<link rel="stylesheet" th:href="@{/css/employee/operation.css}"/>
 </head>
 <body class="white-bg">
 	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
@@ -16,10 +17,10 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label">性别：</label>
 				<div class="col-sm-8">
-					<label for="male" class="male">男</label> 
 					<input type="radio" name="sex" id="male" value="男" th:checked="${worker.sex == '男'}" required>
-					<label for="female" class="female">女</label>
+					<label for="male" class="male">男</label> &nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="radio" name="sex" id="female" value="女" th:checked="${worker.sex == '女'}"  required>
+					<label for="female" class="female">女</label>
 				</div>
 			</div>
 			<div class="form-group">
@@ -31,7 +32,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label">学历：</label>
 				<div class="col-sm-8">
-					<select name="education" id="education" th:field="${worker.education}" required>
+					<select class="form-control" name="education" id="education" th:field="${worker.education}" required>
 						<option value="">--请选择学历--</option>
 						<option th:selected="${worker.education=='小学'}" value="小学">小学</option>
 						<option th:selected="${worker.education=='初中'}" value="初中">初中</option>
@@ -46,7 +47,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label">职称：</label>
 				<div class="col-sm-8">
-					<select id="title" name="title" th:field="${worker.title}" required>
+					<select class="form-control" id="title" name="title" th:field="${worker.title}" required>
 						<option value="">--请选择职称--</option>
 						<option th:selected="${worker.title=='初级'}" value="初级">初级</option>
 						<option th:selected="${worker.title=='中级'}" value="中级">中级</option>
@@ -64,7 +65,7 @@
 				<label class="col-sm-3 control-label">所属企业/厂：</label>
 				<div class="col-sm-8">
 					<input id="company_name_h" name="company_name_h" type="hidden" th:field="*{company_name}"/>
-					<select id="company_name" name="company_name"  required>
+					<select class="form-control" id="company_name" name="company_name"  required>
 						<option value="">--请选择公司/水厂--</option>
 					</select>
 				</div>
@@ -73,7 +74,7 @@
 				<label class="col-sm-3 control-label">部门：</label>
 				<div class="col-sm-8">
 					<input id="department_name_h" name="department_name_h" type="hidden" th:field="*{department_name}" />
-					<select id="department_name" name="department_name" required>
+					<select class="form-control" id="department_name" name="department_name" required>
 						<option value="">--请先选择公司/水厂--</option>
 					</select>
 				</div>
@@ -81,7 +82,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label">职务：</label>
 				<div class="col-sm-8">
-					<select name="position" id="position" th:field="${worker.position}" required>
+					<select class="form-control" name="position" id="position" th:field="${worker.position}" required>
 						<option value="">--请选择职务--</option>
 						<option th:selected="${worker.position=='下水道工'}" value="下水道工">下水道工</option>
 						<option th:selected="${worker.position=='污泥处理工'}" value="污泥处理工">污泥处理工</option>

@@ -33,8 +33,9 @@ public class MachineController extends BaseController {
 	
     @RequiresPermissions("fixedasset:machine:view")
     @GetMapping()
-    public String view()
+    public String view(ModelMap mmap,String deptname)
     {
+    	mmap.put("deptname", deptname);
         return prefix + "/machineview";
     }
     
@@ -43,10 +44,12 @@ public class MachineController extends BaseController {
     @RequiresPermissions("fixedasset:machine:view")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(Machine obj)
+    public TableDataInfo list(Machine obj,ModelMap mmap,String deptname)
     {
         startPage();
+        obj.setDeptname(deptname);
         List<Machine> list = service.selectList(obj);
+        mmap.put("deptname", deptname);
         return getDataTable(list);
     }
     /**
@@ -70,6 +73,7 @@ public class MachineController extends BaseController {
     {
     	SysUser user = ShiroUtils.getSysUser();
     	obj.setCreateBy(user.getLoginName());
+    	obj.setDept_id(user.getDeptId());
         return toAjax(service.insert(obj));
     }
     

@@ -40,6 +40,12 @@ public class SpController extends BaseController {
         return prefix+"/waiting";
     }
 
+    @GetMapping("/list")
+    public String dataview5()
+    {
+        return prefix+"/list";
+    }
+
     @GetMapping("/done")
     public String dataview1()
     {
@@ -66,13 +72,24 @@ public class SpController extends BaseController {
 
     private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
-    @RequiresPermissions("op:permit:waiting")
-    @PostMapping("/waiting")
+    @RequiresPermissions("op:permit:list")
+    @PostMapping("/list")
     @ResponseBody
     public TableDataInfo list(EX_GDBS_SB exGdbsSb)
     {
         startPage();
         List<EX_GDBS_SB> list = exService.selectTaskAll();
+
+        return getDataTable(list);
+    }
+
+    @RequiresPermissions("op:permit:waiting")
+    @PostMapping("/waiting")
+    @ResponseBody
+    public TableDataInfo waiting(EX_GDBS_SB exGdbsSb)
+    {
+        startPage();
+        List<EX_GDBS_SB> list = exService.selectTaskWaiting();
 
         return getDataTable(list);
     }
@@ -93,7 +110,7 @@ public class SpController extends BaseController {
     public TableDataInfo listDone(EX_GDBS_SB exGdbsSb)
     {
         startPage();
-        List<EX_GDBS_SB> list = exService.selectTaskAll();
+        List<EX_GDBS_SB> list = exService.selectTaskDone();
 
         return getDataTable(list);
     }
@@ -115,12 +132,10 @@ public class SpController extends BaseController {
     public TableDataInfo listRemind(EX_GDBS_SB exGdbsSb)
     {
 
-        String remindtime=exGdbsSb.getBYZD4();
+        String remindtime=exGdbsSb.getBYZD1();
         if(remindtime!=null&&!Objects.equals(remindtime, ""))
         {
             int t= Integer.parseInt(remindtime);
-            System.out.println(t);
-
             Date now = new Date();
             Calendar c = Calendar.getInstance();
             c.setTime(now);

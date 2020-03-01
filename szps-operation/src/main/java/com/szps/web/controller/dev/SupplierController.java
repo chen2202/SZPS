@@ -74,7 +74,9 @@ public class SupplierController extends BaseController {
         {
             return error("新增供应商'" + obj.getSname() + "'失败，供应商名称已存在");
         }
-		obj.setCreateBy(ShiroUtils.getLoginName());
+		SysUser user = ShiroUtils.getSysUser();
+    	obj.setCreateBy(user.getLoginName());
+    	obj.setDept_id(user.getDeptId());
 		return toAjax(service.insert(obj));
 	}
 

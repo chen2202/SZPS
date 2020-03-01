@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.szps.common.annotation.DataScope;
 import com.szps.common.core.text.Convert;
 import com.szps.web.domain.dev.MaintainPlan;
 import com.szps.web.mapper.dev.MaintainPlanMapper;
@@ -15,6 +16,7 @@ public class MaintainPlanServiceImpl implements IMaintainPlanService {
 	@Autowired
 	private MaintainPlanMapper mapper;
 	@Override
+	@DataScope(deptAlias = "r")
 	public List<MaintainPlan> selectList(MaintainPlan obj) {
 		// TODO Auto-generated method stub
 		return mapper.selectList(obj);

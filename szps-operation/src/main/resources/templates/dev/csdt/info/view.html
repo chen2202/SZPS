@@ -32,7 +32,16 @@
 					</div>
 				</form>
 			</div>
-			
+		<div class="select-list">
+			<ul>
+				<li>
+                   	<a class="btn"  th:href="'/op/dev/csdtinfo'"  style="border-color: #EE0000">设备清单</a>
+                   	<a class="btn"  th:href="'/op/dev/csdtsupplier'"  style="border-color: #1a7bb9">供应商</a>
+                   	<a class="btn"  th:href="'/op/dev/csdtspare'"  style="border-color: #1a7bb9">备品备件</a>
+                   	<a class="btn"  th:href="'/op/dev/csdtmaintenance'"  style="border-color: #1a7bb9">维保信息</a>
+				</li>
+			</ul>
+		</div>			
 	        <div class="btn-group-sm" id="toolbar" role="group">
 		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:csdtinfo:add">
 		            <i class="fa fa-plus"></i> 新增
@@ -165,12 +174,12 @@
 		}
         function doSubmit(index, layero){
 			var tree = layero.find("iframe")[0].contentWindow.$._tree;
-			if ($.tree.notAllowParents(tree)) {
+			//if ($.tree.notAllowParents(tree)) {
 				var body = layer.getChildFrame('body', index);
     			$("#treeIdArea").val(body.find('#treeIdArea').val());
     			$("#treeNameArea").val(body.find('#treeNameArea').val());
     			layer.close(index);
-			}
+			//}
 		}
     </script>
 </body>

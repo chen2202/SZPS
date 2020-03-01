@@ -123,11 +123,25 @@ public class DataScopeAspect
                         " OR {}.dept_id IN ( SELECT dept_id FROM sys_dept WHERE dept_id = {} or instr(','||ancestors||',' ,  ',{},') <> 0  )",
                         deptAlias, user.getDeptId(),  user.getDeptId()));
             }
+            /**
             else if (DATA_SCOPE_SELF.equals(dataScope))
             {
                 if (StringUtils.isNotBlank(userAlias))
                 {
                     sqlString.append(StringUtils.format(" OR {}.user_id = {} ", userAlias, user.getUserId()));
+                }
+                else
+                {
+                    // 数据权限为仅本人且没有userAlias别名不查询任何数据
+                    sqlString.append(" OR 1=0 ");
+                }
+            }
+            */
+            else if (DATA_SCOPE_SELF.equals(dataScope))
+            {
+                if (StringUtils.isNotBlank(userAlias))
+                {
+                    sqlString.append(StringUtils.format(" OR {}.create_by = '{}' ", userAlias, user.getLoginName()));
                 }
                 else
                 {

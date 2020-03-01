@@ -71,6 +71,7 @@ public class BOSupplierController extends BaseController {
     {
     	SysUser user = ShiroUtils.getSysUser();
     	obj.setCreateBy(user.getLoginName());
+    	obj.setDept_id(user.getDeptId());
     	obj.setStype(4);
         return toAjax(service.insert(obj));
     }

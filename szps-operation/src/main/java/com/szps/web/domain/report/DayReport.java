@@ -186,6 +186,15 @@ public class DayReport extends BaseEntity {
 	private String replyOpinion;// 厂区回复意见
 	private String delFlag;
 
+	Long dept_id;//CREATE_BY 部门ID
+	
+	public Long getDept_id() {
+		return dept_id;
+	}
+
+	public void setDept_id(Long dept_id) {
+		this.dept_id = dept_id;
+	}
 	@ExcelField(title = "日期", type = 1, align = 2, sort = 1)
 	public String getReportDate() {
 		return reportDate;

@@ -33,8 +33,9 @@ public class StructureController extends BaseController {
 	
     @RequiresPermissions("fixedasset:structure:view")
     @GetMapping()
-    public String view()
+    public String view(ModelMap mmap,String deptname)
     {
+    	mmap.put("deptname", deptname);
         return prefix + "/structureview";
     }
     
@@ -43,10 +44,12 @@ public class StructureController extends BaseController {
     @RequiresPermissions("fixedasset:structure:view")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(Structure obj)
+    public TableDataInfo list(Structure obj,ModelMap mmap,String deptname)
     {
         startPage();
+        obj.setDeptname(deptname);
         List<Structure> list = service.selectList(obj);
+        mmap.put("deptname", deptname);
         return getDataTable(list);
     }
     /**
@@ -70,6 +73,7 @@ public class StructureController extends BaseController {
     {
     	SysUser user = ShiroUtils.getSysUser();
     	obj.setCreateBy(user.getLoginName());
+    	obj.setDept_id(user.getDeptId());
         return toAjax(service.insert(obj));
     }
     

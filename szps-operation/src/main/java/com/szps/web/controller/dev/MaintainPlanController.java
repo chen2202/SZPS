@@ -76,6 +76,7 @@ public class MaintainPlanController extends BaseController {
     	SysDept sysDept = user.getDept();
 //    	obj.setDeptId(sysDept.getDeptId());
     	obj.setCreateBy(user.getLoginName());
+    	obj.setDept_id(user.getDeptId());
     	obj.setDelFlag(MaintainPlan.DEL_FLAG_NORMAL);
         return toAjax(service.insert(obj));
     }

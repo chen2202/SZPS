@@ -31,7 +31,16 @@
 					</div>
 				</form>
 			</div>
-			
+		<div class="select-list">
+			<ul>
+				<li>
+                   	<a class="btn"  th:href="'/op/dev/routineCheck'"  style="border-color: #1a7bb9">设备点检</a>
+                   	<a class="btn"  th:href="'/op/dev/maintainPlan'"  style="border-color: #EE0000">保养计划</a>
+                   	<a class="btn"  th:href="'/op/dev/maintainRecord'"  style="border-color: #1a7bb9">保养记录</a>
+                   	<a class="btn"  th:href="'/op/dev/fix'"  style="border-color: #1a7bb9">检修记录</a>
+				</li>						
+			</ul>
+		</div>				
 	        <div class="btn-group-sm" id="toolbar" role="group">
 		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:maintainPlan:add">
 		            <i class="fa fa-plus"></i> 新增
@@ -72,12 +81,12 @@
 		}
         function doSubmit(index, layero){
 			var tree = layero.find("iframe")[0].contentWindow.$._tree;
-			if ($.tree.notAllowParents(tree)) {
+			//if ($.tree.notAllowParents(tree)) {
 				var body = layer.getChildFrame('body', index);
     			$("#treeId").val(body.find('#treeId').val());
     			$("#treeName").val(body.find('#treeName').val());
     			layer.close(index);
-			}
+			//}
 		}
         $(function() {
             var options = {

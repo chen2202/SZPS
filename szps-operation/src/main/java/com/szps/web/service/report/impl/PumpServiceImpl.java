@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.szps.common.annotation.DataScope;
 import com.szps.common.core.text.Convert;
 import com.szps.web.domain.report.Pump;
 import com.szps.web.mapper.report.PumpMapper;
@@ -16,6 +17,7 @@ public class PumpServiceImpl implements IPumpService {
 	private PumpMapper reportMapper;
 
 	@Override
+	@DataScope(deptAlias = "r")
 	public List<Pump> selectReportList(Pump report) {
 		return reportMapper.selectReportList(report);
 	}

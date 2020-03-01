@@ -42,8 +42,16 @@
                    	<a class="btn"  th:href="'/op/dev/psoutfallinfo'"  style="border-color: #EE0000">排放口</a>
                    	<a class="btn"  th:href="'/op/dev/pspipeinfo'"  style="border-color: #1a7bb9">管</a>
                    	<a class="btn"  th:href="'/op/dev/pspointinfo'"  style="border-color: #1a7bb9">特征点</a>
+				</li>
+				<li></li>
+				<li></li>
+				<li>
+                   	<a class="btn"  th:href="'/op/dev/ed'"  style="border-color: #1a7bb9">内窥检测数据</a>
+                   	<a class="btn"  th:href="'/op/dev/nm'"  style="border-color: #1a7bb9">管网养护数据</a>
+                   	<a class="btn"  th:href="'/op/dev/drainagenetworkmaintenance'"  style="border-color: #1a7bb9">维保数据</a>
+                   	<a class="btn"  th:href="'/op/dev/drainagenetworkspare'"  style="border-color: #1a7bb9">备品备件</a>
+                   	<a class="btn"  th:href="'/op/dev/drainagenetworksupplier'"  style="border-color: #1a7bb9">供应商</a>
 				</li>						
-				
 			</ul>
 		</div>			
 	        <div class="btn-group-sm" id="toolbar" role="group">
@@ -152,12 +160,12 @@
 		}
         function doSubmit(index, layero){
 			var tree = layero.find("iframe")[0].contentWindow.$._tree;
-			if ($.tree.notAllowParents(tree)) {
+			//if ($.tree.notAllowParents(tree)) {
 				var body = layer.getChildFrame('body', index);
     			$("#treeId2").val(body.find('#treeId2').val());
     			$("#treeName2").val(body.find('#treeName2').val());
     			layer.close(index);
-			}
+			//}
 		}
     </script>
 </body>

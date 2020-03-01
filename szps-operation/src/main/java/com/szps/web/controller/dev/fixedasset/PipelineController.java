@@ -33,8 +33,9 @@ public class PipelineController extends BaseController {
 	
     @RequiresPermissions("fixedasset:pipeline:view")
     @GetMapping()
-    public String view()
+    public String view(ModelMap mmap,String deptname)
     {
+    	mmap.put("deptname", deptname);
         return prefix + "/pipelineview";
     }
     
@@ -43,10 +44,12 @@ public class PipelineController extends BaseController {
     @RequiresPermissions("fixedasset:pipeline:view")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(Pipeline obj)
+    public TableDataInfo list(Pipeline obj,ModelMap mmap,String deptname)
     {
         startPage();
+        obj.setDeptname(deptname);
         List<Pipeline> list = service.selectList(obj);
+        mmap.put("deptname", deptname);
         return getDataTable(list);
     }
     /**
@@ -70,6 +73,7 @@ public class PipelineController extends BaseController {
     {
     	SysUser user = ShiroUtils.getSysUser();
     	obj.setCreateBy(user.getLoginName());
+    	obj.setDept_id(user.getDeptId());
         return toAjax(service.insert(obj));
     }
     

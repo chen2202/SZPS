@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.szps.common.annotation.DataScope;
 import com.szps.common.core.text.Convert;
 import com.szps.common.exception.BusinessException;
 import com.szps.system.domain.SysPost;
@@ -22,6 +23,7 @@ public class DayReportServiceImpl implements IDayReportService {
 	private DayReportMapper reportMapper;
 
 	@Override
+	@DataScope(deptAlias = "r")
 	public List<DayReport> selectReportList(DayReport report) {
 		return reportMapper.selectReportList(report);
 	}

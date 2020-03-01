@@ -30,6 +30,7 @@
         <result property="updateBy"      column="update_by"      />
         <result property="updateTime"    column="update_time"    />
 		<result property="remark"    column="remark"    />
+		<result     property="dept_id"   column="dept_id"   />
     </resultMap> 
 
 	<sql id="selectVo">
@@ -77,6 +78,8 @@
 			<if test=" carnumber !=null and carnumber != ''">
 				AND carnumber  like concat(concat('%',#{carnumber}),'%')
 			</if>
+		<!-- 数据范围过滤 -->
+		${params.dataScope}
 		
 		order by r.id
     </select>
@@ -163,7 +166,8 @@
 			<if test=" originalvalue != null and  originalvalue != ''">originalvalue,</if>
 			
 			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" createBy != null and createBy != ''">create_by,</if>		
+			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
@@ -190,6 +194,7 @@
 	
 			<if test=" remark != null and remark != ''">#{remark},</if>
 			<if test=" createBy != null and createBy != ''">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

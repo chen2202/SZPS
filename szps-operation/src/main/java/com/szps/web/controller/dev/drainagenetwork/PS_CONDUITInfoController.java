@@ -64,7 +64,8 @@ public class PS_CONDUITInfoController extends BaseController {
     public AjaxResult addSave( PS_CONDUIT obj)
     {
     	SysUser user = ShiroUtils.getSysUser();
-    	//obj.setCreateBy(user.getLoginName());
+    	obj.setCreateBy(user.getLoginName());
+    	obj.setDept_id(user.getDeptId());
         return toAjax(service.insert(obj));
     }
     

@@ -51,6 +51,7 @@
         <result property="updateBy"      column="update_by"      />
         <result property="updateTime"    column="update_time"    />
 		<result property="remark"    column="remark"    /> -->
+		<result     property="dept_id"   column="dept_id"   />
     </resultMap> 
 
 	<sql id="selectVo">
@@ -104,6 +105,8 @@
 		<if test=" exp_no !=null and exp_no != ''">
 			and "Exp_No" = #{exp_no}
 		</if>
+		<!-- 数据范围过滤 -->
+		${params.dataScope}	
 		
     </select>
       <select id="selectByName" parameterType="String" resultMap="result">
@@ -226,6 +229,7 @@
 			
 			<!-- <if test=" remark != null and remark != ''">REMARK,</if>
 			<if test=" createBy != null and createBy != ''">create_by,</if>-->
+			<if test=" dept_id != null ">dept_id,</if>
 			create_time 
 		) VALUES (
 <if test=" prj_no != null and prj_no != ''">#{prj_no},</if>
@@ -271,6 +275,7 @@
 			
 			<!-- <if test=" remark != null and remark != ''">#{remark},</if>
 			<if test=" createBy != null and createBy != ''">#{createBy},</if>-->
+			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
 			sysdate	 		
 		)
 	</insert>

@@ -20,12 +20,14 @@
 		<result     property="maintain_amount"   column="maintain_amount"   />
 		<result     property="maintain_cost"   column="maintain_cost"   />
 		<result     property="note"   column="note"   />
+		<result     property="attachmenturl"   column="attachmenturl"   />
 
         <result property="createBy"      column="create_by"      />
         <result property="createTime"    column="create_time"    />
         <result property="updateBy"      column="update_by"      />
         <result property="updateTime"    column="update_time"    />
 		<result property="remark"    column="remark"    />
+		<result     property="dept_id"   column="dept_id"   />
     </resultMap> 
 
 	<sql id="selectVo">
@@ -62,6 +64,8 @@
 				and exp_no = #{exp_no}
 			</if> -->
 		
+		<!-- 数据范围过滤 -->
+		${params.dataScope}	
     </select>
       <select id="selectByName" parameterType="String" resultMap="result">
 		<include refid="selectVo"/>
@@ -105,6 +109,7 @@
 			<if test=" maintain_amount != null">maintain_amount = #{maintain_amount},</if>
 			<if test=" maintain_cost != null">maintain_cost = #{maintain_cost},</if>
 			<if test=" note != null and note != ''">note = #{note},</if>
+			<if test=" attachmenturl != null and attachmenturl != ''">attachmenturl = #{attachmenturl},</if>			
 			
 			<if test=" remark != null and remark != ''">remark = #{remark},</if>
  			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
@@ -133,10 +138,12 @@
 			<if test=" maintain_amount != null">maintain_amount,</if>
 			<if test=" maintain_cost != null">maintain_cost,</if>
 			<if test=" note != null and  note != ''">note,</if>
+			<if test=" attachmenturl != null and  attachmenturl != ''">attachmenturl,</if>
 
 			
 			<if test=" remark != null and remark != ''">REMARK,</if>
 			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" dept_id != null ">dept_id,</if>
 			create_time 
 		) VALUES (
 				<if test=" workid != null and workid != ''">#{workid},</if>
@@ -156,9 +163,11 @@
 				<if test=" maintain_amount != null">#{maintain_amount},</if>
 				<if test=" maintain_cost != null">#{maintain_cost},</if>
 				<if test=" note != null and note != ''">#{note},</if>
+				<if test=" attachmenturl != null and attachmenturl != ''">#{attachmenturl},</if>
 			
 			 	<if test=" remark != null and remark != ''">#{remark},</if>
 				<if test=" createBy != null and createBy != ''">#{createBy},</if>
+			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
 				sysdate	 		
 		)
 	</insert>

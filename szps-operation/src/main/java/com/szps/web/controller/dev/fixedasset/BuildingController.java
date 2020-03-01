@@ -33,8 +33,9 @@ public class BuildingController extends BaseController {
 	
     @RequiresPermissions("fixedasset:building:view")
     @GetMapping()
-    public String view()
+    public String view(ModelMap mmap,String deptname)
     {
+    	mmap.put("deptname", deptname);
         return prefix + "/buildingview";
     }
     
@@ -43,10 +44,12 @@ public class BuildingController extends BaseController {
     @RequiresPermissions("fixedasset:building:view")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(Building obj, ModelMap mmap)
+    public TableDataInfo list(Building obj,ModelMap mmap,String deptname)
     {
         startPage();
+        obj.setDeptname(deptname);
         List<Building> list = service.selectList(obj);
+        mmap.put("deptname", deptname);
         return getDataTable(list);
     }
     
@@ -81,6 +84,7 @@ public class BuildingController extends BaseController {
     {
     	SysUser user = ShiroUtils.getSysUser();
     	obj.setCreateBy(user.getLoginName());
+    	obj.setDept_id(user.getDeptId());
         return toAjax(service.insert(obj));
     }
     

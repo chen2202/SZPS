@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.szps.common.annotation.DataScope;
 import com.szps.common.core.text.Convert;
 import com.szps.web.domain.report.MHC;
 import com.szps.web.mapper.report.MHCMapper;
@@ -16,6 +17,7 @@ public class MHCServiceImpl implements IMHCService {
 	private MHCMapper reportMapper;
 
 	@Override
+	@DataScope(deptAlias = "r")
 	public List<MHC> selectReportList(MHC report) {
 		return reportMapper.selectReportList(report);
 	}

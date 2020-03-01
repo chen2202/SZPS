@@ -45,15 +45,24 @@
 					</div>
 				</form>
 			</div>
-			
+		<div class="select-list">
+			<ul>
+				<li>
+                   	<a class="btn"  th:href="'/op/dev/boinfo'"  style="border-color: #1a7bb9">设备清单</a>
+                   	<a class="btn"  th:href="'/op/dev/bosupplier'"  style="border-color: #1a7bb9">供应商</a>
+                   	<a class="btn"  th:href="'/op/dev/bospare'"  style="border-color: #1a7bb9">备品备件</a>
+                   	<a class="btn"  th:href="'/op/dev/bomaintenance'"  style="border-color: #EE0000">维保信息</a>
+				</li>
+			</ul>
+		</div>				
 	        <div class="btn-group-sm" id="toolbar" role="group">
-		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:maintenance:add">
+		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:bomaintenance:add">
 		            <i class="fa fa-plus"></i> 新增
 		        </a>
-		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="dev:maintenance:delete">
+		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="dev:bomaintenance:delete">
 		            <i class="fa fa-remove"></i> 删除
 		        </a>
-		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="dev:maintenance:export">
+		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="dev:bomaintenance:export">
 		            <i class="fa fa-download"></i> 导出
 		        </a> -->
 	        </div>
@@ -65,10 +74,10 @@
     </div>
     <th:block th:include="include :: footer" />
     <script th:inline="javascript">
-        var prefix = ctx + "op/dev/maintenance";
-        var viewFlag = [[${@permission.hasPermi('dev:maintenance:view')}]];
-        var editFlag = [[${@permission.hasPermi('dev:maintenance:edit')}]];
-        var removeFlag = [[${@permission.hasPermi('dev:maintenance:delete')}]];
+        var prefix = ctx + "op/dev/bomaintenance";
+        var viewFlag = [[${@permission.hasPermi('dev:bomaintenance:view')}]];
+        var editFlag = [[${@permission.hasPermi('dev:bomaintenance:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('dev:bomaintenance:delete')}]];
         
        
         $(function() {
@@ -164,12 +173,12 @@
 		}
         function doSubmit(index, layero){
 			var tree = layero.find("iframe")[0].contentWindow.$._tree;
-			if ($.tree.notAllowParents(tree)) {
+			//if ($.tree.notAllowParents(tree)) {
 				var body = layer.getChildFrame('body', index);
     			$("#treeId").val(body.find('#treeId').val());
     			$("#treeName").val(body.find('#treeName').val());
     			layer.close(index);
-			}
+			//}
 		}
     </script>
 </body>

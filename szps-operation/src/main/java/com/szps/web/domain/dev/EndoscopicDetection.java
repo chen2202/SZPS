@@ -35,6 +35,16 @@ public class EndoscopicDetection extends BaseEntity {
 	String report_dept;// 数据填报单位
 	String reportdate;// 填报日期，填写年、月、日、时、分之间用“－”连接，如：2010-03-10-10-10
 	String note;// 备注
+	String attachmenturl;// 备注
+	Long dept_id;//CREATE_BY 部门ID
+	
+	public Long getDept_id() {
+		return dept_id;
+	}
+
+	public void setDept_id(Long dept_id) {
+		this.dept_id = dept_id;
+	}
 	public String getWorkid() {
 		return workid;
 	}
@@ -160,6 +170,12 @@ public class EndoscopicDetection extends BaseEntity {
 	}
 	public void setNote(String note) {
 		this.note = note;
+	}
+	public String getAttachmenturl() {
+		return attachmenturl;
+	}
+	public void setAttachmenturl(String attachmenturl) {
+		this.attachmenturl = attachmenturl;
 	}
 
 }

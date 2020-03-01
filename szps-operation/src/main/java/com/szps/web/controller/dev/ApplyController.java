@@ -77,6 +77,7 @@ public class ApplyController extends BaseController {
     	//obj.setDeptId(sysDept.getDeptId());
     	
     	obj.setCreateBy(user.getLoginName());
+    	obj.setDept_id(user.getDeptId());
     	obj.setDelFlag(Apply.DEL_FLAG_NORMAL);
         return toAjax(service.insert(obj));
     }

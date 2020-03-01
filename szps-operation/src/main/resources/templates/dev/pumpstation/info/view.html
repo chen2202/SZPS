@@ -28,7 +28,16 @@
 					</div>
 				</form>
 			</div>
-			
+		<div class="select-list">
+			<ul>
+				<li>
+                   	<a class="btn"  th:href="'/op/dev/pumpstationinfo'"  style="border-color: #EE0000">设备清单</a>
+                   	<a class="btn"  th:href="'/op/dev/pumpstationsupplier'"  style="border-color: #1a7bb9">供应商</a>
+                   	<a class="btn"  th:href="'/op/dev/pumpstationspare'"  style="border-color: #1a7bb9">备品备件</a>
+                   	<a class="btn"  th:href="'/op/dev/pumpstationmaintenance'"  style="border-color: #1a7bb9">维保信息</a>
+				</li>
+			</ul>
+		</div>			
 	        <div class="btn-group-sm" id="toolbar" role="group">
 		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:pumpstationinfo:add">
 		            <i class="fa fa-plus"></i> 新增
@@ -132,12 +141,12 @@
 		}
         function doSubmit(index, layero){
 			var tree = layero.find("iframe")[0].contentWindow.$._tree;
-			if ($.tree.notAllowParents(tree)) {
+			//if ($.tree.notAllowParents(tree)) {
 				var body = layer.getChildFrame('body', index);
     			$("#treeIdArea").val(body.find('#treeIdArea').val());
     			$("#treeNameArea").val(body.find('#treeNameArea').val());
     			layer.close(index);
-			}
+			//}
 		}
     </script>
 </body>

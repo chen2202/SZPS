@@ -27,7 +27,16 @@
 					</div>
 				</form>
 			</div>
-			
+		<div class="select-list">
+			<ul>
+				<li>
+                   	<a class="btn"  th:href="'/op/report/day'"  style="border-color: #1a7bb9">日报</a>
+                   	<a class="btn"  th:href="'/op/report/week'"  style="border-color: #1a7bb9">周报</a>
+                   	<a class="btn"  th:href="'/op/report/month'"  style="border-color: #EE0000">月报</a>
+                   	<a class="btn"  th:href="'/op/report/collect/day'"  style="border-color: #1a7bb9">综合汇合</a>
+				</li>
+			</ul>
+		</div>				
 	        <div class="btn-group-sm" id="toolbar" role="group">
 		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="report:month:add">
 		            <i class="fa fa-plus"></i> 新增
@@ -67,12 +76,12 @@
 		}
         function doSubmit(index, layero){
 			var tree = layero.find("iframe")[0].contentWindow.$._tree;
-			if ($.tree.notAllowParents(tree)) {
+			//if ($.tree.notAllowParents(tree)) {
 				var body = layer.getChildFrame('body', index);
     			$("#treeId").val(body.find('#treeId').val());
     			$("#treeName").val(body.find('#treeName').val());
     			layer.close(index);
-			}
+			//}
 		}
         $(function() {
             var options = {

@@ -71,6 +71,7 @@ public class PumpstationSupplierController extends BaseController {
     {
     	SysUser user = ShiroUtils.getSysUser();
     	obj.setCreateBy(user.getLoginName());
+    	obj.setDept_id(user.getDeptId());
     	obj.setStype(3);
         return toAjax(service.insert(obj));
     }

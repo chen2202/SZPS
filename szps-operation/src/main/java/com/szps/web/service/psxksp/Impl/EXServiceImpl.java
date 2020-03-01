@@ -29,4 +29,14 @@ public class EXServiceImpl implements EXService{
         return exMapper.selectById(sblsh);
     }
 
+    @Override
+    public List<EX_GDBS_SB> selectTaskWaiting() {
+        return exMapper.selectTaskWaiting();
+    }
+
+    @Override
+    public List<EX_GDBS_SB> selectTaskDone() {
+        return exMapper.selectTaskDone();
+    }
+
 }

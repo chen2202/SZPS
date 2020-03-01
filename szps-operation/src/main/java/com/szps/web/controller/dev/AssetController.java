@@ -75,6 +75,7 @@ public class AssetController extends BaseController {
 		 * SysDept sysDept = user.getDept(); obj.setDeptId(sysDept.getDeptId());
 		 */
     	obj.setCreateBy(user.getLoginName());
+    	obj.setDept_id(user.getDeptId());
     	obj.setDelFlag(Asset.DEL_FLAG_NORMAL);
         return toAjax(service.insert(obj));
     }

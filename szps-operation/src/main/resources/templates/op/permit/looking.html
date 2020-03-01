@@ -3,6 +3,8 @@
 <head>
 	<th:block th:include="include :: header('查看详情')" />
 	<th:block th:include="include :: ztree-css" />
+	<link th:href="@{/css/op/operation.css}" rel="stylesheet"/>
+	<link th:href="@{/css/op/public.css}" rel="stylesheet"/>
 </head>
 <body class="white-bg">
 	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
@@ -10,99 +12,99 @@
 			<!--<input id="staffNumber" name="staffNumber" type="hidden" th:field="*{staffNumber}"/>-->
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">省级申办流水号：</label>
-				<div class="col-sm-9">
+				<div class="col-sm-8">
 					<input class="form-control" type="text"  id="SBLSH" th:field="*{SBLSH}" readonly>
 				</div>
 
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">状态：</label>
-				<div class="col-sm-9">
+				<div class="col-sm-8">
 					<input class="form-control" type="text"  id="BYZD4" th:field="*{BYZD4}" readonly>
 				</div>
 
 			</div>
 			<div class="form-group">
 			<label class="col-sm-3 control-label ">市级统一申办流水号：</label>
-			<div class="col-sm-9">
+			<div class="col-sm-8">
 				<input class="form-control" type="text"  id="SBLSH_SHORT" th:field="*{SBLSH_SHORT}" readonly >
 			</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">事项编号：</label>
-				<div class="col-sm-9">
+				<div class="col-sm-8">
 					<input class="form-control" type="text"  id="SXBM" th:field="*{SXBM}" readonly >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">事项名称：</label>
-				<div class="col-sm-9">
+				<div class="col-sm-8">
 					<input class="form-control" type="text"  id="SXMC" th:field="*{SXMC}" readonly >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">事项情形编码：</label>
-				<div class="col-sm-9">
+				<div class="col-sm-8">
 					<input class="form-control" type="text"  id="SXQXBM" th:field="*{SXQXBM}" readonly >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">父事项编码：</label>
-				<div class="col-sm-9">
+				<div class="col-sm-8">
 					<input class="form-control" type="text"  id="FSXBM" th:field="*{FSXBM}" readonly >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">父事项名称：</label>
-				<div class="col-sm-9">
+				<div class="col-sm-8">
 					<input class="form-control" type="text"  id="FSXMC" th:field="*{FSXMC}" readonly >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">申请人类型：</label>
-				<div class="col-sm-9">
+				<div class="col-sm-8">
 					<input class="form-control" type="text"  id="SQRLX" th:field="*{SQRLX}" readonly >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">申请人名称：</label>
-				<div class="col-sm-9">
+				<div class="col-sm-8">
 					<input class="form-control" type="text"  id="SQRMC" th:field="*{SQRMC}" readonly >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">申请人证件类型：</label>
-				<div class="col-sm-9">
+				<div class="col-sm-8">
 					<input class="form-control" type="text"  id="SQRZJLX" th:field="*{SQRZJLX}" readonly >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">申请人证件号码：</label>
-				<div class="col-sm-9">
+				<div class="col-sm-8">
 					<input class="form-control" type="text"  id="SQRZJHM" th:field="*{SQRZJHM}" readonly >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">联系人姓名：</label>
-				<div class="col-sm-9">
+				<div class="col-sm-8">
 					<input class="form-control" type="text"  id="LXRXM" th:field="*{LXRXM}" readonly >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">联系人证件类型：</label>
-				<div class="col-sm-9">
+				<div class="col-sm-8">
 					<input class="form-control" type="text"  id="LXRZJLX" th:field="*{LXRZJLX}" readonly >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">联系人身份证件号码：</label>
-				<div class="col-sm-9">
+				<div class="col-sm-8">
 					<input class="form-control" type="text"  id="LXRSFZJHM" th:field="*{LXRSFZJHM}" readonly >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">联系人手机：</label>
-				<div class="col-sm-9">
+				<div class="col-sm-8">
 					<input class="form-control" type="text"  id="LXRSJ" th:field="*{LXRSJ}" readonly >
 				</div>
 			</div>
@@ -122,7 +124,7 @@
 				<div class="col-sm-3">
 					<input class="form-control" type="text"  id="FW"  >
 				</div>
-				<a class="btn btn-success" href="#"  style="margin-left: 30px">
+				<a class="btn btn-main" href="#" >
 					管网分布图
 				</a>
 
@@ -130,7 +132,7 @@
 
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">申报材料清单：</label>
-				<div class="col-sm-9">
+				<div class="col-sm-8">
 					<textarea class="form-control" type="text"  id="SBCLQD" th:field="*{SBCLQD}" readonly ></textarea>
 				</div>
 			</div>

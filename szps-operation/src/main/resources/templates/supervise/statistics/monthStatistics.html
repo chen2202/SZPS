@@ -3,6 +3,8 @@
 <head>
 	<th:block th:include="include :: header('任务列表')" />
 	<script th:src="@{/js/plugins/echarts.min.js}"></script>
+	<link th:href="@{/css/op/public.css}" rel="stylesheet"/>
+	<link th:href="@{/css/op/operation.css}" rel="stylesheet"/>
 </head>
 <body class="gray-bg">
 <div class="container-div">
@@ -44,7 +46,7 @@
 							<input type="text" class="time-input" id="taskTime" placeholder="检查时间" name="taskTime" data-format="yyyy-MM" required/>
 						</li>
 						<li>
-							<a class="btn btn-primary btn-rounded btn-sm" onclick="list()"><i class="fa fa-search"></i>&nbsp;查看</a>
+							<a class="btn btn-main btn-sm" onclick="list()"><i class="fa fa-search"></i>&nbsp;查看</a>
 							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
 						</li>
 					</ul>
@@ -87,6 +89,7 @@
             tooltip: {
                 trigger: 'axis'
             },
+        	color:['#2BA3FD','#FAAD14'],
             legend: {
                 data: ['日下发任务数量', '日完成数量']
             },
@@ -118,6 +121,13 @@
                     name: '日下发任务数量',
                     type: 'line',
                     data: alls,
+                    itemStyle : {
+                        normal : {
+                            lineStyle:{
+                                color:'#2BA3FD'
+                            }
+                        }
+                    },
                     markPoint: {
                         data: [
                             {type: 'max', name: '最大值'},
@@ -134,6 +144,13 @@
                     name: '日完成数量',
                     type: 'line',
                     data: completes,
+                    itemStyle : {
+                        normal : {
+                            lineStyle:{
+                                color:'#FAAD14'
+                            }
+                        }
+                    },
                     markPoint: {
                         data: [
                             {name: '周最低', value: 0, xAxis: 1, yAxis: -1.5}

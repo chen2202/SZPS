@@ -2,6 +2,8 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
 	<th:block th:include="include :: header('任务列表')" />
+	<link th:href="@{/css/op/public.css}" rel="stylesheet"/>
+	<link th:href="@{/css/op/operation.css}" rel="stylesheet"/>
 </head>
 <body class="gray-bg">
 <div class="container-div">
@@ -25,7 +27,7 @@
 							<input type="text" class="time-input" id="feedbackTime" placeholder="创建时间" name="feedbackTime"/>
 						</li>
 						<li>
-							<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							<a class="btn btn-main btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
 							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
 						</li>
 					</ul>
@@ -38,7 +40,7 @@
 			<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="supervise:complete:add">
 				<i class="fa fa-plus"></i> 新增
 			</a>
-			<a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="supervise:complete:remove">
+			<a class="btn btn-danger " onclick="$.operate.removeAll()" shiro:hasPermission="supervise:complete:remove">
 				<i class="fa fa-remove"></i> 删除
 			</a>
 		</div>

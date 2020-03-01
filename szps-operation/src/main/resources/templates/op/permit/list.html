@@ -2,6 +2,8 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
 	<th:block th:include="include :: header('任务列表')" />
+	<link th:href="@{/css/op/public.css}" rel="stylesheet"/>
+
 </head>
 <body class="gray-bg">
 <div class="container-div">
@@ -48,22 +50,22 @@
 
 		<div class="btn-group-sm" id="toolbar" role="group">
 			<div class="select-list">
-				<a class="btn btn-success"  th:href="'/op/permit/list'">
+				<a class="btn btn-main"  th:href="'/op/permit/list'">
 					任务列表
 				</a>
-				<a class="btn" th:href="'/op/permit/waiting'"  style="margin-left: 30px;border-color: #1a7bb9">
+				<a class="btn " th:href="'/op/permit/waiting'"  >
 					待审批任务
 				</a>
-				<a class="btn" th:href="'/op/permit/done'" style="margin-left: 30px;border-color: #1a7bb9" >
+				<a class="btn " th:href="'/op/permit/done'"  >
 					已审批任务
 				</a>
-				<a class="btn" th:href="'/op/permit/remind'" style="margin-left: 30px;border-color: #1a7bb9" >
+				<a class="btn " th:href="'/op/permit/remind'"  >
 					到期许可提醒
 				</a>
-				<a class="btn" th:href="'/op/permit/table'" style="margin-left: 30px;border-color: #1a7bb9" >
+				<a class="btn " th:href="'/op/permit/table'"  >
 					各区审批表
 				</a>
-				<a class="btn" th:href="'/op/permit/statistic'" style="margin-left: 30px;border-color: #1a7bb9" >
+				<a class="btn " th:href="'/op/permit/statistic'"  >
 					数据统计
 				</a>
 			</div>
@@ -171,7 +173,7 @@
                     align: 'center',
                     formatter: function(value, row, index) {
                         var actions = [];
-                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.sblsh + '\')"><i class="fa fa-edit"></i>查看详情</a> ');
+                        actions.push('<a class=" ' + editFlag + '"  href="javascript:void(0)" onclick="$.operate.edit(\'' + row.sblsh + '\')">查看详情</a> ');
                         //actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.taskNumber + '\')"><i class="fa fa-remove"></i>删除</a> ');
                         return actions.join('');
                     }

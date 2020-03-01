@@ -2,9 +2,13 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
 	<th:block th:include="include :: header('资料列表')" />
+	<link th:href="@{/css/dm/dm.css}" rel="stylesheet"/>
 	<style>
 		#btn-data-show{
-			border: 2px solid red;
+			border-radius: 4px;
+			background: linear-gradient(270deg, #1ECFF7 0%, #2E9BFF 100%);
+			border: 1px solid rgba(255,255,255,0.40);
+			color: rgba(255,255,255,1);
 		}
 	</style>
 </head>

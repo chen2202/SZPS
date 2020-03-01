@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('规划资料管理')" />
+    <link th:href="@{/css/dm/dm.css}" rel="stylesheet"/>
+</head>
+<body>
+    <div class="col-sm-12 search-collapse">
+
+    </div>
+
+    <!-- 导航区 -->
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a onclick="toggle('dm/data')" role="tab" data-toggle="tab">规划资料展示</a></li>
+        <li role="presentation" shiro:hasPermission="dm:data:add"><a onclick="toggle('dm/permission')" role="tab" data-toggle="tab">资料权限审批</a></li>
+        <li role="presentation"><a onclick="toggle('dm/my')" role="tab" data-toggle="tab">我的资料库</a></li>
+        <li role="presentation"><a onclick="toggle('dm/recycle')" role="tab" data-toggle="tab">回收站</a></li>
+    </ul>
+
+    <div class="row mainContent" id="content-main">
+        <iframe class="RuoYi_iframe" id="content-iframe" name="iframe0" width="100%" height="100%" data-id="/dm/data"
+                th:src="@{/dm/data}" frameborder="0" seamless></iframe>
+    </div>
+
+    <script th:inline="javascript">
+        function toggle(url) {
+            $("#content-iframe").attr("src",ctx+url);
+            $("#content-iframe").attr("data-id",ctx+url);
+        }
+    </script>
+    <th:block th:include="include :: footer" />
+</body>
+</html>

@@ -3,6 +3,8 @@
 <head>
     <th:block th:include="include :: header('修改资料')" />
     <th:block th:include="include :: bootstrap-fileinput-css" />
+    <link th:href="@{/css/dm/dm.css}" rel="stylesheet"/>
+    <link th:href="@{/css/dm/operation.css}" rel="stylesheet"/>
 </head>
 <body>
 <div class="main-content">
@@ -188,7 +190,7 @@
     function submitHandler() {
         if ($.validate.form()) {
             var data = $("#form-data-edit").serializeArray();
-            $.operate.saveTab(prefix + "/edit", data);
+            $.operate.save(prefix + "/edit", data);
         }
     }
 

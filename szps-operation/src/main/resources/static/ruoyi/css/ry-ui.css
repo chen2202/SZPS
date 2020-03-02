@@ -905,7 +905,7 @@ label {
 	height:27px;
 	border-radius:50%;
 	margin-right:8px;
-	margin-top:-3px;
+	margin-top:-5px;
 }
 @media (max-width:767px) {
 	.navbar-right > .user-menu .user-image {

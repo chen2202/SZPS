@@ -22,7 +22,7 @@
 		};
 	</script>
 	<script type="text/javascript"
-		src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.6">
+		src="https://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.6">
 		
 	</script>
 	<script type="text/javascript">
@@ -34,7 +34,7 @@
 		function init() {
 			map = new esri.Map("map");
 			var layer = new esri.layers.ArcGISDynamicMapServiceLayer(
-					"http://120.79.27.112:6080/arcgis/rest/services/SZPS/basemapBlue/MapServer");
+					"https://vx.newground.cn:6111/arcgis/rest/services/SZPS/basemapBlue/MapServer");
 			map.addLayer(layer);
 			
 			

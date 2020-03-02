@@ -37,6 +37,8 @@ public class EndoscopicDetection extends BaseEntity {
 	String note;// 备注
 	String attachmenturl;// 备注
 	Long dept_id;//CREATE_BY 部门ID
+	String district;// 备注
+	String river;// 备注
 	
 	public Long getDept_id() {
 		return dept_id;
@@ -176,6 +178,22 @@ public class EndoscopicDetection extends BaseEntity {
 	}
 	public void setAttachmenturl(String attachmenturl) {
 		this.attachmenturl = attachmenturl;
+	}
+
+	public String getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(String district) {
+		this.district = district;
+	}
+
+	public String getRiver() {
+		return river;
+	}
+
+	public void setRiver(String river) {
+		this.river = river;
 	}
 
 }

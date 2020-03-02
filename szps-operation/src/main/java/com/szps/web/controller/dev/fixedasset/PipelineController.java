@@ -19,7 +19,10 @@ import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
 import com.szps.framework.util.ShiroUtils;
+import com.szps.system.domain.SysDept;
 import com.szps.system.domain.SysUser;
+import com.szps.system.service.ISysDeptService;
+import com.szps.web.domain.dev.fixedasset.Building;
 import com.szps.web.domain.dev.fixedasset.Pipeline;
 import com.szps.web.service.dev.fixedasset.IPipelineService;
 
@@ -28,13 +31,21 @@ import com.szps.web.service.dev.fixedasset.IPipelineService;
 public class PipelineController extends BaseController {
 	 @Autowired
 	private IPipelineService service;
-	
+	 @Autowired
+	 private ISysDeptService deptService;
 	private String prefix = "/fixedasset";
 	
     @RequiresPermissions("fixedasset:pipeline:view")
     @GetMapping()
-    public String view(ModelMap mmap,String deptname)
+    public String view(ModelMap mmap,String deptname,Long deptId)
     {
+    	mmap.put("deptId", deptId);
+    	if (deptname==null || deptname.equals("")) {
+    		SysDept dept = deptService.selectDeptById(deptId);
+        	if (dept != null) {
+        		deptname = dept.getDeptName();
+    		}
+		}
     	mmap.put("deptname", deptname);
         return prefix + "/pipelineview";
     }
@@ -44,11 +55,16 @@ public class PipelineController extends BaseController {
     @RequiresPermissions("fixedasset:pipeline:view")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(Pipeline obj,ModelMap mmap,String deptname)
+    public TableDataInfo list(Pipeline obj,ModelMap mmap,String deptname,Long deptId)
     {
         startPage();
-        obj.setDeptname(deptname);
+        if (deptname != null && !deptname.equals("")) {
+        	obj.setDeptname(deptname);
+		}else {
+	        obj.setDeptid(deptId);
+		}
         List<Pipeline> list = service.selectList(obj);
+        mmap.put("deptId", deptId);
         mmap.put("deptname", deptname);
         return getDataTable(list);
     }

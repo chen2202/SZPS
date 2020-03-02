@@ -33,6 +33,8 @@
         <result property="updateTime"    column="update_time"    />
 		<result property="remark"    column="remark"    />
 		<result     property="dept_id"   column="dept_id"   />
+		<result     property="district"   column="district"   />
+		<result     property="river"   column="river"   />
     </resultMap> 
 
 	<sql id="selectVo">
@@ -119,6 +121,8 @@
 <if test=" reportdate  != null and reportdate  != ''">reportdate  = #{reportdate},</if>
 <if test=" note  != null and note  != ''">note  = #{note},</if>
 <if test=" attachmenturl != null and attachmenturl != ''">attachmenturl = #{attachmenturl},</if>
+<if test=" district != null and district != ''">district = #{district},</if>
+<if test=" river != null and river != ''">river = #{river},</if>
 
 
 			
@@ -154,6 +158,8 @@
 <if test=" reportdate  != null and  reportdate  != ''">reportdate,</if>
 <if test=" note  != null and  note  != ''">note,</if>
 <if test=" attachmenturl  != null and  attachmenturl  != ''">attachmenturl,</if>
+<if test=" district  != null and  district  != ''">district,</if>
+<if test=" river  != null and  river  != ''">river,</if>
 			
 			<if test=" remark != null and remark != ''">REMARK,</if>
 			<if test=" createBy != null and createBy != ''">create_by,</if>
@@ -182,6 +188,8 @@
 <if test=" reportdate  != null and reportdate  != ''">#{reportdate},</if>
 <if test=" note  != null and note  != ''">#{note},</if>
 <if test=" attachmenturl  != null and attachmenturl  != ''">#{attachmenturl},</if>
+<if test=" district  != null and district  != ''">#{district},</if>
+<if test=" river  != null and river  != ''">#{river},</if>
 
 			
 			 <if test=" remark != null and remark != ''">#{remark},</if>

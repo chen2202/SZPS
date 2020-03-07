@@ -1,136 +1,159 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:include="include :: header('新增污水厂巡检')" />
-    <th:block th:include="include :: datetimepicker-css" />
+    <th:block th:include="include :: header('新增污水厂巡检')"/>
+    <th:block th:include="include :: datetimepicker-css"/>
 </head>
 <body class="white-bg">
-    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
-        <form class="form-horizontal m" id="form-plant-add" th:object="${user}">
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">污水厂代码：</label>
-                <div class="col-sm-8">
-                    <select name="plantId" class="form-control m-b" required>
-                        <option value=""></option>
-                        <option th:each="list : ${plantList}" th:text="${list.plantId}"
-                                th:value="${list.plantId}"></option>
-                    </select>
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-plant-add" th:object="${user}">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <text style="font-family: '苹方 中等';">污水厂代码：</text>
+            </label>
+            <div class="col-sm-8">
+                <select style="font-family: '苹方 中等'" name="plantId" class="form-control m-b" required>
+                    <option value=""></option>
+                    <option th:each="list : ${plantList}" th:text="${list.plantId}"
+                            th:value="${list.plantId}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <text style="font-family: '苹方 中等';">污水厂名称：</text>
+            </label>
+            <div class="col-sm-8">
+                <select style="font-family: '苹方 中等'" name="plantName" class="form-control m-b" required>
+                    <option value=""></option>
+                    <option th:each="list : ${plantList}" th:text="${list.plantName}"
+                            th:value="${list.plantName}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <text style="font-family: '苹方 中等';">设备ID：</text>
+            </label>
+            <div class="col-sm-8">
+                <select style="font-family: '苹方 中等'" name="deviceId" class="form-control m-b" required>
+                    <option value=""></option>
+                    <option th:each="list : ${plantList}" th:text="${list.deviceId}"
+                            th:value="${list.deviceId}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <text style="font-family: '苹方 中等';">设备名称：</text>
+            </label>
+            <div class="col-sm-8">
+                <select style="font-family: '苹方 中等'" name="deviceName" class="form-control m-b" required>
+                    <option value=""></option>
+                    <option th:each="list : ${plantList}" th:text="${list.deviceName}"
+                            th:value="${list.deviceName}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <text style="font-family: '苹方 中等';">点检ID：</text>
+            </label>
+            <div class="col-sm-8">
+                <select style="font-family: '苹方 中等'" name="checkId" class="form-control m-b" required>
+                    <option value=""></option>
+                    <option th:each="list : ${plantList}" th:text="${list.checkId}"
+                            th:value="${list.checkId}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <text style="font-family: '苹方 中等';">简单故障处理记录：</text>
+            </label>
+            <div class="col-sm-8">
+                <textarea name="sloveRecord" style="resize: none; height: 150px;font-family: '苹方 中等'" class="form-control"
+                          required></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <text style="font-family: '苹方 中等';">巡检日期：</text>
+            </label>
+            <div class="col-sm-8">
+                <div class="input-group date">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input style="font-family: '苹方 中等' " name="checkDate" id="laydate-demo-3" class="form-control" placeholder="yyyy-MM-dd HH:mm:ss"
+                           type="text" required>
                 </div>
             </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">污水厂名称：</label>
-                <div class="col-sm-8">
-                    <select name="plantName" class="form-control m-b" required>
-                        <option value=""></option>
-                        <option th:each="list : ${plantList}" th:text="${list.plantName}"
-                                th:value="${list.plantName}"></option>
-                    </select>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <text style="font-family: '苹方 中等';">创建者：</text>
+            </label>
+            <div class="col-sm-8">
+                <input style="font-family: '苹方 中等'" th:field="*{systemCreateuser}" name="systemCreateuser" class="form-control" type="text" readonly
+                       required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">
+                <text style="font-family: '苹方 中等';">创建日期：</text>
+            </label>
+            <div class="col-sm-8">
+                <div class="input-group date">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input style="font-family: '苹方 中等'" name="systemCreatetime" id="laydate-demo-4" class="form-control"
+                           placeholder="yyyy-MM-dd HH:mm:ss" type="text" required>
                 </div>
             </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">设备ID：</label>
-                <div class="col-sm-8">
-                    <select name="deviceId" class="form-control m-b" required>
-                        <option value=""></option>
-                        <option th:each="list : ${plantList}" th:text="${list.deviceId}"
-                                th:value="${list.deviceId}"></option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">设备名称：</label>
-                <div class="col-sm-8">
-                    <select name="deviceName" class="form-control m-b" required>
-                        <option value=""></option>
-                        <option th:each="list : ${plantList}" th:text="${list.deviceName}"
-                                th:value="${list.deviceName}"></option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">点检ID：</label>
-                <div class="col-sm-8">
-                    <select name="checkId" class="form-control m-b" required>
-                        <option value=""></option>
-                        <option th:each="list : ${plantList}" th:text="${list.checkId}"
-                                th:value="${list.checkId}"></option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">简单故障处理记录：</label>
-                <div class="col-sm-8">
-                    <textarea name="sloveRecord"  style="resize: none; height: 150px"  class="form-control" required></textarea>
-                </div>
-            </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">巡检日期：</label>
-                <div class="col-sm-8">
-                    <div class="input-group date">
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                        <input name="checkDate" id="laydate-demo-3" class="form-control" placeholder="yyyy-MM-dd HH:mm:ss" type="text" required>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">创建者：</label>
-                <div class="col-sm-8">
-                    <input th:field="*{systemCreateuser}" name="systemCreateuser" class="form-control" type="text" readonly  required>
-                </div>
-            </div>
-            <div class="form-group">    
-                <label class="col-sm-3 control-label">创建日期：</label>
-                <div class="col-sm-8">
-                    <div class="input-group date">
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                        <input name="systemCreatetime" id="laydate-demo-4" class="form-control" placeholder="yyyy-MM-dd HH:mm:ss" type="text"  required>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-    <th:block th:include="include :: footer" />
-    <th:block th:include="include :: datetimepicker-js" />
-    <script type="text/javascript">
-        var prefix = ctx + "check/plant/plant"
-        $("#form-plant-add").validate({
-            focusCleanup: true
-        });
+        </div>
+    </form>
+</div>
+<th:block th:include="include :: footer"/>
+<th:block th:include="include :: datetimepicker-js"/>
+<script type="text/javascript">
+    var prefix = ctx + "check/plant/plant"
+    $("#form-plant-add").validate({
+        focusCleanup: true
+    });
 
-        function submitHandler() {
-            if ($.validate.form()) {
-                $.operate.save(prefix + "/add", $('#form-plant-add').serialize());
-            }
+    function submitHandler() {
+        if ($.validate.form()) {
+            $.operate.save(prefix + "/add", $('#form-plant-add').serialize());
         }
-        layui.use('laydate', function () {
-            var laydate = layui.laydate;
+    }
 
-            laydate.render({
-                elem: '#laydate-demo-3',
-                type: 'datetime',
-                trigger: 'click'
-            });
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
 
+        laydate.render({
+            elem: '#laydate-demo-3',
+            type: 'datetime',
+            trigger: 'click'
         });
-        layui.use('laydate', function () {
-            var laydate = layui.laydate;
 
-            laydate.render({
-                elem: '#laydate-demo-4',
-                type: 'datetime',
-                trigger: 'click'
-            });
+    });
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
 
+        laydate.render({
+            elem: '#laydate-demo-4',
+            type: 'datetime',
+            trigger: 'click'
         });
-        $("select").each(function (i, n) {
-            var options = "";
-            $(n).find("option").each(function (j, m) {
-                if (options.indexOf($(m)[0].outerHTML) == -1) {
-                    options += $(m)[0].outerHTML;
-                }
-            });
-            $(n).html(options);
+
+    });
+    $("select").each(function (i, n) {
+        var options = "";
+        $(n).find("option").each(function (j, m) {
+            if (options.indexOf($(m)[0].outerHTML) == -1) {
+                options += $(m)[0].outerHTML;
+            }
         });
-    </script>
+        $(n).html(options);
+    });
+</script>
 </body>
 </html>

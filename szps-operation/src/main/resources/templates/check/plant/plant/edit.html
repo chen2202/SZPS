@@ -9,9 +9,10 @@
         <form class="form-horizontal m" id="form-plant-edit" th:object="${plantCheckRecord}">
             <input name="systemId" th:field="*{systemId}" type="hidden">
             <div class="form-group">
-                <label class="col-sm-3 control-label">污水厂代码：</label>
+                <label class="col-sm-3 control-label">
+                    <text style="font-family: '苹方 中等';color: #2BA3FD">污水厂代码：</text></label>
                 <div class="col-sm-8">
-                    <select name="plantId" class="form-control m-b" required>
+                    <select style="font-family: '苹方 中等'" name="plantId" class="form-control m-b" required>
                         <option value=""></option>
                         <option th:each="list : ${plantList}" th:text="${list.plantId}"
                                 th:value="${list.plantId}" th:selected="${list.plantId}==*{plantId}"></option>
@@ -19,9 +20,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label">污水厂名称：</label>
+                <label class="col-sm-3 control-label">
+                    <text style="font-family: '苹方 中等';color: #2BA3FD">污水厂名称：</text></label>
                 <div class="col-sm-8">
-                    <select name="plantName" class="form-control m-b" required>
+                    <select style="font-family: '苹方 中等'" name="plantName" class="form-control m-b" required>
                         <option value=""></option>
                         <option th:each="list : ${plantList}" th:text="${list.plantName}"
                                 th:value="${list.plantName}" th:selected="${list.plantName}==*{plantName}"></option>
@@ -29,9 +31,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label">设备ID：</label>
+                <label class="col-sm-3 control-label">
+                    <text style="font-family: '苹方 中等';color: #2BA3FD">设备ID：</text></label>
                 <div class="col-sm-8">
-                    <select name="deviceId" class="form-control m-b" required>
+                    <select style="font-family: '苹方 中等'" name="deviceId" class="form-control m-b" required>
                         <option value=""></option>
                         <option th:each="list : ${plantList}" th:text="${list.deviceId}"
                                 th:value="${list.deviceId}" th:selected="${list.deviceId}==*{deviceId}"></option>
@@ -39,9 +42,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label">设备名称：</label>
+                <label class="col-sm-3 control-label">
+                    <text style="font-family: '苹方 中等';color: #2BA3FD">设备名称：</text></label>
                 <div class="col-sm-8">
-                    <select name="deviceName" class="form-control m-b" required>
+                    <select style="font-family: '苹方 中等'" name="deviceName" class="form-control m-b" required>
                         <option value=""></option>
                         <option th:each="list : ${plantList}" th:text="${list.deviceName}"
                                 th:value="${list.deviceName}" th:selected="${list.deviceName}==*{deviceName}"></option>
@@ -49,9 +53,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label">点检ID：</label>
+                <label class="col-sm-3 control-label">
+                    <text style="font-family: '苹方 中等';color: #2BA3FD">点检ID：</text></label>
                 <div class="col-sm-8">
-                    <select name="checkId" class="form-control m-b" required>
+                    <select  style="font-family: '苹方 中等'" name="checkId" class="form-control m-b" required>
                         <option value=""></option>
                         <option th:each="list : ${plantList}" th:text="${list.checkId}"
                                 th:value="${list.checkId}" th:selected="${list.checkId}==*{checkId}"></option>
@@ -59,26 +64,29 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label">简单故障处理记录：</label>
+                <label class="col-sm-3 control-label">
+                    <text style="font-family: '苹方 中等';color: #2BA3FD">简单故障处理记录：</text></label>
                 <div class="col-sm-8">
-                    <textarea name="sloveRecord" style="resize: none; height: 150px"  class="form-control" required>[[*{sloveRecord}]]</textarea>
+                    <textarea name="sloveRecord" style="resize: none; height: 150px;font-family: '苹方 中等'"  class="form-control" required>[[*{sloveRecord}]]</textarea>
                 </div>
             </div>
             <div class="form-group">    
-                <label class="col-sm-3 control-label">巡检日期：</label>
+                <label class="col-sm-3 control-label">
+                    <text style="font-family: '苹方 中等';color: #2BA3FD">巡检日期：</text></label>
                 <div class="col-sm-8">
                     <div class="input-group date">
                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                        <input name="checkDate" th:value="${#dates.format(plantCheckRecord.checkDate, 'yyyy-MM-dd HH:mm:ss')}" id="laydate-demo-3" class="form-control" placeholder="yyyy-MM-dd HH:mm:ss" type="text" required>
+                        <input style="font-family: '苹方 中等'" name="checkDate" th:value="${#dates.format(plantCheckRecord.checkDate, 'yyyy-MM-dd HH:mm:ss')}" id="laydate-demo-3" class="form-control" placeholder="yyyy-MM-dd HH:mm:ss" type="text" required>
                     </div>
                 </div>
             </div>
             <div class="form-group">    
-                <label class="col-sm-3 control-label">创建日期：</label>
+                <label class="col-sm-3 control-label">
+                    <text style="font-family: '苹方 中等';color: #2BA3FD">创建日期：</text></label>
                 <div class="col-sm-8">
                     <div class="input-group date">
                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                        <input name="systemCreatetime" th:value="${#dates.format(plantCheckRecord.systemCreatetime, 'yyyy-MM-dd HH:mm:ss')}" id="laydate-demo-4" class="form-control" placeholder="yyyy-MM-dd HH:mm:ss" type="text" required>
+                        <input style="font-family: '苹方 中等'" name="systemCreatetime" th:value="${#dates.format(plantCheckRecord.systemCreatetime, 'yyyy-MM-dd HH:mm:ss')}" id="laydate-demo-4" class="form-control" placeholder="yyyy-MM-dd HH:mm:ss" type="text" required>
                     </div>
                 </div>
             </div>

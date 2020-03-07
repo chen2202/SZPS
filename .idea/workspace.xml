@@ -3,7 +3,24 @@
   <component name="ChangeListManager">
     <list default="true" id="cc7b956e-4cbc-4a6b-8b84-b165eb2e201f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/application-druid.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/content/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/content/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/content/content.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/content/content.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/content/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/content/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/content/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/content/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/device/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/device/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/device/device.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/device/device.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/device/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/device/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/plant/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/plant/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/plant/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/plant/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/plant/plant.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/plant/plant.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/email/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/email/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/email/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/email/edit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/email/email.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/email/email.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/send/sendmail.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/send/sendmail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/edit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/submit.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/submit.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,14 +61,14 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../排水项目2改/排水项目备份/SZPS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -65,7 +82,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.SZPSApplication">
+  <component name="RunManager" selected="Spring Boot.OPApplication">
     <configuration name="OPApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="szps-operation" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.szps.OPApplication" />
@@ -126,6 +143,20 @@
       <workItem from="1576233805510" duration="2580000" />
       <workItem from="1576311527133" duration="1551000" />
       <workItem from="1576972900306" duration="1351000" />
+      <workItem from="1576986631559" duration="371000" />
+      <workItem from="1582074151596" duration="258000" />
+      <workItem from="1582181571501" duration="2394000" />
+      <workItem from="1582358075148" duration="2027000" />
+      <workItem from="1582374771792" duration="1774000" />
+      <workItem from="1582514081067" duration="2019000" />
+      <workItem from="1582543843895" duration="2657000" />
+      <workItem from="1582591374942" duration="2653000" />
+      <workItem from="1582595162099" duration="14452000" />
+      <workItem from="1582678145307" duration="4043000" />
+      <workItem from="1582711352696" duration="4336000" />
+      <workItem from="1583450351589" duration="87000" />
+      <workItem from="1583484478803" duration="610000" />
+      <workItem from="1583578939956" duration="150000" />
     </task>
     <servers />
   </component>

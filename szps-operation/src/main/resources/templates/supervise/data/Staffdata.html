@@ -2,7 +2,6 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
 	<th:block th:include="include :: header('人员列表')" />
-	<link th:href="@{/css/op/op.css}" rel="stylesheet"/>
 	<link th:href="@{/css/op/public.css}" rel="stylesheet"/>
 	<link th:href="@{/css/op/operation.css}" rel="stylesheet"/>
 </head>
@@ -15,11 +14,11 @@
 				<div class="select-list">
 					<ul>
 						<li>
-							人员名称：<input type="search" name="staffName" maxlength="8"/>
+							人员名称：<input type="search" name="staffName" maxlength="8" placeholder="请输入人员名称"/>
 						</li>
 						<li>
 							部门：<select  name="staffDept" id="staffDept">
-							<option value="">请选择</option>
+							<option value="">请选择检查部门</option>
 							<option value="检查部门">检查部门</option>
 							<option value="后勤部门">后勤部门</option>
 							<option value="外勤部门">外勤部门</option>
@@ -28,11 +27,11 @@
 						</li>
 						<li class="select-time">
 							<label>出生年月： </label>
-							<input type="text" class="time-input" id="staffBirthday" placeholder="出生年月" name="staffBirthday"/>
+							<input type="text" class="time-input" id="staffBirthday" placeholder="选择出生年月" name="staffBirthday"/>
 						</li>
 						<li>
 							<a class="btn btn-main btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
-							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							<a class="btn btn-main2 btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
 						</li>
 					</ul>
 				</div>
@@ -40,29 +39,14 @@
 		</div>
 
 		<div class="btn-group-sm" id="toolbar" role="group">
-			<div class="select-list">
-				<a class="btn "  th:href="'/supervise/data/data'"  >
-					任务库管理
-				</a>
-				<a class="btn btn-main" th:href="'/supervise/data1/data1'" >
-					人员库管理
-				</a>
-				<a class="btn " th:href="'/supervise/data2/data2'"  >
-					随机规则管理
-				</a>
-				<button class="btn btn-main " type="button" name="showSearch" style="margin-left: 50px" title="高级筛选" >高级筛选</button>
-				<a class="btn " onclick="check()" shiro:hasPermission="supervise:task:add" >
-					双规则检查
-				</a>
-			</div>
-			<br/>
-			<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="supervise:data1:add">
+
+			<a class="btn btn-main2" onclick="$.operate.add()" shiro:hasPermission="supervise:data1:add">
 				<i class="fa fa-plus"></i> 新增
 			</a>
-			<a class="btn btn-primary " onclick="$.operate.edit()" shiro:hasPermission="supervise:data1:edit">
+			<!--<a class="btn btn-main2 " onclick="$.operate.edit()" shiro:hasPermission="supervise:data1:edit">
 				<i class="fa fa-edit"></i> 修改
-			</a>
-			<a class="btn btn-danger " onclick="$.operate.removeAll()" shiro:hasPermission="supervise:data1:remove">
+			</a>-->
+			<a class="btn btn-main2 " onclick="$.operate.removeAll()" shiro:hasPermission="supervise:data1:remove">
 				<i class="fa fa-remove"></i> 删除
 			</a>
 		</div>

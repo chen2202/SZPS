@@ -60,7 +60,11 @@ public class DataController extends BaseController {
         return prefix + "/Taskadd";
     }
 
-
+    @GetMapping("/main")
+    public String datamain()
+    {
+        return prefix+"/main";
+    }
 
 
     @RequiresPermissions("supervise:data:list")

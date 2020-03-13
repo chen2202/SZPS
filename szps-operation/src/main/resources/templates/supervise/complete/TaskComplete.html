@@ -14,21 +14,21 @@
 				<div class="select-list">
 					<ul>
 						<li>
-							任务区域：<input type="text" name="tbTask.taskPartition" maxlength="11"/>
+							任务区域：<input type="search" name="tbTask.taskPartition" maxlength="11" placeholder="请输入任务区域"/>
 						</li>
 						<li>
-							任务内容：<input type="text" name="tbTask.taskConnecting"/>
+							任务内容：<input type="search" name="tbTask.taskConnecting" placeholder="请输入任务内容"/>
 						</li>
 						<li>
-							任务名称：<input type="text" name="tbTask.taskName" maxlength="8"/>
+							任务名称：<input type="search" name="tbTask.taskName" maxlength="8" placeholder="请输入任务名称"/>
 						</li>
 						<li class="select-time">
 							<label>创建时间： </label>
-							<input type="text" class="time-input" id="feedbackTime" placeholder="创建时间" name="feedbackTime"/>
+							<input type="text" class="time-input" id="feedbackTime" placeholder="选择创建时间" name="feedbackTime"/>
 						</li>
 						<li>
 							<a class="btn btn-main btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
-							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							<a class="btn btn-main2 btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
 						</li>
 					</ul>
 				</div>
@@ -37,10 +37,10 @@
 
 		<div class="btn-group-sm" id="toolbar" role="group">
 
-			<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="supervise:complete:add">
+			<a class="btn btn-main2" onclick="$.operate.add()" shiro:hasPermission="supervise:complete:add">
 				<i class="fa fa-plus"></i> 新增
 			</a>
-			<a class="btn btn-danger " onclick="$.operate.removeAll()" shiro:hasPermission="supervise:complete:remove">
+			<a class="btn btn-main2 " onclick="$.operate.removeAll()" shiro:hasPermission="supervise:complete:remove">
 				<i class="fa fa-remove"></i> 删除
 			</a>
 		</div>
@@ -79,7 +79,8 @@
                 },
                 {
                     field: 'tbTask.taskName',
-                    title: '任务名称'
+                    title: '任务名称',
+                    visible:false
 
                 },
                 {

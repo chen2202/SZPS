@@ -14,11 +14,11 @@
 				<div class="select-list">
 					<ul>
 						<li>
-							规则编号：<input type="search" name="ruleNumber" maxlength="11"/>
+							规则编号：<input type="search" name="ruleNumber"  placeholder="请输入规则编号" maxlength="11"/>
 						</li>
 						<li>
 							<a class="btn btn-main btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
-							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							<a class="btn btn-main2 btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
 						</li>
 					</ul>
 				</div>
@@ -26,29 +26,14 @@
 		</div>
 
 		<div class="btn-group-sm" id="toolbar" role="group">
-			<div class="select-list">
-				<a class="btn "  th:href="'/supervise/data/data'"  >
-					任务库管理
-				</a>
-				<a class="btn " th:href="'/supervise/data1/data1'"  >
-					人员库管理
-				</a>
-				<a class="btn btn-main" th:href="'/supervise/data2/data2'" >
-					随机规则管理
-				</a>
-				<button class="btn  btn-main" type="button" name="showSearch" style="margin-left: 50px" title="高级筛选" >高级筛选</button>
-				<a class="btn " onclick="check()" shiro:hasPermission="supervise:task:add" >
-					双规则检查
-				</a>
-			</div>
-			<br/>
-			<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="supervise:data2:add">
+
+			<a class="btn btn-main2" onclick="$.operate.add()" shiro:hasPermission="supervise:data2:add">
 				<i class="fa fa-plus"></i> 新增
 			</a>
-			<a class="btn btn-primary " onclick="$.operate.edit()" shiro:hasPermission="supervise:data2:edit">
+			<!--<a class="btn btn-main2 " onclick="$.operate.edit()" shiro:hasPermission="supervise:data2:edit">
 				<i class="fa fa-edit"></i> 修改
-			</a>
-			<a class="btn btn-danger " onclick="$.operate.removeAll()" shiro:hasPermission="supervise:data2:remove">
+			</a>-->
+			<a class="btn btn-main2 " onclick="$.operate.removeAll()" shiro:hasPermission="supervise:data2:remove">
 				<i class="fa fa-remove"></i> 删除
 			</a>
 		</div>

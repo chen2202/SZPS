@@ -71,11 +71,14 @@
         </div>
         <div class="signup-footer">
             <div class="pull-left">
-                &copy; 2019 All Rights Reserved.  <br>
+                &copy; 2020 All Rights Reserved.  <br>
             </div>
         </div>
     </div>
 <script th:inline="javascript"> var ctx = [[@{/}]]; var captchaType = [[${captchaType}]]; </script>
+    
+
+    
 <!-- 全局js -->
 <script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
@@ -86,5 +89,30 @@
 <script src="../static/ajax/libs/blockUI/jquery.blockUI.js" th:src="@{/ajax/libs/blockUI/jquery.blockUI.js}"></script>
 <script src="../static/ruoyi/js/ry-ui.js" th:src="@{/ruoyi/js/ry-ui.js?v=3.4.0}"></script>
 <script src="../static/ruoyi/login.js" th:src="@{/ruoyi/login.js}"></script>
+      <!-- <script>
+        // 获取登录判断条件 "username","password","access_token","refresh_token" 
+        var username=sessionStorage.getItem("username");
+        var password=sessionStorage.getItem("password");
+        var access_token=sessionStorage.getItem("access_token");
+        var refresh_token=sessionStorage.getItem("refresh_token");
+        $.ajax({
+            type: "post",
+            url: ctx + "login",
+            data: {
+                "username": username,
+                "password": password
+            },
+            success: function(r) {
+            	
+                if (r.code == 0) {
+                    location.href = ctx + 'index';
+                } else {
+                	//location.href = ctx + 'redirect';
+                	//window.location.href="https://vx.newground.cn:6104/redirect";
+                	window.location.href="https://vx.newground.cn:9000/#/login";
+                }
+            }
+        });
+    </script> -->
 </body>
 </html>

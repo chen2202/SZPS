@@ -74,6 +74,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from sys_dept d
 		where d.dept_id = #{deptId}
 	</select>
+	
+	<select id="selectDeptByName" parameterType="String" resultMap="SysDeptResult">
+		select d.dept_id, d.parent_id, d.ancestors, d.dept_name, d.order_num, d.leader, d.phone, d.email, d.status,
+			(select dept_name from sys_dept where dept_id = d.parent_id) parent_name
+		from sys_dept d
+		where d.dept_name = #{deptName}
+	</select>
 
 	<select id="selectChildrenDeptById" parameterType="Long" resultMap="SysDeptResult">
 		select * from sys_dept where instr(','||ancestors||',' ,  ','||#{deptId}||',') <![CDATA[ <> ]]> 0

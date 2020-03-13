@@ -3,6 +3,8 @@
 <head>
 	<th:block th:include="include :: header('季报')" />
 	<script th:src="@{/js/plugins/echarts.min.js}"></script>
+	<link th:href="@{/css/op/public.css}" rel="stylesheet"/>
+	<link th:href="@{/css/op/operation.css}" rel="stylesheet"/>
 </head>
 <body class="gray-bg">
 <div class="container-div">
@@ -15,7 +17,6 @@
 						<li>
 							行政区：
 							<select  name="taskRegion">
-								<option value="">请选择</option>
 								<option value="南山区">南山区</option>
 								<option value="福田区">福田区</option>
 								<option value="盐田区">盐田区</option>
@@ -24,7 +25,6 @@
 						</li>
 						<li>
 							街道：<select name="taskStreet">
-							<option value="">请选择</option>
 							<option value="南山街道">南山街道</option>
 							<option value="南头街道">南头街道</option>
 							<option value="西丽街道">西丽街道</option>
@@ -41,11 +41,11 @@
 						</li>
 						<li class="select-time">
 							<label>日期：</label>
-							<input type="text" class="time-input" id="taskTime" placeholder="检查时间" name="taskTime" data-format="yyyy-MM" required/>
+							<input type="text" class="time-input" id="taskTime" placeholder="选择检查时间" name="taskTime" data-format="yyyy-MM" required/>
 						</li>
 						<li>
-							<a class="btn btn-primary btn-rounded btn-sm" onclick="list()"><i class="fa fa-search"></i>&nbsp;查看</a>
-							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							<a class="btn btn-main btn-sm" onclick="list()"><i class="fa fa-search"></i>&nbsp;查看</a>
+							<a class="btn btn-main2 btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
 						</li>
 					</ul>
 				</div>
@@ -89,6 +89,7 @@
         tooltip: {
             trigger: 'axis'
         },
+        color:['#2BA3FD','#FAAD14'],
         legend: {
             data: ['季下发任务数量', '季完成数量']
         },
@@ -120,6 +121,13 @@
                 name: '季下发任务数量',
                 type: 'line',
                 data:alls,
+                itemStyle : {
+                    normal : {
+                        lineStyle:{
+                            color:'#2BA3FD'
+                        }
+                    }
+                },
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
@@ -136,6 +144,13 @@
                 name: '季完成数量',
                 type: 'line',
                 data: completes,
+                itemStyle : {
+                    normal : {
+                        lineStyle:{
+                            color:'#FAAD14'
+                        }
+                    }
+                },
                 markPoint: {
                     data: [
                         {name: '季最低', value: 0, xAxis: 1, yAxis: -1.5}

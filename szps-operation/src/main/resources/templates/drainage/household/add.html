@@ -2,6 +2,7 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<th:block th:include="include :: header('新增排水户')" />
+	<link rel="stylesheet" th:href="@{/css/drainage/operation.css}"/>
 </head>
 <body class="white-bg">
 	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
@@ -9,13 +10,13 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">排水户编号：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="household_id" id="household_id" maxlength="10" required>
+					<input class="form-control" type="text" name="household_id" id="household_id" maxlength="10" placeholder="请输入" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">排水户名称：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="household_name" id="household_name" maxlength="20" required>
+					<input class="form-control" type="text" name="household_name" id="household_name" maxlength="20" placeholder="请输入" required>
 				</div>
 			</div>
 			<div class="form-group">
@@ -23,7 +24,7 @@
 				<div class="col-sm-8">
 					<!-- <input class="form-control" type="text" name="record_state" id="record_state" required> -->
 					<select class="form-control" name="record_state" id="record_state" required>
-						<option value="">-- 请选择 --</option>
+						<option value="" style="display:none;">-- 请选择 --</option>
 						<option value="已审核">已审核</option>
 						<option value="待修改">待修改</option>
 						<option value="待审核">待审核</option>
@@ -34,19 +35,19 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">门牌详细地址：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="doorplate_detail_address" id="doorplate_detail_address" maxlength="35" required>
+					<input class="form-control" type="text" name="doorplate_detail_address" id="doorplate_detail_address" maxlength="35" placeholder="请输入" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">经度：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="longitude" id="longitude" required>
+					<input class="form-control" type="text" name="longitude" id="longitude" placeholder="请输入数字" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">纬度：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="latitude" id="latitude" required>
+					<input class="form-control" type="text" name="latitude" id="latitude" placeholder="请输入数字" required>
 				</div>
 			</div>
 			<div class="form-group">
@@ -54,7 +55,7 @@
 				<div class="col-sm-8">
 					<!-- <input class="form-control" type="text" name="administrative_name" id="administrative_name" required> -->
 					<select class="form-control" name="administrative_name" id="administrative_name" required>
-						<option value="">-- 请选择行政区 --</option>
+						<option value="" style="display:none;">-- 请选择 --</option>
 					</select>
 				</div>
 			</div>
@@ -63,7 +64,7 @@
 				<div class="col-sm-8">
 					<!-- <input class="form-control" type="text" name="street_name" id="street_name" required> -->
 					<select class="form-control" name="street_name" id="street_name" required>
-						<option value="">-- 请先选择行政区 --</option>
+						<option value="" style="display:none;">-- 请先选择行政区 --</option>
 					</select>
 				</div>
 			</div>
@@ -72,30 +73,30 @@
 				<div class="col-sm-8">
 					<!-- <input class="form-control" type="text" name="committees" id="committees" required> -->
 					<select class="form-control" name="committees" id="committees" required>
-						<option value="">-- 请先选择街道 --</option>
+						<option value="" style="display:none;">-- 请先选择街道 --</option>
 					</select>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">街路巷名：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="lane_name" id="lane_name" maxlength="8" required>
+					<input class="form-control" type="text" name="lane_name" id="lane_name" maxlength="8" placeholder="请输入" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">门牌号码：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="doorplate_number" id="doorplate_number" maxlength="8" required>
+					<input class="form-control" type="text" name="doorplate_number" id="doorplate_number" maxlength="8" placeholder="请输入" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">排水户级别：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="household_level" id="household_level" maxlength="3" required>
+					<input class="form-control" type="text" name="household_level" id="household_level" maxlength="3" placeholder="请输入" required>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label ">上级排水户：</label>
+				<label class="col-sm-3 control-label ">上级排水户 (选填)：</label>
 				<div class="col-sm-8">
 					<input class="form-control" type="text" name="parent_household_name" id="parent_household_name" maxlength="20" >
 				</div>
@@ -103,32 +104,32 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">联系人：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="linkman" id="linkman" maxlength="4" required>
+					<input class="form-control" type="text" name="linkman" id="linkman" maxlength="4" placeholder="请输入" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">联系电话：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="telephone" id="telephone" required>
+					<input class="form-control" type="text" name="telephone" id="telephone" placeholder="请输入" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">占地面积 /㎡：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="number" name="cover_area" id="cover_area" required>
+					<input class="form-control" type="number" name="cover_area" id="cover_area" placeholder="请输入数字" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">水表编号：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="water_meter_id" id="water_meter_id" maxlength="25" required>
+					<input class="form-control" type="text" name="water_meter_id" id="water_meter_id" maxlength="25" placeholder="请用 | 分隔" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">污水类别：</label>
 				<div class="col-sm-8">
 					<select class="form-control" name="sewage_category" id="sewage_category" required>
-						<option value="">-- 请选择 --</option>
+						<option value="" style="display:none;">-- 请选择 --</option>
 						<option value="有毒有害排污类">有毒有害排污类</option>
 						<option value="沉淀物排污类">沉淀物排污类</option>
 						<option value="餐饮排污类">餐饮排污类</option>
@@ -140,7 +141,7 @@
 				<label class="col-sm-3 control-label ">单位类型：</label>
 				<div class="col-sm-8">
 					<select class="form-control" name="unit_type" id="unit_type" required>
-						<option value="">-- 请选择 --</option>
+						<option value="" style="display:none;">-- 请选择 --</option>
 						<option value="工业">工业</option>
 						<option value="生活">生活</option>
 						<option value="其他">其他</option>
@@ -148,19 +149,19 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label">其他单位类型：</label>
+				<label class="col-sm-3 control-label">其他单位类型 (选填)：</label>
 				<div class="col-sm-8">
 					<input class="form-control" type="text" name="other_unit_type" id="other_unit_type" maxlength="8" >
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label">工业废水主要成分：</label>
+				<label class="col-sm-3 control-label">工业废水主要成分 (选填)：</label>
 				<div class="col-sm-8">
 					<input class="form-control" type="text" name="industrial_water_composition" id="industrial_water_composition" maxlength="15" >
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label">其他成分：</label>
+				<label class="col-sm-3 control-label">其他成分 (选填)：</label>
 				<div class="col-sm-8">
 					<input class="form-control" type="text" name="other_composition" id="other_composition" maxlength="10" >
 				</div>
@@ -169,7 +170,7 @@
 				<label class="col-sm-3 control-label">内部废、污、雨是否分流：</label>
 				<div class="col-sm-8">
 					<select class="form-control" name="water_diversion" id="water_diversion" required>
-						<option value="">-- 请选择 --</option>
+						<option value="" style="display:none;">-- 请选择 --</option>
 						<option value="是">是</option>
 						<option value="否">否</option>
 					</select>
@@ -179,14 +180,14 @@
 				<label class="col-sm-3 control-label ">是否取得营业执照：</label>
 				<div class="col-sm-8">
 					<select class="form-control" name="business_license" id="business_license" required>
-						<option value="">-- 请选择 --</option>
+						<option value="" style="display:none;">-- 请选择 --</option>
 						<option value="是">是</option>
 						<option value="否">否</option>
 					</select>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label">统一社会信用代码：</label>
+				<label class="col-sm-3 control-label">统一社会信用代码 (选填)：</label>
 				<div class="col-sm-8">
 					<input class="form-control" type="text" name="social_credit_id" id="social_credit_id" maxlength="20" >
 				</div>
@@ -195,26 +196,26 @@
 				<label class="col-sm-3 control-label ">是否取得排水许可证：</label>
 				<div class="col-sm-8">
 					<select class="form-control" name="drainage_license" id="drainage_license" required>
-						<option value="">-- 请选择 --</option>
+						<option value="" style="display:none;">-- 请选择 --</option>
 						<option value="是">是</option>
 						<option value="否">否</option>
 					</select>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label">排水许可证号：</label>
+				<label class="col-sm-3 control-label">排水许可证号 (选填)：</label>
 				<div class="col-sm-8">
 					<input class="form-control" type="text" name="drainage_license_number" id="drainage_license_number" maxlength="15" >
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label">排水许可证开始日期：</label>
+				<label class="col-sm-3 control-label">排水许可证开始日期 (选填)：</label>
 				<div class="col-sm-8">
 					<input class="form-control" type="date" name="drainage_license_begin_time" id="drainage_license_begin_time" >
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label">排水许可证结束日期：</label>
+				<label class="col-sm-3 control-label">排水许可证结束日期 (选填)：</label>
 				<div class="col-sm-8">
 					<input class="form-control" type="date" name="drainage_license_end_time" id="drainage_license_end_time" >
 				</div>
@@ -223,26 +224,26 @@
 				<label class="col-sm-3 control-label ">是否取得排污许可证：</label>
 				<div class="col-sm-8">
 					<select class="form-control" name="sewage_license" id="sewage_license" required>
-						<option value="">-- 请选择 --</option>
+						<option value="" style="display:none;">-- 请选择 --</option>
 						<option value="是">是</option>
 						<option value="否">否</option>
 					</select>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label">排污许可证号：</label>
+				<label class="col-sm-3 control-label">排污许可证号 (选填)：</label>
 				<div class="col-sm-8">
 					<input class="form-control" type="text" name="sewage_license_number" id="sewage_license_number" maxlength="15" >
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label">排污许可证开始日期：</label>
+				<label class="col-sm-3 control-label">排污许可证开始日期 (选填)：</label>
 				<div class="col-sm-8">
 					<input class="form-control" type="date" name="sewage_license_begin_time" id="sewage_license_begin_time" >
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label">排污许可证结束日期：</label>
+				<label class="col-sm-3 control-label">排污许可证结束日期 (选填)：</label>
 				<div class="col-sm-8">
 					<input class="form-control" type="date" name="sewage_license_end_time" id="sewage_license_end_time" >
 				</div>
@@ -250,7 +251,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">备注：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="note" id="note" maxlength="25" required>
+					<input class="form-control" type="text" name="note" id="note" maxlength="25" placeholder="请输入/无" required>
 				</div>
 			</div>
 			<div class="form-group">
@@ -262,7 +263,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">登记人：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="registration_person" id="registration_person" maxlength="4" required>
+					<input class="form-control" type="text" name="registration_person" id="registration_person" maxlength="4" placeholder="请输入" required>
 				</div>
 			</div>
 			<div class="form-group">
@@ -274,7 +275,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">上一修改人：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="update_person" id="update_person" maxlength="4" required>
+					<input class="form-control" type="text" name="update_person" id="update_person" maxlength="4" placeholder="请输入" required>
 				</div>
 			</div>
 		</form>

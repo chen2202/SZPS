@@ -160,14 +160,15 @@
             });
   		this.popupTemplate= popupTemplate;
         	var layer = new ArcGISDynamicMapServiceLayer(
-  	            'http://120.79.27.112:6080/arcgis/rest/services/SZPS/basemapBlue/MapServer',    //蓝色底图
+        			'https://vx.newground.cn:6111/arcgis/rest/services/SZPS/basemapBlue/MapServer',
+  	            //'http://120.79.27.112:6080/arcgis/rest/services/SZPS/basemapBlue/MapServer',    //蓝色底图
   	            // 'http://120.79.27.112:6080/arcgis/rest/services/SZPS/basemapWhite/MapServer', //白色底图
   	            {
   	            title: '底图',
   	          });
   	          map.addLayer(layer) ;
    	          
-  	        var stationUrl = 'http://120.79.27.112:6080/arcgis/rest/services/SZPS/InArea/MapServer';
+  	        var stationUrl = 'https://vx.newground.cn:6111/arcgis/rest/services/SZPS/InArea/MapServer';
   	      
   	        addStationLayer(stationUrl);
   	        
@@ -211,7 +212,7 @@
 				//alert(e.graphic.attributes.Name);
 				var dname = e.graphic.attributes.Name;
 				var url = '/op/fixedasset/building/lista?deptname='+dname;
-				self.location=url;  
+				self.location=encodeURI(url);  
 			 }    
 		    //向发布的地图服务查询数据的函数
 		  	    //url:要查询的地图服务链接

@@ -19,7 +19,9 @@ import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
 import com.szps.framework.util.ShiroUtils;
+import com.szps.system.domain.SysDept;
 import com.szps.system.domain.SysUser;
+import com.szps.system.service.ISysDeptService;
 import com.szps.web.domain.dev.fixedasset.Building;
 import com.szps.web.service.dev.fixedasset.IBuildingService;
 
@@ -28,13 +30,23 @@ import com.szps.web.service.dev.fixedasset.IBuildingService;
 public class BuildingController extends BaseController {
 	 @Autowired
 	private IBuildingService service;
+	 
+	 @Autowired
+	 private ISysDeptService deptService;
 	
 	private String prefix = "/fixedasset";
 	
     @RequiresPermissions("fixedasset:building:view")
     @GetMapping()
-    public String view(ModelMap mmap,String deptname)
+    public String view(ModelMap mmap,String deptname,Long deptId)
     {
+    	mmap.put("deptId", deptId);
+    	if (deptname==null || deptname.equals("")) {
+    		SysDept dept = deptService.selectDeptById(deptId);
+        	if (dept != null) {
+        		deptname = dept.getDeptName();
+    		}
+		}
     	mmap.put("deptname", deptname);
         return prefix + "/buildingview";
     }
@@ -44,11 +56,16 @@ public class BuildingController extends BaseController {
     @RequiresPermissions("fixedasset:building:view")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(Building obj,ModelMap mmap,String deptname)
+    public TableDataInfo list(Building obj,ModelMap mmap,String deptname,Long deptId)
     {
         startPage();
-        obj.setDeptname(deptname);
+        if (deptname != null && !deptname.equals("")) {
+        	obj.setDeptname(deptname);
+		}else {
+	        obj.setDeptid(deptId);
+		}
         List<Building> list = service.selectList(obj);
+        mmap.put("deptId", deptId);
         mmap.put("deptname", deptname);
         return getDataTable(list);
     }
@@ -56,9 +73,13 @@ public class BuildingController extends BaseController {
     @GetMapping("/lista")
     public String lista(String deptname, ModelMap mmap)
     {
-    	Building obj = new Building();
-    	obj.setDeptname(deptname);
     	mmap.put("deptname", deptname);
+    	SysDept dept = deptService.selectDeptByName(deptname);
+    	if (dept != null) {
+    		mmap.put("deptId", dept.getDeptId());
+		}else {
+			mmap.put("deptId", -100);
+		}
         return prefix + "/buildingview";
     }
     

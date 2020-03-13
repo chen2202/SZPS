@@ -1,95 +1,116 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
-    <th:block th:include="include :: header('点检内容列表')" />
+    <th:block th:include="include :: header('点检内容列表')"/>
 </head>
 <body class="gray-bg">
-     <div class="container-div">
-        <div class="row">
+<div class="container-div">
+    <div class="row">
 
-            <div class="btn-group-sm" id="toolbar" role="group">
-                <a class="btn btn-warning   " href="/check/plant/plant">
-                    </i> 返回
-                </a>
-                <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="check:content:add">
-                    <i class="fa fa-plus"></i> 添加
-                </a>
-                <a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="check:content:edit">
-                    <i class="fa fa-edit"></i> 修改
-                </a>
-                <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="check:content:remove">
-                    <i class="fa fa-remove"></i> 删除
-                </a>
-                <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="check:content:export">
-                    <i class="fa fa-download"></i> 导出
-                 </a>
+        <div class="btn-group-sm" id="toolbar" role="group">
+            <a class="btn btn-white   " href="/check/plant/plant">
+                <text style="color:  #000000;font-family: '苹方 中等'">返回
+                </text>
+            </a>
+            <a class="btn btn-white" onclick="$.operate.add()" shiro:hasPermission="check:content:add">
+                <i class="fa fa-plus"></i>
+                <text style="color:  #000000;font-family: '苹方 中等'">添加
+                </text>
+            </a>
+            <a class="btn btn-white single disabled" onclick="$.operate.edit()"
+               shiro:hasPermission="check:content:edit">
+                <i class="fa fa-edit"></i>
+                <text style="color:  #000000;font-family: '苹方 中等'">修改
+                </text>
+            </a>
+            <a class="btn btn-white " onclick="$.operate.removeAll()" shiro:hasPermission="check:content:remove">
+                <i class="fa fa-remove"></i>
+                <text style="color:  #000000;font-family: '苹方 中等'">删除
+                </text>
+            </a>
+            <a class="btn btn-white" onclick="$.table.exportExcel()" shiro:hasPermission="check:content:export">
+                <i class="fa fa-download"></i>
+                <text style="color:  #000000;font-family: '苹方 中等'">导出
+                </text>
+            </a>
 
-            </div>
-            <div class="col-sm-12 select-table table-striped">
-                <table id="bootstrap-table"></table>
-            </div>
+        </div>
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table" style="font-family: '苹方 中等'"></table>
         </div>
     </div>
-    <th:block th:include="include :: footer" />
-    <script th:inline="javascript">
-        var editFlag = [[${@permission.hasPermi('check:content:edit')}]];
-        var removeFlag = [[${@permission.hasPermi('check:content:remove')}]];
-        var prefix = ctx + "check/plant/content";
+</div>
+<th:block th:include="include :: footer"/>
+<script th:inline="javascript">
+    var editFlag = [[${@permission.hasPermi('check:content:edit')}]];
+    var removeFlag = [[${@permission.hasPermi('check:content:remove')}]];
+    var prefix = ctx + "check/plant/content";
 
-        $(function() {
-            var options = {
-                url: prefix + "/list",
-                createUrl: prefix + "/add",
-                updateUrl: prefix + "/edit/{id}",
-                removeUrl: prefix + "/remove",
-                exportUrl: prefix + "/export",
-                detailUrl:prefix+"/detail/{id}",
-                modalName: "点检内容",
-                columns: [{
-                    checkbox: true
-                },
+    $(function () {
+        var options = {
+            url: prefix + "/list",
+            createUrl: prefix + "/add",
+            updateUrl: prefix + "/edit/{id}",
+            removeUrl: prefix + "/remove",
+            exportUrl: prefix + "/export",
+            detailUrl: prefix + "/detail/{id}",
+            modalName: "点检内容",
+            columns: [{
+                checkbox: true
+            },
                 {
-                    field : 'contentSid', 
-                    title : '系统流水号',
+                    field: 'contentSid',
+                    title: '系统流水号',
                     visible: false
                 },
                 {
-                    field : 'plantId', 
-                    title : '污水厂代码'
+                    field: 'plantId',
+                    title: '污水厂代码'
                 },
                 {
-                    field : 'checkId', 
-                    title : '点检ID'
+                    field: 'checkId',
+                    title: '点检ID'
                 },
                 {
-                    title : '点检内容',
-                    formatter: function(value, row, index) {
+                    title: '点检内容',
+                    formatter: function (value, row, index) {
                         var actions = [];
-                        actions.push('<a class="btn btn-success btn-xs " href="javascript:void(0)" onclick="$.operate.detail(\'' + row.contentSid + '\')"><i class="fa fa-shower"></i>查看详情</a> ');
+                        actions.push('<a class="btn  btn-xs " href="javascript:void(0)" ' +
+                            'onclick="$.operate.detail(\'' + row.contentSid + '\')">' +
+                            '<text style="color: #2BA3FD;">查看详情</text>' +
+                            '</a> ');
                         return actions.join('');
                     }
                 },
                 {
-                    field : 'contentCreateuser', 
-                    title : '创建者'
+                    field: 'contentCreateuser',
+                    title: '创建者'
                 },
                 {
-                    field : 'contentCreatetime', 
-                    title : '创建时间'
+                    field: 'contentCreatetime',
+                    title: '创建时间'
                 },
                 {
                     title: '操作',
                     align: 'center',
-                    formatter: function(value, row, index) {
+                    formatter: function (value, row, index) {
                         var actions = [];
-                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.contentSid + '\')"><i class="fa fa-edit"></i>编辑</a> ');
-                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.contentSid + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        actions.push('<a class="btn  btn-xs ' + editFlag + '" href="javascript:void(0)" ' +
+                            'onclick="$.operate.edit(\'' + row.contentSid + '\')">' +
+                            '<text style="color: #2BA3FD;">编辑' +
+                            '</text>' +
+                            '</a> ');
+                        actions.push('<a class="btn  btn-xs ' + removeFlag + '" href="javascript:void(0)" ' +
+                            'onclick="$.operate.remove(\'' + row.contentSid + '\')">' +
+                            '<text style="color: #2BA3FD">删除' +
+                            '</text>' +
+                            '</a>');
                         return actions.join('');
                     }
                 }]
-            };
-            $.table.init(options);
-        });
-    </script>
+        };
+        $.table.init(options);
+    });
+</script>
 </body>
 </html>

@@ -269,4 +269,10 @@ public class SysDeptServiceImpl implements ISysDeptService
         }
         return UserConstants.DEPT_NAME_UNIQUE;
     }
+
+	@Override
+	public SysDept selectDeptByName(String deptName) {
+		// TODO Auto-generated method stub
+		return deptMapper.selectDeptByName(deptName);
+	}
 }

@@ -84,6 +84,7 @@ public interface ISysDeptService
      * @return 部门信息
      */
     public SysDept selectDeptById(Long deptId);
+    public SysDept selectDeptByName(String deptName);
 
     /**
      * 校验部门名称是否唯一

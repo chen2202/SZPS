@@ -70,6 +70,11 @@ public class SpController extends BaseController {
         return prefix+"/statistic";
     }
 
+    @GetMapping("/main")
+    public String index() {
+        return prefix+"/main";
+    }
+
     private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
     @RequiresPermissions("op:permit:list")

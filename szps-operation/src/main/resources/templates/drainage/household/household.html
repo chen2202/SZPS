@@ -2,6 +2,8 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
 	<th:block th:include="include :: header('排水户列表')" />
+	<link th:href="@{/css/drainage/drainage.css}" rel="stylesheet"/>
+	<link rel="stylesheet" th:href="@{/css/drainage/operation.css}"/>
 </head>
 <body class="gray-bg">
 	<div class="container-div">
@@ -11,22 +13,22 @@
 					<div class="select-list">
 						<ul>
 							<li>
-								排水户名称：<input type="text" name="household_name"/>
+								排水户名称：<input type="search" name="household_name" placeholder="请输入"/>
 							</li>
 							<li>
-								记录状态：<input type="text" name="record_state" />
+								记录状态：<input type="search" name="record_state" placeholder="请输入"/>
 							</li>
 							<li>
-								行政区名：<input type="text" name="administrative_name"/>
+								行政区名：<input type="search" name="administrative_name" placeholder="请输入"/>
 							</li>
 							<li>
-								街道名：<input type="text" name="street_name"/>
+								街道名：<input type="search" name="street_name" placeholder="请输入"/>
 							</li>
 							<li>
-								居委会：<input type="text" name="committees"/>
+								居委会：<input type="search" name="committees" placeholder="请输入"/>
 							</li>
 							<li>
-								污水类别：<input type="text" name="sewage_category" />
+								污水类别：<input type="search" name="sewage_category" placeholder="请输入"/>
 							</li>
 							<li>
 								排水许可证当前日期<input type="date" name="drainage_license_end_time">两个月内到期
@@ -45,18 +47,23 @@
 		
 			<div class="btn-group-sm" id="toolbar" role="group">
 				<div class="select-list">
-					<a class="btn btn-info" href="/drainage/household" style="border-color: #EE0000">排水户列表</a>
-		        	<a class="btn" href="/drainage/statistics" style="border-color: #1a7bb9">数据统计</a>
+					<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="drainage:household:add">
+		                <i class="fa fa-plus"></i> 新增
+		            </a>
+					<a class="btn btn-danger" onclick="$.operate.removeAll()" shiro:hasPermission="drainage:household:remove">
+			            <i class="fa fa-remove"></i> 删除
+			        </a>
+			        <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="drainage:household:export">
+			            <i class="fa fa-download"></i> 导出
+			        </a>
+			        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			        <table>
+			        	<tr>
+			        		<a class="btn btn-main" href="/drainage/household">排水户列表</a>
+		        			<a class="btn" href="/drainage/statistics">数据统计</a>
+			        	</tr>
+			        </table>
 				</div>
-				<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="drainage:household:add">
-	                <i class="fa fa-plus"></i> 新增
-	            </a>
-				<a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="drainage:household:remove">
-		            <i class="fa fa-remove"></i> 删除
-		        </a>
-		        <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="drainage:household:export">
-		            <i class="fa fa-download"></i> 导出
-		        </a>
 	        </div>
 	        
 	        <div class="col-sm-12 select-table table-striped">
@@ -275,7 +282,7 @@
 		            sortable: false,
 		            formatter: function(value, row, index) {
 		            	var actions = [];
-		            	actions.push('<a class="btn btn-info btn-xs " href="javascript:void(0)" onclick="query(\'' + row.household_name + '\',\'' + row.household_id + '\')">查看</a>');
+		            	actions.push('<a class="" href="javascript:void(0)" onclick="query(\'' + row.household_name + '\',\'' + row.household_id + '\')">查看</a>');
 		            	return actions.join('');
 		            }
 		        },
@@ -311,7 +318,7 @@
 		            align: 'center',
 		            formatter: function(value, row, index) {
 		                var actions = [];
-		                actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.household_id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+		                actions.push('<a class="' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.household_id + '\')">编辑</a> ');
 		                return actions.join('');
 		            }
 		        }]

@@ -50,4 +50,10 @@ public class IndexController extends BaseController
 //        SysUser user = ShiroUtils.getSysUser();
         return "main";
     }
+    @GetMapping("/redirect")
+    public String redirect()
+    {
+        return "redirect:http://www.qq.com";
+    }
+    
 }

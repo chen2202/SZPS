@@ -2,6 +2,8 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
 	<th:block th:include="include :: header('规则列表')" />
+	<link th:href="@{/css/op/public.css}" rel="stylesheet"/>
+	<link th:href="@{/css/op/operation.css}" rel="stylesheet"/>
 </head>
 <body class="gray-bg">
 <div class="container-div">
@@ -12,11 +14,11 @@
 				<div class="select-list">
 					<ul>
 						<li>
-							规则编号：<input type="text" name="ruleNumber" maxlength="11"/>
+							规则编号：<input type="search" name="ruleNumber"  placeholder="请输入规则编号" maxlength="11"/>
 						</li>
 						<li>
-							<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
-							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							<a class="btn btn-main btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							<a class="btn btn-main2 btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
 						</li>
 					</ul>
 				</div>
@@ -24,29 +26,14 @@
 		</div>
 
 		<div class="btn-group-sm" id="toolbar" role="group">
-			<div class="select-list">
-				<a class="btn"  th:href="'/supervise/data/data'"  style="border-color: #1a7bb9">
-					任务库管理
-				</a>
-				<a class="btn" th:href="'/supervise/data1/data1'"  style="margin-left: 30px;border-color: #1a7bb9">
-					人员库管理
-				</a>
-				<a class="btn btn-success" th:href="'/supervise/data2/data2'" style="margin-left: 30px" >
-					随机规则管理
-				</a>
-				<button class="btn btn-success " type="button" name="showSearch" title="高级筛选" style="margin-left: 30px;">高级筛选</button>
-				<a class="btn btn-success" onclick="check()" shiro:hasPermission="supervise:task:add" >
-					双规则检查
-				</a>
-			</div>
-			<br/>
-			<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="supervise:data2:add">
+
+			<a class="btn btn-main2" onclick="$.operate.add()" shiro:hasPermission="supervise:data2:add">
 				<i class="fa fa-plus"></i> 新增
 			</a>
-			<a class="btn btn-primary single disabled" onclick="$.operate.edit()" shiro:hasPermission="supervise:data2:edit">
+			<!--<a class="btn btn-main2 " onclick="$.operate.edit()" shiro:hasPermission="supervise:data2:edit">
 				<i class="fa fa-edit"></i> 修改
-			</a>
-			<a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="supervise:data2:remove">
+			</a>-->
+			<a class="btn btn-main2 " onclick="$.operate.removeAll()" shiro:hasPermission="supervise:data2:remove">
 				<i class="fa fa-remove"></i> 删除
 			</a>
 		</div>
@@ -90,8 +77,8 @@
                     align: 'center',
                     formatter: function(value, row, index) {
                         var actions = [];
-                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.ruleNumber + '\')"><i class="fa fa-edit"></i>编辑</a> ');
-                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.ruleNumber + '\')"><i class="fa fa-remove"></i>删除</a> ');
+                        actions.push('<a class=" ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.ruleNumber + '\')">编辑</a> ');
+                        actions.push('<a class=" ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.ruleNumber + '\')">删除</a> ');
                         return actions.join('');
                     }
                 }]

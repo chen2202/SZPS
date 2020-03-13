@@ -10,55 +10,73 @@
 </head>
 <body class="white-bg">
 <div class="wrapper wrapper-content animated fadeInRight ibox-content">
-    <form class="form-horizontal m" id="form-submit-add" th:object="${user}" >
+    <form class="form-horizontal m" id="form-submit-add" th:object="${user}">
         <div class="form-group">
-            <label class="col-sm-3 control-label">事件名称：</label>
+            <label class="col-sm-3 control-label">
+                <text style="color:  #000000;font-family: '苹方 中等'">事件名称：</text>
+            </label>
             <div class="col-sm-8">
-                <input id="eventName" name="eventName" class="form-control" type="text">
+                <input id="eventName" style="font-family: '苹方 中等'" name="eventName" class="form-control" type="text">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label">事件地点：</label>
+            <label class="col-sm-3 control-label">
+                <text style="color:  #000000;font-family: '苹方 中等'">事件地点：</text>
+            </label>
             <div class="col-sm-8">
-                <input id="eventPlace" name="eventPlace" class="form-control" type="text">
+                <input id="eventPlace" style="font-family: '苹方 中等'" name="eventPlace" class="form-control" type="text">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label">事件时间：</label>
+            <label class="col-sm-3 control-label">
+                <text style="color:  #000000;font-family: '苹方 中等'">事件时间：</text>
+            </label>
             <div class="col-sm-8">
                 <div class="input-group date">
                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                    <input type="text" class="form-control" id="laydate-demo-3" placeholder="yyyy-MM-dd HH:mm:ss"  name="eventTime"   required>
+                    <input type="text" style="font-family: '苹方 中等'" class="form-control" id="laydate-demo-3" placeholder="yyyy-MM-dd HH:mm:ss"
+                           name="eventTime" required>
                 </div>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label">事件内容：</label>
+            <label class="col-sm-3 control-label">
+                <text style="color:  #000000;font-family: '苹方 中等'">事件内容：</text>
+            </label>
             <div class="col-sm-8">
                 <textarea id="eventContent" name="eventContent" class="form-control"
-                          style="resize: none; height: 150px"></textarea>
+                          style="resize: none; height: 150px;font-family: '苹方 中等'"></textarea>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label">事件属性：</label>
+            <label class="col-sm-3 control-label">
+                <text style="color:  #000000;font-family: '苹方 中等'">事件属性：</text>
+            </label>
             <div class="col-sm-8">
-                <select name="eventAttribute" class="form-control m-b" >
-                    <option th:each="result : ${emailList}" th:value="${result.eventAttribute}" th:text="${result.eventAttribute}"></option>
+                <select style="font-family: '苹方 中等'" name="eventAttribute" class="form-control m-b">
+                    <option th:each="result : ${emailList}" th:value="${result.eventAttribute}"
+                            th:text="${result.eventAttribute}"></option>
                 </select>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label">上传者：</label>
+            <label class="col-sm-3 control-label">
+                <text style="color:  #000000;font-family: '苹方 中等'">上传者：</text>
+            </label>
             <div class="col-sm-8">
-                <input th:field="*{eventCreateuser}" id="eventCreateuser" name="eventCreateuser" class="form-control" type="text" readonly="readonly">
+                <input style="font-family: '苹方 中等'" th:field="*{eventCreateuser}" id="eventCreateuser" name="eventCreateuser" class="form-control"
+                       type="text" readonly="readonly">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label">上传时间：</label>
+            <label class="col-sm-3 control-label">
+                <text style="color:  #000000;font-family: '苹方 中等'">上传时间：</text>
+            </label>
             <div class="col-sm-8">
                 <div class="input-group date">
                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                    <input type="text" class="form-control" id="laydate-demo-4" placeholder="yyyy-MM-dd HH:mm:ss"  name="eventCreatetime"   required>
+                    <input style="font-family: '苹方 中等'" type="text" class="form-control" id="laydate-demo-4" placeholder="yyyy-MM-dd HH:mm:ss"
+                           name="eventCreatetime" required>
                 </div>
             </div>
         </div>
@@ -100,7 +118,6 @@
             $.operate.save(prefix + "/add", $('#form-submit-add').serialize());
         }
     };
-
 
 
     layui.use('laydate', function () {

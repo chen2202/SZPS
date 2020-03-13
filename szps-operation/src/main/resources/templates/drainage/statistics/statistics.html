@@ -2,6 +2,7 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
 	<th:block th:include="include :: header('排水户列表')" />
+	<link th:href="@{/css/drainage/drainage.css}" rel="stylesheet"/>
 </head>
 <body class="gray-bg">
 	<div class="container-div">
@@ -31,8 +32,12 @@
 					</div>
 				</form> -->
 				<!-- 跳转按钮 -->
-				<a class="btn" href="/drainage/household" style="border-color: #1a7bb9">排水户列表</a>
-		        <a class="btn btn-info" href="/drainage/statistics" style="border-color: #EE0000">数据统计</a>
+				<table>
+					<tr>
+						<a class="btn" href="/drainage/household">排水户列表</a>
+		       			<a class="btn btn-main" href="/drainage/statistics">数据统计</a>
+					</tr>
+				</table>
 			</div>
 	        
 	        <!-- 统计图 -->
@@ -51,146 +56,124 @@
 		</div>
 	</div>
 	<th:block th:include="include :: footer" />
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+	<!-- echarts -->
+	<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script> -->
+	<!-- Highcharts -->
+	<script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+	<script src="https://code.highcharts.com.cn/highcharts/highcharts-3d.js"></script>
+	<script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+	<script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+	<!-- 业务js -->
 	<script th:inline="javascript" type="text/javascript">
 	$(function(){
-		//ajax获取排水户分布统计数据
+		//ajax获取 各区排水户分布数量 统计数据
 		$.ajax({
 	            url: "/drainage/statistics/householdAdministrativeStatistics",
 	            type: 'POST',
 	            dataType: 'JSON',
 	            data: {},
 	            success: function(data){
-	            	var dataArr = data; //排水户饼图的系列数据对象
-	            	
-	            	//动态data
-	        		function getData(dataList){
-	        			var jsonstr = [];
-	        			for (var i = 0; i < dataList.length; i++) {
-	        				var json = {};
-	        				json.value = dataList[i].value;
-	        				json.name = dataList[i].name;
-	        				jsonstr.push(json);
+	            	//获取排水户数量的数组对象数据
+	            	var result = data; 	            	
+	        		//获取排水户分布统计数据饼图的div id
+	        		var dom = document.getElementById("household-administrative");
+	        		//饼图对象
+	        		var option = {
+	        				chart: {
+	        					type: 'pie',
+	        					options3d: {
+	        						enabled: true,
+	        						alpha: 55,
+	        						beta: -8
+	        					}
+	        				},
+	        				title: {
+	        					text: '各区排水户分布数量'
+	        				},
+	        				tooltip: {
+	        					formatter: function() {
+	        						return '<b>'+ this.point.name +'</b>: <br>'+ this.series.name + Highcharts.numberFormat(this.percentage, 1) +'% ('+
+	        							Highcharts.numberFormat(this.y, 0, ',') +' 个)';
+	        					}
+	        				},
+	        				plotOptions: {
+	        					pie: {
+	        						allowPointSelect: true,
+	        						cursor: 'pointer',
+	        						depth: 35,
+	        						dataLabels: {
+	        							enabled: true,
+	        							format: '{point.name}'
+	        						}
+	        					}
+	        				},
+	        				series: [{
+	        					type: 'pie',
+	        					name: '排水户数量占比',
+	        					data: result
+	        				}],
+	        				credits: {  
+	        				    enabled: false     //不显示Highcharts LOGO
+	        				},
+	        				colors:['#2BA3FD','#52C41A','#2DC6C6','#FAAE13','#F5222D','#2DC6C6']
 	        			}
-	        			return jsonstr;
-	        		}
-	            	
-	        		//设置排水户分布统计数据饼图
-	        		var dom1 = document.getElementById("household-administrative");
-	        		var myChart1 = echarts.init(dom1);
-	        		var app = {}; 
-	        		option = null;
-	        		option = {
-	        		    title : {
-	        		        text: '排水户分布',
-	        		        subtext: '各行政区排水户比例统计',
-	        		        x:'center'
-	        		    },
-	        		    toolbox: {
-	        		        show: true,
-	        		        feature: {
-	        		            saveAsImage: {type:'png'}
-	        		        }
-	        		    },
-	        		    tooltip : {
-	        		        trigger: 'item',
-	        		        formatter: "{a} <br/>{b} : {c} ({d}%)" // a（系列名称），b（数据项名称），c（数值）, d（百分比）
-	        		    },
-	        		    legend: {
-	        		        orient: 'vertical',
-	        		        left: 'left',
-	        		        data: ["光明区","前海开发区","南山区","坪山区","大鹏新区","宝安区","深汕合作区","盐田区","福田区","罗湖区","龙华区","龙岗区"]
-	        		    },
-	        		    series : [
-	        		        {
-	        		            name: '详情',
-	        		            type: 'pie',
-	        		            radius : '55%',
-	        		            center: ['50%', '60%'],
-	        		            data: getData(dataArr), //需要对象，不是字符串拼接
-	        		            itemStyle: {
-	        		                emphasis: {
-	        		                    shadowBlur: 10,
-	        		                    shadowOffsetX: 0,
-	        		                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-	        		                }
-	        		            }
-	        		        }
-	        		    ]
-	        		};
-	        		if (option && typeof option === "object") {
-	        		    myChart1.setOption(option, true);
-	        		}
+	        			//绘制饼图
+	        			var chart = Highcharts.chart(dom, option);
 	            }
 	     });
 		
-		//ajax获取全市污水类别比例
+		//ajax获取 全市排水户的污水类别 比例
 		$.ajax({
 			url: "/drainage/statistics/sewageCategoryStatistics",
 			type: 'POST',
 			dataType: 'JSON',
 			//data: {}
-			success: function(result){
-				var dataArr = result; //污水类别饼图的系列数据对象
-            	
-            	//动态data
-        		function getData(dataList){
-        			var jsonstr = [];
-        			for (var i = 0; i < dataList.length; i++) {
-        				var json = {};
-        				json.value = dataList[i].value;
-        				json.name = dataList[i].name;
-        				jsonstr.push(json);
-        			}
-        			return jsonstr;
-        		}
-            	
+			success: function(data){
+				//污水类别饼图的系列数据对象
+				var result = data;             	
         		//设置污水类别统计数据饼图
-        		var dom4 = document.getElementById("household-sewage-category");
-        		var myChart4 = echarts.init(dom4);
-        		var app = {}; 
-        		option = null;
-        		option = {
-        		    title : {
-        		        text: '污水类别',
-        		        subtext: '全市污水类别比例统计',
-        		        x:'center'
-        		    },
-        		    toolbox: {
-        		        show: true,
-        		        feature: {
-        		            saveAsImage: {type:'png'}
-        		        }
-        		    },
-        		    tooltip : {
-        		        trigger: 'item',
-        		        formatter: "{a} <br/>{b} : {c} ({d}%)" // a（系列名称），b（数据项名称），c（数值）, d（百分比）
-        		    },
-        		    legend: {
-        		        orient: 'vertical',
-        		        left: 'left',
-        		        data: ["有毒有害排污类","沉淀物排污类","餐饮排污类","生活排污类"]
-        		    },
-        		    series : [
-        		        {
-        		            name: '详情',
-        		            type: 'pie',
-        		            radius : '55%',
-        		            center: ['50%', '60%'],
-        		            data: getData(dataArr), //需要对象，不是字符串拼接
-        		            itemStyle: {
-        		                emphasis: {
-        		                    shadowBlur: 10,
-        		                    shadowOffsetX: 0,
-        		                    shadowColor: 'rgba(0, 0, 0, 0.4)'
-        		                }
-        		            }
-        		        }
-        		    ]
-        		};
-        		if (option && typeof option === "object") {
-        		    myChart4.setOption(option, true);
-        		}
+        		var dom = document.getElementById("household-sewage-category");
+        		//饼图对象
+        		var option = {
+        				chart: {
+        					type: 'pie',
+        					options3d: {
+        						enabled: true,
+        						alpha: 55,
+        						beta: -8
+        					}
+        				},
+        				title: {
+        					text: '全市排水户污水类别比例'
+        				},
+        				tooltip: {
+        					formatter: function() {
+        						return '<b>'+ this.point.name +'</b>: <br>'+ this.series.name + Highcharts.numberFormat(this.percentage, 1) +'% ('+
+        							Highcharts.numberFormat(this.y, 0, ',') +' 个)';
+        					}
+        				},
+        				plotOptions: {
+        					pie: {
+        						allowPointSelect: true,
+        						cursor: 'pointer',
+        						depth: 35,
+        						dataLabels: {
+        							enabled: true,
+        							format: '{point.name}'
+        						}
+        					}
+        				},
+        				series: [{
+        					type: 'pie',
+        					name: '污染类别占比',
+        					data: result
+        				}],credits: {  
+        				    enabled: false     //不显示Highcharts LOGO
+        				},
+        				colors:['#2BA3FD','#52C41A','#2DC6C6','#FAAE13','#F5222D','#2DC6C6']
+        			}
+        			//绘制饼图
+        			var chart = Highcharts.chart(dom, option);
 			}
 		});
 		
@@ -201,113 +184,73 @@
 	            dataType: 'JSON',
 	            //data: {},
 	            success: function(result){
-	        		//获取绘制div以及option对象准备
-	        		var dom2 = document.getElementById("household-administrative-sewage");
-	        		var myChart2 = echarts.init(dom2);
-	        		var app = {};
-	        		option = null;
-	        		app.title = '堆叠条形图';
-	        		option = {
-	        			title : {
-	            		    text: '各区排水户污水类别',
-	            		    subtext: '各行政区排水户污水类别比例统计',
-	            		    x:'left'
-	            		},
-	            		toolbox: {
-	            	        show: true,
-	            	        feature: {
-	            	            dataZoom: {
-	            	                yAxisIndex: 'none'
-	            	            },
-	            	            dataView: {readOnly: false},
-	            	            magicType: {type: ['line', 'bar']},
-	            	            restore: {},
-	            	            saveAsImage: {type:'png'}
-	            	        }
-	            	    },
-	        		    tooltip : {
-	        		        trigger: 'axis',
-	        		        axisPointer : {        // 坐标轴指示器，坐标轴触发有效
-	        		            type : 'shadow'    // 默认为直线，可选为：'line' | 'shadow'
-	        		        }
-	        		    },
-	        		    legend: {
-	        		        data: ["有毒有害排污类","沉淀物排污类","餐饮排污类","生活排污类"]
-	        		    },
-	        		    grid: {
-	        		        left: '3%',
-	        		        right: '4%',
-	        		        bottom: '3%',
-	        		        containLabel: true
-	        		    },
-	        		    xAxis:  {
-	        		        type: 'category',
-	        		        data: ["光明区","前海开发区","南山区","坪山区","大鹏新区","宝安区","深汕合作区","盐田区","福田区","罗湖区","龙华区","龙岗区"]
-	        		    },
-	        		    yAxis: {
-	        		        type: 'value'
-	        		    },
-	        		    series: [
-	        		        {
-	        		            name: '有毒有害排污类',
-	        		            type: 'bar',
-	        		            stack: '总量',
-	        		            label: {
-	        		                normal: {
-	        		                    show: true,
-	        		                    position: 'insideRight'
-	        		                }
-	        		            },
-	        		            data:[]
+	            	//获取绘制图形的div的id
+	        		var dom = document.getElementById("household-administrative-sewage");	
+	        		//堆叠柱形图对象
+	        		var option = {
+	        				chart: {
+	        					type: 'column',
+	        					options3d: {
+	        						enabled: true,
+	        						alpha: 15,
+	        						beta: 10,
+	        						viewDistance: 20,
+	        						depth: 40
+	        					},
+	        					marginTop: 80,
+	        					marginRight: 40
+	        				},
+	        				title: {
+	        					text: '各区排水户污水类别统计'
+	        				},
+	        				xAxis: {
+	        					categories: ["光明区","前海开发区","南山区","坪山区","大鹏新区","宝安区","深汕合作区","盐田区","福田区","罗湖区","龙华区","龙岗区"]
+	        				},
+	        				yAxis: {
+	        					allowDecimals: false,
+	        					min: 0,
+	        					title: {
+	        						text: '排水户数量'
+	        					}
+	        				},
+	        				tooltip: {
+	        					headerFormat: '<b>{point.key}</b><br>',
+	        					pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y} / {point.stackTotal}'
+	        				},
+	        				plotOptions: {
+	        					column: {
+	        						stacking: 'normal',
+	        						depth: 40
+	        					}
+	        				},
+	        				series: [{
+	        					name: '有毒有害排污类',
+	        					data: [],
+	        					stack: 'administrative' //分组
+	        				}, {
+	        					name: '沉淀物排污类',
+	        					data: [],
+	        					stack: 'administrative'
+	        				}, {
+	        					name: '餐饮排污类',
+	        					data: [],
+	        					stack: 'administrative'
+	        				}, {
+	        					name: '生活排污类',
+	        					data: [],
+	        					stack: 'administrative'
+	        				}],
+	        				credits: {  
+	        		            enabled: false     //不显示Highcharts LOGO
 	        		        },
-	        		        {
-	        		            name: '沉淀物排污类',
-	        		            type: 'bar',
-	        		            stack: '总量',
-	        		            label: {
-	        		                normal: {
-	        		                    show: true,
-	        		                    position: 'insideRight'
-	        		                }
-	        		            },
-	        		            data: []
-	        		        },
-	        		        {
-	        		            name: '餐饮排污类',
-	        		            type: 'bar',
-	        		            stack: '总量',
-	        		            label: {
-	        		                normal: {
-	        		                    show: true,
-	        		                    position: 'insideRight'
-	        		                }
-	        		            },
-	        		            data: []
-	        		        },
-	        		        {
-	        		            name: '生活排污类',
-	        		            type: 'bar',
-	        		            stack: '总量',
-	        		            label: {
-	        		                normal: {
-	        		                    show: true,
-	        		                    position: 'insideRight'
-	        		                }
-	        		            },
-	        		            data: []
-	        		        }
-	        		    ]
-	        		};
-	        		
-	        		//数据处理
-	        		for(var i=0;i<result.length;i++){
+	        				colors:['#2BA3FD','#52C41A','#2DC6C6','#FAAE13','#F5222D','#2DC6C6']
+	        			};
+	        		//后端数据赋值
+	        		for(var i=0;i<result.length;i++){ 
 	        			option.series[i].data = result[i];	
 	        		}
-	        		
 	        		//绘制堆叠柱形图
-	        		if (option && typeof option === "object") {
-	        		    myChart2.setOption(option, true);
-	        		}
+	        		var chart = Highcharts.chart(dom,option);
 	            }
 	    });
 		
@@ -318,133 +261,74 @@
 			dataType: 'JSON',
 			//data:{},
 			success: function(result){
-				//获取绘制div以及option对象准备
-        		var dom3 = document.getElementById("household-record-state");
-        		var myChart3 = echarts.init(dom3);
-        		var app = {};
-        		option = null;
-        		app.title = '堆叠条形图';
-        		option = {
-        			title : {
-            		    text: '各区排水户记录状态',
-            		    subtext: '各行政区排水户记录状态统计',
-            		    x:'left'
-            		},
-            		toolbox: {
-            	        show: true,
-            	        feature: {
-            	            dataZoom: {
-            	                yAxisIndex: 'none'
-            	            },
-            	            dataView: {readOnly: false},
-            	            magicType: {type: ['line', 'bar']},
-            	            restore: {},
-            	            saveAsImage: {type:'png'}
-            	        }
-            	    },
-        		    tooltip : {
-        		        trigger: 'axis',
-        		        axisPointer : {        // 坐标轴指示器，坐标轴触发有效
-        		            type : 'shadow'    // 默认为直线，可选为：'line' | 'shadow'
-        		        }
-        		    },
-        		    legend: {
-        		        data: ["已审核","待修改","待审核","待提交"]
-        		    },
-        		    grid: {
-        		        left: '3%',
-        		        right: '4%',
-        		        bottom: '3%',
-        		        containLabel: true
-        		    },
-        		    xAxis:  {
-        		        type: 'category',
-        		        data: ["光明区","前海开发区","南山区","坪山区","大鹏新区","宝安区","深汕合作区","盐田区","福田区","罗湖区","龙华区","龙岗区"]
-        		    },
-        		    yAxis: {
-        		        type: 'value'
-        		    },
-        		    series: [
-        		        {
-        		            name: '已审核',
-        		            type: 'bar',
-        		            stack: '总量',
-        		            label: {
-        		                normal: {
-        		                    show: true,
-        		                    position: 'insideRight'
-        		                }
-        		            },
-        		            data:[],
-        		            itemStyle: {
-        		            	normal: {
-        		            	color: 'rgba(0,255,4, 0.9)',
-        		            	}
-        		            }
-        		        },
-        		        {
-        		            name: '待修改',
-        		            type: 'bar',
-        		            stack: '总量',
-        		            label: {
-        		                normal: {
-        		                    show: true,
-        		                    position: 'insideRight'
-        		                }
-        		            },
-        		            data: [],
-        		            itemStyle: {
-        		            	normal: {
-        		            	color: 'rgba(255,0,246, 0.7)',
-        		            	}
-        		            }
-        		        },
-        		        {
-        		            name: '待审核',
-        		            type: 'bar',
-        		            stack: '总量',
-        		            label: {
-        		                normal: {
-        		                    show: true,
-        		                    position: 'insideRight'
-        		                }
-        		            },
-        		            data: [],
-        		            itemStyle: {
-        		            	normal: {
-        		            	color: 'rgba(255,29,0, 0.5)',
-        		            	}
-        		            }
-        		        },
-        		        {
-        		            name: '待提交',
-        		            type: 'bar',
-        		            stack: '总量',
-        		            label: {
-        		                normal: {
-        		                    show: true,
-        		                    position: 'insideRight'
-        		                }
-        		            },
-        		            data: [],
-        		            itemStyle: {
-        		            	normal: {
-        		            	color: 'rgba(242,255,0, 0.3)',
-        		            	}
-        		            }
-        		        }
-        		    ]
-        		};
+				//获取绘制div id
+        		var dom = document.getElementById("household-record-state");
+				//堆叠柱形图对象
+				var option = {
+	        				chart: {
+	        					type: 'column',
+	        					options3d: {
+	        						enabled: true,
+	        						alpha: 15,
+	        						beta: -10,
+	        						viewDistance: 20,
+	        						depth: 40
+	        					},
+	        					marginTop: 80,
+	        					marginRight: 40
+	        				},
+	        				title: {
+	        					text: '各区排水户记录状态'
+	        				},
+	        				xAxis: {
+	        					categories: ["光明区","前海开发区","南山区","坪山区","大鹏新区","宝安区","深汕合作区","盐田区","福田区","罗湖区","龙华区","龙岗区"]
+	        				},
+	        				yAxis: {
+	        					allowDecimals: false,
+	        					min: 0,
+	        					title: {
+	        						text: '排水户数量'
+	        					}
+	        				},
+	        				tooltip: {
+	        					headerFormat: '<b>{point.key}</b><br>',
+	        					pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y} / {point.stackTotal}'
+	        				},
+	        				plotOptions: {
+	        					column: {
+	        						stacking: 'normal',
+	        						depth: 40
+	        					}
+	        				},
+	        				series: [{
+	        					name: '已审核',
+	        					data: [],
+	        					stack: 'status_ok' //分组
+	        				}, {
+	        					name: '待修改',
+	        					data: [],
+	        					stack: 'status_no'
+	        				}, {
+	        					name: '待审核',
+	        					data: [],
+	        					stack: 'status_no'
+	        				}, {
+	        					name: '待提交',
+	        					data: [],
+	        					stack: 'status_no'
+	        				}],
+	        				credits: {  
+	        		            enabled: false     //不显示Highcharts LOGO
+	        		        },
+	        				colors:['#2BA3FD','#52C41A','#2DC6C6','#FAAE13','#F5222D','#2DC6C6']
+	        			};
         		
-        		//数据处理
-        		for(var i=0;i<result.length;i++){
+        		//后端数据赋值
+        		for(var i=0;i<result.length;i++){ 
         			option.series[i].data = result[i];	
         		}
-        		
         		//绘制堆叠柱形图
-        		if (option && typeof option === "object") {
-        		    myChart3.setOption(option, true);
-        		}
+        		var chart = Highcharts.chart(dom,option);
 			}
 		});
 		

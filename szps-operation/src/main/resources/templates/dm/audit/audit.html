@@ -10,11 +10,65 @@
 			border: 1px solid rgba(255,255,255,0.40);
 			color: rgba(255,255,255,1);
 		}
+
+		.switch {
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+		//height: 34px;
+			font-size: 0px;
+			text-rendering:optimizelegibility;
+			margin-top: 30px;
+		}
+
+		.btn-outset{
+			position:relative;
+			display: inline-block;
+			width:130px;
+		//height:32px;
+			background: linear-gradient(0deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.09) 100%);
+			cursor: pointer;
+			padding: 1px 2px 2px 2px;
+		}
+		.left, .left .btn-inset{
+			border-radius:4px 0px 0px 4px;
+		}
+		.right, .right .btn-inset{
+			border-radius:0px 4px 4px 0px;
+		}
+
+		.checked.btn-outset {
+			background:linear-gradient(0deg,rgba(22,156,211,1) 0%,rgba(33,186,248,1) 100%);
+		}
+
+		.btn-inset{
+			height: 29px;
+			line-height: 29px;
+			text-align: center;
+			font-size: 16px;
+			font-weight:400;
+			color: rgba(0, 0, 0, 0.65);
+			background:rgba(255, 255,255,1);
+			box-shadow:rgba(187, 248, 255, 0) 0px -2px 4px 0px inset;
+		}
+		.checked .btn-inset{
+			color: #fff;
+			background:rgba(36,188,250,1);
+			box-shadow:0px -2px 4px 0px rgba(187,248,255,0.6) inset;
+		}
 	</style>
 </head>
 <body class="gray-bg">
 <div class="container-div">
 	<div class="row">
+
+		<div class="switch" shiro:hasPermission="dm:data:add">
+			<div class="btn-outset left" onclick="toggleBtn(event, this)">
+				<div class="btn-inset">规划资料展示</div>
+			</div>
+			<div class="btn-outset right checked" onclick="toggleBtn(event, this)">
+				<div class="btn-inset">规划任务审批</div>
+			</div>
+		</div>
 
 		<div class="col-sm-12 search-collapse">
 			<form id="data-form">
@@ -71,10 +125,10 @@
 			</form>
 		</div>
 
-        <div class="btn-group-sm" id="toolbar" role="group" shiro:hasPermission="dm:data:add">
-            <a th:href="@{/dm/data}" class="btn-success btn" id="btn-data-show">规划资料展示</a>
-            <a th:href="@{/dm/audit}" class="btn-success btn" id="btn-data-audit">规划任务审批</a>
-        </div>
+<!--        <div class="btn-group-sm" id="toolbar" role="group" shiro:hasPermission="dm:data:add">-->
+<!--            <a th:href="@{/dm/data}" class="btn-success btn" id="btn-data-show">规划资料展示</a>-->
+<!--            <a th:href="@{/dm/audit}" class="btn-success btn" id="btn-data-audit">规划任务审批</a>-->
+<!--        </div>-->
 
 		<div class="col-sm-12 select-table table-striped">
 			<table id="bootstrap-table" data-mobile-responsive="true"></table>
@@ -228,6 +282,14 @@
         $.modal.openTab("查看记录", url);
     }
 
+	function toggleBtn(e, element){
+		var left = document.getElementsByClassName('left')[0];
+		if( element == left) {
+			location.href = ctx + 'dm/data';
+		} else {
+			location.href = ctx + 'dm/audit';
+		}
+	}
 </script>
 </body>
 </html>

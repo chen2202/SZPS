@@ -799,7 +799,7 @@ label {
 
 .table-striped .table, .table-striped .table, .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
 	border-bottom: 1px solid #e7eaec!important;
-	background-color: transparent!important;
+	/* background-color: transparent!important; */
 	border: 0px;
 }
 
@@ -905,7 +905,7 @@ label {
 	height:27px;
 	border-radius:50%;
 	margin-right:8px;
-	margin-top:-5px;
+	margin-top:-3px;
 }
 @media (max-width:767px) {
 	.navbar-right > .user-menu .user-image {

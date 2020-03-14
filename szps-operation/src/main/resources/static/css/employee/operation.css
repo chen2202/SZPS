@@ -90,9 +90,10 @@ input[type="date"]::-webkit-inner-spin-button {
 	visibility: hidden; 
 }
 input[type="date"]::-webkit-calendar-picker-indicator { 
-    background-image: url(../../img/ico-Date.png);
-    background-position: 2px 0px;
-    background-size: 14px 14px;
+    background-image: url(../../img/日历.svg);
+    opacity: 0.25;
+    background-position: 4px 0px;
+    background-size: 14px 15px;
     background-repeat: no-repeat;
     color: rgba(0,0,0,0); /*设置小三角透明*/
 }

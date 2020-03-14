@@ -37,7 +37,7 @@ input[type="checkbox"]{
 input[type="checkbox"]:checked {
     background: url("../../img/ic-选中.png");/*可加背景图片*/
     background-size: 16px 16px;
-    background-position: 0px 0px;
+    background-position: -1px -1px;
     background-repeat: no-repeat;
     position: relative;
     top: 3px;
@@ -55,22 +55,108 @@ input[type="checkbox"]:checked {
     padding-left: 5px;
 }
 
-/*跳转页面按钮*/
+/*空置按钮*/
 .btn {
     border-radius: 4px;
     background: #FFFFFF;
 	border: 1px solid #D9D9D9;
 	color: rgba(0,0,0,0.65);
 }
-.btn:hover{
+/* 搜索按钮 */
+.btn-main:hover{
 	border-radius: 4px;
     background: linear-gradient(270deg, #1ECFF7 0%, #2E9BFF 100%);
 	border: 1px solid rgba(255,255,255,0.40);
 	color: rgba(255,255,255,1);
+	width: 72px;
+	height: 32px;
 }
 .btn-main{
+	border-radius: 4px;
 	background-image: linear-gradient(270deg, #1ECFF7 0%, #2E9BFF 100%);
 	border: 1px solid rgba(255,255,255,0.40);
 	box-shadow: 0 2px 0 0 rgba(0,0,0,0.10), inset 0 -4px 0 0 rgba(0,0,0,0.15), inset 0 2px 0 0 rgba(255,255,255,0.20);
 	color: #FFF;
+	width: 72px;
+	height: 32px;
+}
+/* 重置 新增 删除 导出按钮 */
+.btn-main2{
+	border-radius: 4px;
+    background: #FFFFFF;
+	border: 1px solid #D9D9D9;
+	color: rgba(0,0,0,0.65);
+	width: 72px;
+	height: 32px;
+}
+.btn-main2:hover{
+	border-radius: 4px;
+	background-image: linear-gradient(270deg, #1ECFF7 0%, #2E9BFF 100%);
+	border: 1px solid rgba(255,255,255,0.40);
+	box-shadow: 0 2px 0 0 rgba(0,0,0,0.10), inset 0 -4px 0 0 rgba(0,0,0,0.15), inset 0 2px 0 0 rgba(255,255,255,0.20);
+	color: #FFF;
+	width: 72px;
+	height: 32px;
+	overflow: hidden; /* 当鼠标悬停在按钮上时，让图标偏移并隐藏 */
+}
+/* 鼠标悬停在按钮上时，修改图标样式，保留图标白色阴影 */
+.btn-main2:hover > i{
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+    opacity: 1;
+    background-position: 0px 1.4px;
+    background-size: 14px 14px;
+    background-repeat: no-repeat;
+    filter: drop-shadow(#fff 30px 0px); /*设置阴影，替代原来的图标*/
+   	transform: translateX(-30px);
+   	-ms-filter: drop-shadow(#fff 30px 0px); /*设置阴影，替代原来的图标*/
+   	-ms-transform: translateX(-30px);
+}
+
+/* 右上角四个小图标按钮 */
+.btn:hover{
+	border-radius: 4px;
+	background: linear-gradient(270deg, #1ECFF7 0%, #2E9BFF 100%);
+    /* background: #2ba3fd; */
+	border: 1px solid rgba(255,255,255,0.40);
+	color: rgba(255,255,255,1);
+}
+
+/* 小图标 */
+.fa-user-defined{
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+    opacity: 0.25;
+    background-position: 0px 1.4px;
+    background-size: 14px 14px;
+    background-repeat: no-repeat;
+}
+.fa-add{
+	background-image: url(../../img/新增.svg);
+}
+.fa-delete{
+	background-image: url(../../img/删除.svg);
+}
+.fa-export{
+	background-image: url(../../img/导出.svg);
+}
+
+
+/*表格*/
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+	line-height: 36px;
+}
+/* 表头 */
+thead > tr >th{
+	background:rgba( 0,0,0,.02);
+}
+/* 鼠标悬浮  修改static ruoyi css ry-ui.css 800行样式*/
+.table > tbody > tr:hover > td {
+	background-color: rgba(234,246,255,1);
+}
+/* 选定 */
+.fixed-table-container tbody .selected td {
+    background-color: rgba(234,246,255,1);
 }

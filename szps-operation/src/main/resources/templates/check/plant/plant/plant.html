@@ -2,6 +2,7 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
     <th:block th:include="include :: header('污水厂巡检列表')"/>
+    <link th:href="@{/css/check/plant.css}" rel="stylesheet"/>
 </head>
 <body class="gray-bg">
 <div class="container-div">
@@ -13,9 +14,9 @@
 
                         <li>
                             <p>
-                                <text style="font-family: '苹方 中等';">污水厂名称：</text>
+                               污水厂：
                             </p>
-                            <select name="plantName" style="width: 165px;font-family: '苹方 中等'">
+                            <select name="plantName" style="width: 165px;wfont-family: '苹方 中等'">
                                 <option value=""></option>
                                 <option th:each="list : ${plantList1}" th:text="${list.plantName}"
                                         th:value="${list.plantName}"></option>
@@ -23,7 +24,7 @@
                         </li>
                         <li>
                             <p>
-                                <text style="font-family: '苹方 中等';">设备ID：</text>
+                                <text >设备ID：</text>
                             </p>
                             <select name="deviceId" style="width: 165px;font-family: '苹方 中等'">
                                 <option value=""></option>
@@ -63,13 +64,13 @@
                                    name="systemCreatetime"/>
                         </li>
                         <li>
-                            <a class="btn btn-white  btn-sm" onclick="$.table.search()">
-                                <text style="font-family: '苹方 中等';color:#2BA3FD;">&nbsp;搜索
-                                </text>
+                            <a class="btn btn-main btn-sm" onclick="$.table.search()">
+                                <i class="fa fa-search"></i>&nbsp;搜索
+
                             </a>
-                            <a class="btn btn-white  btn-sm" onclick="$.form.reset()">
-                                <text style="font-family: '苹方 中等';color:#2BA3FD;">&nbsp;重置
-                                </text>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()">
+                                <i class="fa fa-refresh"></i>&nbsp;重置
+
                             </a>
                         </li>
                     </ul>
@@ -137,7 +138,7 @@
                 },
                 {
                     field: 'plantName',
-                    title: '污水厂名称'
+                    title: '污水厂'
                 },
                 {
                     field: 'deviceId',
@@ -172,12 +173,12 @@
                     align: 'center',
                     formatter: function (value, row, index) {
                         var actions = [];
-                        actions.push('<a class="btn  btn-xs ' + editFlag + '" href="javascript:void(0)" ' +
+                        actions.push('<a class="  btn-xs ' + editFlag + '" href="javascript:void(0)" ' +
                             'onclick="$.operate.edit(\'' + row.systemId + '\')">' +
                             '<text style="color: #2BA3FD">编辑' +
                             '</text>' +
                             '</a> ');
-                        actions.push('<a class="btn  btn-xs ' + removeFlag + '" href="javascript:void(0)" ' +
+                        actions.push('<a class="  btn-xs ' + removeFlag + '" href="javascript:void(0)" ' +
                             'onclick="$.operate.remove(\'' + row.systemId + '\')">' +
                             '<text style="color: #2BA3FD">删除' +
                             '</text>' +

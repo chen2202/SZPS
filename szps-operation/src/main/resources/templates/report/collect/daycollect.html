@@ -15,8 +15,8 @@
 								<input type="text" class="time-input" id="reportDate"  name="reportDate"  th:value="*{reportDate}"/>
 							</li>
 							<li>
-								<a class="btn btn-primary btn-rounded btn-sm" onclick="submit()"><i class="fa fa-search"></i>&nbsp;搜索</a>
-								<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+								<a class="btn  btn-sm" onclick="submit()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn  btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
 							</li>
 						</ul>
 					</div>
@@ -30,16 +30,6 @@
 	        </div>
 	        
 	        -->
-		<div class="select-list">
-			<ul>
-				<li>
-                   	<a class="btn"  th:href="'/op/report/day'"  style="border-color: #1a7bb9">日报</a>
-                   	<a class="btn"  th:href="'/op/report/week'"  style="border-color: #1a7bb9">周报</a>
-                   	<a class="btn"  th:href="'/op/report/month'"  style="border-color: #1a7bb9">月报</a>
-                   	<a class="btn"  th:href="'/op/report/collect/day'"  style="border-color: #EE0000">综合汇合</a>
-				</li>
-			</ul>
-		</div>		       
     	</div>
     	<div th:if="${list!=null && list.size()>0}">
     		<div class="row">

@@ -30,7 +30,7 @@ public class DayReportController extends BaseController {
 	 @Autowired
 	private IDayReportService reportService;
 	
-	private String prefix = "/report/day";
+	private String prefix = "report/day";
 	
     @RequiresPermissions("report:day:view")
     @GetMapping()
@@ -80,7 +80,8 @@ public class DayReportController extends BaseController {
     	dayReport.setDeptName(sysDept.getDeptName());
     	dayReport.setCreateBy(user.getLoginName());
     	dayReport.setDelFlag(DayReport.DEL_FLAG_NORMAL);
-        return toAjax(reportService.insertReport(dayReport));
+    	reportService.insertReport(dayReport);
+        return toAjax(1);
     }
     
     @GetMapping("/edit/{id}")

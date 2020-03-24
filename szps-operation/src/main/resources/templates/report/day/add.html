@@ -5,8 +5,8 @@
 	<th:block th:include="include :: select2-css" />
 </head>
 <body>
-    <div class="main-content">
-       <form id="form-dayreport-add"  class="form-horizontal">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+       <form id="form-dayreport-add"  class="form-horizontal m">
 		
 		<div class="control-group">
 			<label class="lbl">生产运行日报表</label><br>
@@ -419,7 +419,7 @@
 	        	data.push({"name": "status", "value": status});
 	        	data.push({"name": "roleIds", "value": roleIds});
 	        	data.push({"name": "postIds", "value": postIds}); */
-	        	$.operate.saveTab(prefix + "/add", data);
+	        	$.operate.save(prefix + "/add", data);
 	        }
 	    }
          

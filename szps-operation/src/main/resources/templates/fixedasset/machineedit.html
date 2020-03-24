@@ -211,7 +211,7 @@
         function submitHandler() {
 	        if ($.validate.form()) {
 	        	var data = $("#form").serializeArray();
-	        	$.operate.saveTab(prefix + "/edit", data);
+	        	$.operate.save(prefix + "/edit", data);
 	        }
 	    }
         

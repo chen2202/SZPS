@@ -248,7 +248,7 @@
 		function submitHandler() {
 	        if ($.validate.form()) {
 	        	var data = $("#form").serializeArray();
-	        	$.operate.saveTabFile(prefix + "/add", data);
+	        	$.operate.saveFile(prefix + "/add", data);
 	        }
 	    }
 		 // 上传文件

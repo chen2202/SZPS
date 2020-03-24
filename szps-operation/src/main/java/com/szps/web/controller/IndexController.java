@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.szps.common.config.Global;
 import com.szps.common.core.controller.BaseController;
+import com.szps.common.core.domain.AjaxResult;
 import com.szps.framework.util.ShiroUtils;
 import com.szps.system.domain.SysMenu;
 import com.szps.system.domain.SysUser;
@@ -50,10 +53,19 @@ public class IndexController extends BaseController
 //        SysUser user = ShiroUtils.getSysUser();
         return "main";
     }
-    @GetMapping("/redirect")
-    public String redirect()
+
+    @PostMapping("/system/logoutandredirect")
+    @ResponseBody
+    public AjaxResult logoutandredirect(String type)
     {
-        return "redirect:http://www.qq.com";
+    	try {
+			
+    		ShiroUtils.clearCachedAuthorizationInfo();
+    		ShiroUtils.logout();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return error();
+		}
+        return success();
     }
-    
 }

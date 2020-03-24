@@ -1,0 +1,68 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../icomoonfonts/icomoon.eot?voah78');
+  src:  url('../icomoonfonts/icomoon.eot?voah78#iefix') format('embedded-opentype'),
+    url('../icomoonfonts/icomoon.ttf?voah78') format('truetype'),
+    url('../icomoonfonts/icomoon.woff?voah78') format('woff'),
+    url('../icomoonfonts/icomoon.svg?voah78#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 20px;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-10:before {
+  content: "\e900";
+}
+.icon-11:before {
+  content: "\e901";
+}
+.icon-12:before {
+  content: "\e902";
+}
+.icon-13:before {
+  content: "\e903";
+}
+.icon-14:before {
+  content: "\e904";
+}
+.icon-15:before {
+  content: "\e905";
+}
+.icon-10 {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe900;');
+}
+.icon-11 {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe901;');
+}
+.icon-12 {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe902;');
+}
+.icon-13 {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe903;');
+}
+.icon-14 {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe904;');
+}
+.icon-15 {
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe905;');
+}
+
+.fs1 {
+  font-size: 128px;
+}

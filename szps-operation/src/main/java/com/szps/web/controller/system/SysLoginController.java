@@ -49,7 +49,7 @@ public class SysLoginController extends BaseController
         if (username!=null && !username.equals("") && password!=null && !password.equals("")) {
             try
             {
-            	Boolean rememberMe = true;
+            	Boolean rememberMe = false;
             	String pwd = EncryptUtil.decrypt(password);
                 UsernamePasswordToken token = new UsernamePasswordToken(username, pwd, rememberMe);
                 Subject subject = SecurityUtils.getSubject();
@@ -68,8 +68,14 @@ public class SysLoginController extends BaseController
     @ResponseBody
     public AjaxResult ajaxLogin(String username, String password, Boolean rememberMe)
     {
+    	try {
+			
+    		ShiroUtils.clearCachedAuthorizationInfo();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
     	if (rememberMe==null) {
-			rememberMe = true;
+			rememberMe = false;
 		}
         UsernamePasswordToken token = new UsernamePasswordToken(username, password, rememberMe);
         Subject subject = SecurityUtils.getSubject();

@@ -1,73 +1,79 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+	xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
-	<th:block th:include="include :: header('排水户列表')" />
-	<link th:href="@{/css/drainage/drainage.css}" rel="stylesheet"/>
-	<link rel="stylesheet" th:href="@{/css/drainage/operation.css}"/>
+<th:block th:include="include :: header('排水户列表')" />
+<link th:href="@{/css/drainage/drainage.css}" rel="stylesheet" />
+<link th:href="@{/css/drainage/operation.css}" rel="stylesheet" />
 </head>
 <body class="gray-bg">
 	<div class="container-div">
 		<div class="row">
-			<div class="col-sm-12 search-collapse">
+			<div class="btn-group-sm" id="toolbar" role="group">
+
 				<form id="role-form">
 					<div class="select-list">
 						<ul>
-							<li>
-								排水户名称：<input type="search" name="household_name" placeholder="请输入"/>
+							<li>排水户名称：<input type="search" name="household_name"
+								placeholder="请输入" />
 							</li>
-							<li>
-								记录状态：<input type="search" name="record_state" placeholder="请输入"/>
+							<li>记录状态：<input type="search" name="record_state"
+								placeholder="请输入" />
 							</li>
-							<li>
-								行政区名：<input type="search" name="administrative_name" placeholder="请输入"/>
+							<li>行政区名：<input type="search" name="administrative_name"
+								placeholder="请输入" />
 							</li>
-							<li>
-								街道名：<input type="search" name="street_name" placeholder="请输入"/>
+							<li>街道名：<input type="search" name="street_name"
+								placeholder="请输入" />
 							</li>
-							<li>
-								居委会：<input type="search" name="committees" placeholder="请输入"/>
+							<li>居委会：<input type="search" name="committees"
+								placeholder="请输入" />
 							</li>
-							<li>
-								污水类别：<input type="search" name="sewage_category" placeholder="请输入"/>
+						</ul>
+						<ul>
+							<li>污水类别：<input type="search" name="sewage_category"
+								placeholder="请输入" />
 							</li>
-							<li>
-								排水许可证当前日期<input type="date" name="drainage_license_end_time">两个月内到期
+							<li>排水许可证当前日期<input type="date"
+								name="drainage_license_end_time">两个月内到期
 							</li>
-							<li>
-								排污许可证当前日期<input type="date" name="sewage_license_end_time">两个月内到期
+							<li>排污许可证当前日期<input type="date"
+								name="sewage_license_end_time">两个月内到期
 							</li>
-							<li>
-								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
-							    <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							<li><a class="btn btn-primary btn-rounded btn-sm btn-main"
+								onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-main2 btn-sm"
+								onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
 							</li>
 						</ul>
 					</div>
 				</form>
-			</div>
-		
-			<div class="btn-group-sm" id="toolbar" role="group">
+
 				<div class="select-list">
-					<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="drainage:household:add">
-		                <i class="fa fa-plus"></i> 新增
-		            </a>
-					<a class="btn btn-danger" onclick="$.operate.removeAll()" shiro:hasPermission="drainage:household:remove">
-			            <i class="fa fa-remove"></i> 删除
-			        </a>
-			        <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="drainage:household:export">
-			            <i class="fa fa-download"></i> 导出
-			        </a>
-			        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			        <table>
-			        	<tr>
-			        		<a class="btn btn-main" href="/drainage/household">排水户列表</a>
-		        			<a class="btn" href="/drainage/statistics">数据统计</a>
-			        	</tr>
-			        </table>
+					<ul>
+						<li><a class="btn btn-main2" onclick="$.operate.add()"
+							shiro:hasPermission="drainage:household:add"> <i
+								class="fa-user-defined fa-add"></i> 新增
+						</a> <a class="btn btn-main2" onclick="$.operate.removeAll()"
+							shiro:hasPermission="drainage:household:remove"> <i
+								class="fa-user-defined fa-delete"></i> 删除
+						</a> <a class="btn btn-main2" onclick="$.table.exportExcel()"
+							shiro:hasPermission="drainage:household:export"> <i
+								class="fa-user-defined fa-export"></i> 导出
+						</a></li>
+					</ul>
+					<!--  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				        <table>
+				        	<tr>
+				        		<a class="btn btn-main" href="/drainage/household">排水户列表</a>
+			        			<a class="btn" href="/drainage/statistics">数据统计</a>
+				        	</tr>
+				        </table> -->
 				</div>
-	        </div>
-	        
-	        <div class="col-sm-12 select-table table-striped">
-			    <table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+
+			<div class="col-sm-12 select-table table-striped">
+				<table id="bootstrap-table" data-mobile-responsive="true"></table>
 			</div>
 		</div>
 	</div>
@@ -329,7 +335,7 @@
 		/* 排水户信息-查看（某排水户的所有排水口） */
 		function query(household_name,household_id) {
 		    var url = ctx + "drainage/drain" + '/drain/' + household_id;
-		    $.modal.openTab(household_name + "排水口", url);
+		    $.modal.open(household_name + "排水口", url, 1200, 480, null);
 		}
 	</script>
 </body>

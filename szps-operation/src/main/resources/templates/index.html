@@ -26,7 +26,7 @@
         <div >
             <ul class="nav" id="side-menu">
             	<li >
-            		<a class="menuItem icon-10" th:href="@{/system/main}"> 首页</a>
+            		<a class="menuItem icon-10" th:href="@{/system/main}">首页</a>
             	</li>
                 <!--  <li class="active">
                     <a href="index.html"><i class="fa fa-home"></i> <span class="nav-label">主页</span> <span class="fa arrow"></span></a>
@@ -107,7 +107,7 @@
 							</li>
 							<li class="divider"></li>
 							<li>
-								<a th:href="@{logout}">
+								<a onclick="logoutweb()">
 								<i class="fa fa-sign-out"></i> 退出登录</a>
 							</li>
 						</ul>
@@ -120,17 +120,17 @@
     <!--右侧部分开始-->
     <div id="page-wrapper" class="gray-bg dashbard-1">
         <div class="row content-tabs">
-            <!-- <button class="roll-nav roll-left tabLeft">
+            <button class="roll-nav roll-left tabLeft">
                 <i class="fa fa-backward"></i>
-            </button> -->
+            </button> 
             <nav class="page-tabs menuTabs">
                 <div class="page-tabs-content">
-                    <a href="javascript:;" class="active menuTab" data-id="/system/main"></a>
+                    <a href="javascript:;" class="active menuTab" data-id="/system/main">首页</a>
                 </div>
             </nav>
-            <!-- <button class="roll-nav roll-right tabRight">
+            <button class="roll-nav roll-right tabRight">
                 <i class="fa fa-forward"></i>
-            </button> -->
+            </button>
             <a href="#" class="roll-nav roll-right tabReload"><i class="fa fa-refresh"></i> 刷新</a> 
         </div>
         
@@ -163,6 +163,16 @@ var ctx = [[@{/}]];
 	function resetPwd() {
 	    var url = ctx + 'system/user/profile/resetPwd';
 	    $.modal.open("重置密码", url, '800', '500');
+	}
+	
+	function logoutweb() {
+		$.ajax({
+	        type: "get",  // 请求方式
+	        url: ctx+"logout",  // 目标资源
+             dataType: 'text',
+	    });
+		sessionStorage.clear();
+		window.location.href="https://vx.newground.cn:9000/#/login";
 	}
 
 var thumb = document.getElementById('switch');

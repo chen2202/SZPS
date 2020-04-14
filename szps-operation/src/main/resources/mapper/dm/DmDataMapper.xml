@@ -18,6 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="dataDesc"   column="data_desc"    />
 		<result property="dataFlag"       column="data_flag"         />
 		<result property="dataRiver"       column="data_river"         />
+		<result property="updateTime"      column="data_update_date"       />
 		<association property="audit"    column="audit_id" javaType="DmAudit" resultMap="DmAuditResult" />
 	</resultMap>
 
@@ -33,19 +34,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 
     <sql id="selectDataVo">
-		select d.data_id,d.data_uuid,d.data_date,d.data_applicant,d.data_company,d.data_borough,d.data_street,d.data_type,d.data_level,d.data_theme,d.data_desc,d.data_flag,d.data_river,
+		select d.data_id,d.data_uuid,d.data_date,d.data_applicant,d.data_company,d.data_borough,d.data_street,d.data_type,d.data_level,d.data_theme,d.data_desc,d.data_flag,d.data_river,d.data_update_date,
 				a.audit_id,a.data_id,a.user_id,a.user_name,a.audit_status,a.audit_result,a.audit_date,a.audit_create
         from dm_data d
         left join dm_audit a on d.data_id = a.data_id
 	</sql>
 
 	<select id="selectDataList" parameterType="DmData" resultMap="DmDataResult">
-		select d.data_id,d.data_uuid,d.data_date,d.data_applicant,d.data_company,d.data_borough,d.data_street,d.data_type,d.data_level,d.data_theme,d.data_desc,d.data_flag,d.data_river
+		select d.data_id,d.data_uuid,d.data_date,d.data_applicant,d.data_company,d.data_borough,d.data_street,d.data_type,d.data_level,d.data_theme,d.data_desc,d.data_flag,d.data_river,d.data_update_date
 		from dm_data d
 		left join dm_audit a on d.data_id = a.data_id
 		where d.data_flag = '0' and a.audit_status='1'
 		<if test="dataTheme != null and dataTheme != ''">
 			AND d.data_theme like concat(concat('%',#{dataTheme}),'%')
+		</if>
+		<if test="dataType != null and dataType != ''">
+			AND d.data_type = #{dataType}
 		</if>
 		<if test="dataBorough != null and dataBorough != ''">
 			AND d.data_borough like concat(concat('%',#{dataBorough}),'%')
@@ -64,13 +68,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="selectApprovalDataList" parameterType="DmData" resultMap="DmDataResult">
-		select d.data_id,d.data_uuid,d.data_date,d.data_applicant,d.data_company,d.data_borough,d.data_street,d.data_type,d.data_level,d.data_theme,d.data_desc,d.data_flag,d.data_river,
+		select d.data_id,d.data_uuid,d.data_date,d.data_applicant,d.data_company,d.data_borough,d.data_street,d.data_type,d.data_level,d.data_theme,d.data_desc,d.data_flag,d.data_river,d.data_update_date,
 		a.audit_status
 		from dm_data d
 		left join dm_audit a on d.data_id = a.data_id
 		where d.data_flag = '0'
 		<if test="dataTheme != null and dataTheme != ''">
 			AND d.data_theme like concat(concat('%',#{dataTheme}),'%')
+		</if>
+		<if test="dataType != null and dataType != ''">
+			AND d.data_type = #{dataType}
 		</if>
 		<if test="dataBorough != null and dataBorough != ''">
 			AND d.data_borough like concat(concat('%',#{dataBorough}),'%')
@@ -92,7 +99,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="selectPassDataList" parameterType="DmData" resultMap="DmDataResult">
-		select d.data_id,d.data_uuid,d.data_date,d.data_applicant,d.data_company,d.data_borough,d.data_street,d.data_type,d.data_level,d.data_theme,d.data_desc,d.data_flag,d.data_river
+		select d.data_id,d.data_uuid,d.data_date,d.data_applicant,d.data_company,d.data_borough,d.data_street,d.data_type,d.data_level,d.data_theme,d.data_desc,d.data_flag,d.data_river,d.data_update_date
 		from dm_data d
 		left join dm_audit a on d.data_id = a.data_id
 		where a.audit_status='1'
@@ -118,7 +125,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<select id="selectDeletedDataList" parameterType="DmData" resultMap="DmDataResult">
-		select d.data_id,d.data_uuid,d.data_date,d.data_applicant,d.data_company,d.data_borough,d.data_street,d.data_type,d.data_level,d.data_theme,d.data_desc,d.data_flag,d.data_river
+		select d.data_id,d.data_uuid,d.data_date,d.data_applicant,d.data_company,d.data_borough,d.data_street,d.data_type,d.data_level,d.data_theme,d.data_desc,d.data_flag,d.data_river,d.data_update_date
 		from dm_data d
 		left join dm_audit a on d.data_id = a.data_id
 		where d.data_flag='2'
@@ -167,6 +174,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="dataTheme != null and dataTheme != ''">data_theme,</if>
 		<if test="dataDesc != null and dataDesc != ''">data_desc,</if>
 		<if test="dataRiver != null and dataRiver != ''">data_river,</if>
+		<if test="updateTime != null and updateTime != ''">data_update_date,</if>
 		data_date
 		)values(
 		<if test="dataId != null and dataId != 0">#{dataId},</if>
@@ -180,6 +188,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="dataTheme != null and dataTheme != ''">#{dataTheme},</if>
 		<if test="dataDesc != null and dataDesc != ''">#{dataDesc},</if>
 		<if test="dataRiver != null and dataRiver != ''">#{dataRiver},</if>
+		<if test="updateTime != null and updateTime != ''">#{updateTime},</if>
 		sysdate
 		)
 	</insert>
@@ -195,6 +204,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="dataLevel != null and dataLevel != ''">data_level = #{dataLevel},</if>
 			<if test="dataTheme != null and dataTheme != ''">data_theme = #{dataTheme},</if>
 			<if test="dataDesc != null and dataDesc != ''">data_desc = #{dataDesc},</if>
+			data_update_date = sysdate
 		</set>
 		where data_id = #{dataId}
 	</update>

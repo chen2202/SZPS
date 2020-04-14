@@ -45,7 +45,7 @@
         <if test="costCreate != null and costCreate != ''">cost_create,</if>
         <if test="costSource != null and costSource != ''">cost_source,</if>
         <if test="costCode != null and costCode != ''">cost_code,</if>
-        cost_date
+        <if test="costDate != null and costDate != ''">cost_date</if>
         )values(
         <if test="costId != null and costId != 0">#{costId},</if>
         <if test="costName != null and costName != ''">#{costName},</if>
@@ -54,7 +54,7 @@
         <if test="costCreate != null and costCreate != ''">#{costCreate},</if>
         <if test="costSource != null and costSource != ''">#{costSource},</if>
         <if test="costCode != null and costCode != ''">#{costCode},</if>
-        sysdate
+        <if test="costDate != null and costDate != ''">#{costDate}</if>
         )
     </insert>
 

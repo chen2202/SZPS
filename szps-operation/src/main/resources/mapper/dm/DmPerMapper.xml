@@ -141,8 +141,8 @@
         from dm_data d
         left join dm_permission p on d.data_id=p.data_id
         where p.per_status='1' and p.user_id=#{per_userId} and d.data_flag='0'
-        <if test="dmData.dataTheme != null and dmData.dataTheme != ''">
-            AND d.data_theme like concat(concat('%',#{dmData.dataTheme}),'%')
+        <if test="dmData.dataType != null and dmData.dataType != ''">
+            AND d.data_type = #{dmData.dataType}
         </if>
         <if test="dmData.dataBorough != null and dmData.dataBorough != ''">
             AND d.data_borough like concat(concat('%',#{dmData.dataBorough}),'%')

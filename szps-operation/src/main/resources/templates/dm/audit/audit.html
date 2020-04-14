@@ -63,10 +63,10 @@
 
 		<div class="dm-switch" shiro:hasPermission="dm:data:add">
 			<div class="btn-outset left" onclick="toggleBtn(event, this)">
-				<div class="btn-inset">规划资料展示</div>
+				<div class="btn-inset">资料展示</div>
 			</div>
 			<div class="btn-outset right checked" onclick="toggleBtn(event, this)">
-				<div class="btn-inset">规划任务审批</div>
+				<div class="btn-inset">资料审批</div>
 			</div>
 		</div>
 
@@ -74,23 +74,23 @@
 			<form id="data-form">
 				<div class="select-list">
 					<ul>
-						<li>主题：
+						<li>
+							<label>资料名称：</label>
 							<input type="text" name="dataTheme" />
 						</li>
 						<li>
-							<label>行政区：</label>
-							<select  name="dataBorough">
-								<option value="">所有</option>
-								<option value="南山区">南山区</option>
-								<option value="福田区">福田区</option>
-								<option value="盐田区">盐田区</option>
-								<option value="罗湖区">罗湖区</option>
+							<label>资料类别：</label>
+							<select  name="dataType">
+								<option value=""></option>
+								<option value="规划资料">规划资料</option>
+								<option value="标准资料">标准资料</option>
+								<option value="预案资料">预案资料</option>
 							</select>
 						</li>
 						<li>
-							<label>流域：</label>
-							<select  name="dataRiver">
-								<option value="">所有</option>
+							<label>所属流域：</label>
+							<select name="dataRiver">
+								<option value=""></option>
 								<option value="茅洲河">茅洲河</option>
 								<option value="观澜河">观澜河</option>
 								<option value="龙岗河">龙岗河</option>
@@ -99,17 +99,27 @@
 								<option value="大亚湾">大亚湾</option>
 							</select>
 						</li>
+<!--						<li>-->
+<!--							<label>所属区域：</label>-->
+<!--							<select  name="dataBorough">-->
+<!--								<option value=""></option>-->
+<!--								<option value="南山区">南山区</option>-->
+<!--								<option value="福田区">福田区</option>-->
+<!--								<option value="盐田区">盐田区</option>-->
+<!--								<option value="罗湖区">罗湖区</option>-->
+<!--							</select>-->
+<!--						</li>-->
 						<li>
 							<label>状态：</label>
 							<select  name="audit.auditStatus">
-								<option value="">所有</option>
+								<option value=""></option>
 								<option value="0">未审核</option>
 								<option value="1">通过</option>
 								<option value="2">驳回</option>
 							</select>
 						</li>
 						<li class="select-time">
-							<label>创建时间：</label>
+							<label>编制时间：</label>
 							<input type="text" class="time-input" id="startTime" placeholder="开始时间" name="params[beginTime]" lay-key="3">
 							<span>-</span>
 							<input type="text" class="time-input" id="endTime" placeholder="结束时间" name="params[endTime]" lay-key="4">
@@ -125,15 +135,9 @@
 			</form>
 		</div>
 
-<!--        <div class="btn-group-sm" id="toolbar" role="group" shiro:hasPermission="dm:data:add">-->
-<!--            <a th:href="@{/dm/data}" class="btn-success btn" id="btn-data-show">规划资料展示</a>-->
-<!--            <a th:href="@{/dm/audit}" class="btn-success btn" id="btn-data-audit">规划任务审批</a>-->
-<!--        </div>-->
-
 		<div class="col-sm-12 select-table table-striped">
 			<table id="bootstrap-table" data-mobile-responsive="true"></table>
 		</div>
-
 	</div>
 
 
@@ -182,44 +186,42 @@
             },
                 {
                     field: 'dataId',
-                    title: '资料编号',
+                    title: '编号',
                     sortable: true
                 },
-                {
-                    field: 'dataDate',
-                    title: '录入日期',
-                    sortable: true
-                },
-                {
-                    field: 'dataTheme',
-                    title: '主题',
-                    sortable: true
-                },
+				{
+					field: 'dataTheme',
+					title: '资料名称'
+				},
+				{
+					field: 'dataRiver',
+					title: '所属流域'
+				},
+				{
+					field: 'dataBorough',
+					title: '所属区域'
+				},
                 {
                     field: 'dataType',
-                    title: '所属类别',
-                    sortable: true
+                    title: '所属类别'
                 },
-                {
-                    field: 'dataBorough',
-                    title: '行政区',
-                    sortable: true
-                },
-                {
-                    field: 'dataStreet',
-                    title: '所属街道',
-                    sortable: true
-                },
-                {
-                    field: 'dataRiver',
-                    title: '流域',
-                    sortable: true
-                },
+                // {
+                //     field: 'dataStreet',
+                //     title: '所属街道'
+                // },
                 {
                     field: 'dataLevel',
                     title: '密级',
                     sortable: true
                 },
+				{
+					field: 'dataDate',
+					title: '编制时间',
+					sortable: true,
+					formatter: function (value, row, index) {
+						return formatDate(value);
+					}
+				},
                 {
                     title: '状态',
                     formatter: function(value, row, index) {
@@ -288,6 +290,22 @@
 			location.href = ctx + 'dm/data';
 		} else {
 			location.href = ctx + 'dm/audit';
+		}
+	}
+
+	function formatDate(date) {
+		if (date == null || date == '') {
+			return "--";
+		} else {
+			var d = new Date(date),
+					month = '' + (d.getMonth() + 1),
+					day = '' + d.getDate(),
+					year = d.getFullYear();
+
+			if (month.length < 2) month = '0' + month;
+			if (day.length < 2) day = '0' + day;
+
+			return [year, month, day].join('-');
 		}
 	}
 </script>

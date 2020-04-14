@@ -22,9 +22,9 @@
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label class="col-sm-4 control-label"><span style="color: red; ">*</span>规划单位：</label>
+                    <label class="col-sm-4 control-label"><span style="color: red; ">*</span>所属单位：</label>
                     <div class="col-sm-8">
-                        <input type="text" name="dataCompany" class="form-control" placeholder="请输入公司名" th:field="*{dataCompany}" required>
+                        <input type="text" name="dataCompany" class="form-control" placeholder="请输入单位名称" th:field="*{dataCompany}" required>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label class="col-sm-4 control-label"><span style="color: red; ">*</span>行政区：</label>
+                    <label class="col-sm-4 control-label"><span style="color: red; ">*</span>所属区域：</label>
                     <div class="col-sm-8">
                         <!--<input type="text" name="dataBorough" class="form-control" placeholder="请输入行政区" th:field="*{dataBorough}" required>-->
                         <select class="form-control" name="dataBorough">
@@ -44,16 +44,32 @@
                     </div>
                 </div>
             </div>
+<!--            <div class="col-sm-6">-->
+<!--                <div class="form-group">-->
+<!--                    <label class="col-sm-4 control-label"><span style="color: red; ">*</span>街道：</label>-->
+<!--                    <div class="col-sm-8">-->
+<!--                        &lt;!&ndash;<input type="text" name="dataStreet" class="form-control" placeholder="请输入街道" th:field="*{dataStreet}" required>&ndash;&gt;-->
+<!--                        <select class="form-control" name="dataStreet">-->
+<!--                            <option value="南山街道" th:selected="*{dataStreet=='南山街道'}">南山街道</option>-->
+<!--                            <option value="南头街道" th:selected="*{dataStreet=='南头街道'}">南头街道</option>-->
+<!--                            <option value="西丽街道" th:selected="*{dataStreet=='西丽街道'}">西丽街道</option>-->
+<!--                            <option value="沙河街道" th:selected="*{dataStreet=='沙河街道'}">沙河街道</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label class="col-sm-4 control-label"><span style="color: red; ">*</span>街道：</label>
+                    <label class="col-sm-4 control-label"><span style="color: red; ">*</span>所属流域：</label>
                     <div class="col-sm-8">
-                        <!--<input type="text" name="dataStreet" class="form-control" placeholder="请输入街道" th:field="*{dataStreet}" required>-->
-                        <select class="form-control" name="dataStreet">
-                            <option value="南山街道" th:selected="*{dataStreet=='南山街道'}">南山街道</option>
-                            <option value="南头街道" th:selected="*{dataStreet=='南头街道'}">南头街道</option>
-                            <option value="西丽街道" th:selected="*{dataStreet=='西丽街道'}">西丽街道</option>
-                            <option value="沙河街道" th:selected="*{dataStreet=='沙河街道'}">沙河街道</option>
+                        <!--<input type="text" name="dataRiver" class="form-control" placeholder="请输入流域" th:field="*{dataRiver}" required>-->
+                        <select class="form-control" name="dataRiver">
+                            <option value="茅洲河" th:selected="*{dataRiver=='茅洲河'}">茅洲河</option>
+                            <option value="观澜河" th:selected="*{dataRiver=='观澜河'}">观澜河</option>
+                            <option value="龙岗河" th:selected="*{dataRiver=='龙岗河'}">龙岗河</option>
+                            <option value="深圳河湾" th:selected="*{dataRiver=='深圳河湾'}">深圳河湾</option>
+                            <option value="坪山河" th:selected="*{dataRiver=='坪山河'}">坪山河</option>
+                            <option value="大亚湾" th:selected="*{dataRiver=='大亚湾'}">大亚湾</option>
                         </select>
                     </div>
                 </div>
@@ -86,25 +102,9 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label class="col-sm-4 control-label"><span style="color: red; ">*</span>主题：</label>
+                    <label class="col-sm-4 control-label"><span style="color: red; ">*</span>资料名称：</label>
                     <div class="col-sm-8">
-                        <input type="text" name="dataTheme" class="form-control" placeholder="请输入主题" th:field="*{dataTheme}" required>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label class="col-sm-4 control-label"><span style="color: red; ">*</span>流域：</label>
-                    <div class="col-sm-8">
-                        <!--<input type="text" name="dataRiver" class="form-control" placeholder="请输入流域" th:field="*{dataRiver}" required>-->
-                        <select class="form-control" name="dataRiver">
-                            <option value="茅洲河" th:selected="*{dataRiver=='茅洲河'}">茅洲河</option>
-                            <option value="观澜河" th:selected="*{dataRiver=='观澜河'}">观澜河</option>
-                            <option value="龙岗河" th:selected="*{dataRiver=='龙岗河'}">龙岗河</option>
-                            <option value="深圳河湾" th:selected="*{dataRiver=='深圳河湾'}">深圳河湾</option>
-                            <option value="坪山河" th:selected="*{dataRiver=='坪山河'}">坪山河</option>
-                            <option value="大亚湾" th:selected="*{dataRiver=='大亚湾'}">大亚湾</option>
-                        </select>
+                        <input type="text" name="dataTheme" class="form-control" placeholder="请输入资料名称" th:field="*{dataTheme}" required>
                     </div>
                 </div>
             </div>
@@ -112,9 +112,9 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">简介：</label>
+                    <label class="col-sm-2 control-label">说明：</label>
                     <div class="col-sm-10">
-                        <textarea type="text" name="dataDesc" class="form-control" placeholder="请输入简介" th:field="*{dataDesc}"></textarea>
+                        <textarea type="text" name="dataDesc" class="form-control" placeholder="请输入说明" th:field="*{dataDesc}"></textarea>
                     </div>
                 </div>
             </div>

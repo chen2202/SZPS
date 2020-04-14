@@ -12,13 +12,13 @@
             <form id="data-form">
                 <div class="select-list">
                     <ul>
-                        <li>主题：
+                        <li>资料名称：
                             <input type="text" name="dataTheme" />
                         </li>
                         <li>
-                            <label>行政区：</label>
+                            <label>所属区域：</label>
                             <select  name="dataBorough">
-                                <option value="">所有</option>
+                                <option value=""></option>
                                 <option value="南山区">南山区</option>
                                 <option value="福田区">福田区</option>
                                 <option value="盐田区">盐田区</option>
@@ -26,9 +26,9 @@
                             </select>
                         </li>
                         <li>
-                            <label>流域：</label>
+                            <label>所属流域：</label>
                             <select  name="dataRiver">
-                                <option value="">所有</option>
+                                <option value=""></option>
                                 <option value="茅洲河">茅洲河</option>
                                 <option value="观澜河">观澜河</option>
                                 <option value="龙岗河">龙岗河</option>
@@ -38,7 +38,7 @@
                             </select>
                         </li>
                         <li class="select-time">
-                            <label>创建时间：</label>
+                            <label>编制时间：</label>
                             <input type="text" class="time-input" id="startTime" placeholder="开始时间" name="params[beginTime]" lay-key="3">
                             <span>-</span>
                             <input type="text" class="time-input" id="endTime" placeholder="结束时间" name="params[endTime]" lay-key="4"></li>
@@ -91,43 +91,42 @@
             },
                 {
                     field: 'dataId',
-                    title: '资料编号',
-                    sortable: true
-                },
-                {
-                    field: 'dataDate',
-                    title: '录入日期',
+                    title: '编号',
                     sortable: true
                 },
                 {
                     field: 'dataTheme',
-                    title: '主题',
-                    sortable: true
+                    title: '资料名称'
                 },
+                // {
+                //     field: 'dataType',
+                //     title: '所属类别',
+                //     sortable: true
+                // },
                 {
-                    field: 'dataType',
-                    title: '所属类别',
-                    sortable: true
+                    field: 'dataRiver',
+                    title: '所属流域'
                 },
                 {
                     field: 'dataBorough',
-                    title: '行政区',
-                    sortable: true
+                    title: '所属区域'
                 },
-                {
-                    field: 'dataStreet',
-                    title: '所属街道',
-                    sortable: true
-                },
-                {
-                    field: 'dataRiver',
-                    title: '流域',
-                    sortable: true
-                },
+                // {
+                //     field: 'dataStreet',
+                //     title: '所属街道',
+                //     sortable: true
+                // },
                 {
                     field: 'dataLevel',
-                    title: '密级',
-                    sortable: true
+                    title: '密级'
+                },
+                {
+                    field: 'dataDate',
+                    title: '编制时间',
+                    sortable: true,
+                    formatter: function (value, row, index) {
+                        return formatDate(value);
+                    }
                 },
                 {
                     title: '操作',
@@ -175,6 +174,21 @@
         });
     }
 
+    function formatDate(date) {
+        if (date == null || date == '') {
+            return "--";
+        } else {
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+
+            return [year, month, day].join('-');
+        }
+    }
 </script>
 </body>
 </html>

@@ -59,10 +59,6 @@ public class DmAuditController extends BaseController{
     @ResponseBody
     public TableDataInfo list(DmData dmData)
     {
-
-        System.out.println("输出");
-        System.out.println(dmData);
-
         startPage();
         List<DmData> list = dataService.selectApprovalDataList(dmData);
         return getDataTable(list);

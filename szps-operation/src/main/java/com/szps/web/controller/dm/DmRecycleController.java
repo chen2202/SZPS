@@ -11,6 +11,7 @@ import com.szps.web.service.dm.IDmDataService;
 import com.szps.web.service.dm.IDmPerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
@@ -75,6 +76,7 @@ public class DmRecycleController extends BaseController {
      */
     @Log(title = "删除规划资料", businessType = BusinessType.DELETE)
     @PostMapping("/remove")
+    @Transactional
     @ResponseBody
     public AjaxResult remove(String ids)
     {

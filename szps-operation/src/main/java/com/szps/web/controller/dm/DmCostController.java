@@ -20,6 +20,7 @@ import com.szps.web.service.dm.IDmCostService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -81,6 +82,7 @@ public class DmCostController extends BaseController {
      */
     @Log(title = "添加污水费资料", businessType = BusinessType.INSERT)
     @PostMapping("/add")
+    @Transactional
     @ResponseBody
     public AjaxResult addSave(@Validated DmCost dmCost,@RequestParam("file") MultipartFile file) throws IOException {
 
@@ -98,8 +100,6 @@ public class DmCostController extends BaseController {
 
             // 存储资料
             String loginName = ShiroUtils.getLoginName();
-
-            System.out.println(loginName+"  "+fileName);
 
             dmCost.setCostName(fileName);
             dmCost.setCostPath(path);
@@ -120,6 +120,7 @@ public class DmCostController extends BaseController {
      */
     @Log(title = "删除污水费资料", businessType = BusinessType.DELETE)
     @PostMapping("/remove")
+    @Transactional
     @ResponseBody
     public AjaxResult remove(String ids)
     {

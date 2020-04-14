@@ -23,6 +23,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.ClassUtils;
 import org.springframework.validation.annotation.Validated;
@@ -36,7 +37,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 /**
- * 规划资料管理
+ * 综合资料管理
  * 
  * @author vic
  *
@@ -73,7 +74,7 @@ public class DmDataController extends BaseController{
 	
 	/**
 	 * 
-	 * 添加规划资料
+	 * 添加资料
 	 * 
 	 */
 	@GetMapping("/add")
@@ -89,6 +90,7 @@ public class DmDataController extends BaseController{
      */
     @Log(title = "添加规划资料", businessType = BusinessType.INSERT)
     @PostMapping("/add")
+    @Transactional
     @ResponseBody
     public AjaxResult addSave(@Validated DmData data,@RequestParam("file") MultipartFile []file) throws IOException {
         int result = dataService.insertData(data);
@@ -131,7 +133,7 @@ public class DmDataController extends BaseController{
     /**
      *删除资料(改变状态)
      */
-    @Log(title = "删除规划资料", businessType = BusinessType.DELETE)
+    @Log(title = "删除综合资料", businessType = BusinessType.DELETE)
     @PostMapping("/remove")
     @ResponseBody
     public AjaxResult remove(String ids)
@@ -164,7 +166,7 @@ public class DmDataController extends BaseController{
     {
         List<DmData> list = dataService.selectPassDataList(data);
         ExcelUtil<DmData> util = new ExcelUtil<DmData>(DmData.class);
-        return util.exportExcel(list, "规划资料数据");
+        return util.exportExcel(list, "资料数据");
     }
 
 

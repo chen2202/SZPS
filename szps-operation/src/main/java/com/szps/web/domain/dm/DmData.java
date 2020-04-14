@@ -14,7 +14,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import com.szps.common.core.domain.BaseEntity;
 
 /**
- * 规划资料表
+ * 资料表
  * 
  * @author vic
  *

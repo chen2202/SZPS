@@ -1,6 +1,5 @@
 package com.szps.web.service.supervise;
 
-import com.szps.web.domain.supervise.TbRule;
 import com.szps.web.domain.supervise.TbTaskStaff;
 
 import java.util.List;

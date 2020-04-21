@@ -23,7 +23,7 @@ public interface EXService
 
     public List<EX_GDBS_SB> selectTaskBytime(String BYZD4);
     public EX_GDBS_SB selectById(String sblsh);
-    public List<EX_GDBS_SB> selectTaskWaiting();
+    public List<EX_GDBS_SB> selectTaskWaiting(EX_GDBS_SB exGdbsSb);
     public List<EX_GDBS_SB> selectTaskDone();
 
 

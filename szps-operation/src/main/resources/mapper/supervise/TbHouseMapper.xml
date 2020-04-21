@@ -5,52 +5,49 @@
     <id column="HOUSE_NUMBER" property="houseNumber" jdbcType="VARCHAR" />
     <result column="HOUSE_NAME" property="houseName" jdbcType="VARCHAR" />
     <result column="HOUSE_REGION" property="houseRegion" jdbcType="VARCHAR" />
-    <result column="HOUSE_STREET" property="houseStreet" jdbcType="VARCHAR" />
-    <result column="HOUSE_BASIN" property="houseBasin" jdbcType="VARCHAR" />
+    <result column="HOUSE_BEGIN" property="houseBegin" jdbcType="VARCHAR" />
+    <result column="HOUSE_END" property="houseEnd" jdbcType="VARCHAR" />
     <result column="HOUSE_ROLE" property="houseRole" jdbcType="VARCHAR" />
-    <result column="HOUSE_TYPE" property="houseType" jdbcType="VARCHAR" />
-    <result column="HOUSE_POINT" property="housePoint" jdbcType="VARCHAR" />
-    <result column="HOUSE_CONNECTING" property="houseConnecting" jdbcType="VARCHAR" />
+    <result column="HOUSE_RULE" property="houseRule" jdbcType="VARCHAR" />
     <result column="HOUSE_PHONE" property="housePhone" jdbcType="VARCHAR" />
     <result column="HOUSE_FLAG" property="houseFlag" jdbcType="VARCHAR" />
+    <result column="HOUSE_TIME" property="houseTime" jdbcType="VARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from TB_HOUSE
     where HOUSE_NUMBER = #{houseNumber,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.szps.web.domain.supervise.TbHouse" >
-    insert into TB_HOUSE (HOUSE_NUMBER, HOUSE_NAME, HOUSE_REGION, 
-      HOUSE_STREET, HOUSE_BASIN, HOUSE_ROLE,
-      HOUSE_TYPE, HOUSE_POINT, HOUSE_CONNECTING, HOUSE_PHONE
+    insert into TB_HOUSE (HOUSE_NUMBER, HOUSE_NAME, HOUSE_REGION, HOUSE_BEGIN, HOUSE_END, HOUSE_ROLE,
+    HOUSE_RULE, HOUSE_PHONE, HOUSE_FLAG,HOUSE_TIME
       )
     values (#{houseNumber,jdbcType=VARCHAR}, #{houseName,jdbcType=VARCHAR}, #{houseRegion,jdbcType=VARCHAR}, 
-      #{houseStreet,jdbcType=VARCHAR}, #{houseBasin,jdbcType=VARCHAR}, #{houseRole,jdbcType=VARCHAR},
-      #{houseType,jdbcType=VARCHAR}, #{housePoint,jdbcType=VARCHAR}, #{houseConnecting,jdbcType=VARCHAR}, #{housePhone,jdbcType=VARCHAR}
+      #{houseBegin,jdbcType=VARCHAR}, #{houseEnd,jdbcType=VARCHAR}, #{houseRole,jdbcType=VARCHAR},
+      #{houseRule,jdbcType=VARCHAR}, #{housePhone,jdbcType=VARCHAR}, #{houseFlag,jdbcType=VARCHAR},#{houseTime,jdbcType=VARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.szps.web.domain.supervise.TbHouse" >
     update TB_HOUSE
     set HOUSE_NAME = #{houseName,jdbcType=VARCHAR},
       HOUSE_REGION = #{houseRegion,jdbcType=VARCHAR},
-      HOUSE_STREET = #{houseStreet,jdbcType=VARCHAR},
-      HOUSE_BASIN = #{houseBasin,jdbcType=VARCHAR},
+      HOUSE_BEGIN = #{houseBegin,jdbcType=VARCHAR},
+      HOUSE_END = #{houseEnd,jdbcType=VARCHAR},
       HOUSE_ROLE = #{houseRole,jdbcType=VARCHAR},
-      HOUSE_TYPE = #{houseType,jdbcType=VARCHAR},
-      HOUSE_POINT = #{housePoint,jdbcType=VARCHAR},
-      HOUSE_CONNECTING = #{houseConnecting,jdbcType=VARCHAR},
+      HOUSE_RULE = #{houseRule,jdbcType=VARCHAR},
       HOUSE_PHONE = #{housePhone,jdbcType=VARCHAR},
-      HOUSE_FLAG =#{houseFlag,jdbcType=VARCHAR}
+      HOUSE_FLAG =#{houseFlag,jdbcType=VARCHAR},
+      HOUSE_TIME=#{houseTime,jdbcType=VARCHAR}
     where HOUSE_NUMBER = #{houseNumber,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select HOUSE_NUMBER, HOUSE_NAME, HOUSE_REGION, HOUSE_STREET, HOUSE_BASIN, HOUSE_ROLE,
-    HOUSE_TYPE, HOUSE_POINT, HOUSE_CONNECTING, HOUSE_PHONE,HOUSE_FLAG
+    select HOUSE_NUMBER, HOUSE_NAME, HOUSE_REGION, HOUSE_BEGIN, HOUSE_END, HOUSE_ROLE,
+    HOUSE_RULE, HOUSE_PHONE, HOUSE_FLAG,HOUSE_TIME
     from TB_HOUSE
     where HOUSE_NUMBER = #{houseNumber,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select HOUSE_NUMBER, HOUSE_NAME, HOUSE_REGION, HOUSE_STREET, HOUSE_BASIN, HOUSE_ROLE,
-    HOUSE_TYPE, HOUSE_POINT, HOUSE_CONNECTING, HOUSE_PHONE,HOUSE_FLAG
+    select HOUSE_NUMBER, HOUSE_NAME, HOUSE_REGION, HOUSE_BEGIN, HOUSE_END, HOUSE_ROLE,
+    HOUSE_RULE, HOUSE_PHONE, HOUSE_FLAG,HOUSE_TIME
     from TB_HOUSE
   </select>
 
@@ -61,7 +58,7 @@
 
   <select id="selectByRegionAndStreet" resultMap="BaseResultMap">
     select HOUSE_NUMBER, HOUSE_NAME, HOUSE_REGION, HOUSE_STREET, HOUSE_BASIN, HOUSE_ROLE,
-    HOUSE_TYPE, HOUSE_POINT, HOUSE_CONNECTING, HOUSE_PHONE,HOUSE_FLAG
+    HOUSE_TYPE, HOUSE_POINT, HOUSE_CONNECTING, HOUSE_PHONE,HOUSE_FLAG,HOUSE_TIME
     from TB_HOUSE
     where TB_HOUSE.HOUSE_FLAG = '0'
       <if test="houseRegion != null and houseRegion != ''">
@@ -73,4 +70,48 @@
 
 
   </select>
+
+  <select id="selectHouseList" parameterType="com.szps.web.domain.supervise.TbHouse" resultMap="BaseResultMap">
+    select HOUSE_NUMBER, HOUSE_NAME, HOUSE_REGION, HOUSE_BEGIN, HOUSE_END, HOUSE_ROLE,
+    HOUSE_RULE, HOUSE_PHONE, HOUSE_FLAG,HOUSE_TIME
+    from TB_HOUSE
+
+    <where>
+      <if test="houseName != null and houseName != ''">
+        TB_HOUSE.HOUSE_NAME like concat(concat('%',#{houseName}),'%')
+      </if>
+      <if test="houseRule != null and houseRule != ''">
+        AND TB_HOUSE.HOUSE_RULE = #{houseRule}
+      </if>
+    </where>
+  </select>
+
+  <delete id="deleteHouseByIds" parameterType="Long">
+    delete from  TB_HOUSE where HOUSE_NUMBER in
+    <foreach collection="array" item="houseNumber" open="(" separator="," close=")">
+      #{houseNumber}
+    </foreach>
+  </delete>
+
+  <select id="CheckdTask" parameterType="String" resultType="int">
+    select count(1) from TB_HOUSE where TB_HOUSE.HOUSE_NUMBER=#{houseNumber}
+  </select>
+
+
+
+  <select id="selectHouseCheckList" parameterType="com.szps.web.domain.supervise.TbHouse" resultMap="BaseResultMap">
+    select HOUSE_NUMBER, HOUSE_NAME, HOUSE_REGION, HOUSE_BEGIN, HOUSE_END, HOUSE_ROLE,
+    HOUSE_RULE, HOUSE_PHONE, HOUSE_FLAG,HOUSE_TIME
+    from TB_HOUSE
+
+    <where>
+
+        TB_HOUSE.HOUSE_FLAG ='否'
+
+      <if test="houseRule != null and houseRule != ''">
+        AND TB_HOUSE.HOUSE_RULE = #{houseRule}
+      </if>
+    </where>
+  </select>
+
 </mapper>

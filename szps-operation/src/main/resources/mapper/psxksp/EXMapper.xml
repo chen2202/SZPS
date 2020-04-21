@@ -130,12 +130,23 @@
     from EX_GDBS_SB
     WHERE TO_DATE(EX_GDBS_SB.BYZD1,'yyyy-MM-dd') &lt;= to_date(#{BYZD1,jdbcType=VARCHAR},'yyyy-MM-dd')
   </select>
-  <select id="selectTaskWaiting" resultMap="BaseResultMap">
+  <select id="selectTaskWaiting" resultMap="BaseResultMap" parameterType="com.szps.web.domain.psxksp.EX_GDBS_SB">
     select SBLSH,SBLSH_SHORT,SXBM,SXMC,SXQXBM,FSXBM,FSXMC,SQRLX,SQRMC,SQRZJLX,SQRZJHM,LXRXM,LXRZJLX,LXRSFZJHM,LXRSJ,LXRYX,SBXMMC,SBCLQD,TJFS,SBHZH,SBSJ
     ,SBJTWD,XZQHDM,YSBLSH,BZ,F_XZQHDM,USERIDCODE,PROJECT_CODE,WSSBQD,OBTAIN_PAPER_WAY,OBTAIN_DELIVER_WAY,VERSION,REC_FLAG,XML_DATA,D_ZZJGDM,SXBM_SHORT,INSERTTIME
     ,RESPONSETIME,FLAG,SYNC,DWDM,BYZD1,BYZD2,BYZD4,BYZD3,BMMC,BMZZJGDM,BYZD,SFSXDDDL,DDDLYHID,CLZT,CLSJ,ID,ISTOSPJC,SXBBH,SYNCTIME,SXBBBM,SXBDBM,SJSXBM,SJSXBBH,WD,JD
     from EX_GDBS_SB
-    WHERE BYZD4 ='待审批'
+    <where>
+      EX_GDBS_SB.BYZD4 ='待审批'
+      <if test="FSXBM != null and FSXBM != ''">
+        AND EX_GDBS_SB.FSXBM like concat(concat('%',#{FSXBM}),'%')
+      </if>
+      <if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+        AND "TO_DATE"(EX_GDBS_SB.BYZD1, 'yyyy-mm-dd hh24:mi:ss') BETWEEN "TO_DATE"(#{beginTime}, 'yyyy-mm-dd hh24:mi:ss') AND "TO_DATE"(#{endTime}, 'yyyy-mm-dd hh24:mi:ss')
+      </if>
+
+    </where>
+
+
   </select>
   <select id="selectTaskDone" resultMap="BaseResultMap">
     select SBLSH,SBLSH_SHORT,SXBM,SXMC,SXQXBM,FSXBM,FSXMC,SQRLX,SQRMC,SQRZJLX,SQRZJHM,LXRXM,LXRZJLX,LXRSFZJHM,LXRSJ,LXRYX,SBXMMC,SBCLQD,TJFS,SBHZH,SBSJ

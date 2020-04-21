@@ -1,13 +1,9 @@
 package com.szps.web.service.supervise.Impl;
 
-import com.szps.common.annotation.DataScope;
 import com.szps.common.core.text.Convert;
 import com.szps.web.domain.supervise.TbRule;
-import com.szps.web.domain.supervise.TbStaff;
 import com.szps.web.mapper.supervise.TbRuleMapper;
-import com.szps.web.mapper.supervise.TbStaffMapper;
 import com.szps.web.service.supervise.RuleService;
-import com.szps.web.service.supervise.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +28,16 @@ public class RuleServiceImpl implements RuleService {
     @Override
     public TbRule selectRuleById(String ruleNumber) {
         return tbRuleMapper.selectByPrimaryKey(ruleNumber);
+    }
+
+    @Override
+    public String selectRuleByRuleName(String ruleName) {
+        return tbRuleMapper.selectByName(ruleName);
+    }
+
+    @Override
+    public String selectRuleByRuleNameScale(String ruleName) {
+        return tbRuleMapper.selectByNameScale(ruleName);
     }
 
     @Override

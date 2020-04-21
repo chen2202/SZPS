@@ -3,163 +3,183 @@
 <head>
 	<th:block th:include="include :: header('数据统计')" />
 	<link th:href="@{/css/op/public.css}" rel="stylesheet"/>
+	<script src="http://code.highcharts.com/highcharts.js"></script>
+	<script src="http://code.highcharts.com/highcharts-3d.js"></script>
+	<style type="text/css">
+		/*页头六个方框标题样式*/
+		.six-title-p{
+			margin: 14px 0px 4px 0px;
+			height:14px;
+			font-size:14px;
+			font-family:PingFang SC;
+			font-weight:400;
+			color:rgba(255,255,255,1);
+			line-height:24px;
+		}
+		/*页头六个方框数字样式*/
+		.six-number-p{
+			position: absolute;
+			top: 50px;
+			height:22px;
+			font-size:30px;
+			font-family:Helvetica Neue LT Pro;
+			font-weight:normal;
+			color:rgba(255,255,255,1);
+			line-height:24px;
+		}
+		/*页头六个方框图标*/
+		.six-icon-img{
+			width:26px;
+			height:26px;
+			opacity:0.58;
+			display: inline-block;
+			position: absolute;
+			top: 50px;
+			left: -10px;
+			background-repeat: no-repeat;
+			filter: drop-shadow(#fff 170px 0px); /*设置阴影，替代原来的图标*/
+			transform: translateX(-30px);
+			-ms-filter: drop-shadow(#fff 170px 0px);
+			-ms-transform: translateX(-30px);
+		}
+		.six-icon1{
+			background-image: url(../../img/审批数量.svg);
+		}
+		.six-icon2{
+			background-image: url(../../img/废水接入量.svg);
+		}
+		.six-icon3{
+			background-image: url(../../img/雨水接入量.svg);
+		}
+
+		/*页头六个方框*/
+		.six-div{
+			width:240px;
+			height:90px;
+			border-radius:10px;
+			margin: 20px 56px 10px 56px;
+			overflow: hidden;
+		}
+	</style>
+
 </head>
 <body class="gray-bg">
 <div class="container-div">
 	<div class="row">
 
-		<!--<div class="col-sm-12 search-collapse">
+		<div class="col-sm-12 search-collapse">
 			<form id="role-form">
 				<div class="select-list">
 					<ul>
-						<li>
-							任务区域：<input type="text" name="taskPartition" maxlength="11"/>
-						</li>
-						<li>
-							行政区：
-							<select  name="taskRegion">
-								<option value="">请选择</option>
-								<option value="南山区">南山区</option>
-								<option value="福田区">福田区</option>
-								<option value="盐田区">盐田区</option>
-								<option value="罗湖区">罗湖区</option>
-							</select>
-						</li>
-						<li>
-							街道：<select name="taskStreet">
-							<option value="">请选择</option>
-							<option value="南山街道">南山街道</option>
-							<option value="南头街道">南头街道</option>
-							<option value="西丽街道">西丽街道</option>
-							<option value="沙河街道">沙河街道</option>
-						</select>
-						</li>
 						<li class="select-time">
-							<label>任务创建时间： </label>
-							<input type="text" class="time-input" id="taskTime" placeholder="创建时间" name="taskTime"/>
+							<label>年份： </label>
+							<input type="text" class="time-input" id="taskTime" placeholder="年份" name="taskTime"/>
 						</li>
 						<li>
-							<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
-							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							<a class="btn btn-main btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							<!--<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>-->
 						</li>
 					</ul>
 				</div>
 			</form>
-		</div>-->
+		</div>
 
 
 
 		<div class="col-sm-12 select-table table-striped">
-			<table id="bootstrap-table" data-mobile-responsive="true"></table>
+			<div class="col-sm-2 six-div" style="margin-left:-10px;background:linear-gradient(-30deg,rgba(44,157,243,1) 0%,rgba(89,184,255,1) 100%);">
+				<p class="six-title-p">全市摸查排水户总数</p>
+				<span class="six-number-p" th:text="289"></span>
+				<span class="six-icon-img six-icon1"/>
+			</div>
+			<div class="col-sm-2 six-div" style="margin-left:-10px;background:linear-gradient(-30deg,rgba(222,162,22,1) 0%,rgba(243,195,36,1) 100%);">
+				<p class="six-title-p">全市摸查排水户总数</p>
+				<span class="six-number-p" th:text="5899"></span>
+				<span class="six-icon-img six-icon2"/>
+			</div>
+			<div class="col-sm-2 six-div" style="margin-left:-10px;background:linear-gradient(-30deg,rgba(85,185,35,1) 0%,rgba(118,214,70,1) 100%);">
+				<p class="six-title-p">全市摸查排水户总数</p>
+				<span class="six-number-p" th:text="2299"></span>
+				<span class="six-icon-img six-icon3"/>
+			</div>
+			<table id="bootstrap-table" data-mobile-responsive="true" ></table>
+			<div id="container" style="position: relative; overflow: hidden;width: 1000px;height: 325px;"></div>
 		</div>
 	</div>
 </div>
 <th:block th:include="include :: footer" />
-<script th:inline="javascript">
-    var editFlag = [[${@permission.hasPermi('op:permit:edit')}]];
-    var prefix = ctx + "op/permit";
+<script type="text/javascript">
 
-    $(function() {
-        var options = {
-            url: prefix + "/statistic",
-            createUrl: prefix + "/TaskCheck",
-            updateUrl: prefix + "/editStatistic/{id}",
-            removeUrl: prefix + "/remove",
-            exportUrl: prefix + "/export",
-            sortName: "sblsh",
-            modalName: "数据统计",
-            columns: [
-                {
-                    field: 'sblsh',
-                    title: '省级申办流水号',
-                    sortable: true
-                },
-				{
-                    field: 'byzd3',
-                    title: '测试'
-				}
-                /*{
-                    field: 'sblsh_SHORT',
-                    title: '市级统一申办流水号',
-                    visible:false
-                },
-                {
-                    field: 'sxbm',
-                    title: '事项编号',
-                    visible:false
-                },
-                {
-                    field: 'sxmc',
-                    title: '事项名称'
 
-                },
-                {
-                    field: 'sxqxbm',
-                    title: '事项情形编码',
-                    visible:false
-                },
-                {
-                    field: 'fsxbm',
-                    title: '父事项编码',
-                    visible:false
-                },
-                {
-                    field: 'fsxbc',
-                    title: '父事项名称',
-                    visible:false
-                },
-                {
-                    field: 'sqrlx',
-                    title: '申请人类型',
-                    visible:false
-                },
-                {
-                    field: 'sqrmc',
-                    title: '申请人名称'
 
-                },
-                {
-                    field: 'sqrzjlx',
-                    title: '申请人证件类型',
-                    visible:false
-                },
-                {
-                    field: 'sqrzjhm',
-                    title: '申请人证件号码'
-                },
-                {
-                    field: 'lxrxm',
-                    title: '联系人姓名'
+    var chart = Highcharts.chart('container',{
+        chart: {
+            type: 'column',
+            options3d: {
+                enabled: true,
+                alpha: 15,
+                beta: 0,
+                depth: 50,
+                viewDistance: 25
+            }
+        },
+        title: {
+            text: '排水许可审批图',
+            align:"left"
 
-                },
-                {
-                    field: 'lxrzjlx',
-                    title: '联系人证件类型',
-                    visible:false
-                },{
-                    field: 'lxrsfzjhm',
-                    title: '联系人身份证件号码'
+        },
 
-                },{
-                    field: 'lxrsj',
-                    title: '联系人手机'
+        xAxis: {
+            categories: [
+                '1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+			max:800,
+            tickInterval:200,
+			title:{
+                    text: ''
+			}
 
-                },*/
-                /*{
-                    title: '操作',
-                    align: 'center',
-                    formatter: function(value, row, index) {
-                        var actions = [];
-                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.sblsh + '\')"><i class="fa fa-edit"></i>查看详情</a> ');
-                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.taskNumber + '\')"><i class="fa fa-remove"></i>删除</a> ');
-                        return actions.join('');
-                    }
-                }*/
+        },
+        tooltip: {
+            // head + 每个 point + footer 拼接成完整的 table
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                groupPadding: 0.05,
+                pointPadding: 0.1,
+                borderWidth: 0
+            }
+        },
+        credits: {
+            enabled:false
+        },
+        series: [{
+            name: '审批数量',
+            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+			color:"#63BCFF"
 
-                ]
-        };
-        $.table.init(options);
+
+        }, {
+            name: '污废水接入量',
+            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3],
+            color:"#F5C62B"
+        }, {
+            name: '雨水接入量',
+            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2],
+            color:"#76D646"
+        }]
     });
+
 
 
 </script>

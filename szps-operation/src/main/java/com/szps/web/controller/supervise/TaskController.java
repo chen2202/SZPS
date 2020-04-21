@@ -1,3 +1,4 @@
+package com.szps.web.controller.supervise;/*
 package com.szps.web.controller.supervise;
 
 
@@ -9,10 +10,7 @@ import com.szps.web.domain.supervise.TbHouse;
 import com.szps.web.domain.supervise.TbStaff;
 import com.szps.web.domain.supervise.TbTask;
 import com.szps.web.domain.supervise.TbTaskStaff;
-import com.szps.web.service.supervise.HouseService;
-import com.szps.web.service.supervise.StaffService;
-import com.szps.web.service.supervise.TaskService;
-import com.szps.web.service.supervise.TaskStaffService;
+import com.szps.web.service.supervise.*;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +31,8 @@ public class TaskController extends BaseController {
     @Autowired
     private TaskService taskService;
 
+    private RuleService ruleService;
+
     @Autowired
     private HouseService houseService;
 
@@ -41,6 +41,7 @@ public class TaskController extends BaseController {
 
     @Autowired
     private TaskStaffService taskStaffService;
+
     private String prefix = "supervise/task";
 
     @GetMapping("/task")
@@ -113,10 +114,10 @@ public class TaskController extends BaseController {
                 String s=house.getHouseNumber();
                 String p=house.getHouseName();
                 String phone=house.getHousePhone();
-                String par=house.getHousePoint();
+                //String par=house.getHousePoint();
                 t.setTaskHouse(s);
                 t.setTaskHousename(p);
-                t.setTaskPartition(par);
+                //t.setTaskPartition(par);
                 t.setTaskHousephone(phone);
                 List<TbStaff> staff=staffService.selectStaffAll();
                 ArrayList<String> list = new ArrayList<String>();
@@ -151,3 +152,4 @@ public class TaskController extends BaseController {
         }
     }
 }
+*/

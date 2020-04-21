@@ -1,11 +1,8 @@
 package com.szps.web.service.supervise;
 
-import com.szps.system.domain.SysRole;
-import com.szps.system.domain.SysUserRole;
 import com.szps.web.domain.supervise.TbStaff;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * 检查人员业务层
@@ -26,7 +23,7 @@ public interface StaffService
 
     public TbStaff selectStaffById(String staffNumber);
 
-    public TbStaff selectStaff();
+    //public TbStaff selectStaff();
 
 
     public int deleteStaffById(String staffNumber);
@@ -46,4 +43,7 @@ public interface StaffService
     public int updateStaff(TbStaff staff);
 
     public  int checkStaff(String staffNumber);
+
+    public List<TbStaff> selectStaffOne(String staffArea);
+    public List<TbStaff> selectStaffSecond(String staffArea);
 }

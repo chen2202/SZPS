@@ -1,6 +1,5 @@
 package com.szps.web.domain.supervise;
 
-import java.math.BigDecimal;
 
 public class TbHouse {
     private String houseNumber;
@@ -9,23 +8,20 @@ public class TbHouse {
 
     private String houseRegion;
 
-    private String houseStreet;
-
-    private String houseBasin;
+    private String houseBegin;
 
     private String houseRole;
 
-    private String houseType;
-
-    private String housePoint;
-
-    private String houseConnecting;
+    private String houseEnd;
 
     private String housePhone;
 
+    private String houseFlag;
+
+    private String houseTime;
+
     private String houseRule;
 
-    private String houseFlag;
 
     public String getHouseNumber() {
         return houseNumber;
@@ -51,20 +47,20 @@ public class TbHouse {
         this.houseRegion = houseRegion == null ? null : houseRegion.trim();
     }
 
-    public String getHouseStreet() {
-        return houseStreet;
+    public String getHouseBegin() {
+        return houseBegin;
     }
 
-    public void setHouseStreet(String houseStreet) {
-        this.houseStreet = houseStreet == null ? null : houseStreet.trim();
+    public void setHouseBegin(String houseBegin) {
+        this.houseBegin = houseBegin == null ? null : houseBegin.trim();
     }
 
-    public String getHouseBasin() {
-        return houseBasin;
+    public String getHouseEnd() {
+        return houseEnd;
     }
 
-    public void setHouseBasin(String houseBasin) {
-        this.houseBasin = houseBasin == null ? null : houseBasin.trim();
+    public void setHouseEnd(String houseEnd) {
+        this.houseEnd = houseEnd == null ? null : houseEnd.trim();
     }
 
     public String getHouseRole() {
@@ -75,29 +71,7 @@ public class TbHouse {
         this.houseRole = houseRole == null ? null : houseRole.trim();
     }
 
-    public String getHouseType() {
-        return houseType;
-    }
 
-    public void setHouseType(String houseType) {
-        this.houseType = houseType == null ? null : houseType.trim();
-    }
-
-    public String getHousePoint() {
-        return housePoint;
-    }
-
-    public void setHousePoint(String housePoint) {
-        this.housePoint = housePoint == null ? null : housePoint.trim();
-    }
-
-    public String getHouseConnecting() {
-        return houseConnecting;
-    }
-
-    public void setHouseConnecting(String houseConnecting) {
-        this.houseConnecting = houseConnecting == null ? null : houseConnecting.trim();
-    }
 
     public String getHousePhone() {
         return housePhone;
@@ -107,13 +81,7 @@ public class TbHouse {
         this.housePhone = housePhone;
     }
 
-    public String getHouseRule() {
-        return houseRule;
-    }
 
-    public void setHouseRule(String houseRule) {
-        this.houseRule = houseRule;
-    }
 
     public String getHouseFlag() {
         return houseFlag;
@@ -121,5 +89,21 @@ public class TbHouse {
 
     public void setHouseFlag(String houseFlag) {
         this.houseFlag = houseFlag;
+    }
+
+    public String getHouseTime() {
+        return houseTime;
+    }
+
+    public void setHouseTime(String houseTime) {
+        this.houseTime = houseTime;
+    }
+
+    public String getHouseRule() {
+        return houseRule;
+    }
+
+    public void setHouseRule(String houseRule) {
+        this.houseRule = houseRule;
     }
 }

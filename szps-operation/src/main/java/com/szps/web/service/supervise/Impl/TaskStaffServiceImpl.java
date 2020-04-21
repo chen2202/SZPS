@@ -1,11 +1,7 @@
 package com.szps.web.service.supervise.Impl;
 
-import com.szps.common.core.text.Convert;
-import com.szps.web.domain.supervise.TbRule;
 import com.szps.web.domain.supervise.TbTaskStaff;
-import com.szps.web.mapper.supervise.TbRuleMapper;
 import com.szps.web.mapper.supervise.TbTaskStaffMapper;
-import com.szps.web.service.supervise.RuleService;
 import com.szps.web.service.supervise.TaskStaffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -14,6 +14,16 @@
 				<div class="select-list">
 					<ul>
 						<li>
+							执法人员类型：<select name="staffPost">
+							<option value="">请选择执法人员类型</option>
+							<option value="一类">一类</option>
+							<option value="二类">二类</option>
+						</select>
+						</li>
+						<li>
+							执法人员姓名：<input type="text" name="staffName" maxlength="11" placeholder="请输入执法人员姓名"/>
+						</li>
+						<!--<li>
 							人员名称：<input type="search" name="staffName" maxlength="8" placeholder="请输入人员名称"/>
 						</li>
 						<li>
@@ -28,28 +38,31 @@
 						<li class="select-time">
 							<label>出生年月： </label>
 							<input type="text" class="time-input" id="staffBirthday" placeholder="选择出生年月" name="staffBirthday"/>
-						</li>
+						</li>-->
 						<li>
 							<a class="btn btn-main btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
-							<a class="btn btn-main2 btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+
+						</li>
+						<li style="float: right">
+							<a class="btn btn-main2 " onclick="$.operate.add()" shiro:hasPermission="supervise:data1:add">&nbsp;新增</a>
 						</li>
 					</ul>
 				</div>
 			</form>
 		</div>
 
-		<div class="btn-group-sm" id="toolbar" role="group">
+		<!--<div class="btn-group-sm" id="toolbar" role="group">
 
 			<a class="btn btn-main2" onclick="$.operate.add()" shiro:hasPermission="supervise:data1:add">
 				<i class="fa fa-plus"></i> 新增
 			</a>
-			<!--<a class="btn btn-main2 " onclick="$.operate.edit()" shiro:hasPermission="supervise:data1:edit">
+			&lt;!&ndash;<a class="btn btn-main2 " onclick="$.operate.edit()" shiro:hasPermission="supervise:data1:edit">
 				<i class="fa fa-edit"></i> 修改
-			</a>-->
+			</a>&ndash;&gt;
 			<a class="btn btn-main2 " onclick="$.operate.removeAll()" shiro:hasPermission="supervise:data1:remove">
 				<i class="fa fa-remove"></i> 删除
 			</a>
-		</div>
+		</div>-->
 
 		<div class="col-sm-12 select-table table-striped">
 			<table id="bootstrap-table" data-mobile-responsive="true"></table>
@@ -76,38 +89,50 @@
                 checkbox: true
             },
                 {
+                    field: 'SerialNumber',
+                    title: '序号',
+                    formatter: function (value, row, index) {
+                        //获取每页显示的数量
+                        var pageSize=$('#bootstrap-table').bootstrapTable('getOptions').pageSize;
+                        //获取当前是第几页
+                        var pageNumber=$('#bootstrap-table').bootstrapTable('getOptions').pageNumber;
+                        //返回序号，注意index是从0开始的，所以要加上1
+                        return pageSize * (pageNumber - 1) + index + 1;
+                    }
+                },
+                {
                     field: 'staffNumber',
                     title: '人员编号',
-                    sortable: true
+                    visible:false
                 },
                 {
                     field: 'staffName',
-                    title: '姓名'
-
-                },
-                {
-                    field: 'staffGender',
-                    title: '性别'
-
-                },
-                {
-                    field: 'staffTelephone',
-                    title: '手机号码'
+                    title: '执法人员姓名'
 
                 },
                 {
                     field: 'staffDept',
-                    title: '部门'
+                    title: '执法人员单位'
 
                 },
                 {
                     field: 'staffPost',
-                    title: '职务'
+                    title: '执法人员类型'
 
                 },
                 {
-                    field: 'staffBirthday',
-                    title: '生日'
+                    field: 'staffCart',
+                    title: '执法证件编号'
+
+                },
+                {
+                    field: 'staffW',
+                    title: '执法人员状态'
+
+                },
+                {
+                    field: 'staffArea',
+                    title: '执法范围'
 
                 },
                 {

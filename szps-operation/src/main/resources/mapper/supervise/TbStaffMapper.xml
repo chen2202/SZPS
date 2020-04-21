@@ -4,45 +4,43 @@
   <resultMap id="BaseResultMap" type="com.szps.web.domain.supervise.TbStaff" >
     <id column="STAFF_NUMBER" property="staffNumber" jdbcType="VARCHAR" />
     <result column="STAFF_NAME" property="staffName" jdbcType="VARCHAR" />
-    <result column="STAFF_BIRTHDAY" property="staffBirthday" jdbcType="VARCHAR" />
-    <result column="STAFF_GENDER" property="staffGender" jdbcType="VARCHAR" />
-    <result column="STAFF_TELEPHONE" property="staffTelephone" jdbcType="VARCHAR" />
+    <result column="STAFF_AREA" property="staffArea" jdbcType="VARCHAR" />
+    <result column="STAFF_CART" property="staffCart" jdbcType="VARCHAR" />
     <result column="STAFF_POST" property="staffPost" jdbcType="VARCHAR" />
     <result column="STAFF_DEPT" property="staffDept" jdbcType="VARCHAR" />
-    <result column="STAFF_W" property="staffW" jdbcType="DECIMAL" />
+    <result column="STAFF_W" property="staffW" jdbcType="VARCHAR" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from TB_STAFF
     where STAFF_NUMBER = #{staffNumber,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.szps.web.domain.supervise.TbStaff" >
-    insert into TB_STAFF (STAFF_NUMBER, STAFF_NAME, STAFF_BIRTHDAY, 
-      STAFF_GENDER, STAFF_TELEPHONE, STAFF_POST, 
+    insert into TB_STAFF (STAFF_NUMBER, STAFF_NAME, STAFF_AREA,
+      STAFF_CART, STAFF_POST,
       STAFF_DEPT, STAFF_W)
-    values (#{staffNumber,jdbcType=VARCHAR}, #{staffName,jdbcType=VARCHAR}, #{staffBirthday,jdbcType=VARCHAR},
-      #{staffGender,jdbcType=VARCHAR}, #{staffTelephone,jdbcType=VARCHAR}, #{staffPost,jdbcType=VARCHAR}, 
-      #{staffDept,jdbcType=VARCHAR}, #{staffW,jdbcType=DECIMAL})
+    values (#{staffNumber,jdbcType=VARCHAR}, #{staffName,jdbcType=VARCHAR}, #{staffArea,jdbcType=VARCHAR},
+      #{staffCart,jdbcType=VARCHAR}, #{staffPost,jdbcType=VARCHAR},
+      #{staffDept,jdbcType=VARCHAR}, #{staffW,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.szps.web.domain.supervise.TbStaff" >
     update TB_STAFF
     set STAFF_NAME = #{staffName,jdbcType=VARCHAR},
-      STAFF_BIRTHDAY = #{staffBirthday,jdbcType=VARCHAR},
-      STAFF_GENDER = #{staffGender,jdbcType=VARCHAR},
-      STAFF_TELEPHONE = #{staffTelephone,jdbcType=VARCHAR},
+      STAFF_AREA = #{staffArea,jdbcType=VARCHAR},
+      STAFF_CART = #{staffCart,jdbcType=VARCHAR},
       STAFF_POST = #{staffPost,jdbcType=VARCHAR},
       STAFF_DEPT = #{staffDept,jdbcType=VARCHAR},
-      STAFF_W = #{staffW,jdbcType=DECIMAL}
+      STAFF_W = #{staffW,jdbcType=VARCHAR}
     where STAFF_NUMBER = #{staffNumber,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select STAFF_NUMBER, STAFF_NAME, STAFF_BIRTHDAY, STAFF_GENDER, STAFF_TELEPHONE, STAFF_POST, 
+    select STAFF_NUMBER, STAFF_NAME, STAFF_AREA, STAFF_CART, STAFF_POST,
     STAFF_DEPT, STAFF_W
     from TB_STAFF
     where STAFF_NUMBER = #{staffNumber,jdbcType=VARCHAR}
   </select>
 
   <select id="selectStaffByStaffName" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select STAFF_NUMBER, STAFF_NAME, STAFF_BIRTHDAY, STAFF_GENDER, STAFF_TELEPHONE, STAFF_POST,
+    select STAFF_NUMBER, STAFF_NAME,  STAFF_AREA, STAFF_CART, STAFF_POST,
     STAFF_DEPT, STAFF_W
     from TB_STAFF
     where  STAFF_NAME= #{staffName,jdbcType=VARCHAR}
@@ -55,13 +53,13 @@
   </select>
 
   <select id="selectAll" resultMap="BaseResultMap" >
-    select STAFF_NUMBER, STAFF_NAME, STAFF_BIRTHDAY, STAFF_GENDER, STAFF_TELEPHONE, STAFF_POST, 
+    select STAFF_NUMBER, STAFF_NAME,  STAFF_AREA, STAFF_CART, STAFF_POST,
     STAFF_DEPT, STAFF_W
     from TB_STAFF
   </select>
 
   <select id="selectStaffList" parameterType="com.szps.web.domain.supervise.TbStaff" resultMap="BaseResultMap">
-    select STAFF_NUMBER, STAFF_NAME, STAFF_BIRTHDAY, STAFF_GENDER, STAFF_TELEPHONE, STAFF_POST,
+    select STAFF_NUMBER, STAFF_NAME,  STAFF_AREA, STAFF_CART, STAFF_POST,
     STAFF_DEPT, STAFF_W
     from TB_STAFF
 
@@ -69,12 +67,10 @@
     <if test="staffName != null and staffName != ''">
        TB_STAFF.STAFF_NAME like concat(concat('%',#{staffName}),'%')
     </if>
-    <if test="staffDept != null and staffDept != ''">
-      AND TB_STAFF.STAFF_DEPT = #{staffDept}
+    <if test="staffPost != null and staffPost != ''">
+      AND TB_STAFF.STAFF_POST = #{staffPost}
     </if>
-      <if test="staffBirthday != null and staffBirthday != ''">
-        and TB_STAFF.STAFF_BIRTHDAY = #{staffBirthday}
-      </if>
+
     </where>
   </select>
 
@@ -88,5 +84,37 @@
 
   <select id="CheckdStaff" parameterType="String" resultType="int">
     select count(1) from TB_STAFF where TB_STAFF.STAFF_NUMBER=#{staffNumber}
+  </select>
+
+
+
+
+  <select id="selectStaffOne" parameterType="String" resultMap="BaseResultMap">
+    select STAFF_NUMBER, STAFF_NAME,  STAFF_AREA, STAFF_CART, STAFF_POST,
+    STAFF_DEPT, STAFF_W
+    from TB_STAFF
+
+    <where>
+      TB_STAFF.STAFF_POST='一类'
+      <if test="staffArea!= null and staffArea != ''">
+        AND TB_STAFF.STAFF_AREA = #{staffArea}
+      </if>
+
+    </where>
+  </select>
+
+
+  <select id="selectStaffSecond" parameterType="String" resultMap="BaseResultMap">
+    select STAFF_NUMBER, STAFF_NAME,  STAFF_AREA, STAFF_CART, STAFF_POST,
+    STAFF_DEPT, STAFF_W
+    from TB_STAFF
+
+    <where>
+      TB_STAFF.STAFF_POST='二类'
+      <if test="staffArea!= null and staffArea != ''">
+        AND TB_STAFF.STAFF_AREA = #{staffArea}
+      </if>
+
+    </where>
   </select>
 </mapper>

@@ -5,32 +5,27 @@ import com.szps.common.annotation.Log;
 import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
-import com.szps.common.core.text.Convert;
 import com.szps.common.enums.BusinessType;
-import com.szps.web.domain.supervise.TbHouse;
-import com.szps.web.domain.supervise.TbStaff;
-import com.szps.web.domain.supervise.TbTask;
-import com.szps.web.domain.supervise.TbTaskStaff;
-import com.szps.web.service.supervise.HouseService;
-import com.szps.web.service.supervise.StaffService;
-import com.szps.web.service.supervise.TaskService;
-import com.szps.web.service.supervise.TaskStaffService;
+import com.szps.web.domain.supervise.*;
+import com.szps.web.service.supervise.*;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 import java.util.Random;
 
 
 @Controller
-@RequestMapping("/supervise/data")
+@RequestMapping("/supervise/datas")
 public class DataController extends BaseController {
 
     @Autowired
@@ -44,39 +39,33 @@ public class DataController extends BaseController {
 
     @Autowired
     private TaskStaffService taskStaffService;
+    @Autowired
+    private RuleService ruleService;
 
     private String prefix = "supervise/data";
 
-    @GetMapping("/data")
+    @GetMapping("/datas")
     public String dataview()
     {
-        return prefix+"/Taskdata";
+        return prefix+"/Taskdatas";
     }
 
 
-    @GetMapping("/Taskadd")
-    public String add()
-    {
-        return prefix + "/Taskadd";
-    }
-
-    @GetMapping("/main")
-    public String datamain()
-    {
-        return prefix+"/main";
-    }
-
-
-    @RequiresPermissions("supervise:data:list")
+    @RequiresPermissions("supervise:datas:list")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(TbTask tbTask)
+    public TableDataInfo list()
     {
         startPage();
-        List<TbTask> list = taskService.selectTaskList(tbTask);
+        List<TbTask> list = taskService.selectTaskAll();
 
         for(int i=0;i<list.size();i++)
         {
+               String a=list.get(i).getTaskHouse();
+            //System.out.println(a);
+               TbHouse tbHouse=houseService.selectHouseById(a);
+               String b=tbHouse.getHouseRule();
+            list.get(i).setRuleContent(ruleService.selectRuleByRuleName(b));
 
             List <TbTaskStaff> tbTaskStaffs=taskStaffService.selectTbTaskStaffById(list.get(i).getTaskNumber());
             List<TbStaff> tbStaffs =new ArrayList<TbStaff>();
@@ -88,30 +77,171 @@ public class DataController extends BaseController {
                   tbStaffs.add(staff);
             }
             list.get(i).setTbStaffList(tbStaffs);
+            list.get(i).setTbHouse(tbHouse);
         }
 
         return getDataTable(list);
     }
-    @RequiresPermissions("supervise:data:add")
+
+
+    @RequiresPermissions("supervise:datas:Taskadd")
     @Log(title = "任务库管理", businessType = BusinessType.INSERT)
-    @PostMapping("/add")
+    @PostMapping("/Taskadd")
     @ResponseBody
-    public AjaxResult addSave(@Validated TbTask task, String taskStaff)
+    public AjaxResult addSave(String houseRule,String value1,String value2,String value3)
     {
-        int radomInt = new Random().nextInt(999999);
-        String s=String.valueOf(radomInt);
-        while (taskService.checkTask(s)==1)
-        {
-           s=String.valueOf(new Random().nextInt(999999));
-        }
+        Random random = new Random();
+        ArrayList<String> listnew = new ArrayList<String>();
+
+
+        //拿到抽取事项
+        String scale=ruleService.selectRuleByRuleNameScale(houseRule);
+
+
+        String[] strs = scale.split(",|，");
+        //次数
+
+        //String times=strs[1].replace("次","");
+        //比例
+        String bl= strs[0].replace("%","");
+
+
+        //拿到相应抽取事项的检查对象（满足抽取事项，且没被抽查过）
+
+        List<TbHouse> list=houseService.selectHouseCheckList(houseRule);
+
+        double a= Integer.valueOf(bl)/100.0;
+
+        int blint= (int) (a*list.size());
+
+
+            ArrayList<String> list_for_random = new ArrayList<String>();
+            int max=list.size();
+
+
+            //int val= Integer.parseInt(c);
+            for(int k=0;k<max;k++){
+                list_for_random.add(list.get(k).getHouseNumber());
+            }
+
+            for(int j=0;j<blint;j++){
+                int number = random.nextInt(max);
+                String num = list_for_random.get(number);
+                listnew.add(num);
+                list_for_random.remove(number);
+                max--;
+            }
+
+
+
+
+        //生成任务
+       for (int i=0;i<blint;i++){
+           //抽取相应比例的抽查事项；并循环分配检查人员
+            TbTask task=new TbTask();
+           int radomInt = new Random().nextInt(999999);
+           String s=String.valueOf(radomInt);
+           while (taskService.checkTask(s)==1)
+           {
+               s=String.valueOf(new Random().nextInt(999999));
+           }
+           Date date = new Date();
+           SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+           task.setTaskNumber(s);
+           task.setTaskTime(formatter.format(date));
+           task.setTaskHouse(listnew.get(i));
+           task.setTaskFlag("未完成");
+
+           TbHouse house=houseService.selectHouseById(listnew.get(i));
+           String address=house.getHouseRegion().substring(3,6);
+
+
+           house.setHouseFlag("是");
+
+
+
+               //一类人员随机
+
+                   List<TbStaff> staff=staffService.selectStaffOne(address);
+                   ArrayList<String> list_for_random2 = new ArrayList<String>();
+                   ArrayList<String> listnew2 = new ArrayList<String>();
+                   int max2=staff.size();
+
+
+                   for(int k=0;k<max2;k++){
+                       list_for_random2.add(staff.get(k).getStaffNumber());
+                   }
+                   System.out.println(listnew2);
+                   for(int j=0;j<Integer.parseInt(value1);j++){
+                       int number = random.nextInt(max2);
+                       String num = list_for_random2.get(number);
+                       listnew2.add(num);
+                       list_for_random2.remove(number);
+                       max2--;
+                   }
+
+                   System.out.println(listnew2+"---------------");
+
+             for(int c=0;c<Integer.parseInt(value1);c++)
+                {
+                   TbTaskStaff tbTaskStaff=new TbTaskStaff();
+                   tbTaskStaff.setTaskNumber(s);
+                   tbTaskStaff.setStaffNumber(listnew2.get(c));
+                   taskStaffService.insertTbTaskStaff(tbTaskStaff);
+
+                 }
+
+               //二类人员随机
+
+                   List<TbStaff> staff1=staffService.selectStaffSecond(address);
+                   ArrayList<String> list_for_random3 = new ArrayList<String>();
+                   ArrayList<String> listnew3 = new ArrayList<String>();
+                   int max3=staff1.size();
+
+
+
+                   for(int k=0;k<max3;k++){
+                       list_for_random3.add(staff1.get(k).getStaffNumber());
+                   }
+                   for(int j=0;j<Integer.parseInt(value2);j++){
+                       int number = random.nextInt(max3);
+                       String num = list_for_random3.get(number);
+                       listnew3.add(num);
+                       list_for_random3.remove(number);
+                       max3--;
+                   }
+
+
+
+
+                for(int g=0;g<Integer.parseInt(value2);g++)
+                {
+                   TbTaskStaff tbTaskStaff=new TbTaskStaff();
+                   tbTaskStaff.setTaskNumber(s);
+                   tbTaskStaff.setStaffNumber(listnew3.get(g));
+                   taskStaffService.insertTbTaskStaff(tbTaskStaff);
+
+                }
+
+
+
+
+
+           houseService.updateHouse(house);
+           taskService.insertTask(task);
+       }
+
+        //把人员插入人员任务表
+
+/*
+
+
         task.setTaskNumber(s);
         if(!task.getTaskHouse().equals("")&&!taskStaff.equals(""))
         {
             String[] strs = taskStaff.split(",|，");
             TbHouse house=houseService.selectHouseById(task.getTaskHouse());
-            task.setTaskPartition(house.getHousePoint());
-            task.setTaskHousename(house.getHouseName());
-            task.setTaskHousephone(house.getHousePhone());
+
             for(int i=0; i<strs.length; i++) {
                 TbTaskStaff tbTaskStaff=new TbTaskStaff();
                 tbTaskStaff.setTaskNumber(s);
@@ -119,11 +249,13 @@ public class DataController extends BaseController {
 
                 taskStaffService.insertTbTaskStaff(tbTaskStaff);
             }
-        }
+        }*/
 
-        return toAjax(taskService.insertTask(task));
+        return  toAjax(blint);
     }
-    @GetMapping("/edit/{taskNumber}")
+
+
+   /* @GetMapping("/edit/{taskNumber}")
     public String edit(@PathVariable("taskNumber") String taskNumber, ModelMap mmap)
     {
 
@@ -146,9 +278,10 @@ public class DataController extends BaseController {
         mmap.put("task", taskService.selectTaskById(taskNumber));
         mmap.put("taskStaff",a);
         return prefix + "/Taskedit";
-    }
+    }*/
 
-    @RequiresPermissions("supervise:data:edit")
+
+    /*@RequiresPermissions("supervise:data:edit")
     @Log(title = "任务管理", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
@@ -162,7 +295,7 @@ public class DataController extends BaseController {
             if (!Objects.equals(task.getTaskHouse(), house.getHouseNumber())) {
                 TbHouse houses = houseService.selectHouseById(task.getTaskHouse());
 
-                task.setTaskPartition(houses.getHousePoint());
+                //task.setTaskPartition(houses.getHousePoint());
                 task.setTaskHousename(houses.getHouseName());
                 task.setTaskHousephone(houses.getHousePhone());
 
@@ -191,8 +324,8 @@ public class DataController extends BaseController {
 
             return toAjax(taskService.updateTask(task));
 
-    }
-    @RequiresPermissions("supervise:data:remove")
+    }*/
+    /*@RequiresPermissions("supervise:data:remove")
     @Log(title = "任务管理", businessType = BusinessType.DELETE)
     @PostMapping("/remove")
     @ResponseBody
@@ -206,5 +339,5 @@ public class DataController extends BaseController {
         {
             return error(e.getMessage());
         }
-    }
+    }*/
 }

@@ -1,7 +1,6 @@
 package com.szps.web.service.supervise;
 
 import com.szps.web.domain.supervise.TbHouse;
-import com.szps.web.domain.supervise.TbRule;
 
 import java.util.List;
 
@@ -20,17 +19,22 @@ public interface HouseService
 
     public TbHouse selectHouse();
 
+    public List<TbHouse> selectHouseList(TbHouse tbHouse);
+
     public TbHouse selectHouseById(String houseNumber);
 
+    public  int checkTask(String taskNumber);
 
     public int deleteHouseById(String houseNumber);
 
-
+    public int deleteTaskByIds(String ids) throws Exception;
 
     public int insertHouse(TbHouse house);
 
     public int updateHouse(TbHouse house);
 
     public List<TbHouse> selectByRegionAndStreet(String houseRegion, String houseStreet);
+
+    public List<TbHouse>selectHouseCheckList(String houseRule);
 
 }

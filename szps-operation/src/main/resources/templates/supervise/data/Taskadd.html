@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" >
 <head>
-	<th:block th:include="include :: header('新增任务库')" />
+	<th:block th:include="include :: header('新增检查对象')" />
 	<th:block th:include="include :: ztree-css" />
 	<link th:href="@{/css/op/public.css}" rel="stylesheet"/>
 	<link th:href="@{/css/op/operation.css}" rel="stylesheet"/>
@@ -10,79 +10,71 @@
 	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
 		<form class="form-horizontal m" id="form-role-add">
 			<div class="form-group">
-				<label class="col-sm-3 control-label ">任务名称：</label>
+				<label class="col-sm-3 control-label ">检查对象名称：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="taskName" id="taskName" maxlength="8" placeholder="请输入任务名称" required>
-				</div>
-			</div>
-				<div class="form-group">
-				<label class="col-sm-3 control-label">行政区：</label>
-				<div class="col-sm-8">
-					<select class="form-control" name="taskRegion">
-						<option value="南山区">南山区</option>
-						<option value="福田区">福田区</option>
-						<option value="盐田区">盐田区</option>
-						<option value="罗湖区">罗湖区</option>
-					</select>
+					<input class="form-control" type="text" name="houseName" id="houseName" maxlength="20" placeholder="请输入检查对象名称" required>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label">街道：</label>
+				<label class="col-sm-3 control-label ">联系人：</label>
 				<div class="col-sm-8">
-					<select class="form-control" name="taskStreet">
-						<option value="南山街道">南山街道</option>
-						<option value="南头街道">南头街道</option>
-						<option value="西丽街道">西丽街道</option>
-						<option value="沙河街道">沙河街道</option>
-					</select>
+					<input class="form-control" type="text" name="houseRole" id="houseRole" maxlength="5" placeholder="请输入联系人" required>
 				</div>
 			</div>
-				<div class="form-group">
-				<label class="col-sm-3 control-label">排水类型：</label>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">联系电话：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="taskType" id="taskType"  placeholder="请输入排水类型" maxlength="10" required>
+					<input class="form-control" type="text" name="housePhone" id="housePhone" maxlength="11" placeholder="请输入联系电话" required>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="col-sm-3 control-label">检查人员编号：</label>
+				<label class="col-sm-3 control-label ">地址：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="taskStaff" placeholder="添加2名以上检查人员用“,”隔开"  maxlength="30" id="taskStaff" >
+					<input class="form-control" type="text" name="houseRegion" id="houseRegion" maxlength="30" placeholder="请输入地址" required>
 				</div>
 			</div>
-				<div class="form-group">
-				<label class="col-sm-3 control-label">排水户编号：</label>
-				<div class="col-sm-8">
-					<input class="form-control" type="text" name="taskHouse"  placeholder="请输入排水户编号" maxlength="11" id="taskHouse" >
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">证件有效期：</label>
+				<div class="col-sm-3" >
+					<input type="text" class="time-input" id="houseBegin" placeholder="开始时间" name="houseBegin" >
+				</div>
+				<div class="col-sm-1">
+					<span>---</span>
+				</div>
+
+				<div class="col-sm-3" >
+					<input type="text" class="time-input" id="houseEnd" placeholder="结束时间" name="houseEnd" >
 				</div>
 
 			</div>
+
 			<div class="form-group">
-				<label class="col-sm-3 control-label" >任务等级：</label>
+				<label class="col-sm-3 control-label">抽取事项：</label>
+				<div class="col-sm-8">
+					<select class="form-control" name="houseRule" id="houseRule">
+						<option value="">请选择抽取事项</option>
+						<option value="建设项目排水审批">建设项目排水审批</option>
+						<option value="城市排水许可">城市排水许可</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label" >本年度是否被抽查：</label>
 				<div class="col-sm-8">
 					<label class="radio-box" for="g">
-							<input type="radio"  checked="checked" value="高" id="g" name="taskGrade" >
-						高</label>
+							<input type="radio"  checked="checked" value="是" id="g" name="houseFlag" >
+						是</label>
 					<label class="radio-box" for="z">
-							<input type="radio" value="中" id="z" name="taskGrade"  >
-						中</label>
-					<label class="radio-box" for="d">
-						<input type="radio" value="低" id="d" name="taskGrade">
-						低</label>
+							<input type="radio" value="否" id="z" name="houseFlag"  >
+						否</label>
+
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label">创建时间：</label>
-				<div class="col-sm-8">
-					<input type="text" class="form-control time-input" id="startTime" placeholder="点击选择创建时间" name="taskTime" required/>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label">任务内容：</label>
-				<div class="col-sm-8">
-					<textarea type="text" name="taskConnecting" class="form-control" placeholder="请输入任务内容" required></textarea>
-				</div>
-			</div>
+
+
 		</form>
 	</div>
 	<th:block th:include="include :: footer" />
@@ -145,29 +137,28 @@
 	    }
 	
 		function add() {
-			var taskName = $("input[name='taskName']").val();
-			var taskRegion = $("select[name='taskRegion']").val();
-			var taskStreet = $("select[name='taskStreet']").val();
-            var taskType = $("input[name='taskType']").val();
-            var taskStaff = $("input[name='taskStaff']").val();
-            var taskHouse = $("input[name='taskHouse']").val();
-            var taskConnecting = $("textarea[name='taskConnecting']").val();
-            var taskGrade = $("input[name='taskGrade']:checked").val();
-            var taskTime = $("input[name='taskTime']").val();
+			var houseName = $("input[name='houseName']").val();
+			var houseRule = $("select[name='houseRule']").val();
+            var houseRole = $("input[name='houseRole']").val();
+            var housePhone = $("input[name='housePhone']").val();
+            var houseRegion = $("input[name='houseRegion']").val();
+            var houseBegin = $("input[name='houseBegin']").val();
+            var houseFlag = $("input[name='houseFlag']:checked").val();
+            var houseEnd = $("input[name='houseEnd']").val();
 			$.ajax({
 				cache : true,
 				type : "POST",
 				url : ctx + "supervise/data/add",
 				data : {
-					"taskName": taskName,
-					"taskRegion": taskRegion,
-					"taskStreet": taskStreet,
-					"taskType": taskType,
-                    "taskStaff":taskStaff,
-					"taskHouse":taskHouse,
-					"taskConnecting":taskConnecting,
-					"taskGrade":taskGrade,
-					"taskTime":taskTime
+					"houseName": houseName,
+					"houseRule": houseRule,
+					"houseRole": houseRole,
+					"housePhone": housePhone,
+                    "houseRegion":houseRegion,
+					"houseBegin":houseBegin,
+					"houseFlag":houseFlag,
+					"houseEnd":houseEnd
+
 				},
 				async : false,
 				error : function(request) {

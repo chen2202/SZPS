@@ -1,7 +1,6 @@
 package com.szps.web.mapper.supervise;
 
 import com.szps.web.domain.supervise.TbRule;
-import com.szps.web.domain.supervise.TbStaff;
 
 import java.util.List;
 
@@ -19,4 +18,7 @@ public interface TbRuleMapper {
     List<TbRule> selectRuleList(TbRule rule);
 
     int deleteRuleByIds(Long[] ids);
+    String selectByName(String ruleName);
+    String selectByNameScale(String ruleName);
+
 }

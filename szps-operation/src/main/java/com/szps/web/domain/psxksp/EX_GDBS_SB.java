@@ -66,6 +66,9 @@ public class EX_GDBS_SB {
     private double WD;
     private double JD;
 
+    private String beginTime;
+    private String endTime;
+
     public String getSBLSH() {
         return SBLSH;
     }
@@ -559,5 +562,21 @@ public class EX_GDBS_SB {
 
     public void setJD(double JD) {
         this.JD = JD;
+    }
+
+    public String getBeginTime() {
+        return beginTime;
+    }
+
+    public void setBeginTime(String beginTime) {
+        this.beginTime = beginTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 }

@@ -51,8 +51,16 @@ input[type="checkbox"]:checked {
     background-position: 172px 4px;
     outline: none;
     height: 30px;
-    width: 200px;
+    width: 160px;
     padding-left: 5px;
+}
+.select-list li input[type=text] {
+	border: 1px solid rgba(0,0,0,0.15);
+	border-radius: 4px;
+	outline: none;
+	height: 30px;
+	width: 160px;
+	padding-left: 5px;
 }
 
 /*空置按钮*/
@@ -206,9 +214,9 @@ thead > tr >th{
 	-webkit-appearance: none;
 	outline: none;
 	height: 30px;
-	width: 200px;
+	width: 160px;
 	background: url("../../img/下拉箭头.png") no-repeat 0 0 ;
-	background-position: 172px 10px;
+	background-position: 132px 10px;
 	padding-left: 5px;
 }
 

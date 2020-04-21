@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" >
 <head>
-	<th:block th:include="include :: header('修改任务')" />
+	<th:block th:include="include :: header('修改检查对象')" />
 	<th:block th:include="include :: ztree-css" />
 	<link th:href="@{/css/op/public.css}" rel="stylesheet"/>
 	<link th:href="@{/css/op/operation.css}" rel="stylesheet"/>
@@ -9,75 +9,72 @@
 <body class="white-bg">
 	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
 		<form class="form-horizontal m" id="form-role-edit" >
-			<input id="roleId" name="roleId" type="hidden" th:field="*{task.taskNumber}"/>
+			<input id="houseNumber" name="houseNumber" type="hidden" th:field="*{task.houseNumber}"/>
+
 			<div class="form-group">
-				<label class="col-sm-2 control-label ">任务名称：</label>
-				<div class="col-sm-4">
-					<input class="form-control" type="text" name="taskName" id="taskName" th:field="*{task.taskName}" maxlength="8" required>
+				<label class="col-sm-3 control-label ">检查对象名称：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="houseName" id="houseName" th:field="*{task.houseName}" placeholder="请输入检查对象名称" maxlength="20"  required>
 				</div>
-				<label class="col-sm-2 control-label">行政区：</label>
-				<div class="col-sm-4">
-					<select class="form-control" name="taskRegion">
-						<option value="南山区" th:selected="*{task.taskRegion=='南山区'}">南山区</option>
-						<option value="福田区" th:selected="*{task.taskRegion=='福田区'}">福田区</option>
-						<option value="盐田区" th:selected="*{task.taskRegion=='盐田区'}">盐田区</option>
-						<option value="罗湖区" th:selected="*{task.taskRegion=='罗湖区'}">罗湖区</option>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">联系人：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="houseRole" id="houseRole" th:field="*{task.houseRole}" maxlength="5" placeholder="请输入联系人" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">联系电话：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="housePhone" id="housePhone" th:field="*{task.housePhone}" maxlength="11" placeholder="请输入联系电话" required>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">地址：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="houseRegion" id="houseRegion" th:field="*{task.houseRegion}" maxlength="30" placeholder="请输入地址" required>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">证件有效期：</label>
+				<div class="col-sm-3">
+					<input type="text" class="time-input" id="houseBegin" th:field="*{task.houseBegin}" placeholder="开始时间" name="houseBegin" >
+				</div>
+				<div class="col-sm-1">
+					<span>---</span>
+				</div>
+				<div class="col-sm-3">
+					<input type="text" class="time-input" id="houseEnd" th:field="*{task.houseEnd}" placeholder="结束时间" name="houseEnd" >
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label">抽取事项：</label>
+				<div class="col-sm-8">
+					<select class="form-control" name="houseRule" id="houseRule">
+
+						<option value="建设项目排水审批" th:selected="*{task.houseRule=='建设项目排水审批'}">建设项目排水审批</option>
+						<option value="城市排水许可" th:selected="*{task.houseRule=='城市排水许可'}">城市排水许可</option>
 					</select>
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="col-sm-2 control-label">街道：</label>
-				<div class="col-sm-4">
-					<select class="form-control" name="taskStreet">
-						<option value="南山街道" th:selected="*{task.taskStreet=='南山街道'}">南山街道</option>
-						<option value="南头街道" th:selected="*{task.taskStreet=='南头街道'}">南头街道</option>
-						<option value="西丽街道" th:selected="*{task.taskStreet=='西丽街道'}">西丽街道</option>
-						<option value="沙河街道" th:selected="*{task.taskStreet=='沙河街道'}">沙河街道</option>
-					</select>
-				</div>
-				<label class="col-sm-2 control-label">排水类型：</label>
-				<div class="col-sm-4">
-					<input class="form-control" type="text" name="taskType" id="taskType" th:field="*{task.taskType}" maxlength="10" required>
-				</div>
 
-			</div>
 			<div class="form-group">
-				<label class="col-sm-2 control-label">检查人员编号：</label>
-				<div class="col-sm-4">
-					<input class="form-control" type="text" name="taskStaff" id="taskStaff"  maxlength="30" th:value="${taskStaff}">
-				</div>
-				<label class="col-sm-2 control-label">排水户编号：</label>
-				<div class="col-sm-4">
-					<input class="form-control" type="text" name="taskHouse" id="taskHouse" maxlength="11" th:field="*{task.taskHouse}">
-				</div>
-
-			</div>
-			<div class="form-group">
-				<label class="col-sm-2 control-label" >任务等级：</label>
-				<div class="col-sm-10">
+				<label class="col-sm-3 control-label" >本年度是否被抽查：</label>
+				<div class="col-sm-8">
 					<label class="radio-box" for="g">
-						<input type="radio"  th:checked="*{task.taskGrade=='高'}" value="高" id="g" name="taskGrade" >
-						高</label>
+						<input type="radio"  th:checked="*{task.houseFlag=='是'}" value="是" id="g" name="houseFlag" >
+						是</label>
 					<label class="radio-box" for="z">
-						<input type="radio" th:checked="*{task.taskGrade=='中'}" value="中" id="z" name="taskGrade"  >
-						中</label>
-					<label class="radio-box" for="d">
-						<input type="radio" th:checked="*{task.taskGrade=='低'}" value="低" id="d" name="taskGrade">
-						低</label>
+						<input type="radio" th:checked="*{task.houseFlag=='否'}" value="否" id="z" name="houseFlag"  >
+						否</label>
+
 				</div>
 			</div>
-			<div class="form-group">
-				<label class="col-sm-2 control-label">创建时间：</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control time-input" id="startTime" placeholder="点击弹出日历" th:field="*{task.taskTime}" name="taskTime" required/>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-2 control-label">任务内容：</label>
-				<div class="col-sm-10">
-					<textarea type="text" name="taskConnecting" class="form-control" placeholder="请输入任务内容" th:field="*{task.taskConnecting}" required></textarea>
-				</div>
-			</div>
+
 		</form>
 	</div>
 	<th:block th:include="include :: footer" />
@@ -139,31 +136,29 @@
 		});
 
 		function edit() {
-            var taskNumber = $("input[name='taskNumber']").val();
-            var taskName = $("input[name='taskName']").val();
-            var taskRegion = $("select[name='taskRegion']").val();
-            var taskStreet = $("select[name='taskStreet']").val();
-            var taskType = $("input[name='taskType']").val();
-            var taskStaff = $("input[name='taskStaff']").val();
-            var taskHouse = $("input[name='taskHouse']").val();
-            var taskConnecting = $("textarea[name='taskConnecting']").val();
-            var taskGrade = $("input[name='taskGrade']:checked").val();
-            var taskTime = $("input[name='taskTime']").val();
+            var houseNumber = $("input[name='houseNumber']").val();
+            var houseName = $("input[name='houseName']").val();
+            var houseRule = $("select[name='houseRule']").val();
+            var houseRole = $("input[name='houseRole']").val();
+            var housePhone = $("input[name='housePhone']").val();
+            var houseRegion = $("input[name='houseRegion']").val();
+            var houseBegin = $("input[name='houseBegin']").val();
+            var houseFlag = $("input[name='houseFlag']:checked").val();
+            var houseEnd = $("input[name='houseEnd']").val();
 			$.ajax({
 				cache : true,
 				type : "POST",
 				url : ctx + "supervise/data/edit",
 				data : {
-				    "taskNumber":taskNumber,
-                    "taskName": taskName,
-                    "taskRegion": taskRegion,
-                    "taskStreet": taskStreet,
-                    "taskType": taskType,
-                    "taskStaff":taskStaff,
-                    "taskHouse":taskHouse,
-                    "taskConnecting":taskConnecting,
-                    "taskGrade":taskGrade,
-                    "taskTime":taskTime
+				    "houseNumber":houseNumber,
+                    "houseName": houseName,
+                    "houseRule": houseRule,
+                    "houseRole": houseRole,
+                    "housePhone": housePhone,
+                    "houseRegion":houseRegion,
+                    "houseBegin":houseBegin,
+                    "houseFlag":houseFlag,
+                    "houseEnd":houseEnd
 				},
 				async : false,
 				error : function(request) {

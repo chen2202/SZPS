@@ -20,7 +20,8 @@ public interface RuleService
 
     public TbRule selectRuleById(String ruleNumber);
 
-
+    public String selectRuleByRuleName(String ruleName);
+    public String selectRuleByRuleNameScale(String ruleName);
 
     public int deleteRuleById(String ruleNumber);
 

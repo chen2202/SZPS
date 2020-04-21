@@ -2,7 +2,6 @@ package com.szps.web.service.supervise;
 
 
 import com.szps.web.domain.supervise.TbFeedback;
-import com.szps.web.domain.supervise.TbTask;
 
 import java.util.List;
 
@@ -33,9 +32,9 @@ public interface FeedbackService
 
     public  int checkfb(String feedbackId);
 
-    public int countTbFeedback(String taskRegion ,  String taskStreet, String feedbackTime);
+    public int countTbFeedback(String taskRegion, String taskStreet, String feedbackTime);
 
-    public int countMonthTbFeedback(String taskRegion ,  String taskStreet, String feedbackTime);
+    public int countMonthTbFeedback(String taskRegion, String taskStreet, String feedbackTime);
 
 
     public  int checkTaskUnique(String taskNumber);

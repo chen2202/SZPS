@@ -1,23 +1,19 @@
 package com.szps.web.domain.supervise;
 
-import java.util.Date;
-
 public class TbStaff {
     private String staffNumber;
 
     private String staffName;
 
-    private String staffBirthday;
+    private String staffArea;
 
-    private String staffGender;
-
-    private String staffTelephone;
+    private String staffCart;
 
     private String staffPost;
 
     private String staffDept;
 
-    private Short staffW;
+    private String staffW;
 
     public String getStaffNumber() {
         return staffNumber;
@@ -35,29 +31,22 @@ public class TbStaff {
         this.staffName = staffName == null ? null : staffName.trim();
     }
 
-    public String getStaffBirthday() {
-        return staffBirthday;
+    public String getStaffArea() {
+        return staffArea;
     }
 
-    public void setStaffBirthday(String staffBirthday) {
-        this.staffBirthday = staffBirthday;
+    public void setStaffArea(String staffArea) {
+        this.staffArea = staffArea;
     }
 
-    public String getStaffGender() {
-        return staffGender;
+    public String getStaffCart() {
+        return staffCart;
     }
 
-    public void setStaffGender(String staffGender) {
-        this.staffGender = staffGender == null ? null : staffGender.trim();
+    public void setStaffCart(String staffCart) {
+        this.staffCart = staffCart == null ? null : staffCart.trim();
     }
 
-    public String getStaffTelephone() {
-        return staffTelephone;
-    }
-
-    public void setStaffTelephone(String staffTelephone) {
-        this.staffTelephone = staffTelephone == null ? null : staffTelephone.trim();
-    }
 
     public String getStaffPost() {
         return staffPost;
@@ -75,11 +64,11 @@ public class TbStaff {
         this.staffDept = staffDept == null ? null : staffDept.trim();
     }
 
-    public Short getStaffW() {
+    public String getStaffW() {
         return staffW;
     }
 
-    public void setStaffW(Short staffW) {
+    public void setStaffW(String staffW) {
         this.staffW = staffW;
     }
 }

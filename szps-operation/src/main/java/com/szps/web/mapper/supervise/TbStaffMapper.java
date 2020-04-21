@@ -1,7 +1,7 @@
 package com.szps.web.mapper.supervise;
 
-import com.szps.system.domain.SysRole;
 import com.szps.web.domain.supervise.TbStaff;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -21,6 +21,11 @@ public interface TbStaffMapper {
     List<TbStaff> selectStaffByStaffName(String staffName);
 
     int deleteUserByIds(Long[] ids);
-    TbStaff selectStaff();
+    //TbStaff selectStaff();
     int CheckdStaff(String staffNumber);
+
+    List<TbStaff> selectStaffOne(@Param("staffArea")String staffArea);
+    List<TbStaff> selectStaffSecond(@Param("staffArea")String staffArea);
+
+
 }

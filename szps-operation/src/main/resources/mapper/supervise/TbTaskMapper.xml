@@ -3,17 +3,13 @@
 <mapper namespace="com.szps.web.mapper.supervise.TbTaskMapper">
   <resultMap id="BaseResultMap" type="com.szps.web.domain.supervise.TbTask">
     <id column="TASK_NUMBER" jdbcType="VARCHAR" property="taskNumber" />
-    <result column="TASK_NAME" jdbcType="VARCHAR" property="taskName" />
-    <result column="TASK_REGION" jdbcType="VARCHAR" property="taskRegion" />
-    <result column="TASK_STREET" jdbcType="VARCHAR" property="taskStreet" />
-    <result column="TASK_PARTITION" jdbcType="VARCHAR" property="taskPartition" />
-    <result column="TASK_GRADE" jdbcType="VARCHAR" property="taskGrade" />
-    <result column="TASK_TYPE" jdbcType="VARCHAR" property="taskType" />
-    <result column="TASK_CONNECTING" jdbcType="VARCHAR" property="taskConnecting" />
     <result column="TASK_TIME" jdbcType="VARCHAR" property="taskTime" />
     <result column="TASK_HOUSE" jdbcType="VARCHAR" property="taskHouse"/>
-    <result column="TASK_HOUSENAME" jdbcType="VARCHAR" property="taskHousename"/>
-    <result column="TASK_HOUSEPHONE" jdbcType="VARCHAR" property="taskHousephone"/>
+    <result column="TASK_RESULT" jdbcType="VARCHAR" property="taskResult"/>
+    <result column="TASK_HANDLE" jdbcType="VARCHAR" property="taskHandle"/>
+    <result column="TASK_FLAG" jdbcType="VARCHAR" property="taskFlag"/>
+    <result column="TASK_CHECKTIME" jdbcType="VARCHAR" property="taskCheckTime"/>
+
   </resultMap>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
@@ -21,37 +17,27 @@
     where TASK_NUMBER = #{taskNumber,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.szps.web.domain.supervise.TbTask">
-    insert into TB_TASK (TASK_NUMBER, TASK_NAME, TASK_REGION, 
-      TASK_STREET, TASK_PARTITION, TASK_GRADE, 
-      TASK_TYPE, TASK_CONNECTING,
-      TASK_TIME, TASK_HOUSE, TASK_HOUSENAME, TASK_HOUSEPHONE
+    insert into TB_TASK (TASK_NUMBER, TASK_TIME, TASK_HOUSE,
+      TASK_RESULT, TASK_HANDLE, TASK_FLAG,
+      TASK_CHECKTIME
       )
-    values (#{taskNumber,jdbcType=VARCHAR}, #{taskName,jdbcType=VARCHAR}, #{taskRegion,jdbcType=VARCHAR}, 
-      #{taskStreet,jdbcType=VARCHAR}, #{taskPartition,jdbcType=VARCHAR}, #{taskGrade,jdbcType=VARCHAR}, 
-      #{taskType,jdbcType=VARCHAR}, #{taskConnecting,jdbcType=VARCHAR},
-      #{taskTime,jdbcType=VARCHAR}, #{taskHouse,jdbcType=VARCHAR},#{taskHousename,jdbcType=VARCHAR},
-      #{taskHousephone,jdbcType=VARCHAR}
+    values (#{taskNumber,jdbcType=VARCHAR}, #{taskTime,jdbcType=VARCHAR}, #{taskHouse,jdbcType=VARCHAR},
+      #{taskResult,jdbcType=VARCHAR}, #{taskHandle,jdbcType=VARCHAR}, #{taskFlag,jdbcType=VARCHAR},
+      #{taskCheckTime,jdbcType=VARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.szps.web.domain.supervise.TbTask">
     update TB_TASK
-    set TASK_NAME = #{taskName,jdbcType=VARCHAR},
-      TASK_REGION = #{taskRegion,jdbcType=VARCHAR},
-      TASK_STREET = #{taskStreet,jdbcType=VARCHAR},
-      TASK_PARTITION = #{taskPartition,jdbcType=VARCHAR},
-      TASK_GRADE = #{taskGrade,jdbcType=VARCHAR},
-      TASK_TYPE = #{taskType,jdbcType=VARCHAR},
-      TASK_CONNECTING = #{taskConnecting,jdbcType=VARCHAR},
-      TASK_TIME = #{taskTime,jdbcType=VARCHAR},
-      TASK_HOUSE = #{taskHouse,jdbcType=VARCHAR},
-      TASK_HOUSENAME= #{taskHousename,jdbcType=VARCHAR},
-      TASK_HOUSEPHONE= #{taskHousephone,jdbcType=VARCHAR}
+    set TASK_RESULT = #{taskResult,jdbcType=VARCHAR},
+      TASK_HANDLE = #{taskHandle,jdbcType=VARCHAR},
+      TASK_FLAG = #{taskFlag,jdbcType=VARCHAR},
+      TASK_CHECKTIME = #{taskCheckTime,jdbcType=VARCHAR}
 
     where TASK_NUMBER = #{taskNumber,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select TASK_NUMBER, TASK_NAME, TASK_REGION, TASK_STREET, TASK_PARTITION, TASK_GRADE, 
-    TASK_TYPE,  TASK_CONNECTING, TASK_TIME, TASK_HOUSE,  TASK_HOUSENAME, TASK_HOUSEPHONE
+    select TASK_NUMBER,/* TASK_NAME, TASK_REGION, TASK_STREET, TASK_PARTITION, TASK_GRADE,
+    TASK_TYPE,  TASK_CONNECTING, */TASK_TIME, TASK_HOUSE,TASK_RESULT,TASK_HANDLE,TASK_CHECKTIME
     from TB_TASK
     where TASK_NUMBER = #{taskNumber,jdbcType=VARCHAR}
   </select>
@@ -64,8 +50,7 @@
   </select>
 
   <select id="selectAll" resultMap="BaseResultMap">
-    select TASK_NUMBER, TASK_NAME, TASK_REGION, TASK_STREET, TASK_PARTITION, TASK_GRADE, 
-    TASK_TYPE,  TASK_CONNECTING, TASK_TIME, TASK_HOUSE,  TASK_HOUSENAME, TASK_HOUSEPHONE
+    select TASK_NUMBER,TASK_TIME, TASK_HOUSE,TASK_RESULT,TASK_HANDLE,TASK_CHECKTIME
     from TB_TASK
   </select>
 
@@ -77,23 +62,18 @@
   </select>
 
   <select id="selectTaskList" parameterType="com.szps.web.domain.supervise.TbTask" resultMap="BaseResultMap">
-    select TASK_NUMBER, TASK_NAME, TASK_REGION, TASK_STREET, TASK_PARTITION, TASK_GRADE,
-    TASK_TYPE, TASK_CONNECTING, TASK_TIME, TASK_HOUSE, TASK_HOUSENAME, TASK_HOUSEPHONE
-    from TB_TASK
+    select TASK_NUMBER, TASK_TIME, TASK_HOUSE,TASK_RESULT,TASK_HANDLE,TASK_CHECKTIME
+    from TB_TASK,TB_RULE,TB_HOUSE
 
    <where>
-    <if test="taskPartition != null and taskPartition != ''">
-       TB_TASK.TASK_PARTITION like concat(concat('%',#{taskPartition}),'%')
+     TB_TASK.TASK_HOUSE=TB_HOUSE.HOUSE_NUMBER AND  TB_HOUSE.HOUSE_RULE=TB_RULE.RULE_NAME
+    <if test="ruleName != null and ruleName != ''">
+      AND TB_RULE.RULE_NAME like concat(concat('%',#{RULE_NAME}),'%')
     </if>
-    <if test="taskRegion != null and taskRegion != ''">
-      AND TB_TASK.TASK_REGION = #{taskRegion}
+    <if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+      AND "TO_DATE"(TB_TASK.TASK_TIME, 'yyyy-mm-dd hh24:mi:ss') BETWEEN "TO_DATE"(#{beginTime}, 'yyyy-mm-dd hh24:mi:ss') AND "TO_DATE"(#{endTime}, 'yyyy-mm-dd hh24:mi:ss')
     </if>
-    <if test="taskStreet != null and taskStreet != ''">
-      AND TB_TASK.TASK_STREET = #{taskStreet}
-    </if>
-    <if test="taskTime != null and taskTime != ''">
-      and TB_TASK.TASK_TIME = #{taskTime}
-    </if>
+
    </where>
   </select>
 
@@ -145,5 +125,11 @@
     </where>
   </select>
 
+  <select id="selectTaskCountAll"  resultType="int">
+  select "COUNT"(*) FROM TB_TASK
+  </select>
+  <select id="selectTaskCountComplete"  resultType="int">
+   select "COUNT"(*) FROM TB_TASK WHERE TB_TASK.TASK_FLAG='完成'
+  </select>
 
 </mapper>

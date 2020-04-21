@@ -5,6 +5,7 @@ import com.szps.web.mapper.psxksp.EXMapper;
 import com.szps.web.service.psxksp.EXService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -30,8 +31,8 @@ public class EXServiceImpl implements EXService{
     }
 
     @Override
-    public List<EX_GDBS_SB> selectTaskWaiting() {
-        return exMapper.selectTaskWaiting();
+    public List<EX_GDBS_SB> selectTaskWaiting(EX_GDBS_SB exGdbsSb) {
+        return exMapper.selectTaskWaiting( exGdbsSb);
     }
 
     @Override

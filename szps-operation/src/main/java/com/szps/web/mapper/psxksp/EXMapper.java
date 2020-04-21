@@ -2,7 +2,6 @@ package com.szps.web.mapper.psxksp;
 
 
 import com.szps.web.domain.psxksp.EX_GDBS_SB;
-import com.szps.web.domain.supervise.TbTask;
 
 import java.util.List;
 
@@ -25,7 +24,7 @@ public interface EXMapper {
 
    // int deleteTaskByIds(Long[] ids);
    List<EX_GDBS_SB> selectTaskBytime(String BYZD1);
-   List<EX_GDBS_SB> selectTaskWaiting();
+   List<EX_GDBS_SB> selectTaskWaiting(EX_GDBS_SB exGdbsSb);
    List<EX_GDBS_SB> selectTaskDone();
 
 

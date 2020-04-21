@@ -15,15 +15,15 @@
 				<div class="select-list">
 					<ul>
 						<li>
-							行政区：
-							<select  name="taskRegion">
-							<option value="南山区">南山区</option>
-							<option value="福田区">福田区</option>
-							<option value="盐田区">盐田区</option>
-							<option value="罗湖区">罗湖区</option>
+							抽取事项：<select name="taskStreet">
+							<option value="">请选择抽取事项</option>
+							<option value="南山街道">南山街道</option>
+							<option value="南头街道">南头街道</option>
+							<option value="西丽街道">西丽街道</option>
+							<option value="沙河街道">沙河街道</option>
 						</select>
 						</li>
-						<li>
+						<!--<li>
 							街道：<select name="taskStreet">
 							<option value="南山街道">南山街道</option>
 							<option value="南头街道">南头街道</option>
@@ -38,14 +38,14 @@
 							<option value="季报">季报</option>
 							<option value="年报">年报</option>
 						</select>
-						</li>
+						</li>-->
 						<li class="select-time">
-							<label>日期：</label>
-							<input type="text" class="time-input" id="taskTime" placeholder="选择检查时间" name="taskTime" data-format="yyyy-MM" required/>
+							<label>创建时间：</label>
+							<input type="text" class="time-input" id="taskTime" placeholder="选择创建时间" name="taskTime" data-format="yyyy-MM" required/>
 						</li>
 						<li>
-							<a class="btn btn-main btn-sm" onclick="list()"><i class="fa fa-search"></i>&nbsp;查看</a>
-							<a class="btn btn-main2 btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							<a class="btn btn-main btn-sm" onclick="list()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							<!--<a class="btn btn-main2 btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>-->
 						</li>
 					</ul>
 				</div>

@@ -19,4 +19,10 @@ public interface TbHouseMapper {
     TbHouse selectHouse();
 
     List<TbHouse> selectByRegionAndStreet(@Param("houseRegion") String houseRegion, @Param("houseStreet") String houseStreet);
+
+    List<TbHouse> selectHouseList(TbHouse tbHouse);
+    int deleteHouseByIds(Long[] ids);
+    int CheckdTask(String taskNumber);
+
+    List<TbHouse>selectHouseCheckList(@Param("houseRule")String houseRule);
 }

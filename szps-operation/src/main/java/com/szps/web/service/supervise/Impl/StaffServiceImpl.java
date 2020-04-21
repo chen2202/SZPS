@@ -1,9 +1,6 @@
 package com.szps.web.service.supervise.Impl;
 
-import com.szps.common.annotation.DataScope;
 import com.szps.common.core.text.Convert;
-import com.szps.common.utils.spring.SpringUtils;
-import com.szps.system.mapper.SysRoleMapper;
 import com.szps.web.domain.supervise.TbStaff;
 import com.szps.web.mapper.supervise.TbStaffMapper;
 import com.szps.web.service.supervise.StaffService;
@@ -38,10 +35,10 @@ public class StaffServiceImpl implements StaffService{
         return staffMapper.selectByPrimaryKey(staffNumber);
     }
 
-    @Override
+   /* @Override
     public TbStaff selectStaff() {
         return staffMapper.selectStaff();
-    }
+    }*/
 
     @Override
     public int  deleteStaffById(String staffNumber) {
@@ -68,5 +65,15 @@ public class StaffServiceImpl implements StaffService{
     @Override
     public int checkStaff(String staffNumber) {
         return staffMapper.CheckdStaff(staffNumber);
+    }
+
+    @Override
+    public List<TbStaff> selectStaffOne(String staffArea) {
+        return staffMapper.selectStaffOne(staffArea);
+    }
+
+    @Override
+    public List<TbStaff> selectStaffSecond(String staffArea) {
+        return staffMapper.selectStaffSecond(staffArea);
     }
 }

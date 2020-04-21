@@ -1,7 +1,6 @@
 package com.szps.web.service.supervise;
 
 import com.szps.web.domain.supervise.TbEnclosure;
-import com.szps.web.domain.supervise.TbPicture;
 import com.szps.web.domain.supervise.TbRule;
 
 import java.util.List;

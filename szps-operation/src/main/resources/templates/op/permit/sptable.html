@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('基本信息')" />
+	<th:block th:include="include :: ztree-css" />
+	<link th:href="@{/css/op/operation.css}" rel="stylesheet"/>
+	<link th:href="@{/css/op/public.css}" rel="stylesheet"/>
+</head>
+<body class="white-bg">
+
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+
+		<form class="form-horizontal m" id="form-role-edit" th:object="${ppp}">
+			<!--<input id="staffNumber" name="staffNumber" type="hidden" th:field="*{staffNumber}"/>-->
+			<div class="form-group">
+
+				<label class="col-sm-2 control-label ">事项名称：</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text"  id="SXMC" th:field="*{SXMC}"  >
+				</div>
+				<label class="col-sm-2 control-label ">项目名称：</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text"  id="FSXBM" th:field="*{FSXBM}"  >
+				</div>
+			</div>
+			<div class="form-group">
+
+				<label class="col-sm-2 control-label ">申请单位/人：</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text"  id="SQRMC" th:field="*{SQRMC}"  >
+
+				</div>
+				<label class="col-sm-2 control-label ">单位地址/地址：</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text"  id="LXRYX" th:field="*{LXRYX}"  >
+				</div>
+
+			</div>
+
+
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label ">联系人：</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text"  id="LXRXM" th:field="*{LXRXM}"  >
+				</div>
+				<label class="col-sm-2 control-label ">联系电话：</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text"  id="LXRSJ" th:field="*{LXRSJ}"  >
+				</div>
+
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label ">来文编号：</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text"  id="SXQXBM" th:field="*{SXQXBM}"  >
+				</div>
+				<label class="col-sm-2 control-label ">受理部门：</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text"  id="DDDLYHID" th:field="*{DDDLYHID}"  >
+				</div>
+
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label ">受理日期：</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text"  id="BYZD1" th:field="*{BYZD1}"  >
+				</div>
+				<label class="col-sm-2 control-label ">受理编号：</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text"  id="SBHZH" th:field="*{SBHZH}"  >
+				</div>
+
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label ">承诺时限：</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text"  id="SJSXBBH" th:field="*{SJSXBBH}"  >
+				</div>
+				<label class="col-sm-2 control-label ">承诺日期：</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text"  id="BYZD1" th:field="*{BYZD1}"  >
+				</div>
+
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label ">经办人：</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text"  id="LXRXM" th:field="*{LXRXM}"  >
+				</div>
+				<label class="col-sm-2 control-label ">经办人电话：</label>
+				<div class="col-sm-3">
+					<input class="form-control" type="text"  id="LXRSJ" th:field="*{LXRSJ}"  >
+				</div>
+
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-12">
+					<textarea class="form-control" type="text"  id="t1" placeholder="拟办意见/领导批示：同意————魏元山&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;输入意见/批示"  ></textarea>
+				</div>
+			</div>
+
+
+
+
+
+		</form>
+	</div>
+	<th:block th:include="include :: footer" />
+	<th:block th:include="include :: ztree-js" />
+	<script type="text/javascript">
+        //document.getElementById("t1").value="项目红线内及周边现状排水设施情况"
+	</script>
+
+</body>
+</html>

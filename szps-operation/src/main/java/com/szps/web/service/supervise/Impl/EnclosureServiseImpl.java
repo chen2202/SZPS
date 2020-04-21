@@ -23,7 +23,7 @@ public class EnclosureServiseImpl implements EnclosureService {
 
     @Override
     public List<TbEnclosure> selectRuleAll() {
-        return null;
+        return enclosureMapper.selectAll();
     }
 
     @Override

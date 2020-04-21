@@ -67,27 +67,11 @@
             removeUrl: prefix + "/remove",
             exportUrl: prefix + "/export",
             sortName: "sblsh",
-            modalName: "已审批任务",
+            modalName: "已审批",
             columns: [
                 {
                     field: 'sblsh',
-                    title: '省级申办流水号',
-                    sortable: true
-                },
-                {
-                    field: 'byzd4',
-                    title: '状态  '
-
-                },
-                {
-                    field: 'sblsh_SHORT',
-                    title: '市级统一申办流水号',
-                    visible:false
-                },
-                {
-                    field: 'sxbm',
-                    title: '事项编号',
-                    visible:false
+                    title: '业务编号'
                 },
                 {
                     field: 'sxmc',
@@ -95,57 +79,28 @@
 
                 },
                 {
-                    field: 'sxqxbm',
-                    title: '事项情形编码',
-                    visible:false
-                },
-                {
                     field: 'fsxbm',
-                    title: '父事项编码',
-                    visible:false
-                },
-                {
-                    field: 'fsxbc',
-                    title: '父事项名称',
-                    visible:false
-                },
-                {
-                    field: 'sqrlx',
-                    title: '申请人类型',
-                    visible:false
+                    title: '项目名称'
+
                 },
                 {
                     field: 'sqrmc',
-                    title: '申请人名称'
+                    title: '申请单位/人'
 
-                },
-                {
-                    field: 'sqrzjlx',
-                    title: '申请人证件类型',
-                    visible:false
-                },
-                {
-                    field: 'sqrzjhm',
-                    title: '申请人证件号码',
-                    visible:false
                 },
                 {
                     field: 'lxrxm',
-                    title: '联系人姓名'
+                    title: '联系人'
 
                 },
                 {
-                    field: 'lxrzjlx',
-                    title: '联系人证件类型',
-                    visible:false
-                },{
-                    field: 'lxrsfzjhm',
-                    title: '联系人身份证件号码'
-
-                },{
                     field: 'lxrsj',
-                    title: '联系人手机'
+                    title: '联系电话'
 
+                },
+                {
+                    field:'byzd1',
+                    title:'受理时间'
                 },
                 {
                     title: '操作',

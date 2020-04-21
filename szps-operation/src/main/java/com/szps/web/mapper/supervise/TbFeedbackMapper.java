@@ -24,6 +24,6 @@ public interface TbFeedbackMapper {
     int Checkdfb(String feedbackId);
     int checkTask(String taskNumber);
 
-    int countMonthTbFeedback(@Param("taskRegion") String taskRegion , @Param("taskStreet") String taskStreet, @Param("feedbackTime") String feedbackTime);
-    int countTbFeedback(@Param("taskRegion") String taskRegion , @Param("taskStreet") String taskStreet, @Param("feedbackTime") String feedbackTime);
+    int countMonthTbFeedback(@Param("taskRegion") String taskRegion, @Param("taskStreet") String taskStreet, @Param("feedbackTime") String feedbackTime);
+    int countTbFeedback(@Param("taskRegion") String taskRegion, @Param("taskStreet") String taskStreet, @Param("feedbackTime") String feedbackTime);
 }

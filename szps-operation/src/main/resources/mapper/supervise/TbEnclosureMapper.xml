@@ -33,7 +33,7 @@
   </select>
 
   <select id="selectAll" resultMap="BaseResultMap" >
-    select ENCLOSURE_ID, ENCLOSURE_LOCATION
+    select ENCLOSURE_ID, ENCLOSURE_LOCATION,ENCLOSURE_NAME
     from TB_ENCLOSURE
   </select>
 

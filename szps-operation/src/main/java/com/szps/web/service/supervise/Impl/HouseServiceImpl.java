@@ -1,5 +1,6 @@
 package com.szps.web.service.supervise.Impl;
 
+import com.szps.common.core.text.Convert;
 import com.szps.web.domain.supervise.TbHouse;
 import com.szps.web.mapper.supervise.TbHouseMapper;
 import com.szps.web.service.supervise.HouseService;
@@ -25,13 +26,29 @@ public class HouseServiceImpl implements HouseService{
     }
 
     @Override
+    public List<TbHouse> selectHouseList(TbHouse tbHouse) {
+        return houseMapper.selectHouseList(tbHouse);
+    }
+
+    @Override
     public TbHouse selectHouseById(String houseNumber) {
         return houseMapper.selectByPrimaryKey(houseNumber);
     }
 
     @Override
+    public int checkTask(String taskNumber) {
+        return 0;
+    }
+
+    @Override
     public int deleteHouseById(String houseNumber) {
         return houseMapper.deleteByPrimaryKey(houseNumber);
+    }
+
+    @Override
+    public int deleteTaskByIds(String ids) throws Exception {
+        Long[] Ids = Convert.toLongArray(ids);
+        return houseMapper.deleteHouseByIds(Ids);
     }
 
     @Override
@@ -45,7 +62,12 @@ public class HouseServiceImpl implements HouseService{
     }
 
     @Override
-    public List<TbHouse> selectByRegionAndStreet(String houseRegion,  String houseStreet) {
+    public List<TbHouse> selectByRegionAndStreet(String houseRegion, String houseStreet) {
         return houseMapper.selectByRegionAndStreet(houseRegion,houseStreet);
+    }
+
+    @Override
+    public List<TbHouse> selectHouseCheckList(String houseRule) {
+        return houseMapper.selectHouseCheckList(houseRule);
     }
 }

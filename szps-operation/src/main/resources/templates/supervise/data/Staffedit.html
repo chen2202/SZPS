@@ -11,52 +11,49 @@
 		<form class="form-horizontal m" id="form-role-edit" th:object="${staff}">
 			<input id="staffNumber" name="staffNumber" type="hidden" th:field="*{staffNumber}"/>
 			<div class="form-group">
-				<label class="col-sm-2 control-label ">人员姓名：</label>
-				<div class="col-sm-4">
+				<label class="col-sm-3 control-label ">执法人员姓名：</label>
+				<div class="col-sm-8">
 					<input class="form-control" type="text" name="staffName" id="staffName" th:field="*{staffName}" maxlength="10" required>
 				</div>
-				<label class="col-sm-2 control-label ">性别：</label>
-				<div class="col-sm-4">
-					<select class="form-control" name="staffGender" id="staffGender">
-						<option value="男" th:selected="*{staffGender=='男'}">男</option>
-						<option value="女" th:selected="*{staffGender=='女'}">女</option>
-					</select>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">执法人员单位：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="staffDept" id="staffDept" th:field="*{staffDept}" maxlength="20" required>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-2 control-label">部门：</label>
-				<div class="col-sm-4">
-					<select class="form-control" name="staffDept" id="staffDept" >
-						<option value="检查部门" th:selected="*{staffDept=='检查部门'}">检查部门</option>
-						<option value="后勤部门" th:selected="*{staffDept=='后勤部门'}">后勤部门</option>
-						<option value="外勤部门" th:selected="*{staffDept=='外勤部门'}">外勤部门</option>
-						<option value="维修部门" th:selected="*{staffDept=='维修部门'}">维修部门</option>
-					</select>
+				<label class="col-sm-3 control-label ">执法人员类型：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="staffPost" id="staffPost" th:field="*{staffPost}" maxlength="10" required>
 				</div>
-				<label class="col-sm-2 control-label ">职务：</label>
-				<div class="col-sm-4">
-					<input class="form-control" type="text" name="staffPost" id="staffPost" th:field="*{staffPost}"  maxlength="11" required>
-				</div>
-
 			</div>
 			<div class="form-group">
-				<label class="col-sm-2 control-label">电话：</label>
-				<div class="col-sm-4">
-					<input class="form-control" type="text" name="staffTelephone" id="staffTelephone" th:field="*{staffTelephone}" maxlength="11" required>
+				<label class="col-sm-3 control-label ">执法证件编号：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="staffCart" id="staffCart" th:field="*{staffCart}" maxlength="20" required>
 				</div>
-				<label class="col-sm-2 control-label">权值：</label>
-				<div class="col-sm-4">
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">执法人员状态：</label>
+				<div class="col-sm-8">
 					<input class="form-control" type="text" name="staffW" id="staffW" th:field="*{staffW}" maxlength="5" required>
 				</div>
-
 			</div>
+
 
 			<div class="form-group">
-				<label class="col-sm-2 control-label">出生年月：</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control time-input" id="startTime" placeholder="点击弹出日历" th:field="*{staffBirthday}" name="staffBirthday" required/>
+				<label class="col-sm-3 control-label">执法范围：</label>
+				<div class="col-sm-8">
+					<select class="form-control" name="staffArea" id="staffArea" >
+						<option value="检查部门" th:selected="*{staffArea=='罗湖区'}">罗湖区</option>
+						<option value="后勤部门" th:selected="*{staffArea=='南山区'}">南山区</option>
+						<option value="外勤部门" th:selected="*{staffArea=='福田区'}">福田区</option>
+						<option value="维修部门" th:selected="*{staffArea=='盐田区'}">盐田区</option>
+					</select>
 				</div>
 			</div>
+
 		</form>
 	</div>
 	<th:block th:include="include :: footer" />
@@ -121,11 +118,10 @@
 		function edit() {
             var staffNumber = $("input[name='staffNumber']").val();
             var staffName = $("input[name='staffName']").val();
-            var staffGender = $("select[name='staffGender']").val();
-            var staffTelephone = $("input[id='staffTelephone']").val();
-            var staffDept = $("select[id='staffDept']").val();
-            var staffBirthday = $("input[name='staffBirthday']").val();
-            var staffPost = $("input[name='staffPost']").val();
+            var staffDept = $("input[name='staffDept']").val();
+            var staffPost = $("input[id='staffPost']").val();
+            var staffArea = $("select[id='staffArea']").val();
+            var staffCart = $("input[name='staffCart']").val();
             var staffW = $("input[name='staffW']").val();
 			$.ajax({
 				cache : true,
@@ -134,10 +130,9 @@
 				data : {
 				    "staffNumber":staffNumber,
                     "staffName": staffName,
-                    "staffGender": staffGender,
-                    "staffTelephone": staffTelephone,
+                    "staffArea": staffArea,
                     "staffDept": staffDept,
-                    "staffBirthday": staffBirthday,
+                    "staffCart": staffCart,
                     "staffPost": staffPost,
                     "staffW":staffW
 				},

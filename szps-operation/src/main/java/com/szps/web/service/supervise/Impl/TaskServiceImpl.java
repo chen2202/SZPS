@@ -1,11 +1,8 @@
 package com.szps.web.service.supervise.Impl;
 
 import com.szps.common.core.text.Convert;
-import com.szps.web.domain.supervise.TbStaff;
 import com.szps.web.domain.supervise.TbTask;
-import com.szps.web.mapper.supervise.TbStaffMapper;
 import com.szps.web.mapper.supervise.TbTaskMapper;
-import com.szps.web.service.supervise.StaffService;
 import com.szps.web.service.supervise.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TaskServiceImpl implements TaskService{
+public class TaskServiceImpl implements TaskService {
 
     @Autowired
     private TbTaskMapper tbTaskMapper;
@@ -73,6 +70,16 @@ public class TaskServiceImpl implements TaskService{
     @Override
     public int selectTaskCount(String taskRegion, String taskStreet, String taskTime) {
         return tbTaskMapper.selectTaskCount(taskRegion,taskStreet,taskTime);
+    }
+
+    @Override
+    public int selectTaskCountAll() {
+        return tbTaskMapper.selectTaskCountAll();
+    }
+
+    @Override
+    public int selectTaskCountComplete() {
+        return tbTaskMapper.selectTaskCountComplete();
     }
 
     @Override

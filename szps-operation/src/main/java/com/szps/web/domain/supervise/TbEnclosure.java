@@ -9,6 +9,10 @@ public class TbEnclosure {
 
     private String enclosureName;
 
+    private String fatherName;
+
+    private String flag;
+
 
     public String getEnclosureId() {
         return enclosureId;
@@ -42,5 +46,19 @@ public class TbEnclosure {
         this.enclosureName = enclosureName;
     }
 
+    public String getFatherName() {
+        return fatherName;
+    }
 
+    public void setFatherName(String fatherName) {
+        this.fatherName = fatherName;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
 }

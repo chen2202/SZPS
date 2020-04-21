@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" >
 <head>
-	<th:block th:include="include :: header('修改规则')" />
+	<th:block th:include="include :: header('修改事项')" />
 	<th:block th:include="include :: ztree-css" />
 	<link th:href="@{/css/op/public.css}" rel="stylesheet"/>
 	<link th:href="@{/css/op/operation.css}" rel="stylesheet"/>
@@ -11,15 +11,45 @@
 		<form class="form-horizontal m" id="form-role-edit" th:object="${rule}">
 
 			<div class="form-group">
-				<label class="col-sm-2 control-label ">规则编号：</label>
-				<div class="col-sm-10">
+				<label class="col-sm-3 control-label ">事项编号：</label>
+				<div class="col-sm-8">
 					<input class="form-control" readonly="readonly" type="text" name="ruleNumber" id="ruleNumber" th:field="*{ruleNumber}" required>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-2 control-label">规则内容：</label>
-				<div class="col-sm-10">
-					<textarea type="text" name="ruleContent"  id="ruleContent" class="form-control" th:field="*{ruleContent}" required></textarea>
+				<label class="col-sm-3 control-label">事项类别：</label>
+				<div class="col-sm-8">
+					<input type="text" name="ruleType"  id="ruleType" class="form-control" th:field="*{ruleType}" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">事项名称：</label>
+				<div class="col-sm-8">
+					<input type="text" name="ruleName"  id="ruleName" class="form-control" th:field="*{ruleName}" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">抽查依据：</label>
+				<div class="col-sm-8">
+					<input type="text" name="ruleBasis"  id="ruleBasis" class="form-control" th:field="*{ruleBasis}" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">抽查内容：</label>
+				<div class="col-sm-8">
+					<input type="text" name="ruleContent"  id="ruleContent" class="form-control" th:field="*{ruleContent}" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">比例和频次：</label>
+				<div class="col-sm-8">
+					<input type="text" name="ruleScale"  id="ruleScale" class="form-control" th:field="*{ruleScale}" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">抽查主体：</label>
+				<div class="col-sm-8">
+					<input type="text" name="ruleMain"  id="ruleMain" class="form-control" th:field="*{ruleMain}" required>
 				</div>
 			</div>
 
@@ -86,7 +116,12 @@
 
 		function edit() {
 			var ruleNumber = $("input[name='ruleNumber']").val();
-            var ruleContent = $("textarea[name='ruleContent']").val();
+            var ruleType = $("input[name='ruleType']").val();
+            var ruleName = $("input[name='ruleName']").val();
+            var ruleBasis = $("input[name='ruleBasis']").val();
+            var ruleScale = $("input[name='ruleScale']").val();
+            var ruleMain = $("input[name='ruleMain']").val();
+            var ruleContent = $("input[name='ruleContent']").val();
 			$.ajax({
 				cache : true,
 				type : "POST",
@@ -94,6 +129,14 @@
 				data : {
 					"ruleNumber": ruleNumber,
 					"ruleContent": ruleContent,
+					"ruleType":ruleType,
+					"ruleName":ruleName,
+					"ruleBasis":ruleBasis,
+					"ruleScale":ruleScale,
+                    "ruleMain":ruleMain
+
+
+
 				},
 				async : false,
 				error : function(request) {

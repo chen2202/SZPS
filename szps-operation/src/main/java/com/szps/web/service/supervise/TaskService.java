@@ -3,7 +3,6 @@ package com.szps.web.service.supervise;
 
 import com.szps.web.domain.supervise.TbTask;
 
-
 import java.util.List;
 
 /**
@@ -46,7 +45,10 @@ public interface TaskService
 
     public  int checkTask(String taskNumber);
 
-    public int selectTaskCount(String taskRegion ,String taskStreet, String taskTime);
+    public int selectTaskCount(String taskRegion, String taskStreet, String taskTime);
 
-    public int selectMonthTaskCount(String taskRegion ,String taskStreet, String taskTime);
+    public int selectTaskCountAll();
+    public int selectTaskCountComplete();
+
+    public int selectMonthTaskCount(String taskRegion, String taskStreet, String taskTime);
 }

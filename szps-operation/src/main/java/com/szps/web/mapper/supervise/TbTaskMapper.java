@@ -26,7 +26,10 @@ public interface TbTaskMapper {
 
      List<TbTask> selectTaskRandom();
 
-     int selectTaskCount(@Param("taskRegion") String taskRegion ,@Param("taskStreet") String taskStreet, @Param("taskTime") String taskTime);
-     int selectMonthTaskCount(@Param("taskRegion") String taskRegion ,@Param("taskStreet") String taskStreet, @Param("taskTime") String taskTime);
+     int selectTaskCount(@Param("taskRegion") String taskRegion, @Param("taskStreet") String taskStreet, @Param("taskTime") String taskTime);
+     int selectMonthTaskCount(@Param("taskRegion") String taskRegion, @Param("taskStreet") String taskStreet, @Param("taskTime") String taskTime);
      int CheckdTask(String taskNumber);
+
+    int selectTaskCountAll();
+    int selectTaskCountComplete();
 }

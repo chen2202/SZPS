@@ -1,24 +1,17 @@
 package com.szps.web.controller.supervise;
 
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import com.szps.common.annotation.Log;
-import com.szps.common.config.Global;
-import com.szps.common.config.ServerConfig;
 import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
-import com.szps.common.utils.StringUtils;
-import com.szps.common.utils.file.FileUploadUtils;
-import com.szps.common.utils.file.FileUtils;
-import com.szps.framework.web.domain.server.Sys;
-import com.szps.system.domain.SysUser;
 import com.szps.web.controller.common.CommonController;
-import com.szps.web.domain.supervise.*;
-
+import com.szps.web.domain.supervise.TbHouse;
+import com.szps.web.domain.supervise.TbStaff;
+import com.szps.web.domain.supervise.TbTask;
+import com.szps.web.domain.supervise.TbTaskStaff;
 import com.szps.web.service.supervise.*;
-import com.alibaba.fastjson.JSONObject;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,15 +21,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import java.io.File;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 
 @Controller
@@ -44,20 +32,20 @@ import java.util.Random;
 public class CompleteController extends BaseController {
 
     @Autowired
-    private FeedbackService Service;
+    private TaskService Service;
 
-
-    @Autowired
-    private PictureService pictureService;
-
-    @Autowired
-    private EnclosureService enclosureService;
 
     @Autowired
     private TaskStaffService taskStaffService;
 
     @Autowired
     private StaffService staffService;
+
+    @Autowired
+    private HouseService houseService;
+    @Autowired
+    private RuleService ruleService;
+
 
 
     private static final Logger log = LoggerFactory.getLogger(CommonController.class);
@@ -67,12 +55,22 @@ public class CompleteController extends BaseController {
 
     private String prefix = "supervise/complete";
     @GetMapping("/complete")
-    public String dataview()
+    public String dataview(ModelMap mmap)
     {
+
+        int a=Service.selectTaskCountComplete();
+        int b=Service.selectTaskCountAll();
+
+        float rate=(float)a/b;
+        DecimalFormat df = new DecimalFormat("#.00");
+
+        //System.out.println(df.format(rate)+"%");
+        String k=df.format(rate*100)+"%";
+        mmap.put("rate",k);
         return prefix+"/TaskComplete";
     }
 
-    @GetMapping("/TaskFeedback")
+    /*@GetMapping("/TaskFeedback")
     public String TaskCheck(HttpServletRequest request)
     {
         int radomInt = new Random().nextInt(999999);
@@ -84,54 +82,107 @@ public class CompleteController extends BaseController {
 
         request.setAttribute("feedbackId",s);
         return prefix + "/TaskFeedback";
-    }
+    }*/
 
     @RequiresPermissions("supervise:complete:list")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(TbFeedback tbTask)
+    public TableDataInfo list(TbTask tbTask)
     {
         startPage();
-        List<TbFeedback> list = Service.selectTaskList(tbTask);
-        for (TbFeedback aList : list) {
-            List<TbPicture> list1 = pictureService.selectPictureById(aList.getFeedbackId());
-            List<TbEnclosure> list2 = enclosureService.selectEnclosureById(aList.getFeedbackId());
-            aList.setPictureList(list1);
-            aList.setEnclosureList(list2);
-        }
+        List<TbTask> list = Service.selectTaskList(tbTask);
 
         for(int i=0;i<list.size();i++)
         {
+            String a=list.get(i).getTaskHouse();
+            //System.out.println(a);
+            TbHouse tbHouse=houseService.selectHouseById(a);
+            String b=tbHouse.getHouseRule();
+            list.get(i).setRuleContent(ruleService.selectRuleByRuleName(b));
 
             List <TbTaskStaff> tbTaskStaffs=taskStaffService.selectTbTaskStaffById(list.get(i).getTaskNumber());
             List<TbStaff> tbStaffs =new ArrayList<TbStaff>();
             for(int k=0;k<tbTaskStaffs.size();k++)
             {
-
+                //System.out.println(tbTaskStaffs.get(k));
                 TbStaff staff=staffService.selectStaffById(tbTaskStaffs.get(k).getStaffNumber());
                 if(staff!=null)
                     tbStaffs.add(staff);
             }
             list.get(i).setTbStaffList(tbStaffs);
+            list.get(i).setTbHouse(tbHouse);
+
         }
+
+
 
         return getDataTable(list);
 
     }
-    @RequiresPermissions("supervise:complete:add")
+
+    @GetMapping("/edit/{taskNumber}")
+    public String edit(@PathVariable("taskNumber") String taskNumber, ModelMap mmap)
+    {
+
+        TbTask task=Service.selectTaskById(taskNumber);
+
+            String c=task.getTaskHouse();
+            //System.out.println(a);
+            TbHouse tbHouse=houseService.selectHouseById(c);
+            String b=tbHouse.getHouseRule();
+            task.setRuleContent(ruleService.selectRuleByRuleName(b));
+
+
+            task.setTbHouse(tbHouse);
+
+
+        List <TbTaskStaff> tbTaskStaffs=taskStaffService.selectTbTaskStaffById(taskNumber);
+        String a="";
+        for(int k=0;k<tbTaskStaffs.size();k++)
+        {
+            TbStaff staff=staffService.selectStaffById(tbTaskStaffs.get(k).getStaffNumber());
+            if(staff!=null)
+            {
+                a=a+(staff.getStaffName());
+                if(k!=(tbTaskStaffs.size()-1))
+                {
+                    a=a+",";
+                }
+            }
+
+        }
+
+        mmap.put("task", task);
+        mmap.put("taskStaff",a);
+
+        return prefix + "/Taskedit";
+    }
+
+    @RequiresPermissions("supervise:complete:edit")
+    @Log(title = "检查人员管理", businessType = BusinessType.UPDATE)
+    @PostMapping("/edit")
+    @ResponseBody
+    public AjaxResult editSave(@Validated TbTask task)
+    {
+        task.setTaskFlag("完成");
+        return toAjax(Service.updateTask(task));
+    }
+
+
+   /* @RequiresPermissions("supervise:complete:add")
     @Log(title = "已完成任务管理", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
     public AjaxResult addSave(@Validated TbFeedback data)
     {
         return toAjax( Service.insertTask(data));
-    }
+    }*/
 
 
 
 
 
-    @PostMapping("/uploadPicture")
+    /*@PostMapping("/uploadPicture")
     @ResponseBody
     public AjaxResult uploadPicture(@RequestParam("picture") MultipartFile []multipartFile,@RequestParam("feedbackId")String feedbackId){
         try {
@@ -198,8 +249,8 @@ public class CompleteController extends BaseController {
         }
         return success("上传成功!");
     }
-
-    @RequiresPermissions("supervise:complete:remove")
+*/
+    /*@RequiresPermissions("supervise:complete:remove")
     @Log(title = "任务管理", businessType = BusinessType.DELETE)
     @PostMapping("/remove")
     @ResponseBody
@@ -213,9 +264,9 @@ public class CompleteController extends BaseController {
         {
             return error(e.getMessage());
         }
-    }
+    }*/
 
-    @GetMapping("/download")
+   /* @GetMapping("/download")
     public void fileDownload(HttpServletResponse response, HttpServletRequest request)
     {
         String enclosureId=request.getParameter("enclosureId");
@@ -238,9 +289,9 @@ public class CompleteController extends BaseController {
         {
             log.error("下载文件失败", e);
         }
-    }
+    }*/
 
-    @PostMapping("/checkTask")
+    /*@PostMapping("/checkTask")
     @ResponseBody
     public String checkTaskUnique(@RequestParam("taskNumber")String taskNumber) {
 
@@ -254,5 +305,5 @@ public class CompleteController extends BaseController {
             json.fluentPut("code", 100);
         }
         return json.toString();
-    }
+    }*/
 }

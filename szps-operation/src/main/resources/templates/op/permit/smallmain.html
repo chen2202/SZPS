@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('排水许可审批管理')" />
+    <link th:href="@{/css/op/manage.css}" rel="stylesheet"/>
+</head>
+<body class="gray-bg">
+
+    <!-- 标签页导航区 -->
+    <div class="col-sm-12 search-collapse">
+            <div class="select-list">
+                <ul>
+                    <li>
+                        <label STYLE="font-size: 20px">业务编号：</label>
+                        <input th:value="${look}" style="font-size: 20px ;border: 0px;outline:none;font-weight:bold; width: 500px" readonly>
+                    </li>
+                    <li style="float: right">
+    <a th:href="@{op/permit/waiting}" style="font-size: 14px ;color: #2BA3FD;float: right;" >
+        <embed th:src="@{/img/返回列表.svg}" style="display:inline;width:16px;height:16px; color: #2BA3FD"  type="image/svg+xml"/>
+        <span>返回待审批列表</span>
+    </a>
+                    </li>
+                </ul>
+</div>
+    </div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a onclick="toggle('op/permit/list')" role="tab" data-toggle="tab">基本信息</a></li>
+        <li role="presentation"><a onclick="toggle('op/permit/remind')" role="tab" data-toggle="tab">正文</a></li>
+        <li role="presentation"><a onclick="toggle('op/permit/check')" role="tab" data-toggle="tab">历程</a></li>
+        <li role="presentation"><a onclick="toggle('op/permit/cailiao')" role="tab" data-toggle="tab">材料</a></li>
+        <li role="presentation"><a onclick="toggle('op/permit/tables')" role="tab" data-toggle="tab">申请表</a></li>
+        <li role="presentation"><a onclick="toggle('op/permit/sptable')" role="tab" data-toggle="tab">审批处理单</a></li>
+
+    </ul>
+	
+	<div class="container-div">
+		<div class="row" style="width:100%;height:100%;" id="content-main">
+
+        	<iframe class="RuoYi_iframe" id="content-iframe" name="iframe0" width="100%" height="100%" data-id="/op/permit/list"
+                th:src="@{/op/permit/list(look=${look})}" frameborder="0" seamless></iframe>
+    	</div>
+	</div>
+
+    <script th:inline="javascript">
+        function toggle(url) {
+
+            var look= [[${look}]];
+            $("#content-iframe").attr("src",ctx+url+"?look="+look);
+            $("#content-iframe").attr("data-id",ctx+url);
+        }
+
+        $(document ).ready(function(){
+            $("a" ).attr("target" , "_parent" ); //_top
+        });
+
+
+    </script>
+
+    <th:block th:include="include :: footer" />
+</body>
+</html>

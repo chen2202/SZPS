@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class FeedbackServiseImpl implements FeedbackService{
+public class FeedbackServiseImpl implements FeedbackService {
     @Autowired
     TbFeedbackMapper feedbackMapper;
 

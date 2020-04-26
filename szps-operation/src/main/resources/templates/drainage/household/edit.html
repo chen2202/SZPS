@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" >
 <head>
-	<th:block th:include="include :: header('修改排水户')" />
+	<!-- 排水户编辑页面作为详情页面 -->
+	<th:block th:include="include :: header('排水户详情')" />
 	<link rel="stylesheet" th:href="@{/css/drainage/operation.css}"/>
 </head>
 <body class="white-bg">
@@ -11,14 +12,14 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">排水户名称：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="household_name" id="household_name" maxlength="20" th:field="*{household_name}" required>
+					<input class="form-control" type="text" name="household_name" id="household_name" maxlength="20" th:field="*{household_name}" disabled="disabled" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">记录状态：</label>
 				<div class="col-sm-8">
 					<!-- <input class="form-control" type="text" name="record_state" id="record_state" th:field="*{record_state}" required> -->
-					<select class="form-control" name="record_state" id="record_state" th:field="*{record_state}" required>
+					<select class="form-control" name="record_state" id="record_state" th:field="*{record_state}" disabled="disabled" required>
 						<option value="" style="display:none;">-- 请选择 --</option>
 						<option th:selected="${household.record_state=='已审核'}" value="已审核">已审核</option>
 						<option th:selected="${household.record_state=='待修改'}" value="待修改">待修改</option>
@@ -30,26 +31,26 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">门牌详细地址：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="doorplate_detail_address" id="doorplate_detail_address" maxlength="35" th:field="*{doorplate_detail_address}" required>
+					<input class="form-control" type="text" name="doorplate_detail_address" id="doorplate_detail_address" maxlength="35" th:field="*{doorplate_detail_address}" disabled="disabled" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">经度：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="longitude" id="longitude" th:field="*{longitude}" required>
+					<input class="form-control" type="text" name="longitude" id="longitude" th:field="*{longitude}" disabled="disabled" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">纬度：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="latitude" id="latitude" th:field="*{latitude}" required>
+					<input class="form-control" type="text" name="latitude" id="latitude" th:field="*{latitude}" disabled="disabled" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">行政区名：</label>
 				<div class="col-sm-8">
 					<input class="form-control" type="hidden" name="administrative_name_h" id="administrative_name_h" th:field="*{administrative_name}" required>
-					<select class="form-control" name="administrative_name" id="administrative_name" required>
+					<select class="form-control" name="administrative_name" id="administrative_name" disabled="disabled" required>
 						<option value="" style="display:none;">-- 请选择 --</option>
 					</select>
 				</div>
@@ -58,7 +59,7 @@
 				<label class="col-sm-3 control-label ">街道名：</label>
 				<div class="col-sm-8">
 					<input class="form-control" type="hidden" name="street_name_h" id="street_name_h" th:field="*{street_name}" required>
-					<select class="form-control" name="street_name" id="street_name" required>
+					<select class="form-control" name="street_name" id="street_name" disabled="disabled" required>
 						<option value="" style="display:none;">-- 请先选择行政区 --</option>
 					</select>
 				</div>
@@ -67,7 +68,7 @@
 				<label class="col-sm-3 control-label ">居委会：</label>
 				<div class="col-sm-8">
 					<input class="form-control" type="hidden" name="committees_h" id="committees_h" th:field="*{committees}" required>
-					<select class="form-control" name="committees" id="committees" required>
+					<select class="form-control" name="committees" id="committees" disabled="disabled" required>
 						<option value="" style="display:none;">-- 请先选择街道 --</option>
 					</select>
 				</div>
@@ -75,55 +76,55 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">街路巷名：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="lane_name" id="lane_name" maxlength="8" th:field="*{lane_name}" required>
+					<input class="form-control" type="text" name="lane_name" id="lane_name" maxlength="8" th:field="*{lane_name}" disabled="disabled" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">门牌号码：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="doorplate_number" id="doorplate_number" maxlength="8" th:field="*{doorplate_number}" required>
+					<input class="form-control" type="text" name="doorplate_number" id="doorplate_number" maxlength="8" th:field="*{doorplate_number}" disabled="disabled" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">排水户级别：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="household_level" id="household_level" maxlength="3" th:field="*{household_level}" required>
+					<input class="form-control" type="text" name="household_level" id="household_level" maxlength="3" th:field="*{household_level}" disabled="disabled" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">上级排水户：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="parent_household_name" id="parent_household_name" maxlength="20" th:field="*{parent_household_name}" >
+					<input class="form-control" type="text" name="parent_household_name" id="parent_household_name" maxlength="20" th:field="*{parent_household_name}" disabled="disabled" >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">联系人：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="linkman" id="linkman" maxlength="4" th:field="*{linkman}" required>
+					<input class="form-control" type="text" name="linkman" id="linkman" maxlength="4" th:field="*{linkman}" disabled="disabled" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">联系电话：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="telephone" id="telephone" th:field="*{telephone}" required>
+					<input class="form-control" type="text" name="telephone" id="telephone" th:field="*{telephone}" disabled="disabled" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">占地面积 /㎡：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="number" name="cover_area" id="cover_area" th:field="*{cover_area}" required>
+					<input class="form-control" type="number" name="cover_area" id="cover_area" th:field="*{cover_area}" disabled="disabled" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">水表编号：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="water_meter_id" id="water_meter_id" maxlength="25" th:field="*{water_meter_id}" required>
+					<input class="form-control" type="text" name="water_meter_id" id="water_meter_id" maxlength="25" th:field="*{water_meter_id}" disabled="disabled" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">污水类别：</label>
 				<div class="col-sm-8">
-					<select class="form-control" name="sewage_category" id="sewage_category" th:field="*{sewage_category}" required>
+					<select class="form-control" name="sewage_category" id="sewage_category" th:field="*{sewage_category}" disabled="disabled" required>
 						<option value="" style="display:none;">-- 请选择 --</option>
 						<option th:selected="${household.sewage_category=='有毒有害排污类'}" value="有毒有害排污类">有毒有害排污类</option>
 						<option th:selected="${household.sewage_category=='沉淀物排污类'}" value="沉淀物排污类">沉淀物排污类</option>
@@ -135,7 +136,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">单位类型：</label>
 				<div class="col-sm-8">
-					<select class="form-control" name="unit_type" id="unit_type" th:field="*{unit_type}" required>
+					<select class="form-control" name="unit_type" id="unit_type" th:field="*{unit_type}" disabled="disabled" required>
 						<option value="" style="display:none;">-- 请选择 --</option>
 						<option th:selected="${household.unit_type=='工业'}" value="工业">工业</option>
 						<option th:selected="${household.unit_type=='生活'}" value="生活">生活</option>
@@ -146,25 +147,25 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label">其他单位类型：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="other_unit_type" id="other_unit_type" maxlength="8" th:field="*{other_unit_type}" >
+					<input class="form-control" type="text" name="other_unit_type" id="other_unit_type" maxlength="8" th:field="*{other_unit_type}" disabled="disabled" >
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-3 control-label">工业废水主要成分：</label>
+				<label class="col-sm-3 control-label">成分列表：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="industrial_water_composition" id="industrial_water_composition" maxlength="15" th:field="*{industrial_water_composition}" >
+					<input class="form-control" type="text" name="cflist" id="cflist" maxlength="15" th:field="*{cflist}" disabled="disabled" >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label">其他成分：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="other_composition" id="other_composition" maxlength="10" th:field="*{other_composition}" >
+					<input class="form-control" type="text" name="other_composition" id="other_composition" maxlength="10" th:field="*{other_composition}" disabled="disabled" >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label">内部废、污、雨是否分流：</label>
 				<div class="col-sm-8">
-					<select class="form-control" name="water_diversion" id="water_diversion" th:field="*{water_diversion}" required>
+					<select class="form-control" name="water_diversion" id="water_diversion" th:field="*{water_diversion}" disabled="disabled" required>
 						<option value="" style="display:none;">-- 请选择 --</option>
 						<option th:selected="${household.water_diversion=='是'}" value="是">是</option>
 						<option th:selected="${household.water_diversion=='否'}" value="否">否</option>
@@ -174,7 +175,7 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">是否取得营业执照：</label>
 				<div class="col-sm-8">
-					<select class="form-control" name="business_license" id="business_license" th:field="*{business_license}" required>
+					<select class="form-control" name="business_license" id="business_license" th:field="*{business_license}" disabled="disabled" required>
 						<option value="" style="display:none;">-- 请选择 --</option>
 						<option th:selected="${household.business_license=='是'}" value="是">是</option>
 						<option th:selected="${household.business_license=='否'}" value="否">否</option>
@@ -184,13 +185,13 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label">统一社会信用代码：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="social_credit_id" id="social_credit_id" maxlength="20" th:field="*{social_credit_id}" >
+					<input class="form-control" type="text" name="social_credit_id" id="social_credit_id" maxlength="20" th:field="*{social_credit_id}" disabled="disabled" >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">是否取得排水许可证：</label>
 				<div class="col-sm-8">
-					<select class="form-control" name="drainage_license" id="drainage_license" th:field="*{drainage_license}" required>
+					<select class="form-control" name="drainage_license" id="drainage_license" th:field="*{drainage_license}" disabled="disabled" required>
 						<option value="" style="display:none;">-- 请选择 --</option>
 						<option th:selected="${household.drainage_license=='是'}" value="是">是</option>
 						<option th:selected="${household.drainage_license=='否'}" value="否">否</option>
@@ -200,25 +201,25 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label">排水许可证号：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="drainage_license_number" id="drainage_license_number" maxlength="15" th:field="*{drainage_license_number}" >
+					<input class="form-control" type="text" name="drainage_license_number" id="drainage_license_number" maxlength="15" th:field="*{drainage_license_number}" disabled="disabled" >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label">排水许可证开始日期：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="date" name="drainage_license_begin_time" id="drainage_license_begin_time" th:field="*{drainage_license_begin_time}" >
+					<input class="form-control" type="date" name="drainage_license_begin_time" id="drainage_license_begin_time" th:field="*{drainage_license_begin_time}" disabled="disabled" >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label">排水许可证结束日期：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="date" name="drainage_license_end_time" id="drainage_license_end_time" th:field="*{drainage_license_end_time}" >
+					<input class="form-control" type="date" name="drainage_license_end_time" id="drainage_license_end_time" th:field="*{drainage_license_end_time}" disabled="disabled" >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">是否取得排污许可证：</label>
 				<div class="col-sm-8">
-					<select class="form-control" name="sewage_license" id="sewage_license" th:field="*{sewage_license}" required>
+					<select class="form-control" name="sewage_license" id="sewage_license" th:field="*{sewage_license}" disabled="disabled" required>
 						<option value="" style="display:none;">-- 请选择 --</option>
 						<option th:selected="${household.sewage_license=='是'}" value="是">是</option>
 						<option th:selected="${household.sewage_license=='否'}" value="否">否</option>
@@ -228,49 +229,175 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label">排污许可证号：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="sewage_license_number" id="sewage_license_number" maxlength="15" th:field="*{sewage_license_number}" >
+					<input class="form-control" type="text" name="sewage_license_number" id="sewage_license_number" maxlength="15" th:field="*{sewage_license_number}" disabled="disabled" >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label">排污许可证开始日期：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="date" name="sewage_license_begin_time" id="sewage_license_begin_time" th:field="*{sewage_license_begin_time}" >
+					<input class="form-control" type="date" name="sewage_license_begin_time" id="sewage_license_begin_time" th:field="*{sewage_license_begin_time}" disabled="disabled" >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label">排污许可证结束日期：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="date" name="sewage_license_end_time" id="sewage_license_end_time" th:field="*{sewage_license_end_time}" >
+					<input class="form-control" type="date" name="sewage_license_end_time" id="sewage_license_end_time" th:field="*{sewage_license_end_time}" disabled="disabled" >
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">备注：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="note" id="note" maxlength="25" th:field="*{note}" required>
+					<input class="form-control" type="text" name="note" id="note" maxlength="25" th:field="*{note}" disabled="disabled" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">登记时间：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="date" name="registration_time" id="registration_time" th:field="*{registration_time}" required>
+					<input class="form-control" type="date" name="registration_time" id="registration_time" th:field="*{registration_time}" disabled="disabled" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">登记人：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="registration_person" id="registration_person" maxlength="4" th:field="*{registration_person}" required>
+					<input class="form-control" type="text" name="registration_person" id="registration_person" maxlength="4" th:field="*{registration_person}" disabled="disabled" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">最新修改时间：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="date" name="update_time" id="update_time" th:field="*{update_time}" required>
+					<input class="form-control" type="date" name="update_time" id="update_time" th:field="*{update_time}" disabled="disabled" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">上一修改人：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="update_person" id="update_person" maxlength="4" th:field="*{update_person}" required>
+					<input class="form-control" type="text" name="update_person" id="update_person" maxlength="4" th:field="*{update_person}" disabled="disabled" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">上级排水户ID：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="parent_household_id" id="parent_household_id" maxlength="15" th:field="*{parent_household_id}" disabled="disabled" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">地址补充信息：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="addressbz" id="addressbz" maxlength="15" th:field="*{addressbz}" disabled="disabled" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">大类分类ID：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="maintypeidx" id="maintypeidx" maxlength="15" th:field="*{maintypeidx}" disabled="disabled" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">是否取得餐饮许可证：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="hascycert" id="hascycert" maxlength="15" th:field="*{hascycert}" disabled="disabled" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">餐饮许可证号：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="cycertno" id="cycertno" maxlength="15" th:field="*{cycertno}" disabled="disabled" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">餐饮许可证开始日期：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="cydate1" id="cydate1" maxlength="15" th:field="*{cydate1}" disabled="disabled" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">餐饮许可证结束日期：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="cydate2" id="cydate2" maxlength="15" th:field="*{cydate2}" disabled="disabled" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">排水口数量：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="psknum" id="psknum" maxlength="15" th:field="*{psknum}" disabled="disabled" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">雨水排放口数量：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="yspsknum" id="yspsknum" maxlength="15" th:field="*{yspsknum}" disabled="disabled" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">污水排放口数量：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="wspsknum" id="wspsknum" maxlength="15" th:field="*{wspsknum}" disabled="disabled" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">混合排水口数量：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="hhpsknum" id="hhpsknum" maxlength="15" th:field="*{hhpsknum}" disabled="disabled" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">初始登记人姓名：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="recorder" id="recorder" maxlength="15" th:field="*{recorder}" disabled="disabled" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">排水户等级代号：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="levelchar" id="levelchar" maxlength="15" th:field="*{levelchar}" disabled="disabled" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">是否曾经审核通过：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="hassh" id="hassh" maxlength="15" th:field="*{hassh}" disabled="disabled" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">是否需办营业执照：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="needzz" id="needzz" maxlength="15" th:field="*{needzz}" disabled="disabled" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">是否需办排水许可证：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="needpscert" id="needpscert" maxlength="15" th:field="*{needpscert}" disabled="disabled" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">是否需办排污许可证：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="needpwcert" id="needpwcert" maxlength="15" th:field="*{needpwcert}" disabled="disabled" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">是否需办餐饮许可证：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="needcycert" id="needcycert" maxlength="15" th:field="*{needcycert}" disabled="disabled" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">导入临时表名称：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="importbz" id="importbz" maxlength="15" th:field="*{importbz}" disabled="disabled" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">小区或附近建筑物：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="building" id="building" maxlength="15" th:field="*{building}" disabled="disabled" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">是否有管网设施：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="hasdevice" id="hasdevice" maxlength="15" th:field="*{hasdevice}" disabled="disabled" >
 				</div>
 			</div>
 		</form>

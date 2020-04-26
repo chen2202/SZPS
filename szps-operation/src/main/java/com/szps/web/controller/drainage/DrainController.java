@@ -29,7 +29,7 @@ import com.szps.web.service.drainage.DrainService;
 @RequestMapping("/drainage")
 public class DrainController extends BaseController{
 	private String prefix = "drainage/drain";
-	private String householdId=""; //某个查看排水口的排水户
+	private int householdId; //某个查看排水口的排水户
 	
 	@Autowired
 	private DrainService drainService;
@@ -39,7 +39,7 @@ public class DrainController extends BaseController{
 	 */
 	//@RequiresPermissions("")
 	@GetMapping("/drain/drain/{household_id}")
-	public String drain(@PathVariable("household_id") String household_id, ModelMap mmap) {
+	public String drain(@PathVariable("household_id") int household_id, ModelMap mmap) {
 		householdId = household_id; //查看某排水户的排水口时，获取该排水口编号
 		return prefix + "/drain";
 	}

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -96,7 +97,7 @@ public class HouseholdController extends BaseController{
      * 跳转到edit.html
      */
     @GetMapping("/household/edit/{household_id}")
-    public String edit(@PathVariable("household_id") String household_id,ModelMap mmap) {
+    public String edit(@PathVariable("household_id") int household_id,ModelMap mmap) {
     	mmap.put("household", householdService.selectHouseholdById(household_id));
     	return prefix + "/edit";
     }
@@ -131,7 +132,7 @@ public class HouseholdController extends BaseController{
     }
     
     /**
-     * 校验从业人员身份证号唯一性
+     * 校验排水户ID唯一性
      */
     @PostMapping("/household/checkHouseholdIdUnique")
     @ResponseBody
@@ -139,14 +140,28 @@ public class HouseholdController extends BaseController{
         return householdService.checkHouseholdIdUnique(household); 
     }
     
-    //------------------------------以下是统计数据部分--------------------------------------
     
+    //------------------------------以下是四个总数统计数据部分
+    public Model count(Model m) {
+    	int count1 = householdService.selectHouseholdCount(); //全市摸查排水户总数
+    	m.addAttribute("householdCount", count1);
+    	int count2 = householdService.selectHouseholdRecordStateCount();
+    	m.addAttribute("recordState", count2);
+    	int count3 = householdService.pwzdqCount();
+    	m.addAttribute("pwzdq", count3);
+    	int count4 = householdService.pszdqCount();
+    	m.addAttribute("pszdq", count4);
+    	return m;
+    }
+    
+    //------------------------------以下是统计数据部分--------------------------------------
     /**
 	 * 跳转到drainage/statistics/statistics.html 统计数据页面
 	 */
 	//@RequiresPermissions("drainage:household:view")
     @GetMapping("/statistics")
-    public String statistics(){
+    public String statistics(Model model){	
+    	count(model); //传递四个数据
         return "drainage/statistics" + "/statistics";
     }
     
@@ -155,7 +170,7 @@ public class HouseholdController extends BaseController{
      */
     @PostMapping("/statistics/householdAdministrativeStatistics")
 	@ResponseBody
-	public String householdAdministrativeStatistics() {
+	public int[] householdAdministrativeStatistics() {
     	List<String> administrativeList = householdService.selectAllHouseholdAdministrative(); //全部排水户所在行政区
     	int gm=0,qhkf=0,ns=0,ps=0,dpx=0,ba=0,sshz=0,yt=0,ft=0,luoh=0,longh=0,lg=0; //各个行政区排水户计数
     	for(int i=0;i<administrativeList.size();i++) {
@@ -185,20 +200,8 @@ public class HouseholdController extends BaseController{
     			lg++;
     		}
     	}
-    	return "["
-    			+ "{\"y\":"+gm+",\"name\":\"光明区\"},"
-    			+ "{\"y\":"+qhkf+",\"name\":\"前海开发区\"},"
-    			+ "{\"y\":"+ns+",\"name\":\"南山区\"},"
-    			+ "{\"y\":"+ps+",\"name\":\"坪山区\"},"
-    			+ "{\"y\":"+dpx+",\"name\":\"大鹏新区\"},"
-    			+ "{\"y\":"+ba+",\"name\":\"宝安区\"},"
-    			+ "{\"y\":"+sshz+",\"name\":\"深汕合作区\"},"
-    			+ "{\"y\":"+yt+",\"name\":\"盐田区\"},"
-    			+ "{\"y\":"+ft+",\"name\":\"福田区\"},"
-    			+ "{\"y\":"+luoh+",\"name\":\"罗湖区\"},"
-    			+ "{\"y\":"+longh+",\"name\":\"龙华区\"},"
-    			+ "{\"y\":"+lg+",\"name\":\"龙岗区\"}"
-    		+ "]";
+    	int result[] = {gm,qhkf,ns,ps,dpx,ba,sshz,yt,ft,luoh,longh,lg};
+    	return result;
     }
     
     /**
@@ -227,6 +230,42 @@ public class HouseholdController extends BaseController{
     			+ "{\"y\":"+cy+",\"name\":\"餐饮排污类\"},"
     			+ "{\"y\":"+sh+",\"name\":\"生活排污类\"}"
     		+ "]";
+    }
+    
+    @PostMapping("/statistics/drainageLicenseExpire")
+    @ResponseBody
+    public int[] DrainageLicenseExpire() {
+    	List<String> DrainageLicenseList = householdService.selectDrainageLicenseExpire();
+    	int gm=0,qhkf=0,ns=0,ps=0,dpx=0,ba=0,sshz=0,yt=0,ft=0,luoh=0,longh=0,lg=0; //各个行政区排水户计数
+    	for(int i=0;i<DrainageLicenseList.size();i++) {
+    		if(DrainageLicenseList.get(i).equals("光明区")) {
+    			gm++;
+    		}else if(DrainageLicenseList.get(i).equals("前海开发区")) {
+    			qhkf++;
+    		}else if(DrainageLicenseList.get(i).equals("南山区")) {
+    			ns++;
+    		}else if(DrainageLicenseList.get(i).equals("坪山区")) {
+    			ps++;
+    		}else if(DrainageLicenseList.get(i).equals("大鹏新区")) {
+    			dpx++;
+    		}else if(DrainageLicenseList.get(i).equals("宝安区")) {
+    			ba++;
+    		}else if(DrainageLicenseList.get(i).equals("深汕合作区")) {
+    			sshz++;
+    		}else if(DrainageLicenseList.get(i).equals("盐田区")) {
+    			yt++;
+    		}else if(DrainageLicenseList.get(i).equals("福田区")) {
+    			ft++;
+    		}else if(DrainageLicenseList.get(i).equals("罗湖区")) {
+    			luoh++;
+    		}else if(DrainageLicenseList.get(i).equals("龙华区")) {
+    			longh++;
+    		}else if(DrainageLicenseList.get(i).equals("龙岗区")) {
+    			lg++;
+    		}
+    	}
+    	int result[] = {gm,qhkf,ns,ps,dpx,ba,sshz,yt,ft,luoh,longh,lg};
+    	return result;
     }
     
     /**
@@ -499,7 +538,6 @@ public class HouseholdController extends BaseController{
     		}
     	}
     	json += "]";
-    	//System.out.println(json);
     	
     	return json;
     }

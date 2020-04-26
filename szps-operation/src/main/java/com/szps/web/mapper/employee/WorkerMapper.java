@@ -9,8 +9,8 @@ import com.szps.web.domain.employee.Worker;
  * */
 public interface WorkerMapper {
 	/**
-	 * 获取所有的Worker对象
-     *
+	 * 获取所有的Worker对象，
+     *用于显示从业人员信息以及导出excel表
      * @return
      */
     public List<Worker> selectAllWorker(Worker worker);

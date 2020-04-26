@@ -11,22 +11,15 @@
 				<form id="role-form">
 				    
 				</form>
-			</div> -->
-	        
-	        <div class="btn-group-sm" id="toolbar" role="group">
-				<!-- <a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="employee:company:add">
-	                <i class="fa fa-plus"></i> 新增
-	            </a>
-				<a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="employee:company:remove">
-		            <i class="fa fa-remove"></i> 删除
-		        </a> -->
+			</div> --> 
+	        <!-- <div class="btn-group-sm" id="toolbar" role="group">
 		        <a class="btn btn-main2" onclick="$.operate.add()">
 	                <i class="fa-user-defined fa-add"></i> 新增
 	            </a>
 				<a class="btn btn-main2" onclick="$.operate.removeAll()">
 		            <i class="fa-user-defined fa-delete"></i> 删除
 		        </a>
-	        </div>
+	        </div> -->
 	        
 	        <div class="col-sm-12 select-table table-striped">
 			    <table id="bootstrap-table" data-mobile-responsive="true"></table>
@@ -52,7 +45,7 @@
 		        },
 		        {
 		            field: 'drain_id',
-		            title: '排水口编码',
+		            title: '排水口编号',
 		            sortable: true
 		        },
 		        {
@@ -67,29 +60,24 @@
 		            sortable: true
 		        },
 		        {
-		            field: 'pretreatment_facility',
-		            title: '预处理设施列表',
-		            sortable: true
+		        	field: 'pskwz',
+		        	title: '位置',
+		        	sortable: true
 		        },
 		        {
-		            field: 'other_pretreatment_facility',
-		            title: '其他预处理设施',
-		            sortable: true
+		        	field: 'prszpsgw',
+		        	title: '是否排入市政管网',
+		        	sortable: true
 		        },
 		        {
-		            field: 'pretreatment_facility_number',
-		            title: '预处理设施数量',
-		            sortable: true
+		        	field: 'prxqgw',
+		        	title: '是否排入新区管网',
+		        	sortable: true
 		        },
 		        {
-		            field: 'pretreatment_facility_note',
-		            title: '预处理设施备注',
-		            sortable: true
-		        },
-		        {
-		            field: 'monitoring_facility',
-		            title: '是否安装监测设备',
-		            sortable: true
+		        	field: 'hasonelinedevice',
+		        	title: '有线设备',
+		        	sortable: true
 		        },
 		        {
 		            field: 'water_to',
@@ -102,10 +90,125 @@
 		            sortable: true
 		        },
 		        {
+		            field: 'pretreatment_facility',
+		            title: '预处理设施列表',
+		            sortable: true
+		        },
+		        {
+		            field: 'pretreatment_facility_number',
+		            title: '对应数量列表',
+		            sortable: true
+		        },
+		        {
+		            field: 'pretreatment_facility_note',
+		            title: '备注列表',
+		            sortable: true
+		        },
+		        {
+		            field: 'otherAction',
+		            title: '其他处理方式',
+		            sortable: true
+		        },
+		        {
 		            field: 'other_note',
 		            title: '其他备注',
 		            sortable: true
 		        },
+		        {
+		            field: 'importBz',
+		            title: '批量导入记录',
+		            sortable: true
+		        },
+		        {
+		            field: 'pactionNum',
+		            title: '预处理设施数量',
+		            sortable: true
+		        },
+		        {
+		            field: 'pidx1',
+		            title: 'pidx1',
+		            sortable: true
+		        },
+		        {
+		            field: 'pidx2',
+		            title: 'pidx2',
+		            sortable: true
+		        },
+		        {
+		            field: 'pidx3',
+		            title: 'pidx3',
+		            sortable: true
+		        },
+		        {
+		            field: 'pidx4',
+		            title: 'pidx4',
+		            sortable: true
+		        },
+		        {
+		            field: 'pidx5',
+		            title: 'pidx5',
+		            sortable: true
+		        },
+		        {
+		            field: 'pidx6',
+		            title: 'pidx6',
+		            sortable: true
+		        },
+		        {
+		            field: 'pidx7',
+		            title: 'pidx7',
+		            sortable: true
+		        },
+		        {
+		            field: 'nidx1',
+		            title: 'nidx1',
+		            sortable: true
+		        },
+		        {
+		            field: 'nidx2',
+		            title: 'nidx2',
+		            sortable: true
+		        },
+		        {
+		            field: 'nidx3',
+		            title: 'nidx3',
+		            sortable: true
+		        },
+		        {
+		            field: 'nidx4',
+		            title: 'nidx4',
+		            sortable: true
+		        },
+		        {
+		            field: 'nidx5',
+		            title: 'nidx5',
+		            sortable: true
+		        },
+		        {
+		            field: 'nidx6',
+		            title: 'nidx6',
+		            sortable: true
+		        },
+		        {
+		            field: 'nidx7',
+		            title: 'nidx7',
+		            sortable: true
+		        },
+		        {
+		            field: 'pas',
+		            title: 'pas',
+		            sortable: true
+		        },
+		        {
+		            field: 'ns',
+		            title: 'ns',
+		            sortable: true
+		        },
+		        {
+		            field: 'riverName',
+		            title: '流域名称',
+		            sortable: true
+		        }/* ,
 		        {
 		            title: '操作',
 		            align: 'center',
@@ -115,7 +218,7 @@
 		                actions.push('<a class="" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.drain_id + '\')">编辑</a>');
 		                return actions.join('');
 		            }
-		        }]
+		        } */]
 		    };
 		    $.table.init(options);
 		});

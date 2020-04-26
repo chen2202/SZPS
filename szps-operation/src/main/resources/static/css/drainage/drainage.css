@@ -55,6 +55,21 @@ input[type="checkbox"]:checked {
     padding-left: 5px;
 }
 
+/*select 下拉框样式修改*/
+.select-list li select {
+	border: 1px solid rgba(0,0,0,0.15);
+	border-radius: 4px;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	outline: none;
+	height: 30px;
+	width: 160px;
+	background: url("../../img/下拉箭头.png") no-repeat 0 0 ;
+	background-position: 132px 10px;
+	padding-left: 5px;
+}
+
 /*空置按钮*/
 .btn {
     border-radius: 4px;
@@ -97,7 +112,7 @@ input[type="checkbox"]:checked {
 	color: #FFF;
 	width: 72px;
 	height: 32px;
-	overflow: hidden; /* 当鼠标悬停在按钮上时，让图标偏移并隐藏 */
+	overflow: hidden;  /*当鼠标悬停在按钮上时，让图标偏移并隐藏 */
 }
 /* 鼠标悬停在按钮上时，修改图标样式，保留图标白色阴影 */
 .btn-main2:hover > i{
@@ -108,10 +123,10 @@ input[type="checkbox"]:checked {
     background-position: 0px 1.4px;
     background-size: 14px 14px;
     background-repeat: no-repeat;
-    filter: drop-shadow(#fff 30px 0px); /*设置阴影，替代原来的图标*/
-   	transform: translateX(-30px);
-   	-ms-filter: drop-shadow(#fff 30px 0px); /*设置阴影，替代原来的图标*/
-   	-ms-transform: translateX(-30px);
+    filter: drop-shadow(#fff 0px 30px); /*设置阴影，替代原来的图标*/
+   	transform: translateY(-30px);
+   	-ms-filter: drop-shadow(#fff 0px 30px); /*设置阴影，替代原来的图标*/
+   	-ms-transform: translateY(-30px);
 }
 
 /* 右上角四个小图标按钮 */

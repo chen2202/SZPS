@@ -2,26 +2,49 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.szps.web.mapper.drainage.DrainMapper">
 	<resultMap type="Drain" id="drainResult">
-		<id     property="household_id"       column="HOUSEHOLD_ID"        />
+		<id     property="drain_id"      column="DRAIN_ID"           />
+		<result property="household_id"       column="HOUSEHOLD_ID"        />
 		<result property="drain_type"     column="DRAIN_TYPE"          />
-		<result property="drain_id"      column="DRAIN_ID"           />
-		<result property="pretreatment_facility"     column="PRETREATMENT_FACILITY"      />
-		<result property="other_pretreatment_facility"    column="OTHER_PRETREATMENT_FACILITY"     />
-		<result property="pretreatment_facility_number"      column="PRETREATMENT_FACILITY_NUMBER"         />
-		<result property="pretreatment_facility_note"     column="PRETREATMENT_FACILITY_NOTE"    />
-		<result property="monitoring_facility"   column="MONITORING_FACILITY"  />
+		<result property="pskwz"     column="PSKWZ" />
+		<result property="prszpsgw"     column="PRSZPSGW" />
+		<result property="prxqgw"     column="PRXQGW" />
+		<result property="hasonelinedevice"     column="HASONELINEDEVICE" />
 		<result property="water_to"     column="WATER_TO"      />
 		<result property="water_name"   column="WATER_NAME" />
+		<result property="pretreatment_facility"     column="PRETREATMENT_FACILITY"      />
+		<result property="pretreatment_facility_number"      column="PRETREATMENT_FACILITY_NUMBER"         />
+		<result property="pretreatment_facility_note"     column="PRETREATMENT_FACILITY_NOTE"    />
+		<result property="otherAction"     column="OTHERACTION"    />
 		<result property="other_note" column="OTHER_NOTE" />
+		<result property="importBz"     column="IMPORTBZ"    />
+		<result property="pactionNum"     column="PACTIONNUM"    />
+		<result property="pidx1"     column="PIDX1"    />
+		<result property="pidx2"     column="PIDX2"    />
+		<result property="pidx3"     column="PIDX3"    />
+		<result property="pidx4"     column="PIDX4"    />
+		<result property="pidx5"     column="PIDX5"    />
+		<result property="pidx6"     column="PIDX6"    />
+		<result property="pidx7"     column="PIDX7"    />
+		<result property="nidx1"     column="NIDX1"    />
+		<result property="nidx2"     column="NIDX2"    />
+		<result property="nidx3"     column="NIDX3"    />
+		<result property="nidx4"     column="NIDX4"    />
+		<result property="nidx5"     column="NIDX5"    />
+		<result property="nidx6"     column="NIDX6"    />
+		<result property="nidx7"     column="NIDX7"    />
+		<result property="pas"     column="PAS"    />
+		<result property="ns"     column="NS"    />
+		<result property="riverName"     column="RIVERNAME"    />		
 	</resultMap>
 	
 	<sql id="selectDrainVo">
 		SELECT * FROM DRAINAGE_T_DRAIN d 
 	</sql>
 	<sql id="selectDrainVoVo2">
-		SELECT HOUSEHOLD_ID,DRAIN_TYPE,DRAIN_ID,PRETREATMENT_FACILITY,OTHER_PRETREATMENT_FACILITY,
-        PRETREATMENT_FACILITY_NUMBER,PRETREATMENT_FACILITY_NOTE,MONITORING_FACILITY,WATER_TO,WATER_NAME,
-        OTHER_NOTE FROM DRAINAGE_T_DRAIN WHERE HOUSEHOLD_ID like '%%'
+		SELECT DRAIN_ID,HOUSEHOLD_ID,DRAIN_TYPE,PSKWZ,PRSZPSGW,PRXQGW,HASONELINEDEVICE,WATER_TO,WATER_NAME,
+		PRETREATMENT_FACILITY,PRETREATMENT_FACILITY_NUMBER,PRETREATMENT_FACILITY_NOTE,OTHERACTION,OTHER_NOTE,
+		IMPORTBZ,PACTIONNUM,PIDX1,PIDX2,PIDX3,PIDX4,PIDX5,PIDX6,PIDX7,NIDX1,NIDX2,NIDX3,NIDX4,NIDX5,NIDX6,NIDX7,
+		PAS,NS,RIVERNAME FROM DRAINAGE_T_DRAIN WHERE 1 = 1
 	</sql>
 	
 	<!-- 查询某排水户全部排水口 -->

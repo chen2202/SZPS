@@ -51,7 +51,7 @@ public class HouseholdServiceImpl implements HouseholdService{
 	 * @param household_id
 	 * @return
 	 */
-	public Household selectHouseholdById(String household_id) {
+	public Household selectHouseholdById(int household_id) {
 		return householdMapper.selectHouseholdById(household_id);
 	}
 	
@@ -69,16 +69,46 @@ public class HouseholdServiceImpl implements HouseholdService{
 	 * @return
 	 */
 	public int deleteHouseholdById(String ids) throws BusinessException{
-		String[] household_ids = Convert.toStrArray(ids);
+		Integer[] household_ids = Convert.toIntArray(ids);
 		return householdMapper.deleteHouseholdById(household_ids);
 	}
 	public int deleteDrainById(String ids) throws BusinessException{
-		String[] household_ids = Convert.toStrArray(ids);
+		Integer[] household_ids = Convert.toIntArray(ids);
 		return householdMapper.deleteDrainById(household_ids);
 	}
 	
 	/**
-	 * 查询全部排水户所在行政区（用于饼图）
+	 * 查询全市摸查的排水户总数
+	 */
+	public int selectHouseholdCount() {
+		return householdMapper.selectHouseholdCount();
+	}
+	
+	/**
+	 * 查询全市已提交的排水户总数
+	 */
+	public int selectHouseholdRecordStateCount() {
+		return householdMapper.selectHouseholdRecordStateCount();
+	}
+	
+	/**
+	 * 查询全市排污许可证到期
+	 * @return
+	 */
+	public int pwzdqCount() {
+		return householdMapper.pwzdqCount();
+	}
+	
+	/**
+	 * 查询全市排水许可证到期
+	 * @return
+	 */
+	public int pszdqCount() {
+		return householdMapper.pszdqCount();
+	}
+	
+	/**
+	 * 查询全部排水户所在行政区（用于柱形图）
 	 */
 	public List<String> selectAllHouseholdAdministrative(){
 		return householdMapper.selectAllHouseholdAdministrative();
@@ -90,6 +120,14 @@ public class HouseholdServiceImpl implements HouseholdService{
 	 */
 	public List<String> selectAllSewageCategory(){
 		return householdMapper.selectAllSewageCategory();
+	}
+	
+	/**
+	 * 查询各区排水证已到期数量
+	 * @return
+	 */
+	public List<String> selectDrainageLicenseExpire(){
+		return householdMapper.selectDrainageLicenseExpire();
 	}
 	
 	/**

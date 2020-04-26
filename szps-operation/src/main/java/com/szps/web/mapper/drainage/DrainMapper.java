@@ -18,7 +18,7 @@ public interface DrainMapper {
 	 * @param drain_id
 	 * @return
 	 */
-	public Drain checkDrainUnique(String drain_id);
+	public Drain checkDrainUnique(int drain_id);
 	
 	/**
 	 * 新增排水口

@@ -114,17 +114,12 @@
 	</div>
 	<th:block th:include="include :: footer" />
 	<!-- Highcharts -->
-	<script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
-	<script
-		src="https://code.highcharts.com.cn/highcharts/highcharts-3d.js"></script>
-	<script
-		src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
-	<script
-		src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
-	<script 
-		src="https://code.highcharts.com.cn/highcharts/modules/oldie.js"></script>
-	<script 
-		src="https://code.highcharts.com.cn/highcharts/modules/cylinder.js"></script>
+	<script th:src="@{/js/Highcharts/highcharts.js}"></script>
+	<script th:src="@{/js/Highcharts/highcharts-3d.js}"></script>
+	<script th:src="@{/js/Highcharts/exporting.js}"></script>
+	<script th:src="@{/js/Highcharts/highcharts-zh_CN.js}"></script>
+	<script th:src="@{/js/Highcharts/oldie.js}"></script>
+	<script th:src="@{/js/Highcharts/cylinder.js}"></script>
 	<!-- 业务js -->
 	<script th:inline="javascript" type="text/javascript">
 	$(function(){

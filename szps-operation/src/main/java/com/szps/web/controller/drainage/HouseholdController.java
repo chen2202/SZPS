@@ -159,7 +159,7 @@ public class HouseholdController extends BaseController{
 	 * 跳转到drainage/statistics/statistics.html 统计数据页面
 	 */
 	//@RequiresPermissions("drainage:household:view")
-    @GetMapping("/statistics")
+    @GetMapping("/statistics/statistics")
     public String statistics(Model model){	
     	count(model); //传递四个数据
         return "drainage/statistics" + "/statistics";

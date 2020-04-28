@@ -7,7 +7,7 @@
 <body class="gray-bg">
     <!-- 标签页导航区 -->
     <ul class="nav nav-tabs" role="tablist">
-    	<li role="presentation" class="active"><a onclick="toggle('drainage/statistics')" role="tab" data-toggle="tab">数据统计</a></li>
+    	<li role="presentation" class="active"><a onclick="toggle('drainage/statistics/statistics')" role="tab" data-toggle="tab">数据统计</a></li>
         <li role="presentation"><a onclick="toggle('drainage/household')" role="tab" data-toggle="tab">排水户列表</a></li>
         <li role="presentation"><a onclick="toggle('drainage/expire')" role="tab" data-toggle="tab">到期管理</a></li>
         <li role="presentation"><a onclick="toggle('drainage/maphousehold')" role="tab" data-toggle="tab">地图服务</a></li>
@@ -16,7 +16,7 @@
 	<div class="container-div">
 		<div class="row" style="width:100%;height:100%;" id="content-main">
         	<iframe class="RuoYi_iframe" id="content-iframe" name="iframe0" width="100%" height="100%" data-id="/drainage/statistics"
-                th:src="@{/drainage/statistics}" frameborder="0" seamless></iframe>
+                th:src="@{/drainage/statistics/statistics}" frameborder="0" seamless></iframe>
     	</div>
 	</div>
 

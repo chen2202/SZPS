@@ -151,12 +151,12 @@
          and HOUSEHOLD_ID = #{household_id}
 	</select>
 
-	<!-- 修改保存排水户信息 -->
+	<!-- 修改保存排水户信息(伪修改) 仅仅作为修改页面确定按钮的反馈 -->
 	<update id="updateHousehold" parameterType="Household">
  		update DRAINAGE_T_HOUSEHOLD
  		<set>
  			<if test="household_id != null">HOUSEHOLD_ID = #{household_id},</if>
- 			<if test="household_name != null and household_name != ''">HOUSEHOLD_NAME = #{household_name},</if>
+ 			<!-- <if test="household_name != null and household_name != ''">HOUSEHOLD_NAME = #{household_name},</if>
  			<if test="record_state != null and record_state != ''">RECORD_STATE = #{record_state},</if>
  			<if test="doorplate_detail_address != null and doorplate_detail_address != ''">DOORPLATE_DETAIL_ADDRESS = #{doorplate_detail_address},</if>
  			<if test="longitude != null and longitude != ''">LONGITUDE = #{longitude},</if>
@@ -192,7 +192,7 @@
  			<if test="registration_time != null and registration_time != ''">REGISTRATION_TIME = to_date(#{registration_time},'yyyy-mm-dd'), </if>
  			<if test="registration_person != null and registration_person != ''">REGISTRATION_PERSON = #{registration_person}, </if>
  			<if test="update_time != null and update_time != ''">UPDATE_TIME = to_date(#{update_time},'yyyy-mm-dd'), </if>
- 			<if test="update_person != null and update_person != ''">UPDATE_PERSON = #{update_person} </if>
+ 			<if test="update_person != null and update_person != ''">UPDATE_PERSON = #{update_person} </if> -->
  		</set>
  		where HOUSEHOLD_ID = #{household_id}
 	</update>

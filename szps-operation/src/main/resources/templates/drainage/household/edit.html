@@ -49,28 +49,28 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">行政区名：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="hidden" name="administrative_name_h" id="administrative_name_h" th:field="*{administrative_name}" required>
-					<select class="form-control" name="administrative_name" id="administrative_name" disabled="disabled" required>
+					<input class="form-control" type="text" name="administrative_name_h" id="administrative_name_h" th:field="*{administrative_name}" disabled="disabled" required>
+					<!-- <select class="form-control" name="administrative_name" id="administrative_name" disabled="disabled" required>
 						<option value="" style="display:none;">-- 请选择 --</option>
-					</select>
+					</select> -->
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">街道名：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="hidden" name="street_name_h" id="street_name_h" th:field="*{street_name}" required>
-					<select class="form-control" name="street_name" id="street_name" disabled="disabled" required>
+					<input class="form-control" type="text" name="street_name_h" id="street_name_h" th:field="*{street_name}" disabled="disabled" required>
+					<!-- <select class="form-control" name="street_name" id="street_name" disabled="disabled" required>
 						<option value="" style="display:none;">-- 请先选择行政区 --</option>
-					</select>
+					</select> -->
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">居委会：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="hidden" name="committees_h" id="committees_h" th:field="*{committees}" required>
-					<select class="form-control" name="committees" id="committees" disabled="disabled" required>
+					<input class="form-control" type="text" name="committees_h" id="committees_h" th:field="*{committees}" disabled="disabled" required>
+					<!-- <select class="form-control" name="committees" id="committees" disabled="disabled" required>
 						<option value="" style="display:none;">-- 请先选择街道 --</option>
-					</select>
+					</select> -->
 				</div>
 			</div>
 			<div class="form-group">
@@ -404,6 +404,7 @@
 	</div>
 	<th:block th:include="include :: footer" />
 	<script type="text/javascript">
+	/*
 		//行政区名称select添加option
 		getAdministrativeName()
 		
@@ -450,6 +451,7 @@
 			}
 			getCommitteesName(); //添加新option
 		});
+		*/
 	
 		//表单提交验证
 		function submitHandler() {
@@ -461,7 +463,7 @@
 		//--------------------------------------主程序结束---------------------------------------
 
 		//获取行政区名称
-		function getAdministrativeName(){
+	/*	function getAdministrativeName(){
 			var optionJson=[];
 			$.ajax({
 				type: "post",
@@ -532,11 +534,12 @@
 		        }
 			 });
 		}
+		*/
 		
 		//排水户信息修改保存
 		function edit() {
 			var household_id = $("input[name='household_id']").val();
-			var household_name = $("input[name='household_name']").val();
+			/* var household_name = $("input[name='household_name']").val();
 			var record_state = $("#record_state option:selected").val();
 			var doorplate_detail_address = $("input[name='doorplate_detail_address']").val();
 			var longitude = $("input[name='longitude']").val();
@@ -572,14 +575,14 @@
 			var registration_time = $("input[name='registration_time']").val();
 			var registration_person = $("input[name='registration_person']").val();
 			var update_time = $("input[name='update_time']").val();
-			var update_person = $("input[name='update_person']").val();
+			var update_person = $("input[name='update_person']").val(); */
 			$.ajax({
 				cache : true,
 				type : "POST",
 				url : ctx + "drainage/household/edit",
 				data : {
 					"household_id": household_id,
-					"household_name": household_name,
+					/* "household_name": household_name,
 					"record_state": record_state,
 					"doorplate_detail_address": doorplate_detail_address,
 					"longitude": longitude,
@@ -615,7 +618,7 @@
 					"registration_time":registration_time,
 					"registration_person":registration_person,
 					"update_time":update_time,
-					"update_person":update_person,
+					"update_person":update_person, */
 				},
 				async : false,
 				error : function(request) {

@@ -109,10 +109,16 @@ public class DataController extends BaseController {
         //拿到相应抽取事项的检查对象（满足抽取事项，且没被抽查过）
 
         List<TbHouse> list=houseService.selectHouseCheckList(houseRule);
-
+        if(list.size()==0){
+             return AjaxResult.error("暂时无可抽查的任务");
+        }
         double a= Integer.valueOf(bl)/100.0;
 
         int blint= (int) (a*list.size());
+        if(blint<1)
+        {
+            blint=1;
+        }
 
 
             ArrayList<String> list_for_random = new ArrayList<String>();

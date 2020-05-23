@@ -102,8 +102,8 @@
 					<input class="form-control" type="text"   placeholder="Y=" style="border: 0px;outline:none" >
 				</div>
 				<div class="col-sm-2">
-					<input class="form-control" type="text"  id="WD" th:field="*{WD}"  >
-					<input class="form-control" type="text"  id="JD" th:field="*{JD}"  >
+					<input class="form-control" type="text"  id="WD1" th:field="*{WD}" >
+					<input class="form-control" type="text"  id="JD1" th:field="*{JD}" >
 				</div>
 
 			</div>
@@ -121,8 +121,8 @@
 					<input class="form-control" type="text"   value="Y=" style="border: 0px;outline:none" >
 				</div>
 				<div class="col-sm-2">
-					<input class="form-control" type="text"  id="WD" th:field="*{WD}"  >
-					<input class="form-control" type="text"  id="JD" th:field="*{JD}"  >
+					<input class="form-control" type="text"  id="WD2" th:field="*{WD}"  >
+					<input class="form-control" type="text"  id="JD2" th:field="*{JD}"  >
 				</div>
 
 			</div>
@@ -135,7 +135,7 @@
 					<textarea class="form-control" type="text"  id="CLZT" th:field="*{CLZT} " style="resize:none;"  ></textarea>
 				</div>
 				<div class="col-sm-3 ">
-					<a class="btn btn-main4 btn-sm" href="#" style="float: right">
+					<a class="btn btn-main4 btn-sm"  style="float: right" onclick="gis()">
 						管网分布图
 					</a>
 				</div>
@@ -152,6 +152,17 @@
 	<th:block th:include="include :: ztree-js" />
 	<script type="text/javascript">
         document.getElementById("t1").value="项目红线内及周边现状排水设施情况"
+
+        function gis() {
+
+
+            var wd1 = $("input[id='WD1']").val();
+            var jd1 = $("input[id='JD1']").val();
+            var wd2 = $("input[id='WD2']").val();
+            var jd2 = $("input[id='JD2']").val();
+            location.href="/dist/index.html?wd1="+wd1+"&jd1="+jd1+"&wd2="+wd2+"&jd2="+jd2
+
+        }
 	</script>
 
 </body>

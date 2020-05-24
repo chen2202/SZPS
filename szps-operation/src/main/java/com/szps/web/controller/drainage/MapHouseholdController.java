@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  */
 @Controller
-@RequestMapping("drainage")
+@RequestMapping("/drainage")
 public class MapHouseholdController {
 	private String prefix = "drainage/maphousehold";
 	
@@ -22,6 +22,7 @@ public class MapHouseholdController {
 	@RequiresPermissions("drainage:maphousehold:view")
     @GetMapping("/maphousehold")
     public String household(){
-        return prefix + "/maphousehold";
+        //return prefix + "/maphousehold";
+    	return "redirect:/dist/index.html"; //重定向到GIS地图
     }
 }

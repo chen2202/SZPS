@@ -450,7 +450,7 @@
 		              	//用编辑页面来显示排水户的详情信息
 		                actions.push('<a class="' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.household_id + '\')">详情</a>');
 		              	actions.push(' <a>|</a> ');
-		              	actions.push('<a href="">定位</a>');
+		              	actions.push('<a href="/dist/index.html?X=' + row.latitude + '&Y=' + row.longitude + '" target="">定位</a>');
 		                return actions.join('');
 		            }
 		        }]

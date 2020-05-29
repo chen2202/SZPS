@@ -7,385 +7,219 @@
 <body>
     <div class="wrapper wrapper-content animated fadeInRight ibox-content">
        <form id="form-dayreport-add"  class="form-horizontal m">
-		
-		<div class="control-group">
-			<label class="lbl">生产运行日报表</label><br>
-		</div>
-		<div class="control-group">
-		<table  class="table table-striped table-bordered table-condensed">
-		  <tr>
-		    <td>日期</td>
-		    <td><input type="text" class="time-input" id="reportDate"  name="reportDate" placeholder="日报时间" /></td>
-		    
-		    <td>天气</td>
-		    <td><input id="weather"  name="weather" htmlEscape="false" maxlength="50" class="form-control"  type="text" /></td>
-		    <td>温度</td>
-		    <td><input id="temperature"  name="temperature" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-		    <td>湿度</td>
-		    <td><input id="humidity"  name="humidity" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-		  </tr>
-		  <tr>
-		    <td>值班人员</td>
-		    <td colspan="2">早班：<input id="earlyWorker"  name="earlyWorker" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-		    <td colspan="2">中班：<input id="middleWorker"  name="middleWorker" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-		    <td colspan="3">晚班：<input id="lastWorker"  name="lastWorker" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-		  </tr>
-		  <tr>
-		    <td rowspan="2">日处理水量（m<sup>3</sup>）</td>
-		     <td><input id="dwt1"  name="dwt1" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-		    <td rowspan="2">污泥量（吨）</td>
-		     <td rowspan="2"><input id="sq1"  name="sq1" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-		    <td>电表读数(kw.h)</td>
-		    <td><input id="meter"  name="meter" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-		    <td>用电量(kw.h)</td>
-		     <td><input id="electricity"  name="electricity" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-		  </tr>
-		  <tr>
-		    <td><input id="dwt2"  name="dwt2" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-		    <!-- 
-		    <td><input id="sq2" htmlEscape="false" maxlength="50" class="input-mini "/></td>
-		     -->
-		    <td>自来水表读数(吨)</td>
-		     <td><input id="waterMeter"  name="waterMeter" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-		    <td>用水量（吨）</td>
-		     <td><input id="water"  name="water" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-		  </tr>
-		  <tr>
-		    <td>PAC（吨）</td>
-		     <td><input id="pac"  name="pac" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-		    <td>铁盐/除磷剂（吨）</td>
-		     <td><input id="ipra"  name="ipra" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-		    <td>PAM-（kg）</td>
-		     <td><input id="pam1"  name="pam1" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-		    <td>PAM+（kg）</td>
-		     <td><input id="pam2"  name="pam2" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-		  </tr>
-		  <tr>
-		    <td >消毒药剂1（M<sup>3</sup>/kg）</p>
-		    <td ><input id="disin"  name="disin" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-		    <td >消毒药剂2（M<sup>3</sup>/kg）</p>
-		    <td ><input id="disin2"  name="disin2" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-		    <td >其他药剂（M<sup>3</sup>/kg）</p>
-		    <td ><input id="disin3"  name="disin3" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-		  </tr>
-		  <tr>
-		    <td>停进水时间</td>
-		     <td><input id="stopwatertime"  name="stopwatertime" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-		    <td>停产原因</td>
-		    <td colspan="3"><textarea id="stopreason" name="stopreason" class="form-control"></textarea></td>
-		  </tr>
-		  <tr>
-		    <td>恢复进水时间</td>
-		     <td><input id="recoverytime"  name="recoverytime" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-		    <td>情况说明</td>
-		    <td colspan="3"><textarea id="reportDesc" name="reportDesc" htmlEscape="false" class="form-control"></textarea></td>
-		  </tr>
-		</table>
-		</div>
-		<div class="control-group">
-			<table class="table table-striped table-bordered table-condensed">
-			  <tr>
-			    <td colspan="9"><div align="center">出水水质情况</div></td>
-			  </tr>
-			  <tr>
-			    <td rowspan="2">水质指标</td>
-			    <td colspan="2">实验室水质(mg/L)</td>
-			    <td colspan="6">在线监测系统</td>
-			  </tr>
-			  <tr>
-			    <td>进水</td>
-			    <td>出水</td>
-			    <td>00:00</td>
-			    <td>04:00</td>
-			    <td>08:00</td>
-			    <td>12:00</td>
-			    <td>16:00</td>
-			    <td>20:00</td>
-			  </tr>
-			  <tr>
-			    <td>COD</td>
-			    <td><input id="cod1"  name="cod1" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="cod2"  name="cod2" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="cod3"  name="cod3" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="cod4"  name="cod4" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="cod5"  name="cod5" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="cod6"  name="cod6" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="cod7"  name="cod7" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="cod8"  name="cod8" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			  </tr>
-			  <tr>
-			    <td>氨氮</td>
-			    <td><input id="an1"  name="an1" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="an2"  name="an2" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="an3"  name="an3" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="an4"  name="an4"  htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="an5"  name="an5" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="an6"  name="an6" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="an7"  name="an7" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="an8"  name="an8" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			  </tr>
-			  <tr>
-			    <td>TN</td>
-			    <td><input id="tn1"  name="tn1" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="tn2"  name="tn2" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="tn3"  name="tn3" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="tn4"  name="tn4" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="tn5"  name="tn5" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="tn6"  name="tn6" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="tn7"  name="tn7" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="tn8"  name="tn8" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			  </tr>
-			  <tr>
-			    <td>TP</td>
-			    <td><input id="tp1"  name="tp1" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="tp2"  name="tp2" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="tp3"  name="tp3" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="tp4"  name="tp4" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="tp5"  name="tp5" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="tp6"  name="tp6" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="tp7"  name="tp7" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="tp8"  name="tp8" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			  </tr>
-			  <tr>
-			    <td>沉淀池SS</td>
-			    <td><input id="stss1"  name="stss1" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="stss2"  name="stss2" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="stss3"  name="stss3" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="stss4"  name="stss4" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="stss5"  name="stss5" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="stss6"  name="stss6" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="stss7"  name="stss7" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="stss8"  name="stss8" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			  </tr>
-			  <tr>
-			    <td>沉淀池TP</td>
-			    <td><input id="sttp1"  name="sttp1" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="sttp2"  name="sttp2" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="sttp3"  name="sttp3" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="sttp4"  name="sttp4" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="sttp5"  name="sttp5" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="sttp6"  name="sttp6" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="sttp7"  name="sttp7" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="sttp8"  name="sttp8" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			  </tr>
-			  <tr>
-			    <td>颜色</td>
-			    <td><input id="color1"  name="color1" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="color2"  name="color2" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="color3"  name="color3" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="color4"  name="color4" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="color5"  name="color5" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="color6"  name="color6" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="color7"  name="color7" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="color8"  name="color8" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			  </tr>
-			  <tr>
-			    <td>气味</td>
-			    <td><input id="smell1"  name="smell1" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="smell2"  name="smell2" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="smell3"  name="smell3" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="smell4"  name="smell4" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="smell5"  name="smell5" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="smell6"  name="smell6" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="smell7"  name="smell7" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="smell8"  name="smell8" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			  </tr>
-			</table>
-		</div>
-		<div class="control-group">
-			<table class="table table-striped table-bordered table-condensed">
-			  <tr>
-			    <td colspan="8">设备运行情况</td>
-			  </tr>
-			  <tr>
-			    <td rowspan="2">主要设备</td>
-			    <td rowspan="2">运行时长</td>
-			    <td colspan="6">值班人员巡查记录（正常运行、有异常现象、故障）</td>
-			  </tr>
-			  <tr>
-			    <td>00:00</td>
-			    <td>04:00</td>
-			    <td>08:00</td>
-			    <td>12:00</td>
-			    <td>16:00</td>
-			    <td>20:00</td>
-			  </tr>
-			  <tr>
-			    <td>提升泵1</td>
-			    <td><input id="pumpFirst1"  name="pumpFirst1" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pumpFirst2"  name="pumpFirst2" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pumpFirst3"  name="pumpFirst3" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pumpFirst4"  name="pumpFirst4" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pumpFirst5"  name="pumpFirst5" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pumpFirst6"  name="pumpFirst6" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pumpFirst7"  name="pumpFirst7" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			  </tr>
-			  <td>提升泵2</td>                         
-			    <td><input id="pumpSecond1" name="pumpSecond1" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pumpSecond2" name="pumpSecond2" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pumpSecond3" name="pumpSecond3" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pumpSecond4" name="pumpSecond4" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pumpSecond5" name="pumpSecond5" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pumpSecond6" name="pumpSecond6" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pumpSecond7" name="pumpSecond7" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			  </tr>
-			  <tr>
-				<td>提升泵3</td>
-			    <td><input id="pumpThird1"  name="pumpThird1" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pumpThird2"  name="pumpThird2" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pumpThird3"  name="pumpThird3" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pumpThird4"  name="pumpThird4" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pumpThird5"  name="pumpThird5" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pumpThird6"  name="pumpThird6" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pumpThird7"  name="pumpThird7" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			  </tr>
-			  <tr>
-				<td>沉淀池吸/刮泥机</td>
-			    <td><input id="stsos1"  name="stsos1" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="stsos2"  name="stsos2" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="stsos3"  name="stsos3" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="stsos4"  name="stsos4" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="stsos5"  name="stsos5" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="stsos6"  name="stsos6" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="stsos7"  name="stsos7" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			  </tr>
-			  <tr>
-				<td>紫外消毒灯</td>
-			    <td><input id="lamp1"  name="lamp1" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="lamp2"  name="lamp2" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="lamp3"  name="lamp3" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="lamp4"  name="lamp4" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="lamp5"  name="lamp5" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="lamp6"  name="lamp6" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="lamp7"  name="lamp7" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			  </tr>
-			  <tr>
-				<td>压泥机</td>
-			    <td><input id="pmm1"  name="pmm1" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pmm2"  name="pmm2" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pmm3"  name="pmm3" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pmm4"  name="pmm4" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pmm5"  name="pmm5" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pmm6"  name="pmm6" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="pmm7"  name="pmm7" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			  </tr>
-			</table>
-		</div>
-		<div class="control-group">
-			<table class="table table-striped table-bordered table-condensed">
-			  <tr>
-			    <td rowspan="2">生化池</td>
-			    <td>SV30(%)</td>
-			    <td>污泥浓度(g/L)</td>
-			    <td>溶解氧（mg/L）</td>
-			    <td>混合液回流比（%）</td>
-			    <td>污泥回流比（%）</td>
-			  </tr>
-			  <tr>
-			    <td><input id="sv30"     name="sv30"    htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="sludge" 	 name="sludge" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="oxygen" 	 name="oxygen" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="mixture"  name="mixture" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="reflux" 	 name="reflux" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			  </tr>
-			</table>
-		</div>
-		
-		<div class="control-group">
-			<table class="table table-striped table-bordered table-condensed">
-			  <tr>
-			    <td rowspan="3">快渗池情况</td>
-			    <td><p align="center">养护情况</td>
-			    <td colspan="4"><textarea id="conditionDesc" name="conditionDesc" htmlEscape="false" class="form-control"></textarea></td>
-			  </tr>
-			  <tr>
-			    <td rowspan="2">落干时间(min)</td>
-			    <td>≤60</td>
-			    <td>60-150</td>
-			    <td>120-180</td>
-			    <td>180以上</td>
-			  </tr>
-			  <tr>
-			    <td><input id="lt60" 	 name="lt60" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="g6l12" 	 name="g6l12" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="g12l18" 	 name="g12l18" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			    <td><input id="gt180" 	 name="gt180" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
-			  </tr>
-			</table>
-		</div>
-		<div class="control-group">
-			<table class="table table-striped table-bordered table-condensed">
-			  <tr>
-			    <td rowspan="2">设备运行工况</td>
-			    <td >机电设备运行维护</td>
-			    <td ><textarea id="equipment"  name="equipment" htmlEscape="false" class="form-control"></textarea></td>
-			  </tr>
-			  <tr>
-			    <td>中控仪表</td>
-			    <td><textarea id="instrument" name="instrument" htmlEscape="false" class="form-control"></textarea></td>
-			  </tr>
-			</table>
-		</div> 
-		<!-- 
-		 <div class="control-group">
-			<label class="lbl">设备运行工况</label><br>
-			<label class="lbl">机电设备运行维护</label><br>
-			<div class="controls">
-				<textarea id="equipment" htmlEscape="true" id="equipment"  class="form-control"></textarea>
+       <input name="deptid" type="hidden" id="treeId"/>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-6 control-label ">水质净化厂：</label>
+						<div class="col-sm-6">
+								<input name="deptname" onclick="selectDeptTree()" type="text" id="treeName" class="form-control" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">所属流域：</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text" name="basin" id="basin" >
+						</div>
+					</div>
+				</div>
 			</div>
-			<label class="lbl">中控仪表</label><br>
-			<div class="controls">
-				<textarea id="instrument" htmlEscape="true" id="instrument"  class="form-control"></textarea>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-6 control-label ">日期：</label>
+						<div class="col-sm-6">
+								<input class="time-input form-control"  type="text"   data-type="date" data-format="yyyy-MM-dd" name="reportdate" id="reportdate" >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">设计规模：</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text" name="dscale" id="dscale" >
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>  -->
-		
-		<div class="control-group">
-			<table class="table table-striped table-bordered table-condensed">
-			  <tr>
-			    <td>工艺运行情况:</td>
-			    <td><textarea id="handicraft"  name="handicraft" htmlEscape="false" class="form-control"></textarea></td>
-			  </tr>
-			  <tr>
-			    <td>存在问题及需要上级沟通解决问题:</td>
-			    <td><textarea id="problem"  name="problem" htmlEscape="false" class="form-control"></textarea></td>
-			  </tr>
-			</table>
-		</div>
-		<div class="control-group">
-			<table class="table table-striped table-bordered table-condensed">
-			  <tr>
-			    <td>报表初审意见:</td>
-			    <td><textarea id="firstOpinion"  name="firstOpinion" htmlEscape="false" class="form-control"></textarea></td>
-			  </tr>
-			  <tr>
-			    <td>厂区回复意见:</td>
-			    <td><textarea id="replyOpinion"  name="replyOpinion" htmlEscape="false" class="form-control"></textarea></td>
-			  </tr>
-			</table>
-		</div>
-		<!-- <div class="control-group">
-			<table class="table table-striped table-bordered table-condensed">
-			  <tr>
-			    <td>制表人:</td>
-			    <td><input id="lt60" htmlEscape="false" maxlength="50" class="form-control"  type="text" /></td>
-			    <td>审核人:</td>
-			    <td><input id="lt60" htmlEscape="false" maxlength="20" class="form-control"  type="text"/></td>
-			  </tr>
-			</table>
-		</div>
-		<div class="control-group">
-		注：PAC含固态与液态两种，铁盐/除磷剂含聚铁和除磷剂，消毒剂含漂水（m3）、液氯（kg）、二氧化氯（kg）、固态漂白粉（kg）等。<br>
-		养护情况和落干时间填写相应池号。工艺运行情况填写各单元运行是否正常。存在问题及解决方案填写日常管理情况及对外联系(需当天及时反馈)。
-		<div class="control-group">  -->
-		
-	</form>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-6 control-label ">处理量(万吨)：</label>
+						<div class="col-sm-6">
+								<input class="form-control" type="text" name="tcapacity" id="tcapacity" >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">负荷率：</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text" name="loadrate" id="loadrate" >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-6 control-label ">进水COD(mg/L)：</label>
+						<div class="col-sm-6">
+								<input class="form-control" type="text" name="incod" id="incod" >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">进水氨氮(mg/L)：</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text" name="inan" id="inan" >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-6 control-label ">辖区：</label>
+						<div class="col-sm-6">
+								<input class="form-control" type="text" name="darea" id="darea" >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">进水总磷(mg/L)：</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text" name="inp" id="inp" >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-6 control-label ">进水SS(mg/L)：</label>
+						<div class="col-sm-6">
+								<input class="form-control" type="text" name="inss" id="inss" >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">进水BOD(mg/L)：</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text" name="inbod" id="inbod" >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-6 control-label ">出水COD(mg/L)：</label>
+						<div class="col-sm-6">
+								<input class="form-control" type="text" name="outcod" id="outcod" >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">出水氨氮(mg/L)：</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text" name="outan" id="outan" >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-6 control-label ">出水总磷(mg/L)：</label>
+						<div class="col-sm-6">
+								<input class="form-control" type="text" name="outp" id="outp" >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">出水DO(mg/L)：</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text" name="outdo" id="outdo" >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-6 control-label ">提升泵坑 设计液位(m)：</label>
+						<div class="col-sm-6">
+								<input class="form-control" type="text" name="dlevel" id="dlevel" >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">提升泵坑 实际液位(m)：</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text" name="aleave" id="aleave" >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-6 control-label ">污泥浓度(mg/L)：</label>
+						<div class="col-sm-6">
+								<input class="form-control" type="text" name="sludec" id="sludec" >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">垃圾渗滤液(吨)：</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text" name="lanfilll" id="lanfilll" >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-6 control-label ">渗滤液来源：</label>
+						<div class="col-sm-6">
+								<input class="form-control" type="text" name="sol" id="sol" >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">运营单位：</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text" name="operation" id="operation" >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">备注：</label>
+						<div class="col-sm-6">
+							<textarea class="form-control" type="text" name="remark" id="remark" ></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</form>
     </div>
-    <div class="row">
-        <div class="col-sm-offset-5 col-sm-10">
-            <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>保 存</button>&nbsp;
-            <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
-        </div>
-    </div>
+
 	<th:block th:include="include :: footer" />
 	<th:block th:include="include :: select2-js" />
 	<script>

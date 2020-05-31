@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * 排水户模块 地图服务控制器
+ * 排水户模块 地图服务控制器 暂时废弃
  * @author zxc
  *
  */
@@ -23,6 +23,7 @@ public class MapHouseholdController {
     @GetMapping("/maphousehold")
     public String household(){
         //return prefix + "/maphousehold";
-    	return "redirect:/dist/index.html"; //重定向到GIS地图
+    	//return "redirect:/index2.html"; //重定向到GIS地图
+		return "";
     }
 }

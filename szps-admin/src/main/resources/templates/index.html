@@ -16,6 +16,7 @@
     <link th:href="@{/css/style.css}" rel="stylesheet"/>
     <!-- <link th:href="@{/css/skins.css}" rel="stylesheet"/> -->
     <link th:href="@{/ruoyi/css/ry-ui.css?v=4.0.0}" rel="stylesheet"/>
+    
 </head>
 <body class="fixed-sidebar full-height-layout " style="overflow: hidden" >
 <div id="wrapper">
@@ -24,6 +25,9 @@
     <nav id="sidebar" class="navbar-default navbar-static-side bgt_left" role="navigation">
         <div >
             <ul class="nav" id="side-menu">
+            	<li >
+            		<span>系统管理（演示版）</span>
+            	</li>
             	<li >
             		<a class="menuItem fa fa-home" th:href="@{/system/main}"> 首页</a>
             	</li>
@@ -77,14 +81,9 @@
 	<!-- 收起按钮结束 -->
     
     <!--顶部header开始-->	
-	<div class="row bgt">
+	<!-- <div class="row bgt">
 		<nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
 			<span class="logo-lg">系统管理</span>
-			<!-- <div class="navbar-header">
-				<a class="navbar-minimalize minimalize-styl-2" style="color:#FFF;" href="#" title="收起菜单">
-					<i class="fa fa-bars"></i>
-				</a>
-			</div> -->
 			<ul class="nav navbar-top-links navbar-right ">
 				 
 				   <li class="p_top"><a  href="javascript:void(0)" id="fullScreen"><i class="fa fa-arrows-alt">全屏</i></a></li>
@@ -92,7 +91,7 @@
 				<li class="dropdown user-menu">
 					<a href="javascript:void(0)" class="dropdown-toggle" data-hover="dropdown">
 						<img th:src="(${user.avatar} == '') ? @{/img/profile.jpg} : @{${user.avatar}}" class="user-image">
-							<span class="hidden-xs"></span><!-- [[${user.userName}]] -->
+							<span class="hidden-xs"></span>
 					</a>
 					<ul class="dropdown-menu">
 						
@@ -113,7 +112,7 @@
 				</li>
 			</ul>
 		</nav>
-	</div>
+	</div> -->
     <!--顶部header开始-->	
 	
     <!--右侧部分开始-->

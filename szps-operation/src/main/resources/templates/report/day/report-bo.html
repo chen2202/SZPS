@@ -16,8 +16,8 @@
 			<div class="col-sm-12 search-collapse">
 			
 			<div class="onediv">
-				<a class="btn checked left"  onclick="toggleBtn(event, this)">水质净化厂</a>
-				<a class="btn right"  onclick="toggleBtn(event, this)">分散式污水处理设施</a>
+				<a class="btn  left"  onclick="toggleBtn(event, this)">水质净化厂</a>
+				<a class="btn checked right"  onclick="toggleBtn(event, this)">分散式污水处理设施</a>
 			</div>
 				
 			<div class="twodiv">
@@ -60,7 +60,7 @@
     </div>
     <th:block th:include="include :: footer" />
     <script th:inline="javascript">
-        var prefix = ctx + "op/report/day";
+        var prefix = ctx + "op/report/daybo";
         var viewFlag = [[${@permission.hasPermi('report:day:view')}]];
         var editFlag = [[${@permission.hasPermi('report:day:edit')}]];
         var removeFlag = [[${@permission.hasPermi('report:day:delete')}]];
@@ -103,7 +103,7 @@
 					title : '序号' 
 				},
 				{field: 'basin',title: '流域',},
-				{field: 'deptname',title: '水质净化厂',},
+				{field: 'deptname',title: '分散式污水处理设施',},
 				{field: 'darea',title: '辖区',},
 				{field: 'dscale',title: '设计规模',},
 				{field: 'tcapacity',title: '实际处理量',},

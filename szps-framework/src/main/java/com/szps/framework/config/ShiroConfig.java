@@ -185,7 +185,7 @@ public class ShiroConfig
         // 设置全局session超时时间
         manager.setGlobalSessionTimeout(expireTime * 60 * 1000);
         // 去掉 JSESSIONID
-        manager.setSessionIdUrlRewritingEnabled(false);
+        manager.setSessionIdUrlRewritingEnabled(true);
         // 定义要使用的无效的Session定时调度器
         manager.setSessionValidationScheduler(SpringUtils.getBean(SpringSessionValidationScheduler.class));
         // 是否定时检查session
@@ -319,6 +319,7 @@ public class ShiroConfig
         cookie.setPath(path);
         cookie.setHttpOnly(httpOnly);
         cookie.setMaxAge(maxAge * 24 * 60 * 60);
+        cookie.setSecure(true);
         return cookie;
     }
 

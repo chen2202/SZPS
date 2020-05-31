@@ -1,6 +1,5 @@
 package com.szps.web.controller.system;
 
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,20 +10,15 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.szps.common.config.Global;
 import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.utils.EncryptUtil;
 import com.szps.common.utils.ServletUtils;
 import com.szps.common.utils.StringUtils;
-import com.szps.framework.util.ShiroUtils;
-import com.szps.system.domain.SysMenu;
-import com.szps.system.domain.SysUser;
 import com.szps.system.service.ISysMenuService;
 
 /**
@@ -35,8 +29,8 @@ import com.szps.system.service.ISysMenuService;
 @Controller
 public class SysLoginController extends BaseController
 {
-	 @Autowired
-	    private ISysMenuService menuService;
+	@Autowired
+	private ISysMenuService menuService;
     @GetMapping("/login")
     public String login(HttpServletRequest request, HttpServletResponse response,String username, String password,String access_token,String refresh_token)
     {
@@ -66,14 +60,8 @@ public class SysLoginController extends BaseController
     }
     @PostMapping("/login")
     @ResponseBody
-    public AjaxResult ajaxLogin(String username, String password, Boolean rememberMe)
+    public AjaxResult ajaxLogin(HttpServletRequest request, HttpServletResponse response,String username, String password, Boolean rememberMe)
     {
-    	try {
-			
-    		ShiroUtils.clearCachedAuthorizationInfo();
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
     	if (rememberMe==null) {
 			rememberMe = false;
 		}
@@ -157,4 +145,5 @@ public class SysLoginController extends BaseController
     {
         return "error/unauth";
     }
+
 }

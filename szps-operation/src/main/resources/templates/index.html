@@ -26,6 +26,9 @@
         <div >
             <ul class="nav" id="side-menu">
             	<li >
+            		<span style="font-size: 15px;">业务运营管理系统（演示版）</span>
+            	</li>
+            	<li >
             		<a class="menuItem icon-10" th:href="@{/system/main}">首页</a>
             	</li>
                 <!--  <li class="active">
@@ -77,15 +80,10 @@
 	</div>
 	<!-- 收起按钮结束 -->
     
-    <!--顶部header开始-->	
+    <!--顶部header开始
 	<div class="row bgt">
 		<nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
 			<span class="logo-lg">业务运营管理系统</span>
-			<!-- <div class="navbar-header">
-				<a class="navbar-minimalize minimalize-styl-2" style="color:#FFF;" href="#" title="收起菜单">
-					<i class="fa fa-bars"></i>
-				</a>
-			</div> -->
 			<ul class="nav navbar-top-links navbar-right ">
 				 
 				   <li class="p_top"><a  href="javascript:void(0)" id="fullScreen"><i class="fa fa-arrows-alt">全屏</i></a></li>
@@ -93,7 +91,7 @@
 				<li class="dropdown user-menu">
 					<a href="javascript:void(0)" class="dropdown-toggle" data-hover="dropdown">
 						<img th:src="(${user.avatar} == '') ? @{/img/profile.jpg} : @{${user.avatar}}" class="user-image">
-							<span class="hidden-xs"></span><!-- [[${user.userName}]] -->
+							<span class="hidden-xs"></span>
 					</a>
 					<ul class="dropdown-menu">
 						
@@ -114,7 +112,7 @@
 				</li>
 			</ul>
 		</nav>
-	</div>
+	</div>-->	
     <!--顶部header开始-->	
 	
     <!--右侧部分开始-->
@@ -140,9 +138,19 @@
             <iframe class="RuoYi_iframe" name="iframe0" width="100%" height="100%" data-id="/system/main"
                     th:src="@{/system/main}" frameborder="0" seamless></iframe>
         </div>
-         <div class="footer">
+         <!-- <div class="footer">
             <div class="pull-right">© [[${copyrightYear}]]  Copyright </div>
-        </div> 
+        </div>  
+        #content-main {
+    height: calc(100% - 40px);
+    overflow: hidden;
+}
+
+.fixed-nav #content-main {
+    height: calc(100% - 40px);
+    overflow: hidden;
+}
+        -->
     </div>
     <!--右侧部分结束-->
 </div>
@@ -175,10 +183,10 @@ var ctx = [[@{/}]];
 		window.location.href="https://vx.newground.cn:9000/#/login";
 	}
 
-var thumb = document.getElementById('switch');
-var sidebar = document.getElementById('sidebar');
-var wrapper = document.getElementById('page-wrapper');
-thumb.onclick=function(){
+	var thumb = document.getElementById('switch');
+	var sidebar = document.getElementById('sidebar');
+	var wrapper = document.getElementById('page-wrapper');
+	thumb.onclick=function(){
 	//通过修改样式达到收起展开的效果
 	if(thumb.classList.value.indexOf('my-collapse') ==-1) {
 		thumb.classList.add("my-collapse");
@@ -194,7 +202,3 @@ thumb.onclick=function(){
 </script>
 </body>
 </html>
-
-<!-- background-image: url(../img/top1520_48.png);
-
-.nav>li.active -->

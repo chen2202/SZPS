@@ -709,6 +709,42 @@
             	});
                 layer.full(index);
             },
+            
+            openStat: function (title, url, width, height) {
+            	//如果是移动端，就使用自适应大小弹窗
+            	if (navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+            	    width = 'auto';
+            	    height = 'auto';
+            	}
+            	if ($.common.isEmpty(title)) {
+                    title = false;
+                }
+                if ($.common.isEmpty(url)) {
+                    url = "/404.html";
+                }
+                if ($.common.isEmpty(width)) {
+                	width =  ($(window).width() *0.8);
+                }
+                if ($.common.isEmpty(height)) {
+                	height = ($(window).height() *0.8);
+                }
+            	layer.open({
+            		type: 2,
+            		area: [width + 'px', height + 'px'],
+            		fix: false,
+            		//不固定
+            		maxmin: true,
+            		shade: 0.2,
+            		title: title,
+            		content: url,
+            	    // 弹层外区域关闭
+            		shadeClose: true,
+            	    cancel: function(index) {
+            	        return true;
+            	    }
+            	});
+            },
+            
             // 选卡页方式打开
             openTab: function (title, url) {
             	createMenuItem(url, title);
@@ -859,6 +895,13 @@
             	var url = $.common.isEmpty(id) ? $.table._option.createUrl.replace("{id}", "") : $.table._option.createUrl.replace("{id}", id);
                 return url;
             },
+            
+            // 
+            statistic: function(id) {
+            	var url = $.common.isEmpty(id) ? $.table._option.statUrl : $.table._option.statUrl.replace("{id}", id);
+                $.modal.openStat("运行情况概览", url);
+            },
+            
             // 修改信息
             edit: function(id) {
             	if($.common.isEmpty(id) && $.table._option.type == table_type.bootstrapTreeTable) {

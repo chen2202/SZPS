@@ -2,18 +2,17 @@ package com.szps.web.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.szps.common.config.Global;
 import com.szps.common.core.controller.BaseController;
-import com.szps.common.core.domain.AjaxResult;
 import com.szps.framework.util.ShiroUtils;
 import com.szps.system.domain.SysMenu;
 import com.szps.system.domain.SysUser;
@@ -31,7 +30,15 @@ public class IndexController extends BaseController {
 
 	// 系统首页
 	@GetMapping("/index")
-	public String OPindex(ModelMap mmap) {
+	public String OPindex(ModelMap mmap,HttpServletResponse response) {
+		
+		//禁止浏览器缓存
+		/*
+		 * response.setDateHeader("Expires", 0); 
+		 * response.setHeader("Cache-Control",* "no-cache, no-store"); 
+		 * response.setHeader("Pragma", "no-cache");
+		 * mmap.clear();
+		 */
 		// 取身份信息
 		SysUser user = ShiroUtils.getSysUser();
 		// 根据用户id取出菜单
@@ -42,7 +49,6 @@ public class IndexController extends BaseController {
 		mmap.put("menus", menus);
 		mmap.put("user", user);
 		mmap.put("copyrightYear", Global.getCopyrightYear());
-		mmap.put("demoEnabled", Global.isDemoEnabled());
 		return "index";
 	}
 
@@ -72,7 +78,7 @@ public class IndexController extends BaseController {
 	public ModelAndView logoutandredirect() {
 		// 取身份信息
 //        SysUser user = ShiroUtils.getSysUser();
-		return new ModelAndView(new RedirectView("https://vx.newground.cn:9000/#/login"));
+		return new ModelAndView(new RedirectView("https://vx.newground.cn:7000/#/login"));
 
 	}
 }

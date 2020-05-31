@@ -125,7 +125,7 @@
 	$(function(){
 		//ajax获取 各区排水户分布数量 统计数据
 		$.ajax({
-	            url: "/drainage/statistics/householdAdministrativeStatistics",
+	            url: "householdAdministrativeStatistics",
 	            type: 'POST',
 	            dataType: 'JSON',
 	            data: {},
@@ -182,7 +182,7 @@
 		
 		//ajax获取 全市排水户的污水类别 比例
 		$.ajax({
-			url: "/drainage/statistics/sewageCategoryStatistics",
+			url: "sewageCategoryStatistics",
 			type: 'POST',
 			dataType: 'JSON',
 			//data: {}
@@ -240,7 +240,7 @@
 		
 		//ajax获取各区排水证过期数量
 		$.ajax({
-			url: "/drainage/statistics/drainageLicenseExpire",
+			url: "drainageLicenseExpire",
 			type: "POST",
 			dataType: 'JSON',
 			success: function(result){
@@ -290,7 +290,7 @@
 		
 		//ajax获取各个行政区污水类别
 		$.ajax({
-	            url: "/drainage/statistics/adminiSewageStatistics",
+	            url: "adminiSewageStatistics",
 	            type: 'POST',
 	            dataType: 'JSON',
 	            //data: {},
@@ -367,7 +367,7 @@
 		
 		//ajax统计各行政区排水户记录状态
 		$.ajax({
-			url: "/drainage/statistics/recordStateStatistics",
+			url: "recordStateStatistics",
 			type: 'POST',
 			dataType: 'JSON',
 			//data:{},

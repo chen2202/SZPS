@@ -25,8 +25,8 @@ import com.szps.web.domain.report.DayReportW;
 import com.szps.web.service.report.IDayReportWService;
 
 @Controller
-@RequestMapping("/op/report/day")
-public class DayReportController extends BaseController {
+@RequestMapping("/op/report/daybo")
+public class DayReportBOController extends BaseController {
 	 @Autowired
 	private IDayReportWService reportService;
 	
@@ -36,7 +36,7 @@ public class DayReportController extends BaseController {
     @GetMapping()
     public String day()
     {
-        return prefix + "/report";
+        return prefix + "/report-bo";
     }
     
     /**
@@ -49,7 +49,7 @@ public class DayReportController extends BaseController {
     {
         startPage();
         if (null != dayReport) {
-        	dayReport.setDtype("a");
+        	dayReport.setDtype("b");
 		}
         List<DayReportW> list = reportService.selectList(dayReport);
         return getDataTable(list);
@@ -62,17 +62,10 @@ public class DayReportController extends BaseController {
     {
         return prefix + "/collect";
     }
-    
-    @GetMapping("/stat")
-    public String stat()
-    {
-        return prefix + "/stat";
-    }
-    
     @GetMapping("/add")
     public String add()
     {
-        return prefix + "/add";
+        return prefix + "/add-bo";
     }
 
     /**
@@ -92,7 +85,7 @@ public class DayReportController extends BaseController {
 		 */
     	dayReport.setCreateBy(user.getLoginName());
     	dayReport.setDept_id(user.getDeptId());
-    	dayReport.setDtype("a");
+    	dayReport.setDtype("b");
     	reportService.insert(dayReport);
         return toAjax(1);
     }

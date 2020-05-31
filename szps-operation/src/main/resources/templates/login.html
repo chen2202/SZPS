@@ -17,35 +17,22 @@
     <link rel="shortcut icon" href="../static/favicon.ico" th:href="@{favicon.ico}"/>
     <style type="text/css">label.error { position:inherit;  }</style>
     <script>
-        if(window.top!==window.self){window.top.location=window.location};
+       	HttpSession session = request.getSession(false);
+		if(session!=null){ //让cookie过期
+			session.invalidate();
+			Cookie cookie = request.getCookies()[0];//获取cookie
+			cookie.setMaxAge(0);//让cookie过期
+		}
+		request.getSession(true);
     </script>
 </head>
+<script th:inline="javascript"> var ctx = [[@{/}]]; var captchaType = [[${captchaType}]]; </script>
 
 <body class="signin">
-
+<!-- auto begin -->
     <div class="signinpanel">
         <div class="row">
             <div class="col-sm-7">
-                <div class="signin-info">
-                    <div class="logopanel m-b">
-                        <h1><img alt="[ 排水信息系统 ]" src="../static/logo.png" th:src="@{/logo.png}"></h1>
-                    </div>
-                    <div class="m-b"></div>
-                    
-                    <!-- <h2><strong>排水信息系统</strong></h2> -->
-                     <ul class="m-b">
-                    <!--    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 在线监测</li>
-                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 数据采集</li>
-                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 业务运营</li>
-                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 管网模型管理</li>
-                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 智能分析决策</li>
-                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> SCADA监管</li>
-                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 设施地理信息</li>
-                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 物联网设备适配</li>
-                        -->
-                        
-                    </ul> 
-                </div>
             </div>
             <div class="col-sm-5">
                 <form id="signupForm">
@@ -69,27 +56,10 @@
                 </form>
             </div>
         </div>
-        <div class="signup-footer">
-            <div class="pull-left">
-                &copy; 2020 All Rights Reserved.  <br>
-            </div>
-        </div>
     </div>
-<script th:inline="javascript"> var ctx = [[@{/}]]; var captchaType = [[${captchaType}]]; </script>
     
-
-    
-<!-- 全局js -->
-<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
-<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
-<!-- 验证插件 -->
-<script src="../static/ajax/libs/validate/jquery.validate.min.js" th:src="@{/ajax/libs/validate/jquery.validate.min.js}"></script>
-<script src="../static/ajax/libs/validate/messages_zh.min.js" th:src="@{/ajax/libs/validate/messages_zh.min.js}"></script>
-<script src="../static/ajax/libs/layer/layer.min.js" th:src="@{/ajax/libs/layer/layer.min.js}"></script>
-<script src="../static/ajax/libs/blockUI/jquery.blockUI.js" th:src="@{/ajax/libs/blockUI/jquery.blockUI.js}"></script>
-<script src="../static/ruoyi/js/ry-ui.js" th:src="@{/ruoyi/js/ry-ui.js?v=3.4.0}"></script>
-<script src="../static/ruoyi/login.js" th:src="@{/ruoyi/login.js}"></script>
-    <!--   <script>
+ <script>
+       <!--
         // 获取登录判断条件 "username","password","access_token","refresh_token" 
         var username=sessionStorage.getItem("username");
         var password=sessionStorage.getItem("password");
@@ -107,12 +77,26 @@
                 if (r.code == 0) {
                     location.href = ctx + 'index';
                 } else {
-                	//location.href = ctx + 'redirect';
-                	//window.location.href="https://vx.newground.cn:6104/redirect";
                 	window.location.href="https://vx.newground.cn:9000/#/login";
                 }
             }
-        });    -->
+        }); 
+       -->
     </script> 
+     <!-- auto end -->
+  
+
+    
+<!-- 全局js -->
+<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+<!-- 验证插件 -->
+<script src="../static/ajax/libs/validate/jquery.validate.min.js" th:src="@{/ajax/libs/validate/jquery.validate.min.js}"></script>
+<script src="../static/ajax/libs/validate/messages_zh.min.js" th:src="@{/ajax/libs/validate/messages_zh.min.js}"></script>
+<script src="../static/ajax/libs/layer/layer.min.js" th:src="@{/ajax/libs/layer/layer.min.js}"></script>
+<script src="../static/ajax/libs/blockUI/jquery.blockUI.js" th:src="@{/ajax/libs/blockUI/jquery.blockUI.js}"></script>
+<script src="../static/ruoyi/js/ry-ui.js" th:src="@{/ruoyi/js/ry-ui.js?v=3.4.0}"></script>
+<script src="../static/ruoyi/login.js" th:src="@{/ruoyi/login.js}"></script>
+       
 </body>
 </html>

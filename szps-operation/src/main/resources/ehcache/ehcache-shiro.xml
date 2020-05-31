@@ -31,7 +31,7 @@
            diskPersistent="false"
            timeToLiveSeconds="0"
            timeToIdleSeconds="0"
-           statistics="true">
+           statistics="false">
      </cache>
 
 </ehcache>

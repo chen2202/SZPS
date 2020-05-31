@@ -15,8 +15,8 @@
 		<div class="row">
 			<div class="col-sm-12 search-collapse">
 				<div class="onediv">
-					<a class="btn checked left"  onclick="toggleBtn(event, this)">水质净化厂</a>
-					<a class="btn  right"  onclick="toggleBtn(event, this)">分散式污水处理设施</a>
+					<a class="btn  left"  onclick="toggleBtn(event, this)">水质净化厂</a>
+					<a class="btn checked right"  onclick="toggleBtn(event, this)">分散式污水处理设施</a>
 				</div>
 					
 				<div class="twodiv">
@@ -69,7 +69,7 @@
     <th:block th:include="include :: footer" />
     <th:block th:include="include :: datetimepicker-js" />
     <script th:inline="javascript">
-        var prefix = ctx + "op/report/month";
+        var prefix = ctx + "op/report/month-bo";
         var editFlag = [[${@permission.hasPermi('report:month:edit')}]];
         var removeFlag = [[${@permission.hasPermi('report:month:delete')}]];
         

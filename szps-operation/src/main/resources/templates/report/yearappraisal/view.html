@@ -8,12 +8,16 @@
 		<div class="row">
 			<div class="col-sm-12 search-collapse">
 				<form id="apply-form">
-				<input name="deptId" type="hidden" id="treeId"/>
+				<input name="deptId" type="hidden" id="treeIdBrf"/>
 					<div class="select-list">
 						<ul>
 							<li>
+		                        <label >辖区：</label>
+                            	<input name="darea"  id="darea" type="text" placeholder="" >
+							</li>
+							<li>
 		                        <label >水质净化厂名称：</label>
-                            	<input name="deptname" onclick="selectDeptTree()" id="treeName" type="text" placeholder="" >
+                            	<input name="deptname" onclick="selectBrfTree()" id="treeNameBrf" type="text" placeholder="" >
 							</li>
 							<li class="select-time">
 								<label>年度： </label>
@@ -32,9 +36,9 @@
 		        <a class="btn btn-success" onclick="$.operate.addFull()" shiro:hasPermission="report:yearappraisal:add">
 		            <i class="fa fa-plus"></i> 新增
 		        </a>
-		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="report:yearappraisal:delete">
+<!-- 		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="report:yearappraisal:delete">
 		            <i class="fa fa-remove"></i> 删除
-		        </a>
+		        </a> -->
 		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="report:yearappraisal:export">
 		            <i class="fa fa-download"></i> 导出
 		        </a> -->
@@ -82,141 +86,55 @@
                 updateUrl: prefix + "/edit/{id}",
                 removeUrl: prefix + "/remove",
                 
-                modalName: "考核总评表",
-                columns: [{
-		            checkbox: true
-		        },
-		        {
-		        	field : 'id', 
-		        	title : '序号' 
-		        },
+                modalName: "水质净化厂年度考核评分表",
+                columns: [
 		        {
 		        	field: 'deptname',
 		        	title: '水质净化厂名称',
 		        },
 		        {
-		        	field : 'dyear', 
-		        	title : '年度' 
+		        	field : 'darea', 
+		        	title : '辖区' 
 		        },
 		        {
-		        	field: 'project1',
-		        	title: '检查项目',
+		        	field: 'opd',
+		        	title: '运营单位',
 		        },
 		        {
-		        	field: 'content1',
-		        	title: '检查内容',
+		        	field: 'dyear',
+		        	title: '年度',
 		        },
 		        {
-		        	field: 'shortage1',
-		        	title: '不足概述',
+		        	field: 'total',
+		        	title: '总分',
 		        },
 		        {
-		        	field: 'strongpoint1',
-		        	title: '亮点概述',
+		        	field: 'data1_t',
+		        	title: '生产及运行管理(47)',
 		        },
 		        {
-		        	field: 'overall1',
-		        	title: '总体评价',
+		        	field: 'data2_t',
+		        	title: '设备及设施管理(8)',
 		        },
 		        {
-		        	field: 'project2',
-		        	title: '检查项目',
+		        	field: 'data3_t',
+		        	title: '化验及水质管理(15)',
 		        },
 		        {
-		        	field: 'content2',
-		        	title: '检查内容',
+		        	field: 'data4_t',
+		        	title: '安全管理(10)',
 		        },
 		        {
-		        	field: 'shortage2',
-		        	title: '不足概述',
+		        	field: 'data5_t',
+		        	title: '环境管理(5)',
 		        },
 		        {
-		        	field: 'strongpoint2',
-		        	title: '亮点概述',
+		        	field: 'data6_t',
+		        	title: '财务及成本管理(5)',
 		        },
 		        {
-		        	field: 'overall2',
-		        	title: '总体评价',
-		        },
-		        {
-		        	field: 'project3',
-		        	title: '检查项目',
-		        },
-		        {
-		        	field: 'content3',
-		        	title: '检查内容',
-		        },
-		        {
-		        	field: 'shortage3',
-		        	title: '不足概述',
-		        },
-		        {
-		        	field: 'strongpoint3',
-		        	title: '亮点概述',
-		        },
-		        {
-		        	field: 'overall3',
-		        	title: '总体评价',
-		        },
-		        {
-		        	field: 'project4',
-		        	title: '检查项目',
-		        },
-		        {
-		        	field: 'content14',
-		        	title: '检查内容',
-		        },
-		        {
-		        	field: 'shortage4',
-		        	title: '不足概述',
-		        },
-		        {
-		        	field: 'strongpoint4',
-		        	title: '亮点概述',
-		        },
-		        {
-		        	field: 'overall4',
-		        	title: '总体评价',
-		        },
-		        {
-		        	field: 'project5',
-		        	title: '检查项目',
-		        },
-		        {
-		        	field: 'content5',
-		        	title: '检查内容',
-		        },
-		        {
-		        	field: 'shortage5',
-		        	title: '不足概述',
-		        },
-		        {
-		        	field: 'strongpoint5',
-		        	title: '亮点概述',
-		        },
-		        {
-		        	field: 'overall5',
-		        	title: '总体评价',
-		        },
-		        {
-		        	field: 'project6',
-		        	title: '检查项目',
-		        },
-		        {
-		        	field: 'content6',
-		        	title: '检查内容',
-		        },
-		        {
-		        	field: 'shortage6',
-		        	title: '不足概述',
-		        },
-		        {
-		        	field: 'strongpoint6',
-		        	title: '亮点概述',
-		        },
-		        {
-		        	field: 'overall6',
-		        	title: '总体评价',
+		        	field: 'data7_t',
+		        	title: '档案及信息管理(10)',
 		        },
 		        {
                     title: '操作',
@@ -231,6 +149,31 @@
             };
             $.table.init(options);
         });
+        
+        
+        
+	 function selectBrfTree() {
+        	
+        	var treeId = $("#treeIdBrf").val();
+        	var brfId = $.common.isEmpty(treeId) ? "100" : $("#treeIdBrf").val();
+        	var url = ctx + "system/brf/selectTree/" + brfId;
+			var options = {
+				title: '选择',
+				width: "380",
+				url: url,
+				callBack: doSubmitBrf
+			};
+			$.modal.openOptions(options);
+		}
+        function doSubmitBrf(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+			//if ($.tree.notAllowParents(tree)) {
+				var body = layer.getChildFrame('body', index);
+    			$("#treeIdBrf").val(body.find('#treeIdBrf').val());
+    			$("#treeNameBrf").val(body.find('#treeNameBrf').val());
+    			layer.close(index);
+			//}
+		}
     </script>
 </body>
 </html>

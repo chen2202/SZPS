@@ -322,14 +322,15 @@
 		        },
 		        {
 		        	field: 'option',
-		            title: '操作',
+		            title: '  操作  ',
 		            align: 'center',
 		            formatter: function(value, row, index) {
 		                var actions = [];
+		                actions.push(' <a>&nbsp;&nbsp;&nbsp;</a> ');
 		              	//用编辑页面来显示排水户的详情信息
 		                actions.push('<a class="' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.household_id + '\')">详情</a>');
-		              	actions.push(' <a>|</a> ');
-		              	actions.push('<a href="">定位</a>');
+		              	actions.push(' <a>&nbsp;&nbsp;&nbsp;</a> ');
+		              	//actions.push('<a href="">定位</a>');
 		                return actions.join('');
 		            }
 		        }]

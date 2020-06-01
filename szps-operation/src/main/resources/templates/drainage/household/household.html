@@ -450,13 +450,21 @@
 		              	//用编辑页面来显示排水户的详情信息
 		                actions.push('<a class="' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.household_id + '\')">详情</a>');
 		              	actions.push(' <a>|</a> ');
-		              	actions.push('<a href="/map/index2?X=' + row.latitude + '&Y=' + row.longitude + '" target="">定位</a>');
+		              	//actions.push('<a href="/map/index2?X=' + row.latitude + '&Y=' + row.longitude + '">定位</a>');
+		              	actions.push('<a href="javascript:void(0)" onclick="opengis(\'' + row.latitude  + '\',\''+ row.longitude + '\')">定位</a>');
 		                return actions.join('');
 		            }
 		        }]
 		    };
 		    $.table.init(options);
 		});
+		
+		//定位跳转到 地图服务 标签
+		function opengis(X, Y) {      
+        	$(window.parent.document.getElementById("gis")).parent().siblings().removeClass('active');
+        	$(window.parent.document.getElementById("gis")).parent().addClass('active');
+        	window.parent.document.getElementById('content-iframe').src="/map/index2?X="+X+"&Y="+Y;
+        }
 		
 		/* 排水户信息-查看（某排水户的所有排水口） */
 		function query(household_name,household_id) {

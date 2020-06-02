@@ -25,10 +25,8 @@ public interface EXMapper {
    // int deleteTaskByIds(Long[] ids);
    List<EX_GDBS_SB> selectTaskBytime(String BYZD1);
    List<EX_GDBS_SB> selectTaskWaiting(EX_GDBS_SB exGdbsSb);
-   List<EX_GDBS_SB> selectTaskDone();
+   List<EX_GDBS_SB> selectTaskDone(EX_GDBS_SB exGdbsSb);
 
 
-
-
-
+    int updateEx(EX_GDBS_SB ex);
 }

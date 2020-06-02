@@ -30,6 +30,8 @@ public class TbTask {
 
     private String taskCheckTime;
 
+    private String taskFile;
+
 
 
 
@@ -138,4 +140,11 @@ public class TbTask {
         this.ruleName = ruleName;
     }
 
+    public String getTaskFile() {
+        return taskFile;
+    }
+
+    public void setTaskFile(String taskFile) {
+        this.taskFile = taskFile;
+    }
 }

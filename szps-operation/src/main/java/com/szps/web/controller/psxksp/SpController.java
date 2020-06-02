@@ -1,21 +1,37 @@
 package com.szps.web.controller.psxksp;
 
 
+import com.szps.common.annotation.Log;
+import com.szps.common.config.Global;
 import com.szps.common.core.controller.BaseController;
+import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
+import com.szps.common.enums.BusinessType;
+import com.szps.common.utils.file.FileUtils;
+import com.szps.web.controller.common.CommonController;
 import com.szps.web.domain.psxksp.EX_GDBS_SB;
 import com.szps.web.domain.psxksp.test1;
 import com.szps.web.domain.psxksp.test2;
 import com.szps.web.domain.supervise.TbEnclosure;
+import com.szps.web.domain.supervise.TbStaff;
+import com.szps.web.domain.supervise.TbTask;
 import com.szps.web.service.psxksp.EXService;
 import com.szps.web.service.supervise.EnclosureService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -29,6 +45,8 @@ public class SpController extends BaseController {
     private EnclosureService enclosureService;
 
     private String prefix = "op/permit";
+
+    private static final Logger log = LoggerFactory.getLogger(CommonController.class);
 
     @GetMapping("/waiting")
     public String dataview()
@@ -207,13 +225,54 @@ public class SpController extends BaseController {
     @RequiresPermissions("op:permit:waiting")
     @PostMapping("/waiting")
     @ResponseBody
-    public TableDataInfo waiting(EX_GDBS_SB exGdbsSb)
-    {
+    public TableDataInfo waiting(EX_GDBS_SB exGdbsSb)  {
+
         startPage();
+        List<EX_GDBS_SB> list = exService.selectTaskDone(exGdbsSb);
+        List<EX_GDBS_SB> lists = new ArrayList<EX_GDBS_SB>();
 
-        List<EX_GDBS_SB> list = exService.selectTaskWaiting(exGdbsSb);
+        String remindtime = exGdbsSb.getOkTime();
+        String endTime="";
+        if (remindtime != null && !Objects.equals(remindtime, ""))
+        {
+        int t = Integer.parseInt(remindtime);
+        Date now = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(now);
+        c.add(Calendar.MONTH, t);
+        Date newDate = c.getTime();
+        endTime=DATE_FORMAT.format(newDate);
 
-        return getDataTable(list);
+            for (int i=0;i<list.size();i++){
+
+                String []okTime=list.get(i).getBYZD1().split("~");
+                //list.get(i).setBeginTime(okTime[1]);
+                SimpleDateFormat  dateFormat=new SimpleDateFormat("yyyy-MM-dd");
+                Date dateTime1= null;
+                Date dateTime2= null;
+                try {
+                    System.out.println(endTime);
+                    dateTime1 = dateFormat.parse(endTime);
+                    dateTime2=dateFormat.parse(okTime[1]);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                if(dateTime2.compareTo(dateTime1)<0)
+                {
+                    lists.add(list.get(i));
+                }
+
+            }
+        }else {
+            lists=list;
+        }
+
+
+
+
+
+        return getDataTable(lists);
     }
 
 
@@ -222,11 +281,11 @@ public class SpController extends BaseController {
     {
 
 
-        mmap.addAttribute("look", sblsh);
-        mmap.put("look", sblsh);
+        mmap.put("look", exService.selectById(sblsh));
 
-        return prefix + "/smallmain";
+        return prefix + "/done";
     }
+
 
     @RequiresPermissions("op:permit:done")
     @PostMapping("/done")
@@ -234,19 +293,19 @@ public class SpController extends BaseController {
     public TableDataInfo listDone(EX_GDBS_SB exGdbsSb)
     {
         startPage();
-        List<EX_GDBS_SB> list = exService.selectTaskDone();
+        List<EX_GDBS_SB> list = exService.selectTaskDone(exGdbsSb);
 
         return getDataTable(list);
     }
 
-    @GetMapping("/editDone/{sblsh}")
+    @GetMapping("/look/{sblsh}")
     public String editDone(@PathVariable("sblsh") String sblsh, ModelMap mmap)
     {
 
 
         mmap.put("look", exService.selectById(sblsh));
 
-        return prefix + "/Donelooking";
+        return prefix + "/Tablelooking";
     }
 
 
@@ -306,4 +365,57 @@ public class SpController extends BaseController {
         List<EX_GDBS_SB> list = exService.selectTaskAll();
         return getDataTable(list);
     }
+
+  /*  @PostMapping("/location")
+    @ResponseBody
+    public AjaxResult gis( HttpServletRequest request,HttpServletResponse response) {
+        String b=request.getParameter("sblsh");
+        System.out.println(b);
+        EX_GDBS_SB a=exService.selectById(b);
+
+        Map<Object,Object> data = new HashMap<Object, Object>();
+        data.put("WD1", a.getWD1());
+        data.put("WD2", a.getWD2());
+        data.put("JD1", a.getJD1());
+        data.put("JD2",a.getJD2());
+        return AjaxResult.success("success",data);
+
+    }*/
+
+
+    @GetMapping("/download")
+    public void fileDownload(HttpServletResponse response, HttpServletRequest request)
+    {
+        String sblsh=request.getParameter("sblsh");
+        EX_GDBS_SB tb=exService.selectById(sblsh);
+        String fileName1=tb.getFilePath();
+
+        String fileName=fileName1.replace("/profile"+ File.separator+"upload","");
+        try
+        {
+            String filePath = Global.getUploadPath()+ fileName;
+            response.setCharacterEncoding("utf-8");
+            response.setContentType("multipart/form-data");
+            response.setHeader("Content-Disposition",
+                    "attachment;fileName=" + FileUtils.setFileDownloadHeader(request, fileName));
+
+            FileUtils.writeBytes(filePath, response.getOutputStream());
+
+        }
+        catch (Exception e)
+        {
+            log.error("下载文件失败", e);
+        }
+    }
+
+
+    @PostMapping("/edit")
+    @ResponseBody
+    public AjaxResult editSave(@Validated EX_GDBS_SB ex)
+    {
+        return toAjax(exService.updateEx(ex));
+    }
+
+
+
 }

@@ -50,5 +50,8 @@ public interface TaskService
     public int selectTaskCountAll();
     public int selectTaskCountComplete();
 
+    public int selectTaskCountAllWithKey(TbTask task);
+    public int selectTaskCountCompleteWithKey(TbTask task);
+
     public int selectMonthTaskCount(String taskRegion, String taskStreet, String taskTime);
 }

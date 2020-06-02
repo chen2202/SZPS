@@ -12,6 +12,8 @@
     <result column="HOUSE_PHONE" property="housePhone" jdbcType="VARCHAR" />
     <result column="HOUSE_FLAG" property="houseFlag" jdbcType="VARCHAR" />
     <result column="HOUSE_TIME" property="houseTime" jdbcType="VARCHAR" />
+    <result column="HOUSE_ITEM" property="houseItem" jdbcType="VARCHAR" />
+
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from TB_HOUSE
@@ -19,11 +21,12 @@
   </delete>
   <insert id="insert" parameterType="com.szps.web.domain.supervise.TbHouse" >
     insert into TB_HOUSE (HOUSE_NUMBER, HOUSE_NAME, HOUSE_REGION, HOUSE_BEGIN, HOUSE_END, HOUSE_ROLE,
-    HOUSE_RULE, HOUSE_PHONE, HOUSE_FLAG,HOUSE_TIME
+    HOUSE_RULE, HOUSE_PHONE, HOUSE_FLAG,HOUSE_TIME,HOUSE_ITEM
       )
     values (#{houseNumber,jdbcType=VARCHAR}, #{houseName,jdbcType=VARCHAR}, #{houseRegion,jdbcType=VARCHAR}, 
       #{houseBegin,jdbcType=VARCHAR}, #{houseEnd,jdbcType=VARCHAR}, #{houseRole,jdbcType=VARCHAR},
-      #{houseRule,jdbcType=VARCHAR}, #{housePhone,jdbcType=VARCHAR}, #{houseFlag,jdbcType=VARCHAR},#{houseTime,jdbcType=VARCHAR}
+      #{houseRule,jdbcType=VARCHAR}, #{housePhone,jdbcType=VARCHAR}, #{houseFlag,jdbcType=VARCHAR},#{houseTime,jdbcType=VARCHAR},
+      #{houseItem,jdbcType=VARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.szps.web.domain.supervise.TbHouse" >
@@ -36,18 +39,19 @@
       HOUSE_RULE = #{houseRule,jdbcType=VARCHAR},
       HOUSE_PHONE = #{housePhone,jdbcType=VARCHAR},
       HOUSE_FLAG =#{houseFlag,jdbcType=VARCHAR},
-      HOUSE_TIME=#{houseTime,jdbcType=VARCHAR}
+      HOUSE_TIME=#{houseTime,jdbcType=VARCHAR},
+      HOUSE_ITEM=#{houseItem,jdbcType=VARCHAR}
     where HOUSE_NUMBER = #{houseNumber,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select HOUSE_NUMBER, HOUSE_NAME, HOUSE_REGION, HOUSE_BEGIN, HOUSE_END, HOUSE_ROLE,
-    HOUSE_RULE, HOUSE_PHONE, HOUSE_FLAG,HOUSE_TIME
+    HOUSE_RULE, HOUSE_PHONE, HOUSE_FLAG,HOUSE_TIME,HOUSE_ITEM
     from TB_HOUSE
     where HOUSE_NUMBER = #{houseNumber,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
     select HOUSE_NUMBER, HOUSE_NAME, HOUSE_REGION, HOUSE_BEGIN, HOUSE_END, HOUSE_ROLE,
-    HOUSE_RULE, HOUSE_PHONE, HOUSE_FLAG,HOUSE_TIME
+    HOUSE_RULE, HOUSE_PHONE, HOUSE_FLAG,HOUSE_TIME,HOUSE_ITEM
     from TB_HOUSE
   </select>
 
@@ -58,7 +62,7 @@
 
   <select id="selectByRegionAndStreet" resultMap="BaseResultMap">
     select HOUSE_NUMBER, HOUSE_NAME, HOUSE_REGION, HOUSE_STREET, HOUSE_BASIN, HOUSE_ROLE,
-    HOUSE_TYPE, HOUSE_POINT, HOUSE_CONNECTING, HOUSE_PHONE,HOUSE_FLAG,HOUSE_TIME
+    HOUSE_TYPE, HOUSE_POINT, HOUSE_CONNECTING, HOUSE_PHONE,HOUSE_FLAG,HOUSE_TIME,HOUSE_ITEM
     from TB_HOUSE
     where TB_HOUSE.HOUSE_FLAG = '0'
       <if test="houseRegion != null and houseRegion != ''">
@@ -73,15 +77,19 @@
 
   <select id="selectHouseList" parameterType="com.szps.web.domain.supervise.TbHouse" resultMap="BaseResultMap">
     select HOUSE_NUMBER, HOUSE_NAME, HOUSE_REGION, HOUSE_BEGIN, HOUSE_END, HOUSE_ROLE,
-    HOUSE_RULE, HOUSE_PHONE, HOUSE_FLAG,HOUSE_TIME
+    HOUSE_RULE, HOUSE_PHONE, HOUSE_FLAG,HOUSE_TIME,HOUSE_ITEM
     from TB_HOUSE
 
     <where>
-      <if test="houseName != null and houseName != ''">
-        TB_HOUSE.HOUSE_NAME like concat(concat('%',#{houseName}),'%')
-      </if>
       <if test="houseRule != null and houseRule != ''">
-        AND TB_HOUSE.HOUSE_RULE = #{houseRule}
+         TB_HOUSE.HOUSE_RULE = #{houseRule}
+      </if>
+      <if test="houseName != null and houseName != ''">
+        AND TB_HOUSE.HOUSE_NAME like concat(concat('%',#{houseName}),'%')
+      </if>
+
+      <if test="houseItem != null and houseItem != ''">
+        AND TB_HOUSE.HOUSE_ITEM like concat(concat('%',#{houseItem}),'%')
       </if>
     </where>
   </select>
@@ -101,7 +109,7 @@
 
   <select id="selectHouseCheckList" parameterType="com.szps.web.domain.supervise.TbHouse" resultMap="BaseResultMap">
     select HOUSE_NUMBER, HOUSE_NAME, HOUSE_REGION, HOUSE_BEGIN, HOUSE_END, HOUSE_ROLE,
-    HOUSE_RULE, HOUSE_PHONE, HOUSE_FLAG,HOUSE_TIME
+    HOUSE_RULE, HOUSE_PHONE, HOUSE_FLAG,HOUSE_TIME,HOUSE_ITEM
     from TB_HOUSE
 
     <where>

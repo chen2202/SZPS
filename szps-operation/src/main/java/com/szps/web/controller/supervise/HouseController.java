@@ -97,8 +97,11 @@ public class HouseController extends BaseController {
     @PostMapping("/edit")
     @ResponseBody
     public AjaxResult editSave(@Validated TbHouse tbHouse)
-    {
-
+    {           String houseTime="";
+                 String a=tbHouse.getHouseBegin();
+                String b=tbHouse.getHouseEnd();
+                 houseTime=a+"~"+b;
+             tbHouse.setHouseTime(houseTime);
             return toAjax(houseService.updateHouse(tbHouse));
 
     }

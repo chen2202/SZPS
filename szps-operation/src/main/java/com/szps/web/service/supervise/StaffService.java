@@ -44,6 +44,6 @@ public interface StaffService
 
     public  int checkStaff(String staffNumber);
 
-    public List<TbStaff> selectStaffOne(String staffArea);
-    public List<TbStaff> selectStaffSecond(String staffArea);
+    public List<TbStaff> selectStaffOne();
+    public List<TbStaff> selectStaffSecond();
 }

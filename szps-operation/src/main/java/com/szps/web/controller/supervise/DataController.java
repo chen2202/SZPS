@@ -6,6 +6,7 @@ import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
+import com.szps.framework.web.domain.server.Sys;
 import com.szps.web.domain.supervise.*;
 import com.szps.web.service.supervise.*;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -18,10 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 
 @Controller
@@ -73,9 +71,17 @@ public class DataController extends BaseController {
             {
                 //System.out.println(tbTaskStaffs.get(k));
                 TbStaff staff=staffService.selectStaffById(tbTaskStaffs.get(k).getStaffNumber());
-                if(staff!=null)
+                if(staff!=null&& Objects.equals(staff.getStaffPost(), "一类"))
                   tbStaffs.add(staff);
             }
+            for(int k=0;k<tbTaskStaffs.size();k++)
+            {
+                //System.out.println(tbTaskStaffs.get(k));
+                TbStaff staff=staffService.selectStaffById(tbTaskStaffs.get(k).getStaffNumber());
+                if(staff!=null&& Objects.equals(staff.getStaffPost(), "二类"))
+                    tbStaffs.add(staff);
+            }
+
             list.get(i).setTbStaffList(tbStaffs);
             list.get(i).setTbHouse(tbHouse);
         }
@@ -83,7 +89,7 @@ public class DataController extends BaseController {
         return getDataTable(list);
     }
 
-
+     //双随机
     @RequiresPermissions("supervise:datas:Taskadd")
     @Log(title = "任务库管理", businessType = BusinessType.INSERT)
     @PostMapping("/Taskadd")
@@ -94,32 +100,27 @@ public class DataController extends BaseController {
         ArrayList<String> listnew = new ArrayList<String>();
 
 
-        //拿到抽取事项
-        String scale=ruleService.selectRuleByRuleNameScale(houseRule);
 
 
-        String[] strs = scale.split(",|，");
-        //次数
 
-        //String times=strs[1].replace("次","");
-        //比例
-        String bl= strs[0].replace("%","");
+
 
 
         //拿到相应抽取事项的检查对象（满足抽取事项，且没被抽查过）
 
+
+
+
+        int blint= Integer.parseInt(value3);
+
         List<TbHouse> list=houseService.selectHouseCheckList(houseRule);
         if(list.size()==0){
-             return AjaxResult.error("暂时无可抽查的任务");
+            return AjaxResult.error("暂时无可抽查的任务");
         }
-        double a= Integer.valueOf(bl)/100.0;
-
-        int blint= (int) (a*list.size());
-        if(blint<1)
+        else if(list.size()<blint)
         {
-            blint=1;
+            return AjaxResult.error("抽查数量大于可抽查的任务数，当前可抽查的任务数为"+list.size());
         }
-
 
             ArrayList<String> list_for_random = new ArrayList<String>();
             int max=list.size();
@@ -159,7 +160,7 @@ public class DataController extends BaseController {
            task.setTaskFlag("未完成");
 
            TbHouse house=houseService.selectHouseById(listnew.get(i));
-           String address=house.getHouseRegion().substring(3,6);
+           //String address=house.getHouseRegion().substring(3,6);
 
 
            house.setHouseFlag("是");
@@ -168,7 +169,7 @@ public class DataController extends BaseController {
 
                //一类人员随机
 
-                   List<TbStaff> staff=staffService.selectStaffOne(address);
+                   List<TbStaff> staff=staffService.selectStaffOne();
                    ArrayList<String> list_for_random2 = new ArrayList<String>();
                    ArrayList<String> listnew2 = new ArrayList<String>();
                    int max2=staff.size();
@@ -199,7 +200,7 @@ public class DataController extends BaseController {
 
                //二类人员随机
 
-                   List<TbStaff> staff1=staffService.selectStaffSecond(address);
+                   List<TbStaff> staff1=staffService.selectStaffSecond();
                    ArrayList<String> list_for_random3 = new ArrayList<String>();
                    ArrayList<String> listnew3 = new ArrayList<String>();
                    int max3=staff1.size();

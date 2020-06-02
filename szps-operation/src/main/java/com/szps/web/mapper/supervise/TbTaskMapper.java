@@ -32,4 +32,6 @@ public interface TbTaskMapper {
 
     int selectTaskCountAll();
     int selectTaskCountComplete();
+    int selectTaskCountAllWithKey(TbTask task);
+    int selectTaskCountCompleteWithKey(TbTask task);
 }

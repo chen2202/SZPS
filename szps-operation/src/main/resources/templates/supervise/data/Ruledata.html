@@ -14,7 +14,7 @@
 				<div class="select-list">
 					<ul>
 						<li>
-							事项名称：<input type="search" name="ruleName"  placeholder="请输入事项名称" maxlength="11"/>
+							搜索：<input type="search" name="ruleName"  placeholder="请输入关键字" maxlength="11"/>
 						</li>
 						<li>
 							<a class="btn btn-main btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
@@ -82,34 +82,35 @@
                     title: '规则编号',
                     visible:false
                 },
-                {
+                /*{
                     field: 'ruleType',
                     title: '事项类别'
 
-                },
+                },*/
                 {
                     field: 'ruleName',
                     title: '事项名称'
 
                 },
                 {
-                    field: 'ruleBasis',
-                    title: '抽查依据'
+                    field: 'ruleMain',
+                    title: '责任单位'
 
                 },
-                {
+
+                /*{
                     field: 'ruleContent',
                     title: '抽查内容'
 
-                },
+                },*/
                 {
                     field: 'ruleScale',
-                    title: '比例和频次'
+                    title: '抽查比例'
 
                 },
                 {
-                    field: 'ruleMain',
-                    title: '抽查主体'
+                    field: 'ruleBasis',
+                    title: '抽查依据'
 
                 },
                 {

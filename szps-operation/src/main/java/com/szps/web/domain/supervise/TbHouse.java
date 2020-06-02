@@ -22,6 +22,8 @@ public class TbHouse {
 
     private String houseRule;
 
+    private  String houseItem;
+
 
     public String getHouseNumber() {
         return houseNumber;
@@ -105,5 +107,13 @@ public class TbHouse {
 
     public void setHouseRule(String houseRule) {
         this.houseRule = houseRule;
+    }
+
+    public String getHouseItem() {
+        return houseItem;
+    }
+
+    public void setHouseItem(String houseItem) {
+        this.houseItem = houseItem;
     }
 }

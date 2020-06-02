@@ -23,13 +23,13 @@
 						</select>
 						</li>
 						<li>
-							执法人员数（一类）：<input type="text" name="value1" placeholder="请输入数值" required/>
+							执法人员数（一类）：<input type="text"  min="1" name="value1" placeholder="请输入数值" required/>
 						</li>
 						<li>
-							执法人员数（二类）：<input type="text" name="value2" maxlength="8" placeholder="请输入数值" required/>
+							执法人员数（二类）：<input type="text"  min="1" name="value2" maxlength="8" placeholder="请输入数值" required/>
 						</li>
 						<li>
-							抽查比例：<input type="text" name="value3" maxlength="8" placeholder="请输入比例"/>
+							抽查数量：<input type="text" min="1" name="value3" maxlength="8" placeholder="请输入抽查数量" required />
 						</li>
 						<!--<li class="select-time">
 							<label>创建时间： </label>
@@ -81,7 +81,7 @@
 		</div>-->
 
 		<div class="col-sm-12 select-table table-striped">
-			<table id="bootstrap-table" data-mobile-responsive="true"></table>
+			<table id="bootstrap-table" data-mobile-responsive="true" class="table text-nowrap"></table>
 		</div>
 	</div>
 </div>
@@ -127,25 +127,44 @@
 
                 },
                 {
-                    field: 'ruleContent',
-                    title: '检查事项'
+                    field: 'tbHouse.houseRule',
+                    title: '抽查事项'
 
                 },
                 {
                     field: 'tbStaffList',
-                    title: '检查人员',
+                    title: '执法人员',
                     formatter: function (value, row, index) {
 
-                        var s ="";
+                        var s ="【一类】";
                         var p="";
+                        var flag=true;
                         var span=document.createElement('span');
 
                         for (var i = 0; i < value.length; i++) {
                             var b = JSON.stringify(value[i]);
                             var a = JSON.parse(b);
-                            if(i==0)
-                                p=a.staffName;
-                            s=s+a.staffName;
+                            if(i==0&&a.staffPost!="二类")
+							{
+                                p=s+a.staffName;
+
+							}
+                            if(a.staffPost!="二类")
+							{
+                                    s=s+a.staffName;
+
+
+							}else {
+                                if(flag)
+                                {
+                                    s=s+"【二类】"+a.staffName;
+                                    flag=false
+                                }
+                                else {
+                                    s=s+a.staffName;
+								}
+							}
+
                              if(i!=value.length-1)
 								s=s+",";
                             //s.push('<span id="view">' + a.staffName + '</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
@@ -175,7 +194,12 @@
                 },
                 {
                     field: 'tbHouse.houseName',
-                    title: '检查对象名称'
+                    title: '抽查对象名称'
+
+                },
+                {
+                    field: 'tbHouse.houseItem',
+                    title: '项目名称'
 
                 },
                 {
@@ -197,7 +221,18 @@
                     field: 'tbHouse.houseTime',
                     title: '证照有效期'
 
+                },
+                {
+                    title: '许可审批正文',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class=" ' + editFlag + '" href="javascript:void(0)" onclick="downloadFile(\'' + row.taskNumber + '\')">下载</a> ');
+                        return actions.join('');
+                    }
                 }
+
+
 
 
                 /*{
@@ -235,12 +270,18 @@
         var value1=$("input[name='value1']").val();
         var value2=$("input[name='value2']").val();
         var value3=$("input[name='value3']").val();
+
         $.modal.confirm("确认要生成本次抽查结果吗?", function() {
             var url = $.table._option.createUrl;
             var data = { "houseRule": houseRule,"value1":value1,"value2":value2,"value3":value3};
             $.operate.submit(url, "post", "json", data);
         });
         }
+    }
+
+    function downloadFile(taskNumber) {
+        console.log(taskNumber);
+        window.location.href = ctx + "supervise/complete/download?taskNumber=" +taskNumber;
     }
 </script>
 </body>

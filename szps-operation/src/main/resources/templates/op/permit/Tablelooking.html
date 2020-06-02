@@ -1,156 +1,116 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" >
 <head>
-	<th:block th:include="include :: header('查看详情')" />
+	<th:block th:include="include :: header('申请表')" />
 	<th:block th:include="include :: ztree-css" />
 	<link th:href="@{/css/op/operation.css}" rel="stylesheet"/>
 	<link th:href="@{/css/op/public.css}" rel="stylesheet"/>
 </head>
 <body class="white-bg">
-	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
-		<form class="form-horizontal m" id="form-role-edit" th:object="${look}">
-			<!--<input id="staffNumber" name="staffNumber" type="hidden" th:field="*{staffNumber}"/>-->
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">省级申办流水号：</label>
-				<div class="col-sm-8">
-					<input class="form-control" type="text"  id="SBLSH" th:field="*{SBLSH}" readonly>
-				</div>
 
-			</div>
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
 
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">状态：</label>
-				<div class="col-sm-8">
-					<input class="form-control" type="text"  id="BYZD4" th:field="*{BYZD4}" readonly>
-				</div>
+	<form class="form-horizontal m" id="form-role-edit" th:object="${look}">
+		<!--<input id="staffNumber" name="staffNumber" type="hidden" th:field="*{staffNumber}"/>-->
 
-			</div>
-			<div class="form-group">
-			<label class="col-sm-3 control-label ">市级统一申办流水号：</label>
-			<div class="col-sm-8">
-				<input class="form-control" type="text"  id="SBLSH_SHORT" th:field="*{SBLSH_SHORT}" readonly >
-			</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">事项编号：</label>
-				<div class="col-sm-8">
-					<input class="form-control" type="text"  id="SXBM" th:field="*{SXBM}" readonly >
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">事项名称：</label>
-				<div class="col-sm-8">
-					<input class="form-control" type="text"  id="SXMC" th:field="*{SXMC}" readonly >
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">事项情形编码：</label>
-				<div class="col-sm-8">
-					<input class="form-control" type="text"  id="SXQXBM" th:field="*{SXQXBM}" readonly >
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">父事项编码：</label>
-				<div class="col-sm-8">
-					<input class="form-control" type="text"  id="FSXBM" th:field="*{FSXBM}" readonly >
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">父事项名称：</label>
-				<div class="col-sm-8">
-					<input class="form-control" type="text"  id="FSXMC" th:field="*{FSXMC}" readonly >
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">申请人类型：</label>
-				<div class="col-sm-8">
-					<input class="form-control" type="text"  id="SQRLX" th:field="*{SQRLX}" readonly >
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">申请人名称：</label>
-				<div class="col-sm-8">
-					<input class="form-control" type="text"  id="SQRMC" th:field="*{SQRMC}" readonly >
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">申请人证件类型：</label>
-				<div class="col-sm-8">
-					<input class="form-control" type="text"  id="SQRZJLX" th:field="*{SQRZJLX}" readonly >
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">申请人证件号码：</label>
-				<div class="col-sm-8">
-					<input class="form-control" type="text"  id="SQRZJHM" th:field="*{SQRZJHM}" readonly >
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">联系人姓名：</label>
-				<div class="col-sm-8">
-					<input class="form-control" type="text"  id="LXRXM" th:field="*{LXRXM}" readonly >
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">联系人证件类型：</label>
-				<div class="col-sm-8">
-					<input class="form-control" type="text"  id="LXRZJLX" th:field="*{LXRZJLX}" readonly >
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">联系人身份证件号码：</label>
-				<div class="col-sm-8">
-					<input class="form-control" type="text"  id="LXRSFZJHM" th:field="*{LXRSFZJHM}" readonly >
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">联系人手机：</label>
-				<div class="col-sm-8">
-					<input class="form-control" type="text"  id="LXRSJ" th:field="*{LXRSJ}" readonly >
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">纬度：</label>
-				<div class="col-sm-3">
-					<input class="form-control" type="text"  id="WD" th:field="*{WD}"  readonly >
-				</div>
-				°
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">经度：</label>
-				<div class="col-sm-3">
-					<input class="form-control" type="text"  id="JD" th:field="*{JD}" readonly >
-				</div>
-				°
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">范围（公尺）：</label>
-				<div class="col-sm-3">
-					<input class="form-control" type="text"  id="FW"  >
-				</div>
-				公尺
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label "></label>
-				<div class="col-sm-3">
-					<a class="btn btn-main4 btn-sm" href="#" >
-						管网分布图
-					</a>
-				</div>
+		<div class="form-group" >
 
+			<div class="col-sm-2">
+				<input class="form-control" type="text"   value="接驳口1" style="border: 0px;outline:none;"  >
 			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label ">申报材料清单：</label>
-				<div class="col-sm-8">
-					<textarea class="form-control" type="text"  id="SBCLQD" th:field="*{SBCLQD}" readonly ></textarea>
-				</div>
+			<div class="col-sm-10">
+				<textarea   class="form-control" type="text"  id="BMMC" th:field="*{BYZD3} " style="resize:none;border: 0px;" ></textarea>
 			</div>
 
-		</form>
-	</div>
-	<th:block th:include="include :: footer" />
-	<th:block th:include="include :: ztree-js" />
-	<script type="text/javascript">
-	</script>
+
+		</div>
+
+		<div class="form-group" >
+			<label class="col-sm-2 control-label " style="line-height: 1.5">X=</label>
+			<div class="col-sm-4">
+				<input class="form-control" type="text"  id="WD1" th:field="*{WD1}" style="border: 0px;">
+			</div>
+			<label class="col-sm-2 control-label " style="line-height: 1.5">Y=</label>
+			<div class="col-sm-4">
+				<input class="form-control" type="text"  id="JD1" th:field="*{JD1}"   style="border: 0px;">
+			</div>
+		</div>
+
+		<div class="form-group">
+
+			<div class="col-sm-2">
+				<input class="form-control" type="text"   value="接驳口2" style="border: 0px;outline:none;" >
+			</div>
+			<div class="col-sm-10">
+				<textarea   class="form-control" type="text"  id="BMMC" th:field="*{BMMC} " style="resize:none;border: 0px;" ></textarea>
+			</div>
+
+
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label " style="line-height: 1.5">X=</label>
+			<div class="col-sm-4">
+				<input class="form-control" type="text"  id="WD2" th:field="*{WD2}" style="border: 0px;">
+			</div>
+			<label class="col-sm-2 control-label " style="line-height: 1.5">Y=</label>
+			<div class="col-sm-4">
+				<input class="form-control" type="text"  id="JD2" th:field="*{JD2}"   style="border: 0px;">
+			</div>
+		</div>
+
+
+
+
+
+	</form>
+</div>
+<th:block th:include="include :: footer" />
+<th:block th:include="include :: ztree-js" />
+<script type="text/javascript">
+    /*document.getElementById("t1").value="项目红线内及周边现状排水设施情况"
+
+    function edit() {
+        var houseNumber = $("input[name='houseNumber']").val();
+        var houseName = $("input[name='houseName']").val();
+        var houseRule = $("select[name='houseRule']").val();
+        var houseRole = $("input[name='houseRole']").val();
+        var housePhone = $("input[name='housePhone']").val();
+        var houseRegion = $("input[name='houseRegion']").val();
+        var houseBegin = $("input[name='houseBegin']").val();
+        var houseFlag = $("input[name='houseFlag']:checked").val();
+        var houseEnd = $("input[name='houseEnd']").val();
+        $.ajax({
+            cache : true,
+            type : "POST",
+            url : ctx + "op/permit/edit",
+            data : {
+                "houseNumber":houseNumber,
+                "houseName": houseName,
+                "houseRule": houseRule,
+                "houseRole": houseRole,
+                "housePhone": housePhone,
+                "houseRegion":houseRegion,
+                "houseBegin":houseBegin,
+                "houseFlag":houseFlag,
+                "houseEnd":houseEnd
+            },
+            async : false,
+            error : function(request) {
+                $.modal.alertError("系统错误");
+            },
+            success : function(data) {
+                $.operate.successCallback(data);
+            }
+        });
+    }
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            edit();
+        }
+    }*/
+</script>
+
 </body>
 </html>

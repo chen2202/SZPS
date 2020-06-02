@@ -63,11 +63,16 @@ public class EX_GDBS_SB {
     private String SXBDBM;
     private String SJSXBM;
     private String SJSXBBH;
-    private double WD;
-    private double JD;
+    private double WD1;
+    private double JD1;
+    private double WD2;
+    private double JD2;
+    private String filePath;
 
     private String beginTime;
     private String endTime;
+
+    private String okTime;
 
     public String getSBLSH() {
         return SBLSH;
@@ -548,20 +553,37 @@ public class EX_GDBS_SB {
     public void setSJSXBBH(String SJSXBBH) {
         this.SJSXBBH = SJSXBBH;
     }
-    public double getWD() {
-        return WD;
+
+    public double getWD1() {
+        return WD1;
     }
 
-    public void setWD(double WD) {
-        this.WD = WD;
+    public void setWD1(double WD1) {
+        this.WD1 = WD1;
     }
 
-    public double getJD() {
-        return JD;
+    public double getJD1() {
+        return JD1;
     }
 
-    public void setJD(double JD) {
-        this.JD = JD;
+    public void setJD1(double JD1) {
+        this.JD1 = JD1;
+    }
+
+    public double getWD2() {
+        return WD2;
+    }
+
+    public void setWD2(double WD2) {
+        this.WD2 = WD2;
+    }
+
+    public double getJD2() {
+        return JD2;
+    }
+
+    public void setJD2(double JD2) {
+        this.JD2 = JD2;
     }
 
     public String getBeginTime() {
@@ -578,5 +600,21 @@ public class EX_GDBS_SB {
 
     public void setEndTime(String endTime) {
         this.endTime = endTime;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public String getOkTime() {
+        return okTime;
+    }
+
+    public void setOkTime(String okTime) {
+        this.okTime = okTime;
     }
 }

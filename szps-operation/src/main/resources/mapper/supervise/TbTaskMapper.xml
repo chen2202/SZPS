@@ -9,7 +9,7 @@
     <result column="TASK_HANDLE" jdbcType="VARCHAR" property="taskHandle"/>
     <result column="TASK_FLAG" jdbcType="VARCHAR" property="taskFlag"/>
     <result column="TASK_CHECKTIME" jdbcType="VARCHAR" property="taskCheckTime"/>
-
+    <result column="TASK_FILE" jdbcType="VARCHAR" property="taskFile"/>
   </resultMap>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
@@ -37,7 +37,7 @@
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select TASK_NUMBER,/* TASK_NAME, TASK_REGION, TASK_STREET, TASK_PARTITION, TASK_GRADE,
-    TASK_TYPE,  TASK_CONNECTING, */TASK_TIME, TASK_HOUSE,TASK_RESULT,TASK_HANDLE,TASK_CHECKTIME
+    TASK_TYPE,  TASK_CONNECTING, */TASK_TIME, TASK_HOUSE,TASK_RESULT,TASK_HANDLE,TASK_CHECKTIME,TASK_FILE
     from TB_TASK
     where TASK_NUMBER = #{taskNumber,jdbcType=VARCHAR}
   </select>
@@ -68,11 +68,14 @@
    <where>
      TB_TASK.TASK_HOUSE=TB_HOUSE.HOUSE_NUMBER AND  TB_HOUSE.HOUSE_RULE=TB_RULE.RULE_NAME
     <if test="ruleName != null and ruleName != ''">
-      AND TB_RULE.RULE_NAME like concat(concat('%',#{RULE_NAME}),'%')
+      AND TB_RULE.RULE_NAME = #{ruleName}
     </if>
-    <if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+     <if test="beginTime != null and beginTime != ''">
+       AND TB_TASK.TASK_TIME like concat(#{beginTime},'%')
+     </if>
+    <!--<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
       AND "TO_DATE"(TB_TASK.TASK_TIME, 'yyyy-mm-dd hh24:mi:ss') BETWEEN "TO_DATE"(#{beginTime}, 'yyyy-mm-dd hh24:mi:ss') AND "TO_DATE"(#{endTime}, 'yyyy-mm-dd hh24:mi:ss')
-    </if>
+    </if>-->
 
    </where>
   </select>
@@ -130,6 +133,40 @@
   </select>
   <select id="selectTaskCountComplete"  resultType="int">
    select "COUNT"(*) FROM TB_TASK WHERE TB_TASK.TASK_FLAG='完成'
+  </select>
+
+  <select id="selectTaskCountAllWithKey" parameterType="com.szps.web.domain.supervise.TbTask" resultType="int">
+    SELECT "COUNT"(*)
+    FROM TB_TASK,TB_RULE,TB_HOUSE
+
+    <where>
+      TB_TASK.TASK_HOUSE=TB_HOUSE.HOUSE_NUMBER AND  TB_HOUSE.HOUSE_RULE=TB_RULE.RULE_NAME
+      <if test="ruleName != null and ruleName != ''">
+        AND TB_RULE.RULE_NAME = #{ruleName}
+      </if>
+      <if test="beginTime != null and beginTime != ''">
+        AND TB_TASK.TASK_TIME like concat(#{beginTime},'%')
+      </if>
+
+
+    </where>
+  </select>
+
+  <select id="selectTaskCountCompleteWithKey" parameterType="com.szps.web.domain.supervise.TbTask" resultType="int">
+    SELECT "COUNT"(*)
+    FROM TB_TASK,TB_RULE,TB_HOUSE
+
+    <where>
+      TB_TASK.TASK_HOUSE=TB_HOUSE.HOUSE_NUMBER AND  TB_HOUSE.HOUSE_RULE=TB_RULE.RULE_NAME AND TB_TASK.TASK_FLAG='完成'
+      <if test="ruleName != null and ruleName != ''">
+        AND TB_RULE.RULE_NAME = #{ruleName}
+      </if>
+      <if test="beginTime != null and beginTime != ''">
+        AND TB_TASK.TASK_TIME like concat(#{beginTime},'%')
+      </if>
+
+
+    </where>
   </select>
 
 </mapper>

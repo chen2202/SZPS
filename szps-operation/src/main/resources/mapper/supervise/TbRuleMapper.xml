@@ -21,7 +21,7 @@
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.szps.web.domain.supervise.TbRule" >
     update TB_RULE
-    set RULE_CONTENT = #{ruleContent,jdbcType=VARCHAR},
+    set
     RULE_TYPE = #{ruleType,jdbcType=VARCHAR},
     RULE_NAME= #{ruleName,jdbcType=VARCHAR},
     RULE_BASIS=#{ruleBasis,jdbcType=VARCHAR},
@@ -36,7 +36,7 @@
   </select>
 
   <select id="selectByName" resultType="String" parameterType="java.lang.String" >
-    select  RULE_CONTENT
+    select  RULE_SCALE
     from TB_RULE
     where RULE_NAME = #{ruleName,jdbcType=VARCHAR}
   </select>

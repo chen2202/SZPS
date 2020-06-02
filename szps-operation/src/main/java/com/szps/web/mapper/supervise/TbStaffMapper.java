@@ -24,8 +24,8 @@ public interface TbStaffMapper {
     //TbStaff selectStaff();
     int CheckdStaff(String staffNumber);
 
-    List<TbStaff> selectStaffOne(@Param("staffArea")String staffArea);
-    List<TbStaff> selectStaffSecond(@Param("staffArea")String staffArea);
+    List<TbStaff> selectStaffOne();
+    List<TbStaff> selectStaffSecond();
 
 
 }

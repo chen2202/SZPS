@@ -64,13 +64,15 @@
     from TB_STAFF
 
     <where>
-    <if test="staffName != null and staffName != ''">
-       TB_STAFF.STAFF_NAME like concat(concat('%',#{staffName}),'%')
-    </if>
     <if test="staffPost != null and staffPost != ''">
-      AND TB_STAFF.STAFF_POST = #{staffPost}
+      TB_STAFF.STAFF_POST = #{staffPost}
     </if>
-
+      <if test="staffW != null and staffW != ''">
+       AND TB_STAFF.STAFF_W = #{staffW}
+      </if>
+      <if test="staffName != null and staffName != ''">
+        AND TB_STAFF.STAFF_NAME like concat(concat('%',#{staffName}),'%')
+      </if>
     </where>
   </select>
 
@@ -89,31 +91,29 @@
 
 
 
-  <select id="selectStaffOne" parameterType="String" resultMap="BaseResultMap">
+  <select id="selectStaffOne"  resultMap="BaseResultMap">
     select STAFF_NUMBER, STAFF_NAME,  STAFF_AREA, STAFF_CART, STAFF_POST,
     STAFF_DEPT, STAFF_W
     from TB_STAFF
 
     <where>
       TB_STAFF.STAFF_POST='一类'
-      <if test="staffArea!= null and staffArea != ''">
-        AND TB_STAFF.STAFF_AREA = #{staffArea}
-      </if>
+
 
     </where>
   </select>
 
 
-  <select id="selectStaffSecond" parameterType="String" resultMap="BaseResultMap">
+  <select id="selectStaffSecond"  resultMap="BaseResultMap">
     select STAFF_NUMBER, STAFF_NAME,  STAFF_AREA, STAFF_CART, STAFF_POST,
     STAFF_DEPT, STAFF_W
     from TB_STAFF
 
     <where>
       TB_STAFF.STAFF_POST='二类'
-      <if test="staffArea!= null and staffArea != ''">
+     <!-- <if test="staffArea!= null and staffArea != ''">
         AND TB_STAFF.STAFF_AREA = #{staffArea}
-      </if>
+      </if>-->
 
     </where>
   </select>

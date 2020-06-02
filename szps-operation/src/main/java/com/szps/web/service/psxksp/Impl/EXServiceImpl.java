@@ -36,8 +36,13 @@ public class EXServiceImpl implements EXService{
     }
 
     @Override
-    public List<EX_GDBS_SB> selectTaskDone() {
-        return exMapper.selectTaskDone();
+    public List<EX_GDBS_SB> selectTaskDone(EX_GDBS_SB exGdbsSb) {
+        return exMapper.selectTaskDone(exGdbsSb);
+    }
+
+    @Override
+    public int updateEx(EX_GDBS_SB ex) {
+        return exMapper.updateEx(ex);
     }
 
 }

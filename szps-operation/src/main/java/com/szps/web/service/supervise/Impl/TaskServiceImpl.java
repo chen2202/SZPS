@@ -83,6 +83,16 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    public int selectTaskCountAllWithKey(TbTask task) {
+        return tbTaskMapper.selectTaskCountAllWithKey(task);
+    }
+
+    @Override
+    public int selectTaskCountCompleteWithKey(TbTask task) {
+        return tbTaskMapper.selectTaskCountCompleteWithKey(task);
+    }
+
+    @Override
     public int selectMonthTaskCount(String taskRegion, String taskStreet, String taskTime) {
         return tbTaskMapper.selectMonthTaskCount(taskRegion,taskStreet,taskTime);
     }

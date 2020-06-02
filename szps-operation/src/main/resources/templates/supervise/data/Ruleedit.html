@@ -10,46 +10,59 @@
 	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
 		<form class="form-horizontal m" id="form-role-edit" th:object="${rule}">
 
-			<div class="form-group">
+			<div class="form-group" hidden="hidden">
 				<label class="col-sm-3 control-label ">事项编号：</label>
 				<div class="col-sm-8">
 					<input class="form-control" readonly="readonly" type="text" name="ruleNumber" id="ruleNumber" th:field="*{ruleNumber}" required>
 				</div>
 			</div>
+			<!--
 			<div class="form-group">
 				<label class="col-sm-3 control-label">事项类别：</label>
 				<div class="col-sm-8">
 					<input type="text" name="ruleType"  id="ruleType" class="form-control" th:field="*{ruleType}" required>
 				</div>
-			</div>
-			<div class="form-group">
+			</div>-->
+			<!--<div class="form-group">
 				<label class="col-sm-3 control-label">事项名称：</label>
 				<div class="col-sm-8">
 					<input type="text" name="ruleName"  id="ruleName" class="form-control" th:field="*{ruleName}" required>
+				</div>
+			</div>-->
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label">事项名称：</label>
+				<div class="col-sm-8">
+					<select class="form-control" name="ruleName" id="ruleName">
+
+						<option value="建设项目排水审批" th:selected="*{ruleName=='建设项目排水审批'}">建设项目排水审批</option>
+						<option value="城市排水许可" th:selected="*{ruleName=='城市排水许可'}">城市排水许可</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">责任单位：</label>
+				<div class="col-sm-8">
+					<input type="text" name="ruleMain"  id="ruleMain" class="form-control" th:field="*{ruleMain}" required>
+				</div>
+			</div>
+
+			<!--<div class="form-group">
+				<label class="col-sm-3 control-label">抽查内容：</label>
+				<div class="col-sm-8">
+					<input type="text" name="ruleContent"  id="ruleContent" class="form-control" th:field="*{ruleContent}" required>
+				</div>
+			</div>-->
+			<div class="form-group">
+				<label class="col-sm-3 control-label">比例：</label>
+				<div class="col-sm-8">
+					<input type="text" name="ruleScale"  id="ruleScale" class="form-control" th:field="*{ruleScale}" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label">抽查依据：</label>
 				<div class="col-sm-8">
 					<input type="text" name="ruleBasis"  id="ruleBasis" class="form-control" th:field="*{ruleBasis}" required>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label">抽查内容：</label>
-				<div class="col-sm-8">
-					<input type="text" name="ruleContent"  id="ruleContent" class="form-control" th:field="*{ruleContent}" required>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label">比例和频次：</label>
-				<div class="col-sm-8">
-					<input type="text" name="ruleScale"  id="ruleScale" class="form-control" th:field="*{ruleScale}" required>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label">抽查主体：</label>
-				<div class="col-sm-8">
-					<input type="text" name="ruleMain"  id="ruleMain" class="form-control" th:field="*{ruleMain}" required>
 				</div>
 			</div>
 
@@ -117,7 +130,7 @@
 		function edit() {
 			var ruleNumber = $("input[name='ruleNumber']").val();
             var ruleType = $("input[name='ruleType']").val();
-            var ruleName = $("input[name='ruleName']").val();
+            var ruleName = $("select[name='ruleName']").val();
             var ruleBasis = $("input[name='ruleBasis']").val();
             var ruleScale = $("input[name='ruleScale']").val();
             var ruleMain = $("input[name='ruleMain']").val();

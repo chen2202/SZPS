@@ -1,124 +1,113 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
 <head>
-	<th:block th:include="include :: header('已审批任务')" />
+	<th:block th:include="include :: header('申请表')" />
+	<th:block th:include="include :: ztree-css" />
+	<link th:href="@{/css/op/operation.css}" rel="stylesheet"/>
 	<link th:href="@{/css/op/public.css}" rel="stylesheet"/>
 </head>
-<body class="gray-bg">
-<div class="container-div">
-	<div class="row">
+<body class="white-bg">
 
-		<!--<div class="col-sm-12 search-collapse">
-			<form id="role-form">
-				<div class="select-list">
-					<ul>
-						<li>
-							任务区域：<input type="text" name="taskPartition" maxlength="11"/>
-						</li>
-						<li>
-							行政区：
-							<select  name="taskRegion">
-								<option value="">请选择</option>
-								<option value="南山区">南山区</option>
-								<option value="福田区">福田区</option>
-								<option value="盐田区">盐田区</option>
-								<option value="罗湖区">罗湖区</option>
-							</select>
-						</li>
-						<li>
-							街道：<select name="taskStreet">
-							<option value="">请选择</option>
-							<option value="南山街道">南山街道</option>
-							<option value="南头街道">南头街道</option>
-							<option value="西丽街道">西丽街道</option>
-							<option value="沙河街道">沙河街道</option>
-						</select>
-						</li>
-						<li class="select-time">
-							<label>任务创建时间： </label>
-							<input type="text" class="time-input" id="taskTime" placeholder="创建时间" name="taskTime"/>
-						</li>
-						<li>
-							<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
-							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
-						</li>
-					</ul>
-				</div>
-			</form>
-		</div>-->
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+
+	<form class="form-horizontal m" id="form-role-edit" th:object="${look}">
+		<input id="SBLSH" name="SBLSH" type="hidden" th:field="*{SBLSH}"/>
+
+		<div class="form-group">
+
+			<div class="col-sm-2">
+				<input class="form-control" type="text"   value="接驳口1" style="border: 0px;outline:none;" >
+			</div>
+			<div class="col-sm-10">
+				<textarea   class="form-control" type="text"  id="BMMC" th:field="*{BYZD3} " style="resize:none;" ></textarea>
+			</div>
 
 
-
-		<div class="col-sm-12 select-table table-striped">
-			<table id="bootstrap-table" data-mobile-responsive="true"></table>
 		</div>
-	</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label ">X=</label>
+			<div class="col-sm-4">
+				<input class="form-control" type="text"  id="WD1" th:field="*{WD1}" >
+			</div>
+			<label class="col-sm-2 control-label ">Y=</label>
+			<div class="col-sm-4">
+				<input class="form-control" type="text"  id="JD1" th:field="*{JD1}"   >
+			</div>
+		</div>
+
+		<div class="form-group">
+
+			<div class="col-sm-2">
+				<input class="form-control" type="text"   value="接驳口2" style="border: 0px;outline:none;" >
+			</div>
+			<div class="col-sm-10">
+				<textarea   class="form-control" type="text"  id="BMMC" th:field="*{BMMC} " style="resize:none;" ></textarea>
+			</div>
+
+
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label ">X=</label>
+			<div class="col-sm-4">
+				<input class="form-control" type="text"  id="WD2" th:field="*{WD2}" >
+			</div>
+			<label class="col-sm-2 control-label ">Y=</label>
+			<div class="col-sm-4">
+				<input class="form-control" type="text"  id="JD2" th:field="*{JD2}"   >
+			</div>
+		</div>
+
+
+
+
+
+	</form>
 </div>
 <th:block th:include="include :: footer" />
-<script th:inline="javascript">
-    var editFlag = [[${@permission.hasPermi('op:permit:editDone')}]];
-    var prefix = ctx + "op/permit";
-
-    $(function() {
-        var options = {
-            url: prefix + "/done",
-            createUrl: prefix + "/TaskCheck",
-            updateUrl: prefix + "/editDone/{id}",
-            removeUrl: prefix + "/remove",
-            exportUrl: prefix + "/export",
-            sortName: "sblsh",
-            modalName: "已审批",
-            columns: [
-                {
-                    field: 'sblsh',
-                    title: '业务编号'
-                },
-                {
-                    field: 'sxmc',
-                    title: '事项名称'
-
-                },
-                {
-                    field: 'fsxbm',
-                    title: '项目名称'
-
-                },
-                {
-                    field: 'sqrmc',
-                    title: '申请单位/人'
-
-                },
-                {
-                    field: 'lxrxm',
-                    title: '联系人'
-
-                },
-                {
-                    field: 'lxrsj',
-                    title: '联系电话'
-
-                },
-                {
-                    field:'byzd1',
-                    title:'受理时间'
-                },
-                {
-                    title: '操作',
-                    align: 'center',
-                    formatter: function(value, row, index) {
-                        var actions = [];
-                        actions.push('<a class=" ' + editFlag + '"  href="javascript:void(0)" onclick="$.operate.edit(\'' + row.sblsh + '\')">查看详情</a> ');
-                        //actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.taskNumber + '\')"><i class="fa fa-remove"></i>删除</a> ');
-                        return actions.join('');
-                    }
-                }
-
-                ]
-        };
-        $.table.init(options);
-    });
+<th:block th:include="include :: ztree-js" />
+<script type="text/javascript">
 
 
+    function edit() {
+        var BYZD3 = $("textarea[name='BYZD3']").val();
+        var BMMC = $("textarea[name='BMMC']").val();
+        var WD1 = $("input[name='WD1']").val();
+        var WD2 = $("input[name='WD2']").val();
+        var JD1 = $("input[name='JD1']").val();
+        var JD2 = $("input[name='JD2']").val();
+        var SBLSH = $("input[name='SBLSH']").val();
+
+        $.ajax({
+            cache : true,
+            type : "POST",
+            url : ctx + "op/permit/edit",
+            data : {
+                "SBLSH":SBLSH,
+                "BYZD3":BYZD3,
+                "BMMC": BMMC,
+                "WD1": WD1,
+                "WD2": WD2,
+                "JD1": JD1,
+                "JD2":JD2
+            },
+            async : false,
+            error : function(request) {
+                $.modal.alertError("系统错误");
+            },
+            success : function(data) {
+                $.operate.successCallback(data);
+            }
+        });
+    }
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            edit();
+        }
+    }
 </script>
+
 </body>
 </html>

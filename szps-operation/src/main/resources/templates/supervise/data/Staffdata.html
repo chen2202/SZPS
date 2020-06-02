@@ -14,14 +14,21 @@
 				<div class="select-list">
 					<ul>
 						<li>
-							执法人员类型：<select name="staffPost">
-							<option value="">请选择执法人员类型</option>
+							人员类型：<select name="staffPost">
+							<option value="">全部</option>
 							<option value="一类">一类</option>
 							<option value="二类">二类</option>
 						</select>
 						</li>
 						<li>
-							执法人员姓名：<input type="text" name="staffName" maxlength="11" placeholder="请输入执法人员姓名"/>
+							备选状态：<select name="staffW">
+							<option value="">全部</option>
+							<option value="备选">备选</option>
+							<option value="非备选">非备选</option>
+						</select>
+						</li>
+						<li>
+							搜索：<input type="text" name="staffName" maxlength="11" placeholder="请输入关键字"/>
 						</li>
 						<!--<li>
 							人员名称：<input type="search" name="staffName" maxlength="8" placeholder="请输入人员名称"/>

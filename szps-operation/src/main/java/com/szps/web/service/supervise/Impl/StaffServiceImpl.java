@@ -68,12 +68,12 @@ public class StaffServiceImpl implements StaffService{
     }
 
     @Override
-    public List<TbStaff> selectStaffOne(String staffArea) {
-        return staffMapper.selectStaffOne(staffArea);
+    public List<TbStaff> selectStaffOne() {
+        return staffMapper.selectStaffOne();
     }
 
     @Override
-    public List<TbStaff> selectStaffSecond(String staffArea) {
-        return staffMapper.selectStaffSecond(staffArea);
+    public List<TbStaff> selectStaffSecond() {
+        return staffMapper.selectStaffSecond();
     }
 }

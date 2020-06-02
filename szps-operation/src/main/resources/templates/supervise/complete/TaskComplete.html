@@ -20,18 +20,17 @@
 							<option value="城市排水许可">城市排水许可</option>
 						</select>
 						</li>
-						<li class="select-time">
-							<label>创建时间： </label>
-							<input type="text" class="time-input" id="startTime" placeholder="开始时间" name="beginTime" >
-							<span>-</span>
-							<input type="text" class="time-input" id="endTime" placeholder="结束时间" name="endTime" >
-						</li>
 						<!--<li class="select-time">
 							<label>创建时间： </label>
-							<input type="text" class="time-input" id="feedbackTime" placeholder="选择创建时间" name="feedbackTime"/>
+							<input type="text" class="time-input" id="startTime" placeholder="选择时间" name="beginTime" >
+
 						</li>-->
+						<li class="select-time">
+							<label>创建时间： </label>
+							<input type="text" class="time-input"  id="beginTime" placeholder="选择创建时间" name="beginTime"/>
+						</li>
 						<li>
-							<a class="btn btn-main btn-sm" onclick="$.table.search()">搜索</a>
+							<a class="btn btn-main btn-sm" onclick="searchs()">搜索</a>
 							<!--<a class="btn btn-main2 btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>-->
 						</li>
 					</ul>
@@ -50,8 +49,11 @@
 		</div>-->
 
 		<div class="col-sm-12 select-table table-striped">
-			<span style="font-size: 20px;font-weight:bold;">抽查完成率：</span><input th:value="${rate}" style="font-size: 20px ;color: #2BA3FD;border: 0px;outline:none;font-weight:bold;" readonly>
-			<table id="bootstrap-table" data-mobile-responsive="true"></table>
+			<span style="font-size: 16px;font-weight:bold;">已抽查对象数：</span><input  id="count"  style="font-size: 16px ;color: #2BA3FD;border: 0px;outline:none;font-weight:bold;" readonly>
+			<span style="font-size: 16px;font-weight:bold;">对象总数：</span><input id="all" style="font-size: 16px ;color: #2BA3FD;border: 0px;outline:none;font-weight:bold;" readonly>
+			<span style="font-size: 16px;font-weight:bold;">累计比例：</span><input id="rate" style="font-size: 16px ;color: #2BA3FD;border: 0px;outline:none;font-weight:bold;" readonly>
+			<span style="font-size: 16px;font-weight:bold;">要求达标比例：</span><input id="reach" style="font-size: 16px ;color: #2BA3FD;border: 0px;outline:none;font-weight:bold;" readonly>
+			<table id="bootstrap-table" data-mobile-responsive="true" class="table text-nowrap"></table>
 		</div>
 	</div>
 </div>
@@ -60,7 +62,37 @@
     var editFlag = [[${@permission.hasPermi('supervise:complete:edit')}]];
     var removeFlag = [[${@permission.hasPermi('supervise:complete:remove')}]];
     var prefix = ctx + "supervise/complete";
+    function getRate() {
+        var ruleName = $("select[name='ruleName']").val();
+        var beginTime = $("input[name='beginTime']").val();
+
+
+        $.ajax({
+            cache : true,
+            type : "POST",
+            url : ctx + "supervise/complete/getRate",
+            data : {
+                "ruleName":ruleName,
+                "beginTime":beginTime
+
+            },
+            async : false,
+            error : function(request) {
+                $.modal.alertError("系统错误");
+            },
+            success : function(data) {
+
+                $("#rate").val(data.data.rate);//赋值
+                $("#all").val(data.data.all);//赋值
+                $("#count").val(data.data.count);//赋值
+                $("#reach").val(data.data.reach);//赋值
+
+            }
+        });
+    }
     $(function() {
+
+        getRate();
         var options = {
             url: prefix + "/list",
             createUrl: prefix + "/TaskFeedback",
@@ -95,25 +127,44 @@
 
                 },
                 {
-                    field: 'ruleContent',
-                    title: '检查事项'
+                    field: 'tbHouse.houseRule',
+                    title: '抽查事项'
 
                 },
                 {
                     field: 'tbStaffList',
-                    title: '检查人员',
+                    title: '执法人员',
                     formatter: function (value, row, index) {
 
-                        var s ="";
+                        var s ="【一类】";
                         var p="";
+                        var flag=true;
                         var span=document.createElement('span');
 
                         for (var i = 0; i < value.length; i++) {
                             var b = JSON.stringify(value[i]);
                             var a = JSON.parse(b);
-                            if(i==0)
-                                p=a.staffName;
-                            s=s+a.staffName;
+                            if(i==0&&a.staffPost!="二类")
+                            {
+                                p=s+a.staffName;
+
+                            }
+                            if(a.staffPost!="二类")
+                            {
+                                s=s+a.staffName;
+
+
+                            }else {
+                                if(flag)
+                                {
+                                    s=s+"【二类】"+a.staffName;
+                                    flag=false
+                                }
+                                else {
+                                    s=s+a.staffName;
+                                }
+                            }
+
                             if(i!=value.length-1)
                                 s=s+",";
                             //s.push('<span id="view">' + a.staffName + '</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
@@ -143,7 +194,12 @@
                 },
                 {
                     field: 'tbHouse.houseName',
-                    title: '检查对象名称'
+                    title: '抽查对象名称'
+
+                },
+                {
+                    field: 'tbHouse.houseItem',
+                    title: '项目名称'
 
                 },
                 {
@@ -168,7 +224,7 @@
                 },
                 {
                     field: 'taskCheckTime',
-                    title: '检查时间'
+                    title: '检查日期'
 
                 },
                 {
@@ -180,6 +236,16 @@
                     field: 'taskHandle',
                     title: '处理情况'
 
+                },
+                {
+                    title: '许可审批上下文',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class=" ' + editFlag + '" href="javascript:void(0)" onclick="downloadFile(\'' + row.taskNumber + '\')">下载</a> ');
+                        /*actions.push('<a class=" ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.houseNumber + '\')">删除</a> ');*/
+                        return actions.join('');
+                    }
                 },
                 {
                     title: '操作',
@@ -227,10 +293,21 @@
                     events:'oEvents'
                 }*/
                 ]
+            /*onLoadSuccess: function (data) {
+                      console.log(data);
+			}*/
         };
+		console.log($.table)
+        $.table.init(options,function (e) {
+			console.log(e);
+        });
 
-        $.table.init(options);
+
     });
+   function searchs() {
+       $.table.search();
+       getRate();
+   }
 
     window.operateEvents = {
         'click .view': function () {
@@ -250,12 +327,12 @@
 			})
         }
     };
-    window.oEvents = {
-        'click .aaa': function () {
-            var enclosureId=$(this).attr('kkk');
-            window.location.href = ctx + "supervise/complete/download?enclosureId=" +enclosureId;
+
+        function downloadFile(taskNumber) {
+            console.log(taskNumber);
+            window.location.href = ctx + "supervise/complete/download?taskNumber=" +taskNumber;
         }
-    };
+
 
 </script>
 </body>

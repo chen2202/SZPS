@@ -25,6 +25,7 @@ import com.szps.web.service.drainage.HouseholdService;
 
 /**
  * 排水户管理 控制器
+ * 本控制器在部署到服务器上时，需要在图表部分PostMapping和控制器的RequestMapping部分加上./
  * @author zxc
  *
  */
@@ -40,7 +41,7 @@ public class HouseholdController extends BaseController{
 	 * 跳转到household.html
 	 * 
 	 */
-	@RequiresPermissions("drainage:household:view")
+	//@RequiresPermissions("drainage:household:view")
     @GetMapping("/household")
     public String household(){
         return prefix + "/household";
@@ -140,6 +141,14 @@ public class HouseholdController extends BaseController{
         return householdService.checkHouseholdIdUnique(household); 
     }
     
+    //------------------------------排水户列表 GIS定位
+    /*@GetMapping("/gis")
+	public ModelAndView gis() {
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("h", "123.346");
+		data.put("y", "-234.123");
+		return new ModelAndView("redirect:/dist/index.html");
+	}*/
     
     //------------------------------以下是四个总数统计数据部分
     public Model count(Model m) {

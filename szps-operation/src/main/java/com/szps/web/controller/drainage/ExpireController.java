@@ -36,7 +36,7 @@ public class ExpireController extends BaseController{
 	 * 跳转到expire.html
 	 * 
 	 */
-	@RequiresPermissions("drainage:expire:view")
+	//@RequiresPermissions("drainage:expire:view")
     @GetMapping("/expire")
     public String household(){
         return prefix + "/expire";

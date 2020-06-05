@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/drainage")
 public class MapHouseholdController {
-	private String prefix = "drainage/maphousehold";
+	//private String prefix = "drainage/maphousehold";
 	
 	/**
 	 * 跳转到maphousehold.html

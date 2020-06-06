@@ -41,7 +41,7 @@ public class HouseholdController extends BaseController{
 	 * 跳转到household.html
 	 * 
 	 */
-	//@RequiresPermissions("drainage:household:view")
+	@RequiresPermissions("drainage:household:view")
     @GetMapping("/household")
     public String household(){
         return prefix + "/household";
@@ -167,7 +167,7 @@ public class HouseholdController extends BaseController{
     /**
 	 * 跳转到drainage/statistics/statistics.html 统计数据页面
 	 */
-	//@RequiresPermissions("drainage:household:view")
+	@RequiresPermissions("drainage:statistics:view")
     @GetMapping("/statistics/statistics")
     public String statistics(Model model){	
     	count(model); //传递四个数据

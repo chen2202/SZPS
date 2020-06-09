@@ -32,20 +32,12 @@
 						shiro:hasPermission="employee:factory:add"> <i
 						class="fa-user-defined fa-add"></i> 新增
 					</a> <a class="btn btn-main2" onclick="$.operate.removeAll()"
-						shiro:hasPermission="employee:factorys:remove"> <i
+						shiro:hasPermission="employee:factory:remove"> <i
 						class="fa-user-defined fa-delete"></i> 删除
 					</a> <a class="btn btn-main2" onclick="$.table.exportExcel()"
-						shiro:hasPermission="system:factory:export"> <i
+						shiro:hasPermission="employee:factory:export"> <i
 						class="fa-user-defined fa-export"></i> 导出
-					</a><!--  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<table>
-						<tr>
-							<a class="btn" href="/employee/worker">人员信息</a>
-							<a class="btn btn-main" href="/employee/factory">水厂信息</a>
-							<a class="btn" href="/employee/company">公司信息</a>
-							<a class="btn" href="/employee/department">部门信息</a>
-						</tr>
-					</table> -->
+					</a>
 				</div>
 			</div>
 
@@ -57,7 +49,6 @@
 	<th:block th:include="include :: footer" />
 	<script th:inline="javascript">
 		var editFlag = [[${@permission.hasPermi('employee:factory:edit')}]];
-		//var removeFlag = [[${@permission.hasPermi('employee:factory:remove')}]];
 		var detailsFlag = [[${@permission.hasPermi('employee:factory:detail')}]]; //详情权限
 		var prefix = ctx + "employee/factory";
 

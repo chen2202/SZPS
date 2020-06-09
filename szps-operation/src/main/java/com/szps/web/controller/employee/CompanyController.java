@@ -43,12 +43,30 @@ public class CompanyController extends BaseController{
 	private CompanyService companyService;
 	
 	/**
-	 * 查询全部公司名称 代码,在从业人员编辑添加时，添加到下拉菜单
+	 * 查询全部公司名称 代码,在从业人员编辑时，添加到下拉菜单
+	 * @return 全部公司名称 代码
+	 */
+    @PostMapping("/worker/edit/companyNameList")
+    @ResponseBody
+    public List<String> companyNameList(){
+        List<Company> companyModel = companyService.selectAllCompanyName();
+        List<String> companyInfo = new ArrayList<String>(); //存放公司名称和公司代码的List
+        //遍历EMPLOYEE_T_COMPANY表中数据，提取出公司名称
+        for(int i=0;i<companyModel.size();i++) { 
+        	Company company = (Company)companyModel.get(i);
+        	companyInfo.add(company.getCompany_name());
+        	companyInfo.add(company.getCompany_id());
+        }
+        return companyInfo;
+    }
+    
+    /**
+	 * 查询全部公司名称 代码,在从业人员添加时，添加到下拉菜单
 	 * @return 全部公司名称 代码
 	 */
     @PostMapping("/worker/companyNameList")
     @ResponseBody
-    public List<String> companyNameList(){
+    public List<String> companyNameList3(){
         List<Company> companyModel = companyService.selectAllCompanyName();
         List<String> companyInfo = new ArrayList<String>(); //存放公司名称和公司代码的List
         //遍历EMPLOYEE_T_COMPANY表中数据，提取出公司名称

@@ -37,7 +37,8 @@ public class Data2Controller extends BaseController {
     }
 
 
-
+    @RequiresPermissions("supervise:data2:add")
+    @Log(title = "随机规则管理", businessType = BusinessType.INSERT)
     @GetMapping("/Ruleadd")
     public String add2()
     {
@@ -54,8 +55,8 @@ public class Data2Controller extends BaseController {
         List<TbRule> list = ruleService.selectRuleList(rule);
         return getDataTable(list);
     }
-    @RequiresPermissions("supervise:data2:add")
-    @Log(title = "随机规则管理", businessType = BusinessType.INSERT)
+
+
     @PostMapping("/add")
     @ResponseBody
     public AjaxResult addSave(@Validated TbRule rule)
@@ -65,6 +66,7 @@ public class Data2Controller extends BaseController {
         return toAjax(ruleService.insertRule(rule));
     }
 
+    @RequiresPermissions("supervise:data2:edit")
     @GetMapping("/edit/{ruleNumber}")
     public String edit(@PathVariable("ruleNumber") String ruleNumber, ModelMap mmap)
     {
@@ -73,8 +75,8 @@ public class Data2Controller extends BaseController {
         return prefix + "/Ruleedit";
     }
 
-    @RequiresPermissions("supervise:data2:edit")
-    @Log(title = "规则管理", businessType = BusinessType.UPDATE)
+
+//    @Log(title = "规则管理", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
     public AjaxResult editSave(@Validated TbRule rule)

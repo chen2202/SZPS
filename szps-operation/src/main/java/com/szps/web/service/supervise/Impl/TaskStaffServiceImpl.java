@@ -36,7 +36,7 @@ public class TaskStaffServiceImpl implements TaskStaffService {
     }
 
     @Override
-    public int updateTbTaskStaff(String tbTaskStaff) {
+    public int updateTbTaskStaff(TbTaskStaff tbTaskStaff) {
         return mapper.updateByPrimaryKey(tbTaskStaff);
     }
 }

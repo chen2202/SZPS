@@ -38,6 +38,6 @@ public interface RuleService
     public int insertRule(TbRule rule);
 
     public int updateRule(TbRule rule);
-
+     public String[] selectRuleName();
 
 }

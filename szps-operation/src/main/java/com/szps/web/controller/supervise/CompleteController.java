@@ -4,8 +4,10 @@ package com.szps.web.controller.supervise;
 import com.szps.common.annotation.Log;
 import com.szps.common.config.Global;
 import com.szps.common.core.controller.BaseController;
+import com.szps.common.core.controller.TaskBaseController;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
+import com.szps.common.core.page.TaskTableDataInfo;
 import com.szps.common.enums.BusinessType;
 import com.szps.common.utils.file.FileUtils;
 import com.szps.web.controller.common.CommonController;
@@ -211,7 +213,7 @@ public class CompleteController extends BaseController {
         return getDataTable(list);
 
     }
-
+    @RequiresPermissions("supervise:complete:edit")
     @GetMapping("/edit/{taskNumber}")
     public String edit(@PathVariable("taskNumber") String taskNumber, ModelMap mmap)
     {
@@ -229,17 +231,35 @@ public class CompleteController extends BaseController {
 
 
         List <TbTaskStaff> tbTaskStaffs=taskStaffService.selectTbTaskStaffById(taskNumber);
-        String a="";
+        String a="【一类】";
+        boolean f=false;
         for(int k=0;k<tbTaskStaffs.size();k++)
         {
             TbStaff staff=staffService.selectStaffById(tbTaskStaffs.get(k).getStaffNumber());
-            if(staff!=null)
+            if(staff!=null&& staff.getStaffPost().equals("一类"))
             {
-                a=a+(staff.getStaffName());
-                if(k!=(tbTaskStaffs.size()-1))
+                if(f)
                 {
                     a=a+",";
                 }
+                a=a+(staff.getStaffName());
+                f=true;
+            }
+
+        }
+        boolean ff=false;
+        for(int k=0;k<tbTaskStaffs.size();k++)
+        {
+            TbStaff staff=staffService.selectStaffById(tbTaskStaffs.get(k).getStaffNumber());
+            if(staff!=null&& staff.getStaffPost().equals("二类"))
+            {
+                a=a+"【二类】";
+                if(ff)
+                {
+                    a=a+",";
+                }
+                a=a+(staff.getStaffName());
+                ff=true;
             }
 
         }
@@ -250,8 +270,8 @@ public class CompleteController extends BaseController {
         return prefix + "/Taskedit";
     }
 
-    @RequiresPermissions("supervise:complete:edit")
-    @Log(title = "检查人员管理", businessType = BusinessType.UPDATE)
+
+
     @PostMapping("/edit")
     @ResponseBody
     public AjaxResult editSave(@Validated TbTask task)
@@ -358,7 +378,7 @@ public class CompleteController extends BaseController {
             return error(e.getMessage());
         }
     }*/
-
+    @RequiresPermissions("supervise:complete:download")
     @GetMapping("/download")
     public void fileDownload(HttpServletResponse response, HttpServletRequest request)
     {

@@ -10,6 +10,7 @@
     <result column="TASK_FLAG" jdbcType="VARCHAR" property="taskFlag"/>
     <result column="TASK_CHECKTIME" jdbcType="VARCHAR" property="taskCheckTime"/>
     <result column="TASK_FILE" jdbcType="VARCHAR" property="taskFile"/>
+    <result column="TASK_BC" jdbcType="VARCHAR" property="taskBc"/>
   </resultMap>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
@@ -19,11 +20,11 @@
   <insert id="insert" parameterType="com.szps.web.domain.supervise.TbTask">
     insert into TB_TASK (TASK_NUMBER, TASK_TIME, TASK_HOUSE,
       TASK_RESULT, TASK_HANDLE, TASK_FLAG,
-      TASK_CHECKTIME
+      TASK_CHECKTIME,TASK_BC
       )
     values (#{taskNumber,jdbcType=VARCHAR}, #{taskTime,jdbcType=VARCHAR}, #{taskHouse,jdbcType=VARCHAR},
       #{taskResult,jdbcType=VARCHAR}, #{taskHandle,jdbcType=VARCHAR}, #{taskFlag,jdbcType=VARCHAR},
-      #{taskCheckTime,jdbcType=VARCHAR}
+      #{taskCheckTime,jdbcType=VARCHAR},#{taskBc,jdbcType=VARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.szps.web.domain.supervise.TbTask">
@@ -31,13 +32,13 @@
     set TASK_RESULT = #{taskResult,jdbcType=VARCHAR},
       TASK_HANDLE = #{taskHandle,jdbcType=VARCHAR},
       TASK_FLAG = #{taskFlag,jdbcType=VARCHAR},
-      TASK_CHECKTIME = #{taskCheckTime,jdbcType=VARCHAR}
-
+      TASK_CHECKTIME = #{taskCheckTime,jdbcType=VARCHAR},
+      TASK_BC= #{taskBc,jdbcType=VARCHAR},
+      TASK_HOUSE=#{taskHouse,jdbcType=VARCHAR}
     where TASK_NUMBER = #{taskNumber,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select TASK_NUMBER,/* TASK_NAME, TASK_REGION, TASK_STREET, TASK_PARTITION, TASK_GRADE,
-    TASK_TYPE,  TASK_CONNECTING, */TASK_TIME, TASK_HOUSE,TASK_RESULT,TASK_HANDLE,TASK_CHECKTIME,TASK_FILE
+    select TASK_NUMBER,TASK_TIME, TASK_HOUSE,TASK_RESULT,TASK_HANDLE,TASK_CHECKTIME,TASK_FILE,TASK_BC
     from TB_TASK
     where TASK_NUMBER = #{taskNumber,jdbcType=VARCHAR}
   </select>
@@ -50,7 +51,7 @@
   </select>
 
   <select id="selectAll" resultMap="BaseResultMap">
-    select TASK_NUMBER,TASK_TIME, TASK_HOUSE,TASK_RESULT,TASK_HANDLE,TASK_CHECKTIME
+    select TASK_NUMBER,TASK_TIME, TASK_HOUSE,TASK_RESULT,TASK_HANDLE,TASK_CHECKTIME,TASK_BC
     from TB_TASK
   </select>
 
@@ -62,7 +63,7 @@
   </select>
 
   <select id="selectTaskList" parameterType="com.szps.web.domain.supervise.TbTask" resultMap="BaseResultMap">
-    select TASK_NUMBER, TASK_TIME, TASK_HOUSE,TASK_RESULT,TASK_HANDLE,TASK_CHECKTIME
+    select TASK_NUMBER, TASK_TIME, TASK_HOUSE,TASK_RESULT,TASK_HANDLE,TASK_CHECKTIME,TASK_BC
     from TB_TASK,TB_RULE,TB_HOUSE
 
    <where>

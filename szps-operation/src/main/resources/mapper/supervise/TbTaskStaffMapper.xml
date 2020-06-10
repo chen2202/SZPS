@@ -15,10 +15,11 @@
         insert into TB_TASKSTAFF (TASK_NUMBER, STAFF_NUMBER)
         values (#{taskNumber,jdbcType=VARCHAR}, #{staffNumber,jdbcType=VARCHAR})
     </insert>
-    <update id="updateByPrimaryKey" parameterType="java.lang.String" >
+    <update id="updateByPrimaryKey" parameterType="com.szps.web.domain.supervise.TbTaskStaff" >
         update TB_TASKSTAFF
-        set STAFF_NUMBER = #{staffNumber,jdbcType=VARCHAR}
+        set STAFF_NUMBER = #{bcStaff,jdbcType=VARCHAR}
         where TASK_NUMBER = #{taskNumber,jdbcType=VARCHAR}
+        AND STAFF_NUMBER = #{staffNumber,jdbcType=VARCHAR}
     </update>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">

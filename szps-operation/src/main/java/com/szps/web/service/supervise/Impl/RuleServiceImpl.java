@@ -61,4 +61,9 @@ public class RuleServiceImpl implements RuleService {
     public int updateRule(TbRule rule) {
         return tbRuleMapper.updateByPrimaryKey(rule);
     }
+
+    @Override
+    public String[] selectRuleName() {
+        return tbRuleMapper.selectRuleName();
+    }
 }

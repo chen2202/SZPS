@@ -4,6 +4,7 @@ public class TbTaskStaff {
 
     private String taskNumber;
     private String staffNumber;
+    private String bcStaff;
 
     public String getTaskNumber() {
         return taskNumber;
@@ -19,5 +20,13 @@ public class TbTaskStaff {
 
     public void setStaffNumber(String staffNumber) {
         this.staffNumber = staffNumber;
+    }
+
+    public String getBcStaff() {
+        return bcStaff;
+    }
+
+    public void setBcStaff(String bcStaff) {
+        this.bcStaff = bcStaff;
     }
 }

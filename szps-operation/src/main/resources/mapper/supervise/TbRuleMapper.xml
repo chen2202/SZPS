@@ -72,4 +72,10 @@
     </if>
 
   </select>
+
+  <select id="selectRuleName"  resultType="String">
+    select RULE_NAME
+    from TB_RULE
+
+  </select>
 </mapper>

@@ -20,5 +20,5 @@ public interface TbRuleMapper {
     int deleteRuleByIds(Long[] ids);
     String selectByName(String ruleName);
     String selectByNameScale(String ruleName);
-
+    String []selectRuleName();
 }

@@ -107,7 +107,7 @@
 
 
 
-  <select id="selectHouseCheckList" parameterType="com.szps.web.domain.supervise.TbHouse" resultMap="BaseResultMap">
+  <select id="selectHouseCheckList"  resultMap="BaseResultMap">
     select HOUSE_NUMBER, HOUSE_NAME, HOUSE_REGION, HOUSE_BEGIN, HOUSE_END, HOUSE_ROLE,
     HOUSE_RULE, HOUSE_PHONE, HOUSE_FLAG,HOUSE_TIME,HOUSE_ITEM
     from TB_HOUSE
@@ -122,4 +122,9 @@
     </where>
   </select>
 
+
+  <select id="selectHouseName" resultType="String">
+      SELECT HOUSE_NAME
+      FROM TB_HOUSE WHERE HOUSE_RULE= #{houseRule}
+  </select>
 </mapper>

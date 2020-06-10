@@ -26,7 +26,7 @@ public interface TaskStaffService
 
     public int insertTbTaskStaff(TbTaskStaff tbTaskStaff);
 
-    public int updateTbTaskStaff(String tbTaskStaff);
+    public int updateTbTaskStaff(TbTaskStaff tbTaskStaff);
 
 
 

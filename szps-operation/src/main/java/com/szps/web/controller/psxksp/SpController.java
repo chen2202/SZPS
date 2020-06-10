@@ -156,7 +156,7 @@ public class SpController extends BaseController {
 
         return getDataTable(list);
     }
-    @RequiresPermissions("op:permit:lists")
+    //@RequiresPermissions("op:permit:lists")
     @PostMapping("/lists")
     @ResponseBody
     public TableDataInfo lists()
@@ -184,7 +184,7 @@ public class SpController extends BaseController {
         return getDataTable(list);
     }
 
-    @RequiresPermissions("op:permit:lists")
+    //@RequiresPermissions("op:permit:lists")
     @PostMapping("/listss")
     @ResponseBody
     public TableDataInfo listss()
@@ -203,7 +203,7 @@ public class SpController extends BaseController {
         return getDataTable(list);
     }
 
-    @RequiresPermissions("op:permit:lists")
+    //@RequiresPermissions("op:permit:lists")
     @PostMapping("/listssChild")
     @ResponseBody
     public TableDataInfo listssChild()
@@ -277,6 +277,7 @@ public class SpController extends BaseController {
 
 
     @GetMapping("/edit/{sblsh}")
+    @RequiresPermissions("op:permit:edit")
     public String edit( @PathVariable("sblsh")String sblsh,ModelMap mmap)
     {
 
@@ -287,7 +288,7 @@ public class SpController extends BaseController {
     }
 
 
-    @RequiresPermissions("op:permit:done")
+    //@RequiresPermissions("op:permit:done")
     @PostMapping("/done")
     @ResponseBody
     public TableDataInfo listDone(EX_GDBS_SB exGdbsSb)
@@ -299,6 +300,7 @@ public class SpController extends BaseController {
     }
 
     @GetMapping("/look/{sblsh}")
+    @RequiresPermissions("op:permit:look")
     public String editDone(@PathVariable("sblsh") String sblsh, ModelMap mmap)
     {
 
@@ -309,7 +311,7 @@ public class SpController extends BaseController {
     }
 
 
-    @RequiresPermissions("op:permit:remind")
+    //@RequiresPermissions("op:permit:remind")
     @PostMapping("/remind")
     @ResponseBody
     public TableDataInfo listRemind(EX_GDBS_SB exGdbsSb)
@@ -335,7 +337,7 @@ public class SpController extends BaseController {
     }
 
 
-    @RequiresPermissions("op:permit:table")
+//    @RequiresPermissions("op:permit:table")
     @PostMapping("/table")
     @ResponseBody
     public TableDataInfo listTable(EX_GDBS_SB exGdbsSb)
@@ -384,6 +386,7 @@ public class SpController extends BaseController {
 
 
     @GetMapping("/download")
+    @RequiresPermissions("op:permit:download")
     public void fileDownload(HttpServletResponse response, HttpServletRequest request)
     {
         String sblsh=request.getParameter("sblsh");

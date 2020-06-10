@@ -38,7 +38,7 @@ public class Data1Controller extends BaseController {
 
 
 
-
+    @RequiresPermissions("supervise:data1:add")
     @GetMapping("/Staffadd")
     public String add1()
     {
@@ -58,8 +58,8 @@ public class Data1Controller extends BaseController {
         return getDataTable(list);
     }
 
-    @RequiresPermissions("supervise:data1:add")
-    @Log(title = "检查人员管理", businessType = BusinessType.INSERT)
+//    @RequiresPermissions("supervise:data1:add")
+//    @Log(title = "检查人员管理", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
     public AjaxResult addSave(@Validated TbStaff staff)
@@ -75,6 +75,7 @@ public class Data1Controller extends BaseController {
         return toAjax(staffService.insertStaff(staff));
     }
 
+    @RequiresPermissions("supervise:data1:edit")
     @GetMapping("/edit/{staffNumber}")
     public String edit(@PathVariable("staffNumber") String staffNumber, ModelMap mmap)
     {
@@ -83,8 +84,8 @@ public class Data1Controller extends BaseController {
         return prefix + "/Staffedit";
     }
 
-    @RequiresPermissions("supervise:data1:edit")
-    @Log(title = "检查人员管理", businessType = BusinessType.UPDATE)
+//
+//    @Log(title = "检查人员管理", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
     public AjaxResult editSave(@Validated TbStaff staff)

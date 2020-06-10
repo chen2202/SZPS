@@ -94,13 +94,13 @@ public class HouseholdController extends BaseController{
     }
     
     /**
-     * 修改排水户
-     * 跳转到edit.html
+     * 排水户详情
+     * 跳转到detail.html
      */
-    @GetMapping("/household/edit/{household_id}")
+    @GetMapping("/household/detail/{household_id}")
     public String edit(@PathVariable("household_id") int household_id,ModelMap mmap) {
     	mmap.put("household", householdService.selectHouseholdById(household_id));
-    	return prefix + "/edit";
+    	return prefix + "/detail";
     }
     
     /**

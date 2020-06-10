@@ -66,7 +66,8 @@
 		    var options = {
 		        url: prefix + "/list",
 		        createUrl: prefix + "/add",
-		        updateUrl: prefix + "/edit/{id}",
+		        //updateUrl: prefix + "/edit/{id}",
+		        detailUrl: prefix + "/detail/{id}",
 		        removeUrl: prefix + "/remove",
 		        exportUrl: prefix + "/export",
 		        sortName: "household_id",
@@ -447,8 +448,8 @@
 		            align: 'center',
 		            formatter: function(value, row, index) {
 		                var actions = [];
-		              	//用编辑页面来显示排水户的详情信息
-		                actions.push('<a class="' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.household_id + '\')">详情</a>');
+		              	//用详情页面和编辑权限来显示排水户的详情信息
+		                actions.push('<a class="' + editFlag + '" href="javascript:void(0)" onclick="$.operate.detail(\'' + row.household_id + '\')">详情</a>');
 		              	actions.push(' <a>|</a> ');
 		              	//actions.push('<a href="/map/index2?X=' + row.latitude + '&Y=' + row.longitude + '">定位</a>');
 		              	actions.push('<a href="javascript:void(0)" onclick="opengis(\'' + row.latitude  + '\',\''+ row.longitude + '\')">定位</a>');

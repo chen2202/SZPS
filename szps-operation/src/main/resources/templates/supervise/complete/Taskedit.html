@@ -10,7 +10,7 @@
 	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
 		<form class="form-horizontal m" id="form-role-edit" >
 			<input id="taskNumber" name="taskNumber" type="hidden" th:field="*{task.taskNumber}"/>
-
+			<input id="taskHouse" name="taskHouse" type="hidden" th:field="*{task.taskHouse}"/>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">创建时间：</label>
 				<div class="col-sm-8">
@@ -164,7 +164,8 @@
             var taskCheckTime = $("input[name='taskCheckTime']").val();
             var taskResult = $("input[name='taskResult']").val();
             var taskHandle = $("input[name='taskHandle']").val();
-            /*var houseRole = $("input[name='houseRole']").val();
+            var taskHouse = $("input[name='taskHouse']").val();
+            /*var taskHouse = $("input[name='taskHouse']").val();
             var housePhone = $("input[name='housePhone']").val();
             var houseRegion = $("input[name='houseRegion']").val();
             var houseBegin = $("input[name='houseBegin']").val();
@@ -178,7 +179,8 @@
 				    "taskNumber":taskNumber,
 				    "taskCheckTime":taskCheckTime,
                     "taskResult": taskResult,
-                    "taskHandle": taskHandle
+                    "taskHandle": taskHandle,
+					"taskHouse":taskHouse
                    /* "houseRole": houseRole,
                     "housePhone": housePhone,
                     "houseRegion":houseRegion,

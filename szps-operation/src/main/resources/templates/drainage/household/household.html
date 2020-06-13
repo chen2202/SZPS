@@ -35,20 +35,6 @@
 					</div>
 				</form>
 
-				<!-- <div class="select-list">
-					<ul>
-						<li><a class="btn btn-main2" onclick="$.operate.add()"
-							shiro:hasPermission="drainage:household:add"> <i
-								class="fa-user-defined fa-add"></i> 新增
-						</a> <a class="btn btn-main2" onclick="$.operate.removeAll()"
-							shiro:hasPermission="drainage:household:remove"> <i
-								class="fa-user-defined fa-delete"></i> 删除
-						</a> <a class="btn btn-main2" onclick="$.table.exportExcel()"
-							shiro:hasPermission="drainage:household:export"> <i
-								class="fa-user-defined fa-export"></i> 导出
-						</a></li>
-					</ul>
-				</div> -->
 			</div>
 			
 			<div class="col-sm-12 table-responsive select-table table-striped">
@@ -464,7 +450,8 @@
 		function opengis(X, Y) {      
         	$(window.parent.document.getElementById("gis")).parent().siblings().removeClass('active');
         	$(window.parent.document.getElementById("gis")).parent().addClass('active');
-        	window.parent.document.getElementById('content-iframe').src="/map/index2?X="+X+"&Y="+Y;
+        	//window.parent.document.getElementById('content-iframe').src="/map/index2?X="+X+"&Y="+Y;
+        	window.parent.document.getElementById('content-iframe').src="./../../map/index2?X="+X+"&Y="+Y;
         }
 		
 		/* 排水户信息-查看（某排水户的所有排水口） */

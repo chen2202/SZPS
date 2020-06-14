@@ -39,4 +39,9 @@ public class DmCostServiceImpl implements IDmCostService {
     public DmCost selectCostByCode(String costCode) {
         return dmCostMapper.selectCostByCode(costCode);
     }
+
+    @Override
+    public int updateCost(DmCost dmCost) {
+        return dmCostMapper.updateCost(dmCost);
+    }
 }

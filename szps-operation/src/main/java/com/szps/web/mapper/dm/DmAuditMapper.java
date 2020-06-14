@@ -35,6 +35,6 @@ public interface DmAuditMapper {
      * @param ids id集合
      * @return 结果
      */
-    public int deleteAuditByDataIds(Long []ids);
+    public int deleteAuditByDataIds(Long[] ids);
 
 }

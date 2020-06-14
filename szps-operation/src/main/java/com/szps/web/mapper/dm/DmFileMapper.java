@@ -30,7 +30,7 @@ public interface DmFileMapper {
      * 通过资料ID查询资料文件信息
      *
      */
-    public List<DmFile> selectFileListByFileIds(Long []fileIds);
+    public List<DmFile> selectFileListByFileIds(Long[] fileIds);
 
 
     /**

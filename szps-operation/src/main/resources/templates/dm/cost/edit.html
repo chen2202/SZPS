@@ -8,14 +8,15 @@
 </head>
 <body class="white-bg">
 <div class="wrapper wrapper-content animated fadeInRight ibox-content">
-    <form class="form-horizontal m" id="form-role-add">
+    <form class="form-horizontal m" id="form-role-add" th:object="${cost}">
+        <input name="costId"  type="hidden"  th:field="*{costId}" />
         <input name="costFactoryId" id="treeIdBrf" type="text" hidden>
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
                     <label class="col-sm-4 control-label">水质净化厂：</label>
                     <div class="col-sm-8">
-                        <input class="form-control" name="costFactory" onclick="selectBrfTree()" id="treeNameBrf" type="text" placeholder="请选择水质净化厂" >
+                            <input class="form-control" name="costFactory" onclick="selectBrfTree()" id="treeNameBrf" type="text" th:field="*{costFactory}" placeholder="请选择水质净化厂" >
                     </div>
                 </div>
             </div>
@@ -23,7 +24,7 @@
                 <div class="form-group">
                     <label class="col-sm-4 control-label ">运营单位：</label>
                     <div class="col-sm-8">
-                        <input class="form-control" type="text" name="costCompany" id="costCompany" th:placeholder="请输入运营单位名称" required>
+                        <input class="form-control" type="text" name="costCompany" id="costCompany" th:field="*{costCompany}" placeholder="请输入运营单位名称">
                     </div>
                 </div>
             </div>
@@ -34,17 +35,17 @@
                 <div class="form-group">
                     <label class="col-sm-4 control-label">申请支付时间：</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control time-input" id="costApplyTime" placeholder="请选择申请支付时间"
+                        <input type="text" class="form-control time-input" id="costApplyTime" th:field="*{costApplyTime}" placeholder="请选择申请支付时间"
                                name="costApplyTime" lay-key="1">
                     </div>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label class="col-sm-4 control-label">实际支付月份：</label>
+                    <label class="col-sm-4 control-label">实际支付时间：</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="costPayTime" placeholder="请输入实际支付月份"
-                               name="costPayTime">
+                        <input type="text" class="form-control time-input" id="costPayTime" th:field="*{costPayTime}" placeholder="请选择实际支付时间"
+                               name="costPayTime" lay-key="2">
                     </div>
                 </div>
             </div>
@@ -55,17 +56,17 @@
                 <div class="form-group">
                     <label class="col-sm-4 control-label">实际处理水量(m³)：</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="costWaterVolume" placeholder="请输入实际处理水量"
-                               name="costWaterVolume" lay-key="3">
+                        <input type="text" class="form-control" id="costWaterVolume" th:field="*{costWaterVolume}" placeholder="请输入实际处理水量"
+                               name="costWaterVolume">
                     </div>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label class="col-sm-4 control-label">实际处理费(元)：</label>
+                    <label class="col-sm-4 control-label">实际处理费用(元)：</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="costPayMoney" placeholder="请输入实际处理费"
-                               name="costPayMoney" lay-key="3">
+                        <input type="text" class="form-control" id="costPayMoney" th:field="*{costPayMoney}" placeholder="请输入实际处理费"
+                               name="costPayMoney">
                     </div>
                 </div>
             </div>
@@ -76,8 +77,8 @@
                 <div class="form-group">
                     <label class="col-sm-4 control-label">处罚金额(元)：</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="costPunishMoney" placeholder="请输入处罚金额"
-                               name="costPunishMoney" lay-key="3">
+                        <input type="text" class="form-control" id="costPunishMoney" th:field="*{costPunishMoney}" placeholder="请输入处罚金额"
+                               name="costPunishMoney">
                     </div>
                 </div>
             </div>
@@ -85,10 +86,8 @@
                 <div class="form-group">
                     <label class="col-sm-4 control-label">处理原因：</label>
                     <div class="col-sm-8">
-                        <select class="form-control" id="costPunishReason" name="costPunishReason">
-                            <option value="出水超标COD">出水超标COD</option>
-                            <option value="出水超标BOD">出水超标BOD</option>
-                        </select>
+                        <input type="text" class="form-control" id="costPunishReason" th:field="*{costPunishReason}" placeholder="请选择处罚原因"
+                               name="costPunishReason">
                     </div>
                 </div>
             </div>
@@ -99,7 +98,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label ">备注：</label>
                     <div class="col-sm-8">
-                        <textarea type="text" id="costRemark" name="costRemark" class="form-control" placeholder="请输入备注"></textarea>
+                        <textarea type="text" id="costRemark" name="costRemark" class="form-control" th:field="*{costRemark}" placeholder="请输入备注"></textarea>
                     </div>
                 </div>
             </div>
@@ -153,6 +152,7 @@
             return false;
         }
 
+        formData.append('costId',$("#costId").val());
         formData.append('costFactory',$("#treeNameBrf").val());
         formData.append('costCompany',$("#costCompany").val());
         formData.append('costApplyTime',$("#costApplyTime").val());
@@ -166,7 +166,7 @@
         formData.append('file', $('#filePath')[0].files[0]);
 
         $.ajax({
-            url: prefix + "/add",
+            url: prefix + "/edit",
             type: 'post',
             cache: false,
             data: formData,

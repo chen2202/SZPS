@@ -42,7 +42,7 @@ public interface IDmPerService {
      * @param perStatus 权限状态
      * @return 结果
      */
-    public int changeStatus(Long perId,String perStatus);
+    public int changeStatus(Long perId, String perStatus);
 
 
     /**
@@ -51,7 +51,7 @@ public interface IDmPerService {
      * @param ids 需要修改的数据ID
      * @return 结果
      */
-    public void changeStatusByIds(String ids,String status);
+    public void changeStatusByIds(String ids, String status);
 
     /**
      * 批量删除资料
@@ -75,11 +75,11 @@ public interface IDmPerService {
      * 通过用户id查询用户有权访问的资料
      *
      */
-    public List<DmPermission> selectDataListByUserId(DmData dmData,Long userId);
+    public List<DmPermission> selectDataListByUserId(DmData dmData, Long userId);
 
     /**
      * 检查该用户是否已经具有该资料访问权限
      */
-    public int checkPerExist(Long dataId,Long userId);
+    public int checkPerExist(Long dataId, Long userId);
 
 }

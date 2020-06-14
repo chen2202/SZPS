@@ -6,62 +6,62 @@ body{
 
 /*表格中 操作链接*/
 a {
-    color: #2BA3FD;
-    text-decoration: none;
+	color: #2BA3FD;
+	text-decoration: none;
 }
 
 /*被选中的分页序号按钮变蓝色*/
 .pagination>.active>a{
 	background-color: #2BA3FD;
-    border-color: #2BA3FD;
-    color: #FFFFFF;
-    cursor: default;
-    z-index: 2;
+	border-color: #2BA3FD;
+	color: #FFFFFF;
+	cursor: default;
+	z-index: 2;
 }
 
 /*checkbox 表格 行头的多选框 */
 input[type="checkbox"]{
 	-webkit-appearance: none; /*隐藏原本的checkbox选项框*/
-    width: 16px;
-    height: 16px;
-    background-color: #FFFFFF;
+	width: 16px;
+	height: 16px;
+	background-color: #FFFFFF;
 	border: 1px solid rgba(0,0,0,0.15);
 	border-radius: 2px;
 	position: relative;
 	top: 3px;
 }
 input[type="checkbox"]:checked {
-    background: url("../../img/ic-选中.png");/*可加背景图片*/
-    background-size: 16px 16px;
-    background-position: -1px -1px;
-    background-repeat: no-repeat;
-    position: relative;
-    top: 3px;
+	background: url("../../img/ic-选中.png");/*可加背景图片*/
+	background-size: 16px 16px;
+	background-position: -1px -1px;
+	background-repeat: no-repeat;
+	position: relative;
+	top: 3px;
 }
 
 /*search 搜索框中添加小图标*/
 .select-list li input[type=search] {
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
-    background: url(../../img/ic-搜索.png) no-repeat 0 0;
-    background-position: 172px 4px;
-    outline: none;
-    height: 30px;
-    width: 200px;
-    padding-left: 5px;
+	border: 1px solid rgba(0,0,0,0.15);
+	border-radius: 4px;
+	background: url(../../img/ic-搜索.png) no-repeat 0 0;
+	background-position: 172px 4px;
+	outline: none;
+	height: 30px;
+	width: 200px;
+	padding-left: 5px;
 }
 
 /*空置按钮*/
 .btn {
-    border-radius: 4px;
-    background: #FFFFFF;
+	border-radius: 4px;
+	background: #FFFFFF;
 	border: 1px solid #D9D9D9;
 	color: rgba(0,0,0,0.65);
 }
 /* 搜索按钮 */
 .btn-main:hover{
 	border-radius: 4px;
-    background: linear-gradient(270deg, #1ECFF7 0%, #2E9BFF 100%);
+	background: linear-gradient(270deg, #1ECFF7 0%, #2E9BFF 100%);
 	border: 1px solid rgba(255,255,255,0.40);
 	color: rgba(255,255,255,1);
 	width: 72px;
@@ -79,7 +79,7 @@ input[type="checkbox"]:checked {
 /* 重置 新增 删除 导出按钮 */
 .btn-main2{
 	border-radius: 4px;
-    background: #FFFFFF;
+	background: #FFFFFF;
 	border: 1px solid #D9D9D9;
 	color: rgba(0,0,0,0.65);
 	width: 72px;
@@ -100,21 +100,21 @@ input[type="checkbox"]:checked {
 	display: inline-block;
 	width: 14px;
 	height: 14px;
-    opacity: 1;
-    background-position: 0px 1.4px;
-    background-size: 14px 14px;
-    background-repeat: no-repeat;
-    filter: drop-shadow(#fff 30px 0px); /*设置阴影，替代原来的图标*/
-   	transform: translateX(-30px);
-   	-ms-filter: drop-shadow(#fff 30px 0px); /*设置阴影，替代原来的图标*/
-   	-ms-transform: translateX(-30px);
+	opacity: 1;
+	background-position: 0px 1.4px;
+	background-size: 14px 14px;
+	background-repeat: no-repeat;
+	filter: drop-shadow(#fff 30px 0px); /*设置阴影，替代原来的图标*/
+	transform: translateX(-30px);
+	-ms-filter: drop-shadow(#fff 30px 0px); /*设置阴影，替代原来的图标*/
+	-ms-transform: translateX(-30px);
 }
 
 /* 右上角四个小图标按钮 */
 .btn:hover{
 	border-radius: 4px;
 	background: linear-gradient(270deg, #1ECFF7 0%, #2E9BFF 100%);
-    /* background: #2ba3fd; */
+	/* background: #2ba3fd; */
 	border: 1px solid rgba(255,255,255,0.40);
 	color: rgba(255,255,255,1);
 }
@@ -124,10 +124,10 @@ input[type="checkbox"]:checked {
 	display: inline-block;
 	width: 14px;
 	height: 14px;
-    opacity: 0.25;
-    background-position: 0px 1.4px;
-    background-size: 14px 14px;
-    background-repeat: no-repeat;
+	opacity: 0.25;
+	background-position: 0px 1.4px;
+	background-size: 14px 14px;
+	background-repeat: no-repeat;
 }
 .fa-add{
 	background-image: url(../../img/新增.svg);
@@ -154,5 +154,5 @@ thead > tr >th{
 }
 /* 选定 */
 .fixed-table-container tbody .selected td {
-    background-color: rgba(234,246,255,1);
+	background-color: rgba(234,246,255,1);
 }

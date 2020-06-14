@@ -44,15 +44,6 @@ public interface DmPerMapper {
      */
     public int changeStatus(@Param("perId") Long perId, @Param("perStatus") String perStatus);
 
-
-    /**
-     * 资料权限状态修改(多选)
-     *
-     * @param ids 需要修改的数据ID
-     * @return 结果
-     */
-    public void changeStatusByIds(Long[] ids,String status);
-
     /**
      * 批量删除资料信息
      *
@@ -73,12 +64,12 @@ public interface DmPerMapper {
      * 通过用户id查询用户有权访问的资料
      *
      */
-    public List<DmPermission> selectDataListByUserId(@Param("dmData")DmData dmData,@Param("per_userId") Long per_userId);
+    public List<DmPermission> selectDataListByUserId(@Param("dmData") DmData dmData, @Param("per_userId") Long per_userId);
 
 
     /**
      * 检查该用户是否已经具有该资料访问权限
      */
-    public int checkPerExist(@Param("dataId")Long dataId,@Param("userId") Long userId);
+    public int checkPerExist(@Param("dataId") Long dataId, @Param("userId") Long userId);
 
 }

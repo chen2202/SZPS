@@ -71,7 +71,7 @@ public interface DmDataMapper {
      * @param ids 需要删除的数据ID
      * @return 结果
      */
-    public int changeDataFlagByIds(@Param("ids") Long[] ids,@Param("dataFlag") String dataFlag);
+    public int changeDataFlagByIds(@Param("ids") Long[] ids, @Param("dataFlag") String dataFlag);
 
     /**
      * 批量删除资料(从回收站删除)

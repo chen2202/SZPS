@@ -69,7 +69,7 @@ public interface IDmDataService {
      * @return 结果
      * @throws Exception 异常
      */
-    public int changeDataFlagByIds(String ids,String flag) throws Exception;
+    public int changeDataFlagByIds(String ids, String flag) throws Exception;
 
 
     /**

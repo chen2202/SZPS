@@ -52,4 +52,10 @@ public interface DmCostMapper {
      */
     public DmCost selectCostByCode(String costCode);
 
+    /**
+     * 修改资料
+     * @param dmCost
+     * @return
+     */
+    int updateCost(DmCost dmCost);
 }

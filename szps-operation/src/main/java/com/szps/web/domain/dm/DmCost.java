@@ -1,8 +1,6 @@
 package com.szps.web.domain.dm;
 
 import com.szps.common.core.domain.BaseEntity;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.util.Date;
 
@@ -19,26 +17,43 @@ public class DmCost extends BaseEntity {
     /** 编号 */
     private Long costId;
 
+    /** 水质净化厂 */
+    private String costFactory;
+
+    /** 运营单位 */
+    private String costCompany;
+
+    /** 申请支付时间 */
+    private Date costApplyTime;
+
+    /** 实际支付月份 */
+    private String costPayTime;
+
+    /** 实际处理水量 */
+    private double costWaterVolume;
+
+    /** 实付处理费 */
+    private double costPayMoney;
+
+    /** 处罚金额 */
+    private double costPunishMoney;
+
+    /** 处罚原因 */
+    private String costPunishReason;
+
+    /** 备注 */
+    private String costRemark;
+
     /** 文件名 */
-    private String costName;
+    private String costFileName;
 
-    /** 文件路径 */
-    private String costPath;
+    /** 文件相对路径 */
+    private String costFilePath;
 
-    /** 区域 */
-    private String costArea;
+//    其他属性
+    private String type;
 
-    /** 创建者 */
-    private String costCreate;
-
-    /** 创建日期 */
-    private Date costDate;
-
-    /** 文件来源 */
-    private String costSource;
-
-    /** 文件编码 */
-    private String costCode;
+    private String time;
 
     public Long getCostId() {
         return costId;
@@ -48,73 +63,107 @@ public class DmCost extends BaseEntity {
         this.costId = costId;
     }
 
-    public String getCostName() {
-        return costName;
+    public String getCostFactory() {
+        return costFactory;
     }
 
-    public void setCostName(String costName) {
-        this.costName = costName;
+    public void setCostFactory(String costFactory) {
+        this.costFactory = costFactory;
     }
 
-    public String getCostPath() {
-        return costPath;
+    public String getCostCompany() {
+        return costCompany;
     }
 
-    public void setCostPath(String costPath) {
-        this.costPath = costPath;
+    public void setCostCompany(String costCompany) {
+        this.costCompany = costCompany;
     }
 
-    public String getCostArea() {
-        return costArea;
+    public Date getCostApplyTime() {
+        return costApplyTime;
     }
 
-    public void setCostArea(String costArea) {
-        this.costArea = costArea;
+    public void setCostApplyTime(Date costApplyTime) {
+        this.costApplyTime = costApplyTime;
     }
 
-    public String getCostCreate() {
-        return costCreate;
+    public String getCostPayTime() {
+        return costPayTime;
     }
 
-    public void setCostCreate(String costCreate) {
-        this.costCreate = costCreate;
+    public void setCostPayTime(String costPayTime) {
+        this.costPayTime = costPayTime;
     }
 
-    public Date getCostDate() {
-        return costDate;
+    public double getCostWaterVolume() {
+        return costWaterVolume;
     }
 
-    public void setCostDate(Date costDate) {
-        this.costDate = costDate;
+    public void setCostWaterVolume(double costWaterVolume) {
+        this.costWaterVolume = costWaterVolume;
     }
 
-    public String getCostSource() {
-        return costSource;
+    public double getCostPayMoney() {
+        return costPayMoney;
     }
 
-    public void setCostSource(String costSource) {
-        this.costSource = costSource;
+    public void setCostPayMoney(double costPayMoney) {
+        this.costPayMoney = costPayMoney;
     }
 
-    public String getCostCode() {
-        return costCode;
+    public double getCostPunishMoney() {
+        return costPunishMoney;
     }
 
-    public void setCostCode(String costCode) {
-        this.costCode = costCode;
+    public void setCostPunishMoney(double costPunishMoney) {
+        this.costPunishMoney = costPunishMoney;
     }
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-                .append("costId", getCostId())
-                .append("costName", getCostName())
-                .append("costPath", getCostPath())
-                .append("costArea", getCostArea())
-                .append("costCreate", getCostCreate())
-                .append("costDate", getCostDate())
-                .append("costSource", getCostSource())
-                .append("costCode", getCostCode())
-                .toString();
+    public String getCostPunishReason() {
+        return costPunishReason;
+    }
+
+    public void setCostPunishReason(String costPunishReason) {
+        this.costPunishReason = costPunishReason;
+    }
+
+    public String getCostRemark() {
+        return costRemark;
+    }
+
+    public void setCostRemark(String costRemark) {
+        this.costRemark = costRemark;
+    }
+
+    public String getCostFileName() {
+        return costFileName;
+    }
+
+    public void setCostFileName(String costFileName) {
+        this.costFileName = costFileName;
+    }
+
+    public String getCostFilePath() {
+        return costFilePath;
+    }
+
+    public void setCostFilePath(String costFilePath) {
+        this.costFilePath = costFilePath;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

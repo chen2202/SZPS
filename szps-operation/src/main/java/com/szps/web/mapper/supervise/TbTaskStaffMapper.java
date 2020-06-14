@@ -13,7 +13,7 @@ public interface TbTaskStaffMapper {
 
     List<TbTaskStaff> selectAll();
 
-    int updateByPrimaryKey(String record);
+    int updateByPrimaryKey(TbTaskStaff record);
 
 
 

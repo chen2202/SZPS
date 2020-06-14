@@ -17,11 +17,11 @@
 							搜索：<input type="search" name="ruleName"  placeholder="请输入关键字" maxlength="11"/>
 						</li>
 						<li>
-							<a class="btn btn-main btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							<a class="btn btn-main btn-sm" onclick="$.table.search()"  shiro:hasPermission="supervise:data2:list"><i class="fa fa-search"></i>&nbsp;搜索</a>
 
 						</li>
 						<li style="float: right">
-							<a class="btn btn-main2 " onclick="$.operate.add()" shiro:hasPermission="supervise:data1:add">&nbsp;新增</a>
+							<a class="btn btn-main2 " onclick="$.operate.add()" shiro:hasPermission="supervise:data2:add">&nbsp;新增</a>
 						</li>
 					</ul>
 				</div>
@@ -61,7 +61,7 @@
             removeUrl: prefix + "/remove",
             exportUrl: prefix + "/export",
             sortName: "ruleNumber",
-            modalName: "规则",
+            modalName: "事项",
             columns: [{
                 checkbox: true
             },

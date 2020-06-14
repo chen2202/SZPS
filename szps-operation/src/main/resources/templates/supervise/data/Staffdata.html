@@ -47,7 +47,7 @@
 							<input type="text" class="time-input" id="staffBirthday" placeholder="选择出生年月" name="staffBirthday"/>
 						</li>-->
 						<li>
-							<a class="btn btn-main btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							<a class="btn btn-main btn-sm" onclick="$.table.search()" shiro:hasPermission="supervise:data1:list"><i class="fa fa-search"></i>&nbsp;搜索</a>
 
 						</li>
 						<li style="float: right">
@@ -91,7 +91,7 @@
             removeUrl: prefix + "/remove",
             exportUrl: prefix + "/export",
             sortName: "staffNumber",
-            modalName: "检查人员",
+            modalName: "执法人员",
             columns: [{
                 checkbox: true
             },

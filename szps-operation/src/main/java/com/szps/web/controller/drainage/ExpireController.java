@@ -36,7 +36,7 @@ public class ExpireController extends BaseController{
 	 * 跳转到expire.html
 	 * 
 	 */
-	//@RequiresPermissions("drainage:expire:view")
+	@RequiresPermissions("drainage:expire:view")
     @GetMapping("/expire")
     public String household(){
         return prefix + "/expire";
@@ -55,7 +55,6 @@ public class ExpireController extends BaseController{
 		m.put("administrativeName", administrativeName);
 		m.put("licenseType", licenseType);
 		m.put("expireTime", expireTime);
-		//System.out.println(administrativeName+"---------"+licenseType+"---------"+expireTime);
 		List<Household> list = expireService.selectAll(m);
 		return getDataTable(list);
 	}

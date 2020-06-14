@@ -32,6 +32,10 @@ public class TbTask {
 
     private String taskFile;
 
+    private String taskBc;
+
+    private String taskBcStaff;
+
 
 
 
@@ -146,5 +150,21 @@ public class TbTask {
 
     public void setTaskFile(String taskFile) {
         this.taskFile = taskFile;
+    }
+
+    public String getTaskBc() {
+        return taskBc;
+    }
+
+    public void setTaskBc(String taskBc) {
+        this.taskBc = taskBc;
+    }
+
+    public String getTaskBcStaff() {
+        return taskBcStaff;
+    }
+
+    public void setTaskBcStaff(String taskBcStaff) {
+        this.taskBcStaff = taskBcStaff;
     }
 }

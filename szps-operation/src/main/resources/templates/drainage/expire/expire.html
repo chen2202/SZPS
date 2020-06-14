@@ -46,7 +46,7 @@
 								onclick="$.table.search()">搜索</a> <a
 								class="btn btn-main2 btn-sm" onclick="$.form.reset()">重置</a></li>
 							<li><a class="btn btn-main2" onclick="$.table.exportExcel()"
-								shiro:hasPermission="drainage:household:export"> <i
+								shiro:hasPermission="drainage:expire:export"> <i
 									class="fa-user-defined fa-export"></i> 导出
 							</a></li>
 						</ul>
@@ -63,7 +63,6 @@
 	<th:block th:include="include :: footer" />
 	<script th:inline="javascript">
 		var editFlag = [[${@permission.hasPermi('drainage:household:edit')}]];
-		//var removeFlag = [[${@permission.hasPermi('drainage:household:remove')}]];
 		var prefix = ctx + "drainage/expire";
 		var prefix2 = ctx + "drainage/household"
 
@@ -71,7 +70,7 @@
 		    var options = {
 		        url: prefix + "/list",
 		        createUrl: prefix + "/add",
-		        updateUrl: prefix2 + "/edit/{id}", //用排水户列表页的编辑弹窗代表详情弹窗
+		        detailUrl: prefix2 + "/detail/{id}",
 		        removeUrl: prefix + "/remove",
 		        exportUrl: prefix + "/export",
 		        sortName: "household_id",
@@ -327,10 +326,9 @@
 		            formatter: function(value, row, index) {
 		                var actions = [];
 		                actions.push(' <a>&nbsp;&nbsp;&nbsp;</a> ');
-		              	//用编辑页面来显示排水户的详情信息
-		                actions.push('<a class="' + editFlag + '" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.household_id + '\')">详情</a>');
+		              	//用详情页面编辑权限来显示排水户的详情信息
+		                actions.push('<a class="' + editFlag + '" href="javascript:void(0)" onclick="$.operate.detail(\'' + row.household_id + '\')">详情</a>');
 		              	actions.push(' <a>&nbsp;&nbsp;&nbsp;</a> ');
-		              	//actions.push('<a href="">定位</a>');
 		                return actions.join('');
 		            }
 		        }]

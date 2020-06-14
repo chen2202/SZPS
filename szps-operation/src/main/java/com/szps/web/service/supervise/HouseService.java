@@ -37,4 +37,5 @@ public interface HouseService
 
     public List<TbHouse>selectHouseCheckList(String houseRule);
 
+    String[] selectHouseName(String houseRule);
 }

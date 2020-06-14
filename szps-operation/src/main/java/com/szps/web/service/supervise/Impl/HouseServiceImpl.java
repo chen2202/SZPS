@@ -70,4 +70,9 @@ public class HouseServiceImpl implements HouseService{
     public List<TbHouse> selectHouseCheckList(String houseRule) {
         return houseMapper.selectHouseCheckList(houseRule);
     }
+
+    @Override
+    public String[] selectHouseName(String houseRule) {
+        return houseMapper.selectHouseName(houseRule);
+    }
 }

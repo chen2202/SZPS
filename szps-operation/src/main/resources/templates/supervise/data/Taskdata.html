@@ -14,10 +14,10 @@
 				<div class="select-list">
 					<ul>
 						<li>
-							抽取事项：<select name="houseRule">
+							抽取事项：<select name="houseRule" id="houseRule">
 							<option value="">请选择抽取事项</option>
-							<option value="建设项目排水审批">建设项目排水审批</option>
-							<option value="城市排水许可">城市排水许可</option>
+							<!--<option value="建设项目排水审批">建设项目排水审批</option>-->
+							<!--<option value="城市排水许可">城市排水许可</option>-->
 						</select>
 						</li>
 						<li>
@@ -50,7 +50,7 @@
 							<input type="text" class="time-input" id="taskTime" placeholder="选择检查时间" name="taskTime"/>
 						</li>-->
 						<li>
-							<a class="btn btn-main btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							<a class="btn btn-main btn-sm" onclick="$.table.search()" shiro:hasPermission="supervise:data:list" ><i class="fa fa-search"></i>&nbsp;搜索</a>
 
 						</li>
 						<!--<li style="float: right">
@@ -108,9 +108,38 @@
     var editFlag = [[${@permission.hasPermi('supervise:data:edit')}]];
     var removeFlag = [[${@permission.hasPermi('supervise:data:remove')}]];
     var prefix = ctx + "supervise/data";
+    function getRule() {
 
+        $.ajax({
+            cache : true,
+            type : "POST",
+            url : ctx + "supervise/datas/getRule",
+            async : false,
+            error : function(request) {
+                $.modal.alertError("系统错误");
+            },
+            success : function(data) {
+
+                console.log(data.data);
+                var alls=new Array();
+                alls=data.data;
+                var str = '';
+
+                for(var o in alls) {
+                    str += '<option value="'+alls[o]+'">'+alls[o]+'</option>';
+
+                }
+
+                $("#houseRule").append(str);
+
+
+            }
+        });
+    }
 
     $(function() {
+
+        getRule();
         var options = {
             url: prefix + "/list",
             createUrl: prefix + "/Taskadd",

@@ -69,8 +69,8 @@ public class HouseController extends BaseController {
 
         return getDataTable(list);
     }
-    @RequiresPermissions("supervise:data:add")
-    @Log(title = "任务库管理", businessType = BusinessType.INSERT)
+//    @RequiresPermissions("supervise:data:add")
+//    @Log(title = "任务库管理", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
     public AjaxResult addSave(@Validated TbHouse task)
@@ -85,6 +85,9 @@ public class HouseController extends BaseController {
 
         return toAjax(houseService.insertHouse(task));
     }
+
+    @RequiresPermissions("supervise:data:edit")
+    @Log(title = "检查对象管理", businessType = BusinessType.UPDATE)
     @GetMapping("/edit/{houseNumber}")
     public String edit(@PathVariable("houseNumber") String taskNumber, ModelMap mmap)
     {
@@ -92,8 +95,7 @@ public class HouseController extends BaseController {
         return prefix + "/Taskedit";
     }
 
-    @RequiresPermissions("supervise:data:edit")
-    @Log(title = "任务管理", businessType = BusinessType.UPDATE)
+
     @PostMapping("/edit")
     @ResponseBody
     public AjaxResult editSave(@Validated TbHouse tbHouse)
@@ -106,7 +108,7 @@ public class HouseController extends BaseController {
 
     }
     @RequiresPermissions("supervise:data:remove")
-    @Log(title = "任务管理", businessType = BusinessType.DELETE)
+    @Log(title = "检查对象管理", businessType = BusinessType.DELETE)
     @PostMapping("/remove")
     @ResponseBody
     public AjaxResult remove(String ids)

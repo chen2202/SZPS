@@ -10,57 +10,57 @@
 	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
 		<form class="form-horizontal m" id="form-role-edit" >
 			<input id="taskNumber" name="taskNumber" type="hidden" th:field="*{task.taskNumber}"/>
-
+			<input id="taskHouse" name="taskHouse" type="hidden" th:field="*{task.taskHouse}"/>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">创建时间：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="taskTime" id="taskTime" th:field="*{task.taskTime}" placeholder="请输入创建时间"   required readonly>
+					<input class="form-control" type="text" name="taskTime" id="taskTime" th:field="*{task.taskTime}" placeholder="请输入创建时间"  style="border: 0px;background-color: white"  required readonly>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">抽查事项：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="ruleContent" id="ruleContent" th:field="*{task.tbHouse.houseRule}" placeholder="请输入抽查事项"   required readonly>
+					<input class="form-control" type="text" name="ruleContent" id="ruleContent" th:field="*{task.tbHouse.houseRule}" placeholder="请输入抽查事项"  style="border: 0px;background-color: white" required readonly>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">执法人员：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="taskStaff" id="taskStaff" th:value="${taskStaff}" placeholder="请输入执法人员" required readonly>
+					<input class="form-control" type="text" name="taskStaff" id="taskStaff" th:value="${taskStaff}" placeholder="请输入执法人员"  style="border: 0px;background-color: white" required readonly>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">抽查对象名称：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="houseName" id="houseName" th:field="*{task.tbHouse.houseName}" placeholder="请输入检查对象名称" maxlength="20"  required readonly>
+					<input class="form-control" type="text" name="houseName" id="houseName" th:field="*{task.tbHouse.houseName}" placeholder="请输入检查对象名称" maxlength="20" style="border: 0px;background-color: white" required readonly>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">项目名称：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="houseItem" id="houseItem" th:field="*{task.tbHouse.houseItem}" placeholder="请输入项目名称" maxlength="20"  required readonly>
+					<input class="form-control" type="text" name="houseItem" id="houseItem" th:field="*{task.tbHouse.houseItem}" placeholder="请输入项目名称" maxlength="20" style="border: 0px;background-color: white" required readonly>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">地址：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="houseRegion" id="houseRegion" th:field="*{task.tbHouse.houseRegion}" maxlength="30" placeholder="请输入地址" required readonly>
+					<input class="form-control" type="text" name="houseRegion" id="houseRegion" th:field="*{task.tbHouse.houseRegion}" maxlength="30" placeholder="请输入地址" style="border: 0px;background-color: white" required readonly>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">联系人：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="houseRole" id="houseRole" th:field="*{task.tbHouse.houseRole}" maxlength="5" placeholder="请输入联系人" required readonly>
+					<input class="form-control" type="text" name="houseRole" id="houseRole" th:field="*{task.tbHouse.houseRole}" maxlength="5" placeholder="请输入联系人" style="border: 0px;background-color: white" required readonly>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">联系电话：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="housePhone" id="housePhone" th:field="*{task.tbHouse.housePhone}" maxlength="11" placeholder="请输入联系电话" required readonly>
+					<input class="form-control" type="text" name="housePhone" id="housePhone" th:field="*{task.tbHouse.housePhone}" maxlength="11" placeholder="请输入联系电话" style="border: 0px;background-color: white" required readonly>
 				</div>
 			</div>
 
@@ -69,13 +69,13 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">证件有效期：</label>
 				<div class="col-sm-3">
-					<input type="text" class="form-control" id="houseBegin" th:field="*{task.tbHouse.houseBegin}" placeholder="开始时间" name="houseBegin" readonly>
+					<input type="text" class="form-control" id="houseBegin" th:field="*{task.tbHouse.houseBegin}" placeholder="开始时间" name="houseBegin" style="border: 0px;background-color: white" readonly>
 				</div>
 				<div class="col-sm-1">
-					<span>---</span>
+					<span style="line-height: 2.5">---</span>
 				</div>
 				<div class="col-sm-3">
-					<input type="text" class="form-control" id="houseEnd" th:field="*{task.tbHouse.houseEnd}" placeholder="结束时间" name="houseEnd" readonly>
+					<input type="text" class="form-control" id="houseEnd" th:field="*{task.tbHouse.houseEnd}" placeholder="结束时间" name="houseEnd"  style="border: 0px;background-color: white" readonly>
 				</div>
 			</div>
 
@@ -164,7 +164,8 @@
             var taskCheckTime = $("input[name='taskCheckTime']").val();
             var taskResult = $("input[name='taskResult']").val();
             var taskHandle = $("input[name='taskHandle']").val();
-            /*var houseRole = $("input[name='houseRole']").val();
+            var taskHouse = $("input[name='taskHouse']").val();
+            /*var taskHouse = $("input[name='taskHouse']").val();
             var housePhone = $("input[name='housePhone']").val();
             var houseRegion = $("input[name='houseRegion']").val();
             var houseBegin = $("input[name='houseBegin']").val();
@@ -178,7 +179,8 @@
 				    "taskNumber":taskNumber,
 				    "taskCheckTime":taskCheckTime,
                     "taskResult": taskResult,
-                    "taskHandle": taskHandle
+                    "taskHandle": taskHandle,
+					"taskHouse":taskHouse
                    /* "houseRole": houseRole,
                     "housePhone": housePhone,
                     "houseRegion":houseRegion,

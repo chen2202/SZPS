@@ -42,13 +42,31 @@ public class FactoryController extends BaseController{
 	private FactoryService factoryService;
 	
 	/**
-	 * 查询全部水厂名称，添加到worker/add.html和worker/edit.html
+	 * 查询全部水厂名称，添加到worker/edit.html
+	 * 下拉菜单中
+	 * @return 水厂名称 水厂代码
+	 */
+	@PostMapping("/worker/edit/factoryNameList")
+    @ResponseBody
+	public List<String> factoryNameList(){
+		List<Factory> factoryModel = factoryService.selectAllFactoryName();
+		List<String> factoryInfo = new ArrayList<String>();
+		for(int i=0;i<factoryModel.size();i++) { 
+			Factory f = (Factory)factoryModel.get(i);
+			factoryInfo.add(f.getName());
+			factoryInfo.add(f.getFactory_id());
+        }
+		return factoryInfo;
+	}
+	
+	/**
+	 * 查询全部水厂名称，添加到worker/add.html
 	 * 下拉菜单中
 	 * @return 水厂名称 水厂代码
 	 */
 	@PostMapping("/worker/factoryNameList")
     @ResponseBody
-	public List<String> factoryNameList(){
+	public List<String> factoryNameList3(){
 		List<Factory> factoryModel = factoryService.selectAllFactoryName();
 		List<String> factoryInfo = new ArrayList<String>();
 		for(int i=0;i<factoryModel.size();i++) { 

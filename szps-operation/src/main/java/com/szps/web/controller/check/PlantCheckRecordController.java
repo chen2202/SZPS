@@ -12,12 +12,14 @@ import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
 import com.szps.common.utils.poi.ExcelUtil;
 import com.szps.framework.util.ShiroUtils;
+import com.szps.framework.web.domain.server.Sys;
 import com.szps.system.domain.SysDept;
 import com.szps.system.domain.SysUser;
 import com.szps.system.service.ISysDeptService;
-import com.szps.web.domain.check.PlantCheckDevice;
-import com.szps.web.service.check.IPlantCheckContentService;
-import com.szps.web.service.check.IPlantCheckDeviceService;
+
+
+import com.szps.web.domain.event.EventPicture;
+import com.szps.web.domain.event.EventSubmit;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,35 +48,15 @@ public class PlantCheckRecordController extends BaseController {
     @Autowired
     private IPlantCheckRecordService plantCheckRecordService;
 
-    @Autowired
-    private IPlantCheckContentService plantCheckContentService;
 
-    @Autowired
-    private IPlantCheckDeviceService plantCheckDeviceService;
 
     @Autowired
     private ISysDeptService iSysDeptService;
 
     @RequiresPermissions("check:plant:view")
     @GetMapping()
-    public String plant(PlantCheckDevice plantCheckDevice, SysDept sysDept, Model model) {
-        SysUser user = ShiroUtils.getSysUser();
-        List<PlantCheckDevice> plantList = new ArrayList<>();
-        List<PlantCheckDevice> plantList2 = new ArrayList<>();
-        if (user.getUserName().equals("admin")) {
-            List<SysDept> sysDepts = iSysDeptService.selectDeptList(sysDept);
-            for (int i = 0; i < sysDepts.size(); i++) {
-                PlantCheckDevice plant = new PlantCheckDevice();
-                plant.setPlantName(sysDepts.get(i).getDeptName());
-                plantList2.add(plant);
-            }
-            plantList = plantCheckDeviceService.selectPlantCheckDeviceList(plantCheckDevice);
-        } else {
-            plantList = plantCheckContentService.getALL(user);
-            plantList2 = plantList;
-        }
-        model.addAttribute("plantList", plantList);
-        model.addAttribute("plantList1", plantList2);
+    public String plant( SysDept sysDept, Model model) {
+
         return prefix + "/plant";
     }
 
@@ -86,99 +68,146 @@ public class PlantCheckRecordController extends BaseController {
     @ResponseBody
     public TableDataInfo list(PlantCheckRecord plantCheckRecord) throws Exception {
         startPage();
-        List<PlantCheckRecord> list = new ArrayList<>();
-        SysUser user = ShiroUtils.getSysUser();
-        if (user.getUserName().equals("admin")) {
-            list = plantCheckRecordService.selectPlantCheckRecordList(plantCheckRecord);
-        } else {
-            list = plantCheckRecordService.selectPlantCheckRecordList2(user);
+        List<PlantCheckRecord> list = plantCheckRecordService.selectCheckManagerList(plantCheckRecord);
+
+
+        if (plantCheckRecord.getCheckSubmitTime() != null) {
+
+
+            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            List<PlantCheckRecord> list1=new ArrayList<PlantCheckRecord>();
+
+            for (PlantCheckRecord plantCheckRecord1 : list) {
+
+                String Time = sdf1.format(plantCheckRecord.getCheckSubmitTime());
+                String beginTime = sdf.format(plantCheckRecord1.getCheckSubmitTime()) + " 00:00:00";
+                String endTime = sdf.format(plantCheckRecord1.getCheckSubmitTime()) + " 24:00:00";
+                Date begin = sdf1.parse(beginTime);
+                Date end = sdf1.parse(endTime);
+                Date time = sdf1.parse(Time);
+
+                if (belongCalendar(time, begin, end) ==true) {
+
+                    list1.add(plantCheckRecord1);
+                }
+
+            }
+            return getDataTable(list1);
+
+        }else {
+
+            return getDataTable(list);
         }
-        return getDataTable(list);
     }
 
-    /**
-     * 导出污水厂巡检列表
-     */
-    @RequiresPermissions("check:plant:export")
-    @PostMapping("/export")
-    @ResponseBody
-    public AjaxResult export(PlantCheckRecord plantCheckRecord) {
-        List<PlantCheckRecord> list = plantCheckRecordService.selectPlantCheckRecordList(plantCheckRecord);
-        ExcelUtil<PlantCheckRecord> util = new ExcelUtil<PlantCheckRecord>(PlantCheckRecord.class);
-        return util.exportExcel(list, "plant");
-    }
 
     /**
-     * 新增污水厂巡检
+     * 判断时间是否在时间段内
+     *
+     * @param nowTime
+     * @param beginTime
+     * @param endTime
+     * @return
      */
-    @GetMapping("/add")
-    public String add(Model model, ModelMap mmap, PlantCheckDevice plantCheckDevice) {
+    public static boolean belongCalendar(Date nowTime, Date beginTime, Date endTime) {
 
-        SysUser user = ShiroUtils.getSysUser();
-        List<PlantCheckDevice> plantList = new ArrayList<>();
-        if (user.getUserName().equals("admin")) {
-            plantList = plantCheckDeviceService.selectPlantCheckDeviceList(plantCheckDevice);
+        long nowtime=nowTime.getTime();
+        long begintime=beginTime.getTime();
+        long endtime=endTime.getTime();
+
+
+
+        if (nowtime>=begintime&&nowtime<=endtime) {
+            return true;
         } else {
-            plantList = plantCheckContentService.getALL(user);
+            return false;
         }
-        model.addAttribute("plantList", plantList);
-        PlantCheckRecord plant = new PlantCheckRecord();
-        plant.setSystemCreateuser(user.getUserName());
-        mmap.put("user", plant);
-        return prefix + "/add";
-    }
-
-    /**
-     * 新增保存污水厂巡检
-     */
-    @RequiresPermissions("check:plant:add")
-    @Log(title = "污水厂巡检", businessType = BusinessType.INSERT)
-    @PostMapping("/add")
-    @ResponseBody
-    public AjaxResult addSave(PlantCheckRecord plantCheckRecord) {
-        return toAjax(plantCheckRecordService.insertPlantCheckRecord(plantCheckRecord));
     }
 
 
-    /**
-     * 修改污水厂巡检
-     */
-    @GetMapping("/edit/{systemId}")
-    public String edit(@PathVariable("systemId") Long systemId, ModelMap mmap, Model model, PlantCheckDevice plantCheckDevice) {
-        PlantCheckRecord plantCheckRecord = plantCheckRecordService.selectPlantCheckRecordById(systemId);
-        SysUser user = ShiroUtils.getSysUser();
-        List<PlantCheckDevice> plantList = new ArrayList<>();
-        if (user.getUserName().equals("admin")) {
-            plantList = plantCheckDeviceService.selectPlantCheckDeviceList(plantCheckDevice);
-        } else {
-            plantList = plantCheckContentService.getALL(user);
-        }
-        model.addAttribute("plantList", plantList);
-        mmap.put("plantCheckRecord", plantCheckRecord);
-        return prefix + "/edit";
+    @GetMapping("/detail/{eventSid}")
+    public String detail(@PathVariable("eventSid") Integer eventSid, Model mmap, EventSubmit eventSubmit) {
+
+
+        return prefix + "/detail";
     }
 
-    /**
-     * 修改保存污水厂巡检
-     */
-    @RequiresPermissions("check:plant:edit")
-    @Log(title = "污水厂巡检", businessType = BusinessType.UPDATE)
-    @PostMapping("/edit")
-    @ResponseBody
-    public AjaxResult editSave(PlantCheckRecord plantCheckRecord) {
-        return toAjax(plantCheckRecordService.updatePlantCheckRecord(plantCheckRecord));
-    }
 
-    /**
-     * 删除污水厂巡检
-     */
-    @RequiresPermissions("check:plant:remove")
-    @Log(title = "污水厂巡检", businessType = BusinessType.DELETE)
-    @PostMapping("/remove")
-    @ResponseBody
-    public AjaxResult remove(String ids) {
-        return toAjax(plantCheckRecordService.deletePlantCheckRecordByIds(ids));
-    }
+//    /**
+//     * 导出污水厂巡检列表
+//     */
+//    @RequiresPermissions("check:plant:export")
+//    @PostMapping("/export")
+//    @ResponseBody
+//    public AjaxResult export(PlantCheckRecord plantCheckRecord) {
+//        List<PlantCheckRecord> list = plantCheckRecordService.selectCheckManagerList(plantCheckRecord);
+//        ExcelUtil<PlantCheckRecord> util = new ExcelUtil<PlantCheckRecord>(PlantCheckRecord.class);
+//        return util.exportExcel(list, "plant");
+//    }
+
+//    /**
+//     * 新增污水厂巡检
+//     */
+//    @GetMapping("/add")
+//    public String add(Model model, ModelMap mmap) {
+//
+//        SysUser user = ShiroUtils.getSysUser();
+//
+//
+//
+//        PlantCheckRecord plant = new PlantCheckRecord();
+//        plant.setSystemCreateuser(user.getUserName());
+//        mmap.put("user", plant);
+//        return prefix + "/add";
+//    }
+
+//    /**
+//     * 新增保存污水厂巡检
+//     */
+//    @RequiresPermissions("check:plant:add")
+//    @Log(title = "污水厂巡检", businessType = BusinessType.INSERT)
+//    @PostMapping("/add")
+//    @ResponseBody
+//    public AjaxResult addSave(PlantCheckRecord plantCheckRecord) {
+//        return toAjax(plantCheckRecordService.insertPlantCheckRecord(plantCheckRecord));
+//    }
+//
+//
+//    /**
+//     * 修改污水厂巡检
+//     */
+//    @GetMapping("/edit/{systemId}")
+//    public String edit(@PathVariable("systemId") Long systemId, ModelMap mmap, Model model,  ) {
+//        PlantCheckRecord plantCheckRecord = plantCheckRecordService.selectPlantCheckRecordById(systemId);
+//        SysUser user = ShiroUtils.getSysUser();
+//
+//
+//        mmap.put("plantCheckRecord", plantCheckRecord);
+//        return prefix + "/edit";
+//    }
+//
+//    /**
+//     * 修改保存污水厂巡检
+//     */
+//    @RequiresPermissions("check:plant:edit")
+//    @Log(title = "污水厂巡检", businessType = BusinessType.UPDATE)
+//    @PostMapping("/edit")
+//    @ResponseBody
+//    public AjaxResult editSave(PlantCheckRecord plantCheckRecord) {
+//        return toAjax(plantCheckRecordService.updatePlantCheckRecord(plantCheckRecord));
+//    }
+//
+//    /**
+//     * 删除污水厂巡检
+//     */
+//    @RequiresPermissions("check:plant:remove")
+//    @Log(title = "污水厂巡检", businessType = BusinessType.DELETE)
+//    @PostMapping("/remove")
+//    @ResponseBody
+//    public AjaxResult remove(String ids) {
+//        return toAjax(plantCheckRecordService.deletePlantCheckRecordByIds(ids));
+//    }
 
 
 }

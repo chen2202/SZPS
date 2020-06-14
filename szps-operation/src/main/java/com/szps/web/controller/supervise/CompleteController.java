@@ -4,10 +4,10 @@ package com.szps.web.controller.supervise;
 import com.szps.common.annotation.Log;
 import com.szps.common.config.Global;
 import com.szps.common.core.controller.BaseController;
-import com.szps.common.core.controller.TaskBaseController;
+//import com.szps.common.core.controller.TaskBaseController;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
-import com.szps.common.core.page.TaskTableDataInfo;
+//import com.szps.common.core.page.TaskTableDataInfo;
 import com.szps.common.enums.BusinessType;
 import com.szps.common.utils.file.FileUtils;
 import com.szps.web.controller.common.CommonController;
@@ -162,7 +162,7 @@ public class CompleteController extends BaseController {
         mmap.put("reach",reach);
          return AjaxResult.success("success",mmap);
      }
-    @RequiresPermissions("supervise:complete:list")
+//    @RequiresPermissions("supervise:complete:list")
     @PostMapping("/list")
     @ResponseBody
     public TableDataInfo list(TbTask tbTask)

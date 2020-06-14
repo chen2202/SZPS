@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
-    <th:block th:include="include :: header('污水厂事件列表')"/>
+    <th:block th:include="include :: header('突发事件列表')"/>
     <link th:href="@{/css/event/event.css}" rel="stylesheet"/>
 </head>
 <body class="gray-bg">
@@ -12,82 +12,25 @@
                 <div class="select-list">
                     <ul>
                         <li>
-                            <p>
-                               事件名称：
-                            </p>
-                            <input type="text" style="width: 165px" name="eventName"/>
+                            <label>事件名称：</label>
+                            <input type="text" name="eventName"/>
                         </li>
                         <li>
-                            <p>
-                               事件地点：
-                            </p>
-                            <input type="text" style="width: 165px" name="eventPlace"/>
+                            <label>事件地点：</label>
+                            <input type="text" name="eventPlace"/>
                         </li>
-                        <li>
-                            <p>
-                               事件属性：
-                            </p>
-                            <select name="eventAttribute" style="width: 165px">
-                                <option value=""></option>
-                                <option style="font-family: '苹方 中等';" th:each="result : ${emailList}"
-                                        th:value="${result.eventAttribute}"
-                                        th:text="${result.eventAttribute}"></option>
 
-                            </select>
+                        <li class="select-time">
+                            <label>上报时间：</label>
+                            <input type="text" class="time-input" id="eventSubmitTime" placeholder="请选择时间" name="eventSubmitTime"/>
                         </li>
                         <li>
-                            <p>
-                                上传者：
-                            </p>
-                            <input style="font-family: '苹方 中等';width: 165px" type="text" name="eventCreateuser"/>
-                        </li>
-                        <li>
-                            <a class="btn btn-main btn-sm" onclick="$.table.search()">
-                                <i class="fa fa-search"></i>&nbsp;搜索
-
-                            </a>
-
-                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()">
-                                <i class="fa fa-refresh"></i>&nbsp;重置
-                            </a>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
                         </li>
                     </ul>
                 </div>
             </form>
-        </div>
-
-        <div class="btn-group-sm" id="toolbar" role="group">
-            <a class="btn   btn-white" onclick="$.operate.add()" shiro:hasPermission="event:submit:add">
-                <i class="fa fa-plus"></i>
-                <text>
-                    添加
-                </text>
-            </a>
-            <a class="btn   btn-white single disabled " onclick="$.operate.edit()"
-               shiro:hasPermission="event:submit:edit">
-                <i class="fa fa-edit"></i>
-                <text>
-                    修改
-                </text>
-            </a>
-            <a class="btn   btn-white  " onclick="$.operate.removeAll()"
-               shiro:hasPermission="event:submit:remove">
-                <i class="fa fa-remove"></i>
-                <text>
-                    删除
-                </text>
-            </a>
-            <a class="btn  btn-white" onclick="$.table.exportExcel()" shiro:hasPermission="event:submit:export">
-                <i class="fa fa-download"></i>
-                <text>
-                    导出
-                </text>
-            </a>
-            <a class="btn btn-btn  btn-white" href="/event/email">
-                <text>
-                    基本资料设定
-                </text>
-            </a>
         </div>
         <div class="col-sm-12 select-table table-striped">
             <table id="bootstrap-table" style="font-family: '苹方 中等';height: 36px">
@@ -112,10 +55,8 @@
             removeUrl: prefix + "/remove",
             exportUrl: prefix + "/export",
             detailUrl: prefix + "/detail/{id}",
-            modalName: "污水厂事件",
-            columns: [{
-                checkbox: true
-            },
+            modalName: "事件内容",
+            columns: [
                 {
                     field: 'eventSid',
                     title: '事件编号',
@@ -123,73 +64,41 @@
                 },
                 {
                     field: 'eventName',
-                    title: '事件名称',
-                    sortable: true
+                    title: '事件名称'
                 },
                 {
                     field: 'eventPlace',
-                    title: '事件地点',
-                    sortable: true
+                    title: '事件地点'
                 },
                 {
                     field: 'eventTime',
-                    title: '事件时间',
-                    sortable: true
+                    title: '事件时间'
                 },
                 {
                     title: '事件内容',
-
                     formatter: function (value, row, index) {
                         var actions = [];
                         actions.push('<a class="  btn-xs " href="javascript:void(0)" ' +
-                            'onclick="$.operate.detail(\'+' + row.eventSid + '\')">' +
+                            'onclick="$.operate.detail(\'' +index+ '\')">' +
                             '<text style="color: #2BA3FD">查看详情</text>' +
                             '</a> ');
                         return actions.join('');
-                    },
-                    sortable: true
+                    }
                 },
                 {
-                    field: 'eventAttribute',
-                    title: '事件属性',
-                    sortable: true
-                },
-                {
-                    field: 'eventCreateuser',
-                    title: '上传者',
-                    sortable: true
-                },
-                {
-                    field: 'eventCreatetime',
-                    title: '上传时间',
-                    sortable: true
-                },
-                {
-                    field: 'eventStatus',
-                    title: '状态',
-                    sortable: true
-                },
-                {
-                    title: '操作',
-                    align: 'center',
-                    formatter: function (value, row, index) {
-                        var actions = [];
-                        actions.push('<a class="  btn-xs ' + editFlag + '" href="javascript:void(0)" ' +
-                            'onclick="$.operate.edit(\'' + row.eventSid + '\')">' +
-                            '<text style="color: #2BA3FD">编辑</text>' +
-                            '</a> ');
-                        actions.push('<a class="  btn-xs ' + removeFlag + '" href="javascript:void(0)" ' +
-                            'onclick="$.operate.remove(\'' + row.eventSid + '\')">' +
-                            '<text style="color: #2BA3FD">删除</text>' +
-                            '</a>');
-                        actions.push('<a class="   btn-xs " href="/event/send/sendmail/' + row.eventSid + '">' +
-                            '<text style="color: #2BA3FD">发送' +
-                            '</text>' +
-                            '</a> ');
-                        return actions.join('');
-                    },
+                    field: 'eventSubmitUser',
+                    title: '上传者'
 
-                }]
+                },
+                {
+                    field: 'eventUnit',
+                    title: '所属单位'
+                },
+                {
+                    field: 'eventSubmitTime',
+                    title: '上传时间'
+                }
+                ]
         };
         $.table.init(options);
     });

@@ -13,58 +13,51 @@ import java.util.List;
 public interface PlantCheckRecordMapper
 {
     /**
-     * 查询污水厂巡检
+     * 查询巡检管理
      *
-     * @param systemId 污水厂巡检ID
-     * @return 污水厂巡检
+     * @param checkId 巡检管理ID
+     * @return 巡检管理
      */
-    public PlantCheckRecord selectPlantCheckRecordById(Long systemId);
+    public PlantCheckRecord selectCheckManagerById(Long checkId);
 
     /**
-     * 查询污水厂巡检列表
+     * 查询巡检管理列表
      *
-     * @param plantCheckRecord 污水厂巡检
-     * @return 污水厂巡检集合
+     * @param checkManager 巡检管理
+     * @return 巡检管理集合
      */
-    public List<PlantCheckRecord> selectPlantCheckRecordList(PlantCheckRecord plantCheckRecord);
+    public List<PlantCheckRecord> selectCheckManagerList(PlantCheckRecord checkManager);
 
     /**
-     * 新增污水厂巡检
+     * 新增巡检管理
      *
-     * @param plantCheckRecord 污水厂巡检
+     * @param checkManager 巡检管理
      * @return 结果
      */
-    public int insertPlantCheckRecord(PlantCheckRecord plantCheckRecord);
+    public int insertCheckManager(PlantCheckRecord checkManager);
 
     /**
-     * 修改污水厂巡检
+     * 修改巡检管理
      *
-     * @param plantCheckRecord 污水厂巡检
+     * @param checkManager 巡检管理
      * @return 结果
      */
-    public int updatePlantCheckRecord(PlantCheckRecord plantCheckRecord);
+    public int updateCheckManager(PlantCheckRecord checkManager);
 
     /**
-     * 删除污水厂巡检
+     * 删除巡检管理
      *
-     * @param systemId 污水厂巡检ID
+     * @param checkId 巡检管理ID
      * @return 结果
      */
-    public int deletePlantCheckRecordById(Long systemId);
+    public int deleteCheckManagerById(Long checkId);
 
     /**
-     * 批量删除污水厂巡检
+     * 批量删除巡检管理
      *
-     * @param systemIds 需要删除的数据ID
+     * @param checkIds 需要删除的数据ID
      * @return 结果
      */
-    public int deletePlantCheckRecordByIds(String[] systemIds);
-
-
-    /**
-     *  根据条件查询污水厂集合
-     */
-
-    public List<PlantCheckRecord> selectPlantCheckRecordList2(SysUser user);
+    public int deleteCheckManagerByIds(String[] checkIds);
 
 }

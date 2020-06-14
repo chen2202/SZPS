@@ -4,111 +4,89 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.szps.web.mapper.event.EventSubmitMapper">
 
-    <resultMap type="com.szps.web.domain.event.EventSubmit" id="EventSubmitResult">
-        <result property="eventSid" column="event_sid"/>
-        <result property="eventName" column="event_name"/>
-        <result property="eventPlace" column="event_place"/>
-        <result property="eventTime" column="event_time"/>
-        <result property="eventContent" column="event_content"/>
-        <result property="eventAttribute" column="event_attribute"/>
-        <result property="eventCreateuser" column="event_createuser"/>
-        <result property="eventCreatetime" column="event_createtime"/>
-        <result property="eventStatus" column="event_Status"/>
+    <resultMap type="EventSubmit" id="EventSubmitResult">
+        <result property="eventSid"    column="EVENT_SID"    />
+        <result property="eventName"    column="EVENT_NAME"    />
+        <result property="eventPlace"    column="EVENT_PLACE"    />
+        <result property="eventTime"    column="EVENT_TIME"    />
+        <result property="eventContent"    column="EVENT_CONTENT"    />
+        <result property="eventSubmitUser"    column="EVENT_SUBMIT_USER"    />
+        <result property="eventPhone"    column="EVENT_PHONE"    />
+        <result property="eventUnit"    column="EVENT_UNIT"    />
+        <result property="eventSubmitTime"    column="EVENT_SUBMIT_TIME"    />
     </resultMap>
-
-    <resultMap id="EventSendResult" type="com.szps.web.domain.event.EventSend">
-        <result property="eventAttribute" column="event_attribute"/>
-        <result property="eventEmail" column="event_email"/>
-    </resultMap>
-
-
-    <select id="getEventSendEmail" resultMap="EventSendResult">
-        select *  from EVENT_EMAIL
-        <where>
-            <if test="eventAttribute != null  and eventAttribute != ''">event_attribute = #{eventAttribute}</if>
-            <if test="eventEmail != null  and eventEmail != ''">and event_email=#{eventEmail}</if>
-        </where>
-    </select>
 
     <sql id="selectEventSubmitVo">
-        select event_sid, event_name, event_place, event_time, event_content, event_attribute, event_createuser, event_createtime,event_status from EVENT_SUBMIT
+        select EVENT_SID, EVENT_NAME, EVENT_PLACE, EVENT_TIME, EVENT_CONTENT, EVENT_SUBMIT_USER, EVENT_PHONE, EVENT_UNIT, EVENT_SUBMIT_TIME from event_submit
     </sql>
 
-    <select id="selectEventSubmitList" parameterType="com.szps.web.domain.event.EventSubmit"
-            resultMap="EventSubmitResult">
+    <select id="selectEventSubmitList" parameterType="EventSubmit" resultMap="EventSubmitResult">
         <include refid="selectEventSubmitVo"/>
         <where>
-            <if test="eventSid != null ">and event_sid = SEQ_EVENT_SUBMIT.nextval}</if>
-            <if test="eventName != null  and eventName != ''">and event_name = #{eventName}</if>
-            <if test="eventPlace != null  and eventPlace != ''">and event_place = #{eventPlace}</if>
-            <if test="eventTime != null ">and event_time = #{eventTime}</if>
-            <if test="eventContent != null  and eventContent != ''">and event_content = #{eventContent}</if>
-            <if test="eventAttribute != null  and eventAttribute != ''">and event_attribute = #{eventAttribute}</if>
-            <if test="eventCreateuser != null  and eventCreateuser != ''">and event_createuser = #{eventCreateuser}</if>
-            <if test="eventCreatetime != null ">and event_createtime = #{eventCreatetime}</if>
-            <if test="eventStatus != null and  eventStatus!=''">and event_status = #{eventStatus}</if>
+            <if test="eventName != null  and eventName != ''"> and EVENT_NAME =#{eventName}</if>
+            <if test="eventPlace != null  and eventPlace != ''"> and EVENT_PLACE = #{eventPlace}</if>
+            <if test="eventTime != null "> and EVENT_TIME = #{eventTime}</if>
+            <if test="eventContent != null  and eventContent != ''"> and EVENT_CONTENT = #{eventContent}</if>
+            <if test="eventSubmitUser != null  and eventSubmitUser != ''"> and EVENT_SUBMIT_USER = #{eventSubmitUser}</if>
+            <if test="eventPhone != null  and eventPhone != ''"> and EVENT_PHONE = #{eventPhone}</if>
+            <if test="eventUnit != null  and eventUnit != ''"> and EVENT_UNIT = #{eventUnit}</if>
+            <!--            <if test="eventSubmitTime != null "> and EVENT_SUBMIT_TIME = #{eventSubmitTime}</if>-->
         </where>
     </select>
 
-    <select id="selectEventSubmitById" parameterType="java.lang.Integer" resultMap="EventSubmitResult">
+    <select id="selectEventSubmitById" parameterType="Integer" resultMap="EventSubmitResult">
         <include refid="selectEventSubmitVo"/>
-        where event_sid = #{eventSid}
+        where EVENT_SID = #{eventSid}
     </select>
 
-    <insert id="insertEventSubmit" parameterType="com.szps.web.domain.event.EventSubmit">
-        <selectKey keyProperty="eventSid" resultType="long" order="BEFORE">
-        SELECT SEQ_EVENT_SUBMIT.NEXTVAL as eventSid FROM DUAL
-        </selectKey>
-        insert into EVENT_SUBMIT
+    <insert id="insertEventSubmit" parameterType="EventSubmit" useGeneratedKeys="true" keyProperty="eventSid">
+        insert into event_submit
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="eventSid != null ">event_sid,</if>
-            <if test="eventName != null  and eventName != ''">event_name,</if>
-            <if test="eventPlace != null  and eventPlace != ''">event_place,</if>
-            <if test="eventTime != null ">event_time,</if>
-            <if test="eventContent != null  and eventContent != ''">event_content,</if>
-            <if test="eventAttribute != null  and eventAttribute != ''">event_attribute,</if>
-            <if test="eventCreateuser != null  and eventCreateuser != ''">event_createuser,</if>
-            <if test="eventCreatetime != null ">event_createtime,</if>
-            <if test="eventStatus != null and  eventStatus!=''">event_status,</if>
+            <if test="eventName != null  and eventName != ''">EVENT_NAME,</if>
+            <if test="eventPlace != null  and eventPlace != ''">EVENT_PLACE,</if>
+            <if test="eventTime != null ">EVENT_TIME,</if>
+            <if test="eventContent != null  and eventContent != ''">EVENT_CONTENT,</if>
+            <if test="eventSubmitUser != null  and eventSubmitUser != ''">EVENT_SUBMIT_USER,</if>
+            <if test="eventPhone != null  and eventPhone != ''">EVENT_PHONE,</if>
+            <if test="eventUnit != null  and eventUnit != ''">EVENT_UNIT,</if>
+            <if test="eventSubmitTime != null ">EVENT_SUBMIT_TIME,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="eventSid != null ">#{eventSid},</if>
             <if test="eventName != null  and eventName != ''">#{eventName},</if>
             <if test="eventPlace != null  and eventPlace != ''">#{eventPlace},</if>
             <if test="eventTime != null ">#{eventTime},</if>
             <if test="eventContent != null  and eventContent != ''">#{eventContent},</if>
-            <if test="eventAttribute != null  and eventAttribute != ''">#{eventAttribute},</if>
-            <if test="eventCreateuser != null  and eventCreateuser != ''">#{eventCreateuser},</if>
-            <if test="eventCreatetime != null ">#{eventCreatetime},</if>
-            <if test="eventStatus != null and  eventStatus!=''">#{eventStatus},</if>
+            <if test="eventSubmitUser != null  and eventSubmitUser != ''">#{eventSubmitUser},</if>
+            <if test="eventPhone != null  and eventPhone != ''">#{eventPhone},</if>
+            <if test="eventUnit != null  and eventUnit != ''">#{eventUnit},</if>
+            <if test="eventSubmitTime != null ">#{eventSubmitTime},</if>
         </trim>
     </insert>
 
-    <update id="updateEventSubmit" parameterType="com.szps.web.domain.event.EventSubmit">
-        update EVENT_SUBMIT
+    <update id="updateEventSubmit" parameterType="EventSubmit">
+        update event_submit
         <trim prefix="SET" suffixOverrides=",">
-            <if test="eventName != null  and eventName != ''">event_name = #{eventName},</if>
-            <if test="eventPlace != null  and eventPlace != ''">event_place = #{eventPlace},</if>
-            <if test="eventTime != null ">event_time = #{eventTime},</if>
-            <if test="eventContent != null  and eventContent != ''">event_content = #{eventContent},</if>
-            <if test="eventAttribute != null  and eventAttribute != ''">event_attribute = #{eventAttribute},</if>
-            <if test="eventCreateuser != null  and eventCreateuser != ''">event_createuser = #{eventCreateuser},</if>
-            <if test="eventCreatetime != null ">event_createtime = #{eventCreatetime},</if>
-            <if test="eventStatus != null and  eventStatus!=''">event_status=#{eventStatus},</if>
+            <if test="eventName != null  and eventName != ''">EVENT_NAME = #{eventName},</if>
+            <if test="eventPlace != null  and eventPlace != ''">EVENT_PLACE = #{eventPlace},</if>
+            <if test="eventTime != null ">EVENT_TIME = #{eventTime},</if>
+            <if test="eventContent != null  and eventContent != ''">EVENT_CONTENT = #{eventContent},</if>
+            <if test="eventSubmitUser != null  and eventSubmitUser != ''">EVENT_SUBMIT_USER = #{eventSubmitUser},</if>
+            <if test="eventPhone != null  and eventPhone != ''">EVENT_PHONE = #{eventPhone},</if>
+            <if test="eventUnit != null  and eventUnit != ''">EVENT_UNIT = #{eventUnit},</if>
+            <if test="eventSubmitTime != null ">EVENT_SUBMIT_TIME = #{eventSubmitTime},</if>
         </trim>
-        where event_sid = #{eventSid}
+        where EVENT_SID = #{eventSid}
     </update>
 
-    <delete id="deleteEventSubmitById" parameterType="java.lang.Integer">
-        delete from EVENT_SUBMIT where event_sid = #{eventSid}
+    <delete id="deleteEventSubmitById" parameterType="Integer">
+        delete from event_submit where EVENT_SID = #{eventSid}
     </delete>
 
-    <delete id="deleteEventSubmitByIds" parameterType="java.lang.String">
-        delete from EVENT_SUBMIT where event_sid in
+    <delete id="deleteEventSubmitByIds" parameterType="String">
+        delete from event_submit where EVENT_SID in
         <foreach item="eventSid" collection="array" open="(" separator="," close=")">
             #{eventSid}
         </foreach>
     </delete>
-
 
 </mapper>

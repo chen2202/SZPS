@@ -17,167 +17,107 @@ public class PlantCheckRecord extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** 系统流水号 */
-    private Long systemId;
+    /** 巡检编号 */
+    private Long checkId;
 
-    /** 污水厂代码 */
-    @Excel(name = "污水厂代码")
-    private String plantId;
+    /** 巡检地区 */
+    @Excel(name = "巡检地区")
+    private String checkArea;
 
-    /** 污水厂名称 */
-    @Excel(name = "污水厂名称")
-    private String plantName;
+    /** 巡检设施类型 */
+    @Excel(name = "巡检设施类型")
+    private String checkType;
 
-    /** 设备ID */
-    @Excel(name = "设备ID")
-    private String deviceId;
+    /** 巡检地点 */
+    @Excel(name = "巡检地点")
+    private String checkPlace;
 
-    /** 设备名称 */
-    @Excel(name = "设备名称")
-    private String deviceName;
+    /** 上报时间 */
+    @Excel(name = "上报时间", width = 30, dateFormat = "yyyy-MM-dd")
+    private Date checkSubmitTime;
 
-    /** 点检ID */
-    @Excel(name = "点检ID")
-    private String checkId;
+    /** 巡检人 */
+    @Excel(name = "巡检人")
+    private String checkUser;
 
-    /** 简单故障处理记录 */
-    @Excel(name = "简单故障处理记录")
-    private String sloveRecord;
+    /** 巡检描述 */
+    @Excel(name = "巡检描述")
+    private String checkDetail;
 
-    /** 巡检日期 */
-    @Excel(name = "巡检日期", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone="GMT+8")
-    private Date checkDate;
-
-    public PlantCheckRecord() {
-
-    }
-
-    /** 创建者 */
-    @Excel(name = "创建者")
-    private String systemCreateuser;
-
-    /** 创建日期 */
-    @Excel(name = "创建日期", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone="GMT+8")
-    private Date systemCreatetime;
-
-    public PlantCheckRecord(String plantId, String plantName, String deviceId, String deviceName, String checkId, String sloveRecord, Date checkDate, String systemCreateuser, Date systemCreatetime) {
-        this.plantId = plantId;
-        this.plantName = plantName;
-        this.deviceId = deviceId;
-        this.deviceName = deviceName;
-        this.checkId = checkId;
-        this.sloveRecord = sloveRecord;
-        this.checkDate = checkDate;
-        this.systemCreateuser = systemCreateuser;
-        this.systemCreatetime = systemCreatetime;
-    }
-
-    public void setSystemId(Long systemId)
-    {
-        this.systemId = systemId;
-    }
-
-    public Long getSystemId()
-    {
-        return systemId;
-    }
-    public void setPlantId(String plantId)
-    {
-        this.plantId = plantId;
-    }
-
-    public String getPlantId()
-    {
-        return plantId;
-    }
-    public void setPlantName(String plantName)
-    {
-        this.plantName = plantName;
-    }
-
-    public String getPlantName()
-    {
-        return plantName;
-    }
-    public void setDeviceId(String deviceId)
-    {
-        this.deviceId = deviceId;
-    }
-
-    public String getDeviceId()
-    {
-        return deviceId;
-    }
-    public void setDeviceName(String deviceName)
-    {
-        this.deviceName = deviceName;
-    }
-
-    public String getDeviceName()
-    {
-        return deviceName;
-    }
-    public void setCheckId(String checkId)
+    public void setCheckId(Long checkId)
     {
         this.checkId = checkId;
     }
 
-    public String getCheckId()
+    public Long getCheckId()
     {
         return checkId;
     }
-    public void setSloveRecord(String sloveRecord)
+    public void setCheckArea(String checkArea)
     {
-        this.sloveRecord = sloveRecord;
+        this.checkArea = checkArea;
     }
 
-    public String getSloveRecord()
+    public String getCheckArea()
     {
-        return sloveRecord;
+        return checkArea;
     }
-    public void setCheckDate(Date checkDate)
+    public void setCheckType(String checkType)
     {
-        this.checkDate = checkDate;
-    }
-
-    public Date getCheckDate()
-    {
-        return checkDate;
-    }
-    public void setSystemCreateuser(String systemCreateuser)
-    {
-        this.systemCreateuser = systemCreateuser;
+        this.checkType = checkType;
     }
 
-    public String getSystemCreateuser()
+    public String getCheckType()
     {
-        return systemCreateuser;
+        return checkType;
     }
-    public void setSystemCreatetime(Date systemCreatetime)
+    public void setCheckPlace(String checkPlace)
     {
-        this.systemCreatetime = systemCreatetime;
+        this.checkPlace = checkPlace;
     }
 
-    public Date getSystemCreatetime()
+    public String getCheckPlace()
     {
-        return systemCreatetime;
+        return checkPlace;
+    }
+    public void setCheckSubmitTime(Date checkSubmitTime)
+    {
+        this.checkSubmitTime = checkSubmitTime;
+    }
+
+    public Date getCheckSubmitTime()
+    {
+        return checkSubmitTime;
+    }
+    public void setCheckUser(String checkUser)
+    {
+        this.checkUser = checkUser;
+    }
+
+    public String getCheckUser()
+    {
+        return checkUser;
+    }
+    public void setCheckDetail(String checkDetail)
+    {
+        this.checkDetail = checkDetail;
+    }
+
+    public String getCheckDetail()
+    {
+        return checkDetail;
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("systemId", getSystemId())
-            .append("plantId", getPlantId())
-            .append("plantName", getPlantName())
-            .append("deviceId", getDeviceId())
-            .append("deviceName", getDeviceName())
-            .append("checkId", getCheckId())
-            .append("sloveRecord", getSloveRecord())
-            .append("checkDate", getCheckDate())
-            .append("systemCreateuser", getSystemCreateuser())
-            .append("systemCreatetime", getSystemCreatetime())
-            .toString();
+                .append("checkId", getCheckId())
+                .append("checkArea", getCheckArea())
+                .append("checkType", getCheckType())
+                .append("checkPlace", getCheckPlace())
+                .append("checkSubmitTime", getCheckSubmitTime())
+                .append("checkUser", getCheckUser())
+                .append("checkDetail", getCheckDetail())
+                .toString();
     }
 }

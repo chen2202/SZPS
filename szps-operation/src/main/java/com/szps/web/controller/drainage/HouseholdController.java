@@ -30,7 +30,7 @@ import com.szps.web.service.drainage.HouseholdService;
  *
  */
 @Controller
-@RequestMapping("/drainage")
+@RequestMapping("./drainage")
 public class HouseholdController extends BaseController{
 	private String prefix = "drainage/household"; 
 	
@@ -177,7 +177,7 @@ public class HouseholdController extends BaseController{
     /**
      * 各区排水户分布统计数据
      */
-    @PostMapping("/statistics/householdAdministrativeStatistics")
+    @PostMapping("./statistics/householdAdministrativeStatistics")
 	@ResponseBody
 	public int[] householdAdministrativeStatistics() {
     	List<String> administrativeList = householdService.selectAllHouseholdAdministrative(); //全部排水户所在行政区
@@ -216,7 +216,7 @@ public class HouseholdController extends BaseController{
     /**
      * 全市污水类别比例统计
      */
-    @PostMapping("/statistics/sewageCategoryStatistics")
+    @PostMapping("./statistics/sewageCategoryStatistics")
    	@ResponseBody
    	public String sewageCategoryStatistics() {
     	List<String> list = householdService.selectAllSewageCategory();
@@ -241,7 +241,7 @@ public class HouseholdController extends BaseController{
     		+ "]";
     }
     
-    @PostMapping("/statistics/drainageLicenseExpire")
+    @PostMapping("./statistics/drainageLicenseExpire")
     @ResponseBody
     public int[] DrainageLicenseExpire() {
     	List<String> DrainageLicenseList = householdService.selectDrainageLicenseExpire();
@@ -280,7 +280,7 @@ public class HouseholdController extends BaseController{
     /**
      * 各行政区污水类别统计
      */
-    @PostMapping("/statistics/adminiSewageStatistics")
+    @PostMapping("./statistics/adminiSewageStatistics")
    	@ResponseBody
    	public String adminiSewageStatistics() {
     	List<Household> list = householdService.selectAllAdminiSewage(); //获取各行政区以及污水类别
@@ -418,7 +418,7 @@ public class HouseholdController extends BaseController{
     /**
      * 各区排水户记录状态统计
      */
-    @PostMapping("/statistics/recordStateStatistics")
+    @PostMapping("./statistics/recordStateStatistics")
    	@ResponseBody
    	public String recordStateStatistics() {
     	List<Household> list = householdService.selectAllAdminiRecord();

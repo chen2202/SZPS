@@ -52,6 +52,24 @@ public class DepartmentController extends BaseController{
 	} 
 	
 	/**
+	 * 人员信息 编辑页面
+	 * 公司/水厂下拉框选择某公司/水厂后，添加公司/水厂的全部部门
+	 * @return 部门名称，部门代码组成的字符串列表
+	 */
+	@PostMapping("/worker/edit/departmentNameList")
+    @ResponseBody
+    public List<String> departmentNameList3(Department department){
+		List<Department> departmentModel = departmentService.selectSomeDepartment(department);
+		List<String> departmentInfo = new ArrayList<String>(); //存放某公司全部部门信息
+		for(int i=0;i<departmentModel.size();i++) {
+			Department d = departmentModel.get(i);
+			departmentInfo.add(d.getDepartment_name());
+			departmentInfo.add(d.getDepartment_id());
+		}
+		return departmentInfo;
+	}
+	
+	/**
 	 * 新增部门时
 	 * 跳转到/department/add.html
 	 */

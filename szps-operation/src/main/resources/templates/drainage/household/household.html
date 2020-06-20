@@ -450,8 +450,8 @@
 		function opengis(X, Y) {      
         	$(window.parent.document.getElementById("gis")).parent().siblings().removeClass('active');
         	$(window.parent.document.getElementById("gis")).parent().addClass('active');
-        	//window.parent.document.getElementById('content-iframe').src="/map/index2?X="+X+"&Y="+Y;
-        	window.parent.document.getElementById('content-iframe').src="./../../map/index2?X="+X+"&Y="+Y;
+        	window.parent.document.getElementById('content-iframe').src=ctx+"map/index2?X="+X+"&Y="+Y;
+        	//window.parent.document.getElementById('content-iframe').src="./../../map/index2?X="+X+"&Y="+Y;
         }
 		
 		/* 排水户信息-查看（某排水户的所有排水口） */

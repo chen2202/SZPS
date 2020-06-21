@@ -24,7 +24,7 @@ public class DmCost extends BaseEntity {
     private String costCompany;
 
     /** 申请支付时间 */
-    private Date costApplyTime;
+    private String costApplyTime;
 
     /** 实际支付月份 */
     private String costPayTime;
@@ -79,11 +79,11 @@ public class DmCost extends BaseEntity {
         this.costCompany = costCompany;
     }
 
-    public Date getCostApplyTime() {
+    public String getCostApplyTime() {
         return costApplyTime;
     }
 
-    public void setCostApplyTime(Date costApplyTime) {
+    public void setCostApplyTime(String costApplyTime) {
         this.costApplyTime = costApplyTime;
     }
 

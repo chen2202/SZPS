@@ -27,4 +27,6 @@ public interface TbHouseMapper {
     List<TbHouse>selectHouseCheckList(@Param("houseRule")String houseRule);
 
     String[] selectHouseName(@Param("houseRule")String houseRule);
+
+    int selectHouseCount();
 }

@@ -127,4 +127,8 @@
       SELECT HOUSE_NAME
       FROM TB_HOUSE WHERE HOUSE_RULE= #{houseRule}
   </select>
+
+  <select id="selectHouseCount"  resultType="int">
+    select "COUNT"(*) FROM TB_HOUSE
+  </select>
 </mapper>

@@ -45,4 +45,19 @@ public class EXServiceImpl implements EXService{
         return exMapper.updateEx(ex);
     }
 
+    @Override
+    public int selectSpCountAll(String years) {
+        return exMapper.selectSpCountAll(years);
+    }
+
+    @Override
+    public String selectWsCountAll(String years) {
+        return exMapper.selectWsCountAll(years);
+    }
+
+    @Override
+    public String selectYsCountAll(String years) {
+        return exMapper.selectYsCountAll(years);
+    }
+
 }

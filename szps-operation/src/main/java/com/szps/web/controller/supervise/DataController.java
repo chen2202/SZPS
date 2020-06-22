@@ -59,8 +59,9 @@ public class DataController extends BaseController {
         for(int i=0;i<list.size();i++)
         {
                String a=list.get(i).getTaskHouse();
-            //System.out.println(a);
+                System.out.println(a);
                TbHouse tbHouse=houseService.selectHouseById(a);
+
                String b=tbHouse.getHouseRule();
             list.get(i).setRuleContent(ruleService.selectRuleByRuleName(b));
 
@@ -187,7 +188,7 @@ public class DataController extends BaseController {
                        max2--;
                    }
 
-                   System.out.println(listnew2+"---------------");
+
 
              for(int c=0;c<Integer.parseInt(value1);c++)
                 {
@@ -503,6 +504,12 @@ public class DataController extends BaseController {
         Random random = new Random();
         List<TbHouse> list=houseService.selectHouseCheckList(task.getRuleName());
         int max = list.size();
+        System.out.println("++++++++++++++");
+        System.out.println(max);
+        System.out.println("++++++++++++++");
+        if(max==0){
+            return AjaxResult.error("暂时无可抽查的任务");
+        }
         int number = random.nextInt(max);
 
         TbTask tbTask= taskService.selectTaskById(task.getTaskNumber());

@@ -24,6 +24,7 @@ import com.szps.system.service.ISysMenuService;
  * @author ruoyi
  */
 @Controller
+
 public class IndexController extends BaseController {
 	@Autowired
 	private ISysMenuService menuService;

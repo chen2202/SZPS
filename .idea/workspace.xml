@@ -2,78 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc7b956e-4cbc-4a6b-8b84-b165eb2e201f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/wechat/DrainerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/check/CheckPicture.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/event/EventPicture.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/plant/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql/dm修改20200615.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/cost/edit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/resources/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/application-druid.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/PipeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/PlantCheckContentController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/PlantCheckDeviceController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/PlantCheckRecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/PlantCheckRecordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/SludgeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/event/EventEmailController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/event/EventSubmitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/event/EventSubmitController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/event/EvnetSendController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/dm/DmCostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/dm/DmCostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/dm/DmFileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/dm/DmFileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/dm/DmManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/dm/DmManageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/dm/DmMyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/dm/DmMyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/drainage/HouseholdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/drainage/HouseholdController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/employee/DepartmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/employee/DepartmentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/supervise/CompleteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/supervise/CompleteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/wechat/WeChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/wechat/WeChatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/check/PlantCheckContent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/check/PlantCheckDevice.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/check/PlantCheckRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/check/PlantCheckRecord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/event/EventAll.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/event/EventEmail.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/event/EventSend.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/event/EventSubmit.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/event/EventSubmit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/event/WeChatUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/check/PlantCheckContentMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/check/PlantCheckDeviceMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/check/PlantCheckRecordMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/check/PlantCheckRecordMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/event/EventEmailMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/event/EventSubmitMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/event/EventSubmitMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/event/WeChatMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/check/IPlantCheckContentService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/check/IPlantCheckDeviceService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/check/IPlantCheckRecordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/check/IPlantCheckRecordService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/check/impl/PlantCheckContentServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/check/impl/PlantCheckDeviceServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/check/impl/PlantCheckRecordServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/check/impl/PlantCheckRecordServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/event/IEventEmailService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/event/IEventSubmitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/event/IEventSubmitService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/event/IWeChatService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/event/impl/EventEmailServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/event/impl/EventSubmitServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/event/impl/EventSubmitServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/event/impl/WeChatServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/application-druid.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/check/PlantCheckContentMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/check/PlantCheckDeviceMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/check/PlantCheckRecordMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/check/PlantCheckRecordMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/event/EventEmailMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/event/EventSubmitMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/event/EventSubmitMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/event/WeChatMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/static/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/static/dist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/static/dist/index2.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/static/dist/index2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/pipe/pipe.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/content/add.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/content/content.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/content/detail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/content/edit.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/device/add.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/device/device.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/device/edit.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/plant/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/plant/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/plant/plant.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/plant/plant/plant.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/check/sludge/sludge.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/email/add.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/email/edit.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/email/email.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/send/sendmail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/add.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/edit.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/submit.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/submit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/map/index2.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/map/index2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/wechat/DrainerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/wechat/DrainerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/dm/DmCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/dm/DmCost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/dm/DmAuditMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/dm/DmAuditMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/dm/DmCostMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/dm/DmCostMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/dm/DmDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/dm/DmDataMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/dm/DmFileMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/dm/DmFileMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/dm/DmPerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/dm/DmPerMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/dm/IDmCostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/dm/IDmCostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/dm/IDmDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/dm/IDmDataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/dm/IDmPerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/dm/IDmPerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/dm/impl/DmCostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/dm/impl/DmCostServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/dm/DmCostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/dm/DmCostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/static/css/dm/dm.css" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/static/css/dm/dm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/cost/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/cost/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/cost/cost.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/cost/cost.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/data/data.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/data/data.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/file/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/file/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/drainage/household/household.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/drainage/household/household.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/drainage/statistics/statistics.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/drainage/statistics/statistics.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/employee/department/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/employee/department/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/employee/worker/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/employee/worker/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/employee/worker/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/employee/worker/edit.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -251,7 +212,12 @@
       <workItem from="1591861366189" duration="3386000" />
       <workItem from="1591871574035" duration="3068000" />
       <workItem from="1591924262394" duration="111000" />
-      <workItem from="1592130976562" duration="913000" />
+      <workItem from="1592130976562" duration="1212000" />
+      <workItem from="1592529840328" duration="1200000" />
+      <workItem from="1592561723642" duration="671000" />
+      <workItem from="1592666292357" duration="9986000" />
+      <workItem from="1592787818696" duration="3444000" />
+      <workItem from="1592817431535" duration="597000" />
     </task>
     <servers />
   </component>

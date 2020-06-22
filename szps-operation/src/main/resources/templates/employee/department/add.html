@@ -115,7 +115,8 @@
 			var optionJson=[];
 			$.ajax({
 				type: "post",
-			    url: "/employee/department/departmentNameList",
+			    //url: "/employee/department/departmentNameList",
+			    url: "./departmentNameList",
 			    dataType:"json",
 			    data:{"company_id":$("#company_id option:selected").val()},
 			    async:false,

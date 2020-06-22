@@ -44,20 +44,6 @@
                     </div>
                 </div>
             </div>
-<!--            <div class="col-sm-6">-->
-<!--                <div class="form-group">-->
-<!--                    <label class="col-sm-4 control-label"><span style="color: red; ">*</span>街道：</label>-->
-<!--                    <div class="col-sm-8">-->
-<!--                        &lt;!&ndash;<input type="text" name="dataStreet" class="form-control" placeholder="请输入街道" th:field="*{dataStreet}" required>&ndash;&gt;-->
-<!--                        <select class="form-control" name="dataStreet">-->
-<!--                            <option value="南山街道" th:selected="*{dataStreet=='南山街道'}">南山街道</option>-->
-<!--                            <option value="南头街道" th:selected="*{dataStreet=='南头街道'}">南头街道</option>-->
-<!--                            <option value="西丽街道" th:selected="*{dataStreet=='西丽街道'}">西丽街道</option>-->
-<!--                            <option value="沙河街道" th:selected="*{dataStreet=='沙河街道'}">沙河街道</option>-->
-<!--                        </select>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
             <div class="col-sm-6">
                 <div class="form-group">
                     <label class="col-sm-4 control-label"><span style="color: red; ">*</span>所属流域：</label>
@@ -177,7 +163,6 @@
                     align: 'center',
                     formatter: function(value, row, index) {
                         var actions = [];
-                        // actions.push('<a class="btn btn-info btn-xs" href="javascript:void(0)" onclick="fileView(\'' + row.fileId + '\')"><i class="fa fa-edit"></i>查看</a> ');
                         actions.push('<a class="btn btn-primary btn-xs" href="javascript:void(0)" onclick="fileDownload(\'' + row.fileId + '\')"><i class="fa fa-download"></i>下载</a> ');
                         actions.push('<a class="btn btn-danger btn-xs" href="javascript:void(0)" onclick="fileDelete(' + row.fileId+',\''+row.filePath + '\')"><i class="fa fa-trash"></i>删除</a>');
                         return actions.join('');
@@ -193,11 +178,6 @@
             $.operate.save(prefix + "/edit", data);
         }
     }
-
-    // function fileView(fileId){
-    //    var url = prefix + '/dataView/' + dataId;
-    //    $.modal.openTab("浏览规划资料", url);
-    // }
 
     // 文件下载(单个)
     function fileDownload(fileId){

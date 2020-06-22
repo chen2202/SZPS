@@ -21,6 +21,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,6 +29,11 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.zip.ZipOutputStream;
@@ -47,9 +53,6 @@ public class DmCostController extends BaseController {
     @Autowired
     private IDmCostService costService;
 
-    @Autowired
-    private ISysUserService userService;
-
     @GetMapping()
     public String show()
     {
@@ -58,8 +61,7 @@ public class DmCostController extends BaseController {
 
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(DmCost dmCost)
-    {
+    public TableDataInfo list(DmCost dmCost){
         startPage();
         List<DmCost> list = costService.selectCostList(dmCost);
         return getDataTable(list);
@@ -86,32 +88,24 @@ public class DmCostController extends BaseController {
     @ResponseBody
     public AjaxResult addSave(@Validated DmCost dmCost,@RequestParam("file") MultipartFile file) throws IOException {
 
-        // 检查编码唯一性
-        String costCode = dmCost.getCostCode();
-        DmCost d = costService.selectCostByCode(costCode);
-        if(d!=null){
-            // 编码已存在
-            return error("编码已存在,请更换编码!");
+        // 上传文件
+        String filePath = Global.getUploadPath();       // 上传文件路径
+        String path = FileUploadUtils.upload(filePath, file);   //文件路径
+        String fileName = file.getOriginalFilename();           //获取文件名
+
+        // 存储资料
+        String loginName = ShiroUtils.getLoginName();
+
+        dmCost.setCostFileName(fileName);
+        dmCost.setCostFilePath(path);
+
+        int result = costService.insertCost(dmCost);
+        if(result>0){
+            return success("添加成功");
         }else{
-            // 上传文件
-            String filePath = Global.getUploadPath();       // 上传文件路径
-            String path = FileUploadUtils.upload(filePath, file);   //文件路径
-            String fileName = file.getOriginalFilename();           //获取文件名
-
-            // 存储资料
-            String loginName = ShiroUtils.getLoginName();
-
-            dmCost.setCostName(fileName);
-            dmCost.setCostPath(path);
-            dmCost.setCostCreate(loginName);
-
-            int result = costService.insertCost(dmCost);
-            if(result>0){
-                return success("添加成功");
-            }else{
-                return error("添加失败!");
-            }
+            return error("添加失败!");
         }
+
     }
 
 
@@ -130,7 +124,7 @@ public class DmCostController extends BaseController {
             Long[] costIds = Convert.toLongArray(ids);
             for(int i=0;i<costIds.length;i++){
                 DmCost dmCost = costService.selectCostById(costIds[i]);
-                String filePath = dmCost.getCostPath();
+                String filePath = dmCost.getCostFilePath();
                 filePath = Global.getUploadPath() + filePath.replace("/profile/upload", "");
                 FileUtils.deleteFile(filePath);
             }
@@ -149,6 +143,27 @@ public class DmCostController extends BaseController {
         }
     }
 
+    /**
+     * 修改资料
+     */
+    @GetMapping("/edit/{costId}")
+    public String edit(@PathVariable("costId") Long costId, ModelMap mmap)
+    {
+        DmCost cost = costService.selectCostById(costId);
+        mmap.put("cost",cost);
+        return prefix + "/edit";
+    }
+
+    /**
+     * 修改污水费资料
+     */
+    @Log(title = "修改污水费资料", businessType = BusinessType.UPDATE)
+    @PostMapping("/edit")
+    @ResponseBody
+    public AjaxResult editSave(@Validated DmCost dmCost)
+    {
+        return toAjax(costService.updateCost(dmCost));
+    }
 
     /**
      * 文件下载请求
@@ -157,14 +172,14 @@ public class DmCostController extends BaseController {
     @Log(title = "下载污水费资料文件", businessType = BusinessType.OTHER)
     @GetMapping("/download")
     @ResponseBody
-    public void resourceDownload(@Param("id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public void resourceDownload(@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         // 通过文件编号获取文件
         DmCost dmCost = costService.selectCostById(Long.parseLong(id));
 
         if (dmCost != null) {
-            String fileName = dmCost.getCostName();
-            String filePath = dmCost.getCostPath();
+            String fileName = dmCost.getCostFileName();
+            String filePath = dmCost.getCostFilePath();
 
             // 本地资源路径
             String localPath = Global.getProfile();
@@ -177,9 +192,6 @@ public class DmCostController extends BaseController {
             response.setHeader("Content-Disposition",
                     "attachment;fileName=" + FileUtils.setFileDownloadHeader(request, fileName));
             FileUtils.writeBytes(downloadPath, response.getOutputStream());
-
         }
-
     }
-
 }

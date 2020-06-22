@@ -4,17 +4,10 @@
     <th:block th:include="include :: header('资料列表')"/>
     <link th:href="@{/css/dm/dm.css}" rel="stylesheet"/>
     <style>
-        #btn-data-show {
-            border-radius: 4px;
-            background: linear-gradient(270deg, #1ECFF7 0%, #2E9BFF 100%);
-            border: 1px solid rgba(255, 255, 255, 0.40);
-            color: rgba(255, 255, 255, 1);
-        }
-
         .dm-switch {
             -webkit-box-sizing: border-box;
             box-sizing: border-box;
-        / / height: 34 px;
+            height: 34px;
             font-size: 0px;
             text-rendering: optimizelegibility;
             margin-top: 30px;
@@ -24,7 +17,7 @@
             position: relative;
             display: inline-block;
             width: 130px;
-        / / height: 32 px;
+            height: 32px;
             background: linear-gradient(0deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.09) 100%);
             cursor: pointer;
             padding: 1px 2px 2px 2px;
@@ -135,10 +128,10 @@
             <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dm:data:add">
                 <i class="fa fa-plus"></i> 新增
             </a>
-            <a class="btn btn-primary single disabled" onclick="$.operate.editTab()" shiro:hasPermission="dm:data:edit">
+            <a class="btn btn-main2 single disabled" onclick="$.operate.editTab()" shiro:hasPermission="dm:data:edit">
                 <i class="fa fa-edit"></i> 修改
             </a>
-            <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()"
+            <a class="btn btn-main2 multiple disabled" onclick="$.operate.removeAll()"
                shiro:hasPermission="dm:data:remove">
                 <i class="fa fa-trash"></i> 删除
             </a>

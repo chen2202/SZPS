@@ -2,39 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc7b956e-4cbc-4a6b-8b84-b165eb2e201f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/sql/dm修改20200615.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/cost/edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql/sql0623.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/wechat/EventUploadController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/static/js/dm/dm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/dm/DmCostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/dm/DmCostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/dm/DmFileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/dm/DmFileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/dm/DmManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/dm/DmManageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/dm/DmMyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/dm/DmMyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/dm修改20200615.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/dm修改20200615.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/drainage/HouseholdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/drainage/HouseholdController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/employee/DepartmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/employee/DepartmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/psxksp/SpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/psxksp/SpController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/supervise/CompleteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/supervise/CompleteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/supervise/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/supervise/DataController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/wechat/DrainerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/wechat/DrainerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/dm/DmCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/dm/DmCost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/dm/DmAuditMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/dm/DmAuditMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/dm/DmCostMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/dm/DmCostMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/dm/DmDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/dm/DmDataMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/dm/DmFileMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/dm/DmFileMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/dm/DmPerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/dm/DmPerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/dm/IDmCostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/dm/IDmCostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/dm/IDmDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/dm/IDmDataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/dm/IDmPerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/dm/IDmPerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/dm/impl/DmCostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/dm/impl/DmCostServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/psxksp/EXMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/psxksp/EXMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/supervise/TbHouseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/supervise/TbHouseMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/psxksp/EXService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/psxksp/EXService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/psxksp/Impl/EXServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/psxksp/Impl/EXServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/supervise/HouseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/supervise/HouseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/supervise/Impl/HouseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/supervise/Impl/HouseServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/dm/DmCostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/dm/DmCostMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/static/css/dm/dm.css" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/static/css/dm/dm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/psxksp/EXMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/psxksp/EXMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/supervise/TbHouseMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/supervise/TbHouseMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/supervise/TbTaskMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/supervise/TbTaskMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/cost/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/cost/add.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/cost/cost.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/cost/cost.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/cost/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/cost/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/data/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/data/add.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/data/data.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/data/data.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/file/auditView.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/file/auditView.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/file/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/file/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/drainage/household/household.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/drainage/household/household.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/my/my.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/my/my.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/recycle/recycle.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/dm/recycle/recycle.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/drainage/statistics/statistics.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/drainage/statistics/statistics.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/employee/department/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/employee/department/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/employee/worker/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/employee/worker/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/employee/worker/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/employee/worker/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/submit.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/event/submit/submit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/op/permit/statistic.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/op/permit/statistic.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/supervise/data/Taskdatas.html" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/templates/supervise/data/Taskdatas.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -217,7 +218,12 @@
       <workItem from="1592561723642" duration="671000" />
       <workItem from="1592666292357" duration="9986000" />
       <workItem from="1592787818696" duration="3444000" />
-      <workItem from="1592817431535" duration="597000" />
+      <workItem from="1592817431535" duration="1527000" />
+      <workItem from="1592825066662" duration="265000" />
+      <workItem from="1592972105825" duration="18000" />
+      <workItem from="1592984668071" duration="2749000" />
+      <workItem from="1593052527908" duration="1513000" />
+      <workItem from="1593055846825" duration="11037000" />
     </task>
     <servers />
   </component>
@@ -236,5 +242,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/wechat/WeChatController.java</url>
+          <line>76</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -8,6 +8,13 @@ import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 
+
+
+import com.szps.common.core.domain.AjaxResult;
+import com.szps.common.core.page.TableDataInfo;
+
+import com.szps.common.enums.BusinessType;
+
 import com.szps.common.utils.file.FileUtils;
 import com.szps.web.controller.common.CommonController;
 import com.szps.web.domain.supervise.*;
@@ -81,59 +88,52 @@ public class CompleteController extends BaseController {
          String time="";
          String year="";
          Map<String,Object> mmap= new HashMap<>();
-         int count=0;
-         int all=0;
+         int count=Service.selectTaskCountComplete();
+         int all=houseService.selectHouseCount();
          String reach="无";
          String rate="无";
-         float  bif=0.0f;
 
+         String bl=ruleService.selectRuleByRuleName(tbTask.getRuleName());
          //选择了规则和年月
          if(tbTask.getBeginTime()!=""&&tbTask.getRuleName()!="")
          {
 
-             time=tbTask.getBeginTime().substring(0,7);
-             tbTask.setBeginTime(time);
-
-             count=Service.selectTaskCountCompleteWithKey(tbTask);
-
              year=tbTask.getBeginTime().substring(0,4);
              tbTask.setBeginTime(year);
 
-             all=Service.selectTaskCountAllWithKey(tbTask);
+             count=Service.selectTaskCountCompleteWithKey(tbTask);
+
+//             year=tbTask.getBeginTime().substring(0,4);
+//             tbTask.setBeginTime(year);
+
+             all=houseService.selectHouseCount();
              float kk=0.0f;
-             float pp=0.0f;
-             String bl=ruleService.selectRuleByRuleName(tbTask.getRuleName()).replace("%","");
-             System.out.println(bl);
+
+
+
              if(all>0)
              {
                  kk=(float)count/all;
-                 bif=(float) Integer.parseInt(bl)/100;
-                 pp=(float)count/(all*bif);
-                 System.out.println(bif);
-                 System.out.println(pp);
-             }
 
+
+
+             }
              DecimalFormat df = new DecimalFormat("#.00");
 
-             //System.out.println(df.format(rate)+"%");
              if(kk==0.0)
              {
                  rate="0%";
              }else {
                  rate = df.format(kk * 100) + "%";
              }
-             if(pp==0.0)
-             {
-                 reach="0%";
-             }else {
-                 reach = df.format(pp * 100) + "%";
-             }
+
+                 reach =bl ;
+
          }
-         //规则和年月只要有一个不选
-         else {
-             count=Service.selectTaskCountComplete();
-             all=Service.selectTaskCountAll();
-             reach="无";
+         //选了规则年月不选
+         else if(tbTask.getBeginTime()==""&&tbTask.getRuleName()!=""){
+
+             count=Service.selectTaskCountCompleteWithKey(tbTask);
              float kk=0.0f;
              if(all>0)
               kk=(float)count/all;
@@ -146,9 +146,45 @@ public class CompleteController extends BaseController {
              {
                  rate=df.format(kk*100)+"%";
              }
-
+             reach =bl ;
 
          }
+         //选了年月规则不选
+         else if(tbTask.getBeginTime()!=""&&tbTask.getRuleName()==""){
+
+             year=tbTask.getBeginTime().substring(0,4);
+             tbTask.setBeginTime(year);
+             count=Service.selectTaskCountCompleteWithKey(tbTask);
+             all=houseService.selectHouseCount();
+             float kk=0.0f;
+
+             if(all>0)
+             {
+                 kk=(float)count/all;
+             }
+             DecimalFormat df = new DecimalFormat("#.00");
+
+             if(kk==0.0)
+             {
+                 rate="0%";
+             }else {
+                 rate = df.format(kk * 100) + "%";
+             }
+         }else {
+             float kk=0.0f;
+             if(all>0)
+                 kk=(float)count/all;
+             DecimalFormat df = new DecimalFormat("#.00");
+
+             if(kk==0.0)
+             {
+                 rate="0%";
+             }else
+             {
+                 rate=df.format(kk*100)+"%";
+             }
+         }
+
 
 
 
@@ -176,6 +212,7 @@ public class CompleteController extends BaseController {
             System.out.println(time);
         }
         tbTask.setBeginTime(time);
+        tbTask.setTaskFlag("完成");
         startPage();
         List<TbTask> list = Service.selectTaskList(tbTask);
 

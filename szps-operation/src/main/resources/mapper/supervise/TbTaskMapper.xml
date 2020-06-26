@@ -51,8 +51,8 @@
   </select>
 
   <select id="selectAll" resultMap="BaseResultMap">
-    select TASK_NUMBER,TASK_TIME, TASK_HOUSE,TASK_RESULT,TASK_HANDLE,TASK_CHECKTIME,TASK_BC
-    from TB_TASK
+    select TASK_NUMBER,TASK_TIME, TASK_HOUSE,TASK_RESULT,TASK_HANDLE,TASK_CHECKTIME,TASK_BC,TASK_FLAG,TASK_FILE
+    from TB_TASK WHERE TB_TASK.TASK_FLAG='未完成'
   </select>
 
   <select id="selectTaskRandom" resultMap="BaseResultMap">
@@ -73,6 +73,9 @@
     </if>
      <if test="beginTime != null and beginTime != ''">
        AND TB_TASK.TASK_TIME like concat(#{beginTime},'%')
+     </if>
+     <if test="taskFlag != null and taskFlag != ''">
+       AND TB_TASK.TASK_FLAG = #{taskFlag}
      </if>
     <!--<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
       AND "TO_DATE"(TB_TASK.TASK_TIME, 'yyyy-mm-dd hh24:mi:ss') BETWEEN "TO_DATE"(#{beginTime}, 'yyyy-mm-dd hh24:mi:ss') AND "TO_DATE"(#{endTime}, 'yyyy-mm-dd hh24:mi:ss')

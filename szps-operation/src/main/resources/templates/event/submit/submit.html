@@ -44,7 +44,10 @@
     var editFlag = [[${@permission.hasPermi('event:submit:edit')}]];
     var removeFlag = [[${@permission.hasPermi('event:submit:remove')}]];
 
-
+	function infosetting() {
+		location.href = ctx + "event/email";
+    } 
+	
     var prefix = ctx + "event/submit";
 
     $(function () {

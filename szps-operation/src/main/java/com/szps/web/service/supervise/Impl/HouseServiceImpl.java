@@ -75,4 +75,9 @@ public class HouseServiceImpl implements HouseService{
     public String[] selectHouseName(String houseRule) {
         return houseMapper.selectHouseName(houseRule);
     }
+
+    @Override
+    public int selectHouseCount() {
+        return houseMapper.selectHouseCount();
+    }
 }

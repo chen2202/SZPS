@@ -9,6 +9,7 @@
 <body>
 <div class="main-content">
     <form class="form-horizontal" id="form-data-edit" th:object="${data}">
+        <input name="dataBoroughId" id="treeIdArea" type="text" hidden>
         <input name="dataId"  type="hidden"  th:field="*{dataId}" />
         <h4 class="form-header h4">基本信息</h4>
         <div class="row">
@@ -34,13 +35,7 @@
                 <div class="form-group">
                     <label class="col-sm-4 control-label"><span style="color: red; ">*</span>所属区域：</label>
                     <div class="col-sm-8">
-                        <!--<input type="text" name="dataBorough" class="form-control" placeholder="请输入行政区" th:field="*{dataBorough}" required>-->
-                        <select class="form-control" name="dataBorough">
-                            <option value="南山区" th:selected="*{dataBorough=='南山区'}">南山区</option>
-                            <option value="福田区" th:selected="*{dataBorough=='福田区'}">福田区</option>
-                            <option value="盐田区" th:selected="*{dataBorough=='盐田区'}">盐田区</option>
-                            <option value="罗湖区" th:selected="*{dataBorough=='罗湖区'}">罗湖区</option>
-                        </select>
+                        <input class="form-control" name="dataBorough" onclick="selectAreaTree()" id="treeNameArea" type="text" th:field="*{dataBorough}" required placeholder="请选择区域" >
                     </div>
                 </div>
             </div>
@@ -208,7 +203,6 @@
             $("#bootstrap-table").bootstrapTable('refresh', options);
         })
     }
-
 </script>
 </body>
 </html>

@@ -22,6 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -268,10 +269,6 @@ public class SpController extends BaseController {
             lists=list;
         }
 
-
-
-
-
         return getDataTable(lists);
     }
 
@@ -358,31 +355,75 @@ public class SpController extends BaseController {
     }
 
 
-    @RequiresPermissions("op:permit:statistic")
+
     @PostMapping("/statistic")
     @ResponseBody
-    public TableDataInfo listStatistic(EX_GDBS_SB exGdbsSb)
+    public AjaxResult listStatistic(HttpServletRequest request)
     {
-        startPage();
-        List<EX_GDBS_SB> list = exService.selectTaskAll();
-        return getDataTable(list);
+        Calendar now = Calendar.getInstance();
+        String year;
+        String month;
+        String taskTime=request.getParameter("taskTime");
+        //System.out.println(taskTime);
+        if(taskTime!="")
+         year=taskTime.substring(0,4);
+        else
+          year= String.valueOf(now.get(Calendar.YEAR));
+
+        Map<String,Object> mmap= new HashMap<>();
+        List spcount =new ArrayList();
+        List wscount =new ArrayList();
+        List yscount =new ArrayList();
+
+
+        //全年审批数量
+        int s=exService.selectSpCountAll(year);
+        //全年污水
+        String w=exService.selectWsCountAll(year);
+        if(w==null||w=="")
+            w="0";
+        //全年雨水
+        String y=exService.selectYsCountAll(year);
+        if(y==null||y=="")
+            y="0";
+
+
+        //每月的审批数量
+        //每月的污水量
+        //每月的雨水量
+        for (int i=1;i<=12;i++)
+        {
+            if (i<10)
+            {
+                month=year+"-0"+String.valueOf(i);
+            }
+            else
+            {
+                month=year+"-"+String.valueOf(i);
+            }
+            spcount.add(exService.selectSpCountAll(month));
+            String ws=exService.selectWsCountAll(month);
+            if(ws==null||ws=="")
+                ws="0";
+            wscount.add(Integer.parseInt(ws));
+            String ys=exService.selectYsCountAll(month);
+            if(ys==null||ys=="")
+                ys="0";
+            yscount.add(Integer.parseInt(ys));
+
+        }
+
+
+
+        mmap.put("spcount",spcount);
+        mmap.put("wscount",wscount);
+        mmap.put("yscount",yscount);
+        mmap.put("s",s);
+        mmap.put("w",w);
+        mmap.put("y",y);
+        return AjaxResult.success("success",mmap);
     }
 
-  /*  @PostMapping("/location")
-    @ResponseBody
-    public AjaxResult gis( HttpServletRequest request,HttpServletResponse response) {
-        String b=request.getParameter("sblsh");
-        System.out.println(b);
-        EX_GDBS_SB a=exService.selectById(b);
-
-        Map<Object,Object> data = new HashMap<Object, Object>();
-        data.put("WD1", a.getWD1());
-        data.put("WD2", a.getWD2());
-        data.put("JD1", a.getJD1());
-        data.put("JD2",a.getJD2());
-        return AjaxResult.success("success",data);
-
-    }*/
 
 
     @GetMapping("/download")

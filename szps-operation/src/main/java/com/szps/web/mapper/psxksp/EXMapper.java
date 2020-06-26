@@ -2,6 +2,7 @@ package com.szps.web.mapper.psxksp;
 
 
 import com.szps.web.domain.psxksp.EX_GDBS_SB;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -29,4 +30,8 @@ public interface EXMapper {
 
 
     int updateEx(EX_GDBS_SB ex);
+
+    int selectSpCountAll(@Param("years") String years);
+    String selectWsCountAll(@Param("years") String years);
+    String selectYsCountAll(@Param("years") String years);
 }

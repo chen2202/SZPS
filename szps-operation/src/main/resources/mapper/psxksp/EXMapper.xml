@@ -166,84 +166,21 @@
     </if>-->
 
   </select>
-<!--
 
-  <select id="selectTaskRandom" resultMap="BaseResultMap">
-    select TASK_NUMBER, TASK_NAME, TASK_REGION, TASK_STREET, TASK_PARTITION, TASK_GRADE,
-    TASK_TYPE,  TASK_CONNECTING, TASK_TIME, TASK_HOUSE,  TASK_HOUSENAME, TASK_HOUSEPHONE
-    from TB_TASK
-    WHERE TB_TASK.TASK_HOUSE is NULL
+
+  <select id="selectSpCountAll" parameterType="java.lang.String" resultType="int">
+    select "COUNT"(*) FROM EX_GDBS_SB
+    WHERE EX_GDBS_SB.SJSXBBH like concat(#{years},'%')
+  </select>
+  <select id="selectWsCountAll" parameterType="java.lang.String"  resultType="java.lang.String">
+    select sum(SXBBH) FROM EX_GDBS_SB
+    WHERE EX_GDBS_SB.SJSXBBH like concat(#{years},'%')
+  </select>
+  <select id="selectYsCountAll" parameterType="java.lang.String"  resultType="java.lang.String">
+    select sum(SQRLX) FROM EX_GDBS_SB
+    WHERE EX_GDBS_SB.SJSXBBH like concat(#{years},'%')
   </select>
 
-  <select id="selectTaskList" parameterType="com.szps.web.domain.supervise.TbTask" resultMap="BaseResultMap">
-    select TASK_NUMBER, TASK_NAME, TASK_REGION, TASK_STREET, TASK_PARTITION, TASK_GRADE,
-    TASK_TYPE, TASK_CONNECTING, TASK_TIME, TASK_HOUSE, TASK_HOUSENAME, TASK_HOUSEPHONE
-    from TB_TASK
-
-   <where>
-    <if test="taskPartition != null and taskPartition != ''">
-       TB_TASK.TASK_PARTITION like concat(concat('%',#{taskPartition}),'%')
-    </if>
-    <if test="taskRegion != null and taskRegion != ''">
-      AND TB_TASK.TASK_REGION = #{taskRegion}
-    </if>
-    <if test="taskStreet != null and taskStreet != ''">
-      AND TB_TASK.TASK_STREET = #{taskStreet}
-    </if>
-    <if test="taskTime != null and taskTime != ''">
-      and TB_TASK.TASK_TIME = #{taskTime}
-    </if>
-   </where>
-  </select>
-
-
-  <delete id="deleteTaskByIds" parameterType="Long">
-    delete from  TB_TASK where TASK_NUMBER in
-    <foreach collection="array" item="taskNumber" open="(" separator="," close=")">
-      #{taskNumber}
-    </foreach>
-  </delete>
-
-  <select id="selectTaskCount" parameterType="java.lang.String" resultType="int">
-    SELECT COUNT(1)
-    FROM TB_TASK
-
-    <where>
-
-      <if test="taskRegion != null and taskRegion != ''">
-         TB_TASK.TASK_REGION = #{taskRegion}
-      </if>
-      <if test="taskStreet != null and taskStreet != ''">
-        AND TB_TASK.TASK_STREET = #{taskStreet}
-      </if>
-      <if test="taskTime != null and taskTime != ''">
-        and TB_TASK.TASK_TIME = #{taskTime}
-      </if>
-    </where>
-  </select>
-
-  <select id="CheckdTask" parameterType="String" resultType="int">
-    select count(1) from TB_TASK where TB_TASK.TASK_NUMBER=#{taskNumber}
-  </select>
-
-  <select id="selectMonthTaskCount" parameterType="java.lang.String"  resultType="int">
-    SELECT COUNT(1)
-    FROM TB_TASK
-
-    <where>
-
-      <if test="taskRegion != null and taskRegion != ''">
-        TB_TASK.TASK_REGION = #{taskRegion}
-      </if>
-      <if test="taskStreet != null and taskStreet != ''">
-        AND TB_TASK.TASK_STREET = #{taskStreet}
-      </if>
-      <if test="taskTime != null and taskTime != ''">
-        and TB_TASK.TASK_TIME like concat(#{taskTime},'%')
-      </if>
-    </where>
-  </select>
--->
 
 
 </mapper>

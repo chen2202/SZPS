@@ -78,7 +78,7 @@
 							<input type="text" class="time-input" id="taskTime" placeholder="年份" name="taskTime"/>
 						</li>
 						<li>
-							<a class="btn btn-main btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							<a class="btn btn-main btn-sm" onclick="statistic()"><i class="fa fa-search"></i>&nbsp;搜索</a>
 							<!--<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>-->
 						</li>
 					</ul>
@@ -91,17 +91,17 @@
 		<div class="col-sm-12 select-table table-striped">
 			<div class="col-sm-2 six-div" style="margin-left:-10px;background:linear-gradient(-30deg,rgba(44,157,243,1) 0%,rgba(89,184,255,1) 100%);">
 				<p class="six-title-p">全年审批数量</p>
-				<span class="six-number-p" th:text="289"></span>
+				<span class="six-number-p"  id="s"></span>
 				<span class="six-icon-img six-icon1"/>
 			</div>
 			<div class="col-sm-2 six-div" style="margin-left:-10px;background:linear-gradient(-30deg,rgba(222,162,22,1) 0%,rgba(243,195,36,1) 100%);">
 				<p class="six-title-p">全年污废水接入量(m³/天)</p>
-				<span class="six-number-p" th:text="5899"></span>
+				<span class="six-number-p" id="w"></span>
 				<span class="six-icon-img six-icon2"/>
 			</div>
 			<div class="col-sm-2 six-div" style="margin-left:-10px;background:linear-gradient(-30deg,rgba(85,185,35,1) 0%,rgba(118,214,70,1) 100%);">
 				<p class="six-title-p">全年雨水接入量(m³/天)</p>
-				<span class="six-number-p" th:text="2299"></span>
+				<span class="six-number-p" id="y"></span>
 				<span class="six-icon-img six-icon3"/>
 			</div>
 			<table id="bootstrap-table" data-mobile-responsive="true" ></table>
@@ -112,75 +112,116 @@
 <th:block th:include="include :: footer" />
 <script type="text/javascript">
 
+	var spcount;
+	var wscount;
+	var yscount;
+    var sp=new Array();
+    var ws=new  Array();
+    var ys=new  Array();
 
+    function statistic() {
+        var taskTime = $("input[name='taskTime']").val();
+        $.ajax({
+            cache : true,
+            type : "POST",
+            url : ctx + "op/permit/statistic",
+			 data:{
+                 "taskTime":taskTime
+			 },
+            async : false,
+            error : function(request) {
+                $.modal.alertError("系统错误");
+            },
+            success : function(data) {
 
-    var chart = Highcharts.chart('container',{
-        chart: {
-            type: 'column',
-            options3d: {
-                enabled: true,
-                alpha: 15,
-                beta: 0,
-                depth: 50,
-                viewDistance: 25
+                document.getElementById("s").innerText=data.data.s;
+                document.getElementById("y").innerText=data.data.y;
+                document.getElementById("w").innerText=data.data.w;
+                spcount=data.data.spcount;
+                wscount=data.data.wscount;
+                yscount=data.data.yscount;
+                sp=spcount;
+                ws=wscount;
+                ys=yscount;
+                charts();
             }
-        },
-        title: {
-            text: '排水许可审批图',
-            align:"left"
+        });
+    }
 
-        },
 
-        xAxis: {
-            categories: [
-                '1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'
-            ],
-            crosshair: true
-        },
-        yAxis: {
-            min: 0,
-			max:800,
-            tickInterval:200,
-			title:{
+
+    statistic();
+
+    function charts() {
+        var chart = Highcharts.chart('container',{
+            chart: {
+                type: 'column',
+                options3d: {
+                    enabled: true,
+                    alpha: 15,
+                    beta: 0,
+                    depth: 50,
+                    viewDistance: 25
+                }
+            },
+            title: {
+                text: '排水许可审批图',
+                align:"left"
+
+            },
+
+            xAxis: {
+                categories: [
+                    '1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'
+                ],
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                max:800,
+                tickInterval:200,
+                title:{
                     text: ''
-			}
+                }
 
-        },
-        tooltip: {
-            // head + 每个 point + footer 拼接成完整的 table
-            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
-            footerFormat: '</table>',
-            shared: true,
-            useHTML: true
-        },
-        plotOptions: {
-            column: {
-                groupPadding: 0.05,
-                pointPadding: 0.1,
-                borderWidth: 0
-            }
-        },
-        credits: {
-            enabled:false
-        },
-        series: [{
-            name: '审批数量',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-			color:"#63BCFF"
+            },
+            tooltip: {
+                // head + 每个 point + footer 拼接成完整的 table
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    groupPadding: 0.05,
+                    pointPadding: 0.1,
+                    borderWidth: 0
+                }
+            },
+            credits: {
+                enabled:false
+            },
+            series: [{
+                name: '审批数量',
+                data: sp,
+                color:"#63BCFF"
 
 
-        }, {
-            name: '污废水接入量',
-            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3],
-            color:"#F5C62B"
-        }, {
-            name: '雨水接入量',
-            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2],
-            color:"#76D646"
-        }]
-    });
+            }, {
+                name: '污废水接入量',
+                data: ws,
+                color:"#F5C62B"
+            }, {
+                name: '雨水接入量',
+                data: ys,
+                color:"#76D646"
+            }]
+        });
+    }
+
 
 
 

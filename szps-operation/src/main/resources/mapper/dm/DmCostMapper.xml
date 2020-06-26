@@ -41,7 +41,7 @@
                 c.cost_factory = #{costFactory}
             </if>
             <if test="type == '申请支付时间'">
-                AND c.cost_apply_time = to_date(#{params.time},'yyyy-MM-dd HH24:mi:ss')
+                AND c.cost_apply_time = #{params.time}
             </if>
             <if test="type == '实际支付月份'">
                 AND c.cost_pay_time = #{params.time}

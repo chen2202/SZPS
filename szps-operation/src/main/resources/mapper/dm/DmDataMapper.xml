@@ -175,7 +175,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="dataDesc != null and dataDesc != ''">data_desc,</if>
 		<if test="dataRiver != null and dataRiver != ''">data_river,</if>
 		<if test="updateTime != null and updateTime != ''">data_update_date,</if>
-		data_date
+		data_date,
+		data_update_date
 		)values(
 		<if test="dataId != null and dataId != 0">#{dataId},</if>
 		<if test="dataUuid != null and dataUuid != ''">#{dataUuid},</if>
@@ -189,6 +190,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="dataDesc != null and dataDesc != ''">#{dataDesc},</if>
 		<if test="dataRiver != null and dataRiver != ''">#{dataRiver},</if>
 		<if test="updateTime != null and updateTime != ''">#{updateTime},</if>
+		sysdate,
 		sysdate
 		)
 	</insert>
@@ -203,6 +205,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="dataType != null and dataType != ''">data_type = #{dataType},</if>
 			<if test="dataLevel != null and dataLevel != ''">data_level = #{dataLevel},</if>
 			<if test="dataTheme != null and dataTheme != ''">data_theme = #{dataTheme},</if>
+			<if test="dataRiver != null and dataRiver != ''">data_river = #{dataRiver},</if>
 			<if test="dataDesc != null and dataDesc != ''">data_desc = #{dataDesc},</if>
 			data_update_date = sysdate
 		</set>

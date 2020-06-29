@@ -87,8 +87,17 @@
                 <div class="form-group">
                     <label class="col-sm-4 control-label">处理原因：</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="costPunishReason" th:field="*{costPunishReason}" placeholder="请选择处罚原因"
-                               name="costPunishReason">
+                        <select class="form-control" id="costPunishReason" name="costPunishReason" placeholder="请选择处罚原因">
+                            <option value="出水超标COD" th:selected="*{costPunishReason=='出水超标COD'}">出水超标COD</option>
+                            <option value="出水超标BOD" th:selected="*{costPunishReason=='出水超标BOD'}">出水超标BOD</option>
+                            <option value="出水超标氨氮" th:selected="*{costPunishReason=='出水超标氨氮'}">出水超标氨氮</option>
+                            <option value="出水超标TP" th:selected="*{costPunishReason=='出水超标TP'}">出水超标TP</option>
+                            <option value="出水超标TN" th:selected="*{costPunishReason=='出水超标TN'}">出水超标TN</option>
+                            <option value="出水超标SS" th:selected="*{costPunishReason=='出水超标SS'}">出水超标SS</option>
+                            <option value="出水超标粪大肠菌群" th:selected="*{costPunishReason=='出水超标粪大肠菌群'}">出水超标粪大肠菌群</option>
+                            <option value="出水超标污泥含量" th:selected="*{costPunishReason=='出水超标污泥含量'}">出水超标污泥含量</option>
+                            <option value="其他" th:selected="*{costPunishReason=='其他'}">其他</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -100,17 +109,6 @@
                     <label class="col-sm-2 control-label ">备注：</label>
                     <div class="col-sm-8">
                         <textarea type="text" id="costRemark" name="costRemark" class="form-control" th:field="*{costRemark}" placeholder="请输入备注"></textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label ">附件：</label>
-                    <div class="col-sm-6">
-                        <input id="filePath" name="filePath" class="select-file file-loading" type="file">
                     </div>
                 </div>
             </div>
@@ -148,10 +146,6 @@
 
     function uploadFile() {
         var formData = new FormData();
-        if ($('#filePath')[0].files[0] == null) {
-            $.modal.alertWarning("请先选择文件路径");
-            return false;
-        }
 
         formData.append('costId',$("#costId").val());
         formData.append('costFactory',$("#treeNameBrf").val());
@@ -164,7 +158,6 @@
         formData.append('costPunishReason',$("#costPunishReason").val());
         formData.append('costRemark',$("#costRemark").val());
         formData.append('costFileName', $("#filePath").val());
-        formData.append('file', $('#filePath')[0].files[0]);
 
         $.ajax({
             url: prefix + "/edit",

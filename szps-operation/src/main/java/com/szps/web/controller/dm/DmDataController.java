@@ -121,7 +121,8 @@ public class DmDataController extends BaseController{
                 // 新添加的资料都是未审批状态，存在审批表里
                 DmAudit dmAudit = new DmAudit();
                 dmAudit.setDataId(id);
-                dmAudit.setAuditStatus("0");
+//                dmAudit.setAuditStatus("0");
+                dmAudit.setAuditStatus("1");
                 auditService.insertAudit(dmAudit);
                 return success();
             }

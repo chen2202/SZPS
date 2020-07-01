@@ -4,20 +4,20 @@ package com.szps.web.controller.supervise;
 
 import com.szps.common.config.Global;
 import com.szps.common.core.controller.BaseController;
-<<<<<<< HEAD
-
-import com.szps.common.core.domain.AjaxResult;
-import com.szps.common.core.page.TableDataInfo;
-
 
 
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 
-=======
+
+
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
->>>>>>> 9430060622043ddaa725e961bc0b573b46ab89c7
+
+
+import com.szps.common.core.domain.AjaxResult;
+import com.szps.common.core.page.TableDataInfo;
+
 import com.szps.common.enums.BusinessType;
 
 import com.szps.common.utils.file.FileUtils;

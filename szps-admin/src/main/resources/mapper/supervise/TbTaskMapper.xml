@@ -32,9 +32,7 @@
     set TASK_RESULT = #{taskResult,jdbcType=VARCHAR},
       TASK_HANDLE = #{taskHandle,jdbcType=VARCHAR},
       TASK_FLAG = #{taskFlag,jdbcType=VARCHAR},
-      TASK_CHECKTIME = #{taskCheckTime,jdbcType=VARCHAR},
-      TASK_BC= #{taskBc,jdbcType=VARCHAR},
-      TASK_HOUSE=#{taskHouse,jdbcType=VARCHAR}
+      TASK_CHECKTIME = #{taskCheckTime,jdbcType=VARCHAR}
     where TASK_NUMBER = #{taskNumber,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
@@ -173,4 +171,18 @@
     </where>
   </select>
 
+
+  <select id="selectTaskById" parameterType="com.szps.web.domain.supervise.TbTask" resultMap="BaseResultMap">
+    select TASK_NUMBER, TASK_TIME, TASK_HOUSE,TASK_FLAG
+    from TB_TASK
+
+    <where>
+
+      <if test="taskNumber != null and taskNumber != ''">
+        TASK_NUMBER   = #{taskNumber}
+      </if>
+
+
+    </where>
+  </select>
 </mapper>

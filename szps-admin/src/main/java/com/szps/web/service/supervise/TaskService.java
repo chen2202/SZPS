@@ -22,7 +22,7 @@ public interface TaskService
     public List<TbTask> selectTaskAll();
 
 
-    public TbTask selectTaskById(String taskNumber);
+    public TbTask selectTaskById(TbTask taskNumber);
 
 
     public List<TbTask> selectTaskRandom();

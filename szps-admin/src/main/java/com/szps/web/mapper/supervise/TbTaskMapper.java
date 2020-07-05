@@ -8,6 +8,9 @@ import java.util.List;
 
 public interface TbTaskMapper {
 
+
+     TbTask selectTaskById(TbTask taskNumber);
+
     int deleteByPrimaryKey(String taskNumber);
 
     int insert(TbTask record);

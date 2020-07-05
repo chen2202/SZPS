@@ -15,41 +15,52 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/wechat")
+@RequestMapping("/admin/wechat")
 public class DrainerController {
     @Autowired
     private HouseholdService householdService;
 
 
-    @PostMapping("/statistics/drainageLicenseExpire")
+    @PostMapping(value = "/statistics/Areas")
     @ResponseBody
-    public int[] DrainageLicenseExpire() {
-        List<String> DrainageLicenseList = householdService.selectDrainageLicenseExpire();
+    public String[] getAreas(){
+        String[] str={"光明区","前海开发区","南山区","坪山区","大鹏新区","宝安区","深汕合作区","盐田区","福田区","罗湖区","龙华区","龙岗区"};
+
+        return str;
+    }
+
+    /**
+     * 各区排水户分布统计数据
+     */
+    @PostMapping("/statistics/householdAdministrativeStatistics")
+    @ResponseBody
+    public int[] householdAdministrativeStatistics() {
+        List<String> administrativeList = householdService.selectAllHouseholdAdministrative(); //全部排水户所在行政区
         int gm=0,qhkf=0,ns=0,ps=0,dpx=0,ba=0,sshz=0,yt=0,ft=0,luoh=0,longh=0,lg=0; //各个行政区排水户计数
-        for(int i=0;i<DrainageLicenseList.size();i++) {
-            if(DrainageLicenseList.get(i).equals("光明区")) {
+        for(int i=0;i<administrativeList.size();i++) {
+            if(administrativeList.get(i).equals("光明区")) {
                 gm++;
-            }else if(DrainageLicenseList.get(i).equals("前海开发区")) {
+            }else if(administrativeList.get(i).equals("前海开发区")) {
                 qhkf++;
-            }else if(DrainageLicenseList.get(i).equals("南山区")) {
+            }else if(administrativeList.get(i).equals("南山区")) {
                 ns++;
-            }else if(DrainageLicenseList.get(i).equals("坪山区")) {
+            }else if(administrativeList.get(i).equals("坪山区")) {
                 ps++;
-            }else if(DrainageLicenseList.get(i).equals("大鹏新区")) {
+            }else if(administrativeList.get(i).equals("大鹏新区")) {
                 dpx++;
-            }else if(DrainageLicenseList.get(i).equals("宝安区")) {
+            }else if(administrativeList.get(i).equals("宝安区")) {
                 ba++;
-            }else if(DrainageLicenseList.get(i).equals("深汕合作区")) {
+            }else if(administrativeList.get(i).equals("深汕合作区")) {
                 sshz++;
-            }else if(DrainageLicenseList.get(i).equals("盐田区")) {
+            }else if(administrativeList.get(i).equals("盐田区")) {
                 yt++;
-            }else if(DrainageLicenseList.get(i).equals("福田区")) {
+            }else if(administrativeList.get(i).equals("福田区")) {
                 ft++;
-            }else if(DrainageLicenseList.get(i).equals("罗湖区")) {
+            }else if(administrativeList.get(i).equals("罗湖区")) {
                 luoh++;
-            }else if(DrainageLicenseList.get(i).equals("龙华区")) {
+            }else if(administrativeList.get(i).equals("龙华区")) {
                 longh++;
-            }else if(DrainageLicenseList.get(i).equals("龙岗区")) {
+            }else if(administrativeList.get(i).equals("龙岗区")) {
                 lg++;
             }
         }
@@ -57,9 +68,9 @@ public class DrainerController {
         return result;
     }
 
-    /**
-     * 各行政区污水类别统计
-     */
+        /**
+         * 各行政区污水类别统计
+         */
     @PostMapping("/statistics/adminiSewageStatistics")
     @ResponseBody
     public String adminiSewageStatistics() {
@@ -195,33 +206,6 @@ public class DrainerController {
         return json;
     }
 
-    /**
-     * 全市污水类别比例统计
-     */
-    @PostMapping("/statistics/sewageCategoryStatistics")
-    @ResponseBody
-    public String sewageCategoryStatistics() {
-        List<String> list = householdService.selectAllSewageCategory();
-        int ydyh=0,cdw=0,cy=0,sh=0;
-        for(int i=0;i<list.size();i++) {
-            if(list.get(i).equals("有毒有害排污类")) {
-                ydyh++;
-            }else if(list.get(i).equals("沉淀物排污类")) {
-                cdw++;
-            }else if(list.get(i).equals("餐饮排污类")) {
-                cy++;
-            }else if(list.get(i).equals("生活排污类")) {
-                sh++;
-            }
-        }
-
-        return "["
-                + "{\"y\":"+ydyh+",\"name\":\"有毒有害排污类\"},"
-                + "{\"y\":"+cdw+",\"name\":\"沉淀物排污类\"},"
-                + "{\"y\":"+cy+",\"name\":\"餐饮排污类\"},"
-                + "{\"y\":"+sh+",\"name\":\"生活排污类\"}"
-                + "]";
-    }
 
 
     /**

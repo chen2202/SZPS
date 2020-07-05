@@ -2,6 +2,7 @@ package com.szps.web.controller.wechat;
 
 import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.page.TableDataInfo;
+import com.szps.framework.web.domain.server.Sys;
 import com.szps.web.domain.supervise.TbHouse;
 import com.szps.web.domain.supervise.TbStaff;
 import com.szps.web.domain.supervise.TbTask;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.szps.common.utils.file.FileUploadUtils;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -22,7 +24,7 @@ import java.util.Objects;
 
 
 @Controller
-@RequestMapping("/wechat")
+@RequestMapping("/admin/wechat")
 public class SuperviseController extends BaseController {
 
 
@@ -293,7 +295,13 @@ public class SuperviseController extends BaseController {
 
         String taskName = params.get("taskNumber").toString();
 
-        TbTask tbTask=Service.selectTaskById(taskName);
+        TbTask tbTask2=new TbTask();
+        tbTask2.setTaskNumber(taskName);
+
+        TbTask tbTask=Service.selectTaskById(tbTask2);
+
+        System.out.println(tbTask.toString());
+
         if(tbTask.getTaskFlag().equals("未完成")){
 
             TbTask tbTask1=new TbTask();
@@ -301,6 +309,7 @@ public class SuperviseController extends BaseController {
             tbTask1.setTaskResult(params.get("result").toString());
             tbTask1.setTaskCheckTime(params.get("checkTime").toString());
             tbTask1.setTaskHandle(params.get("handle").toString());
+            tbTask1.setTaskFlag("完成");
 
             return Service.updateTask(tbTask1);
         }else {

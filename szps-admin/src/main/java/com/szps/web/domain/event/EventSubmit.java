@@ -18,7 +18,7 @@ public class EventSubmit extends BaseEntity
     private static final long serialVersionUID = 1L;
 
     /** 事件编号 */
-    private Integer eventSid;
+    private String eventSid;
 
     /** 事件名称 */
     @Excel(name = "事件名称")
@@ -52,12 +52,12 @@ public class EventSubmit extends BaseEntity
     @Excel(name = "上报时间", width = 30, dateFormat = "yyyy-MM-dd")
     private Date eventSubmitTime;
 
-    public void setEventId(Integer eventSid)
+    public void setEventSId(String eventSid)
     {
         this.eventSid = eventSid;
     }
 
-    public Integer getEventId()
+    public String getEventSId()
     {
         return eventSid;
     }
@@ -137,7 +137,7 @@ public class EventSubmit extends BaseEntity
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-                .append("eventId", getEventId())
+                .append("eventId", getEventSId())
                 .append("eventName", getEventName())
                 .append("eventPlace", getEventPlace())
                 .append("eventTime", getEventTime())

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.check.PlantCheckRecordMapper">
+
+    <resultMap type="PlantCheckRecord" id="CheckManagerResult">
+        <result property="checkId"    column="CHECK_ID"    />
+        <result property="checkArea"    column="CHECK_AREA"    />
+        <result property="checkType"    column="CHECK_TYPE"    />
+        <result property="checkPlace"    column="CHECK_PLACE"    />
+        <result property="checkSubmitTime"    column="CHECK_SUBMIT_TIME"    />
+        <result property="checkUser"    column="CHECK_USER"    />
+        <result property="checkDetail"    column="CHECK_DETAIL"    />
+    </resultMap>
+
+    <sql id="selectCheckManagerVo">
+        select CHECK_ID, CHECK_AREA, CHECK_TYPE, CHECK_PLACE, CHECK_SUBMIT_TIME, CHECK_USER, CHECK_DETAIL from PLANT_CHECK_RECORD
+    </sql>
+
+    <select id="selectCheckManagerList" parameterType="PlantCheckRecord" resultMap="CheckManagerResult">
+        <include refid="selectCheckManagerVo"/>
+        <where>
+            <if test="checkArea != null  and checkArea != ''"> and CHECK_AREA = #{checkArea}</if>
+            <if test="checkType != null  and checkType != ''"> and CHECK_TYPE = #{checkType}</if>
+            <if test="checkPlace != null  and checkPlace != ''"> and CHECK_PLACE = #{checkPlace}</if>
+<!--            <if test="checkSubmitTime != null "> and CHECK_SUBMIT_TIME = #{checkSubmitTime}</if>-->
+            <if test="checkUser != null  and checkUser != ''"> and CHECK_USER = #{checkUser}</if>
+            <if test="checkDetail != null  and checkDetail != ''"> and CHECK_DETAIL = #{checkDetail}</if>
+        </where>
+    </select>
+
+    <select id="selectCheckManagerById" parameterType="Long" resultMap="CheckManagerResult">
+        <include refid="selectCheckManagerVo"/>
+        where CHECK_ID = #{checkId}
+    </select>
+
+
+    <resultMap id="CheckPictureResult" type="CheckPicture">
+        <result property="checkSid"    column="CHECK_SID"    />
+        <result property="checkPictureName"    column="CHECK_PICTURE_NAME"    />
+        <result property="checkPictureUrl"    column="CHECK_PICTURE_URL"    />
+    </resultMap>
+
+  <select id="getCheckPictures" parameterType="CheckPicture" resultMap="CheckPictureResult">
+      select CHECK_SID,CHECK_PICTURE_NAME,CHECK_PICTURE_URL
+      from CHECK_PICTURE
+      where CHECK_SID=#{checkSid}
+  </select>
+<!--    <insert id="insertCheckManager" parameterType="CheckManager" useGeneratedKeys="true" keyProperty="checkId">-->
+<!--        insert into CHECK_MANAGER-->
+<!--        <trim prefix="(" suffix=")" suffixOverrides=",">-->
+<!--            <if test="checkArea != null  and checkArea != ''">CHECK_AREA,</if>-->
+<!--            <if test="checkType != null  and checkType != ''">CHECK_TYPE,</if>-->
+<!--            <if test="checkPlace != null  and checkPlace != ''">CHECK_PLACE,</if>-->
+<!--            <if test="checkSubmitTime != null ">CHECK_SUBMIT_TIME,</if>-->
+<!--            <if test="checkUser != null  and checkUser != ''">CHECK_USER,</if>-->
+<!--            <if test="checkDetail != null  and checkDetail != ''">CHECK_DETAIL,</if>-->
+<!--        </trim>-->
+<!--        <trim prefix="values (" suffix=")" suffixOverrides=",">-->
+<!--            <if test="checkArea != null  and checkArea != ''">#{checkArea},</if>-->
+<!--            <if test="checkType != null  and checkType != ''">#{checkType},</if>-->
+<!--            <if test="checkPlace != null  and checkPlace != ''">#{checkPlace},</if>-->
+<!--            <if test="checkSubmitTime != null ">#{checkSubmitTime},</if>-->
+<!--            <if test="checkUser != null  and checkUser != ''">#{checkUser},</if>-->
+<!--            <if test="checkDetail != null  and checkDetail != ''">#{checkDetail},</if>-->
+<!--        </trim>-->
+<!--    </insert>-->
+
+<!--    <update id="updateCheckManager" parameterType="CheckManager">-->
+<!--        update CHECK_MANAGER-->
+<!--        <trim prefix="SET" suffixOverrides=",">-->
+<!--            <if test="checkArea != null  and checkArea != ''">CHECK_AREA = #{checkArea},</if>-->
+<!--            <if test="checkType != null  and checkType != ''">CHECK_TYPE = #{checkType},</if>-->
+<!--            <if test="checkPlace != null  and checkPlace != ''">CHECK_PLACE = #{checkPlace},</if>-->
+<!--            <if test="checkSubmitTime != null ">CHECK_SUBMIT_TIME = #{checkSubmitTime},</if>-->
+<!--            <if test="checkUser != null  and checkUser != ''">CHECK_USER = #{checkUser},</if>-->
+<!--            <if test="checkDetail != null  and checkDetail != ''">CHECK_DETAIL = #{checkDetail},</if>-->
+<!--        </trim>-->
+<!--        where CHECK_ID = #{checkId}-->
+<!--    </update>-->
+
+<!--    <delete id="deleteCheckManagerById" parameterType="Long">-->
+<!--        delete from CHECK_MANAGER where CHECK_ID = #{checkId}-->
+<!--    </delete>-->
+
+<!--    <delete id="deleteCheckManagerByIds" parameterType="String">-->
+<!--        delete from CHECK_MANAGER where CHECK_ID in-->
+<!--        <foreach item="checkId" collection="array" open="(" separator="," close=")">-->
+<!--            #{checkId}-->
+<!--        </foreach>-->
+<!--    </delete>-->
+
+</mapper>

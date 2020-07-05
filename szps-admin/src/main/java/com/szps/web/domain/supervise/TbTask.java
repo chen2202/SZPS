@@ -167,4 +167,26 @@ public class TbTask {
     public void setTaskBcStaff(String taskBcStaff) {
         this.taskBcStaff = taskBcStaff;
     }
+
+    @Override
+    public String toString() {
+        return "TbTask{" +
+                "taskNumber='" + taskNumber + '\'' +
+                ", taskTime='" + taskTime + '\'' +
+                ", taskHouse='" + taskHouse + '\'' +
+                ", ruleContent='" + ruleContent + '\'' +
+                ", ruleName='" + ruleName + '\'' +
+                ", tbStaffList=" + tbStaffList +
+                ", taskResult='" + taskResult + '\'' +
+                ", taskHandle='" + taskHandle + '\'' +
+                ", taskFlag='" + taskFlag + '\'' +
+                ", beginTime='" + beginTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", tbHouse=" + tbHouse +
+                ", taskCheckTime='" + taskCheckTime + '\'' +
+                ", taskFile='" + taskFile + '\'' +
+                ", taskBc='" + taskBc + '\'' +
+                ", taskBcStaff='" + taskBcStaff + '\'' +
+                '}';
+    }
 }

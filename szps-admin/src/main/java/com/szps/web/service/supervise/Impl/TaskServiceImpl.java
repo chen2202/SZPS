@@ -4,6 +4,7 @@ import com.szps.common.core.text.Convert;
 import com.szps.web.domain.supervise.TbTask;
 import com.szps.web.mapper.supervise.TbTaskMapper;
 import com.szps.web.service.supervise.TaskService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,11 @@ public class TaskServiceImpl implements TaskService {
 
     @Autowired
     private TbTaskMapper tbTaskMapper;
+
+    @Override
+    public TbTask selectTaskById(TbTask taskNumber) {
+        return tbTaskMapper.selectTaskById(taskNumber);
+    }
 
     @Override
     public List<TbTask> selectTaskList(TbTask tbTask) {
@@ -30,7 +36,7 @@ public class TaskServiceImpl implements TaskService {
         return tbTaskMapper.selectAll();
     }
 
-    @Override
+
     public TbTask selectTaskById(String taskNumber) {
         return tbTaskMapper.selectByPrimaryKey(taskNumber);
     }
@@ -69,7 +75,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public int selectTaskCount(String taskRegion, String taskStreet, String taskTime) {
-        return tbTaskMapper.selectTaskCount(taskRegion,taskStreet,taskTime);
+        return tbTaskMapper.selectTaskCount(taskRegion, taskStreet, taskTime);
     }
 
     @Override
@@ -94,6 +100,6 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public int selectMonthTaskCount(String taskRegion, String taskStreet, String taskTime) {
-        return tbTaskMapper.selectMonthTaskCount(taskRegion,taskStreet,taskTime);
+        return tbTaskMapper.selectMonthTaskCount(taskRegion, taskStreet, taskTime);
     }
 }

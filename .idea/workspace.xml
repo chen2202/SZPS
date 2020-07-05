@@ -2,87 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc7b956e-4cbc-4a6b-8b84-b165eb2e201f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/DrainerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/EventUploadController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/SuperviseController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/WeChatController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/drainage/Administrative.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/drainage/Committees.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/drainage/Drain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/drainage/Household.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/drainage/Street.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/event/EventPicture.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/event/EventSubmit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/supervise/TbEnclosure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/supervise/TbFeedback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/supervise/TbHouse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/supervise/TbPicture.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/supervise/TbRule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/supervise/TbStaff.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/supervise/TbTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/supervise/TbTaskStaff.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/drainage/AdministrativeMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/drainage/CommitteesMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/drainage/DrainMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/drainage/ExpireMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/drainage/HouseholdMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/drainage/StreetMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/supervise/TbEnclosureMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/supervise/TbFeedbackMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/supervise/TbHouseMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/supervise/TbPictureMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/supervise/TbRuleMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/supervise/TbStaffMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/supervise/TbTaskMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/supervise/TbTaskStaffMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/drainage/AdministrativeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/drainage/CommitteesService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/drainage/DrainService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/drainage/ExpireService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/drainage/HouseholdService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/drainage/StreetService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/drainage/impl/AdministrativeServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/drainage/impl/CommitteesServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/drainage/impl/DrainServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/drainage/impl/ExpireServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/drainage/impl/HouseholdServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/drainage/impl/StreetServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/supervise/EnclosureService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/supervise/FeedbackService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/supervise/HouseService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/supervise/Impl/EnclosureServiseImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/supervise/Impl/FeedbackServiseImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/supervise/Impl/HouseServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/supervise/Impl/PictureServiseImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/supervise/Impl/RuleServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/supervise/Impl/StaffServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/supervise/Impl/TaskServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/supervise/Impl/TaskStaffServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/supervise/PictureService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/supervise/RuleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/supervise/StaffService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/supervise/TaskService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/supervise/TaskStaffService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/drainage/AdministrativeMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/drainage/CommitteesMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/drainage/DrainMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/drainage/ExpireMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/drainage/HouseholdMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/drainage/StreetMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/supervise/TbEnclosureMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/supervise/TbFeedbackMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/supervise/TbHouseMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/supervise/TbPictureMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/supervise/TbRuleMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/supervise/TbStaffMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/supervise/TbTaskMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/supervise/TbTaskStaffMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/event/EventPictureMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/config/Myconfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/CheckController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/check/Check.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/check/CheckPicture.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/check/PlantCheckRecord.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/event/EventLists.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/check/PlantCheckRecordMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/event/EventSubmitMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/check/IPlantCheckRecordService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/check/impl/PlantCheckRecordServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/event/IEventSubmitService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/event/impl/EventSubmitServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/check/PlantCheckRecordMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/event/EventSubmitMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/event/EventLists.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/resources/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/application-druid.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/DrainerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/DrainerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/EventUploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/EventUploadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/SuperviseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/SuperviseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/event/EventPicture.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/event/EventPicture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/event/EventSubmit.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/event/EventSubmit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/supervise/TbTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/supervise/TbTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/supervise/TbTaskMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/supervise/TbTaskMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/supervise/Impl/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/supervise/Impl/TaskServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/supervise/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/supervise/TaskService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-admin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/supervise/CompleteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/supervise/CompleteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/supervise/TbTaskMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/supervise/TbTaskMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/check/CheckPicture.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/check/CheckPicture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/check/PlantCheckRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/check/PlantCheckRecord.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/event/EventPicture.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/event/EventPicture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/event/EventSubmitMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/event/EventSubmitMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/event/IEventSubmitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/event/IEventSubmitService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/event/impl/EventSubmitServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/event/impl/EventSubmitServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/event/EventPictureMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/event/EventSubmitMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/event/EventSubmitMapper.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -140,12 +95,18 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.szps.web.domain.event" />
+      <recent name="com.szps.web.domain.check" />
+      <recent name="com.szps.web.mapper.check" />
+      <recent name="com.szps.web.mapper.event" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\B-Code\Z-深圳排水信息\szps-admin\src\main\resources\mapper" />
+      <recent name="E:\B-Code\Z-深圳排水信息\szps-admin\src\main\java\com\szps\web\service\check" />
       <recent name="E:\B-Code\Z-深圳排水信息\szps-admin\src\main\java\com\szps\web\service" />
       <recent name="E:\B-Code\Z-深圳排水信息\szps-admin\src\main\java\com\szps\web\mapper" />
       <recent name="E:\B-Code\Z-深圳排水信息\szps-admin\src\main\java\com\szps\web\domain" />
-      <recent name="E:\B-Code\Z-深圳排水信息\szps-admin\src\main\java\com\szps\web\controller" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -274,6 +235,13 @@
       <workItem from="1593332529852" duration="14546000" />
       <workItem from="1593473547584" duration="4660000" />
       <workItem from="1593506771878" duration="6346000" />
+      <workItem from="1593563331359" duration="895000" />
+      <workItem from="1593600954084" duration="8068000" />
+      <workItem from="1593736267455" duration="25379000" />
+      <workItem from="1593866038782" duration="3136000" />
+      <workItem from="1593869194886" duration="4595000" />
+      <workItem from="1593910413107" duration="3275000" />
+      <workItem from="1593940927401" duration="9215000" />
     </task>
     <servers />
   </component>

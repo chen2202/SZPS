@@ -12,7 +12,12 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-label ">执法人员姓名：</label>
 				<div class="col-sm-8">
-					<input class="form-control" type="text" name="staffName" id="staffName" maxlength="10" placeholder="请输入执法人员姓名" required>
+					<input class="form-control" type="text" name="keyword" id="keyword" maxlength="10" placeholder="请输入执法人员姓名" onkeyup="getMoreContents()" onfocus="getMoreContents()" onblur="clearContent()"  required>
+					<div id="popDiv">
+						             <table id="content_table" bgcolor="#FFFAFA" border="0" cellspacing="0" cellpadding="0">
+						                 <tbody id="content_table_body"></tbody>
+						             </table>
+					</div>
 				</div>
 			</div>
 			<div class="form-group">
@@ -64,56 +69,6 @@
 	<th:block th:include="include :: footer" />
 	<th:block th:include="include :: ztree-js" />
 	<script type="text/javascript">
-
-		
-		$("#form-role-add").validate({
-			rules:{
-				onkeyup: false,
-				roleName:{
-					remote: {
-		                url: ctx + "system/role/checkRoleNameUnique",
-		                type: "post",
-		                dataType: "json",
-		                data: {
-		                	"roleName" : function() {
-		                		return $.common.trim($("#roleName").val());
-		                    }
-		                },
-		                dataFilter: function(data, type) {
-		                	return $.validate.unique(data);
-		                }
-		            }
-				},
-				roleKey:{
-					remote: {
-		                url: ctx + "system/role/checkRoleKeyUnique",
-		                type: "post",
-		                dataType: "json",
-		                data: {
-                            "roleKey" : function() {
-                                return $.common.trim($("#roleKey").val());
-                            }
-		                },
-		                dataFilter: function(data, type) {
-		                	return $.validate.unique(data);
-		                }
-		            }
-				},
-				roleSort:{
-					digits:true
-				},
-			},
-			messages: {
-		        "roleName": {
-		            remote: "角色名称已经存在"
-		        },
-		        "roleKey": {
-		            remote: "角色权限已经存在"
-		        }
-		    },
-		    focusCleanup: true
-		});
-		
 		function submitHandler() {
 	        if ($.validate.form()) {
 	        	add();
@@ -122,7 +77,7 @@
 	
 		function add() {
 
-			var staffName = $("input[name='staffName']").val();
+			var staffName = $("input[name='keyword']").val();
 			var staffArea = $("input[name='staffArea']").val();
 			var staffCart = $("input[id='staffCart']").val();
             var staffDept = $("input[id='staffDept']").val();
@@ -149,6 +104,93 @@
 				}
 			});
 		}
+
+function getMoreContents() {
+             var keyword = document.getElementById("keyword").value;
+            if (keyword == "") {
+                    clearContent();
+                     return;
+                 } else {
+                $.ajax({
+                    cache : true,
+                    type : "POST",
+                    url : ctx + "supervise/data1/getstaffName",
+					data:{
+                        "keyword":keyword
+					},
+                    async : false,
+                    error : function(request) {
+                        $.modal.alertError("系统错误");
+                    },
+                    success : function(data) {
+
+                        var alls=new Array();
+                        alls=data.data;
+                        insertContent(alls);
+
+
+                    }
+                });
+
+                 }
+       }
+
+function insertContent(content) {
+            clearContent();
+             setLocation();
+           var json = content;
+            var len = json.length;
+             for (var i = 0; i < len; i++) {
+                   var value = json[i];
+                   var tr = document.createElement("tr");
+                 var td = document.createElement("td");
+                 td.setAttribute("bgcolor", "#FFFAFA");
+                  td.setAttribute("border", "0");
+                 td.onmouseover = function() {
+                           this.className = 'mouseOver';
+
+                         };
+                   td.onmouseout = function() {
+
+                            this.className = 'mouseOut';
+                         };
+                    td.onmousedown = function() {
+
+                            document.getElementById("keyword").value=this.innerText;
+
+                  };
+            var text = document.createTextNode(value);
+           td.appendChild(text);
+
+
+           tr.appendChild(td);
+           document.getElementById("content_table_body").appendChild(tr);
+
+              }
+       }
+
+   function clearContent() {
+       var popNode = document.getElementById("popDiv");
+       popNode.style.border = "none";
+        var contentNode = document.getElementById("content_table_body");
+        var len = contentNode.childNodes.length;
+         for (var i = len - 1; i >= 0; i--) {
+                 contentNode.removeChild(contentNode.childNodes[i]);
+            }
+     }
+    function setLocation(){
+             var inputNode = document.getElementById("keyword");
+            var width = inputNode.offsetWidth;
+           var left = inputNode["offsetLeft"];
+       var top = inputNode.offsetHeight+inputNode["offsetTop"];
+      var popNode = document.getElementById("popDiv");
+       popNode.style.border = "gray 0.5px solid";
+      popNode.style.width = width+"px";
+        popNode.style.top = top+"px";
+     popNode.style.left = left+"px";
+       document.getElementById("content_table").style.width=width+"px";
+
+  }
 	</script>
 </body>
 </html>

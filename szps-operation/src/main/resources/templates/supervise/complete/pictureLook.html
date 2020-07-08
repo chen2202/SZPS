@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('修改抽查对象')" />
+	<th:block th:include="include :: ztree-css" />
+	<link th:href="@{/css/op/public.css}" rel="stylesheet"/>
+	<link th:href="@{/css/op/operation.css}" rel="stylesheet"/>
+</head>
+<body class="white-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content" >
+
+	</div>
+	<th:block th:include="include :: footer" />
+	<th:block th:include="include :: ztree-js" />
+	<script type="text/javascript">
+        $(function() {
+              var task='[[${task}]]';
+            $.ajax({
+                cache : true,
+                type : "POST",
+                url : ctx + "supervise/complete/getPic",
+				data:{
+                    taskNumber:task
+				},
+                async : false,
+                error : function(request) {
+                    $.modal.alertError("系统错误");
+                },
+                success : function(data) {
+                  var alls=data.data;
+                    for (var i = 0, len = alls.length; i < len; i++) {
+                        document.write("<img src='"+alls[i].pictureLocation+"'  >");
+                    }
+                }
+            });
+
+        });
+	</script>
+</body>
+</html>

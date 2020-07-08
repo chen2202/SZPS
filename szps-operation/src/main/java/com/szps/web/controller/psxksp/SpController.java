@@ -234,38 +234,94 @@ public class SpController extends BaseController {
 
         String remindtime = exGdbsSb.getOkTime();
         String endTime="";
-        if (remindtime != null && !Objects.equals(remindtime, ""))
+        if (remindtime != null && Objects.equals(remindtime, "1"))
         {
         int t = Integer.parseInt(remindtime);
         Date now = new Date();
         Calendar c = Calendar.getInstance();
-        c.setTime(now);
-        c.add(Calendar.MONTH, t);
-        Date newDate = c.getTime();
-        endTime=DATE_FORMAT.format(newDate);
+
 
             for (int i=0;i<list.size();i++){
-
-                String []okTime=list.get(i).getBYZD1().split("~");
-                //list.get(i).setBeginTime(okTime[1]);
                 SimpleDateFormat  dateFormat=new SimpleDateFormat("yyyy-MM-dd");
+                String []okTime=list.get(i).getBYZD1().split("~");
+                try {
+                    c.setTime(dateFormat.parse(okTime[1]));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                c.add(Calendar.MONTH, t);
+                Date newDate = c.getTime();
+                endTime=DATE_FORMAT.format(newDate);
+
+
                 Date dateTime1= null;
                 Date dateTime2= null;
+                Date dateTime3= null;
                 try {
-                    System.out.println(endTime);
+                    //System.out.println(endTime);
+
                     dateTime1 = dateFormat.parse(endTime);
-                    dateTime2=dateFormat.parse(okTime[1]);
+                    dateTime2=dateFormat.parse(dateFormat.format(now));
+                    dateTime3=dateFormat.parse(okTime[1]);
+
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
 
+                if(dateTime2.compareTo(dateTime1)<0&&dateTime2.compareTo(dateTime3)<0)
+                {
+                    lists.add(list.get(i));
+                }
+
+            }
+        }
+        //未到期
+        else if (remindtime != null && Objects.equals(remindtime, "2"))
+        {
+            Date now = new Date();
+            for (int i=0;i<list.size();i++){
+                SimpleDateFormat  dateFormat=new SimpleDateFormat("yyyy-MM-dd");
+                String []okTime=list.get(i).getBYZD1().split("~");
+
+                Date dateTime1= null;
+                Date dateTime2= null;
+                try {
+                    dateTime1 = dateFormat.parse(okTime[1]);
+                    dateTime2=dateFormat.parse(dateFormat.format(now));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 if(dateTime2.compareTo(dateTime1)<0)
                 {
                     lists.add(list.get(i));
                 }
 
             }
-        }else {
+        }
+        //已到期
+        else if (remindtime != null && Objects.equals(remindtime, "3"))
+        {
+            Date now = new Date();
+            for (int i=0;i<list.size();i++){
+                SimpleDateFormat  dateFormat=new SimpleDateFormat("yyyy-MM-dd");
+                String []okTime=list.get(i).getBYZD1().split("~");
+
+                Date dateTime1= null;
+                Date dateTime2= null;
+                try {
+                    dateTime1 = dateFormat.parse(okTime[1]);
+                    dateTime2=dateFormat.parse(dateFormat.format(now));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                if(dateTime1.compareTo(dateTime2)<0)
+                {
+                    lists.add(list.get(i));
+                }
+
+            }
+        }
+        else {
             lists=list;
         }
 

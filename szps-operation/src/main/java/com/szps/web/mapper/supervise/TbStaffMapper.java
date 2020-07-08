@@ -28,4 +28,5 @@ public interface TbStaffMapper {
     List<TbStaff> selectStaffSecond();
 
 
+    List<String> selectStaffName(@Param("a") String a);
 }

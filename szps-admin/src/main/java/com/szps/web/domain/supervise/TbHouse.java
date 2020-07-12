@@ -2,6 +2,7 @@ package com.szps.web.domain.supervise;
 
 
 public class TbHouse {
+
     private String houseNumber;
 
     private String houseName;

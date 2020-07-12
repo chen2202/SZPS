@@ -1,8 +1,7 @@
 package com.szps.web.service.check;
 
-import com.szps.system.domain.SysUser;
+import com.szps.web.domain.check.CheckPicture;
 import com.szps.web.domain.check.PlantCheckRecord;
-import com.szps.web.domain.dev.fixedasset.Plant;
 
 import java.util.List;
 
@@ -61,4 +60,12 @@ public interface IPlantCheckRecordService
      * @return 结果
      */
     public int deleteCheckManagerById(Long checkId);
+
+    /**
+     * 获取图片
+     * @param checkPicture
+     * @return
+     */
+    public  List<CheckPicture> getCheckPictures(CheckPicture checkPicture);
+
 }

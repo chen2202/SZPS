@@ -1,7 +1,8 @@
 package com.szps.web.mapper.check;
 
-import com.szps.system.domain.SysUser;
+import com.szps.web.domain.check.CheckPicture;
 import com.szps.web.domain.check.PlantCheckRecord;
+
 import java.util.List;
 
 /**
@@ -59,5 +60,13 @@ public interface PlantCheckRecordMapper
      * @return 结果
      */
     public int deleteCheckManagerByIds(String[] checkIds);
+
+
+    /**
+     * 获取图片
+     * @param checkPicture
+     * @return
+     */
+    public  List<CheckPicture> getCheckPictures(CheckPicture checkPicture);
 
 }

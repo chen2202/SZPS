@@ -2,7 +2,9 @@ package com.szps.web.controller.wechat;
 
 import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.page.TableDataInfo;
+import com.szps.framework.util.ShiroUtils;
 import com.szps.framework.web.domain.server.Sys;
+import com.szps.system.domain.SysUser;
 import com.szps.web.domain.supervise.TbHouse;
 import com.szps.web.domain.supervise.TbStaff;
 import com.szps.web.domain.supervise.TbTask;
@@ -250,6 +252,8 @@ public class SuperviseController extends BaseController {
         List<TbTask> list2 = new ArrayList<>();
 
 
+        SysUser sysUser = ShiroUtils.getSysUser();
+
         for (int i = 0; i < list.size(); i++) {
             String a = list.get(i).getTaskHouse();
             //System.out.println(a);
@@ -266,18 +270,25 @@ public class SuperviseController extends BaseController {
                 for (int k = 0; k < tbTaskStaffs.size(); k++) {
                     //System.out.println(tbTaskStaffs.get(k));
                     TbStaff staff = staffService.selectStaffById(tbTaskStaffs.get(k).getStaffNumber());
-                    if (staff != null && Objects.equals(staff.getStaffPost(), "一类"))
-                        tbStaffs.add(staff);
+
+                    if (sysUser.getUserName().contains(staff.getStaffName())) {
+
+
+                        if (staff != null && Objects.equals(staff.getStaffPost(), "一类")) {
+                            tbStaffs.add(staff);
+                        }
+                        if (staff != null && Objects.equals(staff.getStaffPost(), "二类")) {
+                            tbStaffs.add(staff);
+                        }
+
+                        tbTask1.setTbStaffList(tbStaffs);
+                        tbTask1.setTbHouse(tbHouse);
+                        list2.add(tbTask1);
+                    }
                 }
-                for (int k = 0; k < tbTaskStaffs.size(); k++) {
-                    //System.out.println(tbTaskStaffs.get(k));
-                    TbStaff staff = staffService.selectStaffById(tbTaskStaffs.get(k).getStaffNumber());
-                    if (staff != null && Objects.equals(staff.getStaffPost(), "二类"))
-                        tbStaffs.add(staff);
-                }
-                tbTask1.setTbStaffList(tbStaffs);
-                tbTask1.setTbHouse(tbHouse);
-                list2.add(tbTask1);
+
+
+
             }
 
 
@@ -295,16 +306,16 @@ public class SuperviseController extends BaseController {
 
         String taskName = params.get("taskNumber").toString();
 
-        TbTask tbTask2=new TbTask();
+        TbTask tbTask2 = new TbTask();
         tbTask2.setTaskNumber(taskName);
 
-        TbTask tbTask=Service.selectTaskById(tbTask2);
+        TbTask tbTask = Service.selectTaskById(tbTask2);
 
         System.out.println(tbTask.toString());
 
-        if(tbTask.getTaskFlag().equals("未完成")){
+        if (tbTask.getTaskFlag().equals("未完成")) {
 
-            TbTask tbTask1=new TbTask();
+            TbTask tbTask1 = new TbTask();
             tbTask1.setTaskNumber(taskName);
             tbTask1.setTaskResult(params.get("result").toString());
             tbTask1.setTaskCheckTime(params.get("checkTime").toString());
@@ -312,7 +323,7 @@ public class SuperviseController extends BaseController {
             tbTask1.setTaskFlag("完成");
 
             return Service.updateTask(tbTask1);
-        }else {
+        } else {
             return -1;
         }
 

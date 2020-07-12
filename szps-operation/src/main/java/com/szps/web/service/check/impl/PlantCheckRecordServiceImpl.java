@@ -1,14 +1,14 @@
 package com.szps.web.service.check.impl;
 
-import java.util.List;
-
 import com.szps.common.core.text.Convert;
-import com.szps.system.domain.SysUser;
+import com.szps.web.domain.check.CheckPicture;
+import com.szps.web.domain.check.PlantCheckRecord;
+import com.szps.web.mapper.check.PlantCheckRecordMapper;
+import com.szps.web.service.check.IPlantCheckRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.szps.web.mapper.check.PlantCheckRecordMapper;
-import com.szps.web.domain.check.PlantCheckRecord;
-import com.szps.web.service.check.IPlantCheckRecordService;
+
+import java.util.List;
 
 
 /**
@@ -94,5 +94,14 @@ public class PlantCheckRecordServiceImpl implements IPlantCheckRecordService {
         return checkManagerMapper.deleteCheckManagerById(checkId);
     }
 
+
+    /**
+     * 获取图片
+     * @param checkPicture
+     * @return
+     */
+    public  List<CheckPicture> getCheckPictures(CheckPicture checkPicture){
+        return  checkManagerMapper.getCheckPictures(checkPicture);
+    }
 
 }

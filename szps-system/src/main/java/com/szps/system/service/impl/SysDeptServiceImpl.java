@@ -275,4 +275,15 @@ public class SysDeptServiceImpl implements ISysDeptService
 		// TODO Auto-generated method stub
 		return deptMapper.selectDeptByName(deptName);
 	}
+
+
+
+    /**
+     * 根据parentId查找父SysDept
+     * @param parentId
+     * @return
+     */
+    public SysDept getSysDeptParent(SysDept parentId){
+        return deptMapper.getSysDeptParent(parentId);
+    }
 }

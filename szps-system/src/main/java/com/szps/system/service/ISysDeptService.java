@@ -93,4 +93,12 @@ public interface ISysDeptService
      * @return 结果
      */
     public String checkDeptNameUnique(SysDept dept);
+
+
+    /**
+     * 根据parentId查找父SysDept
+     * @param parentId
+     * @return
+     */
+    public SysDept getSysDeptParent(SysDept parentId);
 }

@@ -35,6 +35,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where CHECK_ID = #{checkId}
     </select>
 
+
+    <resultMap id="CheckPictureResult" type="CheckPicture">
+        <result property="checkSid"    column="CHECK_SID"    />
+        <result property="checkPictureName"    column="CHECK_PICTURE_NAME"    />
+        <result property="checkPictureUrl"    column="CHECK_PICTURE_URL"    />
+    </resultMap>
+
+  <select id="getCheckPictures" parameterType="CheckPicture" resultMap="CheckPictureResult">
+      select CHECK_SID,CHECK_PICTURE_NAME,CHECK_PICTURE_URL
+      from CHECK_PICTURE
+      where CHECK_SID=#{checkSid}
+  </select>
 <!--    <insert id="insertCheckManager" parameterType="CheckManager" useGeneratedKeys="true" keyProperty="checkId">-->
 <!--        insert into CHECK_MANAGER-->
 <!--        <trim prefix="(" suffix=")" suffixOverrides=",">-->

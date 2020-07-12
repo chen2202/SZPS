@@ -4,7 +4,10 @@ package com.szps.web.controller.wechat;
 import com.szps.common.config.Global;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.utils.file.FileUploadUtils;
+import com.szps.framework.util.ShiroUtils;
 import com.szps.framework.web.domain.server.Sys;
+import com.szps.system.domain.SysRole;
+import com.szps.system.domain.SysUser;
 import com.szps.web.domain.event.EventLists;
 import com.szps.web.domain.event.EventPicture;
 import com.szps.web.domain.event.EventSubmit;
@@ -60,6 +63,10 @@ public class EventUploadController {
 
         EventSubmit eventSubmit = new EventSubmit();
 
+        SysUser user= ShiroUtils.getSysUser();
+
+
+
         eventSubmit.setEventSId(s);
         eventSubmit.setEventName(eventName);
         eventSubmit.setEventPlace(eventPlace);
@@ -109,8 +116,10 @@ public class EventUploadController {
         return success("上传成功!");
     }
 
+
+
     /**
-     * 突发事件列表
+     * 获取突发事件列表
      *
      * @return
      */

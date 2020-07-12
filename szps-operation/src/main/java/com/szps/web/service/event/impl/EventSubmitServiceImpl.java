@@ -12,19 +12,19 @@ import java.util.List;
 
 /**
  * 突发事件上传Service业务层处理
- *
+ * 
  * @author HJR
  * @date 2020-06-06
  */
 @Service
-public class EventSubmitServiceImpl implements IEventSubmitService
+public class EventSubmitServiceImpl implements IEventSubmitService 
 {
     @Autowired
     private EventSubmitMapper eventSubmitMapper;
 
     /**
      * 查询突发事件上传
-     *
+     * 
      * @param eventId 突发事件上传ID
      * @return 突发事件上传
      */
@@ -36,7 +36,7 @@ public class EventSubmitServiceImpl implements IEventSubmitService
 
     /**
      * 查询突发事件上传列表
-     *
+     * 
      * @param eventSubmit 突发事件上传
      * @return 突发事件上传
      */
@@ -48,7 +48,7 @@ public class EventSubmitServiceImpl implements IEventSubmitService
 
     /**
      * 新增突发事件上传
-     *
+     * 
      * @param eventSubmit 突发事件上传
      * @return 结果
      */
@@ -60,7 +60,7 @@ public class EventSubmitServiceImpl implements IEventSubmitService
 
     /**
      * 修改突发事件上传
-     *
+     * 
      * @param eventSubmit 突发事件上传
      * @return 结果
      */
@@ -72,7 +72,7 @@ public class EventSubmitServiceImpl implements IEventSubmitService
 
     /**
      * 删除突发事件上传对象
-     *
+     * 
      * @param ids 需要删除的数据ID
      * @return 结果
      */
@@ -84,7 +84,7 @@ public class EventSubmitServiceImpl implements IEventSubmitService
 
     /**
      * 删除突发事件上传信息
-     *
+     * 
      * @param eventId 突发事件上传ID
      * @return 结果
      */

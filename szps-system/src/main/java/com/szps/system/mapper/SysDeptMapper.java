@@ -107,4 +107,11 @@ public interface SysDeptMapper
      * @return 部门列表
      */
     public List<SysDept> selectChildrenDeptById(Long deptId);
+
+    /**
+     * 根据parentId查找父SysDept
+     * @param parentId
+     * @return
+     */
+    public SysDept getSysDeptParent(SysDept parentId);
 }

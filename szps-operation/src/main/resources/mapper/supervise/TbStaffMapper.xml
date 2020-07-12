@@ -117,4 +117,18 @@
 
     </where>
   </select>
+
+
+  <select id="selectStaffName"  resultType="java.lang.String" parameterType="java.lang.String">
+    select USER_NAME
+    from SYS_USER
+
+    <where>
+      <if test="a != null and a != ''">
+         SYS_USER.USER_NAME like concat(concat('%',#{a}),'%')
+      </if>
+
+    </where>
+  </select>
+
 </mapper>

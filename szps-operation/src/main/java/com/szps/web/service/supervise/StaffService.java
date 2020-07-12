@@ -46,4 +46,6 @@ public interface StaffService
 
     public List<TbStaff> selectStaffOne();
     public List<TbStaff> selectStaffSecond();
+
+    public List<String> selectStaffName(String a);
 }

@@ -15,6 +15,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -107,5 +109,13 @@ public class Data1Controller extends BaseController {
         {
             return error(e.getMessage());
         }
+    }
+
+    @PostMapping("/getstaffName")
+    @ResponseBody
+    public AjaxResult getstaffName(HttpServletRequest request){
+        String a=request.getParameter("keyword");
+
+        return AjaxResult.success("success",staffService.selectStaffName(a));
     }
 }

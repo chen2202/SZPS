@@ -1,25 +1,14 @@
 package com.szps.web.controller.supervise;
 
 
-
+import com.szps.common.annotation.Log;
 import com.szps.common.config.Global;
 import com.szps.common.core.controller.BaseController;
-
-
-import com.szps.common.core.domain.AjaxResult;
-import com.szps.common.core.page.TableDataInfo;
-
-
-
-import com.szps.common.core.domain.AjaxResult;
-import com.szps.common.core.page.TableDataInfo;
-
 
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 
 import com.szps.common.enums.BusinessType;
-
 import com.szps.common.utils.file.FileUtils;
 import com.szps.web.controller.common.CommonController;
 import com.szps.web.domain.supervise.*;
@@ -60,6 +49,9 @@ public class CompleteController extends BaseController {
     @Autowired
     private RuleService ruleService;
 
+    @Autowired
+    private PictureService pictureService;
+
 
 
     private static final Logger log = LoggerFactory.getLogger(CommonController.class);
@@ -96,7 +88,7 @@ public class CompleteController extends BaseController {
          int count=Service.selectTaskCountComplete();
          int all=houseService.selectHouseCount();
          String reach="无";
-         String rate="无";
+         String rate;
 
          String bl=ruleService.selectRuleByRuleName(tbTask.getRuleName());
          //选择了规则和年月
@@ -202,7 +194,7 @@ public class CompleteController extends BaseController {
         mmap.put("reach",reach);
          return AjaxResult.success("success",mmap);
      }
-//    @RequiresPermissions("supervise:complete:list")
+    @RequiresPermissions("supervise:complete:list")
     @PostMapping("/list")
     @ResponseBody
     public TableDataInfo list(TbTask tbTask)
@@ -320,6 +312,20 @@ public class CompleteController extends BaseController {
         if(task.getTaskResult()!=""||task.getTaskCheckTime()!=""||task.getTaskHandle()!="")
         task.setTaskFlag("完成");
         return toAjax(Service.updateTask(task));
+    }
+
+    @RequiresPermissions("supervise:complete:edit")
+    @GetMapping("/lookPic/{taskNumber}")
+    public String lookPic(@PathVariable("taskNumber") String taskNumber, ModelMap mmap)
+    {
+        mmap.put("task",taskNumber);
+        return prefix + "/pictureLook";
+    }
+    @PostMapping("/getPic")
+    @ResponseBody
+    public AjaxResult getPic(HttpServletRequest request){
+         String taskNumber=request.getParameter("taskNumber");
+        return AjaxResult.success("success",pictureService.selectPictureById(taskNumber));
     }
 
 

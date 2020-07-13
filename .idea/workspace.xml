@@ -2,36 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc7b956e-4cbc-4a6b-8b84-b165eb2e201f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/config/UploadPicture.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/mine/mine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/wechat/ChecksController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/wechat/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/wechat/WechatLoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/check/Checks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/service/ISysUserRoleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/service/impl/SysUserRoleServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/publicCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/inspection/Area.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/inspection/type.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/CheckController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/CheckController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/EventUploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/EventUploadController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/SuperviseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/SuperviseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/supervise/TbHouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/supervise/TbHouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/event/EventSubmit.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/event/EventSubmit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/event/EventSubmitMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/event/EventSubmitMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/event/IEventSubmitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/event/IEventSubmitService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/event/impl/EventSubmitServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/event/impl/EventSubmitServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-admin/src/main/resources/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/application-druid.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/wechat/DrainerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/wechat/DrainerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/wechat/EventUploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/wechat/EventUploadController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/event/EventSubmit.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/domain/event/EventSubmit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/check/PlantCheckRecordMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/mapper/check/PlantCheckRecordMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/check/IPlantCheckRecordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/check/IPlantCheckRecordService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/check/impl/PlantCheckRecordServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/check/impl/PlantCheckRecordServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/event/IEventSubmitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/event/IEventSubmitService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/event/impl/EventSubmitServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/service/event/impl/EventSubmitServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/check/PlantCheckRecordMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/check/PlantCheckRecordMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/event/EventSubmitMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/event/EventSubmitMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/application-druid.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/domain/SysDept.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/domain/SysDept.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/mapper/SysDeptMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/mapper/SysDeptMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/mapper/SysRoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/mapper/SysRoleMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/mapper/SysUserRoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/mapper/SysUserRoleMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/service/ISysDeptService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/service/ISysDeptService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/service/ISysRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/service/ISysRoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/service/ISysUserRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/service/ISysUserRoleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/service/impl/SysDeptServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/service/impl/SysDeptServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/service/impl/SysUserRoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/service/impl/SysUserRoleServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-system/src/main/resources/mapper/system/SysDeptMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/resources/mapper/system/SysDeptMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-system/src/main/resources/mapper/system/SysUserRoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/resources/mapper/system/SysUserRoleMapper.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -251,7 +245,9 @@
       <workItem from="1594359445880" duration="4672000" />
       <workItem from="1594384404106" duration="610000" />
       <workItem from="1594450805957" duration="2713000" />
-      <workItem from="1594525052910" duration="2919000" />
+      <workItem from="1594525052910" duration="5681000" />
+      <workItem from="1594602150120" duration="14262000" />
+      <workItem from="1594636558522" duration="4104000" />
     </task>
     <servers />
   </component>

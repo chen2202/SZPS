@@ -286,4 +286,13 @@ public class SysDeptServiceImpl implements ISysDeptService
     public SysDept getSysDeptParent(SysDept parentId){
         return deptMapper.getSysDeptParent(parentId);
     }
+
+    /**
+     * 根据行政区编号查找
+     * @param sysDept
+     * @return
+     */
+    public List<SysDept> getSysDepts(String  sysDept) {
+        return deptMapper.getSysDepts(sysDept);
+    }
 }

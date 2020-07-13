@@ -82,4 +82,11 @@ public interface SysRoleMapper
      * @return 角色信息
      */
     public SysRole checkRoleKeyUnique(String roleKey);
+
+    /**
+     * 通过userid查询角色
+     * @param userId
+     * @return
+     */
+    public List<SysRole> getSysRoles(Long userId);
 }

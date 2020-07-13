@@ -29,7 +29,7 @@ public class EventSubmitServiceImpl implements IEventSubmitService
      * @return 突发事件上传
      */
     @Override
-    public EventSubmit selectEventSubmitById(Integer eventId)
+    public EventSubmit selectEventSubmitById(String eventId)
     {
         return eventSubmitMapper.selectEventSubmitById(eventId);
     }

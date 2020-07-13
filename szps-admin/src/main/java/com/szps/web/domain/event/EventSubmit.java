@@ -52,6 +52,9 @@ public class EventSubmit extends BaseEntity
     @Excel(name = "上报时间", width = 30, dateFormat = "yyyy-MM-dd")
     private Date eventSubmitTime;
 
+    @Excel(name = "行政区")
+    private String eventArea;
+
     public void setEventSId(String eventSid)
     {
         this.eventSid = eventSid;
@@ -134,6 +137,14 @@ public class EventSubmit extends BaseEntity
         return eventSubmitTime;
     }
 
+    public String getEventArea() {
+        return eventArea;
+    }
+
+    public void setEventArea(String eventArea) {
+        this.eventArea = eventArea;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
@@ -146,6 +157,7 @@ public class EventSubmit extends BaseEntity
                 .append("eventPhone", getEventPhone())
                 .append("eventUnit", getEventUnit())
                 .append("eventSubmitTime", getEventSubmitTime())
+                .append("eventArea",getEventArea())
                 .toString();
     }
 }

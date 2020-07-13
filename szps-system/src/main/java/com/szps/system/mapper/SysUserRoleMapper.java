@@ -13,12 +13,17 @@ import com.szps.system.domain.SysUserRole;
 public interface SysUserRoleMapper
 {
 
+
+
+
+
+
     /**
      * 通过用户Id获取角色Id
      * @param sysUserRole
      * @return
      */
-    public SysUserRole getSysUserRole(SysUserRole sysUserRole);
+    public List<SysUserRole> getSysUserRole(SysUserRole sysUserRole);
 
     /**
      * 通过用户ID删除用户和角色关联

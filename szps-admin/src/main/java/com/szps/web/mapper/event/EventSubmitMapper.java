@@ -19,7 +19,7 @@ public interface EventSubmitMapper
      * @param eventId 突发事件上传ID
      * @return 突发事件上传
      */
-    public EventSubmit selectEventSubmitById(Integer eventId);
+    public EventSubmit selectEventSubmitById(String eventId);
 
     /**
      * 查询突发事件上传列表

@@ -14,10 +14,11 @@
         <result property="eventPhone" column="EVENT_PHONE"/>
         <result property="eventUnit" column="EVENT_UNIT"/>
         <result property="eventSubmitTime" column="EVENT_SUBMIT_TIME"/>
+        <result property="eventArea" column="EVENT_AREA" />
     </resultMap>
 
     <sql id="selectEventSubmitVo">
-        select EVENT_SID, EVENT_NAME, EVENT_PLACE, EVENT_TIME, EVENT_CONTENT, EVENT_SUBMIT_USER, EVENT_PHONE, EVENT_UNIT, EVENT_SUBMIT_TIME from event_submit
+        select EVENT_SID, EVENT_NAME, EVENT_PLACE, EVENT_TIME, EVENT_CONTENT, EVENT_SUBMIT_USER, EVENT_PHONE, EVENT_UNIT, EVENT_SUBMIT_TIME,EVENT_AREA from event_submit
     </sql>
 
     <select id="selectEventSubmitList" parameterType="EventSubmit" resultMap="EventSubmitResult">
@@ -31,7 +32,8 @@
             </if>
             <if test="eventPhone != null  and eventPhone != ''">and EVENT_PHONE = #{eventPhone}</if>
             <if test="eventUnit != null  and eventUnit != ''">and EVENT_UNIT = #{eventUnit}</if>
-            <!--            <if test="eventSubmitTime != null "> and EVENT_SUBMIT_TIME = #{eventSubmitTime}</if>-->
+            <if test="eventSubmitTime != null ">and EVENT_SUBMIT_TIME = #{eventSubmitTime}</if>
+            <if test="eventArea !=null and eventArea!=''">and EVENT_AREA=#{eventArea}</if>
         </where>
     </select>
 
@@ -52,6 +54,7 @@
             <if test="eventPhone != null  and eventPhone != ''">EVENT_PHONE,</if>
             <if test="eventUnit != null  and eventUnit != ''">EVENT_UNIT,</if>
             <if test="eventSubmitTime != null ">EVENT_SUBMIT_TIME,</if>
+            <if test="eventArea !=null">EVENT_AREA</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="eventSid != null  and eventSid != ''">#{eventSid},</if>
@@ -63,6 +66,7 @@
             <if test="eventPhone != null  and eventPhone != ''">#{eventPhone},</if>
             <if test="eventUnit != null  and eventUnit != ''">#{eventUnit},</if>
             <if test="eventSubmitTime != null ">#{eventSubmitTime},</if>
+            <if test="eventArea!=null and eventArea !=''">#{eventArea}</if>
         </trim>
     </insert>
 
@@ -121,6 +125,7 @@
           select EVENT_SID,EVENT_PICTURE_NAME,EVENT_PICTURE_URL
                 from EVENT_PICTURE
          where EVENT_SID=#{eventSid}
+
 
     </select>
 </mapper>

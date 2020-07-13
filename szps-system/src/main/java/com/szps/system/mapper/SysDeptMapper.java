@@ -114,4 +114,12 @@ public interface SysDeptMapper
      * @return
      */
     public SysDept getSysDeptParent(SysDept parentId);
+
+
+    /**
+     * 根据行政区编号查找
+     * @param sysDept
+     * @return
+     */
+    public List<SysDept> getSysDepts(String  sysDept);
 }

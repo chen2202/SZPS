@@ -42,22 +42,42 @@ public class LoginController {
     public Object getSysRole() {
 
         SysUser sysUser = ShiroUtils.getSysUser();
-
-
         SysUserRole sysUserRole = new SysUserRole();
         sysUserRole.setUserId(sysUser.getUserId());
 
-        SysUserRole sysUserRole1 = iSysUserRoleService.getSysUserRole(sysUserRole);
-        SysRole sysRole = roleService.selectRoleById(sysUserRole1.getRoleId());
+        List<SysUserRole> sysUserRole1 = iSysUserRoleService.getSysUserRole(sysUserRole);
+
+        System.out.println(sysUserRole1.size());
+
+        String str = "";
 
 
-        if (sysRole.getRoleName().contains("水务局人员")) {
-            return "水务局人员";
-        } else if (sysRole.getRoleName().contains("运营单位")) {
-            return "运营单位";
-        } else {
-            return "业务操作员";
+
+        for (SysUserRole sysUserRole2 : sysUserRole1) {
+            SysRole sysRole = roleService.selectRoleById(sysUserRole2.getRoleId());
+
+            System.out.println(sysRole.getRoleName());
+            if (sysRole.getRoleName().contains("水务局人员（小程序）")) {
+                SysArea sysArea=new SysArea();
+                if (getUserArea(sysArea).equals("深圳市")) {
+                    str = "市水务局人员";
+                    break;
+                }else {
+                    str = "区水务局人员";
+                    break;
+                }
+
+            } else if (sysRole.getRoleName().contains("运营单位（小程序）")) {
+                str = "运营单位";
+                break;
+            } else {
+                str = "业务操作员";
+                break;
+            }
         }
+
+        return str;
+
     }
 
     /**
@@ -74,6 +94,12 @@ public class LoginController {
     }
 
 
+    /**
+     * 获取用户的所有信息
+     *
+     * @param sysArea
+     * @return
+     */
     @PostMapping(value = "mine")
     @ResponseBody
     public mine getMine(SysArea sysArea) {
@@ -86,8 +112,8 @@ public class LoginController {
 
         List<String> strings = new ArrayList<>();
         strings.add(sysDept.getDeptName());
-        while (true) {
 
+        while (true) {
             if (sysDept.getParentId() == 0) {
                 break;
             } else {
@@ -118,6 +144,7 @@ public class LoginController {
 
         return mine;
     }
+
 
     protected String getUserArea(SysArea sysArea) {
         SysUser sysUser = ShiroUtils.getSysUser();

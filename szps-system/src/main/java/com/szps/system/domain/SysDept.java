@@ -196,7 +196,7 @@ public class SysDept extends BaseEntity {
                 .append("createTime", getCreateTime())
                 .append("updateBy", getUpdateBy())
                 .append("updateTime", getUpdateTime()).
-                append("areaCOde",getAreaCode())
+                append("areaCode",getAreaCode())
                 .toString();
     }
 }

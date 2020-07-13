@@ -6,12 +6,16 @@ import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.utils.file.FileUploadUtils;
 import com.szps.framework.util.ShiroUtils;
 import com.szps.framework.web.domain.server.Sys;
+import com.szps.system.domain.SysArea;
+import com.szps.system.domain.SysDept;
 import com.szps.system.domain.SysRole;
 import com.szps.system.domain.SysUser;
+import com.szps.system.service.ISysDeptService;
 import com.szps.web.domain.event.EventLists;
 import com.szps.web.domain.event.EventPicture;
 import com.szps.web.domain.event.EventSubmit;
 import com.szps.web.service.event.IEventSubmitService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +38,11 @@ public class EventUploadController {
     @Autowired
     private IEventSubmitService iEventSubmitService;
 
+    @Autowired
+    private ISysDeptService iSysDeptService;
+
+    @Autowired
+    private LoginController loginController;
 
     /**
      * 突发事件文字上传接口
@@ -63,19 +72,21 @@ public class EventUploadController {
 
         EventSubmit eventSubmit = new EventSubmit();
 
-        SysUser user= ShiroUtils.getSysUser();
+        SysUser user = ShiroUtils.getSysUser();
+        SysDept sysDept = iSysDeptService.selectDeptById(user.getDeptId());
 
 
-
+        SysArea sysArea = new SysArea();
         eventSubmit.setEventSId(s);
         eventSubmit.setEventName(eventName);
         eventSubmit.setEventPlace(eventPlace);
         eventSubmit.setEventTime(sdf.parse(eventTime + ":00"));
         eventSubmit.setEventContent(eventContent);
-        eventSubmit.setEventSubmitUser("Jack");
-        eventSubmit.setEventPhone("13088888888");
-        eventSubmit.setEventUnit("龙华区二期水质净化厂");
+        eventSubmit.setEventSubmitUser(user.getUserName());
+        eventSubmit.setEventPhone(user.getPhonenumber());
+        eventSubmit.setEventUnit(sysDept.getDeptName());
         eventSubmit.setEventSubmitTime(date1);
+        eventSubmit.setEventArea(loginController.getUserArea(sysArea));
 
         iEventSubmitService.insertEventSubmit(eventSubmit);
 
@@ -84,6 +95,13 @@ public class EventUploadController {
     }
 
 
+    /**
+     * 上传突发事件图片
+     *
+     * @param multipartFile
+     * @param feedbackId
+     * @return
+     */
     @PostMapping(value = "/eventPictureUpload")
     @ResponseBody
     public AjaxResult uploadPicture(@RequestParam("picture") MultipartFile[] multipartFile, @RequestParam(required = true)
@@ -96,7 +114,7 @@ public class EventUploadController {
             String fileName[] = new String[10];
             String url[] = new String[10];
             for (int i = 0; i < multipartFile.length; i++) {
-                System.out.println(1);
+
                 fileName[i] = FileUploadUtils.upload(filePath, multipartFile[i]);
                 url[i] = fileName[i];
                 int radomInt = new Random().nextInt(999999);
@@ -117,7 +135,6 @@ public class EventUploadController {
     }
 
 
-
     /**
      * 获取突发事件列表
      *
@@ -127,12 +144,11 @@ public class EventUploadController {
     @ResponseBody
     public List<EventLists> getEventLists(@RequestBody Map<String, Object> params) {
 
-        EventSubmit eventSubmit = new EventSubmit();
 
+        //获取时间
         String time = params.get("time").toString();
 
-
-        List<EventSubmit> eventSubmits = iEventSubmitService.selectEventSubmitList(eventSubmit);
+        List<EventSubmit> eventSubmits=getEventSubmits();
 
         List<EventLists> eventLists = new ArrayList<>();
 
@@ -141,6 +157,7 @@ public class EventUploadController {
 
                 EventPicture eventPicture = new EventPicture();
                 eventPicture.setEventSid(submit.getEventSId());
+
                 List<EventPicture> pictures = iEventSubmitService.getEventPictures(eventPicture);
 
                 EventLists lists = new EventLists();
@@ -182,13 +199,13 @@ public class EventUploadController {
     @ResponseBody
     public List<EventLists> getSearchEventLists(@RequestBody Map<String, Object> params) {
 
-        EventSubmit eventSubmit = new EventSubmit();
+
 
         String time = params.get("time").toString();
         String value = params.get("value").toString();
 
 
-        List<EventSubmit> eventSubmits = iEventSubmitService.selectEventSubmitList(eventSubmit);
+        List<EventSubmit> eventSubmits=getEventSubmits();
 
         List<EventLists> eventLists = new ArrayList<>();
 
@@ -216,7 +233,7 @@ public class EventUploadController {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
                 String eventTime = sdf.format(submit.getEventTime());
-                if (eventTime.contains(time)&&submit.getEventName().contains(value)) {
+                if (eventTime.contains(time) && submit.getEventName().contains(value)) {
                     EventPicture eventPicture = new EventPicture();
                     eventPicture.setEventSid(submit.getEventSId());
                     List<EventPicture> pictures = iEventSubmitService.getEventPictures(eventPicture);
@@ -231,5 +248,50 @@ public class EventUploadController {
         }
 
         return eventLists;
+    }
+
+
+    /**
+     * 不同的角色获取不同的突发事件列表
+     * @return
+     */
+    protected  List<EventSubmit> getEventSubmits(){
+        EventSubmit eventSubmit = new EventSubmit();
+        //获取管理员级别
+        SysUser user = ShiroUtils.getSysUser();
+        SysDept sysDept = iSysDeptService.selectDeptById(user.getDeptId());
+
+        List<EventSubmit> eventSubmits = new ArrayList<>();
+
+
+        SysArea s = new SysArea();
+        //判断角色
+        if (loginController.getSysRole().equals("市水务局人员")||loginController.getSysRole().equals("区水务局人员")) {
+            if (loginController.getUserArea(s).equals("深圳市")) { //市水务局显示全市突发事件列表
+                eventSubmits = iEventSubmitService.selectEventSubmitList(eventSubmit);
+            } else {//区水务局显示全区突发事件列表
+                eventSubmit.setEventArea(loginController.getUserArea(s));
+                eventSubmits = iEventSubmitService.selectEventSubmitList(eventSubmit);
+            }
+        } else {//运营单位人员显示该单位所有突发事件列表
+            eventSubmit.setEventArea(sysDept.getDeptName());
+            eventSubmits = iEventSubmitService.selectEventSubmitList(eventSubmit);
+        }
+
+
+        return eventSubmits;
+    }
+
+    protected  int checkEventSid(String sid){
+
+        EventSubmit eventSubmit=new EventSubmit();
+
+        eventSubmit.setEventSId(sid);
+
+        EventSubmit eventSubmit1=iEventSubmitService.selectEventSubmitById(sid);
+
+
+
+        return 1;
     }
 }

@@ -6,8 +6,10 @@ import com.szps.system.service.ISysUserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class SysUserRoleServiceImpl  implements ISysUserRoleService {
+public class SysUserRoleServiceImpl implements ISysUserRoleService {
 
 
     @Autowired
@@ -15,10 +17,13 @@ public class SysUserRoleServiceImpl  implements ISysUserRoleService {
 
     /**
      * 通过用户Id获取角色Id
+     *
      * @param sysUserRole
      * @return
      */
-    public SysUserRole getSysUserRole(SysUserRole sysUserRole){
+    public List<SysUserRole> getSysUserRole(SysUserRole sysUserRole) {
         return userRoleMapper.getSysUserRole(sysUserRole);
     }
+
+
 }

@@ -7,7 +7,10 @@ spring:
             # 主库数据源
             master:
                 url: jdbc:oracle:thin:@127.0.0.1:1521:XE
+<<<<<<< HEAD
 
+=======
+>>>>>>> 164e2361170bbb3b72a8acd3a722c73b144d8c02
                 username: RY
                 password: RY
             # 从库数据源

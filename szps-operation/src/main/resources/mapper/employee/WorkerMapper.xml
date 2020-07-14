@@ -29,10 +29,10 @@
 	<select id="selectAllWorker" parameterType="Worker" resultMap="WorkerResult">
         <include refid="selectWorkerVo2" />
         <if test="name != null and name !=''">
-			AND EMPLOYEE_T_WORKER.NAME = #{name}
+			AND EMPLOYEE_T_WORKER.NAME like concat(concat('%',#{name}),'%')
 		</if>
 		<if test="company_name != null and company_name != ''">
-			AND EMPLOYEE_T_WORKER.COMPANY_NAME = #{company_name}
+			AND EMPLOYEE_T_WORKER.COMPANY_NAME like concat(concat('%',#{company_name}),'%')
 		</if>
 	</select>
 	

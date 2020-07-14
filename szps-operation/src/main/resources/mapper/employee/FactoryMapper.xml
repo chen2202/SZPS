@@ -22,13 +22,13 @@
 	<select id="selectAllFactory" parameterType="Factory" resultMap="factoryResult">
 		select * from EMPLOYEE_T_FACTORY
 		<if test="name != null and name !='' and attribution_area != null and attribution_area != ''">
-			where NAME = #{name} and ATTRIBUTION_AREA = #{attribution_area}
+			where NAME like concat(concat('%',#{name}),'%') and ATTRIBUTION_AREA like concat(concat('%',#{attribution_area}),'%')
 		</if>
 		<if test="name != null and name !='' and (attribution_area == null or attribution_area == '')">
-			where NAME = #{name}
+			where NAME like concat(concat('%',#{name}),'%')
 		</if>
 		<if test="(name == null or name =='') and attribution_area != null and attribution_area != ''">
-			where ATTRIBUTION_AREA = #{attribution_area}
+			where ATTRIBUTION_AREA like concat(concat('%',#{attribution_area}),'%')
 		</if>
 	</select>
 	

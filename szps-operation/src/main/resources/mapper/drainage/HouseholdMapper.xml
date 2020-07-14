@@ -88,10 +88,10 @@
 	<select id="selectAllHousehold" parameterType="Household" resultMap="householdResult">
         <include refid="selectHouseholdVo2" />
         <if test="household_name != null and household_name != ''">
-        	AND HOUSEHOLD_NAME = #{household_name}
+        	AND HOUSEHOLD_NAME like concat(concat('%',#{household_name}),'%')
         </if>
         <if test="doorplate_detail_address != null and doorplate_detail_address != ''">
-        	AND DOORPLATE_DETAIL_ADDRESS = #{doorplate_detail_address}
+        	AND DOORPLATE_DETAIL_ADDRESS like concat(concat('%',#{doorplate_detail_address}),'%') 
         </if>
         <if test="household_level != null and household_level != ''">
         	AND HOUSEHOLD_LEVEL = #{household_level}

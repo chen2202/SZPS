@@ -12,7 +12,7 @@
 	<select id="selectAllDepartment" parameterType="Department" resultMap="DepartmentResult">
 		select DEPARTMENT_ID,DEPARTMENT_NAME,COMPANY_ID,PARENT_DEPARTMENT_ID from EMPLOYEE_T_DEPARTMENT
 		<if test="company_id != '' and company_id != null">
-			where COMPANY_ID = #{company_id}
+			where COMPANY_ID like concat(concat('%',#{company_id}),'%') 
 		</if>
 	</select>
 	
@@ -23,7 +23,7 @@
 			COMPANY_ID = ''
 		</if>
 		<if test="company_id != '' and company_id != null">
-			COMPANY_ID = #{company_id}
+			COMPANY_ID = #{company_id} 
 		</if>
 	</select>
 	

@@ -22,13 +22,13 @@
 		select COMPANY_ID,COMPANY_NAME,ADDRESS,REPRESENTATIVE,BUSINESS_SCOPE,
 		REGISTERED_CAPITAL,QUALIFICATION from EMPLOYEE_T_COMPANY where 1=1
 		<if test="company_name != null and company_name != ''">
-			and COMPANY_NAME = #{company_name}
+			and COMPANY_NAME like concat(concat('%',#{company_name}),'%') 
 		</if>
 		<if test="address != null and address != ''">
-			and ADDRESS like '%${address}%'
+			and ADDRESS like concat(concat('%',#{address}),'%')  
 		</if>
 		<if test="business_scope != null and business_scope != ''">
-			and BUSINESS_SCOPE like '%${business_scope}%'
+			and BUSINESS_SCOPE like concat(concat('%',#{business_scope}),'%') 
 		</if>
 	</select>
 	

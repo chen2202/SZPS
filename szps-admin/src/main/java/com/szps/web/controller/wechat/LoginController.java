@@ -41,40 +41,38 @@ public class LoginController {
     @ResponseBody
     public Object getSysRole() {
 
-        SysUser sysUser = ShiroUtils.getSysUser();
-        SysUserRole sysUserRole = new SysUserRole();
-        sysUserRole.setUserId(sysUser.getUserId());
-
-        List<SysUserRole> sysUserRole1 = iSysUserRoleService.getSysUserRole(sysUserRole);
-
-        System.out.println(sysUserRole1.size());
-
         String str = "";
+        SysUser sysUser = ShiroUtils.getSysUser();
 
 
+        if (sysUser.getUserName().equals("admin")) {
+            str = "市水务局人员";
+        } else {
+            SysUserRole sysUserRole = new SysUserRole();
+            sysUserRole.setUserId(sysUser.getUserId());
 
-        for (SysUserRole sysUserRole2 : sysUserRole1) {
-            SysRole sysRole = roleService.selectRoleById(sysUserRole2.getRoleId());
+            List<SysUserRole> sysUserRole1 = iSysUserRoleService.getSysUserRole(sysUserRole);
 
-            System.out.println(sysRole.getRoleName());
-            if (sysRole.getRoleName().contains("水务局人员（小程序）")) {
-                SysArea sysArea=new SysArea();
-                if (getUserArea(sysArea).equals("深圳市")) {
-                    str = "市水务局人员";
-                    break;
+
+            if (getSysRole1(sysUserRole1) == -1) {
+
+                if(getSysRole2(sysUserRole1)==-1){
+                    str="业务操作员";
                 }else {
-                    str = "区水务局人员";
-                    break;
+                    str="运营单位";
                 }
 
-            } else if (sysRole.getRoleName().contains("运营单位（小程序）")) {
-                str = "运营单位";
-                break;
-            } else {
-                str = "业务操作员";
-                break;
+            }else {
+                if(getSysRole1(sysUserRole1)==1){
+                    str="市水务局人员";
+                }else {
+                    str="区水务局人员";
+                }
             }
+
+
         }
+
 
         return str;
 
@@ -169,5 +167,59 @@ public class LoginController {
     @ResponseBody
     public Object getPicture() {
         return Global.getUploadPath();
+    }
+
+
+    protected int getSysRole1(List<SysUserRole> sysUserRole1) {
+
+        int str = -1;
+        for (SysUserRole sysUserRole2 : sysUserRole1) {
+            SysRole sysRole = roleService.selectRoleById(sysUserRole2.getRoleId());
+
+            System.out.println(sysRole.getRoleName());
+            if (sysRole.getRoleName().contains("水务局人员")) {
+                SysArea sysArea = new SysArea();
+                if (getUserArea(sysArea).equals("深圳市")) {
+                    str = 1;
+
+                } else {
+                    str = 2;
+
+                }
+            }
+
+        }
+        return str;
+    }
+
+
+    protected int getSysRole2(List<SysUserRole> sysUserRole1) {
+
+        int str = -1;
+        for (SysUserRole sysUserRole2 : sysUserRole1) {
+            SysRole sysRole = roleService.selectRoleById(sysUserRole2.getRoleId());
+
+            System.out.println(sysRole.getRoleName());
+            if (sysRole.getRoleName().contains("运营单位")) {
+                str = 3;
+            }
+
+        }
+        return str;
+    }
+
+    protected int getSysRole3(List<SysUserRole> sysUserRole1) {
+
+        int str = -1;
+        for (SysUserRole sysUserRole2 : sysUserRole1) {
+            SysRole sysRole = roleService.selectRoleById(sysUserRole2.getRoleId());
+
+            System.out.println(sysRole.getRoleName());
+            if (sysRole.getRoleName().contains("业务操作员")) {
+                str = 4;
+            }
+
+        }
+        return str;
     }
 }

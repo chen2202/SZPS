@@ -267,19 +267,21 @@ public class EventUploadController {
         SysArea s = new SysArea();
         //判断角色
         if (loginController.getSysRole().equals("市水务局人员")||loginController.getSysRole().equals("区水务局人员")) {
-            if (loginController.getUserArea(s).equals("深圳市")) { //市水务局显示全市突发事件列表
+            if (loginController.getSysRole().equals("市水务局人员")) { //市水务局显示全市突发事件列表
                 eventSubmits = iEventSubmitService.selectEventSubmitList(eventSubmit);
             } else {//区水务局显示全区突发事件列表
                 eventSubmit.setEventArea(loginController.getUserArea(s));
                 eventSubmits = iEventSubmitService.selectEventSubmitList(eventSubmit);
             }
         } else {//运营单位人员显示该单位所有突发事件列表
-            eventSubmit.setEventArea(sysDept.getDeptName());
+            eventSubmit.setEventUnit(sysDept.getDeptName());
             eventSubmits = iEventSubmitService.selectEventSubmitList(eventSubmit);
+            System.out.println(eventSubmits);
         }
 
 
         return eventSubmits;
+
     }
 
     protected  int checkEventSid(String sid){

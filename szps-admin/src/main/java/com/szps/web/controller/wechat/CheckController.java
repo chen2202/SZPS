@@ -45,7 +45,7 @@ public class CheckController {
     private LoginController loginController;
 
 
-    private String[] strings = {"水质净化厂", "泵站", "调蓄池", "分散式污水处理设施"};
+    private String[] strings = {"水质净化厂", "泵站", "调蓄池", "分散式污水处理设施", "排水管网"};
 
     @PostMapping(value = "/lists")
     @ResponseBody
@@ -186,31 +186,43 @@ public class CheckController {
             Area area = new Area();
             area.setArea(sysArea1.getAreaName());
 
-            List<type> types = new ArrayList<>();
+            List<type> types = getSysDepts(sysArea1.getAreaName());
 
-            for (int i = 0; i < strings.length; i++) {
-                type type = new type();
-                type.setTypeName(strings[i]);
+            area.setType(types);
 
-                type.setSysDepts(null);
-
-            }
-
-
+            areas1.add(area);
         }
-        return null;
+        return areas1;
 
 
     }
 
-    @PostMapping(value = "11111")
-    @ResponseBody
-    public List<SysDept> getSysDepts(String name) {
 
-        name="龙华区";
+    protected List<type> getSysDepts(String name) {
+
+
         List<SysDept> sysDepts = iSysDeptService.getSysDepts(name);
 
-        return sysDepts;
+        List<type> types = new ArrayList<>();
+
+        for (int i = 0; i < strings.length; i++) {
+
+            type s = new type();
+            List<SysDept> sysDepts1 = new ArrayList<>();
+            s.setTypeName(strings[i]);
+
+            for (SysDept sysDept : sysDepts) {
+                if (sysDept.getDeptName().contains(strings[i])) {
+                    SysDept sysDept1 = new SysDept();
+                    sysDepts1.add(sysDept1);
+                }
+            }
+            s.setSysDepts(sysDepts1);
+            types.add(s);
+        }
+
+
+        return types;
     }
 
 

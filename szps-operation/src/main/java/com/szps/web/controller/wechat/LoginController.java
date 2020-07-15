@@ -33,30 +33,30 @@ public class LoginController {
     private ISysUserRoleService iSysUserRoleService;
 
 
-    @PostMapping(value = "getLogin")
-    @ResponseBody
-    public Object getLogin() {
-
-        SysUser sysUser = ShiroUtils.getSysUser();
-
-
-        SysUserRole sysUserRole = new SysUserRole();
-        sysUserRole.setUserId(sysUser.getUserId());
-
-        SysUserRole sysUserRole1 = iSysUserRoleService.getSysUserRole(sysUserRole);
-        SysRole sysRole = roleService.selectRoleById(sysUserRole1.getUserId());
-
-        SysDept sysDept = iSysDeptService.selectDeptById(sysUser.getDeptId());
-
-        if (sysDept.getDeptName().contains("龙华区")) {
-            return "龙华区";
-        } else if (sysDept.getDeptName().contains("龙岗区")) {
-            return "龙岗区";
-        } else if (sysDept.getDeptName().contains("大鹏新区")){
-            return "大鹏新区";
-        }else {
-            return sysDept;
-        }
-
-    }
+//    @PostMapping(value = "getLogin")
+//    @ResponseBody
+//    public Object getLogin() {
+//
+//        SysUser sysUser = ShiroUtils.getSysUser();
+//
+//
+//        SysUserRole sysUserRole = new SysUserRole();
+//        sysUserRole.setUserId(sysUser.getUserId());
+//
+//        SysUserRole sysUserRole1 = iSysUserRoleService.getSysUserRole(sysUserRole);
+//        SysRole sysRole = roleService.selectRoleById(sysUserRole1.getUserId());
+//
+//        SysDept sysDept = iSysDeptService.selectDeptById(sysUser.getDeptId());
+//
+//        if (sysDept.getDeptName().contains("龙华区")) {
+//            return "龙华区";
+//        } else if (sysDept.getDeptName().contains("龙岗区")) {
+//            return "龙岗区";
+//        } else if (sysDept.getDeptName().contains("大鹏新区")){
+//            return "大鹏新区";
+//        }else {
+//            return sysDept;
+//        }
+//
+//    }
 }

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('污水厂巡检列表')"/>
+</head>
+<body class="gray-bg">
+<div class="container-div">
+    <div class="row">
+        <div class="col-sm-12 search-collapse">
+            <form id="formId">
+                <div class="select-list">
+                    <ul>
+
+                        <li>
+                            <p>
+                                <text style="font-family: '苹方 中等';">区域：</text>
+                            </p>
+                            <select name="plantName" style="width: 165px;font-family: '苹方 中等'">
+                                <option value=""></option>
+                                <option th:each="list : ${plantList1}" th:text="${list.plantName}"
+                                        th:value="${list.plantName}"></option>
+                            </select>
+                        </li>
+                        <li>
+                            <p>
+                                <text style="font-family: '苹方 中等';">设施类型：</text>
+                            </p>
+                            <select name="deviceId" style="width: 165px;font-family: '苹方 中等'">
+                                <option value=""></option>
+                                <option th:each="list : ${plantList}" th:text="${list.deviceId}"
+                                        th:value="${list.deviceId}"></option>
+                            </select>
+                        </li>
+                        <li>
+                            <p>
+                                <text style="font-family: '苹方 中等';">巡检地点：</text>
+                            </p>
+                            <select name="deviceName" style="width: 165px;font-family: '苹方 中等'">
+                                <option value=""></option>
+                                <option th:each="list : ${plantList}" th:text="${list.deviceName}"
+                                        th:value="${list.deviceName}"></option>
+                            </select>
+                        </li>
+                        <li class="select-time">
+                            <p>
+                                <text style="font-family: '苹方 中等'">上报时间：</text>
+                            </p>
+                            <!-- <input type="text" class="time-input" id="startTime" placeholder="开始时间" name="checkDate]"/>-->
+                            <!-- <span>-</span>-->
+                            <input type="text" style="width: 165px;font-family: '苹方 中等'" class="time-input"
+                                   id="checkSubmitTime" placeholder="输入时间"
+                                   name="checkSubmitTime"/>
+                        </li>
+                        <li>
+                            <a class="btn btn-white  btn-sm" onclick="$.table.search()">
+                                <text style="font-family: '苹方 中等';color:#2BA3FD;">&nbsp;搜索
+                                </text>
+                            </a>
+                            <a class="btn btn-white  btn-sm" onclick="$.form.reset()">
+                                <text style="font-family: '苹方 中等';color:#2BA3FD;">&nbsp;重置
+                                </text>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table" style="font-family: '苹方 中等'"></table>
+        </div>
+    </div>
+</div>
+<th:block th:include="include :: footer"/>
+<script th:inline="javascript">
+    var editFlag = [[${@permission.hasPermi('check:plant:edit')}]];
+    var removeFlag = [[${@permission.hasPermi('check:plant:remove')}]];
+    var prefix = ctx + "check/plant/plant";
+
+    $(function () {
+        var options = {
+            url: prefix + "/list",
+            createUrl: prefix + "/add",
+            updateUrl: prefix + "/edit/{id}",
+            removeUrl: prefix + "/remove",
+            exportUrl: prefix + "/export",
+            modalName: "污水厂巡检",
+            columns: [
+                {
+                    field: 'checkId',
+                    title: '序号'
+                },
+                {
+                    field: 'checkArea',
+                    title: '区域'
+                },
+                {
+                    field: 'checkType',
+                    title: '设施类型'
+                },
+                {
+                    field: 'checkPlace',
+                    title: '巡检地点'
+                },
+                {
+                    field: 'checkSubmitTime',
+                    title: '上报时间'
+                },
+                {
+                    field: 'checkUser',
+                    title: '巡检人'
+                },
+                {
+                    field: 'checkDetail',
+                    title: '巡检描述'
+                },
+                {
+                    title: '图片',
+                    formatter: function (value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="  btn-xs " href="javascript:void(0)" ' +
+                            'onclick="$.operate.detail(\'' +index+ '\')">' +
+                            '<text style="color: #2BA3FD">查看</text>' +
+                            '</a> ');
+                        return actions.join('');
+                    }
+                },
+                ]
+        };
+        $.table.init(options);
+    });
+    $("select").each(function (i, n) {
+        var options = "";
+        $(n).find("option").each(function (j, m) {
+            if (options.indexOf($(m)[0].outerHTML) == -1) {
+                options += $(m)[0].outerHTML;
+            }
+        });
+        $(n).html(options);
+    });
+</script>
+</body>
+</html>

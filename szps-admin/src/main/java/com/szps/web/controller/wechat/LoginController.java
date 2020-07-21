@@ -81,16 +81,31 @@ public class LoginController {
     /**
      * 获取用户所属区域
      *
-     * @param sysArea
+     * @param
      * @return
      */
     @PostMapping(value = "getSysDept")
     @ResponseBody
-    public Object getSysDept(SysArea sysArea) {
+    public String getSysDept() {
 
-        return getUserArea(sysArea);
+        SysArea sysArea=new SysArea();
+        if(getSysRole().equals("市水务局人员")||getSysRole().equals("区水务局人员")||getSysRole().equals("业务操作员")){
+            return getUserArea(sysArea);
+        }
+        else {
+            return getUserArea2(sysArea);
+        }
+
     }
 
+    @PostMapping(value = "getSysUserDept")
+    @ResponseBody
+    public String getSysUserDept() {
+
+        SysUser sysUser = ShiroUtils.getSysUser();
+
+        return  iSysDeptService.selectDeptById(sysUser.getDeptId()).getDeptName();
+    }
 
     /**
      * 获取用户的所有信息
@@ -134,16 +149,20 @@ public class LoginController {
         mine.setUserId(sysUser.getUserId());
         mine.setUserName(sysUser.getUserName());
         mine.setUserDept(stringBuffer);
-        mine.setUserPosition("科长");
+        mine.setUserPosition((String) getSysRole());
         mine.setUserPhone(sysUser.getPhonenumber());
         mine.setUserEmail(sysUser.getEmail());
-        mine.setUserArea(getUserArea(sysArea));
-
+        mine.setUserArea(getSysDept());
 
         return mine;
     }
 
 
+    /**
+     * 判断水务局人员所在区域
+     * @param sysArea
+     * @return
+     */
     protected String getUserArea(SysArea sysArea) {
         SysUser sysUser = ShiroUtils.getSysUser();
 
@@ -163,13 +182,33 @@ public class LoginController {
     }
 
 
-    @PostMapping(value = "picture")
-    @ResponseBody
-    public Object getPicture() {
-        return Global.getUploadPath();
+    /**
+     * 判断运营单位人员所在区域
+     * @param sysArea
+     * @return
+     */
+
+    protected String getUserArea2(SysArea sysArea) {
+
+        SysUser s=ShiroUtils.getSysUser();
+
+        SysDept sysDept=iSysDeptService.selectDeptById(s.getDeptId());
+
+
+
+        SysArea sysArea1=new SysArea();
+        sysArea1.setAreaCode(sysDept.getAreaCode());
+
+
+        return iSysAreaService.getSysArea(sysArea1).getAreaName();
     }
 
 
+    /**
+     * 判断是不是水务局人员
+     * @param sysUserRole1
+     * @return
+     */
     protected int getSysRole1(List<SysUserRole> sysUserRole1) {
 
         int str = -1;
@@ -193,6 +232,11 @@ public class LoginController {
     }
 
 
+    /**
+     * 判断是不是运营单位
+     * @param sysUserRole1
+     * @return
+     */
     protected int getSysRole2(List<SysUserRole> sysUserRole1) {
 
         int str = -1;
@@ -208,6 +252,11 @@ public class LoginController {
         return str;
     }
 
+    /**
+     * 判断是不是业务操作员
+     * @param sysUserRole1
+     * @return
+     */
     protected int getSysRole3(List<SysUserRole> sysUserRole1) {
 
         int str = -1;

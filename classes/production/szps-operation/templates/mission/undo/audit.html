@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('审批列表')" />
+	<link th:href="@{/css/dm/dm.css}" rel="stylesheet"/>
+	<style>
+		#btn-data-audit{
+			border-radius: 4px;
+			background: linear-gradient(270deg, #1ECFF7 0%, #2E9BFF 100%);
+			border: 1px solid rgba(255,255,255,0.40);
+			color: rgba(255,255,255,1);
+		}
+
+		.dm-switch {
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+		//height: 34px;
+			font-size: 0px;
+			text-rendering:optimizelegibility;
+			margin-top: 30px;
+		}
+
+		.btn-outset{
+			position:relative;
+			display: inline-block;
+			width:130px;
+		//height:32px;
+			background: linear-gradient(0deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.09) 100%);
+			cursor: pointer;
+			padding: 1px 2px 2px 2px;
+		}
+		.left, .left .btn-inset{
+			border-radius:4px 0px 0px 4px;
+		}
+		.right, .right .btn-inset{
+			border-radius:0px 4px 4px 0px;
+		}
+
+		.checked.btn-outset {
+			background:linear-gradient(0deg,rgba(22,156,211,1) 0%,rgba(33,186,248,1) 100%);
+		}
+
+		.btn-inset{
+			height: 29px;
+			line-height: 29px;
+			text-align: center;
+			font-size: 16px;
+			font-weight:400;
+			color: rgba(0, 0, 0, 0.65);
+			background:rgba(255, 255,255,1);
+			box-shadow:rgba(187, 248, 255, 0) 0px -2px 4px 0px inset;
+		}
+		.checked .btn-inset{
+			color: #fff;
+			background:rgba(36,188,250,1);
+			box-shadow:0px -2px 4px 0px rgba(187,248,255,0.6) inset;
+		}
+	</style>
+</head>
+<body class="gray-bg">
+<div class="container-div">
+	<div class="row">
+
+
+
+		<div class="col-sm-12 search-collapse">
+			<form id="data-form">
+				<div class="select-list">
+					<ul>
+						<li>主题：
+							<input type="text" name="dataTheme" />
+						</li>
+						<li>
+							<label>行政区：</label>
+							<select  name="dataBorough">
+								<option value="">所有</option>
+								<option value="南山区">南山区</option>
+								<option value="福田区">福田区</option>
+								<option value="盐田区">盐田区</option>
+								<option value="罗湖区">罗湖区</option>
+							</select>
+						</li>
+						<li>
+							<label>流域：</label>
+							<select  name="dataRiver">
+								<option value="">所有</option>
+								<option value="茅洲河">茅洲河</option>
+								<option value="观澜河">观澜河</option>
+								<option value="龙岗河">龙岗河</option>
+								<option value="深圳河湾">深圳河湾</option>
+								<option value="坪山河">坪山河</option>
+								<option value="大亚湾">大亚湾</option>
+							</select>
+						</li>
+						<!-- <li>
+							<label>状态：</label>
+							<select  name="audit.auditStatus">
+								<option value="">所有</option>
+								<option value="0">未审核</option>
+								<option value="1">通过</option>
+								<option value="2">驳回</option>
+							</select>
+						</li> -->
+						<li class="select-time">
+							<label>创建时间：</label>
+							<input type="text" class="time-input" id="startTime" placeholder="开始时间" name="params[beginTime]" lay-key="3">
+							<span>-</span>
+							<input type="text" class="time-input" id="endTime" placeholder="结束时间" name="params[endTime]" lay-key="4">
+						</li>
+						<li>
+							<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()">
+								<i class="fa fa-search"></i>&nbsp;搜索</a>
+							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()">
+								<i class="fa fa-refresh"></i>&nbsp;重置</a>
+						</li>
+					</ul>
+				</div>
+			</form>
+		</div>
+
+<!--        <div class="btn-group-sm" id="toolbar" role="group" shiro:hasPermission="dm:data:add">-->
+<!--            <a th:href="@{/dm/data}" class="btn-success btn" id="btn-data-show">规划资料展示</a>-->
+<!--            <a th:href="@{/dm/audit}" class="btn-success btn" id="btn-data-audit">规划任务审批</a>-->
+<!--        </div>-->
+
+		<div class="col-sm-12 select-table table-striped">
+			<table id="bootstrap-table" data-mobile-responsive="true"></table>
+		</div>
+
+	</div>
+
+
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" select-id="">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						&times;
+					</button>
+					<h4 class="modal-title" id="myModalLabel">
+						驳回原因:
+					</h4>
+				</div>
+				<div class="modal-body">
+					<textarea type="text" id="myModal-input" class="form-control"></textarea>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+					</button>
+					<button type="button" class="btn btn-primary" id="myModal-submit">
+						提交更改
+					</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+	</div>
+</div>
+
+<th:block th:include="include :: footer" />
+<script th:inline="javascript">
+    var prefix = ctx+"mission/undo/dm/audit";
+    var file_prefix = ctx+"dm/file";
+
+    $(function() {
+        var options = {
+            url: prefix + "/list",
+            createUrl: prefix + "/add",
+            updateUrl: file_prefix + "/edit/{id}",
+            removeUrl: prefix + "/remove",
+            exportUrl: prefix + "/export",
+            modalName: "审批任务",
+            columns: [{
+                checkbox: true
+            },
+                {
+                    field: 'dataId',
+                    title: '资料编号',
+                    sortable: true
+                },
+                {
+                    field: 'dataDate',
+                    title: '录入日期',
+                    sortable: true
+                },
+                {
+                    field: 'dataTheme',
+                    title: '主题',
+                    sortable: true
+                },
+                {
+                    field: 'dataType',
+                    title: '所属类别',
+                    sortable: true
+                },
+                {
+                    field: 'dataBorough',
+                    title: '行政区',
+                    sortable: true
+                },
+                {
+                    field: 'dataStreet',
+                    title: '所属街道',
+                    sortable: true
+                },
+                {
+                    field: 'dataRiver',
+                    title: '流域',
+                    sortable: true
+                },
+                {
+                    field: 'dataLevel',
+                    title: '密级',
+                    sortable: true
+                },
+                {
+                    title: '状态',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        if(row.audit.auditStatus=='0'){
+                            actions.push("<span class=\"badge badge-warning\">未审核</span>");
+						}else if(row.audit.auditStatus=='1'){
+                            actions.push("<span class=\"badge badge-primary\">通过</span>");
+						}else{
+                            actions.push("<span class=\"badge badge-danger\">驳回</span>");
+						}
+                        return actions.join('');
+                    }
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        if(row.audit.auditStatus=='0'){
+                            actions.push('<a class="btn btn-success btn-xs" href="javascript:void(0)" onclick="$.operate.editTab(\'' + row.dataId + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                            actions.push('<a class="btn btn-primary btn-xs" href="javascript:void(0)" onclick="updateState(\'' + row.dataId + '\',1)"><i class="fa fa-check-square-o"></i>通过</a> ');
+                            actions.push('<a class="btn btn-danger btn-xs" href="javascript:void(0)" onclick="updateState(\'' + row.dataId + '\',2)"><i class="fa fa-remove"></i>驳回</a> ');
+						}else if(row.audit.auditStatus=='1'){
+                            actions.push('<a class="btn btn-success btn-xs" href="javascript:void(0)" onclick="auditView(\'' + row.dataId + '\')"><i class="fa fa-edit"></i>查看</a> ');
+                        }else{
+                            actions.push('<a class="btn btn-success btn-xs" href="javascript:void(0)" onclick="auditView(\'' + row.dataId + '\')"><i class="fa fa-edit"></i>查看</a> ');
+                            actions.push('<a class="btn btn-danger btn-xs" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.dataId + '\')"><i class="fa fa-remove"></i>删除</a>');
+						}
+
+                        return actions.join('');
+                    }
+                }]
+        };
+        $.table.init(options);
+    });
+
+
+    function updateState(dataId,state){
+        if(state==1){
+            $.modal.confirm("确认通过？", function() {
+                $.operate.post(prefix + "/changeStatus", { "dataId": dataId, "audit.auditStatus": 1 ,"audit.auditResult":"审批通过"});
+            })
+        }else{
+            // 设置当前所选的是哪个
+            $("#myModal").attr("select-id",dataId);
+            $("#myModal").modal('show');
+        }
+    }
+
+    $("#myModal-submit").click(function () {
+        $("#myModal").modal('hide');
+        dataId = $("#myModal").attr("select-id");		//获取所选的id
+        var v = $("#myModal-input").val();
+        $.operate.post(prefix + "/changeStatus", { "dataId": dataId, "audit.auditStatus": 2 ,"audit.auditResult":v});
+    });
+
+    function auditView(dataId){
+        var url = file_prefix+ '/userView/' + dataId;
+        $.modal.openTab("查看记录", url);
+    }
+
+	function toggleBtn(e, element){
+		var left = document.getElementsByClassName('left')[0];
+		if( element == left) {
+			location.href = ctx + 'dm/data';
+		} else {
+			location.href = ctx + 'dm/audit';
+		}
+	}
+</script>
+</body>
+</html>

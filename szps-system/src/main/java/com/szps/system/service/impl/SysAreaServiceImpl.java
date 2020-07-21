@@ -148,4 +148,13 @@ public class SysAreaServiceImpl implements ISysAreaService
 		return mapper.selectAreaCount(area);
 	}
 
+
+
+    /**
+     * 根据Area_Code查找
+     * @param sysArea
+     * @return
+     * made by HJR
+     */
+    public SysArea getSysArea(SysArea sysArea){return mapper.getSysArea(sysArea);}
 }

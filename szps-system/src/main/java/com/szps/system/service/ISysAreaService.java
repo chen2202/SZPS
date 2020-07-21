@@ -23,4 +23,13 @@ public interface ISysAreaService {
 
 	public SysArea selectAreaById(Long id);
 	public int  selectAreaCount(Long areaId);
+
+
+	/**
+	 * 根据Area_Code查找
+	 * @param sysArea
+	 * @return
+	 * made by HJR
+	 */
+	public SysArea getSysArea(SysArea  sysArea);
 }

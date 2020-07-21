@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('增加供应商')" />
+	<script th:inline="javascript">
+function enfocus()
+{
+    var t1 = document.forms[0].data1_s1.value;
+    var t2 = document.forms[0].data1_s2.value;
+    var t3 = document.forms[0].data1_s3.value ;
+    var t4 = document.forms[0].data1_s4.value ;
+    var t5 = document.forms[0].data1_s5.value ;
+    var t6 = document.forms[0].data1_s6.value ;
+    var t7 = document.forms[0].data1_s7.value ;
+    var t8 = document.forms[0].data1_s8.value ;
+    var t9 = document.forms[0].data1_s9.value ;
+    var t10 = document.forms[0].data1_s10.value ;
+    var t11 = document.forms[0].data1_s11.value ;
+    var t12 = document.forms[0].data1_s12.value ;
+    var t13 = document.forms[0].data1_s13.value ;
+	if(t1!="" || t2!="" || t3!="" || t4!="" || t5!="" || t6!="" || t7!="" || t8!="" || t9!="" || t10!="" || t11!="" || t12!="" || t13!="" ){
+		document.getElementById("data1_t").value = Number(t1) + Number(t2)+ Number(t3)+ Number(t4) + Number(t5) + Number(t6) + Number(t7) + Number(t8) + Number(t9) + Number(t10)+ Number(t11) + Number(t12) + Number(t13)   ;
+	}
+	else {document.getElementById("data1_t").value = "";}
+	calTotal();
+}
+
+function enfocus2()
+{
+    var t1 = document.forms[0].data2_s1.value;
+    var t2 = document.forms[0].data2_s2.value;
+    var t3 = document.forms[0].data2_s3.value ;
+    var t4 = document.forms[0].data2_s4.value ;
+    var t5 = document.forms[0].data2_s5.value ;
+
+	if(t1!="" || t2!="" || t3!="" || t4!="" || t5!="" ){
+		document.getElementById("data2_t").value = Number(t1) + Number(t2)+ Number(t3)+ Number(t4) + Number(t5)  ;
+	}
+	else {document.getElementById("data2_t").value = "";}
+	calTotal();
+}
+
+function enfocus3()
+{
+    var t1 = document.forms[0].data3_s1.value;
+    var t2 = document.forms[0].data3_s2.value;
+    var t3 = document.forms[0].data3_s3.value ;
+    var t4 = document.forms[0].data3_s4.value ;
+    var t5 = document.forms[0].data3_s5.value ;
+
+	if(t1!="" || t2!="" || t3!="" || t4!="" || t5!="" ){
+		document.getElementById("data3_t").value = Number(t1) + Number(t2)+ Number(t3)+ Number(t4) + Number(t5)  ;
+	}
+	else {document.getElementById("data3_t").value = "";}
+	calTotal();
+}
+
+function enfocus4()
+{
+    var t1 = document.forms[0].data4_s1.value;
+    var t2 = document.forms[0].data4_s2.value;
+    var t3 = document.forms[0].data4_s3.value ;
+    var t4 = document.forms[0].data4_s4.value ;
+    var t5 = document.forms[0].data4_s5.value ;
+    var t6 = document.forms[0].data4_s6.value ;
+    var t7 = document.forms[0].data4_s7.value ;
+    var t8 = document.forms[0].data4_s8.value ;
+    var t9 = document.forms[0].data4_s9.value ;
+    var t10 = document.forms[0].data4_s10.value ;
+
+	if(t1!="" || t2!="" || t3!="" || t4!="" || t5!="" || t6!="" || t7!="" || t8!="" || t9!="" || t10!="" ){
+		document.getElementById("data4_t").value = Number(t1) + Number(t2)+ Number(t3)+ Number(t4) + Number(t5) + Number(t6) + Number(t7) + Number(t8) + Number(t9) + Number(t10);
+	}
+	else {document.getElementById("data4_t").value = "";}
+	calTotal();
+}
+
+function enfocus5()
+{
+    var t1 = document.forms[0].data5_s1.value;
+    var t2 = document.forms[0].data5_s2.value;
+    var t3 = document.forms[0].data5_s3.value ;
+
+	if(t1!="" || t2!="" || t3!="" ){
+		document.getElementById("data5_t").value = Number(t1) + Number(t2)+ Number(t3);
+	}
+	else {document.getElementById("data5_t").value = "";}
+	calTotal();
+}
+
+function enfocus6()
+{
+    var t1 = document.forms[0].data6_s1.value;
+    var t2 = document.forms[0].data6_s2.value;
+    var t3 = document.forms[0].data6_s3.value ;
+    var t4 = document.forms[0].data6_s4.value ;
+
+	if(t1!="" || t2!="" || t3!="" || t4!=""  ){
+		document.getElementById("data6_t").value = Number(t1) + Number(t2)+ Number(t3)+ Number(t4) ;
+	}
+	else {document.getElementById("data6_t").value = "";}
+	calTotal();
+}
+
+
+function enfocus7()
+{
+    var t1 = document.forms[0].data7_s1.value;
+    var t2 = document.forms[0].data7_s2.value;
+    var t3 = document.forms[0].data7_s3.value ;
+    var t4 = document.forms[0].data7_s4.value ;
+    var t5 = document.forms[0].data7_s5.value ;
+    var t6 = document.forms[0].data7_s6.value ;
+
+	if(t1!="" || t2!="" || t3!="" || t4!="" || t5!="" || t6!=""  ){
+		document.getElementById("data7_t").value = Number(t1) + Number(t2)+ Number(t3)+ Number(t4) + Number(t5) + Number(t6)  ;
+	}
+	else {document.getElementById("data7_t").value = "";}
+	calTotal();
+}
+ 
+ 
+function calTotal()
+{
+    var a1 = document.forms[0].data1_t.value;
+    var a2 = document.forms[0].data2_t.value;
+    var a3 = document.forms[0].data3_t.value ;
+    var a4 = document.forms[0].data4_t.value ;
+    var a5 = document.forms[0].data5_t.value ;
+    var a6 = document.forms[0].data6_t.value ;
+    var a7 = document.forms[0].data7_t.value ;
+
+	if(a1!="" || a2!="" || a3!="" || a4!="" || a5!="" || a6!=""  ){
+		document.getElementById("total").value = Number(a1) + Number(a2)+ Number(a3)+ Number(a4) + Number(a5) + Number(a6)+ Number(a7)  ;
+	}
+	else {document.getElementById("total").value = "";}
+}
+</script>
+</head>
+<body class="white-bg" >
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form id="form"  class="form-horizontal m">
+        <input name="deptid" type="hidden" id="treeId" />
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">水质净化厂：</label>
+						<div class="col-sm-8">
+							<input name="deptname" id="treeName" class="form-control" type="text" onclick="selectDeptTree()" />
+						</div>
+					</div>
+				</div>
+	        	<div class="col-sm-4">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">运营单位：</label>
+						<div class="col-sm-8">
+							<input name="opd" id="opd" class="form-control" type="text"  />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">评分人：</label>
+						<div class="col-sm-8">
+							<input name="scorer" id="scorer" class="form-control" type="text"  />
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">总分：</label>
+						<div class="col-sm-8">
+							<input name="total" id="total" class="form-control" type="text" readonly="readonly" placeholder="--" />
+						</div>
+					</div>
+				</div>
+	        	<div class="col-sm-4">
+		        	<div class="form-group">
+						<label class="col-sm-4 control-label ">年度：</label>
+						<div class="col-sm-8">
+							<input name="dyear" id="dyear"  type="text" class="time-input form-control" data-type="date" data-format="yyyy" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">辖区：</label>
+						<div class="col-sm-8">
+							<input name="darea" id="darea" class="form-control" type="text"  />
+						</div>
+					</div>
+				</div>
+			</div>
+			<h3>一、生产及运行管理(总47分) 实际分值：<input name="data1_t" id="data1_t"   readonly="readonly"  style="border-style:none" placeholder="--"/>	</h3>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">1、污染物去除 (20分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data1_s1" id="data1_s1"  class="form-control" type="number" onkeyup="enfocus()" />					
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data1_i1" id="data1_i1"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">2、工艺管理 (1分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data1_s2" id="data1_s2"  class="form-control" type="number"  onkeyup="enfocus()" />					
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data1_i2" id="data1_i2"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">3、生产技术及实施 (1分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data1_s3" id="data1_s3"  class="form-control" type="number" onkeyup="enfocus()" />					
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data1_i3" id="data1_i3"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">4、污泥处理 (8分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data1_s4" id="data1_s4"  class="form-control" type="number" onkeyup="enfocus()" />				
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data1_i4" id="data1_i4"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">5、消毒 (1分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data1_s5" id="data1_s5"  class="form-control" type="number" onkeyup="enfocus()" />			
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data1_i5" id="data1_i5"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">6、除臭 (1分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data1_s6" id="data1_s6"  class="form-control" type="number" onkeyup="enfocus()" />				
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data1_i6" id="data1_i6"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">7、沉砂池 (3分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data1_s7" id="data1_s7"  class="form-control" type="number" onkeyup="enfocus()" />		
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data1_i7" id="data1_i7"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">8、生化池 (5分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data1_s8" id="data1_s8"  class="form-control" type="number" onkeyup="enfocus()" />				
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data1_i8" id="data1_i8"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">9、沉淀池 (4分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data1_s9" id="data1_s9"  class="form-control" type="number" onkeyup="enfocus()" />			
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data1_i9" id="data1_i9"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">10、再生水回用 (0.5分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data1_s10" id="data1_s10"  class="form-control" type="number" onkeyup="enfocus()" />			
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data1_i10" id="data1_i10"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">11、标准化管理 (0.5分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data1_s11" id="data1_s11"  class="form-control" type="number" onkeyup="enfocus()" />		
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data1_i11" id="data1_i11"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">12、突发情况备案管理 (1分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data1_s12" id="data1_s12"  class="form-control" type="number" onkeyup="enfocus()" />			
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data1_i12" id="data1_i12"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">13、技改技革 (1分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data1_s13" id="data1_s13"  class="form-control" type="number" onkeyup="enfocus()" />				
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data1_i13" id="data1_i13"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+
+			<h3>二、设备及设施管理(总8分) 实际分值：<input name="data2_t" id="data2_t"   readonly="readonly"  style="border-style:none" placeholder="--"/></h3>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">1、配套设施 (1分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data2_s1" id="data2_s1"  class="form-control" type="number" onkeyup="enfocus2()" />					
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data2_i1" id="data2_i1"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">2、备品备件 (2分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data2_s2" id="data2_s2"  class="form-control" type="number" onkeyup="enfocus2()" />				
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data2_i2" id="data2_i2"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">3、设备运行 (2.5分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data2_s3" id="data2_s3"  class="form-control" type="number" onkeyup="enfocus2()" />				
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data2_i3" id="data2_i3"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">4、中控系统 (1.5分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data2_s4" id="data2_s4"  class="form-control" type="number" onkeyup="enfocus2()" />				
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data2_i4" id="data2_i4"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">5、维护保养 (1分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data2_s5" id="data2_s5"  class="form-control" type="number" onkeyup="enfocus2()" />				
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data2_i5" id="data2_i5"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			
+			<h3>三、化验及水质管理(总15分) 实际分值：<input name="data3_t" id="data3_t"   readonly="readonly"  style="border-style:none" placeholder="--"/></h3>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">1、在线监测系统(5分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data3_s1" id="data3_s1"  class="form-control" type="number" onkeyup="enfocus3()" />				
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data3_i1" id="data3_i1"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">2、化验必检项目及频次 (1分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data3_s2" id="data3_s2"  class="form-control" type="number" onkeyup="enfocus3()" />				
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data3_i2" id="data3_i2"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">3、化验选检项目及频次 月、半年 (1分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data3_s3" id="data3_s3"  class="form-control" type="number" onkeyup="enfocus3()" />					
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data3_i3" id="data3_i3"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">4、化验质量控制 (3分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data3_s4" id="data3_s4"  class="form-control" type="number" onkeyup="enfocus3()" />				
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data3_i4" id="data3_i4"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">5、出水水质 (5分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data3_s5" id="data3_s5"  class="form-control" type="number" onkeyup="enfocus3()" />				
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data3_i5" id="data3_i5"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			
+			<h3>四、安全管理(总10分) 实际分值：<input name="data4_t" id="data4_t"   readonly="readonly"  style="border-style:none" placeholder="--"/></h3>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">1、安全检查 (0.5分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data4_s1" id="data4_s1"  class="form-control" type="number" onkeyup="enfocus4()" />						
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data4_i1" id="data4_i1"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">2、安全事故 (2分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data4_s2" id="data4_s2"  class="form-control" type="number" onkeyup="enfocus4()" />				
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data4_i2" id="data4_i2"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">3、人员管控 (0.5分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data4_s3" id="data4_s3"  class="form-control" type="number" onkeyup="enfocus4()" />				
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data4_i3" id="data4_i3"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">4、危险品管理 (1分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data4_s4" id="data4_s4"  class="form-control" type="number" onkeyup="enfocus4()" />					
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data4_i4" id="data4_i4"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">5、实操防护 (1分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data4_s5" id="data4_s5"  class="form-control" type="number" onkeyup="enfocus4()" />						
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data4_i5" id="data4_i5"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">6、安全标识 (0.5分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data4_s6" id="data4_s6"  class="form-control" type="number" onkeyup="enfocus4()" />						
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data4_i6" id="data4_i6"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">7、设施隐患 (2分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data4_s7" id="data4_s7"  class="form-control" type="number" onkeyup="enfocus4()" />					
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data4_i7" id="data4_i7"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">8、危险作业审批 (0.5分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data4_s8" id="data4_s8"  class="form-control" type="number" onkeyup="enfocus4()" />						
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data4_i8" id="data4_i8"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">9、应急训练 (0.5分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data4_s9" id="data4_s9"  class="form-control" type="number" onkeyup="enfocus4()" />					
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data4_i9" id="data4_i9"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">10、安防装置 (1.5分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data4_s10" id="data4_s10"  class="form-control" type="number" onkeyup="enfocus4()" />					
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data4_i10" id="data4_i10"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<h3>五、环境管理(总5分) 实际分值：<input name="data5_t" id="data5_t"   readonly="readonly"  style="border-style:none" placeholder="--"/></h3>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">1、室外 (2分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data5_s1" id="data5_s1"  class="form-control" type="number" onkeyup="enfocus5()" />					
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data5_i1" id="data5_i1"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">2、室内 (2分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data5_s2" id="data5_s2"  class="form-control" type="number" onkeyup="enfocus5()" />			
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data5_i2" id="data5_i2"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">3、构筑物 (1分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data5_s3" id="data5_s3"  class="form-control" type="number" onkeyup="enfocus5()" />				
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data5_i3" id="data5_i3"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			
+			<h3>六、财务及成本管理(总5分) 实际分值：<input name="data6_t" id="data6_t"   readonly="readonly"  style="border-style:none" placeholder="--"/></h3>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">1、能耗一览表 (1分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data6_s1" id="data6_s1"  class="form-control" type="number" onkeyup="enfocus6()" />			
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data6_i1" id="data6_i1"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">2、能耗去除率 (2分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data6_s2" id="data6_s2"  class="form-control" type="number" onkeyup="enfocus6()" />						
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data6_i2" id="data6_i2"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">3、成本一览表 (1分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data6_s3" id="data6_s3"  class="form-control" type="number" onkeyup="enfocus6()" />				
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data6_i3" id="data6_i3"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">4、报表 (1分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data6_s4" id="data6_s4"  class="form-control" type="number" onkeyup="enfocus6()" />						
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data6_i4" id="data6_i4"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			
+			<h3>七、档案及信息管理(总10分) 实际分值：<input name="data7_t" id="data7_t"   readonly="readonly"  style="border-style:none" placeholder="--"/></h3>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">1、污水台帐 (1分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data7_s1" id="data7_s1"  class="form-control" type="number" onkeyup="enfocus7()" />						
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data7_i1" id="data7_i1"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">2、污泥台帐 (2分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data7_s2" id="data7_s2"  class="form-control" type="number" onkeyup="enfocus7()" />				
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data7_i2" id="data7_i2"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">3、设备及在线仪表台帐 (1分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data7_s3" id="data7_s3"  class="form-control" type="number" onkeyup="enfocus7()" />				
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data7_i3" id="data7_i3"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">4、化验台帐 (2分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data7_s4" id="data7_s4"  class="form-control" type="number" onkeyup="enfocus7()" />				
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data7_i4" id="data7_i4"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">5、中控系统 (2分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data7_s5" id="data7_s5"  class="form-control" type="number" onkeyup="enfocus7()" />			
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data7_i5" id="data7_i5"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-3">
+					<label class="control-label">6、档案管理 (2分)</label>
+				</div>
+				<div class="col-sm-4">
+					<label class="col-sm-3 control-label">评分：</label>
+					<div class="col-sm-9">
+						<input name="data7_s6" id="data7_s6"  class="form-control" type="number" onkeyup="enfocus7()" />				
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<label class="col-sm-3 control-label">说明：</label>
+					<div class="col-sm-9">
+						<input name="data7_i6" id="data7_i6"  class="form-control" type="text"   />					
+					</div>
+				</div>
+			</div>
+	</form>
+    </div>
+<!--     <div class="row">
+        <div class="col-sm-offset-5 col-sm-10">
+            <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>保 存</button>&nbsp;
+            <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
+        </div>
+    </div> -->
+	<th:block th:include="include :: footer" />
+	<script>
+	    var prefix = ctx + "op/report/yearappraisal";
+	
+        $("#form").validate({
+        	onkeyup: false,
+        	rules:{
+        		
+        	},
+        	messages: {
+                "loginName": {
+                    remote: "用户已经存在"
+                },
+        		"email": {
+                    remote: "Email已经存在"
+                },
+        		"phonenumber":{
+                	remote: "手机号码已经存在"
+        		}
+            },
+            focusCleanup: true
+        });
+        
+        function submitHandler() {
+	        if ($.validate.form()) {
+	        	var data = $("#form").serializeArray();
+	        	$.operate.save(prefix + "/add", data);
+	        }
+	    }
+        
+        /*用户管理-新增-选择部门树*/
+        function selectDeptTree() {
+        	
+        	var treeId = $("#treeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmit
+			};
+			$.modal.openOptions(options);
+		}
+        function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+		}
+         
+    </script>
+</body>
+</html>

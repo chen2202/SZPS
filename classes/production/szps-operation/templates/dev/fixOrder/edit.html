@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('维修派工单')" />
+	<th:block th:include="include :: select2-css" />
+</head>
+<body  class="gray-bg">
+    <div class="main-content">
+      <form id="form"  class="form-horizontal"th:object="${obj}">
+        <input name="id" type="hidden" id="id"  th:field="*{id}"/>
+		<input name="deptId" type="hidden" id="treeId" th:field="*{deptId}"/>
+		<div class="control-group" align="center">
+			<label class="lbl" >维修派工单记录</label><br>
+		</div>
+		<div class="control-group">
+		<!-- required -->
+		<table  class="table table-striped table-bordered table-condensed">
+		  <tr >
+		    <td >记录日期</td>
+		    <td colspan="3">
+		    <input id="recordDate" name="recordDate" th:field="*{recordDate}" class="time-input form-control"/></td>
+		    <td >设备名称：</td>
+		    <td colspan="3"><input name="devName"  th:field="*{devName}" class="form-control"/></td>
+		    
+		  </tr>
+		  <tr >
+		    <td>设备编号：</td>
+		    <td colspan="3"><input name="devNumber"  th:field="*{devNumber}" class="form-control"/></td>
+		    <td>资产编号：</td>
+		    <td colspan="3"><input name="assetCode"  th:field="*{assetCode}" class="form-control"/></td>
+		   
+		  </tr>
+		  <tr >
+		   	<td>设备型号：</td>
+		    <td colspan="3"><input name="devModel"  th:field="*{devModel}" class="form-control"/></td>
+		    <td >设备地点：</td>
+		    <td colspan="3"><input name="installPlace"  th:field="*{installPlace}" class="form-control"/></td>
+		 </tr>
+		  <tr >
+		    <td>使用部门：</td>
+		    <td ><input name="useDept" onclick="selectDeptTree()"   id="treeName" th:field="*{useDept}" class="form-control"/></td>
+		    <td >报修人：</td>
+		    <td><input name="repairMan"  th:field="*{repairMan}" class="form-control"/></td>
+		    <td>生产主管：</td>
+		    <td colspan="3"><input name="prodHead"  th:field="*{prodHead}" class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="8">故障现象描述：</td>
+		  </tr>
+		  <tr >
+		    <td colspan="8" ><textarea name="troubleSpec" th:field="*{troubleSpec}" class="form-control"></textarea></td>
+		  </tr>
+		  <tr >
+		    <td colspan="8">原因分析：</td>
+		   
+		  </tr>
+		  	<td colspan="6" ><textarea name="reason" th:field="*{reason}" class="form-control"></textarea></td>
+		  	<td>分析人：</td>
+		    <td colspan="2"><input name="assayer"  th:field="*{assayer}" class="form-control"/></td>
+		  <tr>
+		  	
+		    <td>设备部主管：</td>
+		    <td colspan="3"><input name="equiHead"  th:field="*{equiHead}" class="form-control"/></td>
+		    <td >设备部经理：</td>
+		    <td colspan="3"><input name="equiManager"  th:field="*{equiManager}" class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td >故障类型：</td>
+		    <td colspan="3"><input name="troubleType"  th:field="*{troubleType}" class="form-control"/></td>
+		     <td>责任人：</td>
+		    <td colspan="3"><input name="dutyPeople"  th:field="*{dutyPeople}" class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td  colspan="8">维修过程及耗材：</td>
+		  </tr>
+		  <tr >
+		    <td colspan="6"  ><textarea name="devSpec" th:field="*{devSpec}" class="form-control"></textarea></td>
+		    <td >维修人：</td>
+		    <td ><input name="mechanic"  th:field="*{mechanic}" class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="6">委外维修意见：</td>
+		    <td>设备主管：</td>
+		    <td><input name="equiHeadOut"  th:field="*{equiHeadOut}" class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="6" rowspan="3"><textarea name="outServiceOpinion" th:field="*{outServiceOpinion}" class="form-control"></textarea></td>
+		    <td >设备经理：</td>
+		    <td colspan="6"><input name="equiManagerOut"  th:field="*{equiManagerOut}" class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td >生产经理：</td>
+		    <td><input name="prodManager"  th:field="*{prodManager}" class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td >备注：</td>
+		    <td><textarea name="outRemarks" th:field="*{outRemarks}" class="form-control"></textarea></td>
+		  </tr>
+		  <tr >
+		    <td colspan="6">维修结果：</td>
+		    <td>设备部主管</td>
+		    <td><input name="equiOwer"  th:field="*{equiOwer}" class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="6" rowspan="2" ><textarea name="fixResult" th:field="*{fixResult}" class="form-control"></textarea></td>
+		    <td colspan="2">使用部门主管</td>
+		  </tr>
+		  <tr >
+		    <td colspan="2"><input name="userManger"  th:field="*{userManger}" class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td colspan="2">维修班长确认：</td>
+		    <td colspan="2"><input name="monitor"  th:field="*{monitor}" class="form-control"/></td>
+		    <td colspan="2">计划时间：</td>
+		    <td colspan="2">
+		    <input id="planTime" name="planTime"  th:field="*{planTime}" class="time-input form-control"/></td>
+		  </tr>
+		  <tr >
+		   
+		    <td colspan="2">完成时间：</td>
+		    <td colspan="2">
+		    <input id="doneTime" name="doneTime"  th:field="*{doneTime}" class="time-input form-control"/></td>
+		    <td colspan="2">维修耗时：</td>
+		    <td colspan="2"><input name="usesTime"  th:field="*{usesTime}" class="form-control"/></td>
+		  </tr>
+		</table>
+		</div>
+		
+	</form>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-5 col-sm-10">
+            <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>保 存</button>&nbsp;
+            <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
+        </div>
+    </div>
+	<th:block th:include="include :: footer" />
+	<th:block th:include="include :: select2-js" />
+	<script>
+	    var prefix = ctx + "op/dev/fixOrder";
+	
+        $("#form").validate({
+        	onkeyup: false,
+        	rules:{
+        		
+        	},
+        	messages: {
+                "loginName": {
+                    remote: "用户已经存在"
+                },
+        		"email": {
+                    remote: "Email已经存在"
+                },
+        		"phonenumber":{
+                	remote: "手机号码已经存在"
+        		}
+            },
+            focusCleanup: true
+        });
+        
+        function submitHandler() {
+	        if ($.validate.form()) {
+	        	var data = $("#form").serializeArray();
+	        	/* var status = $("input[id='status']").is(':checked') == true ? 0 : 1;
+	        	var roleIds = $.form.selectCheckeds("role");
+	        	var postIds = $.form.selectSelects("post");
+	        	data.push({"name": "status", "value": status});
+	        	data.push({"name": "roleIds", "value": roleIds});
+	        	data.push({"name": "postIds", "value": postIds}); */
+	        	$.operate.save(prefix + "/edit", data);
+	        }
+	    }
+         
+        /*用户管理-新增-选择部门树*/
+        function selectDeptTree() {
+        	var treeId = $("#treeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmit
+			};
+			$.modal.openOptions(options);
+		}
+		
+		function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+		}
+		
+		
+		function selectDeptTree2() {
+        	var treeId = $("#treeId2").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId2").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmit2
+			};
+			$.modal.openOptions(options);
+		}
+		
+		function doSubmit2(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+			var body = layer.getChildFrame('body', index);
+   			$("#treeId2").val(body.find('#treeId2').val());
+   			$("#treeName2").val(body.find('#treeName2').val());
+   			layer.close(index);
+		}
+
+		$(function() {
+            $('#post').select2({
+                placeholder:"请选择岗位",
+                allowClear: true
+            });
+        })
+    </script>
+</body>
+</html>

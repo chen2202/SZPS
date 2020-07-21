@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+    <h3>login.html</h3>
+    <form action="#">
+        用户名：<input type="text" id="uname">
+        密码：<input type="password">
+        <br>
+        <input type="button" id="btn" value="登录">
+    </form>
+    <script>
+        // 获取按钮用户名
+        // var btn=document.getElementById("btn");
+        // var name=document.getElementById("uname");
+        // 为按钮绑定点击事件
+        btn.onclick=function(){
+            // 将用户名保存到sessionStorage  "username","password","access_token","refresh_token"
+            sessionStorage.setItem("username","admin");
+            sessionStorage.setItem("password","123456");
+            sessionStorage.setItem("access_token","a");
+            sessionStorage.setItem("refresh_token","b");
+            // 3秒后跳转首页
+            alert("登录成功，3秒后跳转首页");
+            setTimeout(function(){
+                location.href="/login";
+            },3000);
+        }
+    </script>
+</body>
+</html>
+

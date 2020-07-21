@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('任务管理')" />
+	<link th:href="@{/css/op/public.css}" rel="stylesheet"/>
+	<link th:href="@{/css/op/operation.css}" rel="stylesheet"/>
+</head>
+<body class="gray-bg">
+<div class="container-div">
+	<div class="row">
+
+		<div class="col-sm-12 search-collapse">
+			<form id="role-form">
+				<div class="select-list">
+					<ul>
+						<li>
+							任务区域：<input type="text" name="taskPartition" maxlength="11"/>
+						</li>
+						<li>
+							行政区：
+							<select  name="taskRegion">
+								<option value="">请选择</option>
+								<option value="南山区">南山区</option>
+								<option value="福田区">福田区</option>
+								<option value="盐田区">盐田区</option>
+								<option value="罗湖区">罗湖区</option>
+							</select>
+						</li>
+						<li>
+							街道：<select name="taskStreet">
+							<option value="">请选择</option>
+							<option value="南山街道">南山街道</option>
+							<option value="南头街道">南头街道</option>
+							<option value="西丽街道">西丽街道</option>
+							<option value="沙河街道">沙河街道</option>
+						</select>
+						</li>
+						<li class="select-time">
+							<label>任务创建时间： </label>
+							<input type="text" class="time-input" id="taskTime" placeholder="创建时间" name="taskTime"/>
+						</li>
+						<li>
+							<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+						</li>
+					</ul>
+				</div>
+			</form>
+		</div>
+
+		<div class="btn-group-sm" id="toolbar" role="group">
+			<div class="select-list">
+				<button class="btn btn-success " type="button" name="showSearch" title="高级筛选">高级筛选</button>
+				<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="supervise:task:add">
+					 双规则检查
+				</a>
+			</div>
+			<br/>
+		</div>
+
+		<div class="col-sm-12 select-table table-striped">
+			<table id="bootstrap-table" data-mobile-responsive="true"></table>
+		</div>
+	</div>
+</div>
+<th:block th:include="include :: footer" />
+<script th:inline="javascript">
+    var prefix = ctx + "supervise/task";
+
+
+    $(function() {
+        var options = {
+            url: prefix + "/list",
+            createUrl: prefix + "/TaskCheck",
+            updateUrl: prefix + "/edit/{id}",
+            removeUrl: prefix + "/remove",
+            exportUrl: prefix + "/export",
+            sortName: "taskNumber",
+            modalName: "双随机任务",
+            columns: [
+                {
+                    field: 'taskNumber',
+                    title: '任务编号',
+                    sortable: true
+                },
+                {
+                    field: 'taskPartition',
+                    title: '任务区域',
+                    sortable: true
+                },
+                {
+                    field: 'taskRegion',
+                    title: '所属行政区'
+
+                },
+                {
+                    field: 'taskStreet',
+                    title: '所属街道'
+
+                },
+                {
+                    field: 'taskHousename',
+                    title: '检查对象'
+
+                },
+                {
+                    field: 'taskHousephone',
+                    title: '检查对象法人电话'
+
+                },
+                {
+                    field: 'tbStaffList',
+                    title: '检查人员',
+                    formatter:function(value,row,index){
+                        var s=[];
+                        for(var i=0;i<value.length;i++)
+                        {
+                            var b=JSON.stringify(value[i]);
+                            var a=JSON.parse(b);
+
+                            s.push('<span >'+a.staffName+'</span>&nbsp;&nbsp;&nbsp;');
+
+                        }
+                        return s.join('');
+                    }
+
+                },
+                {
+                    field: 'taskConnecting',
+                    title: '任务内容'
+
+                },
+                {
+                    field: 'taskTime',
+                    title: '创建时间'
+
+                }
+                ]
+        };
+        $.table.init(options);
+    });
+
+
+</script>
+</body>
+</html>

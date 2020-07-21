@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--360浏览器优先以webkit内核解析-->
+    <title>排水信息系统--</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link href="../static/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" rel="stylesheet"/>
+    <link href="../static/css/main/animate.min.css" th:href="@{/css/main/animate.min.css}" rel="stylesheet"/>
+    <link href="../static/css/main/style.min862f.css" th:href="@{/css/main/style.min862f.css}" rel="stylesheet"/>
+<link th:href="@{/ruoyi/css/st.css}" rel="stylesheet"/>
+</head>
+
+<body >
+       <!--  <nav>
+		  <a href="#" >排水SCADA监管系统</a>
+		  <a href="#" >排水设施地理信息系统</a>
+		  <a href="#" >运营信息管理系统</a>
+		</nav>
+        <nav>
+		  <a href="#">智能分析决策系统</a>
+		  <a href="#">数据采集系统</a>
+		  <a href="#">设备管理系统</a>
+		</nav>
+         <nav>
+		  <a href="#">在线监测系统</a>
+		  <a href="#">GIS系统</a>
+		  <a href="#">物联设备适配管理</a>
+		</nav>
+        <nav>
+		  <a href="#">排水管网模型系统</a>
+		</nav>
+ -->
+ 		<nav>
+            <ul >
+                <li th:each="emenu : ${menus}">
+                    <a th:text="${emenu.menuName}" th:href="@{${emenu.url}}"></a>
+                </li>
+            </ul>
+		<nav>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/ajax/libs/layer/layer.min.js}"></script>
+    <script type="text/javascript">
+	    $('#pay-qrcode').click(function(){
+	        var html=$(this).html();
+	        parent.layer.open({
+	            title: false,
+	            type: 1,
+	            closeBtn:false,
+	            shadeClose:true,
+	            area: ['600px', 'auto'],
+	            content: html
+	        });
+	    });
+    </script>
+</body>
+</html>

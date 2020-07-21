@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.szps.web.mapper.supervise.TbRuleMapper" >
+  <resultMap id="BaseResultMap" type="com.szps.web.domain.supervise.TbRule" >
+    <id column="RULE_NUMBER" property="ruleNumber" jdbcType="VARCHAR" />
+    <result column="RULE_TYPE" property="ruleType" jdbcType="VARCHAR" />
+    <result column="RULE_NAME" property="ruleName" jdbcType="VARCHAR" />
+    <result column="RULE_BASIS" property="ruleBasis" jdbcType="VARCHAR" />
+    <result column="RULE_SCALE" property="ruleScale" jdbcType="VARCHAR" />
+    <result column="RULE_CONTENT" property="ruleContent" jdbcType="VARCHAR" />
+    <result column="RULE_MAIN" property="ruleMain" jdbcType="VARCHAR" />
+
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_RULE
+    where RULE_NUMBER = #{ruleNumber,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.szps.web.domain.supervise.TbRule" >
+    insert into TB_RULE (RULE_NUMBER,RULE_TYPE,RULE_NAME,RULE_BASIS,RULE_SCALE,RULE_CONTENT,RULE_MAIN)
+    values (#{ruleNumber,jdbcType=VARCHAR}, #{ruleType,jdbcType=VARCHAR},#{ruleName,jdbcType=VARCHAR},#{ruleBasis,jdbcType=VARCHAR},#{ruleScale,jdbcType=VARCHAR},#{ruleContent,jdbcType=VARCHAR},#{ruleMain,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.szps.web.domain.supervise.TbRule" >
+    update TB_RULE
+    set
+    RULE_TYPE = #{ruleType,jdbcType=VARCHAR},
+    RULE_NAME= #{ruleName,jdbcType=VARCHAR},
+    RULE_BASIS=#{ruleBasis,jdbcType=VARCHAR},
+    RULE_SCALE=#{ruleScale,jdbcType=VARCHAR},
+    RULE_MAIN=#{ruleMain,jdbcType=VARCHAR}
+    where RULE_NUMBER = #{ruleNumber,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select RULE_NUMBER, RULE_CONTENT,RULE_TYPE,RULE_NAME,RULE_BASIS,RULE_SCALE,RULE_MAIN
+    from TB_RULE
+    where RULE_NUMBER = #{ruleNumber,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByName" resultType="String" parameterType="java.lang.String" >
+    select  RULE_SCALE
+    from TB_RULE
+    where RULE_NAME = #{ruleName,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByNameScale" resultType="String" parameterType="java.lang.String" >
+    select  RULE_SCALE
+    from TB_RULE
+    where RULE_NAME = #{ruleName,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select RULE_NUMBER, RULE_CONTENT,RULE_TYPE,RULE_NAME,RULE_BASIS,RULE_SCALE,RULE_MAIN
+    from TB_RULE
+  </select>
+
+
+  <delete id="deleteRuleByIds" parameterType="Long">
+    delete from  TB_RULE where RULE_NUMBER in
+    <foreach collection="array" item="ruleNumber" open="(" separator="," close=")">
+      #{ruleNumber}
+    </foreach>
+  </delete>
+
+
+  <select id="selectRuleList" parameterType="com.szps.web.domain.supervise.TbRule" resultMap="BaseResultMap">
+    select RULE_NUMBER, RULE_CONTENT,RULE_TYPE,RULE_NAME,RULE_BASIS,RULE_SCALE,RULE_MAIN
+    from TB_RULE
+
+
+    <if test="ruleName != null and ruleName != ''">
+      where
+      TB_RULE.RULE_NAME like concat(concat('%',#{ruleName}),'%')
+    </if>
+
+  </select>
+
+  <select id="selectRuleName"  resultType="String">
+    select RULE_NAME
+    from TB_RULE
+
+  </select>
+</mapper>

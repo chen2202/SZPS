@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('日报汇总')" />
+</head>
+<body class="gray-bg">
+    <div class="ibox-content">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="collect-form" modelAttribute="dayReport" action="/op/report/collect/day/list" method="post" >
+					<div class="select-list">
+						<ul>
+							<li class="select-time">
+								<label>日期： </label>
+								<input type="text" class="time-input" id="reportDate"  name="reportDate"  th:value="*{reportDate}"/>
+							</li>
+							<li>
+								<a class="btn  btn-sm" onclick="submit()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn  btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+			<!--
+	        <div class="btn-group-sm" id="toolbar" role="group">
+		         <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="system:config:export">
+		            <i class="fa fa-download"></i> 导出
+		        </a> 
+	        </div>
+	        
+	        -->
+    	</div>
+    	<div th:if="${list!=null && list.size()>0}">
+    		<div class="row">
+    	
+    	 <div class="col-sm-12 ">
+    	 <center><h4 >项目厂区日运行情况汇总表  [[${reportDate}]]</h4></center>
+    	 <div style="overflow:scroll;">
+	            <table id="bootstrap-table" class="table table-striped table-bordered table-condensed table-hover table-responsive">
+				<thead>
+				  	<tr>
+					    <td rowspan="3">序   号</td>
+					    <td rowspan="3">厂区</td>
+					    <td rowspan="3">天气</td>
+					    <td colspan="2" rowspan="3">日处理水量<br />
+					    (m<sup>3</sup>)</td>
+					    <td rowspan="3">用电量(kw.h)</td>
+					    <td rowspan="3">用水量（吨）</td>
+					    <td colspan="10">实验室水质(mg/L)</td>
+					    <td colspan="5">生化池</td>
+					    <td colspan="5">药剂消耗量</td>
+					    <td rowspan="3">污泥量（吨）</td>
+					    <td colspan="5">快渗池情况</td>
+				  	</tr>
+				  	<tr>
+					    <td colspan="4">进水</td>
+					    <td colspan="2">沉淀池出水</td>
+					    <td colspan="4">出水</td>
+					    <td rowspan="2">SV30（%）</td>
+					    <td rowspan="2">污泥浓度（g/L）</td>
+					    <td rowspan="2">溶解氧（mg/L）</td>
+					    <td rowspan="2">混合液回流比（%）</td>
+					    <td rowspan="2">污泥回流比（%）</td>
+					    <td rowspan="2">PAC（吨）</td>
+					    <td rowspan="2">铁盐/除磷剂（吨）</td>
+					    <td rowspan="2">PAM-(kg)</td>
+					    <td rowspan="2">PAM+ (kg)</td>
+					    <td rowspan="2">消毒药剂(M<sup>3</sup>/kg)</td>
+					    <td rowspan="2">养护情况</td>
+					    <td colspan="4">落干时间(MIN)</td>
+				  	</tr>
+				  	<tr>
+					    <td >COD</td>
+					    <td >氨氮</td>
+					    <td >TN</td>
+					    <td >TP</td>
+					    <td >沉淀池SS</td>
+					    <td >沉淀池TP</td>
+					    <td >COD</td>
+					    <td >氨氮</td>
+					    <td >TN</td>
+					    <td >TP</td>
+					    <td >≦60</td>
+					    <td>60-120</td>
+					    <td >120-180</td>
+					    <td >180以上</td>
+				  	</tr>
+			  	</thead>
+				<tbody>
+					<tr th:each="dayReport:${list}">
+						<td th:text="${dayReport.id}"></td>
+					    <td th:text="${dayReport.deptName}"></td>
+					    <td th:text="${dayReport.weather}"></td>
+					    <td th:text="${dayReport.dwt1}"></td>
+					    <td th:text="${dayReport.dwt2}"></td>
+					    <td th:text="${dayReport.electricity}"></td>
+					    <td th:text="${dayReport.water}"></td>
+					    <td th:text="${dayReport.cod1}"></td>
+					    <td th:text="${dayReport.an1}"></td>
+					    <td th:text="${dayReport.tn1}"></td>
+					    <td th:text="${dayReport.tp1}"></td>
+					    <td th:text="${dayReport.stss2}"></td>
+					    <td th:text="${dayReport.sttp2}"></td>
+					    <td th:text="${dayReport.cod2}"></td>
+					    <td th:text="${dayReport.an2}"></td>
+					    <td th:text="${dayReport.tn2}"></td>
+					    <td th:text="${dayReport.tp2}"></td>
+					    <td th:text="${dayReport.sv30}"></td>
+					    <td th:text="${dayReport.sludge}"></td>
+					    <td th:text="${dayReport.oxygen}"></td>
+					    <td th:text="${dayReport.mixture}"></td>
+					    <td th:text="${dayReport.reflux}"></td>
+					    <td th:text="${dayReport.pac}"></td>
+					    <td th:text="${dayReport.ipra}"></td>
+					    <td th:text="${dayReport.pam1}"></td>
+					    <td th:text="${dayReport.pam2}"></td>
+					    <td th:text="${dayReport.disin}"></td>
+					    <td th:text="${dayReport.sq1}"></td>
+					    <td th:text="${dayReport.conditionDesc}"></td>
+					    <td th:text="${dayReport.lt60}"></td>
+					    <td th:text="${dayReport.g6l12}"></td>
+					    <td th:text="${dayReport.g12l18}"></td>
+					    <td th:text="${dayReport.gt180}"></td>
+					</tr>
+				</tbody>
+			</table>
+			
+			</div>
+			<div style="overflow:scroll;">
+				<table id="contentTable" class="table table-striped table-bordered table-condensed">
+					<tr>
+					    <td width="210" rowspan="2">设备运行工况</td>
+					    <td width="113">机电设备运行维护</td>
+					    <td width="594"><div th:each="dayReport:${list}">[[${dayReport.deptName}]]:[[${dayReport.equipment}]]<br></div><br></td>
+					  </tr>
+					  <tr>
+					    <td>中控仪表</td>
+					  	<td width="594"><div th:each="dayReport:${list}">[[${dayReport.deptName}]]:[[${dayReport.instrument}]]<br></div><br></td>
+					  </tr>
+					  <tr>
+					    <td colspan="2">工艺运行情况</td>
+					  	<td width="594"><div th:each="dayReport:${list}">[[${dayReport.deptName}]]:[[${dayReport.handicraft}]]<br></div><br></td>
+					  </tr>
+					  <tr>
+					    <td colspan="2">存在问题及需要上级沟通解决问题</td>
+					  	<td width="594"><div th:each="dayReport:${list}">[[${dayReport.deptName}]]:[[${dayReport.problem}]]<br></div><br></td>
+					  </tr>
+				</table>
+			</div>
+	        </div>
+    	</div>
+    	</div>
+    	<div th:unless="${list!=null && list.size()>0}">
+    		<center><h4 >[[${reportDate}]] 没有数据</h4></center>
+    	</div>
+    	
+    </div>
+    
+    <th:block th:include="include :: footer" />
+    <script th:inline="javascript">
+		    var prefix = ctx + "op/report/collect/day";
+		    var submit = function () {
+		    	$('#collect-form').submit();
+		    }; 
+		    var reset = function () {
+		    	$('#collect-form').clear();
+		    }; 
+    </script>
+</body>
+</html>

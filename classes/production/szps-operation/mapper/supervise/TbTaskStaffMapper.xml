@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.szps.web.mapper.supervise.TbTaskStaffMapper" >
+<resultMap id="baseresult" type="com.szps.web.domain.supervise.TbTaskStaff">
+      <result column="TASK_NUMBER" property="taskNumber"/>
+      <result column="STAFF_NUMBER" property="staffNumber"/>
+</resultMap>
+
+  <select id="selectByPrimaryKey" resultMap="baseresult" parameterType="java.lang.String" >
+    select TASK_NUMBER, STAFF_NUMBER
+    from TB_TASKSTAFF
+    where TASK_NUMBER = #{taskNumber,jdbcType=VARCHAR}
+  </select>
+    <insert id="insert" parameterType="com.szps.web.domain.supervise.TbTaskStaff" >
+        insert into TB_TASKSTAFF (TASK_NUMBER, STAFF_NUMBER)
+        values (#{taskNumber,jdbcType=VARCHAR}, #{staffNumber,jdbcType=VARCHAR})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.szps.web.domain.supervise.TbTaskStaff" >
+        update TB_TASKSTAFF
+        set STAFF_NUMBER = #{bcStaff,jdbcType=VARCHAR}
+        where TASK_NUMBER = #{taskNumber,jdbcType=VARCHAR}
+        AND STAFF_NUMBER = #{staffNumber,jdbcType=VARCHAR}
+    </update>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete from TB_TASKSTAFF
+        where TASK_NUMBER = #{taskNumber,jdbcType=VARCHAR}
+    </delete>
+
+</mapper>

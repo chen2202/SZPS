@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.dev.NetworkMaintenanceMapper">
+ 
+	<resultMap type="NetworkMaintenance" id="result">
+		<id     	property="workid"    column="workid"    />
+		<result     property="s_point"   column="s_point"   />
+		<result     property="e_point"   column="e_point"   />
+		<result     property="maintain_date"   column="maintain_date"   />
+		<result     property="weather"   column="weather"   />
+		<result     property="maintain_dept"   column="maintain_dept"   />
+		<result     property="maintain_pe"   column="maintain_pe"   />
+		<result     property="maintain_type"   column="maintain_type"   />
+		<result     property="operation_status"   column="operation_status"   />
+		<result     property="functional_defect"   column="functional_defect"   />
+		<result     property="structural_defect"   column="structural_defect"   />
+		<result     property="psize"   column="psize"   />
+		<result     property="maintain_method"   column="maintain_method"   />
+		<result     property="maintain_length"   column="maintain_length"   />
+		<result     property="maintain_amount"   column="maintain_amount"   />
+		<result     property="maintain_cost"   column="maintain_cost"   />
+		<result     property="note"   column="note"   />
+		<result     property="attachmenturl"   column="attachmenturl"   />
+
+        <result property="createBy"      column="create_by"      />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"      column="update_by"      />
+        <result property="updateTime"    column="update_time"    />
+		<result property="remark"    column="remark"    />
+		<result     property="dept_id"   column="dept_id"   />
+    </resultMap> 
+
+	<sql id="selectVo">
+        select *
+        from DEV_NETWORK_MAINTENANCE r
+    </sql>	
+	
+	<!-- 查询条件 -->
+	<sql id="sqlwhereSearch">
+		<where>
+			<if test=" workid !=null and workid != ''">
+				and workid = #{workid}
+			</if>
+			<!-- <if test=" exp_no !=null and exp_no != ''">
+				and exp_no = #{exp_no}
+			</if> -->
+		</where>
+	</sql>
+	
+
+    
+    <select id="select" parameterType="NetworkMaintenance" resultMap="result">
+        <include refid="selectVo"/>
+        <include refid="sqlwhereSearch"/>
+    </select>
+    
+    <select id="selectList" parameterType="NetworkMaintenance" resultMap="result">
+        <include refid="selectVo"/>
+        where  1 = 1
+        	<if test=" workid !=null and workid != ''">
+				and workid = #{workid}
+			</if>
+			<!-- <if test=" exp_no !=null and exp_no != ''">
+				and exp_no = #{exp_no}
+			</if> -->
+		
+		<!-- 数据范围过滤 -->
+		${params.dataScope}	
+    </select>
+      <select id="selectByName" parameterType="String" resultMap="result">
+		<include refid="selectVo"/>
+		where  1 = 1
+		<if test=" workid != null and workid != ''">
+				AND workid  like concat(concat('%',#{workid}),'%')
+		</if>
+	</select>
+	
+	<select id="selectById" parameterType="String" resultMap="result">
+		<include refid="selectVo"/>
+		where r.workid = #{workid}
+	</select>
+	
+    <delete id="deleteById" parameterType="String">
+		delete from DEV_NETWORK_MAINTENANCE where workid = #{workid}
+	</delete>
+	 <delete id="deleteByIds" parameterType="String">
+ 		delete from DEV_NETWORK_MAINTENANCE where workid in
+ 		<foreach collection="array" item="workid" open="(" separator="," close=")">
+ 			#{workid}
+        </foreach> 
+ 	</delete>
+    
+    <update id="update" parameterType="NetworkMaintenance">
+ 		update DEV_NETWORK_MAINTENANCE
+ 		<set>
+			<if test=" s_point != null and s_point != ''">s_point = #{s_point},</if>
+			<if test=" e_point != null and e_point != ''">e_point = #{e_point},</if>
+			<if test=" maintain_date != null and maintain_date != ''">maintain_date = #{maintain_date},</if>
+			<if test=" weather != null and weather != ''">weather = #{weather},</if>
+			<if test=" maintain_dept != null and maintain_dept != ''">maintain_dept = #{maintain_dept},</if>
+			<if test=" maintain_pe != null and maintain_pe != ''">maintain_pe = #{maintain_pe},</if>
+			<if test=" maintain_type != null and maintain_type != ''">maintain_type = #{maintain_type},</if>
+			<if test=" operation_status != null and operation_status != ''">operation_status = #{operation_status},</if>
+			<if test=" functional_defect != null and functional_defect != ''">functional_defect = #{functional_defect},</if>
+			<if test=" structural_defect != null and structural_defect != ''">structural_defect = #{structural_defect},</if>
+			<if test=" psize != null and psize != ''">psize = #{psize},</if>
+			<if test=" maintain_method != null and maintain_method != ''">maintain_method = #{maintain_method},</if>
+			<if test=" maintain_length != null">maintain_length = #{maintain_length},</if>
+			<if test=" maintain_amount != null">maintain_amount = #{maintain_amount},</if>
+			<if test=" maintain_cost != null">maintain_cost = #{maintain_cost},</if>
+			<if test=" note != null and note != ''">note = #{note},</if>
+			<if test=" attachmenturl != null and attachmenturl != ''">attachmenturl = #{attachmenturl},</if>			
+			
+			<if test=" remark != null and remark != ''">remark = #{remark},</if>
+ 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+ 			update_time = sysdate 
+ 		</set>
+ 		where workid = #{workid}
+	</update>
+	  
+    <insert id="insert" parameterType="NetworkMaintenance">
+    
+		INSERT INTO DEV_NETWORK_MAINTENANCE(
+			<if test=" workid != null and  workid != ''">workid,</if>
+			<if test=" s_point != null and  s_point != ''">s_point,</if>
+			<if test=" e_point != null and  e_point != ''">e_point,</if>
+			<if test=" maintain_date != null and  maintain_date != ''">maintain_date,</if>
+			<if test=" weather != null and  weather != ''">weather,</if>
+			<if test=" maintain_dept != null and  maintain_dept != ''">maintain_dept,</if>
+			<if test=" maintain_pe != null and  maintain_pe != ''">maintain_pe,</if>
+			<if test=" maintain_type != null and  maintain_type != ''">maintain_type,</if>
+			<if test=" operation_status != null and  operation_status != ''">operation_status,</if>
+			<if test=" functional_defect != null and  functional_defect != ''">functional_defect,</if>
+			<if test=" structural_defect != null and  structural_defect != ''">structural_defect,</if>
+			<if test=" psize != null and  psize != ''">psize,</if>
+			<if test=" maintain_method != null and  maintain_method != ''">maintain_method,</if>
+			<if test=" maintain_length != null">maintain_length,</if>
+			<if test=" maintain_amount != null">maintain_amount,</if>
+			<if test=" maintain_cost != null">maintain_cost,</if>
+			<if test=" note != null and  note != ''">note,</if>
+			<if test=" attachmenturl != null and  attachmenturl != ''">attachmenturl,</if>
+
+			
+			<if test=" remark != null and remark != ''">REMARK,</if>
+			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" dept_id != null ">dept_id,</if>
+			create_time 
+		) VALUES (
+				<if test=" workid != null and workid != ''">#{workid},</if>
+				<if test=" s_point != null and s_point != ''">#{s_point},</if>
+				<if test=" e_point != null and e_point != ''">#{e_point},</if>
+				<if test=" maintain_date != null and maintain_date != ''">#{maintain_date},</if>
+				<if test=" weather != null and weather != ''">#{weather},</if>
+				<if test=" maintain_dept != null and maintain_dept != ''">#{maintain_dept},</if>
+				<if test=" maintain_pe != null and maintain_pe != ''">#{maintain_pe},</if>
+				<if test=" maintain_type != null and maintain_type != ''">#{maintain_type},</if>
+				<if test=" operation_status != null and operation_status != ''">#{operation_status},</if>
+				<if test=" functional_defect != null and functional_defect != ''">#{functional_defect},</if>
+				<if test=" structural_defect != null and structural_defect != ''">#{structural_defect},</if>
+				<if test=" psize != null and psize != ''">#{psize},</if>
+				<if test=" maintain_method != null and maintain_method != ''">#{maintain_method},</if>
+				<if test=" maintain_length != null ">#{maintain_length},</if>
+				<if test=" maintain_amount != null">#{maintain_amount},</if>
+				<if test=" maintain_cost != null">#{maintain_cost},</if>
+				<if test=" note != null and note != ''">#{note},</if>
+				<if test=" attachmenturl != null and attachmenturl != ''">#{attachmenturl},</if>
+			
+			 	<if test=" remark != null and remark != ''">#{remark},</if>
+				<if test=" createBy != null and createBy != ''">#{createBy},</if>
+			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+				sysdate	 		
+		)
+	</insert>
+    
+</mapper>

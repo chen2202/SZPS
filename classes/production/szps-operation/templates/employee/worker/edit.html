@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('修改从业人员')" />
+	<link rel="stylesheet" th:href="@{/css/employee/operation.css}"/>
+</head>
+<body class="white-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+		<form class="form-horizontal m" id="form-worker-edit" th:object="${worker}">
+			<input id="idCard" name="idCard" type="hidden" th:field="*{idCard}"/>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">姓名：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="name" id="name" maxlength="20" th:field="*{name}" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">性别：</label>
+				<div class="col-sm-8">
+					<input type="radio" name="sex" id="male" value="男" th:checked="${worker.sex == '男'}" required>
+					<label for="male" class="male">男</label> &nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="sex" id="female" value="女" th:checked="${worker.sex == '女'}"  required>
+					<label for="female" class="female">女</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">参加工作日期：</label>
+				<div class="col-sm-8">
+			    	<input class="form-control" type="date" name="join_work_time" id="join_work_time" th:field="*{join_work_time}" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">学历：</label>
+				<div class="col-sm-8">
+					<select class="form-control" name="education" id="education" th:field="${worker.education}" required>
+						<option value="">--请选择学历--</option>
+						<option th:selected="${worker.education=='小学'}" value="小学">小学</option>
+						<option th:selected="${worker.education=='初中'}" value="初中">初中</option>
+						<option th:selected="${worker.education=='高中'}" value="高中">高中</option>
+						<option th:selected="${worker.education=='专科'}" value="专科">专科</option>
+						<option th:selected="${worker.education=='本科'}" value="本科">本科</option>
+						<option th:selected="${worker.education=='硕士'}" value="硕士">硕士</option>
+						<option th:selected="${worker.education=='博士'}" value="博士">博士</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">职称：</label>
+				<div class="col-sm-8">
+					<select class="form-control" id="title" name="title" th:field="${worker.title}" required>
+						<option value="">--请选择职称--</option>
+						<option th:selected="${worker.title=='初级'}" value="初级">初级</option>
+						<option th:selected="${worker.title=='中级'}" value="中级">中级</option>
+						<option th:selected="${worker.title=='高级'}" value="高级">高级</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">专业：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="profession" id="profession" maxlength="20" th:field="*{profession}" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">所属企业/厂：</label>
+				<div class="col-sm-8">
+					<input id="company_name_h" name="company_name_h" type="hidden" th:field="*{company_name}"/>
+					<select class="form-control" id="company_name" name="company_name"  required>
+						<option value="">--请选择公司/水厂--</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">部门：</label>
+				<div class="col-sm-8">
+					<input id="department_name_h" name="department_name_h" type="hidden" th:field="*{department_name}" />
+					<select class="form-control" id="department_name" name="department_name" required>
+						<option value="">--请先选择公司/水厂--</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">职务：</label>
+				<div class="col-sm-8">
+					<select class="form-control" name="position" id="position" th:field="${worker.position}" required>
+						<option value="">--请选择职务--</option>
+						<option th:selected="${worker.position=='下水道工'}" value="下水道工">下水道工</option>
+						<option th:selected="${worker.position=='污泥处理工'}" value="污泥处理工">污泥处理工</option>
+						<option th:selected="${worker.position=='污水处理工'}" value="污水处理工">污水处理工</option>
+						<option th:selected="${worker.position=='设备维修工'}" value="设备维修工">设备维修工</option>
+						<option th:selected="${worker.position=='电工'}" value="电工">电工</option>
+						<option th:selected="${worker.position=='后勤人员'}" value="后勤人员">后勤人员</option>
+						<option th:selected="${worker.position=='化验工'}" value="化验工">化验工</option>
+						<option th:selected="${worker.position=='司机'}" value="司机">司机</option>
+						<option th:selected="${worker.position=='班组长'}" value="班组长">班组长</option>
+						<option th:selected="${worker.position=='中层管理人员'}" value="中层管理人员">中层管理人员</option>
+						<option th:selected="${worker.position=='高层管理人员'}" value="高层管理人员">高层管理人员</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">资质证书：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="qualification_certificate" id="qualification_certificate" maxlength="12" th:field="*{qualification_certificate}" required/>
+				</div>
+			</div>
+		</form>
+	</div>
+	<th:block th:include="include :: footer" />
+	<script type="text/javascript">
+		//公司/水厂名称select添加option
+		getCompanyName();
+		getFactoryName();
+		//待修改从业人员所属公司和部门
+		var updateCpN = $("#company_name_h").val();
+		var updateDmN = $("#department_name_h").val();
+		//自动选取待修改从业人员所属公司和部门
+		var $cOption = $("#company_name option");
+		for(var i=0;i<$cOption.length;i++){
+			if($cOption[i].text == updateCpN){
+				$cOption[i].selected = 'selected';
+			}
+		}
+		getDepartmentName();
+		var $dOption = $("#department_name option");
+		for(var i=0;i<$dOption.length;i++){
+			if($dOption[i].text == updateDmN){
+				$dOption[i].selected = 'selected';
+			}
+		}
+		
+		//当公司/水厂名称select选项变化时
+		var oldDepartmentNameLength = 0; //旧select长度初始化，赋值在getDepartmentName()中进行
+		$("#company_name").change(function(){
+			for(var i=1;i<oldDepartmentNameLength;i++){ //删除select中旧option
+				$("#department_name option:last").remove();
+			}
+			getDepartmentName(); //添加新option
+		});
+		
+		//--------------------------------------主程序结束---------------------------------------
+	
+		//表单提交验证
+		function submitHandler() {
+	        if ($.validate.form()) {
+	        	edit();
+	        }
+	    }
+	
+		//检查表单中从业人员身份是否重复
+		$("#form-worker-edit").validate({
+			rules:{
+				onkeyup: false,
+				idCard:{
+					remote: {
+		                url: ctx + "employee/worker/checkWorkerIdcardUnique",
+		                type: "post",
+		                dataType: "json",
+		                data: {
+		                	"idCard" : function() {
+		                		return $.common.trim($("#idCard").val());
+		                    }
+		                },
+		                dataFilter: function(data, type) {
+		                	return $.validate.unique(data);
+		                }
+		            }
+				}
+			},
+			messages: {
+		        "idCard": {
+		            remote: "从业人员已经添加"
+		        }
+		    },
+		    focusCleanup: true
+		});
+
+		//从业人员信息修改保存
+		function edit() {
+			var idCard = $("input[name='idCard']").val();
+			var name = $("input[name='name']").val();
+			var sex = $("input[name='sex']:checked").val();
+			var join_work_time = $("input[id='join_work_time']").val();
+			var education = $("#education option:selected").val();
+			var title = $("#title option:selected").val();
+			var profession = $("input[name='profession']").val();
+			var company_name = $("#company_name option:selected").text();
+			var position = $("#position option:selected").val();
+			var department_id = $("#department_name").val();
+			var qualification_certificate = $("#qualification_certificate").val();
+			$.ajax({
+				cache : true,
+				type : "POST",
+				url : ctx + "employee/worker/edit",
+				data : {
+					"idCard": idCard,
+					"name": name,
+					"sex": sex,
+					"join_work_time": join_work_time,
+					"education": education,
+					"title":title,
+					"profession":profession,
+					"company_name":company_name,
+					"position":position,
+					"department_name":department_id, //实际上传递的是部门代码
+					"qualification_certificate":qualification_certificate,
+				},
+				async : false,
+				error : function(request) {
+					$.modal.alertError("修改从业人员发生错误"); 
+				},
+				success : function(data) {
+					$.operate.successCallback(data);
+				}
+			});
+		}
+		
+		//获取公司名称
+		function getCompanyName(){
+			var optionJson=[];
+			$.ajax({
+				type: "post",
+			    //url: "/employee/worker/companyNameList",
+			    url: "./companyNameList",
+			    dataType:"json",
+			    data: {},
+			    async:false,
+			    error:function(){
+			    	alert("获取公司信息出错，请联系系统管理员");
+			    },
+		        success : function(data){
+                	optionJson = data;
+                	var selectObj = document.getElementById("company_name"); //获取公司/厂下拉菜单对象
+			    	for(var i=0;i<optionJson.length;){
+			        	selectObj.add(new Option(optionJson[i],optionJson[i+1]));
+			        	i += 2;
+		        	}
+		        }
+			 });
+		}
+		
+		//获取水厂名称
+		function getFactoryName(){
+			var optionJson=[];
+			$.ajax({
+				type: "post",
+			    //url: "/employee/worker/factoryNameList",
+			    url: "./factoryNameList",
+			    dataType:"json",
+			    data: {},
+			    async:false,
+			    error:function(){
+			    	alert("获取水厂信息出错，请联系系统管理员");
+			    },
+		        success : function(data){
+                	optionJson = data;
+	            	var selectObj = document.getElementById("company_name");
+			    	for(var i=0;i<optionJson.length;){
+			        	selectObj.add(new Option(optionJson[i],optionJson[i+1]));	    		
+			        	i += 2;
+		        	}
+		        }
+			 });
+		}
+		
+		//获取部门名称
+		function getDepartmentName(){
+			var optionJson=[];
+			$.ajax({
+				type: "post",
+			    //url: "/employee/worker/departmentNameList",
+			    url: "./departmentNameList",
+			    dataType:"json",
+			    data:{"company_id":$("#company_name option:selected").val()},
+			    async:false,
+			    error:function(){
+			    	alert("获取部门信息出错，请联系系统管理员");
+			    },
+		        success : function(data){
+                	optionJson = data;
+	            	var selectObj = document.getElementById("department_name");
+	            	var i;
+			    	for(i=0;i<optionJson.length;){ //添加选项
+			        	selectObj.add(new Option(optionJson[i],optionJson[i+1])); //部门名text，部门代码value
+			        	i += 2;
+		        	}
+			    	oldDepartmentNameLength = i/2 + 1; //+1是因为提示占一个option
+		        }
+			 });
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.szps.web.mapper.supervise.TbPictureMapper" >
+  <resultMap id="BaseResultMap" type="com.szps.web.domain.supervise.TbPicture" >
+    <id column="PICTURE_ID" property="pictureId" jdbcType="VARCHAR" />
+    <result column="PICTURE_LOCATION" property="pictureLocation" jdbcType="VARCHAR" />
+    <result column="FEEDBACK_ID" property="feedbackId" jdbcType="VARCHAR" />
+    <result column="PICTURE_NAME" property="pictureName" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TB_PICTURE
+    where PICTURE_ID = #{pictureId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.szps.web.domain.supervise.TbPicture">
+    insert into TB_PICTURE (PICTURE_ID, PICTURE_LOCATION,FEEDBACK_ID,PICTURE_NAME)
+    values (#{pictureId,jdbcType=VARCHAR}, #{pictureLocation,jdbcType=VARCHAR}, #{feedbackId,jdbcType=VARCHAR}, #{pictureName,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.szps.web.domain.supervise.TbPicture" >
+    update TB_PICTURE
+    set PICTURE_LOCATION = #{pictureLocation,jdbcType=VARCHAR}
+    where PICTURE_ID = #{pictureId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select PICTURE_ID, PICTURE_LOCATION,FEEDBACK_ID,PICTURE_NAME
+    from TB_PICTURE
+    where FEEDBACK_ID = #{pictureId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select PICTURE_ID, PICTURE_LOCATION
+    from TB_PICTURE
+  </select>
+
+  <select id="Checkdpc" parameterType="String" resultType="int">
+    select count(1) from TB_PICTURE where TB_PICTURE.PICTURE_ID=#{pictureId}
+  </select>
+</mapper>

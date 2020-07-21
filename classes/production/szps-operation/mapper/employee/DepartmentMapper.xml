@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.szps.web.mapper.employee.DepartmentMapper">
+	<resultMap type="com.szps.web.domain.employee.Department" id="DepartmentResult">
+		<id property="department_id" column="DEPARTMENT_ID" />
+		<result property="department_name" column="DEPARTMENT_NAME" />
+		<result property="company_id" column="COMPANY_ID" />
+		<result property="parent_department_id" column="PARENT_DEPARTMENT_ID" />
+	</resultMap>
+	
+	<!-- 查询全部部门信息 -->
+	<select id="selectAllDepartment" parameterType="Department" resultMap="DepartmentResult">
+		select DEPARTMENT_ID,DEPARTMENT_NAME,COMPANY_ID,PARENT_DEPARTMENT_ID from EMPLOYEE_T_DEPARTMENT
+		<if test="company_id != '' and company_id != null">
+			where COMPANY_ID like concat(concat('%',#{company_id}),'%') 
+		</if>
+	</select>
+	
+	<!--通过公司代码查询某公司全部部门名称和代码 -->
+	<select id="selectSomeDepartment" parameterType="Department" resultMap="DepartmentResult">
+		SELECT DEPARTMENT_NAME,DEPARTMENT_ID FROM EMPLOYEE_T_DEPARTMENT WHERE 
+		<if test="company_id == '' or company_id == null ">
+			COMPANY_ID = ''
+		</if>
+		<if test="company_id != '' and company_id != null">
+			COMPANY_ID = #{company_id} 
+		</if>
+	</select>
+	
+	<!-- 通过公司/水厂代码查询该公司全部部门信息 (用于组织结构图) -->
+	<select id="selectAllDepartmentByCompanyId" parameterType="java.lang.String" resultMap="DepartmentResult">
+		select d.DEPARTMENT_ID,d.DEPARTMENT_NAME,d.COMPANY_ID,d.PARENT_DEPARTMENT_ID from EMPLOYEE_T_DEPARTMENT d where d.COMPANY_ID = #{company_id}
+	</select>
+	
+	<!-- 添加新部门时判断部门代码唯一性 -->
+	<select id="checkdDepartmentIdUnique" parameterType="String" resultMap="DepartmentResult">
+		select d.DEPARTMENT_ID,d.DEPARTMENT_NAME,d.COMPANY_ID,d.PARENT_DEPARTMENT_ID from EMPLOYEE_T_DEPARTMENT d where d.DEPARTMENT_ID = #{department_id}
+	</select>
+	
+	<!-- 添加新部门 -->
+	<insert id="insertDepartment" parameterType="com.szps.web.domain.employee.Department" keyProperty="department_id">
+ 		insert into EMPLOYEE_T_DEPARTMENT(DEPARTMENT_ID,DEPARTMENT_NAME,COMPANY_ID,PARENT_DEPARTMENT_ID)
+ 		 values(#{department_id},#{department_name},#{company_id},#{parent_department_id})
+	</insert>
+	
+	<!-- 删除某个部门及其直接子部门 -->
+	<delete id="deleteDepartmentById" parameterType="String">
+		delete from EMPLOYEE_T_DEPARTMENT where DEPARTMENT_ID in 
+		<foreach collection="array" item="department_id" open="(" separator="," close=")">
+ 			#{department_id}  
+ 		</foreach>
+ 			or
+ 		<foreach collection="array" item="department_id" open="(" separator="," close=")">
+ 			PARENT_DEPARTMENT_ID = #{department_id}
+ 		</foreach>
+ 	</delete>
+ 		
+</mapper>

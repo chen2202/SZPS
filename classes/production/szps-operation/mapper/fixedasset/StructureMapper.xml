@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.dev.fixedasset.StructureMapper">
+ 
+	<resultMap type="Structure" id="result">
+		<id     property="id"    column="id"    />
+		<result     property="deptid"   column="deptid"   />
+		<result     property="deptname"   column="deptname"   />
+		<result     property="dlocation"   column="dlocation"   />
+		<result     property="assetname"   column="assetname"   />
+		<result     property="structure"   column="structure"   />
+		<result     property="builttime"   column="builttime"   />
+		<result     property="dlength"   column="dlength"   />
+		<result     property="dwidth"   column="dwidth"   />
+		<result     property="dhigh"   column="dhigh"   />
+		<result     property="howmany"   column="howmany"   />
+		<result     property="dvolume"   column="dvolume"   />
+		<result     property="dstatus"   column="dstatus"   />
+		<result     property="originalvalue"   column="originalvalue"   />
+
+        <result property="createBy"      column="create_by"      />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"      column="update_by"      />
+        <result property="updateTime"    column="update_time"    />
+		<result property="remark"    column="remark"    />
+		<result     property="dept_id"   column="dept_id"   />
+    </resultMap> 
+
+	<sql id="selectVo">
+        select *
+        from dev_asset_structure r
+    </sql>	
+	
+	<!-- 查询条件 -->
+	<sql id="sqlwhereSearch">
+		<where>
+			<if test=" deptid !=null">
+				and deptid = #{deptid}
+			</if>
+			<if test=" deptname != null and deptname != ''">
+				AND deptname  like concat(concat('%',#{deptname}),'%')
+			</if>
+			<if test=" assetname !=null and assetname != ''">
+				AND assetname  like concat(concat('%',#{assetname}),'%')
+			</if>
+			<if test=" dlocation !=null and dlocation != ''">
+				AND dlocation  like concat(concat('%',#{dlocation}),'%')
+			</if>
+		</where>
+	</sql>
+	
+
+    
+    <select id="select" parameterType="Structure" resultMap="result">
+        <include refid="selectVo"/>
+        <include refid="sqlwhereSearch"/>
+    </select>
+    
+    <select id="selectList" parameterType="Structure" resultMap="result">
+        <include refid="selectVo"/>
+        where  1 = 1
+        <if test=" deptid !=null">
+				and deptid = #{deptid}
+			</if>
+			<if test=" deptname != null and deptname != ''">
+				AND deptname  like concat(concat('%',#{deptname}),'%')
+			</if>
+			<if test=" assetname !=null and assetname != ''">
+				AND assetname  like concat(concat('%',#{assetname}),'%')
+			</if>
+			<if test=" dlocation !=null and dlocation != ''">
+				AND dlocation  like concat(concat('%',#{dlocation}),'%')
+			</if>
+		<!-- 数据范围过滤 -->
+		${params.dataScope}
+		
+		order by r.id
+    </select>
+      <select id="selectByName" parameterType="Long" resultMap="result">
+		<include refid="selectVo"/>
+		where  1 = 1
+		<if test=" assetname != null and assetname != ''">
+				AND assetname  like concat(concat('%',#{assetname}),'%')
+		</if>
+	</select>
+	
+	<select id="selectById" parameterType="Long" resultMap="result">
+		<include refid="selectVo"/>
+		where r.id = #{id}
+	</select>
+	
+    <delete id="deleteById" parameterType="Long">
+		delete from dev_asset_structure where id = #{id}
+	</delete>
+	 <delete id="deleteByIds" parameterType="Long">
+ 		delete from dev_asset_structure where id in
+ 		<foreach collection="array" item="id" open="(" separator="," close=")">
+ 			#{id}
+        </foreach> 
+ 	</delete>
+    
+    <update id="update" parameterType="Structure">
+ 		update dev_asset_structure
+ 		<set>
+			<if test=" deptid != null ">deptid = #{deptid},</if>
+			<if test=" deptname != null and deptname != ''">deptname = #{deptname},</if>
+			<if test=" dlocation != null and dlocation != ''">dlocation = #{dlocation},</if>
+			<if test=" assetname != null and assetname != ''">assetname = #{assetname},</if>
+			<if test=" structure != null and structure != ''">structure = #{structure},</if>
+			<if test=" builttime != null ">builttime = #{builttime},</if>
+			<if test=" dlength != null and dlength != ''">dlength = #{dlength},</if>
+			<if test=" dwidth != null and dwidth != ''">dwidth = #{dwidth},</if>
+			<if test=" dhigh != null and dhigh != ''">dhigh = #{dhigh},</if>
+			<if test=" howmany != null and howmany != ''">howmany = #{howmany},</if>
+			<if test=" dvolume != null and dvolume != ''">dvolume = #{dvolume},</if>
+			<if test=" dstatus != null and dstatus != ''">dstatus = #{dstatus},</if>
+			<if test=" originalvalue != null and originalvalue != ''">originalvalue = #{originalvalue},</if>
+			
+			<if test=" remark != null and remark != ''">remark = #{remark},</if>
+ 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+ 			update_time = sysdate
+ 		</set>
+ 		where id = #{id}
+	</update>
+	  
+    <insert id="insert" parameterType="Structure">
+    	 <selectKey keyProperty="id" resultType="long" order="BEFORE">
+			SELECT seq_dev_asset_structure.NEXTVAL as id FROM DUAL
+		</selectKey>
+    
+		INSERT INTO dev_asset_structure(
+			<if test=" id != null and id!= 0">id,</if>
+			<if test=" deptid != null ">deptid,</if>
+			<if test=" deptname != null and  deptname != ''">deptname,</if>
+			<if test=" dlocation != null and  dlocation != ''">dlocation,</if>
+			<if test=" assetname != null and  assetname != ''">assetname,</if>
+			<if test=" structure != null and  structure != ''">structure,</if>
+			<if test=" builttime != null ">builttime,</if>
+			<if test=" dlength != null and  dlength != ''">dlength,</if>
+			<if test=" dwidth != null and  dwidth != ''">dwidth,</if>
+			<if test=" dhigh != null and  dhigh != ''">dhigh,</if>
+			<if test=" howmany != null and  howmany != ''">howmany,</if>
+			<if test=" dvolume != null and  dvolume != ''">dvolume,</if>
+			<if test=" dstatus != null and  dstatus != ''">dstatus,</if>
+			<if test=" originalvalue != null and  originalvalue != ''">originalvalue,</if>
+			
+			<if test=" remark != null and remark != ''">REMARK,</if>
+			<if test=" createBy != null and createBy != ''">create_by,</if>	
+			<if test=" dept_id != null ">dept_id,</if>
+			create_time
+		) VALUES (
+			<if test=" id != null and id!= 0">#{id},</if>
+			<if test=" deptid != null ">#{deptid},</if>
+			<if test=" deptname != null and deptname != ''">#{deptname},</if>
+			<if test=" dlocation != null and dlocation != ''">#{dlocation},</if>
+			<if test=" assetname != null and assetname != ''">#{assetname},</if>
+			<if test=" structure != null and structure != ''">#{structure},</if>
+			<if test=" builttime != null ">#{builttime},</if>
+			<if test=" dlength != null and dlength != ''">#{dlength},</if>
+			<if test=" dwidth != null and dwidth != ''">#{dwidth},</if>
+			<if test=" dhigh != null and dhigh != ''">#{dhigh},</if>
+			<if test=" howmany != null and howmany != ''">#{howmany},</if>
+			<if test=" dvolume != null and dvolume != ''">#{dvolume},</if>
+			<if test=" dstatus != null and dstatus != ''">#{dstatus},</if>
+			<if test=" originalvalue != null and originalvalue != ''">#{originalvalue},</if>
+
+			
+			<if test=" remark != null and remark != ''">#{remark},</if>
+			<if test=" createBy != null and createBy != ''">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
+			sysdate			
+		)
+	</insert>
+    
+</mapper>

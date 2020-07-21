@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+	<th:block th:include="include :: header('新增设备')" />
+	<th:block th:include="include :: cropbox-css" />
+	<th:block th:include="include :: select2-css" />
+	<th:block th:include="include :: bootstrap-fileinput-css" />
+</head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form id="form"  class="form-horizontal m" th:object="${obj}">
+        <div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">作业编号：</label>
+						   <div class="col-sm-8">
+							   <input name="workid" th:field="*{workid}" class="form-control" type="text" readonly="readonly" >
+						   </div>
+					   </div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">检测管渠编号：</label>
+						<div class="col-sm-8">
+								<input name="exp_no" th:field="*{exp_no}" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">检测起点管线点号：</label>
+						   <div class="col-sm-8">
+							   <input name="s_point" th:field="*{s_point}" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">检测终点管线点号：</label>
+						<div class="col-sm-8">
+								<input name="e_point" th:field="*{e_point}" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">检测时间：</label>
+						   <div class="col-sm-8">
+							   <input name="sampletime" th:field="*{sampletime}"  class="time-input form-control " data-type="datetime" data-format="yyyy-MM-dd-HH-mm"  type="text"   >
+						   </div>
+					   </div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">检测单位：</label>
+						<div class="col-sm-8">
+								<input name="detectdep" th:field="*{detectdep}" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">检测人员：</label>
+						   <div class="col-sm-8">
+							   <input name="detect_person" th:field="*{detect_person}" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">检测方法：</label>
+						<div class="col-sm-8">
+								<select class="selectpicker form-control" name="detect_method"  id="detect_method" th:field="*{detect_method}"  type="text" >
+                            	 <option value="1">1-CCTV</option>
+								  <option value="2">2-声纳</option>
+								  <option value="3">3-QV</option>
+								  <option value="4">4-其他</option>
+								</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">检测方向：</label>
+						   <div class="col-sm-8">
+							   <select class="selectpicker form-control" name="detect_dir"  id="detect_dir"  th:field="*{detect_dir}" type="number" >
+                            	 <option value="1">1-与流向一致</option>
+								  <option value="2">2-与流向不一致</option>
+								</select>
+						   </div>
+					   </div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">封堵情况：</label>
+						<div class="col-sm-8">
+								<input name="pipe_block" th:field="*{pipe_block}" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">功能性缺陷：</label>
+						   <div class="col-sm-8">
+							   <select class="selectpicker form-control" name="func_defect"  id="func_defect" th:field="*{func_defect}"  type="text" >
+                            	 <option value="0">0-无缺陷</option>
+								  <option value="1">1-沉积</option>
+								  <option value="2">2-结垢</option>
+								  <option value="3">3-障碍物</option>
+								  <option value="4">4-残墙、坝根</option>
+								  <option value="5">5-树根</option>
+								  <option value="6">6-浮渣</option>
+								  <option value="7">7-封堵</option>
+								  <option value="8">8-其他</option>
+								</select>
+						   </div>
+					   </div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">功能性缺陷等级：</label>
+						<div class="col-sm-8">
+								<input name="func_class" th:field="*{func_class}" class="form-control" type="number"  >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">结构性缺陷：</label>
+						   <div class="col-sm-8"> 
+							   <select class="selectpicker form-control" name="struct_defect"  id="struct_defect" th:field="*{struct_defect}"  type="text" >
+                            	 <option value="0">0-无缺陷</option>
+								  <option value="1">1-破裂</option>
+								  <option value="2">2-变形</option>
+								  <option value="3">3-腐蚀</option>
+								  <option value="4">4-错口</option>
+								  <option value="5">5-起伏</option>
+								  <option value="6">6-脱节</option>
+								  <option value="7">7-接口材料脱落</option>
+								  <option value="8">8-支管暗接</option>
+								  <option value="9">9-异物穿入</option>
+								  <option value="10">10-渗漏</option>
+								  <option value="11">11-其他</option>
+								</select>
+						   </div>
+					   </div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">结构性缺陷等级：</label>
+						<div class="col-sm-8">
+								<input name="struct_class" th:field="*{struct_class}" class="form-control" type="number"  >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">修复指数：</label>
+						   <div class="col-sm-8">
+							   <input name="repair_index" th:field="*{repair_index}" class="form-control" type="number"  >
+						   </div>
+					   </div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">养护指数：</label>
+						<div class="col-sm-8">
+								<input name="maintain_index" th:field="*{maintain_index}" class="form-control" type="number"  >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">缺陷描述：</label>
+						   <div class="col-sm-8">
+							   <input name="problem" th:field="*{problem}" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+				<!-- <div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">影像文件名：</label>
+						<div class="col-sm-8">
+								<input name="video_filename" th:field="*{video_filename}" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div> -->
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">数据填报单位：</label>
+						   <div class="col-sm-8">
+							   <input name="report_dept" th:field="*{report_dept}" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+			</div>
+			<div class="row">
+				
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">填报日期：</label>
+						<div class="col-sm-8">
+								<input name="reportdate" th:field="*{reportdate}"  class="time-input form-control " data-type="datetime" data-format="yyyy-MM-dd-HH-mm"  type="text"   >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">备注：</label>
+						   <div class="col-sm-8">
+							   <input name="note" th:field="*{note}" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">行政区：</label>
+						<div class="col-sm-8">
+							<input name="district" th:field="*{district}"  class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">河流流域：</label>
+						   <div class="col-sm-8">
+							   <input name="river"  th:field="*{river}" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+			</div>
+			
+			<!-- <div class="row">
+				
+			</div> -->
+					<div class="form-group">
+					   <label class="col-sm-3 control-label">影像:</label>
+					   <div class="col-sm-8 "><a th:href="@{${obj.attachmenturl}}">下载</a>
+					   	<span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 右键->链接另存为</span>
+					   </div>
+					   
+				   </div>
+					<div class="form-group">
+					   <label class="col-sm-3 control-label">更新影像:</label>
+					   <div class="col-sm-8 ">
+						   <input name="attachmenturl" id="attachmenturl" th:field="*{attachmenturl}" class="form-control" type="hidden">
+						   <input id="fileinput" name="file" type="file" >
+					   </div>
+				   </div>			
+			
+		</div>
+
+	</form>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-5 col-sm-10">
+            <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>保 存</button>&nbsp;
+            <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
+        </div>
+    </div>
+	<th:block th:include="include :: footer" />
+	<th:block th:include="include :: select2-js" />
+    <th:block th:include="include :: bootstrap-fileinput-css" />
+    <th:block th:include="include :: bootstrap-fileinput-js" />
+	<script>
+	    var prefix = ctx + "op/dev/ed";
+        $("#form").validate({
+        	onkeyup: false,
+        	rules:{
+        		
+        	},
+        	messages: {
+                "loginName": {
+                    remote: "用户已经存在"
+                },
+        		"email": {
+                    remote: "Email已经存在"
+                },
+        		"phonenumber":{
+                	remote: "手机号码已经存在"
+        		}
+            },
+            focusCleanup: true
+        });
+        
+
+        /*用户管理-新增-选择部门树*/
+        function selectSupplier() {
+        	var treeId = $("#treeId").val();
+        	var sid = $.common.isEmpty(treeId) ? "0" : $("#treeId").val();
+        	var url = ctx + "op/dev/supplier/selectSupplier/" + sid;
+			var options = {
+				title: '选择供应商',
+				width: "380",
+				url: url,
+				callBack: doSubmit
+			};
+			$.modal.openOptions(options);
+		}
+		
+        
+		
+		function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+		}
+		
+		function submitHandler() {
+	        if ($.validate.form()) {
+	        	var data = $("#form").serializeArray();
+	        	$.operate.save(prefix + "/edit", data);
+	        }
+	    }
+        $(document).ready(function () {
+            $("#fileinput").fileinput({
+                'theme': 'explorer-fas',
+                showPreview: false,
+                maxFileCount: 1,
+                'uploadUrl': '/common/upload',
+                overwriteInitial: false
+            });
+
+            $("#fileinput").on("fileuploaded", function (event, data, previewId, index) {
+                console.log(data.response);
+                if(data.response.code == 0){
+                    $('#attachmenturl').val(data.response.fileName);
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>

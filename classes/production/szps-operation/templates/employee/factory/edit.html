@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('修改水厂信息')" />
+	<link rel="stylesheet" th:href="@{/css/employee/operation.css}"/>
+</head>
+<body class="white-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+		<form class="form-horizontal m" id="form-factory-edit" th:object="${factory}">
+			<input id="factory_id" name="factory_id" type="hidden" th:field="*{factory_id}"/>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">厂名：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="name" id="name" maxlength="15" th:field="*{name}" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">地址：</label>
+				<div class="col-sm-8">
+			    	<input class="form-control" type="text" name="address" id="address" maxlength="25" th:field="*{address}" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">归属地区：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="attribution_area" id="attribution_area" maxlength="10" th:field="*{attribution_area}" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">厂长：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="factory_director" id="factory_director" maxlength="4" th:field="*{factory_director}" required/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">副厂长：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="deputy_director" id="deputy_director" maxlength="4" th:field="*{deputy_director}" required/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">日处理水量/吨：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="number" name="daily_water" id="daily_water" th:field="*{daily_water}" placeholder="请输入数字" required/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">联系电话：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="telephone" id="telephone" th:field="*{telephone}" required/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">简介：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="introduction" id="introduction" th:field="*{introduction}" maxlength="40" required/>
+				</div>
+			</div>
+		</form>
+	</div>
+	<th:block th:include="include :: footer" />
+	<script type="text/javascript">
+		//表单提交验证
+		function submitHandler() {
+	        if ($.validate.form()) {
+	        	edit();
+	        }
+	    }
+		
+		//--------------------------------------主程序结束---------------------------------------
+
+		//水厂信息修改保存
+		function edit() {
+			var factory_id = $("input[name='factory_id']").val();
+			var name = $("input[name='name']").val();
+			var address = $("input[name='address']").val();
+			var attribution_area = $("input[name='attribution_area']").val();
+			var factory_director = $("input[name='factory_director']").val();
+			var deputy_director = $("input[name='deputy_director']").val();
+			var daily_water = $("input[name='daily_water']").val();
+			var telephone = $("input[name='telephone']").val();
+			var introduction = $("input[name='introduction']").val();
+			$.ajax({
+				cache : true,
+				type : "POST",
+				url : ctx + "employee/factory/edit",
+				data : {
+					"factory_id": factory_id,
+					"name": name,
+					"address": address,
+					"attribution_area": attribution_area,
+					"factory_director": factory_director,
+					"deputy_director":deputy_director,
+					"daily_water":daily_water,
+					"telephone":telephone,
+					"introduction":introduction,
+				},
+				async : false,
+				error : function(request) {
+					$.modal.alertError("修改水厂信息发生错误"); 
+				},
+				success : function(data) {
+					$.operate.successCallback(data);
+				}
+			});
+		}
+	</script>
+</body>
+</html>

@@ -120,6 +120,19 @@ public interface SysDeptMapper
      * 根据行政区编号查找
      * @param sysDept
      * @return
+     * made by HJR
      */
     public List<SysDept> getSysDepts(String  sysDept);
+
+
+    /**
+     * 获取全部信息
+     * @return
+     * made by HJR
+     */
+    public List<SysDept> getSysDepts2();
+
+
+
+
 }

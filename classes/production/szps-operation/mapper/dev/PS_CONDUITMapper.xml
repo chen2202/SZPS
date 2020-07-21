@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.dev.drainagenetwork.PS_CONDUITMapper">
+ 
+	<resultMap type="PS_CONDUIT" id="result">
+		<id     property="lno"    column="Lno"    />
+<!-- 		<id     property="prj_no"    column="Prj_No"    /> -->
+<result     property="prj_no"   column="Prj_No"   />
+<result     property="prj_name"   column="Prj_Name"   />
+<!-- <result     property="lno"   column="Lno"   /> -->
+<result     property="grade"   column="Grade"   />
+<result     property="s_point"   column="S_Point"   />
+<result     property="s_deep"   column="S_Deep"   />
+<result     property="in_elev"   column="In_Elev"   />
+<result     property="e_point"   column="E_Point"   />
+<result     property="e_deep"   column="E_Deep"   />
+<result     property="out_elev"   column="Out_Elev"   />
+<result     property="sewagesystem_id"   column="SewageSystem_ID"   />
+<result     property="stormsystem_id"   column="StormSystem_ID"   />
+<result     property="conduit_style1"   column="Conduit_Style1"   />
+<result     property="conduit_style2"   column="Conduit_Style2"   />
+<result     property="type"   column="Type"   />
+<result     property="code"   column="Code"   />
+<result     property="material"   column="Material"   />
+<result     property="servicelife"   column="ServiceLife"   />
+<result     property="shapetype"   column="ShapeType"   />
+<result     property="shape_data1"   column="Shape_Data1"   />
+<result     property="shape_data2"   column="Shape_Data2"   />
+<result     property="shape_data3"   column="Shape_Data3"   />
+<result     property="shape_data4"   column="Shape_Data4"   />
+<result     property="shape_xydata"   column="Shape_XYData"   />
+<result     property="pipelength"   column="PipeLength"   />
+<result     property="flowdir"   column="FlowDir"   />
+<result     property="embed"   column="EmBed"   />
+<result     property="interfaceP"   column="Interface"   />
+<result     property="address"   column="Address"   />
+<result     property="datasource"   column="DataSource"   />
+<result     property="sunit"   column="Sunit"   />
+<result     property="sdate"   column="Sdate"   />
+<result     property="updatetime"   column="UpdateTime"   />
+<result     property="mdate"   column="Mdate"   />
+<result     property="plan"   column="Plan"   />
+<result     property="conduit_type"   column="Conduit_Type"   />
+<result     property="status"   column="status"   />
+<result     property="ename"   column="Ename"   />
+<result     property="design_dept"   column="Design_Dept"   />
+<result     property="conster_dept"   column="Conster_Dept"   />
+<result     property="belong"   column="Belong"   />
+<result     property="operator"   column="Operator"   />
+<result     property="note"   column="Note"   />
+<result     property="shape_length"   column="SHAPE_Length"   />
+<result     property="objectid"   column="OBJECTID"   />
+<result     property="areaid"   column="AREAID"   />
+<result     property="areaname"   column="AREANAME"   />
+
+
+<!--         <result property="createBy"      column="create_by"      />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"      column="update_by"      />
+        <result property="updateTime"    column="update_time"    />
+		<result property="remark"    column="remark"    /> -->
+		<result     property="dept_id"   column="dept_id"   />
+    </resultMap> 
+
+	<sql id="selectVo">
+        select *
+        from PS_CONDUIT r
+    </sql>	
+	
+	<!-- 查询条件 -->
+	<sql id="sqlwhereSearch">
+		<where>
+			<if test=" prj_no !=null and prj_no != ''">
+				and "Prj_No" = #{prj_no}
+			</if>
+			<if test=" lno !=null and lno != ''">
+				and "Lno" = #{lno}
+			</if>
+			<if test=" areaid !=null">
+				and AREAID = #{areaid}
+			</if>
+			<if test=" areaname != null and areaname != ''">
+				AND AREANAME  like concat(concat('%',#{areaname}),'%')
+			</if>
+			<if test=" prj_name != null and prj_name != ''">
+				AND "Prj_Name"  like concat(concat('%',#{prj_name}),'%')
+			</if>
+		</where>
+	</sql>
+	
+
+    
+    <select id="select" parameterType="PS_CONDUIT" resultMap="result">
+        <include refid="selectVo"/>
+        <include refid="sqlwhereSearch"/>
+    </select>
+    
+    <select id="selectList" parameterType="PS_CONDUIT" resultMap="result">
+        <include refid="selectVo"/>
+        where  1 = 1
+        <if test=" prj_no != null and prj_no != '' ">
+			AND "Prj_No" = #{prj_no}
+		</if>
+		<if test=" lno !=null and lno != ''">
+			and "Lno" = #{lno}
+		</if>
+		<if test=" areaid !=null">
+				and AREAID = #{areaid}
+		</if>
+		<if test=" areaname != null and areaname != ''">
+			AND AREANAME  like concat(concat('%',#{areaname}),'%')
+		</if>
+		<if test=" prj_name != null and prj_name != ''">
+				AND "Prj_Name"  like concat(concat('%',#{prj_name}),'%')
+		</if>
+		<!-- 数据范围过滤 -->
+		${params.dataScope}	
+    </select>
+    
+      <select id="selectByName" parameterType="String" resultMap="result">
+		<include refid="selectVo"/>
+		where  1 = 1
+		<if test=" prj_name != null and prj_name != ''">
+				AND "Prj_Name"  like concat(concat('%',#{prj_name}),'%')
+		</if>
+	</select>
+	
+	<select id="selectById" parameterType="String" resultMap="result">
+		<include refid="selectVo"/>
+		where r."Lno" = #{lno}
+	</select>
+	
+    <delete id="deleteById" parameterType="String">
+		delete from PS_CONDUIT where "Lno" = #{lno}
+	</delete>
+	 <delete id="deleteByIds" parameterType="String">
+ 		delete from PS_CONDUIT where "Lno" in
+ 		<foreach collection="array" item="lno" open="(" separator="," close=")">
+ 			#{lno}
+        </foreach> 
+ 	</delete>
+    
+    <update id="update" parameterType="PS_CONDUIT">
+ 		update PS_CONDUIT
+ 		<set>
+<if test=" prj_no != null and prj_no != ''">"Prj_No" = #{prj_no},</if>
+<if test=" prj_name != null and prj_name != ''">"Prj_Name" = #{prj_name},</if>
+<if test=" lno != null and lno != ''">"Lno" = #{lno},</if>
+<if test=" grade != null and grade != ''">"Grade" = #{grade},</if>
+<if test=" s_point != null and s_point != ''">"S_Point" = #{s_point},</if>
+<if test=" s_deep != null and s_deep != ''">"S_Deep" = #{s_deep},</if>
+<if test=" in_elev != null and in_elev != ''">"In_Elev" = #{in_elev},</if>
+<if test=" e_point != null and e_point != ''">"E_Point" = #{e_point},</if>
+<if test=" e_deep != null and e_deep != ''">"E_Deep" = #{e_deep},</if>
+<if test=" out_elev != null and out_elev != ''">"Out_Elev" = #{out_elev},</if>
+<if test=" sewagesystem_id != null and sewagesystem_id != ''">"SewageSystem_ID" = #{sewagesystem_id},</if>
+<if test=" stormsystem_id != null and stormsystem_id != ''">"StormSystem_ID" = #{stormsystem_id},</if>
+<if test=" conduit_style1 != null and conduit_style1 != ''">"Conduit_Style1" = #{conduit_style1},</if>
+<if test=" conduit_style2 != null and conduit_style2 != ''">"Conduit_Style2" = #{conduit_style2},</if>
+<if test=" type != null and type != ''">"Type" = #{type},</if>
+<if test=" code != null and code != ''">"Code" = #{code},</if>
+<if test=" material != null and material != ''">"Material" = #{material},</if>
+<if test=" servicelife != null and servicelife != ''">"ServiceLife" = #{servicelife},</if>
+<if test=" shapetype != null and shapetype != ''">"ShapeType" = #{shapetype},</if>
+<if test=" shape_data1 != null and shape_data1 != ''">"Shape_Data1" = #{shape_data1},</if>
+<if test=" shape_data2 != null and shape_data2 != ''">"Shape_Data2" = #{shape_data2},</if>
+<if test=" shape_data3 != null and shape_data3 != ''">"Shape_Data3" = #{shape_data3},</if>
+<if test=" shape_data4 != null and shape_data4 != ''">"Shape_Data4" = #{shape_data4},</if>
+<if test=" shape_xydata != null and shape_xydata != ''">"Shape_XYData" = #{shape_xydata},</if>
+<if test=" pipelength != null and pipelength != ''">"PipeLength" = #{pipelength},</if>
+<if test=" flowdir != null and flowdir != ''">"FlowDir" = #{flowdir},</if>
+<if test=" embed != null and embed != ''">"EmBed" = #{embed},</if>
+<if test=" interfaceP != null and interfaceP != ''">"Interface" = #{interfaceP},</if>
+<if test=" address != null and address != ''">"Address" = #{address},</if>
+<if test=" datasource != null and datasource != ''">"DataSource" = #{datasource},</if>
+<if test=" sunit != null and sunit != ''">"Sunit" = #{sunit},</if>
+<if test=" sdate != null and sdate != ''">"Sdate" = #{sdate},</if>
+<if test=" updatetime != null and updatetime != ''">"UpdateTime" = #{updatetime},</if>
+<if test=" mdate != null and mdate != ''">"Mdate" = #{mdate},</if>
+<if test=" plan != null and plan != ''">"Plan" = #{plan},</if>
+<if test=" conduit_type != null and conduit_type != ''">"Conduit_Type" = #{conduit_type},</if>
+<if test=" status != null and status != ''">"status" = #{status},</if>
+<if test=" ename != null and ename != ''">"Ename" = #{ename},</if>
+<if test=" design_dept != null and design_dept != ''">"Design_Dept" = #{design_dept},</if>
+<if test=" conster_dept != null and conster_dept != ''">"Conster_Dept" = #{conster_dept},</if>
+<if test=" belong != null and belong != ''">"Belong" = #{belong},</if>
+<if test=" operator != null and operator != ''">"Operator" = #{operator},</if>
+<if test=" note != null and note != ''">"Note" = #{note},</if>
+<if test=" shape_length != null and shape_length != ''">"SHAPE_Length" = #{shape_length},</if>
+<if test=" objectid != null and objectid != ''">"OBJECTID" = #{objectid},</if>
+<if test=" areaid != null and areaid != ''">"AREAID" = #{areaid},</if>
+<if test=" areaname != null and areaname != ''">"AREANAME" = #{areaname},</if>
+			
+			<!-- <if test=" remark != null and remark != ''">"remark = #{remark},</if>
+ 			<if test=" updateBy != null and updateBy != ''">"update_by = #{updateBy},</if>
+ 			update_time = sysdate -->
+ 		</set>
+ 		where "Lno" = #{lno}
+	</update>
+	  
+    <insert id="insert" parameterType="PS_CONDUIT">
+    
+		INSERT INTO PS_CONDUIT(
+<if test=" prj_no != null and  prj_no != ''">"Prj_No",</if>
+<if test=" prj_name != null and  prj_name != ''">"Prj_Name",</if>
+<if test=" lno != null and  lno != ''">"Lno",</if>
+<if test=" grade != null and  grade != ''">"Grade",</if>
+<if test=" s_point != null and  s_point != ''">"S_Point",</if>
+<if test=" s_deep != null and  s_deep != ''">"S_Deep",</if>
+<if test=" in_elev != null and  in_elev != ''">"In_Elev",</if>
+<if test=" e_point != null and  e_point != ''">"E_Point",</if>
+<if test=" e_deep != null and  e_deep != ''">"E_Deep",</if>
+<if test=" out_elev != null and  out_elev != ''">"Out_Elev",</if>
+<if test=" sewagesystem_id != null and  sewagesystem_id != ''">"SewageSystem_ID",</if>
+<if test=" stormsystem_id != null and  stormsystem_id != ''">"StormSystem_ID",</if>
+<if test=" conduit_style1 != null and  conduit_style1 != ''">"Conduit_Style1",</if>
+<if test=" conduit_style2 != null and  conduit_style2 != ''">"Conduit_Style2",</if>
+<if test=" type != null and  type != ''">"Type",</if>
+<if test=" code != null and  code != ''">"Code",</if>
+<if test=" material != null and  material != ''">"Material",</if>
+<if test=" servicelife != null and  servicelife != ''">"ServiceLife",</if>
+<if test=" shapetype != null and  shapetype != ''">"ShapeType",</if>
+<if test=" shape_data1 != null and  shape_data1 != ''">"Shape_Data1",</if>
+<if test=" shape_data2 != null and  shape_data2 != ''">"Shape_Data2",</if>
+<if test=" shape_data3 != null and  shape_data3 != ''">"Shape_Data3",</if>
+<if test=" shape_data4 != null and  shape_data4 != ''">"Shape_Data4",</if>
+<if test=" shape_xydata != null and  shape_xydata != ''">"Shape_XYData",</if>
+<if test=" pipelength != null and  pipelength != ''">"PipeLength",</if>
+<if test=" flowdir != null and  flowdir != ''">"FlowDir",</if>
+<if test=" embed != null and  embed != ''">"EmBed",</if>
+<if test=" interfaceP != null and  interfaceP != ''">"Interface",</if>
+<if test=" address != null and  address != ''">"Address",</if>
+<if test=" datasource != null and  datasource != ''">"DataSource",</if>
+<if test=" sunit != null and  sunit != ''">"Sunit",</if>
+<if test=" sdate != null and  sdate != ''">"Sdate",</if>
+<if test=" updatetime != null and  updatetime != ''">"UpdateTime",</if>
+<if test=" mdate != null and  mdate != ''">"Mdate",</if>
+<if test=" plan != null and  plan != ''">"Plan",</if>
+<if test=" conduit_type != null and  conduit_type != ''">"Conduit_Type",</if>
+<if test=" status != null and  status != ''">"status",</if>
+<if test=" ename != null and  ename != ''">"Ename",</if>
+<if test=" design_dept != null and  design_dept != ''">"Design_Dept",</if>
+<if test=" conster_dept != null and  conster_dept != ''">"Conster_Dept",</if>
+<if test=" belong != null and  belong != ''">"Belong",</if>
+<if test=" operator != null and  operator != ''">"Operator",</if>
+<if test=" note != null and  note != ''">"Note",</if>
+<if test=" shape_length != null and  shape_length != ''">"SHAPE_Length",</if>
+<if test=" objectid != null and  objectid != ''">"OBJECTID",</if>
+<if test=" areaid != null and  areaid != ''">"AREAID,</if>
+<if test=" areaname != null and  areaname != ''">"AREANAME,</if>
+
+			
+			<!-- <if test=" remark != null and remark != ''">REMARK,</if>
+			<if test=" createBy != null and createBy != ''">create_by,</if> -->
+			<if test=" dept_id != null ">dept_id,</if>
+			create_time
+		) VALUES (
+<if test=" prj_no != null and prj_no != ''">#{prj_no},</if>
+<if test=" prj_name != null and prj_name != ''">#{prj_name},</if>
+<if test=" lno != null and lno != ''">#{lno},</if>
+<if test=" grade != null and grade != ''">#{grade},</if>
+<if test=" s_point != null and s_point != ''">#{s_point},</if>
+<if test=" s_deep != null and s_deep != ''">#{s_deep},</if>
+<if test=" in_elev != null and in_elev != ''">#{in_elev},</if>
+<if test=" e_point != null and e_point != ''">#{e_point},</if>
+<if test=" e_deep != null and e_deep != ''">#{e_deep},</if>
+<if test=" out_elev != null and out_elev != ''">#{out_elev},</if>
+<if test=" sewagesystem_id != null and sewagesystem_id != ''">#{sewagesystem_id},</if>
+<if test=" stormsystem_id != null and stormsystem_id != ''">#{stormsystem_id},</if>
+<if test=" conduit_style1 != null and conduit_style1 != ''">#{conduit_style1},</if>
+<if test=" conduit_style2 != null and conduit_style2 != ''">#{conduit_style2},</if>
+<if test=" type != null and type != ''">#{type},</if>
+<if test=" code != null and code != ''">#{code},</if>
+<if test=" material != null and material != ''">#{material},</if>
+<if test=" servicelife != null and servicelife != ''">#{servicelife},</if>
+<if test=" shapetype != null and shapetype != ''">#{shapetype},</if>
+<if test=" shape_data1 != null and shape_data1 != ''">#{shape_data1},</if>
+<if test=" shape_data2 != null and shape_data2 != ''">#{shape_data2},</if>
+<if test=" shape_data3 != null and shape_data3 != ''">#{shape_data3},</if>
+<if test=" shape_data4 != null and shape_data4 != ''">#{shape_data4},</if>
+<if test=" shape_xydata != null and shape_xydata != ''">#{shape_xydata},</if>
+<if test=" pipelength != null and pipelength != ''">#{pipelength},</if>
+<if test=" flowdir != null and flowdir != ''">#{flowdir},</if>
+<if test=" embed != null and embed != ''">#{embed},</if>
+<if test=" interfaceP != null and interfaceP != ''">#{interfaceP},</if>
+<if test=" address != null and address != ''">#{address},</if>
+<if test=" datasource != null and datasource != ''">#{datasource},</if>
+<if test=" sunit != null and sunit != ''">#{sunit},</if>
+<if test=" sdate != null and sdate != ''">#{sdate},</if>
+<if test=" updatetime != null and updatetime != ''">#{updatetime},</if>
+<if test=" mdate != null and mdate != ''">#{mdate},</if>
+<if test=" plan != null and plan != ''">#{plan},</if>
+<if test=" conduit_type != null and conduit_type != ''">#{conduit_type},</if>
+<if test=" status != null and status != ''">#{status},</if>
+<if test=" ename != null and ename != ''">#{ename},</if>
+<if test=" design_dept != null and design_dept != ''">#{design_dept},</if>
+<if test=" conster_dept != null and conster_dept != ''">#{conster_dept},</if>
+<if test=" belong != null and belong != ''">#{belong},</if>
+<if test=" operator != null and operator != ''">#{operator},</if>
+<if test=" note != null and note != ''">#{note},</if>
+<if test=" shape_length != null and shape_length != ''">#{shape_length},</if>
+<if test=" objectid != null and objectid != ''">#{objectid},</if>
+<if test=" areaid != null and areaid != ''">#{areaid},</if>
+<if test=" areaname != null and areaname != ''">#{areaname},</if>
+
+			
+			<!-- <if test=" remark != null and remark != ''">#{remark},</if>
+			<if test=" createBy != null and createBy != ''">#{createBy},</if> -->
+			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>	
+			sysdate		
+		)
+	</insert>
+    
+</mapper>

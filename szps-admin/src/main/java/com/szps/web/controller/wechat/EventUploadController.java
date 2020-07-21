@@ -44,95 +44,6 @@ public class EventUploadController {
     @Autowired
     private LoginController loginController;
 
-    /**
-     * 突发事件文字上传接口
-     *
-     * @param eventName
-     * @param eventPlace
-     * @param eventTime
-     * @param eventContent
-     * @return
-     * @throws ParseException
-     */
-    @PostMapping(value = "/upload")
-    @ResponseBody
-
-    public String upload(@RequestParam("eventName") String eventName, @RequestParam("eventPlace") String eventPlace,
-                         @RequestParam("eventTime") String eventTime, @RequestParam("eventContent") String eventContent) throws ParseException {
-
-        System.out.println(eventName + " " + eventPlace + " " + eventTime + " " + eventContent);
-        int radomInt = new Random().nextInt(999999);
-        String s = String.valueOf(radomInt);
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = new Date();
-        String ss = sdf.format(date);
-
-        Date date1 = sdf.parse(ss);
-
-        EventSubmit eventSubmit = new EventSubmit();
-
-        SysUser user = ShiroUtils.getSysUser();
-        SysDept sysDept = iSysDeptService.selectDeptById(user.getDeptId());
-
-
-        SysArea sysArea = new SysArea();
-        eventSubmit.setEventSId(s);
-        eventSubmit.setEventName(eventName);
-        eventSubmit.setEventPlace(eventPlace);
-        eventSubmit.setEventTime(sdf.parse(eventTime + ":00"));
-        eventSubmit.setEventContent(eventContent);
-        eventSubmit.setEventSubmitUser(user.getUserName());
-        eventSubmit.setEventPhone(user.getPhonenumber());
-        eventSubmit.setEventUnit(sysDept.getDeptName());
-        eventSubmit.setEventSubmitTime(date1);
-        eventSubmit.setEventArea(loginController.getUserArea(sysArea));
-
-        iEventSubmitService.insertEventSubmit(eventSubmit);
-
-
-        return s;
-    }
-
-
-    /**
-     * 上传突发事件图片
-     *
-     * @param multipartFile
-     * @param feedbackId
-     * @return
-     */
-    @PostMapping(value = "/eventPictureUpload")
-    @ResponseBody
-    public AjaxResult uploadPicture(@RequestParam("picture") MultipartFile[] multipartFile, @RequestParam(required = true)
-            String feedbackId) {
-        try {
-            if (multipartFile.length == 0) {
-                return error("文件为空,上传失败");
-            }
-            String filePath = Global.getUploadPath();
-            String fileName[] = new String[10];
-            String url[] = new String[10];
-            for (int i = 0; i < multipartFile.length; i++) {
-
-                fileName[i] = FileUploadUtils.upload(filePath, multipartFile[i]);
-                url[i] = fileName[i];
-                int radomInt = new Random().nextInt(999999);
-                String s = String.valueOf(radomInt);
-//                while (pictureService.checkPicture(s) == 1) {
-//                    s = String.valueOf(new Random().nextInt(999999));
-//                }
-                EventPicture picture = new EventPicture();
-                picture.setEventSid(feedbackId);
-                picture.setEventPictureUrl(url[i]);
-                picture.setEventPictureName(multipartFile[i].getOriginalFilename());
-                iEventSubmitService.insertEventPicture(picture);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return success("上传成功!");
-    }
 
 
     /**
@@ -148,7 +59,8 @@ public class EventUploadController {
         //获取时间
         String time = params.get("time").toString();
 
-        List<EventSubmit> eventSubmits=getEventSubmits();
+        //从方法中获取
+        List<EventSubmit> eventSubmits = getEventSubmits();
 
         List<EventLists> eventLists = new ArrayList<>();
 
@@ -200,12 +112,11 @@ public class EventUploadController {
     public List<EventLists> getSearchEventLists(@RequestBody Map<String, Object> params) {
 
 
-
         String time = params.get("time").toString();
         String value = params.get("value").toString();
 
 
-        List<EventSubmit> eventSubmits=getEventSubmits();
+        List<EventSubmit> eventSubmits = getEventSubmits();
 
         List<EventLists> eventLists = new ArrayList<>();
 
@@ -253,9 +164,10 @@ public class EventUploadController {
 
     /**
      * 不同的角色获取不同的突发事件列表
+     *
      * @return
      */
-    protected  List<EventSubmit> getEventSubmits(){
+    protected List<EventSubmit> getEventSubmits() {
         EventSubmit eventSubmit = new EventSubmit();
         //获取管理员级别
         SysUser user = ShiroUtils.getSysUser();
@@ -266,7 +178,7 @@ public class EventUploadController {
 
         SysArea s = new SysArea();
         //判断角色
-        if (loginController.getSysRole().equals("市水务局人员")||loginController.getSysRole().equals("区水务局人员")) {
+        if (loginController.getSysRole().equals("市水务局人员") || loginController.getSysRole().equals("区水务局人员")) {
             if (loginController.getSysRole().equals("市水务局人员")) { //市水务局显示全市突发事件列表
                 eventSubmits = iEventSubmitService.selectEventSubmitList(eventSubmit);
             } else {//区水务局显示全区突发事件列表
@@ -284,16 +196,118 @@ public class EventUploadController {
 
     }
 
-    protected  int checkEventSid(String sid){
 
-        EventSubmit eventSubmit=new EventSubmit();
+
+    /**
+     * 突发事件文字上传接口
+     *
+     * @param eventName
+     * @param eventPlace
+     * @param eventTime
+     * @param eventContent
+     * @return
+     * @throws ParseException
+     */
+    @PostMapping(value = "/upload")
+    @ResponseBody
+
+    public String upload(@RequestParam("eventName") String eventName, @RequestParam("eventPlace") String eventPlace,
+                         @RequestParam("eventTime") String eventTime, @RequestParam("eventContent") String eventContent) throws ParseException {
+
+        System.out.println(eventName + " " + eventPlace + " " + eventTime + " " + eventContent);
+        int radomInt = new Random().nextInt(999999);
+
+        //判断编号是否重复
+        while (checkEventSid(String.valueOf(radomInt))==1){
+            radomInt = new Random().nextInt(999999);
+        }
+        String s = String.valueOf(radomInt);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date();
+        String ss = sdf.format(date);
+
+        Date date1 = sdf.parse(ss);
+
+        EventSubmit eventSubmit = new EventSubmit();
+
+        SysUser user = ShiroUtils.getSysUser();
+        SysDept sysDept = iSysDeptService.selectDeptById(user.getDeptId());
+
+
+        SysArea sysArea = new SysArea();
+        eventSubmit.setEventSId(s);
+        eventSubmit.setEventName(eventName);
+        eventSubmit.setEventPlace(eventPlace);
+        eventSubmit.setEventTime(sdf.parse(eventTime + ":00"));
+        eventSubmit.setEventContent(eventContent);
+        eventSubmit.setEventSubmitUser(user.getUserName());
+        eventSubmit.setEventPhone(user.getPhonenumber());
+        eventSubmit.setEventUnit(sysDept.getDeptName());
+        eventSubmit.setEventSubmitTime(date1);
+        eventSubmit.setEventArea(loginController.getSysDept());
+
+        iEventSubmitService.insertEventSubmit(eventSubmit);
+
+        return s;
+    }
+
+
+    /**
+     * 上传突发事件图片
+     *
+     * @param multipartFile
+     * @param feedbackId
+     * @return
+     */
+    @PostMapping(value = "/eventPictureUpload")
+    @ResponseBody
+    public AjaxResult uploadPicture(@RequestParam("picture") MultipartFile[] multipartFile, @RequestParam(required = true)
+            String feedbackId) {
+        try {
+            if (multipartFile.length == 0) {
+                return error("文件为空,上传失败");
+            }
+            String filePath = Global.getUploadPath();
+            String fileName[] = new String[10];
+            String url[] = new String[10];
+            for (int i = 0; i < multipartFile.length; i++) {
+
+                fileName[i] = FileUploadUtils.upload(filePath, multipartFile[i]);
+                url[i] = fileName[i];
+
+                EventPicture picture = new EventPicture();
+                picture.setEventSid(feedbackId);
+                picture.setEventPictureUrl(url[i]);
+                picture.setEventPictureName(multipartFile[i].getOriginalFilename());
+
+                iEventSubmitService.insertEventPicture(picture);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return success("上传成功!");
+    }
+
+    /**
+     * 判断编号是否重复
+     * @param sid
+     * @return
+     */
+    protected int checkEventSid(String sid) {
+
+        EventSubmit eventSubmit = new EventSubmit();
 
         eventSubmit.setEventSId(sid);
 
-        EventSubmit eventSubmit1=iEventSubmitService.selectEventSubmitById(sid);
+        List<EventSubmit> eventSubmit1 = iEventSubmitService.selectEventSubmitById(eventSubmit);
+
+        if (eventSubmit1.size() == 1) {
+            return 1;
+        } else {
+            return -1;
+        }
 
 
-
-        return 1;
     }
 }

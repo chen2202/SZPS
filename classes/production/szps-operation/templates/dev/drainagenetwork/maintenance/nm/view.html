@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('维保信息')" />
+</head>
+<body class="gray-bg">
+    <div class="container-div">
+
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="form">
+					<input name=deptid type="hidden" id="treeId"/>
+					<div class="select-list">
+						<ul>
+							<li>
+		                         <label >作业编号：</label>
+                            	<input name="workid"  id="workid" type="text" >
+							</li>
+							
+<!-- 							<li>
+		                        <label >维保类别：</label>
+                            	<select class="selectpicker" name="mtype"  id="mtype">
+									<option>保养</option>
+									<option>维修</option>
+									<option>大修</option>
+								</select>
+							</li> -->
+							
+							<li>
+								<a class="btn  btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn  btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+<!-- 		<div class="select-list">
+			<ul>
+				
+				<li>
+                   	<a class="btn"  th:href="'/op/dev/pscombinfo'"  style="border-color: #1a7bb9">雨水口</a>
+                   	<a class="btn"  th:href="'/op/dev/psconduitinfo'"  style="border-color: #1a7bb9">渠</a>
+                   	<a class="btn"  th:href="'/op/dev/psmanholeinfo'"  style="border-color: #1a7bb9">检查井</a>
+                   	<a class="btn"  th:href="'/op/dev/psoutfallinfo'"  style="border-color: #1a7bb9">排放口</a>
+                   	<a class="btn"  th:href="'/op/dev/pspipeinfo'"  style="border-color: #1a7bb9">管</a>
+                   	<a class="btn"  th:href="'/op/dev/pspointinfo'"  style="border-color: #1a7bb9">特征点</a>
+				</li>
+				<li></li>
+				<li></li>
+				<li>
+                   	<a class="btn"  th:href="'/op/dev/ed'"  style="border-color: #1a7bb9">内窥检测数据</a>
+                   	<a class="btn"  th:href="'/op/dev/nm'"  style="border-color: #EE0000">管网养护数据</a>
+                   	<a class="btn"  th:href="'/op/dev/drainagenetworkmaintenance'"  style="border-color: #1a7bb9">维保数据</a>
+                   	<a class="btn"  th:href="'/op/dev/drainagenetworkspare'"  style="border-color: #1a7bb9">备品备件</a>
+                   	<a class="btn"  th:href="'/op/dev/drainagenetworksupplier'"  style="border-color: #1a7bb9">供应商</a>
+				</li>						
+			</ul>
+		</div> -->
+	        <div class="btn-group-sm" id="toolbar" role="group">
+		        <a class="btn btn-success" onclick="$.operate.addFull()" shiro:hasPermission="dev:nm:add">
+		            <i class="fa fa-plus"></i> 新增
+		        </a>
+		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="dev:nm:delete">
+		            <i class="fa fa-remove"></i> 删除
+		        </a>
+		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="dev:nm:export">
+		            <i class="fa fa-download"></i> 导出
+		        </a> -->
+	        </div>
+	        
+	        <div class="col-sm-12 select-table table-striped">
+	            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+	        </div>
+    	</div>
+    </div>
+    <th:block th:include="include :: footer" />
+    <script th:inline="javascript">
+        var prefix = ctx + "op/dev/nm";
+        var viewFlag = [[${@permission.hasPermi('dev:nm:view')}]];
+        var editFlag = [[${@permission.hasPermi('dev:nm:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('dev:nm:delete')}]];
+        
+       
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+                
+                modalName: "列表",
+                columns: [{
+		            checkbox: true
+		        },
+		        {field: 'workid',title: '作业编号',},
+		        {field: 's_point',title: '起点管点编号',},
+		        {field: 'e_point',title: '终点管点编号',},
+		        {field: 'maintain_date',title: '管养日期',},
+		        {field: 'weather',title: '天气',},
+		        {field: 'maintain_dept',title: '管养单位',},
+		        {field: 'maintain_pe',title: '管养人',},
+		        {field: 'maintain_type',title: '管养类型',},
+		        {field: 'operation_status',title: '运行状况',},
+		        {field: 'functional_defect',title: '功能性缺陷',},
+		        {field: 'structural_defect',title: '结构性缺陷',},
+		        {field: 'psize',title: '管径/断面尺寸',},
+		        {field: 'maintain_method',title: '管养方法',},
+		        {field: 'maintain_length',title: '管养长度',},
+		        {field: 'maintain_amount',title: '清淤量',},
+		        {field: 'maintain_cost',title: '工程费用',},
+		        {field: 'note',title: '备注',},
+		        {
+                    field: 'attachmenturl',
+                    title: '附件',
+                    formatter:function(value,row,index){
+                        var s=[];
+                        s.push('<a  class = "ad"  href="javascript:void(0)" aclick='+row.workid+'><span >下载</span>&nbsp;&nbsp;&nbsp;</a>');
+                        //s.push('<a class="aaa" href="javascript:void(0)" onclick="Click(\'' + row.id + '\')"><i class="fa fa-edit"></i>下载</a> ');
+                        return s.join('');
+                    },
+                    events:'oEvents'
+                },
+		        {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.editFull(\'' + row.workid + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.workid + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        return actions.join('');
+                    }
+                }]
+            };
+            $.table.init(options);
+        });
+        
+        
+        /*用户管理-新增-选择部门树*/
+        function selectDeptTree() {
+        	
+        	var treeId = $("#treeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmit
+			};
+			$.modal.openOptions(options);
+		}
+        function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+			//if ($.tree.notAllowParents(tree)) {
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+			//}
+		}
+        window.oEvents = {
+    	        'click .ad': function () {
+    	            var value=$(this).attr('aclick');
+    	            window.location.href = prefix + "/download?id=" +value;
+    	        }
+    	    };
+    </script>
+</body>
+</html>

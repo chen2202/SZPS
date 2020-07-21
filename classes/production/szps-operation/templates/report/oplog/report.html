@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('周报列表')" />
+</head>
+<body class="gray-bg">
+    <div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="oplog-form">
+				<input name="deptId" type="hidden" id="treeId"/>
+					<div class="select-list">
+						<ul>
+							<li>
+		                        <label >单位：</label>
+                            	<input name="deptName" onclick="selectDeptTree()" id="treeName" type="text" placeholder="请选择单位" >
+							</li>
+							<li class="select-time">
+								<label>日期： </label>
+								<input type="text" class="time-input" id="logDate"  name="logDate"/>
+							</li>
+							<li>
+								<a class="btn  btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn  btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+			
+	        <div class="btn-group-sm" id="toolbar" role="group">
+		        <a class="btn btn-success" onclick="$.operate.addFull()" shiro:hasPermission="report:oplog:add">
+		            <i class="fa fa-plus"></i> 新增
+		        </a>
+		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="report:oplog:export">
+		            <i class="fa fa-download"></i> 导出
+		        </a> -->
+	        </div>
+	        
+	        <div class="col-sm-12 select-table table-striped">
+	            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+	        </div>
+    	</div>
+    </div>
+    
+    <th:block th:include="include :: footer" />
+     <script th:inline="javascript">
+        var prefix = ctx + "op/report/oplog";
+       
+        /*用户管理-新增-选择部门树*/
+        function selectDeptTree() {
+        	
+        	var treeId = $("#treeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmit
+			};
+			$.modal.openOptions(options);
+		}
+        function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+		}
+         $(function() {
+            var options = {
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+                
+                
+                modalName: "运行日志",
+                columns: [{
+		            checkbox: true
+		        },
+				{
+					field : 'id', 
+					title : '序号' 
+				},
+				{
+					field : 'logDate', 
+					title : '日 期' 
+				},
+				{
+					field : 'deptName', 
+					title : '单位' 
+				},
+				{
+		            field: 'weather',
+		            title: '天气',
+		        },
+				{
+		            field: 'poolId',
+		            title: '布水池号',
+		        },
+				{
+		            field: 'waterStartTime',
+		            title: '布水开始时间',
+		        },
+				{
+		            field: 'waterEndTime',
+		            title: '布水结束时间',
+		        },
+				{
+		            field: 'waterUsage',
+		            title: '布水量（m³）',
+		        },
+				{
+		            field: 'dryHour',
+		            title: '落干时刻',
+		        },
+				{
+		            field: 'dryMin',
+		            title: '落干时间（min）',
+		        },
+				{
+		            field: 'logRemarks',
+		            title: '备注',
+		        },
+				{
+		            field: 'logRecorder',
+		            title: '记录人员',
+		        }
+		        ]
+            };
+            $.table.init(options);
+        }); 
+    </script>
+</body>
+</html>

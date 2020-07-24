@@ -1,6 +1,7 @@
 package com.szps.web.service.supervise;
 
 
+import com.szps.web.domain.supervise.TaskUncheck;
 import com.szps.web.domain.supervise.TbTask;
 
 import java.util.List;
@@ -54,4 +55,7 @@ public interface TaskService
     public int selectTaskCountCompleteWithKey(TbTask task);
 
     public int selectMonthTaskCount(String taskRegion, String taskStreet, String taskTime);
+
+    public List<TaskUncheck> selectTaskAllExport();
+    public List<TaskUncheck> selectTaskAllOldExport(TbTask task);
 }

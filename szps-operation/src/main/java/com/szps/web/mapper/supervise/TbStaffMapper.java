@@ -1,6 +1,7 @@
 package com.szps.web.mapper.supervise;
 
 import com.szps.web.domain.supervise.TbStaff;
+import com.szps.web.domain.supervise.addStaff;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -28,5 +29,5 @@ public interface TbStaffMapper {
     List<TbStaff> selectStaffSecond();
 
 
-    List<String> selectStaffName(@Param("a") String a);
+    List<addStaff> selectStaffName(@Param("a") String a);
 }

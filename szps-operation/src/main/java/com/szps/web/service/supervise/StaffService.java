@@ -1,6 +1,7 @@
 package com.szps.web.service.supervise;
 
 import com.szps.web.domain.supervise.TbStaff;
+import com.szps.web.domain.supervise.addStaff;
 
 import java.util.List;
 
@@ -47,5 +48,5 @@ public interface StaffService
     public List<TbStaff> selectStaffOne();
     public List<TbStaff> selectStaffSecond();
 
-    public List<String> selectStaffName(String a);
+    public List<addStaff> selectStaffName(String a);
 }

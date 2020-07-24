@@ -13,6 +13,16 @@
     <result column="TASK_BC" jdbcType="VARCHAR" property="taskBc"/>
   </resultMap>
 
+  <resultMap id="ExportResultMap" type="com.szps.web.domain.supervise.TaskUncheck">
+    <id column="TASK_NUMBER" jdbcType="VARCHAR" property="taskNumber" />
+    <result column="TASK_TIME" jdbcType="VARCHAR" property="taskTime" />
+    <result column="TASK_HOUSE" jdbcType="VARCHAR" property="taskHouse"/>
+    <result column="TASK_RESULT" jdbcType="VARCHAR" property="taskResult"/>
+    <result column="TASK_HANDLE" jdbcType="VARCHAR" property="taskHandle"/>
+    <result column="TASK_CHECKTIME" jdbcType="VARCHAR" property="taskCheckTime"/>
+    <result column="TASK_BC" jdbcType="VARCHAR" property="taskBc"/>
+  </resultMap>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from TB_TASK
     where TASK_NUMBER = #{taskNumber,jdbcType=VARCHAR}
@@ -38,7 +48,7 @@
     where TASK_NUMBER = #{taskNumber,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select TASK_NUMBER,TASK_TIME, TASK_HOUSE,TASK_RESULT,TASK_HANDLE,TASK_CHECKTIME,TASK_FILE,TASK_BC
+    select TASK_NUMBER,TASK_TIME, TASK_HOUSE,TASK_RESULT,TASK_HANDLE,TASK_CHECKTIME,TASK_FILE,TASK_BC,TASK_FLAG
     from TB_TASK
     where TASK_NUMBER = #{taskNumber,jdbcType=VARCHAR}
   </select>
@@ -169,6 +179,31 @@
         AND TB_TASK.TASK_TIME like concat(#{beginTime},'%')
       </if>
 
+
+    </where>
+  </select>
+
+
+  <select id="selectTaskAllExport" resultMap="ExportResultMap">
+    select TASK_NUMBER,TASK_TIME, TASK_HOUSE,TASK_RESULT,TASK_HANDLE,TASK_CHECKTIME,TASK_BC
+    from TB_TASK WHERE TB_TASK.TASK_FLAG='未完成'
+  </select>
+
+  <select id="selectTaskAllOldExport" parameterType="com.szps.web.domain.supervise.TbTask" resultMap="ExportResultMap">
+    select TASK_NUMBER, TASK_TIME, TASK_HOUSE,TASK_RESULT,TASK_HANDLE,TASK_CHECKTIME,TASK_BC
+    from TB_TASK,TB_RULE,TB_HOUSE
+
+    <where>
+      TB_TASK.TASK_HOUSE=TB_HOUSE.HOUSE_NUMBER AND  TB_HOUSE.HOUSE_RULE=TB_RULE.RULE_NAME
+      <if test="ruleName != null and ruleName != ''">
+        AND TB_RULE.RULE_NAME = #{ruleName}
+      </if>
+      <if test="beginTime != null and beginTime != ''">
+        AND TB_TASK.TASK_TIME like concat(#{beginTime},'%')
+      </if>
+      <if test="taskFlag != null and taskFlag != ''">
+        AND TB_TASK.TASK_FLAG = #{taskFlag}
+      </if>
 
     </where>
   </select>

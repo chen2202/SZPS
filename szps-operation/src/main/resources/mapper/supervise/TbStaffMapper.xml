@@ -10,6 +10,12 @@
     <result column="STAFF_DEPT" property="staffDept" jdbcType="VARCHAR" />
     <result column="STAFF_W" property="staffW" jdbcType="VARCHAR" />
   </resultMap>
+
+  <resultMap id="addStaffResultMap" type="com.szps.web.domain.supervise.addStaff" >
+    <result column="USER_NAME" property="staffName" jdbcType="VARCHAR" />
+    <result column="REMARK" property="dept" jdbcType="VARCHAR" />
+  </resultMap>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from TB_STAFF
     where STAFF_NUMBER = #{staffNumber,jdbcType=VARCHAR}
@@ -119,14 +125,15 @@
   </select>
 
 
-  <select id="selectStaffName"  resultType="java.lang.String" parameterType="java.lang.String">
-    select USER_NAME
+  <select id="selectStaffName"  resultMap="addStaffResultMap" parameterType="java.lang.String">
+    select USER_NAME,REMARK
     from SYS_USER
 
     <where>
       <if test="a != null and a != ''">
          SYS_USER.USER_NAME like concat(concat('%',#{a}),'%')
       </if>
+
 
     </where>
   </select>

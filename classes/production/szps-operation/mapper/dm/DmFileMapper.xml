@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.szps.web.mapper.dm.DmFileMapper">
+
+    <resultMap type="DmFile" id="DmFileResult">
+        <id     property="fileId"       column="file_id"        />
+        <result property="dataId"     column="data_id"      />
+        <result property="fileName"     column="file_name"      />
+        <result property="filePath"     column="file_path"      />
+    </resultMap>
+
+    <insert id="insertFileList" parameterType="java.util.List">
+        insert into dm_file(data_id,file_name,file_path)
+        SELECT f.*
+        FROM(
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT
+            #{item.dataId} data_id,
+            #{item.fileName} file_name,
+            #{item.filePath} file_path
+            FROM dual
+        </foreach>
+        ) f
+    </insert>
+
+    <select id="selectFileListByDataId" parameterType="Long" resultMap="DmFileResult">
+        select f.file_id,f.data_id,f.file_name,f.file_path
+        from dm_file f
+        where f.data_id=#{dataId}
+    </select>
+
+    <select id="selectFileListByFileIds" parameterType="Long" resultMap="DmFileResult">
+        select f.file_id,f.data_id,f.file_name,f.file_path
+        from dm_file f
+        where f.file_id in
+        <foreach collection="array" item="fileId" open="(" separator="," close=")">
+            #{fileId}
+        </foreach>
+    </select>
+
+    <delete id="deleteFileById" parameterType="Long">
+        delete from dm_file where file_id=#{fileId}
+    </delete>
+
+</mapper>

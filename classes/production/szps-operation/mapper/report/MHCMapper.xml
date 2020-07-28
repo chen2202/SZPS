@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.report.MHCMapper">
+ 
+	<resultMap type="mhc" id="ReportResult">
+		<id     property="id"    column="id"    />
+		<result     property="dprovince"   column="dprovince"   />
+		<result     property="dcity"   column="dcity"   />
+		<result     property="projectcode"   column="projectcode"   />
+		<result     property="projectname"   column="projectname"   />
+		<result     property="reportnumber"   column="reportnumber"   />
+		<result     property="designscale"   column="designscale"   />
+		<result     property="awtc"   column="awtc"   />
+		<result     property="mdtc"   column="mdtc"   />
+		<result     property="loadrate"   column="loadrate"   />
+		<result     property="codrc"   column="codrc"   />
+		<result     property="codr"   column="codr"   />
+		<result     property="codcptw"   column="codcptw"   />
+		<result     property="twr"   column="twr"   />
+		<result     property="cec"   column="cec"   />
+		<result     property="directcost"   column="directcost"   />
+		<result     property="rwc"   column="rwc"   />
+		<result     property="awsp"   column="awsp"   />
+		<result     property="mcs"   column="mcs"   />
+		<result     property="stc"   column="stc"   />
+		<result     property="landuse"   column="landuse"   />
+		<result     property="ubm"   column="ubm"   />
+		<result     property="iu"   column="iu"   />
+		<result     property="slc"   column="slc"   />
+		<result     property="odc"   column="odc"   />
+		<result     property="normaldays"   column="normaldays"   />
+		<result     property="standarddays"   column="standarddays"   />
+		<result     property="reasons"   column="reasons"   />
+		<result     property="esp"   column="esp"   />
+		<result     property="codin"   column="codin"   />
+		<result     property="codout"   column="codout"   />
+		<result     property="bodin"   column="bodin"   />
+		<result     property="bodout"   column="bodout"   />
+		<result     property="ssin"   column="ssin"   />
+		<result     property="ssout"   column="ssout"   />
+		<result     property="adin"   column="adin"   />
+		<result     property="adout"   column="adout"   />
+		<result     property="tnin"   column="tnin"   />
+		<result     property="tnout"   column="tnout"   />
+		<result     property="tpin"   column="tpin"   />
+		<result     property="tpout"   column="tpout"   />
+		<result     property="applicant"   column="applicant"   />
+		<result     property="submissiondate"   column="submissiondate"   />
+
+        <result property="createBy"      column="create_by"      />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"      column="update_by"      />
+        <result property="updateTime"    column="update_time"    />
+		<result property="remark"    column="remark"    />
+		<result 	property="deptName"    column="deptName"    />
+		<result     property="dept_id"   column="dept_id"   />
+    </resultMap> 
+
+	<sql id="selectReportVo">
+        select *
+        from report_mhc r
+    </sql>	
+	
+	<!-- 查询条件 -->
+	<sql id="sqlwhereSearch">
+		<where>
+			<if test=" id !=null">
+				and id = #{id}
+			</if>
+			<if test=" reportnumber !=null and reportnumber != ''">
+				AND reportnumber  like concat(concat('%',#{reportnumber}),'%')
+			</if>
+			<if test=" projectname !=null and projectname != ''">
+				AND projectname  like concat(concat('%',#{projectname}),'%')
+			</if>
+		</where>
+	</sql>
+	
+
+    
+    <select id="selectReport" parameterType="MHC" resultMap="ReportResult">
+        <include refid="selectReportVo"/>
+        <include refid="sqlwhereSearch"/>
+    </select>
+    
+    <select id="selectReportList" parameterType="MHC" resultMap="ReportResult">
+        <include refid="selectReportVo"/>
+        where  1 = 1
+        	<if test=" id !=null">
+				and id = #{id}
+			</if>
+			<if test=" reportnumber !=null and reportnumber != ''">
+				AND reportnumber  like concat(concat('%',#{reportnumber}),'%')
+			</if>
+			<if test=" projectname !=null and projectname != ''">
+				AND projectname  like concat(concat('%',#{projectname}),'%')
+			</if>
+		<!-- 数据范围过滤 -->
+		${params.dataScope}	
+		
+		order by r.id
+    </select>
+      <select id="selectReportById" parameterType="Long" resultMap="ReportResult">
+		<include refid="selectReportVo"/>
+		where r.id = #{id}
+	</select>
+	
+    <delete id="deleteReportById" parameterType="Long">
+		delete from report_mhc where id = #{id}
+	</delete>
+	 <delete id="deleteReportByIds" parameterType="Long">
+ 		delete from report_mhc where id in
+ 		<foreach collection="array" item="id" open="(" separator="," close=")">
+ 			#{id}
+        </foreach> 
+ 	</delete>
+    
+    <update id="updateReport" parameterType="MHC">
+ 		update report_mhc
+ 		<set>
+			<if test=" dprovince != null and dprovince != ''">dprovince = #{dprovince},</if>
+			<if test=" dcity != null and dcity != ''">dcity = #{dcity},</if>
+			<if test=" projectcode != null and projectcode != ''">projectcode = #{projectcode},</if>
+			<if test=" projectname != null and projectname != ''">projectname = #{projectname},</if>
+			<if test=" reportnumber != null and reportnumber != ''">reportnumber = #{reportnumber},</if>
+			<if test=" designscale != null and designscale != ''">designscale = #{designscale},</if>
+			<if test=" awtc != null and awtc != ''">awtc = #{awtc},</if>
+			<if test=" mdtc != null and mdtc != ''">mdtc = #{mdtc},</if>
+			<if test=" loadrate != null and loadrate != ''">loadrate = #{loadrate},</if>
+			<if test=" codrc != null and codrc != ''">codrc = #{codrc},</if>
+			<if test=" codr != null and codr != ''">codr = #{codr},</if>
+			<if test=" codcptw != null and codcptw != ''">codcptw = #{codcptw},</if>
+			<if test=" twr != null and twr != ''">twr = #{twr},</if>
+			<if test=" cec != null and cec != ''">cec = #{cec},</if>
+			<if test=" directcost != null and directcost != ''">directcost = #{directcost},</if>
+			<if test=" rwc != null and rwc != ''">rwc = #{rwc},</if>
+			<if test=" awsp != null and awsp != ''">awsp = #{awsp},</if>
+			<if test=" mcs != null and mcs != ''">mcs = #{mcs},</if>
+			<if test=" stc != null and stc != ''">stc = #{stc},</if>
+			<if test=" landuse != null and landuse != ''">landuse = #{landuse},</if>
+			<if test=" ubm != null and ubm != ''">ubm = #{ubm},</if>
+			<if test=" iu != null and iu != ''">iu = #{iu},</if>
+			<if test=" slc != null and slc != ''">slc = #{slc},</if>
+			<if test=" odc != null and odc != ''">odc = #{odc},</if>
+			<if test=" normaldays != null and normaldays != ''">normaldays = #{normaldays},</if>
+			<if test=" standarddays != null and standarddays != ''">standarddays = #{standarddays},</if>
+			<if test=" reasons != null and reasons != ''">reasons = #{reasons},</if>
+			<if test=" esp != null and esp != ''">esp = #{esp},</if>
+			<if test=" codin != null and codin != ''">codin = #{codin},</if>
+			<if test=" codout != null and codout != ''">codout = #{codout},</if>
+			<if test=" bodin != null and bodin != ''">bodin = #{bodin},</if>
+			<if test=" bodout != null and bodout != ''">bodout = #{bodout},</if>
+			<if test=" ssin != null and ssin != ''">ssin = #{ssin},</if>
+			<if test=" ssout != null and ssout != ''">ssout = #{ssout},</if>
+			<if test=" adin != null and adin != ''">adin = #{adin},</if>
+			<if test=" adout != null and adout != ''">adout = #{adout},</if>
+			<if test=" tnin != null and tnin != ''">tnin = #{tnin},</if>
+			<if test=" tnout != null and tnout != ''">tnout = #{tnout},</if>
+			<if test=" tpin != null and tpin != ''">tpin = #{tpin},</if>
+			<if test=" tpout != null and tpout != ''">tpout = #{tpout},</if>
+			<if test=" applicant != null and applicant != ''">applicant = #{applicant},</if>
+			<if test=" submissiondate != null and submissiondate != ''">submissiondate = #{submissiondate},</if>
+
+			<if test="  remark != null and remark != ''">remark = #{remark},</if>
+ 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+ 			update_time = sysdate
+ 		</set>
+ 		where id = #{id}
+	</update>
+	  
+    <insert id="insertReport" parameterType="MHC">
+    	 <selectKey keyProperty="id" resultType="long" order="BEFORE">
+			SELECT seq_report_mhc.NEXTVAL as id FROM DUAL
+		</selectKey>
+    
+		INSERT INTO report_mhc(
+			<if test=" id != null and id!= 0">id,</if>
+			<if test=" dprovince != null and  dprovince != ''">dprovince,</if>
+			<if test=" dcity != null and  dcity != ''">dcity,</if>
+			<if test=" projectcode != null and  projectcode != ''">projectcode,</if>
+			<if test=" projectname != null and  projectname != ''">projectname,</if>
+			<if test=" reportnumber != null and  reportnumber != ''">reportnumber,</if>
+			<if test=" designscale != null and  designscale != ''">designscale,</if>
+			<if test=" awtc != null and  awtc != ''">awtc,</if>
+			<if test=" mdtc != null and  mdtc != ''">mdtc,</if>
+			<if test=" loadrate != null and  loadrate != ''">loadrate,</if>
+			<if test=" codrc != null and  codrc != ''">codrc,</if>
+			<if test=" codr != null and  codr != ''">codr,</if>
+			<if test=" codcptw != null and  codcptw != ''">codcptw,</if>
+			<if test=" twr != null and  twr != ''">twr,</if>
+			<if test=" cec != null and  cec != ''">cec,</if>
+			<if test=" directcost != null and  directcost != ''">directcost,</if>
+			<if test=" rwc != null and  rwc != ''">rwc,</if>
+			<if test=" awsp != null and  awsp != ''">awsp,</if>
+			<if test=" mcs != null and  mcs != ''">mcs,</if>
+			<if test=" stc != null and  stc != ''">stc,</if>
+			<if test=" landuse != null and  landuse != ''">landuse,</if>
+			<if test=" ubm != null and  ubm != ''">ubm,</if>
+			<if test=" iu != null and  iu != ''">iu,</if>
+			<if test=" slc != null and  slc != ''">slc,</if>
+			<if test=" odc != null and  odc != ''">odc,</if>
+			<if test=" normaldays != null and  normaldays != ''">normaldays,</if>
+			<if test=" standarddays != null and  standarddays != ''">standarddays,</if>
+			<if test=" reasons != null and  reasons != ''">reasons,</if>
+			<if test=" esp != null and  esp != ''">esp,</if>
+			<if test=" codin != null and  codin != ''">codin,</if>
+			<if test=" codout != null and  codout != ''">codout,</if>
+			<if test=" bodin != null and  bodin != ''">bodin,</if>
+			<if test=" bodout != null and  bodout != ''">bodout,</if>
+			<if test=" ssin != null and  ssin != ''">ssin,</if>
+			<if test=" ssout != null and  ssout != ''">ssout,</if>
+			<if test=" adin != null and  adin != ''">adin,</if>
+			<if test=" adout != null and  adout != ''">adout,</if>
+			<if test=" tnin != null and  tnin != ''">tnin,</if>
+			<if test=" tnout != null and  tnout != ''">tnout,</if>
+			<if test=" tpin != null and  tpin != ''">tpin,</if>
+			<if test=" tpout != null and  tpout != ''">tpout,</if>
+			<if test=" applicant != null and  applicant != ''">applicant,</if>
+			<if test=" submissiondate != null and  submissiondate != ''">submissiondate,</if>
+
+			<if test=" remark != null and remark != ''">REMARK,</if>
+			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" dept_id != null ">dept_id,</if>
+			create_time
+		) VALUES (
+			<if test=" id != null and id!= 0">#{id},</if>
+			<if test=" dprovince != null and dprovince != ''">#{dprovince},</if>
+			<if test=" dcity != null and dcity != ''">#{dcity},</if>
+			<if test=" projectcode != null and projectcode != ''">#{projectcode},</if>
+			<if test=" projectname != null and projectname != ''">#{projectname},</if>
+			<if test=" reportnumber != null and reportnumber != ''">#{reportnumber},</if>
+			<if test=" designscale != null and designscale != ''">#{designscale},</if>
+			<if test=" awtc != null and awtc != ''">#{awtc},</if>
+			<if test=" mdtc != null and mdtc != ''">#{mdtc},</if>
+			<if test=" loadrate != null and loadrate != ''">#{loadrate},</if>
+			<if test=" codrc != null and codrc != ''">#{codrc},</if>
+			<if test=" codr != null and codr != ''">#{codr},</if>
+			<if test=" codcptw != null and codcptw != ''">#{codcptw},</if>
+			<if test=" twr != null and twr != ''">#{twr},</if>
+			<if test=" cec != null and cec != ''">#{cec},</if>
+			<if test=" directcost != null and directcost != ''">#{directcost},</if>
+			<if test=" rwc != null and rwc != ''">#{rwc},</if>
+			<if test=" awsp != null and awsp != ''">#{awsp},</if>
+			<if test=" mcs != null and mcs != ''">#{mcs},</if>
+			<if test=" stc != null and stc != ''">#{stc},</if>
+			<if test=" landuse != null and landuse != ''">#{landuse},</if>
+			<if test=" ubm != null and ubm != ''">#{ubm},</if>
+			<if test=" iu != null and iu != ''">#{iu},</if>
+			<if test=" slc != null and slc != ''">#{slc},</if>
+			<if test=" odc != null and odc != ''">#{odc},</if>
+			<if test=" normaldays != null and normaldays != ''">#{normaldays},</if>
+			<if test=" standarddays != null and standarddays != ''">#{standarddays},</if>
+			<if test=" reasons != null and reasons != ''">#{reasons},</if>
+			<if test=" esp != null and esp != ''">#{esp},</if>
+			<if test=" codin != null and codin != ''">#{codin},</if>
+			<if test=" codout != null and codout != ''">#{codout},</if>
+			<if test=" bodin != null and bodin != ''">#{bodin},</if>
+			<if test=" bodout != null and bodout != ''">#{bodout},</if>
+			<if test=" ssin != null and ssin != ''">#{ssin},</if>
+			<if test=" ssout != null and ssout != ''">#{ssout},</if>
+			<if test=" adin != null and adin != ''">#{adin},</if>
+			<if test=" adout != null and adout != ''">#{adout},</if>
+			<if test=" tnin != null and tnin != ''">#{tnin},</if>
+			<if test=" tnout != null and tnout != ''">#{tnout},</if>
+			<if test=" tpin != null and tpin != ''">#{tpin},</if>
+			<if test=" tpout != null and tpout != ''">#{tpout},</if>
+			<if test=" applicant != null and applicant != ''">#{applicant},</if>
+			<if test=" submissiondate != null and submissiondate != ''">#{submissiondate},</if>
+
+			<if test=" remark != null and remark != ''">#{remark},</if>
+			<if test=" createBy != null and createBy != ''">#{createBy},</if>
+			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			sysdate			
+		)
+	</insert>
+    
+</mapper>

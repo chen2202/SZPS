@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+	xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+<th:block th:include="include :: header('排水户列表')" />
+<link th:href="@{/css/drainage/drainage.css}" rel="stylesheet" />
+<style type="text/css">
+	/*页头四个方框标题样式*/
+	.six-title-p{
+		margin: 14px 0px 4px 0px;
+		height:14px;
+		font-size:14px;
+		font-family:PingFang SC;
+		font-weight:400;
+		color:rgba(255,255,255,1);
+		line-height:24px;
+	}
+	/*页头六个方框数字样式*/
+	.six-number-p{
+		position: absolute;
+		top: 50px;
+		height:22px;
+		font-size:30px;
+		font-family:Helvetica Neue LT Pro;
+		font-weight:normal;
+		color:rgba(255,255,255,1);
+		line-height:24px;
+	}
+	/*页头四个方框图标*/
+	.six-icon-img{
+		width:26px;
+		height:26px;
+		opacity:0.58;
+		display: inline-block;
+		position: absolute;
+		top: 50px;
+		left: -10px;
+		background-repeat: no-repeat;
+    	filter: drop-shadow(#fff 170px 0px); /*设置阴影，替代原来的图标*/
+   		transform: translateX(-30px);
+   		-ms-filter: drop-shadow(#fff 170px 0px); 
+   		-ms-transform: translateX(-30px);
+	}
+	.six-icon1{
+		background-image: url(../../img/排水户总数.svg);
+	}
+	.six-icon2{
+		background-image: url(../../img/已提交排水户.svg);
+	}
+	.six-icon3{
+		background-image: url(../../img/问题总数.svg);
+	}
+	/*页头六个方框*/
+	.six-div{
+		width:180px;
+		height:96px;
+		border-radius:10px;
+		margin: 20px 24px 10px 24px;
+		overflow: hidden; 
+	}
+</style>
+</head>
+
+<script th:inline="javascript"> var ctx = [[@{/}]];  </script>
+<body class="gray-bg">
+	<div class="container-div">
+		<!-- 总数展示 -->
+		<div class="row" style="height: 140px;">
+			<div class="col-sm-2 six-div" style="margin-left:-10px;background:linear-gradient(-30deg,rgba(44,157,243,1) 0%,rgba(89,184,255,1) 100%);">
+				<p class="six-title-p">全市摸查排水户总数</p>
+				<span class="six-number-p" th:text="${householdCount}">暂无</span>
+				<span class="six-icon-img six-icon1"/>
+			</div>
+			<div class="col-sm-2 six-div" style="background:linear-gradient(-30deg,rgba(85,185,35,1) 0%,rgba(118,214,70,1) 100%);">
+				<p class="six-title-p">全市已提交排水户总数</p>
+				<span class="six-number-p" th:text="${recordState}">暂无</span>
+				<span class="six-icon-img six-icon2"/>
+			</div>
+			<div class="col-sm-2 six-div" style="background:linear-gradient(-30deg,rgba(222,162,22,1) 0%,rgba(243,195,36,1) 100%);">
+				<p class="six-title-p">排污许可证到期总数</p>
+				<span class="six-number-p" th:text="${pwzdq}">暂无</span>
+				<span class="six-icon-img six-icon3"/>
+			</div>
+			<div class="col-sm-2 six-div" style="background:linear-gradient(-30deg,rgba(246,102,62,1) 0%,rgba(255,154,104,1) 100%);">
+				<p class="six-title-p">排水许可证到期总数</p>
+				<span class="six-number-p" th:text="${pszdq}">暂无</span>
+				<span class="six-icon-img six-icon3"/>
+			</div>
+		</div>
+		<div class="row">
+			<!-- 统计图表 -->
+			<div class="row panel panel-default" style="height: 450px;">
+				<div class="col-sm-6">
+					<div id="household-administrative"></div>
+				</div>
+				<div class="col-sm-6">
+					<div id="household-sewage-category"></div>
+				</div>
+			</div>
+			<div class="row  panel panel-default" style="height: 450px;">
+				<div class="col-sm-12">
+					<div id="drainage-license-expire"></div>
+				</div>
+			</div>
+			<div class="row  panel panel-default" style="height: 450px;">
+				<div class="col-sm-12">
+					<div id="household-administrative-sewage"></div>
+				</div>
+			</div>
+			<div class="row panel panel-default" style="height: 450px;">
+				<div class="col-sm-12">
+					<div id="household-record-state"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<th:block th:include="include :: footer" />
+	<!-- Highcharts -->
+	<script th:src="@{/js/Highcharts/highcharts.js}"></script>
+	<script th:src="@{/js/Highcharts/highcharts-3d.js}"></script>
+	<script th:src="@{/js/Highcharts/exporting.js}"></script>
+	<script th:src="@{/js/Highcharts/highcharts-zh_CN.js}"></script>
+	<script th:src="@{/js/Highcharts/oldie.js}"></script>
+	<script th:src="@{/js/Highcharts/cylinder.js}"></script>
+	<!-- 业务js -->
+	<script th:inline="javascript" type="text/javascript">
+	$(function(){
+		var prefix = ctx + "drainage/statistics";
+		//ajax获取 各区排水户分布数量 统计数据
+		$.ajax({
+	            url: prefix+  "/householdAdministrativeStatistics",
+	            type: 'POST',
+	            dataType: 'JSON',
+	            data: {},
+	            success: function(data){
+	            	//获取各区排水户数量的数组结果
+	            	var result = data; 	    
+	        		//获取排水户分布统计数据饼图的div id
+	        		var dom = document.getElementById("household-administrative");
+	        		//柱形图对象
+	        		var option = {
+	        			chart: {
+	        				type: 'bar',
+	        				options3d: {
+	        					enabled: true,
+	        					alpha: 0,
+	        					beta: 0,
+	        					depth: 50,
+	        					viewDistance: 25
+	        				}
+	        			},
+	        			title: {
+	        				text: '各区排水户数据',
+	        				align: 'left'
+	        			},
+	        			xAxis: {
+	        				categories: ["光明区","前海开发区","南山区","坪山区","大鹏新区","宝安区","深汕合作区","盐田区","福田区","罗湖区","龙华区","龙岗区"],
+	        				title: {
+	        					text: null
+	        				}
+	        			},
+	        			plotOptions: {
+	        				series: {
+	        					depth: 25,
+	        					colorByPoint: true,
+	        					dataLabels:{
+	        		                enabled:true
+	        		            }
+	        				}
+	        			},
+	        			series: [{
+	        				data: result,
+	        				colors: ['#63BCFF'],
+	        				name: '数量',
+	        				showInLegend: false
+	        			}],
+	        			credits: {  
+        		            enabled: false     //不显示LOGO
+        		        }
+	        		}
+	        		//绘制堆叠柱形图
+	        		var chart = Highcharts.chart(dom,option);
+	            }
+	     });
+		
+		//ajax获取 全市排水户的污水类别 比例
+		$.ajax({
+			url: prefix + "/sewageCategoryStatistics",
+			type: 'POST',
+			dataType: 'JSON',
+			//data: {}
+			success: function(data){
+				//污水类别饼图的系列数据对象
+				var result = data;             	
+        		//设置污水类别统计数据柱形图
+        		var dom = document.getElementById("household-sewage-category");
+        		//饼图对象
+        		var option = {
+        				chart: {
+        					type: 'pie',
+        					options3d: {
+        						enabled: true,
+        						alpha: 55,
+        						beta: -8
+        					}
+        				},
+        				title: {
+        					text: '全市排水户污水类别比例',
+        					align: 'left'
+        				},
+        				tooltip: {
+        					formatter: function() {
+        						return '<b>'+ this.point.name +'</b>: <br>'+ this.series.name + Highcharts.numberFormat(this.percentage, 1) +'% ('+
+        							Highcharts.numberFormat(this.y, 0, ',') +' 个)';
+        					}
+        				},
+        				plotOptions: {
+        					pie: {
+        						allowPointSelect: true,
+        						cursor: 'pointer',
+        						depth: 35,
+        						dataLabels: {
+        							enabled: true,
+        							formatter: function() {
+                						return '<b>'+ this.point.name +'</b>:' + Highcharts.numberFormat(this.percentage, 1) +'%';
+            						}
+        						}
+        					}
+        				},
+        				series: [{
+        					type: 'pie',
+        					name: '污染类别占比',
+        					data: result
+        				}],credits: {  
+        				    enabled: false     //不显示Highcharts LOGO
+        				},
+        				colors:['#2BA3FD','#52C41A','#2DC6C6','#FAAE13','#F5222D','#2DC6C6']
+        			}
+        			//绘制饼图
+        			var chart = Highcharts.chart(dom, option);
+			}
+		});
+		
+		//ajax获取各区排水证过期数量
+		$.ajax({
+			url: prefix+"/drainageLicenseExpire",
+			type: "POST",
+			dataType: 'JSON',
+			success: function(result){
+				var dom = document.getElementById("drainage-license-expire");
+				var option = {
+					chart: {
+						type: 'cylinder',
+						options3d: {
+							enabled: true,
+							alpha: 15,
+							beta: 15,
+							depth: 50,
+							viewDistance: 25
+						}
+					},
+					xAxis: {
+						categories: ["光明区","前海开发区","南山区","坪山区","大鹏新区","宝安区","深汕合作区","盐田区","福田区","罗湖区","龙华区","龙岗区"],
+						title: {
+							text: null
+						}
+					},
+					title: {
+						text: '全市各区已到期排水证数量'
+					},
+					plotOptions: {
+						series: {
+							depth: 25,
+							colorByPoint: true,
+							dataLabels:{
+								enabled:true
+							}
+						}
+					},
+					series: [{
+						data: result,
+						name: 'Cylinders',
+						colors: ['#63BCFF'],
+						showInLegend: false
+					}],
+					credits: {  
+						enabled: false     //不显示LOGO
+					}
+				}
+				var chart = Highcharts.chart(dom,option);
+			}
+		});
+		
+		//ajax获取各个行政区污水类别
+		$.ajax({
+	            url: prefix+"/adminiSewageStatistics",
+	            type: 'POST',
+	            dataType: 'JSON',
+	            //data: {},
+	            success: function(result){
+	            	//获取绘制图形的div的id
+	        		var dom = document.getElementById("household-administrative-sewage");	
+	        		//堆叠柱形图对象
+	        		var option = {
+	        				chart: {
+	        					type: 'column',
+	        					options3d: {
+	        						enabled: true,
+	        						alpha: 15,
+	        						beta: 10,
+	        						viewDistance: 20,
+	        						depth: 40
+	        					},
+	        					marginTop: 80,
+	        					marginRight: 40
+	        				},
+	        				title: {
+	        					text: '各区排水户污水类别统计'
+	        				},
+	        				xAxis: {
+	        					categories: ["光明区","前海开发区","南山区","坪山区","大鹏新区","宝安区","深汕合作区","盐田区","福田区","罗湖区","龙华区","龙岗区"]
+	        				},
+	        				yAxis: {
+	        					allowDecimals: false,
+	        					min: 0,
+	        					title: {
+	        						text: '排水户数量'
+	        					}
+	        				},
+	        				tooltip: {
+	        					headerFormat: '<b>{point.key}</b><br>',
+	        					pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y} / {point.stackTotal}'
+	        				},
+	        				plotOptions: {
+	        					column: {
+	        						stacking: 'normal',
+	        						depth: 40
+	        					}
+	        				},
+	        				series: [{
+	        					name: '有毒有害排污类',
+	        					data: [],
+	        					stack: 'administrative' //分组
+	        				}, {
+	        					name: '沉淀物排污类',
+	        					data: [],
+	        					stack: 'administrative'
+	        				}, {
+	        					name: '餐饮排污类',
+	        					data: [],
+	        					stack: 'administrative'
+	        				}, {
+	        					name: '生活排污类',
+	        					data: [],
+	        					stack: 'administrative'
+	        				}],
+	        				credits: {  
+	        		            enabled: false     //不显示Highcharts LOGO
+	        		        },
+	        				colors:['#2BA3FD','#52C41A','#2DC6C6','#FAAE13','#F5222D','#2DC6C6']
+	        			};
+	        		//后端数据赋值
+	        		for(var i=0;i<result.length;i++){ 
+	        			option.series[i].data = result[i];	
+	        		}
+	        		//绘制堆叠柱形图
+	        		var chart = Highcharts.chart(dom,option);
+	            }
+	    });
+		
+		//ajax统计各行政区排水户记录状态
+		$.ajax({
+			url: prefix+"/recordStateStatistics",
+			type: 'POST',
+			dataType: 'JSON',
+			//data:{},
+			success: function(result){
+				//获取绘制div id
+        		var dom = document.getElementById("household-record-state");
+				//堆叠柱形图对象
+				var option = {
+	        				chart: {
+	        					type: 'column',
+	        					options3d: {
+	        						enabled: true,
+	        						alpha: 15,
+	        						beta: -10,
+	        						viewDistance: 20,
+	        						depth: 40
+	        					},
+	        					marginTop: 80,
+	        					marginRight: 40
+	        				},
+	        				title: {
+	        					text: '各区排水户记录状态'
+	        				},
+	        				xAxis: {
+	        					categories: ["光明区","前海开发区","南山区","坪山区","大鹏新区","宝安区","深汕合作区","盐田区","福田区","罗湖区","龙华区","龙岗区"]
+	        				},
+	        				yAxis: {
+	        					allowDecimals: false,
+	        					min: 0,
+	        					title: {
+	        						text: '排水户数量'
+	        					}
+	        				},
+	        				tooltip: {
+	        					headerFormat: '<b>{point.key}</b><br>',
+	        					pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y} / {point.stackTotal}'
+	        				},
+	        				plotOptions: {
+	        					column: {
+	        						stacking: 'normal',
+	        						depth: 40
+	        					}
+	        				},
+	        				series: [{
+	        					name: '已审核',
+	        					data: [],
+	        					stack: 'status_ok' //分组
+	        				}, {
+	        					name: '待修改',
+	        					data: [],
+	        					stack: 'status_no'
+	        				}, {
+	        					name: '待审核',
+	        					data: [],
+	        					stack: 'status_no'
+	        				}, {
+	        					name: '待提交',
+	        					data: [],
+	        					stack: 'status_no'
+	        				}],
+	        				credits: {  
+	        		            enabled: false     //不显示Highcharts LOGO
+	        		        },
+	        				colors:['#2BA3FD','#52C41A','#2DC6C6','#FAAE13','#F5222D','#2DC6C6']
+	        			};
+        		
+        		//后端数据赋值
+        		for(var i=0;i<result.length;i++){ 
+        			option.series[i].data = result[i];	
+        		}
+        		//绘制堆叠柱形图
+        		var chart = Highcharts.chart(dom,option);
+			}
+		});
+		
+	});
+	</script>
+</body>
+</html>

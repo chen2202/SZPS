@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.dev.CheckMapper">
+ 
+	<resultMap type="Check" id="result">
+		<id     property="id"    column="id"    />
+		<result     property="deptId"   column="deptId"   />
+		<result     property="checkDate"   column="checkDate"   />
+		<result     property="chineseName"   column="chineseName"   />
+		<result     property="englishName"   column="englishName"   />
+		<result     property="nameplate"   column="nameplate"   />
+		<result     property="supplier"   column="supplier"   />
+		<result     property="devModel"   column="devModel"   />
+		<result     property="devNumber"   column="devNumber"   />
+		<result     property="arrivalDate"   column="arrivalDate"   />
+		<result     property="devSize"   column="devSize"   />
+		<result     property="devPower"   column="devPower"   />
+		<result     property="quantity"   column="quantity"   />
+		<result     property="warrantyPeriod"   column="warrantyPeriod"   />
+		<result     property="auxiliary"   column="auxiliary"   />
+		<result     property="part"   column="part"   />
+		<result     property="devType"   column="devType"   />
+		<result     property="unitPrice"   column="unitPrice"   />
+		<result     property="trafficCost"   column="trafficCost"   />
+		<result     property="installCost"   column="installCost"   />
+		<result     property="taxes"   column="taxes"   />
+		<result     property="sumCost"   column="sumCost"   />
+		<result     property="accessory"   column="accessory"   />
+		<result     property="keeper"   column="keeper"   />
+		<result     property="appearanceC"   column="appearanceC"   />
+		<result     property="securityC"   column="securityC"   />
+		<result     property="propertyC"   column="propertyC"   />
+		<result     property="materialsC"   column="materialsC"   />
+		<result     property="qualityC"   column="qualityC"   />
+		<result     property="needFuncC"   column="needFuncC"   />
+		<result     property="readFuncC"   column="readFuncC"   />
+		<result     property="appearanceB"   column="appearanceB"   />
+		<result     property="securityB"   column="securityB"   />
+		<result     property="propertyB"   column="propertyB"   />
+		<result     property="materialsB"   column="materialsB"   />
+		<result     property="qualityB"   column="qualityB"   />
+		<result     property="needFuncB"   column="needFuncB"   />
+		<result     property="readFuncB"   column="readFuncB"   />
+		<result     property="appearanceA"   column="appearanceA"   />
+		<result     property="securityA"   column="securityA"   />
+		<result     property="propertyA"   column="propertyA"   />
+		<result     property="materialsA"   column="materialsA"   />
+		<result     property="qualityA"   column="qualityA"   />
+		<result     property="needFuncA"   column="needFuncA"   />
+		<result     property="readFuncA"   column="readFuncA"   />
+		<result     property="devSpec"   column="devSpec"   />
+		<result     property="purcDeptSign"   column="purcDeptSign"   />
+		<result     property="useDeptSign"   column="useDeptSign"   />
+		<result     property="facDeptSign"   column="facDeptSign"   />
+		<result     property="leaderSign"   column="leaderSign"   />
+		
+        <result property="createBy"      column="create_by"      />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"      column="update_by"      />
+        <result property="updateTime"    column="update_time"    />
+		<result property="remark"    column="remark"    />
+		<result property="delFlag"    column="delFlag"    />
+		<result     property="dept_id"   column="dept_id"   />		
+    </resultMap> 
+
+	<sql id="selectVo">
+        select *
+        from dev_check r
+    </sql>	
+	
+	<!-- 查询条件 -->
+	<sql id="sqlwhereSearch">
+		<where>
+			<if test=" id !=null">
+				and id = #{id}
+			</if>
+			<if test=" checkDate !=null and checkDate != ''">
+				and checkDate = #{checkDate}
+			</if>
+			<if test=" chineseName !=null and chineseName != ''">
+				and chineseName like concat(concat('%',#{chineseName}),'%')
+			</if>
+			<if test=" deptId !=null and deptId != ''">
+				and deptId = #{deptId}
+			</if>
+		</where>
+	</sql>
+	
+
+    
+    <select id="select" parameterType="Check" resultMap="result">
+        <include refid="selectVo"/>
+        <include refid="sqlwhereSearch"/>
+    </select>
+    
+    <select id="selectList" parameterType="Check" resultMap="result">
+        <include refid="selectVo"/>
+        where  delFlag = '1'
+        <if test=" deptId != null and deptId != 0">
+			AND deptId = #{deptId}
+		</if>
+		<if test=" chineseName !=null and chineseName != ''">
+				and chineseName like concat(concat('%',#{chineseName}),'%')
+			</if>
+		<if test=" checkDate != null and checkDate != ''">
+			AND checkDate = #{checkDate}
+		</if>
+		
+		<!-- 数据范围过滤 -->
+		${params.dataScope}	
+		order by r.id, r.checkDate
+    </select>
+      <select id="selectById" parameterType="Long" resultMap="result">
+		<include refid="selectVo"/>
+		where r.id = #{id}
+	</select>
+	
+    <delete id="deleteById" parameterType="Long">
+		update dev_check set DELFLAG = '2' where id = #{id}
+	</delete>
+	 <delete id="deleteByIds" parameterType="Long">
+ 		delete from dev_check where id in
+ 		<foreach collection="array" item="id" open="(" separator="," close=")">
+ 			#{id}
+        </foreach> 
+ 	</delete>
+    
+    <update id="update" parameterType="Check">
+ 		update dev_check
+ 		<set>
+			<if test=" deptId != null ">deptId = #{deptId},</if>
+			<if test=" checkDate != null ">checkDate = #{checkDate},</if>
+			<if test=" chineseName != null and chineseName != ''">chineseName = #{chineseName},</if>
+			<if test=" englishName != null and englishName != ''">englishName = #{englishName},</if>
+			<if test=" nameplate != null and nameplate != ''">nameplate = #{nameplate},</if>
+			<if test=" supplier != null and supplier != ''">supplier = #{supplier},</if>
+			<if test=" devModel != null and devModel != ''">devModel = #{devModel},</if>
+			<if test=" devNumber != null and devNumber != ''">devNumber = #{devNumber},</if>
+			<if test=" arrivalDate != null and arrivalDate != ''">arrivalDate = #{arrivalDate},</if>
+			<if test=" devSize != null and devSize != ''">devSize = #{devSize},</if>
+			<if test=" devPower != null and devPower != ''">devPower = #{devPower},</if>
+			<if test=" quantity != null and quantity != ''">quantity = #{quantity},</if>
+			<if test=" warrantyPeriod != null and warrantyPeriod != ''">warrantyPeriod = #{warrantyPeriod},</if>
+			<if test=" auxiliary != null and auxiliary != ''">auxiliary = #{auxiliary},</if>
+			<if test=" part != null and part != ''">part = #{part},</if>
+			<if test=" devType != null and devType != ''">devType = #{devType},</if>
+			<if test=" unitPrice != null and unitPrice != ''">unitPrice = #{unitPrice},</if>
+			<if test=" trafficCost != null and trafficCost != ''">trafficCost = #{trafficCost},</if>
+			<if test=" installCost != null and installCost != ''">installCost = #{installCost},</if>
+			<if test=" taxes != null and taxes != ''">taxes = #{taxes},</if>
+			<if test=" sumCost != null and sumCost != ''">sumCost = #{sumCost},</if>
+			<if test=" accessory != null and accessory != ''">accessory = #{accessory},</if>
+			<if test=" keeper != null and keeper != ''">keeper = #{keeper},</if>
+			<if test=" appearanceC != null and appearanceC != ''">appearanceC = #{appearanceC},</if>
+			<if test=" securityC != null and securityC != ''">securityC = #{securityC},</if>
+			<if test=" propertyC != null and propertyC != ''">propertyC = #{propertyC},</if>
+			<if test=" materialsC != null and materialsC != ''">materialsC = #{materialsC},</if>
+			<if test=" qualityC != null and qualityC != ''">qualityC = #{qualityC},</if>
+			<if test=" needFuncC != null and needFuncC != ''">needFuncC = #{needFuncC},</if>
+			<if test=" readFuncC != null and readFuncC != ''">readFuncC = #{readFuncC},</if>
+			<if test=" appearanceB != null and appearanceB != ''">appearanceB = #{appearanceB},</if>
+			<if test=" securityB != null and securityB != ''">securityB = #{securityB},</if>
+			<if test=" propertyB != null and propertyB != ''">propertyB = #{propertyB},</if>
+			<if test=" materialsB != null and materialsB != ''">materialsB = #{materialsB},</if>
+			<if test=" qualityB != null and qualityB != ''">qualityB = #{qualityB},</if>
+			<if test=" needFuncB != null and needFuncB != ''">needFuncB = #{needFuncB},</if>
+			<if test=" readFuncB != null and readFuncB != ''">readFuncB = #{readFuncB},</if>
+			<if test=" appearanceA != null and appearanceA != ''">appearanceA = #{appearanceA},</if>
+			<if test=" securityA != null and securityA != ''">securityA = #{securityA},</if>
+			<if test=" propertyA != null and propertyA != ''">propertyA = #{propertyA},</if>
+			<if test=" materialsA != null and materialsA != ''">materialsA = #{materialsA},</if>
+			<if test=" qualityA != null and qualityA != ''">qualityA = #{qualityA},</if>
+			<if test=" needFuncA != null and needFuncA != ''">needFuncA = #{needFuncA},</if>
+			<if test=" readFuncA != null and readFuncA != ''">readFuncA = #{readFuncA},</if>
+			<if test=" devSpec != null and devSpec != ''">devSpec = #{devSpec},</if>
+			<if test=" purcDeptSign != null and purcDeptSign != ''">purcDeptSign = #{purcDeptSign},</if>
+			<if test=" useDeptSign != null and useDeptSign != ''">useDeptSign = #{useDeptSign},</if>
+			<if test=" facDeptSign != null and facDeptSign != ''">facDeptSign = #{facDeptSign},</if>
+			<if test=" leaderSign != null and leaderSign != ''">leaderSign = #{leaderSign},</if>
+			<if test=" delFlag != null and delFlag!= ''">delFlag = #{delFlag},</if>
+			<if test="  remark != null and remark != ''">remark = #{remark},</if>
+ 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+ 			update_time = sysdate
+ 		</set>
+ 		where id = #{id}
+	</update>
+	  
+    <insert id="insert" parameterType="Check">
+    	 <selectKey keyProperty="id" resultType="long" order="BEFORE">
+			SELECT seq_dev_check.NEXTVAL as id FROM DUAL
+		</selectKey>
+    
+		INSERT INTO dev_check(
+			<if test=" id != null and id!= 0">id,</if>
+			<if test=" deptId != null and  deptId != ''">deptId,</if>
+			<if test=" checkDate != null and  checkDate != ''">checkDate,</if>
+			<if test=" chineseName != null and  chineseName != ''">chineseName,</if>
+			<if test=" englishName != null and  englishName != ''">englishName,</if>
+			<if test=" nameplate != null and  nameplate != ''">nameplate,</if>
+			<if test=" supplier != null and  supplier != ''">supplier,</if>
+			<if test=" devModel != null and  devModel != ''">devModel,</if>
+			<if test=" devNumber != null and  devNumber != ''">devNumber,</if>
+			<if test=" arrivalDate != null and  arrivalDate != ''">arrivalDate,</if>
+			<if test=" devSize != null and  devSize != ''">devSize,</if>
+			<if test=" devPower != null and  devPower != ''">devPower,</if>
+			<if test=" quantity != null and  quantity != ''">quantity,</if>
+			<if test=" warrantyPeriod != null and  warrantyPeriod != ''">warrantyPeriod,</if>
+			<if test=" auxiliary != null and  auxiliary != ''">auxiliary,</if>
+			<if test=" part != null and  part != ''">part,</if>
+			<if test=" devType != null and  devType != ''">devType,</if>
+			<if test=" unitPrice != null and  unitPrice != ''">unitPrice,</if>
+			<if test=" trafficCost != null and  trafficCost != ''">trafficCost,</if>
+			<if test=" installCost != null and  installCost != ''">installCost,</if>
+			<if test=" taxes != null and  taxes != ''">taxes,</if>
+			<if test=" sumCost != null and  sumCost != ''">sumCost,</if>
+			<if test=" accessory != null and  accessory != ''">accessory,</if>
+			<if test=" keeper != null and  keeper != ''">keeper,</if>
+			<if test=" appearanceC != null and  appearanceC != ''">appearanceC,</if>
+			<if test=" securityC != null and  securityC != ''">securityC,</if>
+			<if test=" propertyC != null and  propertyC != ''">propertyC,</if>
+			<if test=" materialsC != null and  materialsC != ''">materialsC,</if>
+			<if test=" qualityC != null and  qualityC != ''">qualityC,</if>
+			<if test=" needFuncC != null and  needFuncC != ''">needFuncC,</if>
+			<if test=" readFuncC != null and  readFuncC != ''">readFuncC,</if>
+			<if test=" appearanceB != null and  appearanceB != ''">appearanceB,</if>
+			<if test=" securityB != null and  securityB != ''">securityB,</if>
+			<if test=" propertyB != null and  propertyB != ''">propertyB,</if>
+			<if test=" materialsB != null and  materialsB != ''">materialsB,</if>
+			<if test=" qualityB != null and  qualityB != ''">qualityB,</if>
+			<if test=" needFuncB != null and  needFuncB != ''">needFuncB,</if>
+			<if test=" readFuncB != null and  readFuncB != ''">readFuncB,</if>
+			<if test=" appearanceA != null and  appearanceA != ''">appearanceA,</if>
+			<if test=" securityA != null and  securityA != ''">securityA,</if>
+			<if test=" propertyA != null and  propertyA != ''">propertyA,</if>
+			<if test=" materialsA != null and  materialsA != ''">materialsA,</if>
+			<if test=" qualityA != null and  qualityA != ''">qualityA,</if>
+			<if test=" needFuncA != null and  needFuncA != ''">needFuncA,</if>
+			<if test=" readFuncA != null and  readFuncA != ''">readFuncA,</if>
+			<if test=" devSpec != null and  devSpec != ''">devSpec,</if>
+			<if test=" purcDeptSign != null and  purcDeptSign != ''">purcDeptSign,</if>
+			<if test=" useDeptSign != null and  useDeptSign != ''">useDeptSign,</if>
+			<if test=" facDeptSign != null and  facDeptSign != ''">facDeptSign,</if>
+			<if test=" leaderSign != null and  leaderSign != ''">leaderSign,</if>
+
+			<if test=" remark != null and remark != ''">REMARK,</if>
+			<if test=" delFlag != null and delFlag!= ''">delFlag,</if>
+			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" dept_id != null ">dept_id,</if>
+			create_time
+		) VALUES (
+			<if test=" id != null and id!= 0">#{id},</if>
+			<if test=" deptId != null and deptId != ''">#{deptId},</if>
+			<if test=" checkDate != null and checkDate != ''">#{checkDate},</if>
+			<if test=" chineseName != null and chineseName != ''">#{chineseName},</if>
+			<if test=" englishName != null and englishName != ''">#{englishName},</if>
+			<if test=" nameplate != null and nameplate != ''">#{nameplate},</if>
+			<if test=" supplier != null and supplier != ''">#{supplier},</if>
+			<if test=" devModel != null and devModel != ''">#{devModel},</if>
+			<if test=" devNumber != null and devNumber != ''">#{devNumber},</if>
+			<if test=" arrivalDate != null and arrivalDate != ''">#{arrivalDate},</if>
+			<if test=" devSize != null and devSize != ''">#{devSize},</if>
+			<if test=" devPower != null and devPower != ''">#{devPower},</if>
+			<if test=" quantity != null and quantity != ''">#{quantity},</if>
+			<if test=" warrantyPeriod != null and warrantyPeriod != ''">#{warrantyPeriod},</if>
+			<if test=" auxiliary != null and auxiliary != ''">#{auxiliary},</if>
+			<if test=" part != null and part != ''">#{part},</if>
+			<if test=" devType != null and devType != ''">#{devType},</if>
+			<if test=" unitPrice != null and unitPrice != ''">#{unitPrice},</if>
+			<if test=" trafficCost != null and trafficCost != ''">#{trafficCost},</if>
+			<if test=" installCost != null and installCost != ''">#{installCost},</if>
+			<if test=" taxes != null and taxes != ''">#{taxes},</if>
+			<if test=" sumCost != null and sumCost != ''">#{sumCost},</if>
+			<if test=" accessory != null and accessory != ''">#{accessory},</if>
+			<if test=" keeper != null and keeper != ''">#{keeper},</if>
+			<if test=" appearanceC != null and appearanceC != ''">#{appearanceC},</if>
+			<if test=" securityC != null and securityC != ''">#{securityC},</if>
+			<if test=" propertyC != null and propertyC != ''">#{propertyC},</if>
+			<if test=" materialsC != null and materialsC != ''">#{materialsC},</if>
+			<if test=" qualityC != null and qualityC != ''">#{qualityC},</if>
+			<if test=" needFuncC != null and needFuncC != ''">#{needFuncC},</if>
+			<if test=" readFuncC != null and readFuncC != ''">#{readFuncC},</if>
+			<if test=" appearanceB != null and appearanceB != ''">#{appearanceB},</if>
+			<if test=" securityB != null and securityB != ''">#{securityB},</if>
+			<if test=" propertyB != null and propertyB != ''">#{propertyB},</if>
+			<if test=" materialsB != null and materialsB != ''">#{materialsB},</if>
+			<if test=" qualityB != null and qualityB != ''">#{qualityB},</if>
+			<if test=" needFuncB != null and needFuncB != ''">#{needFuncB},</if>
+			<if test=" readFuncB != null and readFuncB != ''">#{readFuncB},</if>
+			<if test=" appearanceA != null and appearanceA != ''">#{appearanceA},</if>
+			<if test=" securityA != null and securityA != ''">#{securityA},</if>
+			<if test=" propertyA != null and propertyA != ''">#{propertyA},</if>
+			<if test=" materialsA != null and materialsA != ''">#{materialsA},</if>
+			<if test=" qualityA != null and qualityA != ''">#{qualityA},</if>
+			<if test=" needFuncA != null and needFuncA != ''">#{needFuncA},</if>
+			<if test=" readFuncA != null and readFuncA != ''">#{readFuncA},</if>
+			<if test=" devSpec != null and devSpec != ''">#{devSpec},</if>
+			<if test=" purcDeptSign != null and purcDeptSign != ''">#{purcDeptSign},</if>
+			<if test=" useDeptSign != null and useDeptSign != ''">#{useDeptSign},</if>
+			<if test=" facDeptSign != null and facDeptSign != ''">#{facDeptSign},</if>
+			<if test=" leaderSign != null and leaderSign != ''">#{leaderSign},</if>
+
+			<if test=" remark != null and remark != ''">#{remark},</if>
+			<if test=" delFlag != null and delFlag!= ''">#{delFlag},</if>
+			<if test=" createBy != null and createBy != ''">#{createBy},</if>
+			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			sysdate			
+		)
+	</insert>
+    
+</mapper>

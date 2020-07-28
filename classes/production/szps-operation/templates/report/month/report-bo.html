@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('日报列表')" />
+	<style type="text/css">
+		.onediv{float:left;margin:0 0 0 5px}
+		.twodiv{float:left;margin:0 0 0 5px}
+        .checked {
+            background: linear-gradient(0deg, rgba(22, 156, 211, 1) 0%, rgba(33, 186, 248, 1) 100%);
+        }
+	</style>
+</head>
+<body class="gray-bg">
+    <div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<div class="onediv">
+					<a class="btn  left"  onclick="toggleBtn(event, this)">水质净化厂</a>
+					<a class="btn checked right"  onclick="toggleBtn(event, this)">分散式污水处理设施</a>
+				</div>
+					
+				<div class="twodiv">
+					<form id="reportmonth-form">
+					<input name="deptId" type="hidden" id="treeId"/>
+						<div class="select-list">
+							<ul>
+								<!-- <li>
+			                        <label >单位：</label>
+	                            	<input name="deptName" onclick="selectDeptTree()" id="treeName" type="text" placeholder="请选择单位" >
+								</li> -->
+								<!-- <li class="select-time">
+									<label>日期： </label>
+									<input type="text" class="time-input" id="reportDate"  name="reportDate"/>
+								</li> -->
+								<li class="select-time">
+									<label>日期： </label>
+									<input name="startTime1" id="startTime1" class="time-input form-control" type="text"  data-type="date" data-format="yyyy-MM" placeholder="开始时间"/>
+									</li>
+									<span>-</span>
+									<li class="select-time">
+									<input name="endTime1" id="endTime1" class="time-input form-control" type="text"  data-type="date" data-format="yyyy-MM" placeholder="结束时间" />
+								</li>
+								<li>
+									<a class="btn btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+									<a class="btn btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+								</li>
+							</ul>
+						</div>
+					</form>
+				</div> 
+			</div>
+<!-- 	        <div class="btn-group-sm" id="toolbar" role="group">
+		        <a class="btn btn-success" onclick="$.operate.addFull()" shiro:hasPermission="report:month:add">
+		            <i class="fa fa-plus"></i> 新增
+		        </a>
+		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="report:month:delete">
+		            <i class="fa fa-remove"></i> 删除
+		        </a>
+		        <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="system:config:export">
+		            <i class="fa fa-download"></i> 导出
+		        </a>
+	        </div> -->
+	        
+	        <div class="col-sm-12 select-table table-striped">
+	            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+	        </div>
+    	</div>
+    </div>
+    <th:block th:include="include :: footer" />
+    <th:block th:include="include :: datetimepicker-js" />
+    <script th:inline="javascript">
+        var prefix = ctx + "op/report/month-bo";
+        var editFlag = [[${@permission.hasPermi('report:month:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('report:month:delete')}]];
+        
+        /*用户管理-新增-选择部门树*/
+        function selectDeptTree() {
+        	
+        	var treeId = $("#treeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmit
+			};
+			$.modal.openOptions(options);
+		}
+        function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+			//if ($.tree.notAllowParents(tree)) {
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+			//}
+		}
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+                
+                
+                modalName: "月报",
+                columns: [
+                	{
+    					field : 'id', 
+    					title : '序号' 
+    				},
+    				{field: 'basin',title: '流域',},
+    				{field: 'deptname',title: '水质净化厂',},
+    				{field: 'darea',title: '辖区',},
+    				{field: 'dscale',title: '设计规模',},
+    				{field: 'tcapacity',title: '实际处理量',},
+    				{field: 'loadrate',title: '负荷率',},
+    				{field: 'incod',title: '进水COD',},
+    				{field: 'inan',title: '进水氨氮',},
+    				{field: 'inp',title: '进水总磷',},
+    				{field: 'inss',title: '进水SS',},
+    				{field: 'inbod',title: '进水BOD',},
+    				{field: 'outcod',title: '出水COD',},
+    				{field: 'outan',title: '出水氨氮',},
+    				{field: 'outp',title: '出水总磷',},
+    				{field: 'outdo',title: '出水DO',},
+    				{field: 'dlevel',title: '提升泵坑 设计液位',},
+    				{field: 'aleave',title: '提升泵坑 实际液位',},
+    				{field: 'sludec',title: '污泥浓度',},
+    				{field: 'lanfilll',title: '垃圾渗滤液',},
+    				{field: 'sol',title: '渗滤液来源',},
+    				{field: 'operation',title: '运营单位',},
+    				]
+            };
+            $.table.init(options);
+        });
+        
+        function toggleBtn(e, element) {
+            var left = document.getElementsByClassName('left')[0];
+            if (element == left) {
+                location.href = ctx + 'op/report/month';
+            } else {
+                location.href = ctx + 'op/report/month-bo';
+            }
+        };
+    </script>
+</body>
+</html>

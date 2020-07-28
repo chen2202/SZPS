@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.report.OpLogMapper">
+ 
+	<resultMap type="opLog" id="ReportResult">
+		<id     property="id"    column="id"    />
+		<result     property="poolId"   column="poolId"   />
+		<result     property="deptId"   column="deptId"   />
+		<result     property="logDate"   column="logDate"   />
+		<result     property="weather"   column="weather"   />
+		<result     property="waterStartTime"   column="waterStartTime"   />
+		<result     property="waterEndTime"   column="waterEndTime"   />
+		<result     property="waterUsage"   column="waterUsage"   />
+		<result     property="dryHour"   column="dryHour"   />
+		<result     property="dryMin"   column="dryMin"   />
+		<result     property="logRemarks"   column="logRemarks"   />
+		<result     property="logRecorder"   column="logRecorder"   />
+        <result property="createBy"      column="create_by"      />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"      column="update_by"      />
+        <result property="updateTime"    column="update_time"    />
+		<result property="remark"    column="remark"    />
+		<result property="delFlag"    column="delFlag"    />		
+		<result 	property="deptName"    column="deptName"    />
+		<result     property="dept_id"   column="dept_id"   />
+    </resultMap> 
+
+	<sql id="selectReportVo">
+        select *
+        from report_op_log r
+    </sql>	
+	
+	<!-- 查询条件 -->
+	<sql id="sqlwhereSearch">
+		<where>
+			<if test=" id !=null">
+				and id = #{id}
+			</if>
+			<if test=" logDate !=null and logDate != ''">
+				and logDate = #{logDate}
+			</if>
+			<if test=" deptId !=null and deptId != ''">
+				and deptId = #{deptId}
+			</if>
+		</where>
+	</sql>
+	
+
+    
+    <select id="selectReport" parameterType="OpLog" resultMap="ReportResult">
+        <include refid="selectReportVo"/>
+        <include refid="sqlwhereSearch"/>
+    </select>
+    
+    <select id="selectReportList" parameterType="OpLog" resultMap="ReportResult">
+        <include refid="selectReportVo"/>
+        where  delFlag = '1'
+        <if test=" deptId != null and deptId != 0">
+			AND deptId = #{deptId}
+		</if>
+		<if test=" logDate != null and logDate != ''">
+			AND logDate = #{logDate}
+		</if>
+		<!-- 数据范围过滤 -->
+		${params.dataScope}	
+		order by r.id, r.logDate
+    </select>
+      <select id="selectReportById" parameterType="Long" resultMap="ReportResult">
+		<include refid="selectReportVo"/>
+		where r.id = #{id}
+	</select>
+	
+    <delete id="deleteReportById" parameterType="Long">
+		update report_op_log set delFlag = '2' where id = #{id}
+	</delete>
+	 <delete id="deleteReportByIds" parameterType="Long">
+ 		delete from report_op_log where id in
+ 		<foreach collection="array" item="id" open="(" separator="," close=")">
+ 			#{id}
+        </foreach> 
+ 	</delete>
+    
+    <update id="updateReport" parameterType="OpLog">
+ 		update report_op_log
+ 		<set>
+			<if test=" poolId != null and poolId!= ''">poolId = #{poolId},</if>
+			<if test=" deptId != null and deptId !=''">deptId = #{deptId},</if>
+			<if test=" logDate != null and logDate !=''">logDate = #{logDate},</if>
+			<if test=" weather != null and weather !=''">weather = #{weather},</if>
+			<if test=" waterStartTime != null and waterStartTime !=''">waterStartTime = #{waterStartTime},</if>
+			<if test=" waterEndTime != null and waterEndTime !=''">waterEndTime = #{waterEndTime},</if>
+			<if test=" waterUsage != null and waterUsage != ''">waterUsage = #{waterUsage},</if>
+			<if test=" dryHour != null and dryHour != ''">dryHour = #{dryHour},</if>
+			<if test=" dryMin != null and dryMin != ''">dryMin = #{dryMin},</if>
+			<if test=" logRemarks != null and logRemarks != ''">logRemarks = #{logRemarks},</if>
+			<if test=" logRecorder != null and logRecorder != ''">logRecorder = #{logRecorder},</if>
+			<if test=" delFlag != null and delFlag!= ''">delFlag = #{delFlag},</if>
+			<if test="  remark != null and remark != ''">remark = #{remark},</if>
+ 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+ 			update_time = sysdate
+ 		</set>
+ 		where id = #{id}
+	</update>
+	  
+    <insert id="insertReport" parameterType="OpLog">
+    	 <selectKey keyProperty="id" resultType="long" order="BEFORE">
+			SELECT seq_report_op_log.NEXTVAL as id FROM DUAL
+		</selectKey>
+    
+		INSERT INTO report_op_log(
+			<if test=" id != null and id!= 0">id,</if>
+			<if test=" deptId != null and deptId!= ''">deptId,</if>
+			<if test=" deptName != null and deptName!= ''">deptName,</if>
+			<if test=" poolId != null and poolId != ''">poolId,</if>
+			<if test=" logDate != null and logDate != ''">logDate,</if>
+			<if test=" weather != null and weather != ''">weather,</if>
+			<if test=" waterStartTime != null and waterStartTime != ''">waterStartTime,</if>
+			<if test=" waterEndTime != null and waterEndTime != ''">waterEndTime,</if>
+			<if test=" waterUsage != null and waterUsage != ''">waterUsage,</if>
+			<if test=" dryHour != null and dryHour != ''">dryHour,</if>
+			<if test=" dryMin != null and dryMin != ''">dryMin,</if>
+			<if test=" logRemarks != null and logRemarks != ''">logRemarks,</if>
+			<if test=" logRecorder != null and logRecorder != ''">logRecorder,</if>
+			<if test=" remark != null and remark != ''">REMARK,</if>
+			<if test=" delFlag != null and delFlag!= ''">delFlag,</if>
+			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" dept_id != null ">dept_id,</if>
+			create_time
+		) VALUES (
+			<if test=" id != null and id!= 0">#{id},</if>
+			<if test=" deptId != null and deptId!= ''">#{deptId},</if>
+			<if test=" deptName != null and deptName!= ''">#{deptName},</if>
+			<if test=" poolId != null and poolId !=''">#{poolId},</if>
+			<if test=" logDate != null and logDate != ''">#{logDate},</if>
+			<if test=" weather != null and weather != ''">#{weather},</if>
+			<if test=" waterStartTime != null and waterStartTime != ''">#{waterStartTime},</if>
+			<if test=" waterEndTime != null and waterEndTime != ''">#{waterEndTime},</if>
+			<if test=" waterUsage != null and waterUsage != ''">#{waterUsage},</if>
+			<if test=" dryHour != null and dryHour != ''">#{dryHour},</if>
+			<if test=" dryMin != null and dryMin != ''">#{dryMin},</if>
+			<if test=" logRemarks != null and logRemarks !=''">#{logRemarks},</if>
+			<if test=" logRecorder != null and logRecorder != ''">#{logRecorder},</if>
+			<if test=" remark != null and remark != ''">#{remark},</if>
+			<if test=" delFlag != null and delFlag!= ''">#{delFlag},</if>
+			<if test=" createBy != null and createBy != ''">#{createBy},</if>
+			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			sysdate			
+		)
+	</insert>
+    
+</mapper>

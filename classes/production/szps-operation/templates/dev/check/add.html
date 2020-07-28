@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('申请设备')" />
+	<th:block th:include="include :: select2-css" />
+</head>
+<body>
+    <div class="main-content">
+        <form id="form" class="form-horizontal">
+		
+		<div class="control-group" align="center">
+			<label class="lbl" >设备验收单 </label><br>
+		</div>
+		<div class="control-group">
+		<!-- required -->
+		<table  class="table table-striped table-bordered table-condensed">
+		  <tr >
+		    <td  >　</td>
+		    <td >中文名称</td>
+		    <td colspan="5" ><input name="chineseName"  class="form-control"/></td>
+		    <td colspan="2" >型号</td>
+		    <td colspan="2" ><input name="devModel"  class="form-control"/></td>
+		    <td >功率/电压</td>
+		    <td colspan="3" ><input name="devPower"  class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td  >　</td>
+		    <td >英文名称</td>
+		    <td colspan="5" ><input name="englishName"  class="form-control"/></td>
+		    <td colspan="2" >机器编号</td>
+		    <td colspan="2" ><input name="devNumber"  class="form-control"/></td>
+		    <td >数量</td>
+		    <td colspan="3" ><input name="quantity"  class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td  >设</td>
+		    <td >铭牌</td>
+		    <td colspan="5" ><input name="nameplate"  class="form-control"/></td>
+		    <td colspan="2" >到货日期</td>
+		    <td colspan="2" >
+		    <input id="arrivalDate" name="arrivalDate" class="time-input form-control"/> </td>
+		    <td >验收日期</td>
+		    <td colspan="3" >
+		    <input id="checkDate" name="checkDate" type="text" class="time-input form-control"/> </td>
+		  </tr>
+		  <tr >
+		    <td  >备</td>
+		    <td >供应商</td>
+		    <td colspan="5" ><input name="supplier"  class="form-control"/></td>
+		    <td colspan="2" >外形尺寸</td>
+		    <td colspan="4" ><input name="devSize"  class="form-control"/></td>
+		    <td >保修(月) </td>
+		    <td ><input name="warrantyPeriod"  class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td  >概</td>
+		    <td >辅机</td>
+		    <td colspan="13" ><textarea name="auxiliary"  class="form-control"></textarea></td>
+		  </tr>
+		  <tr >
+		    <td  >况</td>
+		    <td >配件</td>
+		    <td colspan="13" ><textarea name="part"  class="form-control"></textarea></td>
+		  </tr>
+		  <tr >
+		    <td  >　</td>
+		    <td >设备类型</td>
+		    <td colspan="13" >
+				<select class="selectpicker form-control" name="devType"  id="devType" type="text" >
+				 <option value="机械设备">机械设备</option>
+				  <option value="电器电柜">电器电柜</option>
+				  <option value="自控仪表">自控仪表</option>
+				</select>		    
+		    </td>
+		  </tr>
+		  <tr >
+		    <td  >　</td>
+		    <td >金额</td>
+		    <td >单价</td>
+		    <td ><input name="unitPrice"  class="form-control"/></td>
+		    <td >运输费</td>
+		    <td><input name="trafficCost"  class="form-control"/></td>
+		    <td >安装费</td>
+		    <td><input name="installCost"  class="form-control"/></td>
+		    <td >税金</td>
+		    <td><input name="taxes"  class="form-control"/></td>
+		    <td >总额</td>
+		    <td><input name="sumCost"  class="form-control"/></td>
+		    <td >　</td>
+		    <td >　</td>
+		    <td >　</td>
+		  </tr>
+		  <tr >
+		    <td  >　</td>
+		    <td >附件</td>
+		    <td colspan="8" ><textarea name="accessory"  class="form-control"></textarea></td>
+		    <td >　</td>
+		    <td >　</td>
+		    <td >保管人签名：</td>
+		    <td >　</td>
+		    <td ><input name="keeper"  class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td  >验收项目</td>
+		    <td >外观</td>
+		    <td colspan="2" >安全性</td>
+		    <td colspan="2" >性能指标</td>
+		    <td colspan="2" >材料</td>
+		    <td colspan="2" >生产产品质量</td>
+		    <td colspan="3" >应具功能</td>
+		    <td colspan="2" >实际使用记录</td>
+		  </tr>
+		  <tr >
+		    <td  >国家标准</td>
+		    <td><input name="appearanceC"  class="form-control"/></td>
+		    <td colspan="2"><input name="securityC"  class="form-control"/></td>
+		    <td colspan="2"><input name="propertyC"  class="form-control"/></td>
+		    <td colspan="2"><input name="materialsC"  class="form-control"/></td>
+		    <td colspan="2"><input name="qualityC"  class="form-control"/></td>
+		    <td colspan="3"><input name="needFuncC"  class="form-control"/></td>
+		    <td colspan="2"><input name="readFuncC"  class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td  >立项标准</td>
+		    <td><input name="appearanceB"  class="form-control"/></td>
+		    <td colspan="2"><input name="securityB"  class="form-control"/></td>
+		    <td colspan="2"><input name="propertyB"  class="form-control"/></td>
+		    <td colspan="2"><input name="materialsB"  class="form-control"/></td>
+		    <td colspan="2"><input name="qualityB"  class="form-control"/></td>
+		    <td colspan="3"><input name="needFuncB"  class="form-control"/></td>
+		    <td colspan="2"><input name="readFuncB"  class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td  >合同标准</td>
+		    <td><input name="appearanceA"  class="form-control"/></td>
+		    <td colspan="2"><input name="securityA"  class="form-control"/></td>
+		    <td colspan="2"><input name="propertyA"  class="form-control"/></td>
+		    <td colspan="2"><input name="materialsA"  class="form-control"/></td>
+		    <td colspan="2"><input name="qualityA"  class="form-control"/></td>
+		    <td colspan="3"><input name="needFuncA"  class="form-control"/></td>
+		    <td colspan="2"><input name="readFuncA"  class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td  >　</td>
+		    <td colspan="14" rowspan="4" ><textarea name="devSpec"  class="form-control"></textarea></td>
+		  </tr>
+		  <tr >
+		    <td  >说    </td>
+		  </tr>
+		  <tr >
+		    <td  >　</td>
+		  </tr>
+		  <tr >
+		    <td  >明</td>
+		  </tr>
+		  <tr >
+		    <td colspan="2" >采购部门：<input name="purcDeptSign"  class="form-control"/></td>
+		    <td colspan="3" >使用部门：<input name="useDeptSign"  class="form-control"/></td>
+		    <td colspan="3" >设备设施部：<input name="facDeptSign"  class="form-control"/></td>
+		    <td colspan="4" >分管领导：<input name="leaderSign"  class="form-control"/></td>
+		    <td colspan="3" >备注：<input name="remark"  class="form-control"/></td>
+		  </tr>
+		  <tr >
+		    <td  ></td>
+		    <td ></td>
+		    <td ></td>
+		    <td ></td>
+		    <td ></td>
+		    <td ></td>
+		    <td ></td>
+		    <td ></td>
+		    <td ></td>
+		    <td ></td>
+		    <td ></td>
+		    <td ></td>
+		    <td ></td>
+		    <td ></td>
+		    <td ></td>
+		  </tr>
+		  <tr >
+		    <td  colspan="11">注：验收项目中符合的打“P”，不符合的打“O”，无需验收项不作任何标记，打“O”的项目需在“说明”栏中作出说</td>
+		    <td></td>
+		    <td></td>
+		    <td></td>
+		    <td></td>
+		  </tr>
+		</table>
+		</div>
+		
+	</form>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-5 col-sm-10">
+            <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>保 存</button>&nbsp;
+            <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
+        </div>
+    </div>
+	<th:block th:include="include :: footer" />
+	<th:block th:include="include :: select2-js" />
+	<script>
+	    var prefix = ctx + "op/dev/check";
+	
+        $("#form").validate({
+        	onkeyup: false,
+        	rules:{
+        		
+        	},
+        	messages: {
+                "loginName": {
+                    remote: "用户已经存在"
+                },
+        		"email": {
+                    remote: "Email已经存在"
+                },
+        		"phonenumber":{
+                	remote: "手机号码已经存在"
+        		}
+            },
+            focusCleanup: true
+        });
+        
+        function submitHandler() {
+	        if ($.validate.form()) {
+	        	var data = $("#form").serializeArray();
+	        	/* var status = $("input[id='status']").is(':checked') == true ? 0 : 1;
+	        	var roleIds = $.form.selectCheckeds("role");
+	        	var postIds = $.form.selectSelects("post");
+	        	data.push({"name": "status", "value": status});
+	        	data.push({"name": "roleIds", "value": roleIds});
+	        	data.push({"name": "postIds", "value": postIds}); */
+	        	$.operate.save(prefix + "/add", data);
+	        }
+	    }
+         
+        /*用户管理-新增-选择部门树*/
+        function selectDeptTree() {
+        	var treeId = $("#treeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmit
+			};
+			$.modal.openOptions(options);
+		}
+		
+		function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+		}
+		
+		
+		function selectDeptTree2() {
+        	var treeId = $("#treeId2").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId2").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmit2
+			};
+			$.modal.openOptions(options);
+		}
+		
+		function doSubmit2(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+			var body = layer.getChildFrame('body', index);
+   			$("#treeId2").val(body.find('#treeId2').val());
+   			$("#treeName2").val(body.find('#treeName2').val());
+   			layer.close(index);
+		}
+
+		$(function() {
+            $('#post').select2({
+                placeholder:"请选择岗位",
+                allowClear: true
+            });
+        })
+    </script>
+</body>
+</html>

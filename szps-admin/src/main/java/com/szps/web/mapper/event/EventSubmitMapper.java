@@ -11,15 +11,14 @@ import java.util.List;
  * @author HJR
  * @date 2020-06-06
  */
-public interface EventSubmitMapper
-{
+public interface EventSubmitMapper {
     /**
      * 查询突发事件上传
      *
      * @param eventId 突发事件上传ID
      * @return 突发事件上传
      */
-    public EventSubmit selectEventSubmitById(String eventId);
+    public List<EventSubmit> selectEventSubmitById(EventSubmit eventId);
 
     /**
      * 查询突发事件上传列表
@@ -63,6 +62,7 @@ public interface EventSubmitMapper
 
     /**
      * 新增图片上传
+     *
      * @param eventPicture
      * @return
      */
@@ -70,8 +70,9 @@ public interface EventSubmitMapper
 
     /**
      * 获取图片
+     *
      * @param eventPicture
      * @return
      */
-    public  List<EventPicture> getEventPictures(EventPicture eventPicture);
+    public List<EventPicture> getEventPictures(EventPicture eventPicture);
 }

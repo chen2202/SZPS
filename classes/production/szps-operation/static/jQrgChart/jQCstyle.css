@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+a {
+	text-decoration: none;
+	color: #000;
+	font-size: 12px;
+}
+/*节点*/
+.jOrgChart .node {
+	border-radius: 0px;
+	border: 2px solid gainsboro;
+	margin: 0 8px;
+	background-color: white;
+}
+/*jOrgChart 表格线*/
+/*上部分竖线*/
+.jOrgChart .down {
+	background-color: black;
+	margin: 0px auto;
+}
+
+.jOrgChart .line {
+	height: 20px;
+	width: 3px;
+}
+/*左上部分线     ps:不知道为什么左右是反的！*/
+.jOrgChart .right {
+	border-left: 1px solid black;
+}
+
+.jOrgChart .top {
+	border-top: 1px solid black;
+}
+/*右上部分线*/
+.jOrgChart .left {
+	border-right: 1px solid black;
+}
+
+.jOrgChart .top {
+	border-top: 1px solid black;
+}

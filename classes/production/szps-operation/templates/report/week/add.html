@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('添加日报')" />
+	<th:block th:include="include :: select2-css" />
+</head>
+<body>
+    <div class="main-content">
+       <form id="form-weekreport-add" class="form-horizontal">
+		<div class="control-group">
+			<label class="lbl">生产周报</label><br>
+			<label class="input-label" >汇报时间</label>
+			<input id="reportDate" name="reportDate" type="text" class="time-input"/> 
+		</div>
+		<div class="control-group">
+			<label class="lbl">一,厂区基本运营情况</label><br>
+			<label class="lbl">（1）水量及材料消耗</label><br>
+			<table class="table table-striped table-bordered table-condensed">
+			  <tr>
+			    <td colspan="2">水量(m<sup>3</sup>)</td>
+			    <td>PAC(吨) </td>
+			    <td>铁盐/除磷剂(吨)</td>
+			    <td>PAM-(kg)</td>
+			    <td>PAM+(kg)</td>
+			    <td>消毒药剂(m<sup>3</sup>/kg)</td>
+			    <td>用电量(kw.h)</td>
+			    <td>用水量(吨)</td>
+			    <td>污泥量(吨)</td>
+			  </tr>
+			  <tr>
+			    <td><input name="waterTreatment1" 	id="waterTreatment1" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="waterTreatment2" 	id="waterTreatment2" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="pac" 				id="pac" 				htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="ipra" 				id="ipra" 				htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="pam1" 				id="pam1" 				htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="pam2" 				id="pam2" 				htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="disin" 			id="disin" 			htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="electricity" 		id="electricity" 		htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="water" 			id="water" 			htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="sq1" 				id="sq1" 				htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			  </tr>
+			</table>
+			<label class="lbl">（2）进出水水质</label><br>
+			<table class="table table-striped table-bordered table-condensed">
+			  <tr>
+			    <td>自测周均值</td>
+			    <td>COD</td>
+			    <td>NH<sub>3</sub>-N</td>
+			    <td>TP</td>
+			    <td>TN</td>
+			    <td>SS</td>
+			    <td>pH</td>
+			  </tr>
+			  <tr>
+			    <td>进水浓度（mg/L）</td>
+			    <td><input name="codSelfAverageIn" 	id="codSelfAverageIn"	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="nhhSelfAverageIn" 	id="nhhSelfAverageIn"	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="tpSelfAverageIn" 	id="tpSelfAverageIn" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="tnSelfAverageIn" 	id="tnSelfAverageIn" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="ssSelfAverageIn" 	id="ssSelfAverageIn" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="phSelfAverageIn" 	id="phSelfAverageIn" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			  </tr>
+			  <tr>
+			    <td>出水浓度（mg/L）</td>
+			    <td><input name="codSelfAverageOut" id="codSelfAverageOut" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="nhhSelfAverageOut" id="nhhSelfAverageOut"	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="tpSelfAverageOut" 	id="tpSelfAverageOut" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="tnSelfAverageOut" 	id="tnSelfAverageOut" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="ssSelfAverageOut" 	id="ssSelfAverageOut" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="phSelfAverageOut" 	id="phSelfAverageOut" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			  </tr>
+			</table>
+			<table class="table table-striped table-bordered table-condensed">
+			  <tr>
+			    <td>在线监测周均值</td>
+			    <td>COD</td>
+			    <td>NH<sub>3</sub>-N</td>
+			    <td>TP</td>
+			    <td>TN</td>
+			    <td>SS</td>
+			    <td>pH</td>
+			  </tr>
+			  <tr>
+			    <td>进水浓度（mg/L）</td>
+			    <td><input name="codOnLineAverageIn" id="codOnLineAverageIn" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="nhhOnLineAverageIn" id="nhhOnLineAverageIn" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="tpOnLineAverageIn"  id="tpOnLineAverageIn" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="tnOnLineAverageIn"  id="tnOnLineAverageIn" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="ssOnLineAverageIn"  id="ssOnLineAverageIn" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="phOnLineAverageIn"  id="phOnLineAverageIn" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			  </tr>                                  
+			  <tr>                                   
+			    <td>出水浓度（mg/L）</td>           
+			    <td><input name="codOnLineAverageOut" id="codOnLineAverageOut" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="nhhOnLineAverageOut" id="nhhOnLineAverageOut" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="tpOnLineAverageOut" id="tpOnLineAverageOut" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="tnOnLineAverageOut" id="tnOnLineAverageOut" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="ssOnLineAverageOut" id="ssOnLineAverageOut" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input name="phOnLineAverageOut" id="phOnLineAverageOut" 	htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			  </tr>
+			</table>
+			<label class="lbl">（3）在线监测超标情况超标情况</label><br>
+			<table  id ="tblIn" class="table table-striped table-bordered table-condensed">
+			  <tr>
+			    <td colspan="7">进水</td>
+			  </tr>
+			  <tr>
+			    <td>日期</td>
+			    <td>COD</td>
+			    <td>NH<sub>3</sub>-N</td>
+			    <td>TP</td>
+			    <td>TN</td>
+			    <td>SS</td>
+			    <td>pH</td>
+			    <th><a href="javascript:" onclick="addClomnIn();" class="btn"><i class="icon-plus"></i></a></th>
+			  </tr>
+			  <tr>
+			    <td><input id="inDate" name ="inDate" htmlEscape="false" maxlength="50" class="input-mini"/></td>
+			    <td><input  id="inCOD" name ="inCOD" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input  id="inNh3h" name ="inNh3h" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input  id="inTp" name ="inTp" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input  id="inTn" name ="inTn" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input  id="inSs" name ="inSs" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input  id="inPh" name ="inPh" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><a href="javascript:" onclick="deleteClomn(this);" class="btn"><i class="icon-minus"></i></a> </td>
+			  </tr>
+			</table>
+			<table  id ="tblOut" class="table table-striped table-bordered table-condensed">
+			  <tr>
+			    <td colspan="7">出水</td>
+			  </tr>
+			  <tr>
+			    <td>日期</td>
+			    <td>COD</td>
+			    <td>NH<sub>3</sub>-N</td>
+			    <td>TP</td>
+			    <td>TN</td>
+			    <td>SS</td>
+			    <td>pH</td>
+			    <th><a href="javascript:" onclick="addClomnOut();" class="btn"><i class="icon-plus"></i></a></th>
+			  </tr>
+			  <tr>
+			    <td><input  id="outDate" name ="outDate" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input  id="outCOD" name ="outCOD" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input  id="outNh3h" name ="outNh3h" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input  id="outTp" name ="outTp" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input  id="outTn" name ="outTn" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input  id="outSs" name ="outSs" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><input  id="outPh" name ="outPh" htmlEscape="false" maxlength="50" class="form-control"  type="text"/></td>
+			    <td><a href="javascript:" onclick="deleteClomn(this);" class="btn"><i class="icon-minus"></i></a> </td>
+			  </tr>
+			</table>
+ 
+		</div>
+		<div class="control-group">
+			<label class="lbl">二、本周完成的主要工作</label><br>
+			<textarea id="weekFinishWork" htmlEscape="true" name="weekFinishWork" style="width: 90%; height: 100px;"></textarea>
+		</div>
+		<div class="control-group">
+			<label class="lbl">四，运行存在问题及解决措施</label><br>
+			<label class="lbl">运行存在问题</label><br>
+			<div class="controls">
+				<textarea id="problemDesc" htmlEscape="true" name="problemDesc"  style="width: 90%; height: 100px;"></textarea>
+			</div>
+			<label class="lbl">解决措施</label><br>
+			<div class="controls">
+				<textarea id="actionDesc" htmlEscape="true" name="actionDesc"  style="width: 90%; height: 100px;"></textarea>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="lbl">五、下周工作计划</label><br>
+			<textarea id="nextWeekPlan" htmlEscape="true" name="nextWeekPlan" style="width: 90%; height: 100px;"></textarea>
+		</div>
+		<div class="control-group">
+			<label class="lbl">六、报表初审意见</label><br>
+			<textarea id="firstOpinion" htmlEscape="true" name="firstOpinion" style="width: 90%; height: 100px;"></textarea>
+		</div>
+		<div class="control-group">
+			<label class="lbl">七、厂区回复意见</label><br>
+			<textarea id="replyOpinion" htmlEscape="true" name="replyOpinion" style="width: 90%; height: 100px;"></textarea>
+		</div>
+
+	</form>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-5 col-sm-10">
+            <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>保 存</button>&nbsp;
+            <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
+        </div>
+    </div>
+	<th:block th:include="include :: footer" />
+	<th:block th:include="include :: select2-js" />
+	<script>
+	    var prefix = ctx + "op/report/week";
+	
+        $("#form-weekreport-add").validate({
+        	onkeyup: false,
+        	rules:{
+        		
+        	},
+        	messages: {
+                "loginName": {
+                    remote: "用户已经存在"
+                },
+        		"email": {
+                    remote: "Email已经存在"
+                },
+        		"phonenumber":{
+                	remote: "手机号码已经存在"
+        		}
+            },
+            focusCleanup: true
+        });
+        
+        function submitHandler() {
+	        if ($.validate.form()) {
+	        	var data = $("#form-weekreport-add").serializeArray();
+	        	/* var status = $("input[id='status']").is(':checked') == true ? 0 : 1;
+	        	var roleIds = $.form.selectCheckeds("role");
+	        	var postIds = $.form.selectSelects("post");
+	        	data.push({"name": "status", "value": status});
+	        	data.push({"name": "roleIds", "value": roleIds});
+	        	data.push({"name": "postIds", "value": postIds}); */
+	        	$.operate.save(prefix + "/add", data);
+	        }
+	    }
+         
+        /*用户管理-新增-选择部门树*/
+        function selectDeptTree() {
+        	var treeId = $("#treeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmit
+			};
+			$.modal.openOptions(options);
+		}
+		
+		function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+			//if ($.tree.notAllowParents(tree)) {
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+			//}
+		}
+
+		$(function() {
+            $('#post').select2({
+                placeholder:"请选择岗位",
+                allowClear: true
+            });
+        })
+    </script>
+</body>
+</html>

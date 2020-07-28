@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('申请设备')" />
+	<th:block th:include="include :: select2-css" />
+</head>
+<body>
+    <div class="main-content">
+        <form id="form-apply-add"  class="form-horizontal"  th:object="${obj}">
+		<input name="deptId" type="hidden" id="treeId" />
+		 <input name="id" type="hidden" id="id"  th:field="*{id}"/>
+		<div class="control-group" align="center">
+			<label class="lbl" >设　备（施）申    请    单</label><br>
+		</div>
+		<div class="control-group">
+		<!-- required -->
+		<table  class="table table-striped table-bordered table-condensed">
+			  <tr>
+			    <td>设备类型</td>
+			    <td colspan="2">
+			    	<select class="selectpicker form-control" name="devType"  id="devType" th:field="*{devType}" type="text" >
+						<option value="机械设备">机械设备</option>
+						<option value="电器电柜">电器电柜</option>
+						<option value="自控仪表">自控仪表</option>
+					</select>			    
+			    </td>
+			    <td>　</td>
+			    <td>申请时间</td>
+			    <td colspan="2">
+			    <input id="applyDate" name="applyDate" th:field="*{applyDate}"  class="time-input form-control"/> </td>
+			  </tr>
+			  <tr>
+			    <td>申请部门</td>
+			    <td colspan="2"><input name="applyDept"    onclick="selectDeptTree()" id="treeName"   th:field="*{applyDept}"  class="form-control"/></td>
+			    <td>申请部门经理</td>
+			    <td><input name="applyDeptManager"     th:field="*{applyDeptManager}"  class="form-control"/></td>
+			    <td>要求购置时间</td>
+			    <td>
+			    <input id="requireDate" name="requireDate" th:field="*{requireDate}" type="text" class="time-input form-control"/> </td>
+			  </tr>
+			  <tr>
+			    <td>申</td>
+			    <td colspan="6" rowspan="4"><textarea id="applyPrj" htmlEscape="true" name="applyPrj"   style="width: 90%; height: 100px;"  th:field="*{applyPrj}"  class="form-control"></textarea>
+			    </td>
+			  </tr>
+			  <tr>
+			    <td>请</td>
+			  </tr>
+			  <tr>
+			    <td>项</td>
+			  </tr>
+			  <tr>
+			    <td>目</td>
+			  </tr>
+			  <tr>
+			    <td>申</td>
+			    <td colspan="6" rowspan="4">
+			    <textarea id="applySpec" htmlEscape="true" name="applySpec"   style="width: 90%; height: 100px;"  th:field="*{applySpec}"  class="form-control"></textarea></td>
+			  </tr>
+			  <tr>
+			    <td>请</td>
+			  </tr>
+			  <tr>
+			    <td>说</td>
+			  </tr>
+			  <tr>
+			    <td>明</td>
+			  </tr>
+			  <tr>
+			    <td colspan="4">行政部/运营部/工程部/设计部/财务部/环评部/总经办</td>
+			    <td>　</td>
+			    <td>　</td>
+			    <td>　</td>
+			  </tr>
+			  <tr>
+			    <td>　</td>
+			    <td>审核：</td>
+			    <td colspan="2"><input name="verifier"     th:field="*{verifier}"  class="form-control"/></td>
+			    <td>批准：</td>
+			    <td colspan="2"><input name="approver"    th:field="*{approver}"  class="form-control"/></td>
+			  </tr>
+		</table>
+		</div>
+		
+	</form>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-5 col-sm-10">
+            <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>保 存</button>&nbsp;
+            <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
+        </div>
+    </div>
+	<th:block th:include="include :: footer" />
+	<th:block th:include="include :: select2-js" />
+	<script>
+	    var prefix = ctx + "op/dev/apply";
+	
+        $("#form-apply-add").validate({
+        	onkeyup: false,
+        	rules:{
+        		
+        	},
+        	messages: {
+                "loginName": {
+                    remote: "用户已经存在"
+                },
+        		"email": {
+                    remote: "Email已经存在"
+                },
+        		"phonenumber":{
+                	remote: "手机号码已经存在"
+        		}
+            },
+            focusCleanup: true
+        });
+        
+        function submitHandler() {
+	        if ($.validate.form()) {
+	        	var data = $("#form-apply-add").serializeArray();
+	        	/* var status = $("input[id='status']").is(':checked') == true ? 0 : 1;
+	        	var roleIds = $.form.selectCheckeds("role");
+	        	var postIds = $.form.selectSelects("post");
+	        	data.push({"name": "status", "value": status});
+	        	data.push({"name": "roleIds", "value": roleIds});
+	        	data.push({"name": "postIds", "value": postIds}); */
+	        	$.operate.save(prefix + "/edit", data);
+	        }
+	    }
+         
+        /*用户管理-新增-选择部门树*/
+        function selectDeptTree() {
+        	var treeId = $("#treeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmit
+			};
+			$.modal.openOptions(options);
+		}
+		
+		function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+			//if ($.tree.notAllowParents(tree)) {
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+			//}
+		}
+
+		$(function() {
+            $('#post').select2({
+                placeholder:"请选择岗位",
+                allowClear: true
+            });
+        })
+    </script>
+</body>
+</html>

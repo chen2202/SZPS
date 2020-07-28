@@ -110,4 +110,12 @@ public interface ISysDeptService
      * @return
      */
     public List<SysDept> getSysDepts(String  sysDept);
+
+    /**
+     * 获取全部信息
+     * @return
+     * made by HJR
+     */
+    public List<SysDept> getSysDepts2();
+
 }

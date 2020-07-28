@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.dev.ApplyMapper">
+ 
+	<resultMap type="Apply" id="result">
+		<id     property="id"    column="id"    />
+		<result     property="devType"   column="devType"   />
+		<result     property="applyDate"   column="applyDate"   />
+		<result     property="applyDept"   column="applyDept"   />
+		<result     property="applyDeptManager"   column="applyDeptManager"   />
+		<result     property="requireDate"   column="requireDate"   />
+		<result     property="applyPrj"   column="applyPrj"   />
+		<result     property="applySpec"   column="applySpec"   />
+		<result     property="verifier"   column="verifier"   />
+		<result     property="approver"   column="approver"   />
+		<result     property="deptId"   column="deptId"   />
+        <result property="createBy"      column="create_by"      />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"      column="update_by"      />
+        <result property="updateTime"    column="update_time"    />
+		<result property="remark"    column="remark"    />
+		<result property="delFlag"    column="delFlag"    />
+		<result     property="dept_id"   column="dept_id"   />
+				
+    </resultMap> 
+
+	<sql id="selectVo">
+        select *
+        from dev_apply r
+    </sql>	
+	
+	<!-- 查询条件 -->
+	<sql id="sqlwhereSearch">
+		<where>
+			<if test=" id !=null">
+				and id = #{id}
+			</if>
+			<if test=" applyDate !=null and applyDate != ''">
+				and applyDate = #{applyDate}
+			</if>
+			<if test=" deptId !=null and deptId != ''">
+				and deptId = #{deptId}
+			</if>
+		</where>
+	</sql>
+	
+
+    
+    <select id="select" parameterType="Apply" resultMap="result">
+        <include refid="selectVo"/>
+        <include refid="sqlwhereSearch"/>
+    </select>
+    
+    <select id="selectList" parameterType="Apply" resultMap="result">
+        <include refid="selectVo"/>
+        where  delFlag = '1'
+        <if test=" deptId != null and deptId != 0">
+			AND deptId = #{deptId}
+		</if>
+		<if test=" applyDate != null and applyDate != ''">
+			AND applyDate = #{applyDate}
+		</if>
+		<!-- 数据范围过滤 -->
+		${params.dataScope}		
+		order by r.id, r.applyDate
+    </select>
+      <select id="selectById" parameterType="Long" resultMap="result">
+		<include refid="selectVo"/>
+		where r.id = #{id}
+	</select>
+	
+    <delete id="deleteById" parameterType="Long">
+		update dev_apply set DELFLAG = '2' where id = #{id}
+	</delete>
+	 <delete id="deleteByIds" parameterType="Long">
+ 		delete from dev_apply where id in
+ 		<foreach collection="array" item="id" open="(" separator="," close=")">
+ 			#{id}
+        </foreach> 
+ 	</delete>
+    
+    <update id="update" parameterType="Apply">
+ 		update dev_apply
+ 		<set>
+			<if test=" devType != null and devType != ''">devType = #{devType},</if>
+			<if test=" applyDate != null and applyDate != ''">applyDate = #{applyDate},</if>
+			<if test=" applyDept != null and applyDept != ''">applyDept = #{applyDept},</if>
+			<if test=" applyDeptManager != null and applyDeptManager != ''">applyDeptManager = #{applyDeptManager},</if>
+			<if test=" requireDate != null and requireDate != ''">requireDate = #{requireDate},</if>
+			<if test=" applyPrj != null and applyPrj != ''">applyPrj = #{applyPrj},</if>
+			<if test=" applySpec != null and applySpec != ''">applySpec = #{applySpec},</if>
+			<if test=" verifier != null and verifier != ''">verifier = #{verifier},</if>
+			<if test=" approver != null and approver != ''">approver = #{approver},</if>
+			<if test=" deptId != null and deptId != 0">deptId = #{deptId},</if>
+			<if test=" delFlag != null and delFlag!= ''">delFlag = #{delFlag},</if>
+			<if test=" remark != null and remark != ''">remark = #{remark},</if>
+ 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+ 			update_time = sysdate
+ 		</set>
+ 		where id = #{id}
+	</update>
+	  
+    <insert id="insert" parameterType="Apply">
+    	 <selectKey keyProperty="id" resultType="long" order="BEFORE">
+			SELECT seq_dev_apply.NEXTVAL as id FROM DUAL
+		</selectKey>
+    
+		INSERT INTO dev_apply(
+			<if test=" id != null and id!= 0">id,</if>
+			<if test=" devType != null and  devType != ''">devType,</if>
+			<if test=" applyDate != null and  applyDate != ''">applyDate,</if>
+			<if test=" applyDept != null and  applyDept != ''">applyDept,</if>
+			<if test=" applyDeptManager != null and  applyDeptManager != ''">applyDeptManager,</if>
+			<if test=" requireDate != null and  requireDate != ''">requireDate,</if>
+			<if test=" applyPrj != null and  applyPrj != ''">applyPrj,</if>
+			<if test=" applySpec != null and  applySpec != ''">applySpec,</if>
+			<if test=" verifier != null and  verifier != ''">verifier,</if>
+			<if test=" approver != null and  approver != ''">approver,</if>
+			<if test=" deptId != null and  deptId != 0">deptId,</if>
+			<if test=" remark != null and remark != ''">REMARK,</if>
+			<if test=" delFlag != null and delFlag!= ''">delFlag,</if>
+			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" dept_id != null ">dept_id,</if>
+			create_time
+		) VALUES (
+			<if test=" id != null and id!= 0">#{id},</if>
+			<if test=" devType != null and devType != ''">#{devType},</if>
+			<if test=" applyDate != null and  applyDate != ''">#{applyDate},</if>
+			<if test=" applyDept != null and  applyDept != ''">#{applyDept},</if>
+			<if test=" applyDeptManager != null and  applyDeptManager != ''">#{applyDeptManager},</if>
+			<if test=" requireDate != null and  requireDate != ''">#{requireDate},</if>
+			<if test=" applyPrj != null and  applyPrj != ''">#{applyPrj},</if>
+			<if test=" applySpec != null and  applySpec != ''">#{applySpec},</if>
+			<if test=" verifier != null and  verifier != ''">#{verifier},</if>
+			<if test=" approver != null and  approver != ''">#{approver},</if>
+			<if test=" deptId != null and  deptId != ''">#{deptId},</if>
+			<if test=" remark != null and remark != ''">#{remark},</if>
+			<if test=" delFlag != null and delFlag!= ''">#{delFlag},</if>
+			<if test=" createBy != null and createBy != ''">#{createBy},</if>
+			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			sysdate			
+		)
+	</insert>
+    
+</mapper>

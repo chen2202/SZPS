@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('修改检查对象')" />
+	<th:block th:include="include :: ztree-css" />
+	<link th:href="@{/css/op/public.css}" rel="stylesheet"/>
+	<link th:href="@{/css/op/operation.css}" rel="stylesheet"/>
+</head>
+<body class="white-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+		<form class="form-horizontal m" id="form-role-edit" >
+			<input id="taskNumber" name="taskNumber" type="hidden" th:field="*{task.taskNumber}"/>
+			<input id="taskHouse" name="taskHouse" type="hidden" th:field="*{task.taskHouse}"/>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">创建时间：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="taskTime" id="taskTime" th:field="*{task.taskTime}" placeholder="请输入创建时间"  style="border: 0px;background-color: white"  required readonly>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">抽查事项：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="ruleContent" id="ruleContent" th:field="*{task.tbHouse.houseRule}" placeholder="请输入抽查事项"  style="border: 0px;background-color: white" required readonly>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">执法人员：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="taskStaff" id="taskStaff" th:value="${taskStaff}" placeholder="请输入执法人员"  style="border: 0px;background-color: white" required readonly>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">抽查对象名称：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="houseName" id="houseName" th:field="*{task.tbHouse.houseName}" placeholder="请输入检查对象名称" maxlength="20" style="border: 0px;background-color: white" required readonly>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">项目名称：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="houseItem" id="houseItem" th:field="*{task.tbHouse.houseItem}" placeholder="请输入项目名称" maxlength="20" style="border: 0px;background-color: white" required readonly>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">地址：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="houseRegion" id="houseRegion" th:field="*{task.tbHouse.houseRegion}" maxlength="30" placeholder="请输入地址" style="border: 0px;background-color: white" required readonly>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">联系人：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="houseRole" id="houseRole" th:field="*{task.tbHouse.houseRole}" maxlength="5" placeholder="请输入联系人" style="border: 0px;background-color: white" required readonly>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">联系电话：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="housePhone" id="housePhone" th:field="*{task.tbHouse.housePhone}" maxlength="11" placeholder="请输入联系电话" style="border: 0px;background-color: white" required readonly>
+				</div>
+			</div>
+
+
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">证件有效期：</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" id="houseBegin" th:field="*{task.tbHouse.houseBegin}" placeholder="开始时间" name="houseBegin" style="border: 0px;background-color: white" readonly>
+				</div>
+				<div class="col-sm-1">
+					<span style="line-height: 2.5">---</span>
+				</div>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" id="houseEnd" th:field="*{task.tbHouse.houseEnd}" placeholder="结束时间" name="houseEnd"  style="border: 0px;background-color: white" readonly>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">检查时间：</label>
+				<div class="col-sm-8">
+					<input class="time-input form-control" type="text" name="taskCheckTime" id="taskCheckTime" th:field="*{task.taskCheckTime}"  placeholder="请输入检查时间" required >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">检查结果：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="taskResult" id="taskResult" th:field="*{task.taskResult}" maxlength="5" placeholder="请输入检查结果" required >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label ">处理情况：</label>
+				<div class="col-sm-8">
+					<input class="form-control" type="text" name="taskHandle" id="taskHandle" th:field="*{task.taskHandle}" maxlength="10" placeholder="请输入处理情况" required >
+				</div>
+			</div>
+
+
+		</form>
+	</div>
+	<th:block th:include="include :: footer" />
+	<th:block th:include="include :: ztree-js" />
+	<script type="text/javascript">
+	
+		$("#form-role-edit").validate({
+			onkeyup: false,
+			rules:{
+				roleName:{
+					remote: {
+		                url: ctx + "system/role/checkRoleNameUnique",
+		                type: "post",
+		                dataType: "json",
+		                data: {
+							"roleId": function() {
+							    return $("#roleId").val();
+							},
+							"roleName": function() {
+							    return $.common.trim($("#roleName").val());
+							}
+		                },
+		                dataFilter: function(data, type) {
+		                	return $.validate.unique(data);
+		                }
+		            }
+				},
+				roleKey:{
+					remote: {
+		                url: ctx + "system/role/checkRoleKeyUnique",
+		                type: "post",
+		                dataType: "json",
+		                data: {
+							"roleId": function() {
+								return $("#roleId").val();
+							},
+							"roleKey": function() {
+							    return $.common.trim($("#roleKey").val());
+							}
+		                },
+		                dataFilter: function(data, type) {
+		                	return $.validate.unique(data);
+		                }
+		            }
+				},
+				roleSort:{
+					digits:true
+				},
+			},
+			messages: {
+		        "roleName": {
+		            remote: "角色名称已经存在"
+		        },
+		        "roleKey": {
+		            remote: "角色权限已经存在"
+		        }
+		    },
+		    focusCleanup: true
+		});
+
+		function edit() {
+            var taskNumber = $("input[name='taskNumber']").val();
+            var taskCheckTime = $("input[name='taskCheckTime']").val();
+            var taskResult = $("input[name='taskResult']").val();
+            var taskHandle = $("input[name='taskHandle']").val();
+            var taskHouse = $("input[name='taskHouse']").val();
+            /*var taskHouse = $("input[name='taskHouse']").val();
+            var housePhone = $("input[name='housePhone']").val();
+            var houseRegion = $("input[name='houseRegion']").val();
+            var houseBegin = $("input[name='houseBegin']").val();
+            var houseFlag = $("input[name='houseFlag']:checked").val();
+            var houseEnd = $("input[name='houseEnd']").val();*/
+			$.ajax({
+				cache : true,
+				type : "POST",
+				url : ctx + "supervise/complete/edit",
+				data : {
+				    "taskNumber":taskNumber,
+				    "taskCheckTime":taskCheckTime,
+                    "taskResult": taskResult,
+                    "taskHandle": taskHandle,
+					"taskHouse":taskHouse
+                   /* "houseRole": houseRole,
+                    "housePhone": housePhone,
+                    "houseRegion":houseRegion,
+                    "houseBegin":houseBegin,
+                    "houseFlag":houseFlag,
+                    "houseEnd":houseEnd*/
+				},
+				async : false,
+				error : function(request) {
+					$.modal.alertError("系统错误");
+				},
+				success : function(data) {
+					$.operate.successCallback(data);
+				}
+			});
+		}
+		
+		function submitHandler() {
+	        if ($.validate.form()) {
+	        	edit();
+	        }
+	    }
+	</script>
+</body>
+</html>

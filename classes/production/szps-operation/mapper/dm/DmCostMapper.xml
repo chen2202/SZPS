@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.szps.web.mapper.dm.DmCostMapper">
+
+    <resultMap type="com.szps.web.domain.dm.DmCost" id="DmCostResult">
+        <id     property="costId"       column="cost_id"        />
+        <result property="costFactory"     column="cost_factory"      />
+        <result property="costCompany"     column="cost_company"      />
+        <result property="costApplyTime"     column="cost_apply_time"      />
+        <result property="costPayTime"     column="cost_pay_time"      />
+        <result property="costWaterVolume"     column="cost_water_volume"      />
+        <result property="costPayMoney"     column="cost_pay_money"      />
+        <result property="costPunishMoney"     column="cost_punish_money"      />
+        <result property="costPunishReason"     column="cost_punish_reason"      />
+        <result property="costRemark"     column="cost_remark"      />
+        <result property="costFileName"     column="cost_file_name"      />
+        <result property="costFilePath"     column="cost_file_path"      />
+    </resultMap>
+
+    <update id="updateCost" parameterType="com.szps.web.domain.dm.DmCost">
+        update dm_cost
+        <set>
+            <if test="costFactory != null and costFactory != ''">cost_factory = #{costFactory},</if>
+            <if test="costCompany != null and costCompany != ''">cost_company = #{costCompany},</if>
+            <if test="costApplyTime != null">cost_apply_time = #{costApplyTime},</if>
+            <if test="costPayTime != null">cost_pay_time = #{costPayTime},</if>
+            <if test="costWaterVolume != null and costWaterVolume != ''">cost_water_volume = #{costWaterVolume},</if>
+            <if test="costPayMoney != null and costPayMoney != ''">cost_pay_money = #{costPayMoney},</if>
+            <if test="costPunishMoney != null and costPunishMoney != ''">cost_punish_money = #{costPunishMoney},</if>
+            <if test="costPunishReason != null and costPunishReason != ''">cost_punish_reason = #{costPunishReason},</if>
+            <if test="costRemark != null and costRemark != ''">cost_remark = #{costRemark}</if>
+        </set>
+        where cost_id = #{costId}
+    </update>
+
+    <select id="selectCostList" parameterType="com.szps.web.domain.dm.DmCost" resultMap="DmCostResult">
+        select c.*
+        from dm_cost c
+        <where>
+            <if test="costFactory != null and costFactory != ''">
+                c.cost_factory = #{costFactory}
+            </if>
+            <if test="type == '申请支付时间'">
+                AND c.cost_apply_time = #{params.time}
+            </if>
+            <if test="type == '实际支付月份'">
+                AND c.cost_pay_time = #{params.time}
+            </if>
+            <if test="costPunishReason != null and costPunishReason != ''">
+                AND c.cost_punish_reason like concat(concat('%',#{costPunishReason}),'%')
+            </if>
+        </where>
+    </select>
+
+
+    <insert id="insertCost" parameterType="com.szps.web.domain.dm.DmCost" useGeneratedKeys="true" keyProperty="costId">
+        <selectKey keyProperty="costId" order="BEFORE" resultType="Long">
+            select seq_dm_cost.nextval as costId from DUAL
+        </selectKey>
+        insert into dm_cost(
+        <if test="costId != null and costId != 0">cost_id,</if>
+        <if test="costFactory != null and costFactory != ''">cost_factory,</if>
+        <if test="costCompany != null and costCompany != ''">cost_company,</if>
+        <if test="costApplyTime != null">cost_apply_time,</if>
+        <if test="costPayTime != null">cost_pay_time,</if>
+        <if test="costWaterVolume != null and costWaterVolume != ''">cost_water_volume,</if>
+        <if test="costPayMoney != null and costPayMoney != ''">cost_pay_money,</if>
+        <if test="costPunishMoney != null and costPunishMoney != ''">cost_punish_money,</if>
+        <if test="costPunishReason != null and costPunishReason != ''">cost_punish_reason,</if>
+        <if test="costRemark != null and costRemark != ''">cost_remark,</if>
+        <if test="costFileName != null and costFileName != ''">cost_file_name,</if>
+        <if test="costFilePath != null and costFilePath != ''">cost_file_path,</if>
+        create_time
+        )values(
+        <if test="costId != null and costId != 0">#{costId},</if>
+        <if test="costFactory != null and costFactory != ''">#{costFactory},</if>
+        <if test="costCompany != null and costCompany != ''">#{costCompany},</if>
+        <if test="costApplyTime != null">#{costApplyTime},</if>
+        <if test="costPayTime != null">#{costPayTime},</if>
+        <if test="costWaterVolume != null and costWaterVolume != ''">#{costWaterVolume},</if>
+        <if test="costPayMoney != null and costPayMoney != ''">#{costPayMoney},</if>
+        <if test="costPunishMoney != null and costPunishMoney != ''">#{costPunishMoney},</if>
+        <if test="costPunishReason != null and costPunishReason != ''">#{costPunishReason},</if>
+        <if test="costRemark != null and costRemark != ''">#{costRemark},</if>
+        <if test="costFileName != null and costFileName != ''">#{costFileName},</if>
+        <if test="costFilePath != null and costFilePath != ''">#{costFilePath},</if>
+        sysdate
+        )
+    </insert>
+
+    <delete id="deleteCostByIds" parameterType="java.lang.Long">
+        delete from dm_cost c
+        where c.cost_id in
+        <foreach collection="array" item="costId" open="(" separator="," close=")">
+            #{costId}
+        </foreach>
+    </delete>
+
+    <select id="selectCostById" parameterType="java.lang.Long" resultMap="DmCostResult">
+        select c.*
+        from dm_cost c
+        where c.cost_id=#{costId}
+    </select>
+
+    <select id="selectCostByCode" parameterType="java.lang.String" resultMap="DmCostResult">
+        select c.*
+        from dm_cost c
+        where c.cost_code=#{costCode}
+    </select>
+
+</mapper>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('管理')" />
+    <link th:href="@{/css/employee/manage.css}" rel="stylesheet"/>
+</head>
+<body class="gray-bg">
+    <!-- 标签页导航区 -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a onclick="toggle('op/dev/routineCheck')" role="tab" data-toggle="tab">设备点检</a></li>
+        <li role="presentation"><a onclick="toggle('op/dev/maintainPlan')" role="tab" data-toggle="tab">保养计划</a></li>
+        <li role="presentation"><a onclick="toggle('op/dev/maintainRecord')" role="tab" data-toggle="tab">保养记录</a></li>
+        <li role="presentation"><a onclick="toggle('op/dev/fix')" role="tab" data-toggle="tab">检修记录</a></li>
+    </ul>
+	
+	<div class="container-div">
+		<div class="row" style="width:100%;height:100%;" id="content-main">
+        	<iframe class="RuoYi_iframe" id="content-iframe" name="iframe0" width="100%" height="100%" data-id="/op/dev/routineCheck"
+                th:src="@{/op/dev/routineCheck}" frameborder="0" seamless></iframe>
+    	</div>
+	</div>
+
+    <script th:inline="javascript">
+        function toggle(url) {
+            $("#content-iframe").attr("src",ctx+url);
+            $("#content-iframe").attr("data-id",ctx+url);
+        }
+    </script>
+    <th:block th:include="include :: footer" />
+</body>
+</html>

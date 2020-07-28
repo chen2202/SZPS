@@ -124,8 +124,8 @@ function getMoreContents() {
                     },
                     success : function(data) {
 
-                        var alls=new Array();
-                        alls=data.data;
+                       // var alls=new Array();
+                       var alls=data.data;
                         insertContent(alls);
 
 
@@ -141,7 +141,7 @@ function insertContent(content) {
            var json = content;
             var len = json.length;
              for (var i = 0; i < len; i++) {
-                   var value = json[i];
+                   var value = json[i].staffName+"\xa0\xa0\xa0\xa0\xa0\xa0"+json[i].dept;
                    var tr = document.createElement("tr");
                  var td = document.createElement("td");
                  td.setAttribute("bgcolor", "#FFFAFA");
@@ -155,8 +155,9 @@ function insertContent(content) {
                             this.className = 'mouseOut';
                          };
                     td.onmousedown = function() {
-
-                            document.getElementById("keyword").value=this.innerText;
+                            var a=new Array();
+                            a=this.innerText.split("\xa0\xa0\xa0\xa0\xa0\xa0");
+                            document.getElementById("keyword").value=a[0];
 
                   };
             var text = document.createTextNode(value);

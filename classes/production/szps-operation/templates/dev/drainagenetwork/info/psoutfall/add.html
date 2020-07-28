@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+	<th:block th:include="include :: header('新增设备')" />
+	<th:block th:include="include :: cropbox-css" />
+	<th:block th:include="include :: select2-css" />
+	<th:block th:include="include :: bootstrap-fileinput-css" />
+</head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form id="form"  class="form-horizontal m">
+        
+        <div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">项目编号：</label>
+						   <div class="col-sm-8">
+							   <input name="prj_no" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">项目名称：</label>
+						<div class="col-sm-8">
+								<input name="prj_name" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">排放口唯一编号：</label>
+						   <div class="col-sm-8">
+							   <input name="exp_no" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">图幅号：</label>
+						<div class="col-sm-8">
+								<input name="mapcode" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">所在污水分区：</label>
+						   <div class="col-sm-8">
+							   <input name="sewagesystem_id" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">所在雨水分区：</label>
+						<div class="col-sm-8">
+								<input name="stormsystem_id" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">排水管点类别：</label>
+						   <div class="col-sm-8">
+							   <input name="type" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">X 坐标：</label>
+						<div class="col-sm-8">
+								<input name="x" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">Y 坐标：</label>
+						   <div class="col-sm-8">
+							   <input name="y" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">地面高程：</label>
+						<div class="col-sm-8">
+								<input name="high" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">排放口底部高程：</label>
+						   <div class="col-sm-8">
+							   <input name="bottom_elev" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">排放口形状：</label>
+						<div class="col-sm-8">
+								<input name="outfallshape" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">出流形式：</label>
+						   <div class="col-sm-8">
+							   <input name="outfalltype" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">管偏井的点号：</label>
+						<div class="col-sm-8">
+								<input name="offset" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">旋转角：</label>
+						   <div class="col-sm-8">
+							   <input name="rotation" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">对象编码：</label>
+						<div class="col-sm-8">
+								<input name="code" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">是否有拍门：</label>
+						   <div class="col-sm-8">
+							   <input name="flap" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">拍门尺寸：</label>
+						<div class="col-sm-8">
+								<input name="flap_diameter" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">拍门顶部高程：</label>
+						   <div class="col-sm-8">
+							   <input name="flap_topele" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">拍门底部高程：</label>
+						<div class="col-sm-8">
+								<input name="flap_botele" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">拍门材质：</label>
+						   <div class="col-sm-8">
+							   <input name="flap_materail" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">受纳河道、湖泊或海域：</label>
+						<div class="col-sm-8">
+								<input name="receivewater" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">地址：</label>
+						<div class="col-sm-8">
+								<input name="address" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">位置：</label>
+						   <div class="col-sm-8">
+							   <input name="pointposition" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+			</div>
+			<div class="row">
+				
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">数据来源：</label>
+						<div class="col-sm-8">
+								<input name="datasource" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">可见性：</label>
+						   <div class="col-sm-8">
+							   <input name="visibility" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+			</div>
+			<div class="row">
+				
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">探测单位：</label>
+						<div class="col-sm-8">
+								<input name="sunit" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">探测日期：</label>
+						   <div class="col-sm-8">
+							   <input name="sdate" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+			</div>
+			<div class="row">
+				
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">更新日期：</label>
+						<div class="col-sm-8">
+								<input name="updatetime" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">埋设日期：</label>
+						   <div class="col-sm-8">
+							   <input name="mdate" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+			</div>
+			<div class="row">
+				
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">管点类别：</label>
+						<div class="col-sm-8">
+								<input name="outfall_type" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">现状：</label>
+						   <div class="col-sm-8">
+							   <input name="status" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+			</div>
+			<div class="row">
+				
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">所属工程名称：</label>
+						<div class="col-sm-8">
+								<input name="ename" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">设计单：</label>
+						   <div class="col-sm-8">
+							   <input name="design_dept" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+			</div>
+			<div class="row">
+				
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">施工单位：</label>
+						<div class="col-sm-8">
+								<input name="conster_dept" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">权属单位：</label>
+						   <div class="col-sm-8">
+							   <input name="belong" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+			</div>
+			<div class="row">
+				
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">运营单位：</label>
+						<div class="col-sm-8">
+								<input name="operator" class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					   <div class="form-group">
+						   <label class="col-sm-3 control-label">备注：</label>
+						   <div class="col-sm-8">
+							   <input name="note" class="form-control" type="text"  >
+						   </div>
+					   </div>
+				</div>
+			</div>
+			
+			
+		</div>
+
+	</form>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-5 col-sm-10">
+            <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>保 存</button>&nbsp;
+            <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
+        </div>
+    </div>
+	<th:block th:include="include :: footer" />
+	<th:block th:include="include :: select2-js" />
+    <th:block th:include="include :: bootstrap-fileinput-css" />
+    <th:block th:include="include :: bootstrap-fileinput-js" />
+	<script>
+	    var prefix = ctx + "op/dev/psoutfallinfo";
+        $("#form").validate({
+        	onkeyup: false,
+        	rules:{
+        		
+        	},
+        	messages: {
+                "loginName": {
+                    remote: "用户已经存在"
+                },
+        		"email": {
+                    remote: "Email已经存在"
+                },
+        		"phonenumber":{
+                	remote: "手机号码已经存在"
+        		}
+            },
+            focusCleanup: true
+        });
+        
+
+        /*用户管理-新增-选择部门树*/
+        function selectSupplier() {
+        	var treeId = $("#treeId").val();
+        	var sid = $.common.isEmpty(treeId) ? "0" : $("#treeId").val();
+        	var url = ctx + "op/dev/supplier/selectSupplier/" + sid;
+			var options = {
+				title: '选择供应商',
+				width: "380",
+				url: url,
+				callBack: doSubmit
+			};
+			$.modal.openOptions(options);
+		}
+		
+        
+		
+		function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+		}
+		
+		function submitHandler() {
+	        if ($.validate.form()) {
+	        	var data = $("#form").serializeArray();
+	        	$.operate.save(prefix + "/add", data);
+	        }
+	    }
+
+    </script>
+</body>
+</html>

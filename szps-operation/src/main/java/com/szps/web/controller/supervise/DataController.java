@@ -6,6 +6,7 @@ import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
+import com.szps.common.utils.poi.ExcelUtil;
 import com.szps.framework.web.domain.server.Sys;
 import com.szps.web.domain.supervise.*;
 import com.szps.web.service.supervise.*;
@@ -59,11 +60,11 @@ public class DataController extends BaseController {
         for(int i=0;i<list.size();i++)
         {
                String a=list.get(i).getTaskHouse();
-                System.out.println(a);
+
                TbHouse tbHouse=houseService.selectHouseById(a);
 
-               String b=tbHouse.getHouseRule();
-            list.get(i).setRuleContent(ruleService.selectRuleByRuleName(b));
+//               String b=tbHouse.getHouseRule();
+//            list.get(i).setRuleContent(ruleService.selectRuleByRuleName(b));
 
             List <TbTaskStaff> tbTaskStaffs=taskStaffService.selectTbTaskStaffById(list.get(i).getTaskNumber());
             List<TbStaff> tbStaffs =new ArrayList<TbStaff>();
@@ -200,7 +201,7 @@ public class DataController extends BaseController {
                  }
 
                //二类人员随机
-                 if(value2!=null&&Integer.parseInt(value2)>0) {
+                 if(value2!=null&&value2!=""&&Integer.parseInt(value2)>0) {
                      List<TbStaff> staff1 = staffService.selectStaffSecond();
                      ArrayList<String> list_for_random3 = new ArrayList<String>();
                      ArrayList<String> listnew3 = new ArrayList<String>();
@@ -227,9 +228,6 @@ public class DataController extends BaseController {
 
                      }
                  }
-
-
-
 
            houseService.updateHouse(house);
            taskService.insertTask(task);
@@ -504,9 +502,6 @@ public class DataController extends BaseController {
         Random random = new Random();
         List<TbHouse> list=houseService.selectHouseCheckList(task.getRuleName());
         int max = list.size();
-        System.out.println("++++++++++++++");
-        System.out.println(max);
-        System.out.println("++++++++++++++");
         if(max==0){
             return AjaxResult.error("暂时无可抽查的任务");
         }
@@ -518,4 +513,70 @@ public class DataController extends BaseController {
         taskService.updateTask(tbTask);
         return toAjax(1);
     }
+
+    //导出数据
+    @PostMapping("/export")
+    @ResponseBody
+    public AjaxResult export()
+    {
+        List<TaskUncheck> list = taskService.selectTaskAllExport();
+
+        //********
+        for(int i=0;i<list.size();i++)
+        {
+            String a=list.get(i).getTaskHouse();
+
+            TbHouse tbHouse=houseService.selectHouseById(a);
+
+            list.get(i).setRuleName(tbHouse.getHouseRule());
+            list.get(i).setHouseName(tbHouse.getHouseName());
+            list.get(i).setHouseItem(tbHouse.getHouseItem());
+            list.get(i).setHouseRegion(tbHouse.getHouseRegion());
+            list.get(i).setHouseRole(tbHouse.getHouseRole());
+            list.get(i).setHousePhone(tbHouse.getHousePhone());
+            list.get(i).setHouseTime(tbHouse.getHouseTime());
+
+            List <TbTaskStaff> tbTaskStaffs=taskStaffService.selectTbTaskStaffById(list.get(i).getTaskNumber());
+            String S="【一类】";
+
+            for(int k=0;k<tbTaskStaffs.size();k++)
+            {
+                TbStaff staff=staffService.selectStaffById(tbTaskStaffs.get(k).getStaffNumber());
+                if(staff!=null&& Objects.equals(staff.getStaffPost(), "一类"))
+                {
+                    S=S+staff.getStaffName();
+                    if(k!=tbTaskStaffs.size()-1)
+                        S=S+",";
+                }
+
+            }
+            boolean flag=true;
+            for(int k=0;k<tbTaskStaffs.size();k++)
+            {
+
+                TbStaff staff=staffService.selectStaffById(tbTaskStaffs.get(k).getStaffNumber());
+                if(staff!=null&& Objects.equals(staff.getStaffPost(), "二类"))
+                {
+                    if(flag)
+                    {
+                        S=S+"【二类】"+staff.getStaffName();
+                        flag=false;
+                    }
+                    else {
+                        S=S+staff.getStaffName();
+                    }
+                    if(k!=tbTaskStaffs.size()-1)
+                        S=S+",";
+                }
+
+            }
+            list.get(i).setTbStaffList(S);
+
+        }
+
+        //********
+        ExcelUtil<TaskUncheck> util = new ExcelUtil<TaskUncheck>(TaskUncheck.class);
+        return util.exportExcel(list, "抽查任务数据");
+    }
+
 }

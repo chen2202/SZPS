@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.dev.SupplierMapper">
+ 
+	<resultMap type="Supplier" id="result">
+		<id     property="id"    column="id"    />
+		<result     property="sname"   column="sname"   />
+		<result     property="contact"   column="contact"   />
+		<result     property="tel"   column="tel"   />
+		<result     property="addr"   column="addr"   />
+		<result     property="stype"   column="stype"   />
+
+        <result property="createBy"      column="create_by"      />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"      column="update_by"      />
+        <result property="updateTime"    column="update_time"    />
+		<result property="remark"    column="remark"    />
+		<result     property="dept_id"   column="dept_id"   />
+    </resultMap> 
+
+	<sql id="selectVo">
+        select *
+        from dev_supplier r
+    </sql>	
+	
+	<!-- 查询条件 -->
+	<sql id="sqlwhereSearch">
+		<where>
+			<if test=" id !=null">
+				and id = #{id}
+			</if>
+			<if test=" stype !=null">
+				and stype = #{stype}
+			</if>
+			<if test=" sname != null and sname != ''">
+				AND sname  like concat(concat('%',#{sname}),'%')
+			</if>
+		</where>
+	</sql>
+	
+	<select id="checkUnique" resultMap="result">
+	    <include refid="selectVo"/>
+		where sname=#{sname} 
+	</select>
+    
+    <select id="select" parameterType="Supplier" resultMap="result">
+        <include refid="selectVo"/>
+        <include refid="sqlwhereSearch"/>
+    </select>
+    
+    <select id="selectList" parameterType="Supplier" resultMap="result">
+        <include refid="selectVo"/>
+        where  1 = 1
+        <if test=" id != null and id != 0">
+			AND id = #{id}
+		</if>
+        <if test=" stype != null ">
+			AND stype = #{stype}
+		</if>
+		<if test=" sname != null and sname != ''">
+				AND sname  like concat(concat('%',#{sname}),'%')
+		</if>
+		
+		<!-- 数据范围过滤
+		${params.dataScope}	 -->
+		order by r.id
+    </select>
+      <select id="selectById" parameterType="Long" resultMap="result">
+		<include refid="selectVo"/>
+		where r.id = #{id}
+	</select>
+	
+    <delete id="deleteById" parameterType="Long">
+		delete from dev_supplier where id = #{id}
+	</delete>
+	 <delete id="deleteByIds" parameterType="Long">
+ 		delete from dev_supplier where id in
+ 		<foreach collection="array" item="id" open="(" separator="," close=")">
+ 			#{id}
+        </foreach> 
+ 	</delete>
+    
+    <update id="update" parameterType="Supplier">
+ 		update dev_supplier
+ 		<set>
+			<if test=" sname != null and sname != ''">sname = #{sname},</if>
+			<if test=" contact != null and contact != ''">contact = #{contact},</if>
+			<if test=" tel != null and tel != ''">tel = #{tel},</if>
+			<if test=" addr != null and addr != ''">addr = #{addr},</if>
+			
+			<if test=" remark != null and remark != ''">remark = #{remark},</if>
+ 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+ 			update_time = sysdate
+ 		</set>
+ 		where id = #{id}
+	</update>
+	  
+    <insert id="insert" parameterType="Supplier">
+    	 <selectKey keyProperty="id" resultType="long" order="BEFORE">
+			SELECT seq_dev_supplier.NEXTVAL as id FROM DUAL
+		</selectKey>
+    
+		INSERT INTO dev_supplier(
+			<if test=" id != null and id!= 0">id,</if>
+			<if test=" sname != null and  sname != ''">sname,</if>
+			<if test=" contact != null and  contact != ''">contact,</if>
+			<if test=" tel != null and  tel != ''">tel,</if>
+			<if test=" addr != null and  addr != ''">addr,</if>
+			<if test=" stype != null ">stype,</if>
+			
+			<if test=" remark != null and remark != ''">REMARK,</if>
+			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" dept_id != null ">dept_id,</if>
+			create_time
+		) VALUES (
+			<if test=" id != null and id!= 0">#{id},</if>
+			<if test=" sname != null and sname != ''">#{sname},</if>
+			<if test=" contact != null and  contact != ''">#{contact},</if>
+			<if test=" tel != null and  tel != ''">#{tel},</if>
+			<if test=" addr != null and  addr != ''">#{addr},</if>
+			<if test=" stype != null ">#{stype},</if>
+			
+			<if test=" remark != null and remark != ''">#{remark},</if>
+			<if test=" createBy != null and createBy != ''">#{createBy},</if>
+			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			sysdate			
+		)
+	</insert>
+	
+    
+</mapper>

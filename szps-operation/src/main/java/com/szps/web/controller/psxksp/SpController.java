@@ -422,7 +422,7 @@ public class SpController extends BaseController {
         String taskTime=request.getParameter("taskTime");
         //System.out.println(taskTime);
         if(taskTime!="")
-         year=taskTime.substring(0,4);
+         year=taskTime;
         else
           year= String.valueOf(now.get(Calendar.YEAR));
 

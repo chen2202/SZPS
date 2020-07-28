@@ -24,6 +24,7 @@ public class SysArea extends BaseEntity {
 	private Integer areaType;
 	/** 删除标志（0代表存在 2代表删除） */
 	private String delFlag;
+
 	private boolean flag = false;
 	
     public boolean isFlag()
@@ -58,6 +59,14 @@ public class SysArea extends BaseEntity {
 
 	public void setParentId(Long parentId) {
 		this.parentId = parentId;
+	}
+
+	public String getParentName() {
+		return parentName;
+	}
+
+	public void setParentName(String parentName) {
+		this.parentName = parentName;
 	}
 
 	public String getAncestors() {
@@ -100,12 +109,11 @@ public class SysArea extends BaseEntity {
 		this.areaType = areaType;
 	}
 
-	public String getParentName() {
-		return parentName;
+	public String getDelFlag() {
+		return delFlag;
 	}
 
-	public void setParentName(String parentName) {
-		this.parentName = parentName;
+	public void setDelFlag(String delFlag) {
+		this.delFlag = delFlag;
 	}
-
 }

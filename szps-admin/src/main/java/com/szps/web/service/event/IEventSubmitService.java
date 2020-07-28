@@ -19,7 +19,7 @@ public interface IEventSubmitService
      * @param eventId 突发事件上传ID
      * @return 突发事件上传
      */
-    public EventSubmit selectEventSubmitById(String eventId);
+    public List<EventSubmit> selectEventSubmitById(EventSubmit eventId);
 
     /**
      * 查询突发事件上传列表

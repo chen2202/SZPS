@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('数据管理')" />
+    <link th:href="@{/css/op/manage.css}" rel="stylesheet"/>
+    <script th:src="@{/js/jquery.min.js}"></script>
+</head>
+<body class="gray-bg" style="background-color: white">
+    <!-- 标签页导航区 -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a onclick="toggle('supervise/datas/TaskBcStaff')" role="tab" data-toggle="tab">补抽人员</a></li>
+        <li role="presentation"><a onclick="toggle('supervise/datas/TaskBcHouse')" role="tab" data-toggle="tab">补抽对象</a></li>
+
+    </ul>
+
+	<div class="container-div">
+		<div class="row" style="width:100%;height:100%;" id="content-main">
+        	<iframe class="RuoYi_iframe" id="content-iframe" name="iframe0" width="100%" height="100%" data-id="/employee/worker"
+                src="/supervise/datas/TaskBcStaff" frameborder="0" seamless></iframe>
+    	</div>
+	</div>
+
+    <script th:inline="javascript">
+        $(function() {
+            var id='[[${id}]]';
+            var url='supervise/datas/TaskBcStaff';
+            $("#content-iframe").attr("src",ctx+url+"/"+id);
+
+
+        });
+        function toggle(url) {
+            var id='[[${id}]]';
+
+            $("#content-iframe").attr("src",ctx+url+"/"+id);
+            $("#content-iframe").attr("data-id",ctx+url+"/"+id);
+        }
+        function submitHandler() {
+
+            $("#content-iframe").contents().find("#iBtnOk").click();
+            $.modal.close();
+            window.parent.$.modal.msgSuccess("操作成功");
+            window.parent.$.table.refresh();
+
+        }
+
+
+    </script>
+    <th:block th:include="include :: footer" />
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <th:block th:include="include :: header('排水许可审批管理')" />
+    <link th:href="@{/css/op/manage.css}" rel="stylesheet"/>
+</head>
+<body class="gray-bg">
+    <!-- 标签页导航区 -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a onclick="toggle('op/permit/statistic')" role="tab" data-toggle="tab">数据统计</a></li>
+        <!--<li role="presentation"><a onclick="toggle('op/permit/list')" role="tab" data-toggle="tab">任务列表</a></li>-->
+        <li role="presentation"><a onclick="toggle('op/permit/waiting')" role="tab" data-toggle="tab">已审批</a></li>
+        <li role="presentation"><a onclick="toggle('map/index2')" role="tab" data-toggle="tab" id="gis">地图服务</a></li>
+        <!--<li role="presentation"><a onclick="toggle('op/permit/remind')" role="tab" data-toggle="tab">到期许可提醒</a></li>
+        <li role="presentation"><a onclick="toggle('op/permit/table')" role="tab" data-toggle="tab">各区审批表</a></li>-->
+
+    </ul>
+	
+	<div class="container-div">
+		<div class="row" style="width:100%;height:100%;" id="content-main">
+        	<iframe class="RuoYi_iframe" id="content-iframe" name="iframe0" width="100%" height="100%" data-id="/op/permit/statistic"
+                th:src="@{/op/permit/statistic}" frameborder="0" seamless></iframe>
+    	</div>
+	</div>
+
+    <script th:inline="javascript">
+        function toggle(url) {
+            $("#content-iframe").attr("src",ctx+url);
+            $("#content-iframe").attr("data-id",ctx+url);
+        }
+    </script>
+    <th:block th:include="include :: footer" />
+</body>
+</html>

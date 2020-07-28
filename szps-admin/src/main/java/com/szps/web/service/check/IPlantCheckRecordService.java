@@ -68,4 +68,12 @@ public interface IPlantCheckRecordService
      */
     public  List<CheckPicture> getCheckPictures(CheckPicture checkPicture);
 
+
+    /**
+     * 插入图片
+     * @param checkPicture
+     * @return
+     */
+    public  int insertPicture(CheckPicture checkPicture);
+
 }

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('增加供应商')" />
+</head>
+<body class="white-bg">
+	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form id="form"  class="form-horizontal m"  th:object="${obj}">
+        <input name="deptid" type="hidden" id="treeId" th:field="*{deptid}"/>
+        <input name="id" type="hidden"  th:field="*{id}"/>
+        	<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">单位名称：</label>
+						<div class="col-sm-8">
+								<input name="deptname" id="treeName"  th:field="*{deptname}" onclick="selectDeptTree()" type="text"  class="form-control" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">所在地点/部门：</label>
+						<div class="col-sm-8">
+							<input  name="dlocation" id="dlocation" th:field="*{dlocation}"  class="form-control" type="text"  >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">管道和沟槽名称：</label>
+						<div class="col-sm-8">
+								<input name="assetname"  id="assetname"  th:field="*{assetname}"  type="text" class="form-control" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">起始地点：</label>
+						<div class="col-sm-8">
+							<input  name="startingplace"  id="startingplace" th:field="*{startingplace}"   class="form-control" type="text" >
+						</div>
+					</div>
+				</div>
+			</div>						
+			<div class="row">
+				<div class="col-sm-6">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">终止地点：</label>
+							<div class="col-sm-8">
+								<input  name="endplace"  id="endplace"  th:field="*{endplace}"  class="form-control" type="text" >
+							</div>
+						</div>
+				</div>
+	        	<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">长度(m)：</label>
+						<div class="col-sm-8">
+							<input  name="dlength"  id="dlength"  th:field="*{dlength}"  class="form-control" type="number" >
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">槽深(m)：</label>
+						<div class="col-sm-8">
+								<input name="ddepth"  id="ddepth"  th:field="*{ddepth}"  type="number" class="form-control" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">沟宽*沟厚(mm2)/管径*壁厚(mm2)：</label>
+						<div class="col-sm-8">
+							<input  name="dhigh"  id="dhigh"  th:field="*{dhigh}"  class="form-control" type="text" >
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">主要材质：</label>
+						<div class="col-sm-8">
+							<input name="material"  id="material"  th:field="*{material}"  type="text" class="form-control" />
+							<span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 如”砖、砼、钢管、砼管”等</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">绝缘方式：</label>
+						<div class="col-sm-8">
+							<input  name="insulation"  id="insulation"  th:field="*{insulation}"  class="form-control" type="text" >
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">铺设方式：</label>
+						<div class="col-sm-8">
+							<input name="layway"  id="layway"  th:field="*{layway}"  type="text" class="form-control" />
+							<span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 架空、埋地</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">防腐方式：</label>
+						<div class="col-sm-8">
+							<input name="aczoiling"  id="aczoiling"  th:field="*{aczoiling}"  type="text" class="form-control" />
+							<span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 防锈油漆</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">保温绝热材料：</label>
+						<div class="col-sm-8">
+							<input  name="heatinsulatingmaterial"  th:field="*{heatinsulatingmaterial}"  id="heatinsulatingmaterial"  class="form-control" type="text" >
+							<span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 珍珠岩等</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">原始建成日期：</label>
+						<div class="col-sm-8">
+							
+							<input name="builttime" id="builttime" th:field="*{builttime}"  class="time-input form-control"  type="text"   data-type="date" data-format="yyyy-MM-dd"/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+			<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">管沟现状：</label>
+						<div class="col-sm-8">
+							<input  name="dstatus"  id="dstatus"  th:field="*{dstatus}"  class="form-control" type="text" >
+							<span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 按正常使用、待报废、闲置、已拆除、待修理等现状填列</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+			<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-3 control-label ">原值（元）：</label>
+						<div class="col-sm-8">
+								<input  name="originalvalue"  id="originalvalue"  th:field="*{originalvalue}"  type="text"  class="form-control" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">备注：</label>
+						<div class="col-sm-8">
+							<textarea  name="remark"  id="remark"  th:field="*{remark}"   class="form-control" type="text"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+	</form>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-5 col-sm-10">
+            <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>保 存</button>&nbsp;
+            <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
+        </div>
+    </div>
+	<th:block th:include="include :: footer" />
+	<script>
+	var prefix = ctx + "op/fixedasset/pipeline";
+	
+        $("#form").validate({
+        	onkeyup: false,
+        	rules:{
+        		
+        	},
+        	messages: {
+                "loginName": {
+                    remote: "用户已经存在"
+                },
+        		"email": {
+                    remote: "Email已经存在"
+                },
+        		"phonenumber":{
+                	remote: "手机号码已经存在"
+        		}
+            },
+            focusCleanup: true
+        });
+        
+        function submitHandler() {
+	        if ($.validate.form()) {
+	        	var data = $("#form").serializeArray();
+	        	$.operate.save(prefix + "/edit", data);
+	        }
+	    }
+        
+        /*用户管理-新增-选择部门树*/
+        function selectDeptTree() {
+        	
+        	var treeId = $("#treeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmit
+			};
+			$.modal.openOptions(options);
+		}
+        function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+		}
+         
+    </script>
+</body>
+</html>

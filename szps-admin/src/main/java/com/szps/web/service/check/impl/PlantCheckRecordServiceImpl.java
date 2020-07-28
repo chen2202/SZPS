@@ -104,4 +104,11 @@ public class PlantCheckRecordServiceImpl implements IPlantCheckRecordService {
         return  checkManagerMapper.getCheckPictures(checkPicture);
     }
 
+
+    /**
+     * 插入图片
+     * @param checkPicture
+     * @return
+     */
+    public  int insertPicture(CheckPicture checkPicture){return  checkManagerMapper.insertPicture(checkPicture);}
 }

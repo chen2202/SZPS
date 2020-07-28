@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+	xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+<th:block th:include="include :: header('排水户列表')" />
+<link th:href="@{/css/drainage/drainage.css}" rel="stylesheet" />
+<link th:href="@{/css/drainage/operation.css}" rel="stylesheet" />
+</head>
+<body class="gray-bg">
+	<div class="container-div">
+		<div class="row">
+			<div class="btn-group-sm" id="toolbar" role="group">
+
+				<form id="role-form">
+					<div class="select-list">
+						<ul>
+							<li>排水户名称：<input type="search" name="household_name"
+								placeholder="请输入" />
+							</li>
+							<li>门牌地址：<input type="search" name="doorplate_detail_address" 
+								placeholder="请输入" /></li>
+							<li>排水户级别：
+								<select name="household_level">
+									<option value="一级排水户">一级排水户</option>
+									<option value="二级排水户">二级排水户</option>
+									<option value="三级排水户">三级排水户</option>
+								</select>
+							</li>
+							<li><a class="btn btn-primary btn-rounded btn-sm btn-main"
+								onclick="$.table.search()">搜索</a>
+								<a class="btn btn-main2 btn-sm"
+								onclick="$.form.reset()">重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+
+			</div>
+			
+			<div class="col-sm-12 table-responsive select-table table-striped">
+				<table id="bootstrap-table" class="table text-nowrap" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+	<th:block th:include="include :: footer" />
+	<script th:inline="javascript">
+		var editFlag = [[${@permission.hasPermi('drainage:household:edit')}]];
+		//var removeFlag = [[${@permission.hasPermi('drainage:household:remove')}]];
+		var prefix = ctx + "drainage/household";
+
+		$(function() {
+		    var options = {
+		        url: prefix + "/list",
+		        createUrl: prefix + "/add",
+		        //updateUrl: prefix + "/edit/{id}",
+		        detailUrl: prefix + "/detail/{id}",
+		        removeUrl: prefix + "/remove",
+		        exportUrl: prefix + "/export",
+		        sortName: "household_id",
+		        modalName: "排水户",		   
+		        rightFixedColumns: true, 
+                rightFixedNumber: 1, 
+		        columns: [{
+		        	field: 'checkbox',
+		            checkbox: true,
+		            visible: false
+		        },
+		        {
+                    field: 'SerialNumber',
+                    title: '序号',
+                    formatter: function (value, row, index) {
+                        //获取每页显示的数量
+                        var pageSize=$('#bootstrap-table').bootstrapTable('getOptions').pageSize;
+                        //获取当前是第几页
+                        var pageNumber=$('#bootstrap-table').bootstrapTable('getOptions').pageNumber;
+                        //返回序号，注意index是从0开始的，所以要加上1
+                        return pageSize * (pageNumber - 1) + index + 1;
+                    }
+                },
+		        {
+		            field: 'household_id',
+		            title: '排水户编号',
+		            sortable:true
+		        },
+		        {
+		            field: 'household_name',
+		            title: '排水户名称',
+		            sortable: true
+		        },
+		        {
+		            field: 'record_state',
+		            title: '记录状态',
+		            sortable: true,
+		            visible: false
+		        },
+		        {
+		            field: 'doorplate_detail_address',
+		            title: '门牌地址',
+		            sortable: true,
+		        },
+		        {
+		            field: 'longitude',
+		            title: '经度',
+		            sortable: true,
+		            visible: false
+		        },
+		        {
+		            field: 'latitude',
+		            title: '纬度',
+		            sortable: true,
+		            visible:false
+		        },
+		        {
+		            field: 'administrative_name',
+		            title: '行政区',
+		            sortable: true,
+		            visible:false
+		        },
+		        {
+		            field: 'street_name',
+		            title: '街道',
+		            sortable: true,
+		            visible:false
+		        },
+		        {
+		            field: 'committees',
+		            title: '居委会',
+		            sortable: true,
+		            visible:false
+		        },
+		        {
+		            field: 'lane_name',
+		            title: '巷名',
+		            sortable: true,
+		            visible:false,
+		            visible:false
+		        },
+		        {
+		        	field:'doorplate_number',
+		        	title:'门牌号',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'household_level',
+		        	title:'排水户级别',
+		        	sortable:true
+		        },
+		        {
+		        	field:'parent_household_name',
+		        	title:'上级排水户',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'linkman',
+		        	title:'联系人',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'telephone',
+		        	title:'电话',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'cover_area',
+		        	title:'占地  /㎡',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'water_meter_id',
+		        	title:'水表编号',
+		        	sortable:true,
+		            visible:false
+		        },
+		        {
+		        	field:'sewage_category',
+		        	title:'污水类型',
+		        	sortable:true
+		        },
+		        {
+		        	field:'unit_type',
+		        	title:'单位类型',
+		        	sortable:true
+		        },
+		        {
+		        	field:'other_unit_type',
+		        	title:'其他单位类型',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'cflist',
+		        	title:'成分列表',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'other_composition',
+		        	title:'其他成分',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'water_diversion',
+		        	title:'废、污、雨是否分流',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'business_license',
+		        	title:'是否有营业执照',
+		        	sortable:true
+		        },
+		        {
+		        	field:'social_credit_id',
+		        	title:'社会信用码',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'drainage_license',
+		        	title:'是否有排水许可证',
+		        	sortable:true
+		        },
+		        {
+		        	field:'drainage_license_number',
+		        	title:'排水许可证号',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'drainage_license_begin_time',
+		        	title:'排水许可证开始日期',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'drainage_license_end_time',
+		        	title:'排水许可证结束日期',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'sewage_license',
+		        	title:'是否有排污许可证',
+		        	sortable:true
+		        },
+		        {
+		        	field:'sewage_license_number',
+		        	title:'排污许可证号',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'sewage_license_begin_time',
+		        	title:'排污许可证开始日期',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'sewage_license_end_time',
+		        	title:'排污许可证结束日期',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field: 'psknum',
+		            title: '排水口',
+		            align: 'center',
+		            sortable: false,
+		            formatter: function(value, row, index) {	            	
+		            	var actions = [];
+		            	actions.push('<a class="btn btn-main2" href="javascript:void(0)" onclick="query(\'' + row.household_name + '\',\'' + row.household_id + '\')">' + value + '</a>');
+		            	return actions.join('');
+		            }
+		        },
+		        {
+		        	field:'note',
+		        	title:'备注 ',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'registration_time',
+		        	title:'登记时间',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'registration_person',
+		        	title:'登记人',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'update_time',
+		        	title:'最新修改时间',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'update_person',
+		        	title:'修改人',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'parent_household_id',
+		        	title:'上级排水户ID',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'addressbz',
+		        	title:'地址补充信息',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'maintypeidx',
+		        	title:'大类分类ID',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'hascycert',
+		        	title:'是否取得餐饮许可证',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'cycertno',
+		        	title:'餐饮许可证号',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'cydate1',
+		        	title:'餐饮许可证开始日期',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'cydate2',
+		        	title:'餐饮许可证结束日期',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'yspsknum',
+		        	title:'雨水排放口数量',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'wspsknum',
+		        	title:'污水排放口数量',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'hhpsknum',
+		        	title:'混合排水口数量',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'recorder',
+		        	title:'初始登记人姓名',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'levelchar',
+		        	title:'排水户等级代号',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'hassh',
+		        	title:'是否曾经审核通过',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'needzz',
+		        	title:'是否需办营业执照',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'needpscert',
+		        	title:'是否需办排水许可证',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'needpwcert',
+		        	title:'是否需办排污许可证',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'needcycert',
+		        	title:'是否需办餐饮许可证',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'importbz',
+		        	title:'导入临时表名称',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'building',
+		        	title:'小区或附近建筑物',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field:'hasdevice',
+		        	title:'是否有管网设施',
+		        	sortable:true,
+		        	visible: false
+		        },
+		        {
+		        	field: 'option',
+		            title: '操作',
+		            align: 'center',
+		            formatter: function(value, row, index) {
+		                var actions = [];
+		              	//用详情页面和编辑权限来显示排水户的详情信息
+		                actions.push('<a class="' + editFlag + '" href="javascript:void(0)" onclick="$.operate.detail(\'' + row.household_id + '\')">详情</a>');
+		              	actions.push(' <a>|</a> ');
+		              	//actions.push('<a href="/map/index2?X=' + row.latitude + '&Y=' + row.longitude + '">定位</a>');
+		              	actions.push('<a href="javascript:void(0)" onclick="opengis(\'' + row.latitude  + '\',\''+ row.longitude + '\')">定位</a>');
+		                return actions.join('');
+		            }
+		        }]
+		    };
+		    $.table.init(options);
+		});
+		
+		//定位跳转到 地图服务 标签
+		function opengis(X, Y) {      
+        	$(window.parent.document.getElementById("gis")).parent().siblings().removeClass('active');
+        	$(window.parent.document.getElementById("gis")).parent().addClass('active');
+        	window.parent.document.getElementById('content-iframe').src=ctx+"map/index2?X="+X+"&Y="+Y;
+        	//window.parent.document.getElementById('content-iframe').src="./../../map/index2?X="+X+"&Y="+Y;
+        }
+		
+		/* 排水户信息-查看（某排水户的所有排水口） */
+		function query(household_name,household_id) {
+		    var url = ctx + "drainage/drain" + '/drain/' + household_id;
+		    $.modal.open(household_name + "排水口", url, 1200, 480, null);
+		}
+	</script>
+</body>
+</html>

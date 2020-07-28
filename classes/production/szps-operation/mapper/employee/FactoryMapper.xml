@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.szps.web.mapper.employee.FactoryMapper">
+	<resultMap type="Factory" id="factoryResult">
+		<id     property="factory_id"       column="FACTORY_ID"        />
+		<result property="name"     column="NAME"      />
+		<result property="address"           column="ADDRESS"           />
+		<result property="attribution_area"   column="ATTRIBUTION_AREA"    />
+		<result property="factory_director"   column="FACTORY_DIRECTOR"    />
+		<result property="deputy_director" column="DEPUTY_DIRECTOR"/>
+		<result property="daily_water" column="DAILY_WATER" />
+		<result property="telephone" column="TELEPHONE"          />
+		<result property="introduction" column="INTRODUCTION"        />
+	</resultMap>
+	
+	<!-- 查询全部水厂名称代码 -->
+	<select id="selectAllFactoryName" parameterType="Factory" resultMap="factoryResult">
+		select * from EMPLOYEE_T_FACTORY
+	</select>
+	
+	<!-- 查询全部水厂信息 -->
+	<select id="selectAllFactory" parameterType="Factory" resultMap="factoryResult">
+		select * from EMPLOYEE_T_FACTORY
+		<if test="name != null and name !='' and attribution_area != null and attribution_area != ''">
+			where NAME like concat(concat('%',#{name}),'%') and ATTRIBUTION_AREA like concat(concat('%',#{attribution_area}),'%')
+		</if>
+		<if test="name != null and name !='' and (attribution_area == null or attribution_area == '')">
+			where NAME like concat(concat('%',#{name}),'%')
+		</if>
+		<if test="(name == null or name =='') and attribution_area != null and attribution_area != ''">
+			where ATTRIBUTION_AREA like concat(concat('%',#{attribution_area}),'%')
+		</if>
+	</select>
+	
+	<!-- 查询某个水厂的名称(用于组织结构图) -->
+	<select id="selectFactoryById" parameterType="String" resultType="String">
+		select NAME from EMPLOYEE_T_FACTORY where FACTORY_ID = #{factory_id}
+	</select>
+	
+	<!-- 添加，修改水厂时判断水厂代码唯一性 -->
+	<select id="checkFactoryIdUnique" parameterType="String" resultMap="factoryResult">
+		select * from EMPLOYEE_T_FACTORY f where f.FACTORY_ID = #{factory_id}
+	</select>
+	
+	<!-- 添加水厂 -->
+	<insert id="insertFactory" parameterType="com.szps.web.domain.employee.Factory" keyProperty="factory_id">
+ 		insert into EMPLOYEE_T_FACTORY(FACTORY_ID,NAME,ADDRESS,ATTRIBUTION_AREA,FACTORY_DIRECTOR,
+ 		DEPUTY_DIRECTOR,DAILY_WATER,TELEPHONE,INTRODUCTION) values(#{factory_id},#{name},#{address},
+ 		#{attribution_area},#{factory_director},#{deputy_director},#{daily_water},#{telephone},#{introduction})
+	</insert>
+	
+	<!-- 通过水厂代码查询水厂信息 -->
+	<select id="selectFactoryById2" parameterType="String" resultMap="factoryResult">
+		select FACTORY_ID,NAME,ADDRESS,ATTRIBUTION_AREA,FACTORY_DIRECTOR,DEPUTY_DIRECTOR,DAILY_WATER,TELEPHONE,
+		INTRODUCTION from EMPLOYEE_T_FACTORY where FACTORY_ID = #{factory_id}
+	</select>
+	
+	<!-- 修改保存公司信息 -->
+	<update id="updateFactory" parameterType="Factory">
+		update EMPLOYEE_T_FACTORY
+		<set>
+ 			<if test="factory_id != null and factory_id != ''">FACTORY_ID = #{factory_id},</if>
+ 			<if test="name != null and name != ''">NAME = #{name},</if>
+ 			<if test="address != null and address != ''">ADDRESS = #{address},</if>
+ 			<if test="attribution_area != null and attribution_area != ''">ATTRIBUTION_AREA = #{attribution_area},</if>
+ 			<if test="factory_director != null and factory_director != ''">FACTORY_DIRECTOR = #{factory_director},</if>
+ 			<if test="deputy_director != null and deputy_director != ''">DEPUTY_DIRECTOR = #{deputy_director},</if>
+ 			<if test="daily_water != null and daily_water != ''">DAILY_WATER = #{daily_water}, </if>
+ 			<if test="telephone != null and telephone != ''">TELEPHONE = #{telephone}, </if>
+ 			<if test="introduction != null and introduction != ''">INTRODUCTION = #{introduction} </if>
+ 		</set>
+ 		where FACTORY_ID = #{factory_id}
+	</update>
+	
+	<!-- 通过水厂代码删除水厂信息 -->
+	<delete id="deleteFactoryById" parameterType="String">
+		delete from EMPLOYEE_T_FACTORY where FACTORY_ID in 
+ 		<foreach collection="array" item="factory_id" open="(" separator="," close=")">
+ 			#{factory_id}
+ 		</foreach>
+	</delete>
+	
+</mapper>

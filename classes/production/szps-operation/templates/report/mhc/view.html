@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<th:block th:include="include :: header('申请列表')" />
+</head>
+<body class="gray-bg">
+    <div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="apply-form">
+					<div class="select-list">
+						<ul>
+							<li>
+		                        <label >项目名称：</label>
+                            	<input name="projectname" onclick="selectDeptTree()" id="treeName" type="text" placeholder="" >
+							</li>
+							<li class="select-time">
+								<label>上报期号： </label>
+								<input type="text" class="time-input form-control" id="reportnumber"  name="reportnumber" data-type="date" data-format="yyyy-MM"/>
+							</li>
+							<li>
+								<a class="btn  btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn  btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+			
+	        <div class="btn-group-sm" id="toolbar" role="group">
+		        <a class="btn btn-success" onclick="$.operate.addFull()" shiro:hasPermission="report:mhc:add">
+		            <i class="fa fa-plus"></i> 新增
+		        </a>
+		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="report:mhc:delete">
+		            <i class="fa fa-remove"></i> 删除
+		        </a>
+		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="report:mhc:export">
+		            <i class="fa fa-download"></i> 导出
+		        </a> -->
+	        </div>
+	        
+	        <div class="col-sm-12 select-table table-striped">
+	            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+	        </div>
+    	</div>
+    </div>
+    <th:block th:include="include :: footer" />
+    <script th:inline="javascript">
+        var prefix = ctx + "op/report/mhc";
+        var viewFlag = [[${@permission.hasPermi('report:mhc:view')}]];
+        var editFlag = [[${@permission.hasPermi('report:mhc:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('report:mhc:delete')}]];
+        
+        /*用户管理-新增-选择部门树*/
+        function selectDeptTree() {
+        	
+        	var treeId = $("#treeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmit
+			};
+			$.modal.openOptions(options);
+		}
+        function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+			//if ($.tree.notAllowParents(tree)) {
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+			//}
+		}
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+                
+                modalName: "报住建部报表",
+                columns: [{
+		            checkbox: true
+		        },
+		        {
+		        	field : 'id', 
+		        	title : '序号' 
+		        },
+		        {
+		        	field : 'dprovince', 
+		        	title : '所属省' 
+		        },
+		        {
+		        	field: 'dcity',
+		        	title: '所属市',
+		        },
+		        {
+		        	field: 'projectcode',
+		        	title: '项目代码',
+		        },
+		        {
+		        	field: 'projectname',
+		        	title: '项目名称',
+		        },
+		        {
+		        	field: 'reportnumber',
+		        	title: '上报期号',
+		        },
+		        {
+		        	field: 'designscale',
+		        	title: '设计规模(万立方米/月)',
+		        },
+		        {
+		        	field: 'awtc',
+		        	title: '累计处理水量(万立方米)',
+		        },
+		        {
+		        	field: 'mdtc',
+		        	title: '最高日处理量(万立方米)',
+		        },
+		        {
+		        	field: 'loadrate',
+		        	title: '负荷率( % )	',
+		        },
+		        {
+		        	field : 'codrc', 
+		        	title : 'COD削减能力(吨/日)' 
+		        },
+		        {
+		        	field : 'codr', 
+		        	title : 'COD削减量( 吨 )' 
+		        },
+		        {
+		        	field : 'codcptw', 
+		        	title : '吨水COD削减能力(公斤/立方米)' 
+		        },
+		        {
+		        	field: 'twr',
+		        	title: '吨水削减量(公斤/立方米)',
+		        },
+		        {
+		        	field: 'cec',
+		        	title: '累计用电量(千瓦.时)',
+		        },
+		        {
+		        	field: 'directcost',
+		        	title: '直接成本(元/立方米)',
+		        },
+		        {
+		        	field : 'rwc', 
+		        	title : '再生水利用量(万立方米)' 
+		        },
+		        {
+		        	field: 'awsp',
+		        	title: '累计湿污泥产生量( 吨 )',
+		        },
+		        {
+		        	field: 'mcs',
+		        	title: '污泥含水率( % )',
+		        },
+		        {
+		        	field : 'stc', 
+		        	title : '污泥处理量(吨)' 
+		        }
+		        ,
+		        {
+		        	field : 'landuse', 
+		        	title : '土地利用量(吨)' 
+		        },
+		        {
+		        	field: 'ubm',
+		        	title: '建材利用量(吨)',
+		        },
+		        {
+		        	field: 'iu',
+		        	title: '焚烧利用量(吨)',
+		        },
+		        {
+		        	field: 'slc',
+		        	title: '卫生填埋量(吨)',
+		        },
+		        {
+		        	field: 'odc',
+		        	title: '其他处置量(吨)',
+		        },
+		        {
+		        	field: 'normaldays',
+		        	title: '正常运行天数',
+		        },
+		        {
+		        	field: 'standarddays',
+		        	title: '达标排放天数',
+		        },
+		        {
+		        	field: 'reasons',
+		        	title: '不达标原因',
+		        },
+		        {
+		        	field: 'esp',
+		        	title: '超标项目',
+		        },
+		        {
+		        	field: 'codin',
+		        	title: 'COD进水( mg/L )',
+		        },
+		        {
+		        	field: 'codout',
+		        	title: 'COD出水( mg/L )',
+		        },
+		        {
+		        	field: 'bodin',
+		        	title: 'BOD进水( mg/L )',
+		        },
+		        {
+		        	field: 'bodout',
+		        	title: 'BOD出水( mg/L )',
+		        },
+		        {
+		        	field: 'ssin',
+		        	title: 'SS进水( mg/L )',
+		        },
+		        {
+		        	field: 'ssout',
+		        	title: 'SS出水( mg/L )',
+		        },
+		        {
+		        	field: 'adin',
+		        	title: 'AD进水( mg/L )',
+		        },
+		        {
+		        	field: 'adout',
+		        	title: 'AD出水( mg/L )',
+		        },
+		        {
+		        	field: 'tnin',
+		        	title: 'TN进水( mg/L )',
+		        },
+		        {
+		        	field: 'tnout',
+		        	title: 'TN出水( mg/L )',
+		        },
+		        {
+		        	field: 'tpin',
+		        	title: 'TP进水( mg/L )',
+		        },
+		        {
+		        	field: 'tpout',
+		        	title: 'TP出水( mg/L )',
+		        },
+		        {
+		        	field : 'applicant', 
+		        	title : '填报人' 
+		        }
+		        ,
+		        {
+		        	field : 'submissiondate', 
+		        	title : '填报日期' 
+		        },
+		        {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.editFull(\'' + row.id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.id + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        return actions.join('');
+                    }
+                }]
+            };
+            $.table.init(options);
+        });
+    </script>
+</body>
+</html>

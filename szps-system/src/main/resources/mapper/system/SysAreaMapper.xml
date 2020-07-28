@@ -31,6 +31,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="parentId != null and parentId != 0"> and parent_id = #{parentId} </if>
 	</select>
 	
+	<select id="selectAreaAll" resultMap="SysAreaResult">
+		<include refid="selectAreaVo"/>
+	</select>
+	
 	<select id="selectAreaList" parameterType="SysArea" resultMap="SysAreaResult">
         <include refid="selectAreaVo"/>
         where 1 = 1 and delFlag = '0'

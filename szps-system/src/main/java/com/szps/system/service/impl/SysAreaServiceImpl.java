@@ -148,4 +148,10 @@ public class SysAreaServiceImpl implements ISysAreaService
 		return mapper.selectAreaCount(area);
 	}
 
+	@Override
+	public List<SysArea> selectAreaAll() {
+		// TODO Auto-generated method stub
+		return mapper.selectAreaAll();
+	}
+
 }

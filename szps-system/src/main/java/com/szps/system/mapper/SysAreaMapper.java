@@ -23,4 +23,5 @@ public interface SysAreaMapper {
 
 	public int updateAreaChildren(@Param("areas") List<SysArea> areas);
 
+	public List<SysArea> selectAreaAll();
 }

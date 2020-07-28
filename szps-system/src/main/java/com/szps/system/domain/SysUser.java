@@ -98,8 +98,18 @@ public class SysUser extends BaseEntity
     
 	private String npwd;
 
-    
-    public Long getUserId()
+	private String areaCode;
+
+
+	public String getAreaCode() {
+		return areaCode;
+	}
+
+	public void setAreaCode(String areaCode) {
+		this.areaCode = areaCode;
+	}
+
+	public Long getUserId()
     {
         return userId;
     }

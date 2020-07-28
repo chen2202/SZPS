@@ -23,4 +23,5 @@ public interface ISysAreaService {
 
 	public SysArea selectAreaById(Long id);
 	public int  selectAreaCount(Long areaId);
+	public List<SysArea> selectAreaAll();
 }

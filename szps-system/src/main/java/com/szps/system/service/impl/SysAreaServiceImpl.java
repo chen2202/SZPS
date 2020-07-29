@@ -149,6 +149,13 @@ public class SysAreaServiceImpl implements ISysAreaService
 	}
 
 
+	@Override
+	public List<SysArea> selectAreaAll() {
+		// TODO Auto-generated method stub
+		return mapper.selectAreaAll();
+	}
+
+
 
     /**
      * 根据Area_Code查找
@@ -157,4 +164,5 @@ public class SysAreaServiceImpl implements ISysAreaService
      * made by HJR
      */
     public SysArea getSysArea(SysArea sysArea){return mapper.getSysArea(sysArea);}
+
 }

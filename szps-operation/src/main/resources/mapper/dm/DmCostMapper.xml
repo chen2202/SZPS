@@ -47,7 +47,7 @@
                 AND c.cost_pay_time = #{params.time}
             </if>
             <if test="costPunishReason != null and costPunishReason != ''">
-                AND c.cost_punish_reason like concat(concat('%',#{costPunishReason}),'%')
+                AND c.cost_punish_reason = #{costPunishReason}
             </if>
         </where>
     </select>

@@ -1,6 +1,7 @@
 package com.szps.web.service.supervise.Impl;
 
 import com.szps.common.core.text.Convert;
+import com.szps.web.domain.supervise.TaskUncheck;
 import com.szps.web.domain.supervise.TbTask;
 import com.szps.web.mapper.supervise.TbTaskMapper;
 import com.szps.web.service.supervise.TaskService;
@@ -95,5 +96,15 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public int selectMonthTaskCount(String taskRegion, String taskStreet, String taskTime) {
         return tbTaskMapper.selectMonthTaskCount(taskRegion,taskStreet,taskTime);
+    }
+
+    @Override
+    public List<TaskUncheck> selectTaskAllExport() {
+        return tbTaskMapper.selectTaskAllExport();
+    }
+
+    @Override
+    public List<TaskUncheck> selectTaskAllOldExport(TbTask task) {
+        return tbTaskMapper.selectTaskAllOldExport(task);
     }
 }

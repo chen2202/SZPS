@@ -61,7 +61,12 @@ public class DmCostController extends BaseController {
 
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(DmCost dmCost){
+    public TableDataInfo list(DmCost dmCost) throws Exception{
+        if(sql_inj(dmCost.getCostFactory())||sql_inj(dmCost.getCostPunishReason()))
+        {
+            throw new Exception("输入字符非法！！");
+        }
+
         startPage();
         List<DmCost> list = costService.selectCostList(dmCost);
         return getDataTable(list);
@@ -193,5 +198,24 @@ public class DmCostController extends BaseController {
                     "attachment;fileName=" + FileUtils.setFileDownloadHeader(request, fileName));
             FileUtils.writeBytes(downloadPath, response.getOutputStream());
         }
+    }
+
+    public static boolean sql_inj(String str){
+
+        String inj_str = "'|and|exec|insert|select|delete|update|count|*|%|chr|mid|master|truncate|char|declare|;|or|-|+|,";
+
+        String inj_stra[] = inj_str.split("|");
+
+        for (String anInj_stra : inj_stra) {
+
+            if (str.contains(anInj_stra)) {
+
+                return true;
+
+            }
+
+        }
+
+        return false;
     }
 }

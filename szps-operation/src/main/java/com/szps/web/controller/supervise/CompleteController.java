@@ -10,9 +10,11 @@ import com.szps.common.core.page.TableDataInfo;
 
 import com.szps.common.enums.BusinessType;
 import com.szps.common.utils.file.FileUtils;
+import com.szps.common.utils.poi.ExcelUtil;
 import com.szps.web.controller.common.CommonController;
 import com.szps.web.domain.supervise.*;
 import com.szps.web.service.supervise.*;
+import org.apache.poi.ss.formula.functions.T;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -466,4 +468,83 @@ public class CompleteController extends BaseController {
         }
         return json.toString();
     }*/
+
+    //导出数据
+    @PostMapping("/export")
+    @ResponseBody
+    public AjaxResult export(TbTask tbTask)
+    {
+
+
+        String time="";
+        if(tbTask.getBeginTime()!="")
+        {
+
+            time=tbTask.getBeginTime().substring(0,7);
+
+        }
+        tbTask.setBeginTime(time);
+        tbTask.setTaskFlag("完成");
+
+        List<TaskUncheck> list =Service.selectTaskAllOldExport(tbTask);
+
+        //********
+        for(int i=0;i<list.size();i++)
+        {
+            String a=list.get(i).getTaskHouse();
+
+            TbHouse tbHouse=houseService.selectHouseById(a);
+
+            list.get(i).setRuleName(tbHouse.getHouseRule());
+            list.get(i).setHouseName(tbHouse.getHouseName());
+            list.get(i).setHouseItem(tbHouse.getHouseItem());
+            list.get(i).setHouseRegion(tbHouse.getHouseRegion());
+            list.get(i).setHouseRole(tbHouse.getHouseRole());
+            list.get(i).setHousePhone(tbHouse.getHousePhone());
+            list.get(i).setHouseTime(tbHouse.getHouseTime());
+
+            List <TbTaskStaff> tbTaskStaffs=taskStaffService.selectTbTaskStaffById(list.get(i).getTaskNumber());
+            String S="【一类】";
+            for(int k=0;k<tbTaskStaffs.size();k++)
+            {
+                TbStaff staff=staffService.selectStaffById(tbTaskStaffs.get(k).getStaffNumber());
+                if(staff!=null&& Objects.equals(staff.getStaffPost(), "一类"))
+                {
+                    S=S+staff.getStaffName();
+                    if(k!=tbTaskStaffs.size()-1)
+                        S=S+",";
+                }
+
+            }
+            boolean flag=true;
+            for(int k=0;k<tbTaskStaffs.size();k++)
+            {
+
+                TbStaff staff=staffService.selectStaffById(tbTaskStaffs.get(k).getStaffNumber());
+                if(staff!=null&& Objects.equals(staff.getStaffPost(), "二类"))
+                {
+                    if(flag)
+                    {
+                        S=S+"【二类】"+staff.getStaffName();
+                        flag=false;
+                    }
+                    else {
+                        S=S+staff.getStaffName();
+                    }
+                    if(k!=tbTaskStaffs.size()-1)
+                        S=S+",";
+                }
+
+            }
+            list.get(i).setTbStaffList(S);
+
+        }
+
+        //********
+
+
+        ExcelUtil<TaskUncheck> util = new ExcelUtil<TaskUncheck>(TaskUncheck.class);
+
+        return  util.exportExcel(list, "抽查历史任务数据");
+    }
 }

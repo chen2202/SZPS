@@ -25,6 +25,25 @@ public class SysArea extends BaseEntity {
 	/** 删除标志（0代表存在 2代表删除） */
 	private String delFlag;
 
+	private boolean flag = false;
+	
+    public boolean isFlag()
+    {
+        return flag;
+    }
+
+    public void setFlag(boolean flag)
+    {
+        this.flag = flag;
+    }
+	
+	public String getDelFlag() {
+		return delFlag;
+	}
+
+	public void setDelFlag(String delFlag) {
+		this.delFlag = delFlag;
+	}
 
 	public Long getAreaId() {
 		return areaId;

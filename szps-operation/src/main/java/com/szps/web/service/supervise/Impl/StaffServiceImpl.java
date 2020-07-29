@@ -2,6 +2,7 @@ package com.szps.web.service.supervise.Impl;
 
 import com.szps.common.core.text.Convert;
 import com.szps.web.domain.supervise.TbStaff;
+import com.szps.web.domain.supervise.addStaff;
 import com.szps.web.mapper.supervise.TbStaffMapper;
 import com.szps.web.service.supervise.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,7 +79,7 @@ public class StaffServiceImpl implements StaffService{
     }
 
     @Override
-    public List<String> selectStaffName(String a) {
+    public List<addStaff> selectStaffName(String a) {
         return staffMapper.selectStaffName(a);
     }
 }

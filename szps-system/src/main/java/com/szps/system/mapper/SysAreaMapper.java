@@ -24,6 +24,9 @@ public interface SysAreaMapper {
 	public int updateAreaChildren(@Param("areas") List<SysArea> areas);
 
 
+	public List<SysArea> selectAreaAll();
+
+
 	/**
 	 * 根据Area_Code查找
 	 * @param sysArea

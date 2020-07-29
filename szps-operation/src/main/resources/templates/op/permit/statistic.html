@@ -75,7 +75,20 @@
 					<ul>
 						<li class="select-time">
 							<label>年份： </label>
-							<input type="text" class="time-input" id="taskTime" placeholder="年份" name="taskTime"/>
+							<select name="taskTime" id="taskTime">
+								<option value="2020">2020</option>
+								<option value="2018">2018</option>
+								<option value="2019">2019</option>
+								<option value="2021">2021</option>
+								<option value="2022">2022</option>
+								<option value="2023">2023</option>
+								<option value="2024">2024</option>
+								<option value="2025">2025</option>
+								<option value="2026">2026</option>
+								<option value="2027">2027</option>
+								<option value="2028">2028</option>
+							</select>
+							<!--<input type="text" class="time-input" id="taskTime" placeholder="年份" name="taskTime"/>-->
 						</li>
 						<li>
 							<a class="btn btn-main btn-sm" onclick="statistic()"><i class="fa fa-search"></i>&nbsp;搜索</a>
@@ -120,7 +133,7 @@
     var ys=new  Array();
 
     function statistic() {
-        var taskTime = $("input[name='taskTime']").val();
+        var taskTime = $("select[name='taskTime']").val();
         $.ajax({
             cache : true,
             type : "POST",

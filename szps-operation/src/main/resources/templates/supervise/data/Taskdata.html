@@ -50,7 +50,7 @@
 							<input type="text" class="time-input" id="taskTime" placeholder="选择检查时间" name="taskTime"/>
 						</li>-->
 						<li>
-							<a class="btn btn-main btn-sm" onclick="$.table.search()" shiro:hasPermission="supervise:data:list" ><i class="fa fa-search"></i>&nbsp;搜索</a>
+							<a class="btn btn-main btn-sm" onclick="searchs()" shiro:hasPermission="supervise:data:list" ><i class="fa fa-search"></i>&nbsp;搜索</a>
 
 						</li>
 						<!--<li style="float: right">
@@ -238,6 +238,44 @@
 
     function check() {
         $.modal.open("添加双随机检查任务" ,ctx + "supervise/task/TaskCheck");
+    }
+
+    function sqlzr(str) {
+        var inj_str = "'|and|exec|insert|select|delete|update|count|*|%|chr|mid|master|truncate|char|declare|;|or|-|+|,";
+
+        var inj_stra=new Array();
+        inj_stra= inj_str.split("|");
+
+        for (var i = 0; i < inj_stra.length; i++) {
+
+            if (str.indexOf(inj_stra[i])>=0) {
+
+                return inj_stra[i];
+
+            }
+
+        }
+
+        return null;
+
+
+    }
+
+    function searchs() {
+        var houseName = $("input[name='houseName']").val();
+        var houseRule = $("select[name='houseRule']").val();
+        var houseItem = $("input[name='houseItem']").val();
+		if(sqlzr(houseName))
+		{
+             alert("搜索条件含非法字符"+sqlzr(houseName))
+		}else if(sqlzr(houseRule))
+		{
+            alert("搜索条件含非法字符"+sqlzr(houseRule))
+		}else if(sqlzr(houseItem)){
+            alert("搜索条件含非法字符"+sqlzr(houseItem))
+		}else {
+            $.table.search()
+		}
     }
 </script>
 </body>

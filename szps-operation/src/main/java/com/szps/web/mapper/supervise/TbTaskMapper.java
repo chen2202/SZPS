@@ -1,6 +1,7 @@
 package com.szps.web.mapper.supervise;
 
 
+import com.szps.web.domain.supervise.TaskUncheck;
 import com.szps.web.domain.supervise.TbTask;
 import org.apache.ibatis.annotations.Param;
 
@@ -34,4 +35,10 @@ public interface TbTaskMapper {
     int selectTaskCountComplete();
     int selectTaskCountAllWithKey(TbTask task);
     int selectTaskCountCompleteWithKey(TbTask task);
+
+    List<TaskUncheck> selectTaskAllExport();
+
+    List<TaskUncheck> selectTaskAllOldExport(TbTask task);
+
+
 }

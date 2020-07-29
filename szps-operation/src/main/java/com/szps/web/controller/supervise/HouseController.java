@@ -53,8 +53,12 @@ public class HouseController extends BaseController {
     @RequiresPermissions("supervise:data:list")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(TbHouse tbHouse)
-    {
+    public TableDataInfo list(TbHouse tbHouse) throws Exception {
+
+        if(sql_inj(tbHouse.getHouseRule())||sql_inj(tbHouse.getHouseName())||sql_inj(tbHouse.getHouseItem()))
+        {
+            throw new Exception("输入字符非法！！");
+        }
         startPage();
         List<TbHouse> list = houseService.selectHouseList(tbHouse);
 
@@ -121,5 +125,25 @@ public class HouseController extends BaseController {
         {
             return error(e.getMessage());
         }
+    }
+
+    public static boolean sql_inj(String str){
+
+        String inj_str = "'|and|exec|insert|select|delete|update|count|*|%|chr|mid|master|truncate|char|declare|;|or|-|+|,";
+
+        String inj_stra[] = inj_str.split("|");
+
+        for (String anInj_stra : inj_stra) {
+
+            if (str.contains(anInj_stra)) {
+
+                return true;
+
+            }
+
+        }
+
+        return false;
+
     }
 }

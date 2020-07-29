@@ -44,6 +44,29 @@ public class PlantCheckRecord extends BaseEntity
     @Excel(name = "巡检描述")
     private String checkDetail;
 
+    /**  巡检电话**/
+    @Excel(name = "巡检电话")
+    private String checkPhone;
+
+    @Excel (name = "巡检单位")
+    private String checkDept;
+
+    public String getCheckDept() {
+        return checkDept;
+    }
+
+    public void setCheckDept(String checkDept) {
+        this.checkDept = checkDept;
+    }
+
+    public String getCheckPhone() {
+        return checkPhone;
+    }
+
+    public void setCheckPhone(String checkPhone) {
+        this.checkPhone = checkPhone;
+    }
+
     public void setCheckId(String checkId)
     {
         this.checkId = checkId;
@@ -118,6 +141,8 @@ public class PlantCheckRecord extends BaseEntity
                 .append("checkSubmitTime", getCheckSubmitTime())
                 .append("checkUser", getCheckUser())
                 .append("checkDetail", getCheckDetail())
+                .append("checkPhone",getCheckPhone())
+                .append("checkDept",getCheckDept())
                 .toString();
     }
 }

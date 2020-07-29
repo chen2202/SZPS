@@ -21,10 +21,28 @@
     </sql>
 
     <select id="selectEventSubmitList" parameterType="EventSubmit" resultMap="EventSubmitResult">
+        <bind name="eventName" value="'%' + eventName + '%'" />
+        <bind name="eventPlace" value="'%' + eventPlace + '%'" />
         <include refid="selectEventSubmitVo"/>
         <where>
-            <if test="eventName != null  and eventName != ''">and EVENT_NAME =#{eventName}</if>
-            <if test="eventPlace != null  and eventPlace != ''">and EVENT_PLACE = #{eventPlace}</if>
+            <if test="eventName != null  and eventName != ''">and EVENT_NAME Like #{eventName}</if>
+            <if test="eventPlace != null  and eventPlace != ''">and EVENT_PLACE Like #{eventPlace}</if>
+            <if test="eventTime != null ">and EVENT_TIME = #{eventTime}</if>
+            <if test="eventContent != null  and eventContent != ''">and EVENT_CONTENT = #{eventContent}</if>
+            <if test="eventSubmitUser != null  and eventSubmitUser != ''">and EVENT_SUBMIT_USER = #{eventSubmitUser}
+            </if>
+            <if test="eventPhone != null  and eventPhone != ''">and EVENT_PHONE = #{eventPhone}</if>
+            <if test="eventUnit != null  and eventUnit != ''">and EVENT_UNIT = #{eventUnit}</if>
+            <!--            <if test="eventSubmitTime != null "> and EVENT_SUBMIT_TIME = #{eventSubmitTime}</if>-->
+        </where>
+    </select>
+
+    <select id="selectEventSubmitList2" parameterType="EventSubmit" resultMap="EventSubmitResult">
+
+        <include refid="selectEventSubmitVo"/>
+        <where>
+            <if test="eventName != null  and eventName != ''">and EVENT_NAME Like #{eventName}</if>
+            <if test="eventPlace != null  and eventPlace != ''">and EVENT_PLACE Like #{eventPlace}</if>
             <if test="eventTime != null ">and EVENT_TIME = #{eventTime}</if>
             <if test="eventContent != null  and eventContent != ''">and EVENT_CONTENT = #{eventContent}</if>
             <if test="eventSubmitUser != null  and eventSubmitUser != ''">and EVENT_SUBMIT_USER = #{eventSubmitUser}
@@ -121,6 +139,5 @@
           select EVENT_SID,EVENT_PICTURE_NAME,EVENT_PICTURE_URL
                 from EVENT_PICTURE
          where EVENT_SID=#{eventSid}
-
     </select>
 </mapper>

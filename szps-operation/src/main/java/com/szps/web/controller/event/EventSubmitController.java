@@ -10,6 +10,8 @@ import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.page.TableDataInfo;
 
 
+import com.szps.framework.web.domain.server.Sys;
+import com.szps.web.domain.event.EventLists;
 import com.szps.web.domain.event.EventPicture;
 import com.szps.web.service.event.IEventSubmitService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -54,10 +56,13 @@ public class EventSubmitController extends BaseController {
     @ResponseBody
     public TableDataInfo list(EventSubmit eventSubmit) throws ParseException {
         startPage();
+
+
         List<EventSubmit> list = eventSubmitService.selectEventSubmitList(eventSubmit);
 
 
         if (eventSubmit.getEventSubmitTime() != null) {
+
 
             SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -90,13 +95,43 @@ public class EventSubmitController extends BaseController {
     }
 
 
+    /**
+     * 显示详细数据+图片
+     *
+     * @param eventSid
+     * @param mmap
+     * @param eventSubmit
+     * @return
+     * @throws ParseException
+     */
     @GetMapping("/detail/{eventSid}")
-    public String detail(@PathVariable("eventSid") Integer eventSid, Model mmap,EventSubmit eventSubmit) {
-        List<EventSubmit> list = eventSubmitService.selectEventSubmitList(eventSubmit);
+    public String detail(@PathVariable("eventSid") Integer eventSid, Model mmap, EventSubmit eventSubmit) throws ParseException {
 
-        List<EventPicture> eventPictures=new ArrayList<>();
-        mmap.addAttribute("event",list.get(eventSid));
-        mmap.addAttribute("eventPicture",eventPictures);
+        List<EventSubmit> list = eventSubmitService.selectEventSubmitList2(eventSubmit);
+
+        EventPicture eventPicture = new EventPicture();
+        eventPicture.setEventSid(list.get(eventSid).getEventSid());
+
+        //图片信息
+        List<EventPicture> pictures = eventSubmitService.getEventPictures(eventPicture);
+
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+
+//        //图片路径修改为服务器路径
+//        for (EventPicture eventPicture1 : pictures) {
+//            String url = eventPicture1.getEventPictureUrl();
+//            url = "" + url;
+//            eventPicture1.setEventPictureUrl(url);
+//        }
+
+
+        mmap.addAttribute("eventTime", sdf.format(list.get(eventSid).getEventTime()));
+        mmap.addAttribute("eventSubmitTime", sdf.format(list.get(eventSid).getEventSubmitTime()));
+        mmap.addAttribute("event", list.get(eventSid));
+        mmap.addAttribute("eventPicture", pictures);
+
         return prefix + "/detail";
     }
 

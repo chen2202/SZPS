@@ -1,8 +1,8 @@
 package com.szps.web.service.event.impl;
 
 import com.szps.common.core.text.Convert;
-import com.szps.web.domain.event.EventPicture;
 import com.szps.web.domain.event.EventSubmit;
+import com.szps.web.domain.event.EventPicture;
 import com.szps.web.mapper.event.EventSubmitMapper;
 import com.szps.web.service.event.IEventSubmitService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class EventSubmitServiceImpl implements IEventSubmitService
      * @return 突发事件上传
      */
     @Override
-    public EventSubmit selectEventSubmitById(Integer eventId)
+    public EventSubmit selectEventSubmitById(String eventId)
     {
         return eventSubmitMapper.selectEventSubmitById(eventId);
     }
@@ -46,6 +46,16 @@ public class EventSubmitServiceImpl implements IEventSubmitService
         return eventSubmitMapper.selectEventSubmitList(eventSubmit);
     }
 
+
+    /**
+     * 查询突发事件上传列表
+     *
+     * @param eventSubmit 突发事件上传
+     * @return 突发事件上传集合
+     */
+    public List<EventSubmit> selectEventSubmitList2(EventSubmit eventSubmit){
+        return eventSubmitMapper.selectEventSubmitList2(eventSubmit);
+    }
     /**
      * 新增突发事件上传
      * 

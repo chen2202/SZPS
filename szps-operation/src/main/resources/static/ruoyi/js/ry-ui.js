@@ -109,7 +109,7 @@
                         isAsc:          params.order
             		};
             	var currentId = $.common.isEmpty($.table._option.formId) ? $('form').attr('id') : $.table._option.formId;
-            	return $.extend(curParams, $.common.formToJSON(currentId)); 
+            	return $.extend(curParams, $.common.formToJSON(currentId));
             },
             // 请求获取数据后处理回调函数
             responseHandler: function(res) {
@@ -641,9 +641,9 @@
             },
             // 弹出层指定参数选项
             openOptions: function (options) {
-            	var _url = $.common.isEmpty(options.url) ? "/404.html" : options.url; 
-            	var _title = $.common.isEmpty(options.title) ? "系统窗口" : options.title; 
-                var _width = $.common.isEmpty(options.width) ? "800" : options.width; 
+            	var _url = $.common.isEmpty(options.url) ? "/404.html" : options.url;
+            	var _title = $.common.isEmpty(options.title) ? "系统窗口" : options.title;
+                var _width = $.common.isEmpty(options.width) ? "800" : options.width;
                 var _height = $.common.isEmpty(options.height) ? ($(window).height() - 50) : options.height;
                 var _btn = ['<i class="fa fa-check"></i> 确认', '<i class="fa fa-close"></i> 关闭'];
                 if ($.common.isEmpty(options.yes)) {
@@ -709,7 +709,7 @@
             	});
                 layer.full(index);
             },
-            
+
             openStat: function (title, url, width, height) {
             	//如果是移动端，就使用自适应大小弹窗
             	if (navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
@@ -744,7 +744,7 @@
             	    }
             	});
             },
-            
+
             // 选卡页方式打开
             openTab: function (title, url) {
             	createMenuItem(url, title);
@@ -821,7 +821,7 @@
        				width: width,
        				height: height,
        				url: $.operate.detailUrl(id),
-       				skin: 'layui-layer-gray', 
+       				skin: 'layui-layer-gray',
        				btn: ['关闭'],
        				yes: function (index, layero) {
        	                layer.close(index);
@@ -855,7 +855,7 @@
 	            	    $.operate.submit(url, "post", "json", data);
 	                }
             	});
-            	
+
             },
             // 批量删除信息
             removeAll: function() {
@@ -895,13 +895,13 @@
             	var url = $.common.isEmpty(id) ? $.table._option.createUrl.replace("{id}", "") : $.table._option.createUrl.replace("{id}", id);
                 return url;
             },
-            
+
             // 
             statistic: function(id) {
             	var url = $.common.isEmpty(id) ? $.table._option.statUrl : $.table._option.statUrl.replace("{id}", id);
                 $.modal.openStat("运行情况概览", url);
             },
-            
+
             // 修改信息
             edit: function(id) {
             	if($.common.isEmpty(id) && $.table._option.type == table_type.bootstrapTreeTable) {

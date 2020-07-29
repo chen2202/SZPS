@@ -13,10 +13,11 @@
         <result property="checkUser" column="CHECK_USER"/>
         <result property="checkDetail" column="CHECK_DETAIL"/>
         <result property="checkDept" column="CHECK_DEPT"/>
+        <result property="checkPhone" column="CHECK_DEPT"/>
     </resultMap>
 
     <sql id="selectCheckManagerVo">
-        select CHECK_ID, CHECK_AREA, CHECK_TYPE, CHECK_PLACE, CHECK_SUBMIT_TIME, CHECK_USER, CHECK_DETAIL,CHECK_DEPT from PLANT_CHECK_RECORD
+        select CHECK_ID, CHECK_AREA, CHECK_TYPE, CHECK_PLACE, CHECK_SUBMIT_TIME, CHECK_USER, CHECK_DETAIL,CHECK_DEPT,CHECK_PHONE from PLANT_CHECK_RECORD
     </sql>
 
     <select id="selectCheckManagerList" parameterType="PlantCheckRecord" resultMap="CheckManagerResult">
@@ -30,6 +31,7 @@
             <if test="checkUser != null  and checkUser != ''">and CHECK_USER = #{checkUser}</if>
             <if test="checkDetail != null  and checkDetail != ''">and CHECK_DETAIL = #{checkDetail}</if>
             <if test="checkDept !=null and checkDept !='' ">and CHECK_DEPT=#{checkDept}</if>
+            <if test="checkPhone !=null and checkPhone !=''">and CHECK_PHONE=#{checkPhone}</if>
         </where>
     </select>
 
@@ -63,6 +65,7 @@
             <if test="checkUser != null  and checkUser != ''">CHECK_USER,</if>
             <if test="checkDetail != null  and checkDetail != ''">CHECK_DETAIL,</if>
             <if test="checkDept !=null and checkDept !=''">CHECK_DEPT</if>
+            <if test="checkPhone !=null and checkPhone !=''" >CHECK_PHONE</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="checkId !=null and checkId!=''">#{checkId},</if>
@@ -73,6 +76,7 @@
             <if test="checkUser != null  and checkUser != ''">#{checkUser},</if>
             <if test="checkDetail != null  and checkDetail != ''">#{checkDetail},</if>
             <if test="checkDept !=null and checkDept !=''">#{checkDept}</if>
+            <if test="checkPhone !=null and checkPhone !=''" >#{checkPhone}</if>
         </trim>
     </insert>
 

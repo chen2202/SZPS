@@ -27,6 +27,7 @@ import com.szps.common.utils.spring.SpringUtils;
 import com.szps.framework.shiro.realm.UserRealm;
 import com.szps.framework.shiro.session.OnlineSessionDAO;
 import com.szps.framework.shiro.session.OnlineSessionFactory;
+import com.szps.framework.shiro.web.filter.CSRFilter;
 import com.szps.framework.shiro.web.filter.LogoutFilter;
 import com.szps.framework.shiro.web.filter.captcha.CaptchaValidateFilter;
 import com.szps.framework.shiro.web.filter.kickout.KickoutSessionFilter;
@@ -95,6 +96,8 @@ public class ShiroConfig
     @Value("${shiro.user.unauthorizedUrl}")
     private String unauthorizedUrl;
 
+    @Value("${shiro.user.csrfUrl}")
+    private String csrfUrl;
     /**
      * 缓存管理器 使用Ehcache实现
      */
@@ -225,6 +228,12 @@ public class ShiroConfig
         logoutFilter.setLoginUrl(loginUrl);
         return logoutFilter;
     }
+    
+    public CSRFilter csrFilter() {
+    	CSRFilter csrFilter = new CSRFilter();
+    	csrFilter.setCsrfUrl(csrfUrl);
+		return csrFilter;
+    }
 
     /**
      * Shiro过滤器配置
@@ -267,10 +276,11 @@ public class ShiroConfig
         filters.put("kickout", kickoutSessionFilter());
         // 注销成功，则跳转到指定页面
         filters.put("logout", logoutFilter());
+        filters.put("csr", csrFilter());
         shiroFilterFactoryBean.setFilters(filters);
 
         // 所有请求需要认证
-        filterChainDefinitionMap.put("/**", "user,kickout,onlineSession,syncOnlineSession");
+        filterChainDefinitionMap.put("/**", "user,kickout,onlineSession,syncOnlineSession,csr");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
         return shiroFilterFactoryBean;

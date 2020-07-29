@@ -5,6 +5,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+
 import org.apache.commons.lang3.time.DateFormatUtils;
 
 /**
@@ -209,5 +211,43 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils
 			formatDate = DateFormatUtils.format(date, "yyyy-MM-dd");
 		}
 		return formatDate;
+	}
+	
+	public static String getTomorrowStr(){
+		Date date=new Date();//取时间
+		 Calendar calendar = new GregorianCalendar();
+		 calendar.setTime(date);
+		 calendar.add(calendar.DATE,1);//把日期往后增加一天.整数往后推,负数往前移动
+		 date=calendar.getTime(); //这个时间就是日期往后推一天的结果
+		 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		 String dateString = formatter.format(date);
+
+		 return dateString;
+	}
+	
+	public static int getMonth(String dateStr,String dateFormat) throws Exception {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat);//注意月份是MM
+        Date date = simpleDateFormat.parse(dateStr);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int month = cal.get(Calendar.MONTH)+1; 
+		return month;
+	}
+	
+	public static int getYear(String dateStr,String dateFormat) throws Exception {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat);//注意月份是MM
+        Date date = simpleDateFormat.parse(dateStr);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int year = cal.get(Calendar.YEAR); 
+		return year;
+	}
+	public static void main(String[] args) {
+		try {
+			System.out.println(getYear(getDate(), YYYY_MM_DD));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

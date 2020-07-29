@@ -13,6 +13,7 @@
         <li role="presentation"><a onclick="toggle('op/fixedasset/car')" role="tab" data-toggle="tab">车辆</a></li>
         <li role="presentation"><a onclick="toggle('op/fixedasset/officeequipment')" role="tab" data-toggle="tab">电子办公设备</a></li>
         <li role="presentation"><a onclick="toggle('op/fixedasset/plant')" role="tab" data-toggle="tab">绿化树木</a></li>
+        <li role="presentation"><a onclick="togglemap('map/fixedasset')" role="tab" data-toggle="tab" style="color:red">返回地图</a></li>
     </ul>
     
 
@@ -30,6 +31,10 @@
     	   var d = '[[${deptId}]]';
            $("#content-iframe").attr("src",ctx+url+"?deptId="+d);
            $("#content-iframe").attr("data-id",ctx+url);
+       }
+       
+       function togglemap(url) {
+    	   self.location=ctx+url; 
        }
     </script>
     <th:block th:include="include :: footer" />

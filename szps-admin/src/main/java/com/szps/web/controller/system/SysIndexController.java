@@ -32,8 +32,13 @@ public class SysIndexController extends BaseController
     {
         // 取身份信息
         SysUser user = ShiroUtils.getSysUser();
-        // 根据用户id取出菜单
-        List<SysMenu> menus = menuService.selectMenusByUser(user);
+        
+		// 根据用户id取出菜单
+		String menuName = Global.getName();
+		String subsysFlag = Global.getFlag();
+		int parentId = menuService.selectMenuIDByName(menuName);
+		List<SysMenu> menus = menuService.selectMenusByUserAndSubsysFlag(user, subsysFlag, parentId);
+        
         mmap.put("menus", menus);
         mmap.put("user", user);
         mmap.put("copyrightYear", Global.getCopyrightYear());

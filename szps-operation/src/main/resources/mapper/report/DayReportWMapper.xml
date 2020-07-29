@@ -41,7 +41,11 @@
         select *
         from REPORT_DAY_W r
     </sql>	
-	
+    
+	<sql id="selectVo2">
+        select deptname, basin, reportdate, tcapacity, darea, dscale
+        from REPORT_DAY_W r
+    </sql>	
 	<!-- 查询条件 -->
 	<sql id="sqlwhereSearch">
 		<where>
@@ -82,7 +86,18 @@
 		<!-- 数据范围过滤 -->
 		${params.dataScope}	
 		
-		order by r.id
+		order by r.basin, r.deptname, r.darea
+    </select>
+
+    
+    <select id="selectListForYear" parameterType="String" resultMap="result">
+        <include refid="selectVo2"/>
+        where  dtype = #{dtype} and reportdate &gt; #{startTime1} and reportdate &lt; #{endTime1}
+    </select>
+
+    <select id="selectListBetween" parameterType="String" resultMap="result">
+        <include refid="selectVo"/>
+        where  dtype = #{dtype} and reportdate &gt; #{startTime1} and reportdate &lt; #{endTime1}
     </select>
 	
 	<select id="selectById" parameterType="Long" resultMap="result">

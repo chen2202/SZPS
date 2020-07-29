@@ -7,12 +7,13 @@
 <body>
     <div class="wrapper wrapper-content animated fadeInRight ibox-content">
        <form id="form-dayreport-add"  class="form-horizontal m">
+        <input name="deptid" type="hidden" id="treeId"/>
 			<div class="row">
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
 						<label class="col-sm-6 control-label ">分散式污水处理设施：</label>
 						<div class="col-sm-6">
-								<input name="deptname"  type="text" id="treeName" class="form-control" />
+								<input name="deptname" onclick="selectDeptTree()" type="text" id="treeName" class="form-control" />
 						</div>
 					</div>
 				</div>
@@ -20,7 +21,9 @@
 					<div class="form-group">
 						<label class="col-sm-6 control-label">所属流域：</label>
 						<div class="col-sm-6">
-							<input class="form-control" type="text" name="basin" id="basin" >
+							<select id="basin" name="basin" class="form-control " >
+								<option th:each="b:${basins}" th:value="${b.brfName}" th:text="${b.brfName}"  ></option>
+							</select>
 						</div>
 					</div>
 				</div>
@@ -84,7 +87,9 @@
 		        	<div class="form-group">
 						<label class="col-sm-6 control-label ">辖区：</label>
 						<div class="col-sm-6">
-								<input class="form-control" type="text" name="darea" id="darea" >
+								<select name="darea" id="darea" class="form-control select2-multiple" >
+								<option th:each="area:${areas}" th:value="${area.areaName}" th:text="${area.areaName}" ></option>
+							</select>
 						</div>
 					</div>
 				</div>

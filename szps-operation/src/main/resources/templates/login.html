@@ -25,6 +25,8 @@
 		}
 		request.getSession(true);
     </script>
+    <fs:csrf/>
+    
 </head>
 <script th:inline="javascript"> var ctx = [[@{/}]]; var captchaType = [[${captchaType}]]; </script>
 
@@ -36,6 +38,7 @@
             </div>
             <div class="col-sm-5">
                 <form id="signupForm">
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
                     <h3 class="no-margins">登录：</h3>
                     <input type="text"     name="username" class="form-control uname"     placeholder="用户名"    />
                     <input type="password" name="password" class="form-control pword"     placeholder="密码"  />
@@ -68,6 +71,7 @@
         $.ajax({
             type: "post",
             url: ctx + "login",
+            xhr.setRequestHeader("${_csrf.parameterName}", "${_csrf.token}");
             data: {
                 "username": username,
                 "password": password

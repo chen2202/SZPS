@@ -13,7 +13,9 @@
 						<ul>
 							<li>
 		                        <label >辖区：</label>
-                            	<input name="darea"  id="darea" type="text" placeholder="" >
+								<select id="darea" name="darea"   >
+									<option th:each="area:${areas}" th:value="${area.areaName}" th:text="${area.areaName}" th:disabled="${area.areaType == '2'}"></option>
+								</select>
 							</li>
 							<li>
 		                        <label >水质净化厂名称：</label>

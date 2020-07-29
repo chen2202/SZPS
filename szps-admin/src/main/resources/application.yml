@@ -101,6 +101,7 @@ shiro:
     loginUrl: /login
     # 权限认证失败地址
     unauthorizedUrl: /unauth
+    csrfUrl: http://localhost:8086
     # 首页地址
     indexUrl: /index
     # 验证码开关

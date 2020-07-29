@@ -45,7 +45,7 @@
 		        <a class="btn btn-success" onclick="$.operate.addFull()" shiro:hasPermission="report:day:add">
 		            <i class="fa fa-plus"></i>数据上报
 		        </a>
-		        <a class="btn  btn-success " onclick="$.operate.statistic()" shiro:hasPermission="report:day:delete">
+		        <a class="btn  btn-success " onclick="statistic()" shiro:hasPermission="report:day:delete">
 		            <i ></i>运行情况概览
 		        </a>
 		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="report:day:export">
@@ -94,7 +94,7 @@
                 createUrl: prefix + "/add",
                 updateUrl: prefix + "/edit/{id}",
                 removeUrl: prefix + "/remove",
-                statUrl: prefix + "/stat",
+                statUrl: prefix + "/stat/{rd}",
                 
                 modalName: "数据",
                 columns: [
@@ -146,6 +146,12 @@
             } else {
                 location.href = ctx + 'op/report/daybo';
             }
+        }
+        
+        function statistic(){
+        	var rd = document.getElementById('reportdate').value; 
+        	//location.href = ctx + 'op/report/day/stat';
+        	$.operate.statistic(rd);
         }
     </script>
 </body>

@@ -16,9 +16,9 @@
                                 <text style="font-family: '苹方 中等';">区域：</text>
                             </p>
                             <select name="plantName" style="width: 165px;font-family: '苹方 中等'">
-                                <option value=""></option>
-                                <option th:each="list : ${plantList1}" th:text="${list.plantName}"
-                                        th:value="${list.plantName}"></option>
+                                <option value="" ></option>
+                                <option th:each="list : ${sysAreas}" th:text="${list.areaName}"
+                                        th:value="${list.areaName}"></option>
                             </select>
                         </li>
                         <li>
@@ -27,8 +27,8 @@
                             </p>
                             <select name="deviceId" style="width: 165px;font-family: '苹方 中等'">
                                 <option value=""></option>
-                                <option th:each="list : ${plantList}" th:text="${list.deviceId}"
-                                        th:value="${list.deviceId}"></option>
+                                <option th:each="list : ${type}" th:text="${list}"
+                                        th:value="${list}"></option>
                             </select>
                         </li>
                         <li>
@@ -37,8 +37,8 @@
                             </p>
                             <select name="deviceName" style="width: 165px;font-family: '苹方 中等'">
                                 <option value=""></option>
-                                <option th:each="list : ${plantList}" th:text="${list.deviceName}"
-                                        th:value="${list.deviceName}"></option>
+                                <option th:each="list : ${sysDepts}" th:text="${list.deptName}"
+                                        th:value="${list.deptName}"></option>
                             </select>
                         </li>
                         <li class="select-time">
@@ -85,11 +85,13 @@
             updateUrl: prefix + "/edit/{id}",
             removeUrl: prefix + "/remove",
             exportUrl: prefix + "/export",
-            modalName: "污水厂巡检",
+            detailUrl: prefix + "/detail/{id}",
+            modalName: "图片",
             columns: [
                 {
                     field: 'checkId',
-                    title: '序号'
+                    title: '序号',
+                    visible: false,
                 },
                 {
                     field: 'checkArea',
@@ -110,6 +112,10 @@
                 {
                     field: 'checkUser',
                     title: '巡检人'
+                },
+                {
+                    field: 'checkPhone',
+                    title: '联系电话'
                 },
                 {
                     field: 'checkDetail',

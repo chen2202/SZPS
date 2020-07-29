@@ -2,7 +2,7 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
     <th:block th:include="include :: header('突发事件列表')"/>
-    <link th:href="@{/css/event/event.css}" rel="stylesheet"/>
+
 </head>
 <body class="gray-bg">
 <div class="container-div">
@@ -13,11 +13,11 @@
                     <ul>
                         <li>
                             <label>事件名称：</label>
-                            <input type="text" name="eventName"/>
+                            <input type="text" name="eventName" id="eventName"/>
                         </li>
                         <li>
                             <label>事件地点：</label>
-                            <input type="text" name="eventPlace"/>
+                            <input type="text" name="eventPlace" id="eventPlace"/>
                         </li>
 
                         <li class="select-time">
@@ -44,10 +44,8 @@
     var editFlag = [[${@permission.hasPermi('event:submit:edit')}]];
     var removeFlag = [[${@permission.hasPermi('event:submit:remove')}]];
 
-	function infosetting() {
-		location.href = ctx + "event/email";
-    } 
-	
+
+
     var prefix = ctx + "event/submit";
 
     $(function () {
@@ -96,6 +94,10 @@
                 {
                     field: 'eventUnit',
                     title: '所属单位'
+                },
+                {
+                    field:'eventPhone',
+                    title:'联系电话'
                 },
                 {
                     field: 'eventSubmitTime',

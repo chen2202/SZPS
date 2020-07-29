@@ -57,7 +57,7 @@ public class EventSubmit extends BaseEntity
         this.eventSid = eventSid;
     }
 
-    public String getEventSId()
+    public String getEventSid()
     {
         return eventSid;
     }
@@ -137,7 +137,7 @@ public class EventSubmit extends BaseEntity
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-                .append("eventId", getEventSId())
+                .append("eventSid", getEventSid())
                 .append("eventName", getEventName())
                 .append("eventPlace", getEventPlace())
                 .append("eventTime", getEventTime())

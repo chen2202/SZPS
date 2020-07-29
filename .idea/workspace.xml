@@ -2,35 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc7b956e-4cbc-4a6b-8b84-b165eb2e201f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/CheckController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/CheckController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/EventUploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/EventUploadController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/check/PlantCheckRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/check/PlantCheckRecord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/check/PlantCheckRecordMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/check/PlantCheckRecordMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/event/EventSubmitMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/mapper/event/EventSubmitMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/check/IPlantCheckRecordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/check/IPlantCheckRecordService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/check/impl/PlantCheckRecordServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/check/impl/PlantCheckRecordServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/event/IEventSubmitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/event/IEventSubmitService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/event/impl/EventSubmitServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/service/event/impl/EventSubmitServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/resources/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/application-druid.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/check/PlantCheckRecordMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/check/PlantCheckRecordMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/event/EventSubmitMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/event/EventSubmitMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/szps-admin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/szps-admin.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-common/szps-common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-common/szps-common.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-framework/szps-framework.iml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-framework/szps-framework.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/szps-operation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/szps-operation.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/domain/SysArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/domain/SysArea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/mapper/SysAreaMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/mapper/SysAreaMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/mapper/SysDeptMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/mapper/SysDeptMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/service/ISysAreaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/service/ISysAreaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/service/ISysDeptService.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/service/ISysDeptService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/service/impl/SysAreaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/service/impl/SysAreaServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/service/impl/SysDeptServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/service/impl/SysDeptServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-system/src/main/resources/mapper/system/SysAreaMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/resources/mapper/system/SysAreaMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-system/src/main/resources/mapper/system/SysDeptMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/resources/mapper/system/SysDeptMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-system/szps-system.iml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/szps-system.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps.iml" beforeDir="false" afterPath="$PROJECT_DIR$/szps.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,6 +31,18 @@
         <option value="E:\SZPS\.idea" />
       </set>
     </option>
+  </component>
+  <component name="InvalidFacetManager">
+    <ignored-facets>
+      <facet id="szps-admin/invalid/Spring" />
+      <facet id="szps-admin/invalid/Web" />
+      <facet id="szps-common/invalid/Spring" />
+      <facet id="szps-framework/invalid/Spring" />
+      <facet id="szps-framework/invalid/Web" />
+      <facet id="szps-operation/invalid/Spring" />
+      <facet id="szps-operation/invalid/Web" />
+      <facet id="szps-system/invalid/Spring" />
+    </ignored-facets>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -96,21 +81,23 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\resources\static\checkFonts" />
+      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\resources\templates\check\plant\plant" />
       <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\java\com\szps\web\controller\wechat" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.szps.web.domain.event" />
       <recent name="com.szps.web.service.event.impl" />
       <recent name="com.szps.web.service.event" />
       <recent name="com.szps.web.service.check.impl" />
       <recent name="com.szps.web.service.check" />
-      <recent name="com.szps.web.mapper.check" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\resources\static\checkFonts\css" />
+      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\resources\static\checkFonts\js" />
+      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\resources\templates\event\submit" />
       <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\resources\mapper\event" />
       <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\resources\mapper\check" />
-      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\java\com\szps\web\service\check" />
-      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\java\com\szps\web\domain\event" />
-      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\java\com\szps\web\domain\check" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -130,7 +117,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.SZPSApplication">
+  <component name="RunManager" selected="Spring Boot.OPApplication">
     <configuration name="OPApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="szps-operation" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.szps.OPApplication" />
@@ -151,17 +138,7 @@
       <serviceView>
         <option name="contentProportion" value="0.012311902" />
         <treeState>
-          <expand>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@7cae8cd7" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@7cae8cd7" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@a9f364b2" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-          </expand>
+          <expand />
           <select />
         </treeState>
       </serviceView>
@@ -303,7 +280,28 @@
       <workItem from="1595206837183" duration="994000" />
       <workItem from="1595221407590" duration="599000" />
       <workItem from="1595247531528" duration="1326000" />
-      <workItem from="1595294124031" duration="835000" />
+      <workItem from="1595294124031" duration="2488000" />
+      <workItem from="1595309198526" duration="1318000" />
+      <workItem from="1595398980115" duration="5215000" />
+      <workItem from="1595464995070" duration="3988000" />
+      <workItem from="1595561311572" duration="5887000" />
+      <workItem from="1595820057341" duration="2096000" />
+      <workItem from="1595833328612" duration="2999000" />
+      <workItem from="1595836348944" duration="1884000" />
+      <workItem from="1595858937193" duration="1673000" />
+      <workItem from="1595897010132" duration="3920000" />
+      <workItem from="1595905369675" duration="981000" />
+      <workItem from="1595906366317" duration="379000" />
+      <workItem from="1595906761724" duration="118000" />
+      <workItem from="1595906896118" duration="427000" />
+      <workItem from="1595907337457" duration="1096000" />
+      <workItem from="1595909568919" duration="1460000" />
+      <workItem from="1595911048740" duration="1847000" />
+      <workItem from="1595920527984" duration="2510000" />
+      <workItem from="1595939953803" duration="1386000" />
+      <workItem from="1595982570944" duration="1283000" />
+      <workItem from="1595983872009" duration="1688000" />
+      <workItem from="1595985994350" duration="494000" />
     </task>
     <servers />
   </component>
@@ -322,5 +320,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/szps$OPApplication.ic" NAME="OPApplication Coverage Results" MODIFIED="1595859966933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

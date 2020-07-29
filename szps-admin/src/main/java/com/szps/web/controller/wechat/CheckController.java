@@ -77,6 +77,9 @@ import static com.szps.common.core.domain.AjaxResult.success;
                 check.setPlantCheckRecord(plant);
                 check.setList(checkPictures);
 
+                //服务器路径路径
+//                    check.setList(getPicture(checkPictures));
+
                 checks.add(check);
 
 
@@ -97,6 +100,9 @@ import static com.szps.common.core.domain.AjaxResult.success;
                     Check check = new Check();
                     check.setPlantCheckRecord(plant);
                     check.setList(checkPictures);
+
+                    //服务器路径路径
+//                    check.setList(getPicture(checkPictures));
 
                     checks.add(check);
                 }
@@ -134,7 +140,6 @@ import static com.szps.common.core.domain.AjaxResult.success;
 
                 if (plant.getCheckPlace().contains(value)) {
 
-
                     CheckPicture checkPicture = new CheckPicture();
                     checkPicture.setCheckSid(plant.getCheckId());
                     List<CheckPicture> checkPictures = iPlantCheckRecordService.getCheckPictures(checkPicture);
@@ -142,6 +147,8 @@ import static com.szps.common.core.domain.AjaxResult.success;
                     Check check = new Check();
                     check.setPlantCheckRecord(plant);
                     check.setList(checkPictures);
+                    //服务器路径路径
+//                    check.setList(getPicture(checkPictures));
 
                     checks.add(check);
 
@@ -163,6 +170,8 @@ import static com.szps.common.core.domain.AjaxResult.success;
                     Check check = new Check();
                     check.setPlantCheckRecord(plant);
                     check.setList(checkPictures);
+                    //服务器路径路径
+//                    check.setList(getPicture(checkPictures));
 
                     checks.add(check);
                 }
@@ -173,6 +182,21 @@ import static com.szps.common.core.domain.AjaxResult.success;
 
 
         return checks;
+    }
+
+    /**
+     * 图片路径转为服务器图片路径
+     * @param checkPictures
+     * @return
+     */
+    protected  List<CheckPicture> getPicture(List<CheckPicture> checkPictures){
+
+        for(CheckPicture checkPicture:checkPictures){
+            String url=checkPicture.getGetCheckPictureUrl();
+            url=""+url;
+            checkPicture.setGetCheckPictureUrl(url);
+        }
+        return checkPictures;
     }
 
     /**

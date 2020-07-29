@@ -45,7 +45,6 @@ public class EventUploadController {
     private LoginController loginController;
 
 
-
     /**
      * 获取突发事件列表
      *
@@ -75,6 +74,8 @@ public class EventUploadController {
                 EventLists lists = new EventLists();
                 lists.setEventSubmit(submit);
                 lists.setList(pictures);
+                //服务器图片路径
+//                    lists.setList(getPictures(pictures));
 
                 eventLists.add(lists);
             }
@@ -92,6 +93,9 @@ public class EventUploadController {
                     EventLists lists = new EventLists();
                     lists.setEventSubmit(submit);
                     lists.setList(pictures);
+
+                    //服务器图片路径
+//                    lists.setList(getPictures(pictures));
 
                     eventLists.add(lists);
                 }
@@ -130,9 +134,12 @@ public class EventUploadController {
                     eventPicture.setEventSid(submit.getEventSId());
                     List<EventPicture> pictures = iEventSubmitService.getEventPictures(eventPicture);
 
+
                     EventLists lists = new EventLists();
                     lists.setEventSubmit(submit);
                     lists.setList(pictures);
+                    //服务器图片路径
+//                    lists.setList(getPictures(pictures));
 
                     eventLists.add(lists);
                 }
@@ -149,9 +156,12 @@ public class EventUploadController {
                     eventPicture.setEventSid(submit.getEventSId());
                     List<EventPicture> pictures = iEventSubmitService.getEventPictures(eventPicture);
 
+
                     EventLists lists = new EventLists();
                     lists.setEventSubmit(submit);
                     lists.setList(pictures);
+                    //服务器图片路径
+//                    lists.setList(getPictures(pictures));
 
                     eventLists.add(lists);
                 }
@@ -161,6 +171,21 @@ public class EventUploadController {
         return eventLists;
     }
 
+    /**
+     * 图片路径转为服务器图片路径
+     *
+     * @param pictures
+     * @return
+     */
+    protected List<EventPicture> getPictures(List<EventPicture> pictures) {
+
+        for (EventPicture eventPicture : pictures) {
+            String url = eventPicture.getEventPictureUrl();
+            url = "" + url;
+            eventPicture.setEventPictureUrl(url);
+        }
+        return pictures;
+    }
 
     /**
      * 不同的角色获取不同的突发事件列表
@@ -197,7 +222,6 @@ public class EventUploadController {
     }
 
 
-
     /**
      * 突发事件文字上传接口
      *
@@ -218,7 +242,7 @@ public class EventUploadController {
         int radomInt = new Random().nextInt(999999);
 
         //判断编号是否重复
-        while (checkEventSid(String.valueOf(radomInt))==1){
+        while (checkEventSid(String.valueOf(radomInt)) == 1) {
             radomInt = new Random().nextInt(999999);
         }
         String s = String.valueOf(radomInt);
@@ -291,6 +315,7 @@ public class EventUploadController {
 
     /**
      * 判断编号是否重复
+     *
      * @param sid
      * @return
      */

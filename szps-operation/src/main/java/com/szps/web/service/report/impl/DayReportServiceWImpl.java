@@ -52,6 +52,16 @@ public class DayReportServiceWImpl implements IDayReportWService {
 		return mapper.update(obj);
 	}
 
+	@Override
+	public List<DayReportW> selectListBetween(String dtype,String startTime1, String endTime1) {
+		// TODO Auto-generated method stub
+		return mapper.selectListBetween(dtype, startTime1, endTime1);
+	}
 
+	@Override
+	public List<DayReportW> selectListForYear(String dtype,String startTime1, String endTime1) {
+		// TODO Auto-generated method stub
+		return mapper.selectListForYear(dtype, startTime1, endTime1);
+	}
 
 }

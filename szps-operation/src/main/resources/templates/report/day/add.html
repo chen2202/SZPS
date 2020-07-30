@@ -21,7 +21,9 @@
 					<div class="form-group">
 						<label class="col-sm-6 control-label">所属流域：</label>
 						<div class="col-sm-6">
-							<input class="form-control" type="text" name="basin" id="basin" >
+							<select id="basin" name="basin" class="form-control " >
+								<option th:each="b:${basins}" th:value="${b.brfName}" th:text="${b.brfName}"  ></option>
+							</select>
 						</div>
 					</div>
 				</div>
@@ -85,7 +87,9 @@
 		        	<div class="form-group">
 						<label class="col-sm-6 control-label ">辖区：</label>
 						<div class="col-sm-6">
-								<input class="form-control" type="text" name="darea" id="darea" >
+							<select name="darea" id="darea" class="form-control select2-multiple" >
+								<option th:each="area:${areas}" th:value="${area.areaName}" th:text="${area.areaName}" ></option>
+							</select>
 						</div>
 					</div>
 				</div>
@@ -260,7 +264,7 @@
         /*用户管理-新增-选择部门树*/
         function selectDeptTree() {
         	var treeId = $("#treeId").val();
-        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "1140" : $("#treeId").val();
         	var url = ctx + "system/dept/selectDeptTree/" + deptId;
 			var options = {
 				title: '选择部门',

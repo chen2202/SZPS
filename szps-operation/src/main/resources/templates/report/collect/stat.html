@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('添加日报')" />
+	<th:block th:include="include :: select2-css" />
+</head>
+<body>
+   
+  <table class="table table-bordered ">
+    <tr>
+        <th>年份</th>
+        <th>总规模</th>
+        <th>计算规模（m<sup>3</sup>）</th>
+        <th>实际处理量（m<sup>3</sup>）</th>
+        <th>日均处理量（m<sup>3</sup>）</th>
+        <th>负荷率</th>
+        <th>COD削减量（m<sup>3</sup>）</th>
+        <th>AD削减量（m<sup>3</sup>）</th>
+        <th>平均COD进水浓度(mg/L)</th>
+        <th>平均AD进水浓度(mg/L)</th>
+    </tr>
+    <tr  th:each="t: ${nlist}" >
+        <td th:text="${t.basin}"></td>
+        <td th:text="${t.tcapacity}"></td>
+        <th th:text="${t.loadrate}"></th>
+        <th th:text="${t.incod}"></th>
+        <th th:text="${t.inbod}"></th>
+        <th th:text="${t.inan}"></th>
+        <th th:text="${t.inp}"></th>
+        <th th:text="${t.inp}"></th>
+        <th th:text="${t.inp}"></th>
+        <th th:text="${t.inp}"></th>
+    </tr>
+</table>
+
+
+	<th:block th:include="include :: footer" />
+	<th:block th:include="include :: select2-js" />
+	<script>
+	    var prefix = ctx + "op/report/day";
+	
+        $("#form-dayreport-add").validate({
+        	onkeyup: false,
+        	rules:{
+        		
+        	},
+        	messages: {
+                "loginName": {
+                    remote: "用户已经存在"
+                },
+        		"email": {
+                    remote: "Email已经存在"
+                },
+        		"phonenumber":{
+                	remote: "手机号码已经存在"
+        		}
+            },
+            focusCleanup: true
+        });
+        
+        function submitHandler() {
+	        if ($.validate.form()) {
+	        	var data = $("#form-dayreport-add").serializeArray();
+	        	/* var status = $("input[id='status']").is(':checked') == true ? 0 : 1;
+	        	var roleIds = $.form.selectCheckeds("role");
+	        	var postIds = $.form.selectSelects("post");
+	        	data.push({"name": "status", "value": status});
+	        	data.push({"name": "roleIds", "value": roleIds});
+	        	data.push({"name": "postIds", "value": postIds}); */
+	        	$.operate.save(prefix + "/add", data);
+	        }
+	    }
+         
+        /*用户管理-新增-选择部门树*/
+        function selectDeptTree() {
+        	var treeId = $("#treeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+			var options = {
+				title: '选择部门',
+				width: "380",
+				url: url,
+				callBack: doSubmit
+			};
+			$.modal.openOptions(options);
+		}
+		
+		function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+			//if ($.tree.notAllowParents(tree)) {
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+			//}
+		}
+
+		$(function() {
+            $('#post').select2({
+                placeholder:"请选择岗位",
+                allowClear: true
+            });
+        })
+    </script>
+</body>
+</html>

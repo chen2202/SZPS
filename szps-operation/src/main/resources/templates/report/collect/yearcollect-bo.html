@@ -49,7 +49,7 @@
 				</div> 
 			</div>
 			<div class="btn-group-sm" id="toolbar" role="group">
-		        <a class="btn  btn-success " onclick="$.operate.statistic()" shiro:hasPermission="report:day:delete">总览</a>
+		        <a class="btn  btn-success " onclick="$.operate.yearStatistic()" shiro:hasPermission="report:day:delete">总览</a>
 	        </div>
 	        
 	        <div class="col-sm-12 select-table table-striped">
@@ -70,7 +70,7 @@
                 createUrl: prefix + "/add",
                 updateUrl: prefix + "/edit/{id}",
                 removeUrl: prefix + "/remove",
-                
+                statUrl: prefix + "/stat",
                 
                 modalName: "月报",
                 columns: [
@@ -81,24 +81,19 @@
     				{field: 'basin',title: '流域',},
     				{field: 'deptname',title: '水质净化厂',},
     				{field: 'darea',title: '辖区',},
-    				{field: 'dscale',title: '设计规模',},
-    				{field: 'tcapacity',title: '实际处理量',},
-    				{field: 'loadrate',title: '负荷率',},
-    				{field: 'incod',title: '进水COD',},
-    				{field: 'inan',title: '进水氨氮',},
-    				{field: 'inp',title: '进水总磷',},
-    				{field: 'inss',title: '进水SS',},
-    				{field: 'inbod',title: '进水BOD',},
-    				{field: 'outcod',title: '出水COD',},
-    				{field: 'outan',title: '出水氨氮',},
-    				{field: 'outp',title: '出水总磷',},
-    				{field: 'outdo',title: '出水DO',},
-    				{field: 'dlevel',title: '提升泵坑 设计液位',},
-    				{field: 'aleave',title: '提升泵坑 实际液位',},
-    				{field: 'sludec',title: '污泥浓度',},
-    				{field: 'lanfilll',title: '垃圾渗滤液',},
-    				{field: 'sol',title: '渗滤液来源',},
-    				{field: 'operation',title: '运营单位',},
+    				{field: 'dscale',title: '设计规模（万吨/日）',},
+    				{field: 'tcapacity1',title: '1月处理水量',},
+    				{field: 'tcapacity2',title: '2月处理水量',},
+    				{field: 'tcapacity3',title: '3月处理水量',},
+    				{field: 'tcapacity4',title: '4月处理水量',},
+    				{field: 'tcapacity5',title: '5月处理水量',},
+    				{field: 'tcapacity6',title: '6月处理水量',},
+    				{field: 'tcapacity7',title: '7月处理水量',},
+    				{field: 'tcapacity8',title: '8月处理水量',},
+    				{field: 'tcapacity9',title: '9月处理水量',},
+    				{field: 'tcapacity10',title: '10月处理水量',},
+    				{field: 'tcapacity11',title: '11月处理水量',},
+    				{field: 'tcapacity12',title: '12月处理水量',},
     				]
             };
             $.table.init(options);

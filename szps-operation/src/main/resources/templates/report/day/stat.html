@@ -5,9 +5,28 @@
 	<th:block th:include="include :: select2-css" />
 </head>
 <body>
-    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
-       运行情况概览
-    </div>
+   
+  <table class="table table-bordered ">
+    <tr>
+        <th>所属流域</th>
+        <th>处理量</th>
+        <th>负荷率</th>
+        <th>进水COD</th>
+        <th>进水BOD</th>
+        <th>进水氨氮</th>
+        <th>进水总磷</th>
+    </tr>
+    <tr  th:each="t: ${nlist}" >
+        <td th:text="${t.basin}"></td>
+        <td th:text="${t.tcapacity}"></td>
+        <th th:text="${t.loadrate}"></th>
+        <th th:text="${t.incod}"></th>
+        <th th:text="${t.inbod}"></th>
+        <th th:text="${t.inan}"></th>
+        <th th:text="${t.inp}"></th>
+    </tr>
+</table>
+
 
 	<th:block th:include="include :: footer" />
 	<th:block th:include="include :: select2-js" />

@@ -160,10 +160,16 @@ public class SysDeptController extends BaseController
     /**
      * 加载部门列表树
      */
-    @GetMapping("/treeData")
+    @GetMapping("/treeData/{deptId}")
     @ResponseBody
-    public List<Ztree> treeData()
+    public List<Ztree> treeData(@PathVariable("deptId") Long deptId)
     {
+    	/**SysDept dept = new SysDept();
+    	if (null == deptId) {
+			deptId = 0L;
+		}
+    	dept.setParentId(deptId);
+    	**/
         List<Ztree> ztrees = deptService.selectDeptTree(new SysDept());
         return ztrees;
     }

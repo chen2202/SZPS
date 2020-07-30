@@ -37,13 +37,7 @@ public class SysArea extends BaseEntity {
         this.flag = flag;
     }
 	
-	public String getDelFlag() {
-		return delFlag;
-	}
 
-	public void setDelFlag(String delFlag) {
-		this.delFlag = delFlag;
-	}
 
 	public Long getAreaId() {
 		return areaId;

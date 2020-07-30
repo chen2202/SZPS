@@ -24,7 +24,9 @@ import com.szps.common.utils.StringUtils;
 import com.szps.common.utils.poi.ExcelUtil;
 import com.szps.framework.shiro.service.SysPasswordService;
 import com.szps.framework.util.ShiroUtils;
+import com.szps.system.domain.SysArea;
 import com.szps.system.domain.SysUser;
+import com.szps.system.service.ISysAreaService;
 import com.szps.system.service.ISysPostService;
 import com.szps.system.service.ISysRoleService;
 import com.szps.system.service.ISysUserService;
@@ -52,6 +54,9 @@ public class SysUserController extends BaseController
     @Autowired
     private SysPasswordService passwordService;
 
+    @Autowired
+    private ISysAreaService areaService;
+    
     @RequiresPermissions("system:user:view")
     @GetMapping()
     public String user()
@@ -110,6 +115,7 @@ public class SysUserController extends BaseController
     {
         mmap.put("roles", roleService.selectRoleAll());
         mmap.put("posts", postService.selectPostAll());
+        mmap.put("areas", areaService.selectAreaAll());
         return prefix + "/add";
     }
 
@@ -148,9 +154,21 @@ public class SysUserController extends BaseController
     @GetMapping("/edit/{userId}")
     public String edit(@PathVariable("userId") Long userId, ModelMap mmap)
     {
+    	SysUser u = userService.selectUserById(userId);
+    	String ac = u.getAreaCode();
         mmap.put("user", userService.selectUserById(userId));
         mmap.put("roles", roleService.selectRolesByUserId(userId));
         mmap.put("posts", postService.selectPostsByUserId(userId));
+        List<SysArea> sysAreas = areaService.selectAreaAll();
+        if(null != sysAreas && null != ac) {
+        	for (SysArea sysArea : sysAreas) {
+				String arecCode = sysArea.getAreaCode();
+				if (ac.equalsIgnoreCase(arecCode)) {
+					sysArea.setFlag(true);
+				}
+			}
+        }
+        mmap.put("areas", sysAreas);
         return prefix + "/edit";
     }
 

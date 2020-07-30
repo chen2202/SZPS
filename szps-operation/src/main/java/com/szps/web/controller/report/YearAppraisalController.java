@@ -1,5 +1,6 @@
 package com.szps.web.controller.report;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -19,7 +20,9 @@ import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
 import com.szps.framework.util.ShiroUtils;
+import com.szps.system.domain.SysArea;
 import com.szps.system.domain.SysUser;
+import com.szps.system.service.ISysAreaService;
 import com.szps.web.domain.report.YearAppraisal;
 import com.szps.web.service.report.IYearAppraisalService;
 
@@ -28,13 +31,23 @@ import com.szps.web.service.report.IYearAppraisalService;
 public class YearAppraisalController extends BaseController {
 	 @Autowired
 	private IYearAppraisalService service;
-	
+    @Autowired
+    private ISysAreaService areaService;
 	private String prefix = "/report/yearappraisal";
 	
     @RequiresPermissions("report:yearappraisal:view")
     @GetMapping()
-    public String view()
+    public String view(ModelMap mmap)
     {
+    	List<SysArea> sysAreas = areaService.selectAreaAll();
+    	List<SysArea> nList = new ArrayList<SysArea>();
+    	SysArea s = new SysArea();
+    	s.setAreaName("");
+    	nList.add(s);
+    	for (SysArea sysArea : sysAreas) {
+			nList.add(sysArea);
+		}
+        mmap.put("areas", nList);
         return prefix + "/view";
     }
     
@@ -43,7 +56,7 @@ public class YearAppraisalController extends BaseController {
     @RequiresPermissions("report:yearappraisal:view")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(YearAppraisal obj)
+    public TableDataInfo list(YearAppraisal obj,ModelMap mmap)
     {
         startPage();
         List<YearAppraisal> list = service.selectList(obj);
@@ -51,8 +64,9 @@ public class YearAppraisalController extends BaseController {
     }
 
     @GetMapping("/add")
-    public String add()
-    {
+    public String add(ModelMap mmap)
+    {	
+    	mmap.put("areas", areaService.selectAreaAll());
         return prefix + "/add";
     }
     
@@ -75,6 +89,17 @@ public class YearAppraisalController extends BaseController {
     	YearAppraisal obj = service.selectById(id);
         
         mmap.put("obj", obj);
+        List<SysArea> sysAreas = areaService.selectAreaAll();
+        String ac = obj.getDarea();
+        if(null != sysAreas && null != ac) {
+        	for (SysArea sysArea : sysAreas) {
+				String name = sysArea.getAreaName();
+				if (ac.equalsIgnoreCase(name)) {
+					sysArea.setFlag(true);
+				}
+			}
+        }
+        mmap.put("areas", sysAreas);
         return prefix + "/edit";
     }
     

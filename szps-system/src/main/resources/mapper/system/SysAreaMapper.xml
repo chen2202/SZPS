@@ -52,13 +52,13 @@
 		<include refid="selectAreaVo"/>
 	</select>
 	
-	<select id="selectAreaList" parameterType="SysArea" resultMap="SysAreaResult">
+<!--	<select id="selectAreaList" parameterType="SysArea" resultMap="SysAreaResult">-->
 
-        select count(1) from sys_area
-        where 1 = 1
-        <if test="areaId != null and areaId != 0">and area_id = #{areaId}</if>
-        <if test="parentId != null and parentId != 0">and parent_id = #{parentId}</if>
-    </select>
+<!--        select count(1) from sys_area-->
+<!--        where 1 = 1-->
+<!--        <if test="areaId != null and areaId != 0">and area_id = #{areaId}</if>-->
+<!--        <if test="parentId != null and parentId != 0">and parent_id = #{parentId}</if>-->
+<!--    </select>-->
 
     <select id="selectAreaList" parameterType="SysArea" resultMap="SysAreaResult">
 

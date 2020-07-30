@@ -2,8 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc7b956e-4cbc-4a6b-8b84-b165eb2e201f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/CheckController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/CheckController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/EventUploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/EventUploadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/application-druid.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/mapper/dm/DmCostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/mapper/dm/DmCostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/mapper/supervise/TbStaffMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/mapper/supervise/TbStaffMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/mapper/supervise/TbTaskMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/mapper/supervise/TbTaskMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/templates/check/plant/plant/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/templates/check/plant/plant/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/templates/op/permit/Tablelooking.html" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/templates/op/permit/Tablelooking.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/templates/op/permit/statistic.html" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/templates/op/permit/statistic.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/templates/supervise/complete/TaskComplete.html" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/templates/supervise/complete/TaskComplete.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/templates/supervise/complete/Taskedit.html" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/templates/supervise/complete/Taskedit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/templates/supervise/data/Staffadd.html" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/templates/supervise/data/Staffadd.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/templates/supervise/data/Taskdata.html" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/templates/supervise/data/Taskdata.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/templates/supervise/data/Taskdatas.html" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/templates/supervise/data/Taskdatas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysAreaMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysAreaMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysBRFMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysBRFMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysConfigMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysConfigMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysDictTypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysDictTypeMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysRoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysRoleMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysUserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysUserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/DrainerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/DrainerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/domain/SysArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/domain/SysArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-system/src/main/resources/mapper/system/SysAreaMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/resources/mapper/system/SysAreaMapper.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -117,7 +137,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.OPApplication">
+  <component name="RunManager" selected="Spring Boot.SZPSApplication">
     <configuration name="OPApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="szps-operation" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.szps.OPApplication" />
@@ -138,7 +158,17 @@
       <serviceView>
         <option name="contentProportion" value="0.012311902" />
         <treeState>
-          <expand />
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@b7511ffc" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@b7511ffc" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@d8224fcb" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+          </expand>
           <select />
         </treeState>
       </serviceView>
@@ -302,6 +332,10 @@
       <workItem from="1595982570944" duration="1283000" />
       <workItem from="1595983872009" duration="1688000" />
       <workItem from="1595985994350" duration="494000" />
+      <workItem from="1595986502820" duration="726000" />
+      <workItem from="1595988248511" duration="135000" />
+      <workItem from="1596024983668" duration="668000" />
+      <workItem from="1596069738750" duration="2712000" />
     </task>
     <servers />
   </component>

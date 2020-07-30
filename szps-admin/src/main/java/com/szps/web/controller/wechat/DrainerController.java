@@ -24,7 +24,7 @@ public class DrainerController {
     @PostMapping(value = "/statistics/Areas")
     @ResponseBody
     public String[] getAreas(){
-        String[] str={"光明区","前海开发区","南山区","坪山区","大鹏新区","宝安区","深汕合作区","盐田区","福田区","罗湖区","龙华区","龙岗区"};
+        String[] str={"光明区","前海开发区","南山区","坪山区","大鹏新区","宝安区","盐田区","福田区","罗湖区","龙华区","龙岗区"};
 
         return str;
     }
@@ -36,7 +36,7 @@ public class DrainerController {
     @ResponseBody
     public int[] householdAdministrativeStatistics() {
         List<String> administrativeList = householdService.selectAllHouseholdAdministrative(); //全部排水户所在行政区
-        int gm=0,qhkf=0,ns=0,ps=0,dpx=0,ba=0,sshz=0,yt=0,ft=0,luoh=0,longh=0,lg=0; //各个行政区排水户计数
+        int gm=0,qhkf=0,ns=0,ps=0,dpx=0,ba=0,sshz=0,yt=0,ft=0,luoh=0,longh=0,lg=0,all=0; //各个行政区排水户计数
         for(int i=0;i<administrativeList.size();i++) {
             if(administrativeList.get(i).equals("光明区")) {
                 gm++;
@@ -50,8 +50,6 @@ public class DrainerController {
                 dpx++;
             }else if(administrativeList.get(i).equals("宝安区")) {
                 ba++;
-            }else if(administrativeList.get(i).equals("深汕合作区")) {
-                sshz++;
             }else if(administrativeList.get(i).equals("盐田区")) {
                 yt++;
             }else if(administrativeList.get(i).equals("福田区")) {
@@ -63,8 +61,9 @@ public class DrainerController {
             }else if(administrativeList.get(i).equals("龙岗区")) {
                 lg++;
             }
+            all++;
         }
-        int result[] = {gm,qhkf,ns,ps,dpx,ba,sshz,yt,ft,luoh,longh,lg};
+        int result[] = {gm,qhkf,ns,ps,dpx,ba,yt,ft,luoh,longh,lg,all};
         return result;
     }
 
@@ -92,19 +91,18 @@ public class DrainerController {
                     sewageArray[0][4]++;
                 }else if(list.get(i).getAdministrative_name().equals("宝安区")) {
                     sewageArray[0][5]++;
-                }else if(list.get(i).getAdministrative_name().equals("深汕合作区")) {
-                    sewageArray[0][6]++;
                 }else if(list.get(i).getAdministrative_name().equals("盐田区")) {
-                    sewageArray[0][7]++;
+                    sewageArray[0][6]++;
                 }else if(list.get(i).getAdministrative_name().equals("福田区")) {
-                    sewageArray[0][8]++;
+                    sewageArray[0][7]++;
                 }else if(list.get(i).getAdministrative_name().equals("罗湖区")) {
-                    sewageArray[0][9]++;
+                    sewageArray[0][8]++;
                 }else if(list.get(i).getAdministrative_name().equals("龙华区")) {
-                    sewageArray[0][10]++;
+                    sewageArray[0][9]++;
                 }else if(list.get(i).getAdministrative_name().equals("龙岗区")) {
-                    sewageArray[0][11]++;
+                    sewageArray[0][10]++;
                 }
+                sewageArray[0][11]++;
             }else if(list.get(i).getSewage_category().equals("沉淀物排污类")) {
                 if(list.get(i).getAdministrative_name().equals("光明区")) {
                     sewageArray[1][0]++;
@@ -118,19 +116,18 @@ public class DrainerController {
                     sewageArray[1][4]++;
                 }else if(list.get(i).getAdministrative_name().equals("宝安区")) {
                     sewageArray[1][5]++;
-                }else if(list.get(i).getAdministrative_name().equals("深汕合作区")) {
-                    sewageArray[1][6]++;
                 }else if(list.get(i).getAdministrative_name().equals("盐田区")) {
-                    sewageArray[1][7]++;
+                    sewageArray[1][6]++;
                 }else if(list.get(i).getAdministrative_name().equals("福田区")) {
-                    sewageArray[1][8]++;
+                    sewageArray[1][7]++;
                 }else if(list.get(i).getAdministrative_name().equals("罗湖区")) {
-                    sewageArray[1][9]++;
+                    sewageArray[1][8]++;
                 }else if(list.get(i).getAdministrative_name().equals("龙华区")) {
-                    sewageArray[1][10]++;
+                    sewageArray[1][9]++;
                 }else if(list.get(i).getAdministrative_name().equals("龙岗区")) {
-                    sewageArray[1][11]++;
+                    sewageArray[1][10]++;
                 }
+                sewageArray[1][11]++;
             }else if(list.get(i).getSewage_category().equals("餐饮排污类")) {
                 if(list.get(i).getAdministrative_name().equals("光明区")) {
                     sewageArray[2][0]++;
@@ -144,19 +141,18 @@ public class DrainerController {
                     sewageArray[2][4]++;
                 }else if(list.get(i).getAdministrative_name().equals("宝安区")) {
                     sewageArray[2][5]++;
-                }else if(list.get(i).getAdministrative_name().equals("深汕合作区")) {
-                    sewageArray[2][6]++;
                 }else if(list.get(i).getAdministrative_name().equals("盐田区")) {
-                    sewageArray[2][7]++;
+                    sewageArray[2][6]++;
                 }else if(list.get(i).getAdministrative_name().equals("福田区")) {
-                    sewageArray[2][8]++;
+                    sewageArray[2][7]++;
                 }else if(list.get(i).getAdministrative_name().equals("罗湖区")) {
-                    sewageArray[2][9]++;
+                    sewageArray[2][8]++;
                 }else if(list.get(i).getAdministrative_name().equals("龙华区")) {
-                    sewageArray[2][10]++;
+                    sewageArray[2][9]++;
                 }else if(list.get(i).getAdministrative_name().equals("龙岗区")) {
-                    sewageArray[2][11]++;
+                    sewageArray[2][10]++;
                 }
+                sewageArray[2][11]++;
             }else if(list.get(i).getSewage_category().equals("生活排污类")) {
                 if(list.get(i).getAdministrative_name().equals("光明区")) {
                     sewageArray[3][0]++;
@@ -170,19 +166,18 @@ public class DrainerController {
                     sewageArray[3][4]++;
                 }else if(list.get(i).getAdministrative_name().equals("宝安区")) {
                     sewageArray[3][5]++;
-                }else if(list.get(i).getAdministrative_name().equals("深汕合作区")) {
-                    sewageArray[3][6]++;
                 }else if(list.get(i).getAdministrative_name().equals("盐田区")) {
-                    sewageArray[3][7]++;
+                    sewageArray[3][6]++;
                 }else if(list.get(i).getAdministrative_name().equals("福田区")) {
-                    sewageArray[3][8]++;
+                    sewageArray[3][7]++;
                 }else if(list.get(i).getAdministrative_name().equals("罗湖区")) {
-                    sewageArray[3][9]++;
+                    sewageArray[3][8]++;
                 }else if(list.get(i).getAdministrative_name().equals("龙华区")) {
-                    sewageArray[3][10]++;
+                    sewageArray[3][9]++;
                 }else if(list.get(i).getAdministrative_name().equals("龙岗区")) {
-                    sewageArray[3][11]++;
+                    sewageArray[3][10]++;
                 }
+                sewageArray[3][11]++;
             }
         }
         //准备需要传递的json数据

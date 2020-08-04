@@ -75,7 +75,7 @@ public class EventUploadController {
                 lists.setEventSubmit(submit);
                 lists.setList(pictures);
                 //服务器图片路径
-//                    lists.setList(getPictures(pictures));
+                    lists.setList(getPictures(pictures));
 
                 eventLists.add(lists);
             }
@@ -95,7 +95,7 @@ public class EventUploadController {
                     lists.setList(pictures);
 
                     //服务器图片路径
-//                    lists.setList(getPictures(pictures));
+                    lists.setList(getPictures(pictures));
 
                     eventLists.add(lists);
                 }
@@ -139,7 +139,7 @@ public class EventUploadController {
                     lists.setEventSubmit(submit);
                     lists.setList(pictures);
                     //服务器图片路径
-//                    lists.setList(getPictures(pictures));
+                    lists.setList(getPictures(pictures));
 
                     eventLists.add(lists);
                 }
@@ -161,7 +161,7 @@ public class EventUploadController {
                     lists.setEventSubmit(submit);
                     lists.setList(pictures);
                     //服务器图片路径
-//                    lists.setList(getPictures(pictures));
+                    lists.setList(getPictures(pictures));
 
                     eventLists.add(lists);
                 }

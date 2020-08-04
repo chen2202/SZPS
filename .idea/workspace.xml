@@ -2,28 +2,487 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc7b956e-4cbc-4a6b-8b84-b165eb2e201f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/szps_admin_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/szps_admin_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/szps_operation_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/szps_operation_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_druid_1_1_14.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_druid_1_1_14.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_druid_spring_boot_starter_1_1_14.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_druid_spring_boot_starter_1_1_14.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_2_47.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_4_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_7.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_7.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_9_7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_9_7.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_9_7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_9_7.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_9_7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_9_7.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_1_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_1_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_2_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_oshi_oshi_core_3_9_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_oshi_oshi_core_3_9_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_5_1_10.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_5_1_10.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_5_1_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_5_1_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_spring_boot_autoconfigure_1_2_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_spring_boot_autoconfigure_1_2_5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_spring_boot_starter_1_2_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_spring_boot_starter_1_2_5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_penggle_kaptcha_2_3_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_penggle_kaptcha_2_3_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_theborakompanioni_thymeleaf_extras_shiro_2_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_theborakompanioni_thymeleaf_extras_shiro_2_0_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_virtuald_curvesapi_1_04.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_virtuald_curvesapi_1_04.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_17_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_17_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_20_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_20_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_jhlabs_filters_2_0_235_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jhlabs_filters_2_0_235_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_oracle_ojdbc6_11_2_0_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_oracle_ojdbc6_11_2_0_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_mail_javax_mail_1_5_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_mail_javax_mail_1_5_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_3_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_3_2_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_8_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_8_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_11.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_11.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_digester_commons_digester_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_digester_commons_digester_2_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_fileupload_commons_fileupload_1_3_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_fileupload_commons_fileupload_1_3_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_1_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__eu_bitwalker_UserAgentUtils_1_19.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__eu_bitwalker_UserAgentUtils_1_19.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_core_2_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_core_2_9_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_schema_2_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_schema_2_9_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spi_2_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spi_2_9_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spring_web_2_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spring_web_2_9_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger2_2_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger2_2_9_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_common_2_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_common_2_9_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_ui_2_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_ui_2_9_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_21.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_21.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_models_1_5_21.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_models_1_5_21.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_activation_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_activation_1_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_mail_mail_1_4_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_mail_mail_1_4_5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_4_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_4_0_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_2_0_1_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_2_0_1_Final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_9_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_9_5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_java_dev_jna_jna_4_5_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_java_dev_jna_jna_4_5_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_java_dev_jna_jna_platform_4_5_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_java_dev_jna_jna_platform_4_5_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ehcache_ehcache_core_2_6_11.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ehcache_ehcache_core_2_6_11.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_jxls_jxls_core_1_0_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_jxls_jxls_core_1_0_6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_jxls_jxls_reader_1_0_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_jxls_jxls_reader_1_0_6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_jexl_2_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_jexl_2_1_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_8_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_8_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_10.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_10.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_11_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_11_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_11_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_11_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_3_17.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_3_17.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_3_17.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_3_17.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_schemas_3_17.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_schemas_3_17.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_cache_1_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_cache_1_4_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_config_core_1_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_config_core_1_4_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_config_ogdl_1_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_config_ogdl_1_4_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_core_1_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_core_1_4_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_cipher_1_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_cipher_1_4_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_core_1_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_core_1_4_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_hash_1_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_hash_1_4_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_ehcache_1_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_ehcache_1_4_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_event_1_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_event_1_4_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_lang_1_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_lang_1_4_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_spring_1_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_spring_1_4_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_web_1_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_web_1_4_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_13.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_9_0_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_9_0_13.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_13.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlbeans_xmlbeans_2_6_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlbeans_xmlbeans_2_6_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_attoparser_attoparser_2_0_5_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_attoparser_attoparser_2_0_5_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bouncycastle_bcprov_jdk16_1_46.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bouncycastle_bcprov_jdk16_1_46.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_13_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_13_Final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jsoup_jsoup_1_11_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jsoup_jsoup_1_11_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mapstruct_mapstruct_1_2_0_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mapstruct_mapstruct_1_2_0_Final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_4_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_4_6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_1_3_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_1_3_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_autoconfigure_1_3_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_autoconfigure_1_3_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_starter_1_3_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_starter_1_3_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_25.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_25.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_1_1_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_1_1_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_1_1_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_1_1_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_devtools_2_1_1_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_devtools_2_1_1_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_1_1_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_1_1_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_1_1_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_1_1_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_1_1_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_1_1_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_1_1_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_1_1_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_1_1_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_1_1_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_thymeleaf_2_1_1_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_thymeleaf_2_1_1_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_1_1_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_1_1_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_1_1_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_1_1_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_core_1_2_0_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_core_1_2_0_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_metadata_1_2_0_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_metadata_1_2_0_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_1_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_1_3_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_1_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_1_3_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_1_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_1_3_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_5_1_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_5_1_3_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_1_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_1_3_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_1_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_1_3_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_1_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_1_3_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_1_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_1_3_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_1_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_1_3_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_1_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_1_3_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_1_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_1_3_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_extras_thymeleaf_extras_java8time_3_0_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_extras_thymeleaf_extras_java8time_3_0_2_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_3_0_11_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_3_0_11_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_spring5_3_0_11_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_spring5_3_0_11_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_unbescape_unbescape_1_1_6_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_unbescape_unbescape_1_1_6_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_23.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_23.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__stax_stax_api_1_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__stax_stax_api_1_0_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/application-druid.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/mapper/dm/DmCostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/mapper/dm/DmCostMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/mapper/supervise/TbStaffMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/mapper/supervise/TbStaffMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/mapper/supervise/TbTaskMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/mapper/supervise/TbTaskMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/templates/check/plant/plant/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/templates/check/plant/plant/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/templates/op/permit/Tablelooking.html" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/templates/op/permit/Tablelooking.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/templates/op/permit/statistic.html" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/templates/op/permit/statistic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/templates/supervise/complete/TaskComplete.html" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/templates/supervise/complete/TaskComplete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/templates/supervise/complete/Taskedit.html" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/templates/supervise/complete/Taskedit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/templates/supervise/data/Staffadd.html" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/templates/supervise/data/Staffadd.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/templates/supervise/data/Taskdata.html" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/templates/supervise/data/Taskdata.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/szps-operation/templates/supervise/data/Taskdatas.html" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-operation/templates/supervise/data/Taskdatas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysAreaMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysAreaMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysBRFMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysBRFMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysConfigMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysConfigMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysDictTypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysDictTypeMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysRoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysRoleMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysUserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysUserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/DrainerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/DrainerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/domain/SysArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/java/com/szps/system/domain/SysArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/application-druid.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/banner.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/ehcache/ehcache-shiro.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/logback.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/mapper/check/PlantCheckRecordMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/mapper/drainage/AdministrativeMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/mapper/drainage/CommitteesMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/mapper/drainage/DrainMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/mapper/drainage/ExpireMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/mapper/drainage/HouseholdMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/mapper/drainage/StreetMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/mapper/event/EventSubmitMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/mapper/supervise/TbEnclosureMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/mapper/supervise/TbFeedbackMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/mapper/supervise/TbHouseMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/mapper/supervise/TbPictureMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/mapper/supervise/TbRuleMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/mapper/supervise/TbStaffMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/mapper/supervise/TbTaskMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/mapper/supervise/TbTaskStaffMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/mybatis/mybatis-config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/beautifyhtml/beautifyhtml.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/blockUI/jquery.blockUI.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-fileinput/fileinput.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-fileinput/fileinput.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-fileinput/fileinput.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-fileinput/fileinput.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-fileinput/loading-sm.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-fileinput/loading.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-select/bootstrap-select.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-select/bootstrap-select.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-select/bootstrap-select.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-select/bootstrap-select.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-table/bootstrap-table.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-table/bootstrap-table.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-table/extensions/columns/bootstrap-table-fixed-columns.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-table/extensions/editable/bootstrap-table-editable.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-table/extensions/editable/bootstrap-table-editable.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-table/extensions/export/bootstrap-table-export.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-table/extensions/export/tableExport.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-table/extensions/mobile/bootstrap-table-mobile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-table/extensions/reorder/bootstrap-table-reorder.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-table/extensions/reorder/jquery.tablednd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-table/extensions/toolbar/bootstrap-table-toolbar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-table/extensions/toolbar/bootstrap-table-toolbar.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-table/locale/bootstrap-table-zh-CN.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-table/locale/bootstrap-table-zh-CN.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/bootstrap-treetable/bootstrap-treetable.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/cropbox/cropbox.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/cropbox/cropbox.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/datapicker/bootstrap-datetimepicker.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/datapicker/bootstrap-datetimepicker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/datapicker/bootstrap-datetimepicker.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/datapicker/bootstrap-datetimepicker.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/duallistbox/bootstrap-duallistbox.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/duallistbox/bootstrap-duallistbox.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/duallistbox/bootstrap-duallistbox.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/duallistbox/bootstrap-duallistbox.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/flot/curvedLines.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/flot/jquery.flot.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/flot/jquery.flot.pie.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/flot/jquery.flot.resize.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/flot/jquery.flot.spline.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/flot/jquery.flot.symbol.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/flot/jquery.flot.tooltip.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/fullscreen/jquery.fullscreen.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/iCheck/custom.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/iCheck/green-login.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/iCheck/green.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/iCheck/green@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/iCheck/icheck.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jasny/jasny-bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jasny/jasny-bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jasny/jasny-bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jasny/jasny-bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-layout/jquery.layout-latest.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-layout/jquery.layout-latest.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/default/img/diy/1_close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/default/img/diy/1_open.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/default/img/diy/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/default/img/diy/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/default/img/diy/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/default/img/diy/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/default/img/diy/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/default/img/diy/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/default/img/diy/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/default/img/diy/9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/default/img/line_conn.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/default/img/loading.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/default/img/zTreeStandard.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/default/img/zTreeStandard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/default/zTreeStyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/metro/img/line_conn.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/metro/img/line_conn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/metro/img/loading.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/metro/img/metro.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/metro/img/metro.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/metro/zTreeStyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/simple/img/left_menu.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/simple/img/left_menu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/simple/img/line_conn.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/simple/img/loading.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/simple/img/zTreeStandard.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/simple/img/zTreeStandard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/css/simple/zTreeStyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/js/jquery.ztree.all-3.5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/js/jquery.ztree.core-3.5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/js/jquery.ztree.excheck-3.5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/js/jquery.ztree.exedit-3.5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/js/jquery.ztree.exhide-3.5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jquery-ztree/3.5/log v3.x.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jsonview/jquery.jsonview.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/jsonview/jquery.jsonview.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/layer/layer.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/layer/theme/default/icon-ext.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/layer/theme/default/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/layer/theme/default/layer.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/layer/theme/default/loading-0.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/layer/theme/default/loading-1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/layer/theme/default/loading-2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/layer/theme/moon/default.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/layer/theme/moon/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/layui/css/modules/laydate/default/font/iconfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/layui/css/modules/laydate/default/font/iconfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/layui/css/modules/laydate/default/font/iconfont.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/layui/css/modules/laydate/default/font/iconfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/layui/css/modules/laydate/default/laydate.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/layui/lay/modules/laydate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/layui/layui.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/report/echarts/echarts-all.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/report/peity/jquery.peity.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/report/sparkline/jquery.sparkline.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/select2/select2-bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/select2/select2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/select2/select2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/select2/select2.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/select2/select2.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/staps/jquery.steps.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/staps/jquery.steps.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/staps/jquery.steps.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/suggest/bootstrap-suggest.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/suggest/bootstrap-suggest.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/summernote/font/summernote.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/summernote/font/summernote.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/summernote/font/summernote.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/summernote/summernote-bs3.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/summernote/summernote-zh-CN.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/summernote/summernote-zh-CN.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/summernote/summernote.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/summernote/summernote.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/summernote/summernote.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/typeahead/bootstrap3-typeahead.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/typeahead/bootstrap3-typeahead.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/validate/additional-methods.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/validate/jquery.validate.extend.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/validate/jquery.validate.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ajax/libs/validate/messages_zh.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/css/animate.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/css/font-awesome.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/css/jquery.contextMenu.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/css/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/css/login.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/css/main/animate.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/css/main/bootstrap.min14ed.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/css/main/font-awesome.min93e3.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/css/main/style.min862f.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/css/patterns/header-profile-skin-blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/css/patterns/header-profile-skin-yellow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/css/patterns/header-profile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/css/patterns/shattered.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/css/skins.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/file/rml.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/fonts/FontAwesome.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/fonts/Simple-Line-Icons.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/fonts/fontawesome-webfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/fonts/fontawesome-webfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/fonts/fontawesome-webfont.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/fonts/fontawesome-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/fonts/fontawesome-webfont.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/fonts/glyphicons-halflings-regular.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/fonts/glyphicons-halflings-regular.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/fonts/glyphicons-halflings-regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/fonts/glyphicons-halflings-regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/i18n/messages.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/img/blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/img/left_bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/img/loading-upload.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/img/loading.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/img/locked.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/img/login-background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/img/login-background1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/img/login-background2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/img/progress.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/img/qr_code.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/img/switch-bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/img/switch-to-collapse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/img/switch-to-expand.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/img/top1520_48.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/img/top1920_48.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/img/user.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/js/jquery-ui-1.10.4.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/js/jquery.contextMenu.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/js/jquery.i18n.properties.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/js/jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/js/jquery.tmpl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/js/plugins/metisMenu/jquery.metisMenu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/js/plugins/slimscroll/jquery.slimscroll.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/logo1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ruoyi/css/ry-ui.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ruoyi/css/st.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ruoyi/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ruoyi/js/common.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ruoyi/js/ry-ui.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/static/ruoyi/login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/form/autocomplete.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/form/basic.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/form/button.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/form/cards.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/form/datetime.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/form/duallistbox.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/form/grid.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/form/jasny.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/form/select.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/form/sortable.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/form/summernote.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/form/tabs_panels.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/form/upload.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/form/validate.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/form/wizard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/icon/fontawesome.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/icon/glyphicons.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/modal/dialog.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/modal/form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/modal/layer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/modal/table.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/modal/table/check.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/modal/table/parent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/modal/table/radio.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/operate/add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/operate/detail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/operate/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/operate/other.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/operate/table.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/report/echarts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/report/metrics.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/report/peity.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/report/sparkline.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/table/button.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/table/curd.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/table/detail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/table/event.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/table/export.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/table/fixedColumns.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/table/footer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/table/groupHeader.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/table/image.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/table/multi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/table/other.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/table/pageGo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/table/params.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/table/remember.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/table/reorder.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/demo/table/search.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/error/404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/error/500.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/error/business.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/error/unauth.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/include.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/main.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/monitor/logininfor/logininfor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/monitor/online/online.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/monitor/operlog/detail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/monitor/operlog/operlog.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/monitor/server/server.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/subsysnav.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/config/add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/config/config.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/config/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/dept/add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/dept/dept.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/dept/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/dept/tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/dict/data/add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/dict/data/data.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/dict/data/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/dict/type/add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/dict/type/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/dict/type/tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/dict/type/type.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/menu/add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/menu/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/menu/icon.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/menu/menu.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/menu/tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/notice/add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/notice/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/notice/notice.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/post/add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/post/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/post/post.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/role/add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/role/authUser.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/role/dataScope.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/role/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/role/role.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/role/selectUser.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/user/add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/user/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/user/profile/avatar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/user/profile/profile.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/user/profile/resetPwd.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/user/resetPwd.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-admin/templates/system/user/user.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysAreaMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysBRFMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysConfigMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysDeptMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysDictDataMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysDictTypeMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysLogininforMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysMenuMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysNoticeMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysOperLogMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysPostMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysPurPlantMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysRoleDeptMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysRoleMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysRoleMenuMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysUserMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysUserOnlineMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysUserPostMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/szps-system/mapper/system/SysUserRoleMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/EventUploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/EventUploadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/szps-admin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/szps-admin.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-common/szps-common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-common/szps-common.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-framework/src/main/java/com/szps/framework/shiro/web/filter/CSRFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-framework/src/main/java/com/szps/framework/shiro/web/filter/CSRFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-framework/szps-framework.iml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-framework/szps-framework.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-operation/szps-operation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/szps-operation.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-system/src/main/resources/mapper/system/SysAreaMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/src/main/resources/mapper/system/SysAreaMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-system/szps-system.iml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-system/szps-system.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps.iml" beforeDir="false" afterPath="$PROJECT_DIR$/szps.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -137,7 +596,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.SZPSApplication">
+  <component name="RunManager">
     <configuration name="OPApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="szps-operation" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.szps.OPApplication" />
@@ -161,12 +620,12 @@
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@b7511ffc" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@cec7f57b" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@b7511ffc" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@d8224fcb" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@cec7f57b" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@83407781" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
           </expand>
           <select />
@@ -336,6 +795,12 @@
       <workItem from="1595988248511" duration="135000" />
       <workItem from="1596024983668" duration="668000" />
       <workItem from="1596069738750" duration="2712000" />
+      <workItem from="1596097538031" duration="44000" />
+      <workItem from="1596441005520" duration="3469000" />
+      <workItem from="1596456137670" duration="2705000" />
+      <workItem from="1596463285537" duration="9000" />
+      <workItem from="1596501216493" duration="2535000" />
+      <workItem from="1596542967049" duration="4140000" />
     </task>
     <servers />
   </component>
@@ -354,8 +819,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/szps$OPApplication.ic" NAME="OPApplication Coverage Results" MODIFIED="1595859966933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

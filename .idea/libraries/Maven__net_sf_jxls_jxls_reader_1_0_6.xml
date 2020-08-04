@@ -3,7 +3,9 @@
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/net/sf/jxls/jxls-reader/1.0.6/jxls-reader-1.0.6.jar!/" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/net/sf/jxls/jxls-reader/1.0.6/jxls-reader-1.0.6-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/net/sf/jxls/jxls-reader/1.0.6/jxls-reader-1.0.6-sources.jar!/" />
     </SOURCES>

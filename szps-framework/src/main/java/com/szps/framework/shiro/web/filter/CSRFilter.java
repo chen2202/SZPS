@@ -14,46 +14,49 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * * 跨站点请求伪造 CSRF攻击 * 
+ * * 跨站点请求伪造 CSRF攻击 *
  */
 public class CSRFilter implements Filter {
-	private static final Logger log = LoggerFactory.getLogger(CSRFilter.class);
-	private String[] verifyReferer = null;
-	private String csrfUrl = null;
-	
-	@Override
-	public void destroy() {
+    private static final Logger log = LoggerFactory.getLogger(CSRFilter.class);
+    private String[] verifyReferer = null;
+    private String[] csrfUrl = null;
 
-	}
+    @Override
+    public void destroy() {
 
-	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
-		
-		String referer = ((HttpServletRequest) request).getHeader("Referer");
+    }
 
-		if (csrfUrl!=null) {
-		     if((referer!=null) &&(referer.trim().startsWith(csrfUrl))){  
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
 
-			        chain.doFilter(request, response);  
+        String referer = ((HttpServletRequest) request).getHeader("Referer");
 
-			     }else{  
 
-			        //request.getRequestDispatcher("error.jsp").forward(request,response);  
-			    	 log.error("疑似CSRF攻击，referer:"+referer);
-			    	 request.getRequestDispatcher("/unauth").forward(request,response);
-			     } 
-		}
+        if (csrfUrl.length != 0) {
+            if ((referer != null) && ((referer.trim().startsWith(csrfUrl[0])) ||
+					(referer.trim().startsWith(csrfUrl[1])))) {
 
-	}
+                chain.doFilter(request, response);
 
-	@Override
+            } else {
 
-	public void init(FilterConfig filterConfig) throws ServletException {
-		String referer = filterConfig.getInitParameter("referer");
-		this.verifyReferer = referer.split(",");
-	}
-	public void setCsrfUrl(String csrfUrl) {
-		this.csrfUrl = csrfUrl;
-	}
+                //request.getRequestDispatcher("error.jsp").forward(request,response);
+                log.error("疑似CSRF攻击，referer:" + referer);
+                request.getRequestDispatcher("/unauth").forward(request, response);
+            }
+        }
+
+    }
+
+    @Override
+
+    public void init(FilterConfig filterConfig) throws ServletException {
+        String referer = filterConfig.getInitParameter("referer");
+        this.verifyReferer = referer.split(",");
+    }
+
+    public void setCsrfUrl(String csrfUrl) {
+        this.csrfUrl = csrfUrl.split(";");
+    }
 }

@@ -7,9 +7,11 @@ import com.szps.framework.web.domain.server.Sys;
 import com.szps.system.domain.*;
 import com.szps.system.service.*;
 import com.szps.web.domain.mine.mine;
+import oracle.jdbc.proxy.annotation.Post;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -72,7 +74,6 @@ public class LoginController {
 
 
         }
-
 
         return str;
 

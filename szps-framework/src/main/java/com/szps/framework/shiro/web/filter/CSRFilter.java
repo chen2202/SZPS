@@ -34,16 +34,27 @@ public class CSRFilter implements Filter {
 
 
         if (csrfUrl.length != 0) {
-            if ((referer != null) && ((referer.trim().startsWith(csrfUrl[0])) ||
-					(referer.trim().startsWith(csrfUrl[1])))) {
+            if ((referer != null) ) {
 
-                chain.doFilter(request, response);
+                boolean f=false;
+                for(int i=0;i<csrfUrl.length;i++){
+                    if(referer.trim().startsWith(csrfUrl[i])){
+                        f=true;
+                        chain.doFilter(request, response);
+                    }
+                }
+
+                if(f==false){
+                    log.error("疑似CSRF攻击，referer:" + referer);
+                    request.getRequestDispatcher("/unauth").forward(request, response);
+                }
 
             } else {
 
                 //request.getRequestDispatcher("error.jsp").forward(request,response);
                 log.error("疑似CSRF攻击，referer:" + referer);
                 request.getRequestDispatcher("/unauth").forward(request, response);
+
             }
         }
 

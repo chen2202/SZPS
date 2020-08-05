@@ -1,2 +1,0 @@
-Application Version: ${szps.version}
-Spring Boot Version: ${spring-boot.version}

@@ -10,6 +10,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import com.szps.framework.web.domain.server.Sys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,27 +35,31 @@ public class CSRFilter implements Filter {
 
 
         if (csrfUrl.length != 0) {
-            if ((referer != null) ) {
+            if ((referer != null)) {
 
-                boolean f=false;
-                for(int i=0;i<csrfUrl.length;i++){
-                    if(referer.trim().startsWith(csrfUrl[i])){
-                        f=true;
+                boolean f = false;
+                for (int i = 0; i < csrfUrl.length; i++) {
+                    if (referer.trim().startsWith(csrfUrl[i])) {
+                        f = true;
                         chain.doFilter(request, response);
                     }
                 }
 
-                if(f==false){
+                if (f == false) {
                     log.error("疑似CSRF攻击，referer:" + referer);
                     request.getRequestDispatcher("/unauth").forward(request, response);
                 }
 
             } else {
 
-                //request.getRequestDispatcher("error.jsp").forward(request,response);
-                log.error("疑似CSRF攻击，referer:" + referer);
-                request.getRequestDispatcher("/unauth").forward(request, response);
-
+                String url = (((HttpServletRequest) request).getRequestURL()).toString();
+                if (url.contains("http://localhost:8087/upload") || url.contains("https://vx.newground.cn:7000/upload")) {
+                    chain.doFilter(request, response);
+                } else {
+                    //request.getRequestDispatcher("error.jsp").forward(request,response);
+                    log.error("疑似CSRF攻击，referer:" + referer);
+                    request.getRequestDispatcher("/unauth").forward(request, response);
+                }
             }
         }
 

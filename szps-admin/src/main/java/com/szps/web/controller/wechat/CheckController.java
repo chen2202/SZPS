@@ -34,7 +34,7 @@ import static com.szps.common.core.domain.AjaxResult.success;
 
 @Controller
 @RequestMapping("/admin/check")
-    public class CheckController {
+public class CheckController {
 
 
     @Autowired
@@ -78,7 +78,7 @@ import static com.szps.common.core.domain.AjaxResult.success;
                 check.setList(checkPictures);
 
                 //服务器路径路径
-//                    check.setList(getPicture(checkPictures));
+                check.setList(getPicture(checkPictures));
 
                 checks.add(check);
 
@@ -102,7 +102,7 @@ import static com.szps.common.core.domain.AjaxResult.success;
                     check.setList(checkPictures);
 
                     //服务器路径路径
-//                    check.setList(getPicture(checkPictures));
+                    check.setList(getPicture(checkPictures));
 
                     checks.add(check);
                 }
@@ -148,7 +148,7 @@ import static com.szps.common.core.domain.AjaxResult.success;
                     check.setPlantCheckRecord(plant);
                     check.setList(checkPictures);
                     //服务器路径路径
-//                    check.setList(getPicture(checkPictures));
+                    check.setList(getPicture(checkPictures));
 
                     checks.add(check);
 
@@ -171,7 +171,7 @@ import static com.szps.common.core.domain.AjaxResult.success;
                     check.setPlantCheckRecord(plant);
                     check.setList(checkPictures);
                     //服务器路径路径
-//                    check.setList(getPicture(checkPictures));
+                    check.setList(getPicture(checkPictures));
 
                     checks.add(check);
                 }
@@ -186,14 +186,15 @@ import static com.szps.common.core.domain.AjaxResult.success;
 
     /**
      * 图片路径转为服务器图片路径
+     *
      * @param checkPictures
      * @return
      */
-    protected  List<CheckPicture> getPicture(List<CheckPicture> checkPictures){
+    protected List<CheckPicture> getPicture(List<CheckPicture> checkPictures) {
 
-        for(CheckPicture checkPicture:checkPictures){
-            String url=checkPicture.getGetCheckPictureUrl();
-            url=""+url;
+        for (CheckPicture checkPicture : checkPictures) {
+            String url = checkPicture.getGetCheckPictureUrl();
+            url = "https://vx.newground.cn:7000" + url;
             checkPicture.setGetCheckPictureUrl(url);
         }
         return checkPictures;

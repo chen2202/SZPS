@@ -119,12 +119,12 @@ public class EventSubmitController extends BaseController {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 
-//        //图片路径修改为服务器路径
-//        for (EventPicture eventPicture1 : pictures) {
-//            String url = eventPicture1.getEventPictureUrl();
-//            url = "" + url;
-//            eventPicture1.setEventPictureUrl(url);
-//        }
+        //图片路径修改为服务器路径
+        for (EventPicture eventPicture1 : pictures) {
+            String url = eventPicture1.getEventPictureUrl();
+            url = "http://localhost:8087" + url;
+            eventPicture1.setEventPictureUrl(url);
+        }
 
 
         mmap.addAttribute("eventTime", sdf.format(list.get(eventSid).getEventTime()));

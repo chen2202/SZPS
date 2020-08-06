@@ -75,7 +75,7 @@ public class EventUploadController {
                 lists.setEventSubmit(submit);
                 lists.setList(pictures);
                 //服务器图片路径
-                    lists.setList(getPictures(pictures));
+                lists.setList(getPictures(pictures));
 
                 eventLists.add(lists);
             }
@@ -181,7 +181,7 @@ public class EventUploadController {
 
         for (EventPicture eventPicture : pictures) {
             String url = eventPicture.getEventPictureUrl();
-            url = "" + url;
+            url = "https://vx.newground.cn:7000" + url;
             eventPicture.setEventPictureUrl(url);
         }
         return pictures;

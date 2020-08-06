@@ -202,12 +202,12 @@ public class PlantCheckRecordController extends BaseController {
 
         List<CheckPicture> checkPictures = plantCheckRecordService.getCheckPictures(checkPicture);
 
-//        //图片路径修改成服务器图片路径
-//        for(CheckPicture picture:checkPictures){
-//            String url=picture.getGetCheckPictureUrl();
-//            url=""+url;
-//            picture.setGetCheckPictureUrl(url);
-//        }
+        //图片路径修改成服务器图片路径
+        for(CheckPicture picture:checkPictures){
+            String url=picture.getGetCheckPictureUrl();
+            url="http://localhost:8087"+url;
+            picture.setGetCheckPictureUrl(url);
+        }
 
         model.addAttribute("first",checkPictures.get(0).getGetCheckPictureUrl());
         if(checkPictures.size()>=2){

@@ -5,6 +5,7 @@
 	<link th:href="@{/css/op/public.css}" rel="stylesheet"/>
 	<script th:src="@{/js/op/highcharts.js}"></script>
 	<script th:src="@{/js/op/highcharts-3d.js}"></script>
+
 	<!--<script src="http://code.highcharts.com/highcharts.js"></script>
 	<script src="http://code.highcharts.com/highcharts-3d.js"></script>-->
 	<style type="text/css">
@@ -76,19 +77,10 @@
 						<li class="select-time">
 							<label>年份： </label>
 							<select name="taskTime" id="taskTime">
-								<option value="2020">2020</option>
-								<option value="2018">2018</option>
-								<option value="2019">2019</option>
-								<option value="2021">2021</option>
-								<option value="2022">2022</option>
-								<option value="2023">2023</option>
-								<option value="2024">2024</option>
-								<option value="2025">2025</option>
-								<option value="2026">2026</option>
-								<option value="2027">2027</option>
-								<option value="2028">2028</option>
+
 							</select>
 							<!--<input type="text" class="time-input" id="taskTime" placeholder="年份" name="taskTime"/>-->
+
 						</li>
 						<li>
 							<a class="btn btn-main btn-sm" onclick="statistic()"><i class="fa fa-search"></i>&nbsp;搜索</a>
@@ -124,6 +116,19 @@
 </div>
 <th:block th:include="include :: footer" />
 <script type="text/javascript">
+
+    window.onload=function(){
+        //设置年份的选择
+        var myDate= new Date();
+        var startYear=myDate.getFullYear()-20;//起始年份
+        var endYear=myDate.getFullYear()+20;//结束年份
+        var obj=document.getElementById('taskTime')
+        for (var i=startYear;i<=endYear;i++)
+        {
+            obj.options.add(new Option(i,i));
+        }
+        obj.options[obj.options.length-21].selected=1;
+    }
 
 	var spcount;
 	var wscount;

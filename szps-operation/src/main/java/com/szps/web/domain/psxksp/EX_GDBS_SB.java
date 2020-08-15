@@ -1,73 +1,182 @@
 package com.szps.web.domain.psxksp;
+import com.szps.common.annotation.Excel;
 
 import java.sql.Date;
 
 public class EX_GDBS_SB {
+
+    @Excel(name = "省级申办流水号", prompt = "省级申办流水号")
     private String SBLSH;
+
+    @Excel(name = "市级统一申办流水号", prompt = "市级统一申办流水号")
     private String SBLSH_SHORT;
+
+    @Excel(name = "事项编号", prompt = "事项编号")
     private String SXBM;
+
+    @Excel(name = "事项名称", prompt = "事项名称")
     private String SXMC;
+
+    @Excel(name = "项目地址", prompt = "项目地址")
     private String SXQXBM;
+
+    @Excel(name = "父事项编码", prompt = "父事项编码")
     private String FSXBM;
+
+    @Excel(name = "父事项名称", prompt = "父事项名称")
     private String FSXMC;
+
+    @Excel(name = "雨水量", prompt = "雨水量")
     private String SQRLX;
+
+    @Excel(name = "单位名称", prompt = "单位名称")
     private String SQRMC;
+
+    @Excel(name = "申请人证件类型", prompt = "申请人证件类型")
     private String SQRZJLX;
+
+    @Excel(name = "申请人证件号码", prompt = "申请人证件号码")
     private String SQRZJHM;
+
+    @Excel(name = "联系人姓名", prompt = "联系人姓名")
     private String LXRXM;
+
+    @Excel(name = "联系人证件类型", prompt = "联系人证件类型")
     private String LXRZJLX;
+
+    @Excel(name = "联系人身份证件号码", prompt = "联系人身份证件号码")
     private String LXRSFZJHM;
+
+    @Excel(name = "联系人手机", prompt = "联系人手机")
     private String LXRSJ;
+
+    @Excel(name = "联系人邮箱", prompt = "联系人邮箱")
     private String LXRYX;
+
+    @Excel(name = "项目名称", prompt = "项目名称")
     private String SBXMMC;
+
+    @Excel(name = "申报材料清单", prompt = "申报材料清单")
     private String SBCLQD;
+
+    @Excel(name = "提交方式", prompt = "提交方式")
     private String TJFS;
+
+    @Excel(name = "申办回执号", prompt = "申办回执号")
     private String SBHZH;
+
+    @Excel(name = "申办时间", prompt = "申办时间")
     private Date SBSJ;
+
+    @Excel(name = "申办具体网点", prompt = "申办具体网点")
     private String SBJTWD;
+
+    @Excel(name = "业务发生所在地区编号", prompt = "业务发生所在地区编号")
     private String XZQHDM;
+
+    @Excel(name = "原申办流水号", prompt = "原申办流水号")
     private String YSBLSH;
+
+    @Excel(name = "备注", prompt = "备注")
     private String BZ;
+
+    @Excel(name = "分发至下级部门的行政区划代码", prompt = "分发至下级部门的行政区划代码")
     private String F_XZQHDM;
+
+    @Excel(name = "网厅统一身份认证平台账号", prompt = "网厅统一身份认证平台账号")
     private String USERIDCODE;
+
+    @Excel(name = "投资项目统一编码", prompt = "投资项目统一编码")
     private String PROJECT_CODE;
+
+    @Excel(name = "网上申办渠道", prompt = "网上申办渠道")
     private String WSSBQD;
+
+    @Excel(name = "取证方式", prompt = "取证方式")
     private String OBTAIN_PAPER_WAY;
+
+    @Excel(name = "材料递交方式", prompt = "材料递交方式")
     private String OBTAIN_DELIVER_WAY;
+
+    @Excel(name = "数据版本号", prompt = "数据版本号")
     private String VERSION;
+
+    @Excel(name = "接收标识", prompt = "接收标识")
     private Short REC_FLAG;
+
+    @Excel(name = "业务信息", prompt = "业务信息")
     private String XML_DATA;
+
+    @Excel(name = "数据提供部门组织机构代码/社会信用代码", prompt = "数据提供部门组织机构代码/社会信用代码")
     private String D_ZZJGDM;
+
+    @Excel(name = "权责清单事项编码", prompt = "权责清单事项编码")
     private String SXBM_SHORT;
+
+    @Excel(name = "入库时间", prompt = "入库时间")
     private Date INSERTTIME;
+
+    @Excel(name = "接口调用成功返回时间", prompt = "接口调用成功返回时间")
     private Date RESPONSETIME;
+
+    @Excel(name = "FLAG", prompt = "FLAG")
     private int FLAG;
+
+    @Excel(name = "SYNC", prompt = "SYNC")
     private int SYNC;
+
+    @Excel(name = "单位代码", prompt = "单位代码")
     private String DWDM;
+    @Excel(name = "证件有效期", prompt = "证件有效期")
     private String BYZD1;
+    @Excel(name = "事项名称", prompt = "事项名称")
     private String BYZD2;
+    @Excel(name = "审批状态", prompt = "审批状态")
     private String BYZD4;
+    @Excel(name = "接驳口1信息", prompt = "接驳口1信息")
     private String BYZD3;
+    @Excel(name = "接驳口2信息", prompt = "接驳口2信息")
     private String BMMC;
+    @Excel(name = "9位部门组织机构代码", prompt = "9位部门组织机构代码")
     private String BMZZJGDM;
+
+    @Excel(name = "备用字段，用于扩展使用", prompt = "备用字段，用于扩展使用")
     private String BYZD;
+    @Excel(name = "是否实现单点登录代码", prompt = "是否实现单点登录代码")
     private String SFSXDDDL;
+    @Excel(name = "实现单点登录的网办用户 ID ", prompt = "实现单点登录的网办用户 ID ")
     private String DDDLYHID;
+    @Excel(name = "不填写（初始值是 N， 系统默认）", prompt = "不填写（初始值是 N， 系统默认）")
     private String CLZT;
+    @Excel(name = "不填写（系统交换的处理时间）", prompt = "不填写（系统交换的处理时间）")
     private Date CLSJ;
+    @Excel(name = "ID", prompt = "ID")
     private Integer ID;
+    @Excel(name = "ISTOSPJC", prompt = "ISTOSPJC")
     private Integer ISTOSPJC;
+    @Excel(name = "污废水量", prompt = "污废水量")
     private String SXBBH;
+    @Excel(name = "前置库同步时间", prompt = "前置库同步时间")
     private Date SYNCTIME;
+    @Excel(name = "事项版本编码", prompt = "事项版本编码")
     private String SXBBBM;
+    @Excel(name = "事项表单编码", prompt = "事项表单编码")
     private String SXBDBM;
+    @Excel(name = "省级事项编码", prompt = "省级事项编码")
     private String SJSXBM;
+    @Excel(name = "省级事项版本号", prompt = "省级事项版本号")
     private String SJSXBBH;
+    @Excel(name = "接驳口1纬度", prompt = "接驳口1纬度")
     private double WD1;
+    @Excel(name = "接驳口1经度", prompt = "接驳口1经度")
     private double JD1;
+    @Excel(name = "接驳口2纬度", prompt = "接驳口2纬度")
     private double WD2;
+    @Excel(name = "接驳口2经度", prompt = "接驳口2经度")
     private double JD2;
+    @Excel(name = "审批正文下载路径", prompt = "审批正文下载路径")
     private String filePath;
+
 
     private String beginTime;
     private String endTime;

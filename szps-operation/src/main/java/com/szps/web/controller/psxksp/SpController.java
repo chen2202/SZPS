@@ -8,11 +8,13 @@ import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
 import com.szps.common.utils.file.FileUtils;
+import com.szps.common.utils.poi.ExcelUtil;
 import com.szps.web.controller.common.CommonController;
 import com.szps.web.domain.psxksp.EX_GDBS_SB;
 import com.szps.web.domain.psxksp.test1;
 import com.szps.web.domain.psxksp.test2;
 import com.szps.web.domain.supervise.TbEnclosure;
+import com.szps.web.domain.supervise.TbRule;
 import com.szps.web.domain.supervise.TbStaff;
 import com.szps.web.domain.supervise.TbTask;
 import com.szps.web.service.psxksp.EXService;
@@ -516,6 +518,14 @@ public class SpController extends BaseController {
         return toAjax(exService.updateEx(ex));
     }
 
-
+    //导出数据
+    @PostMapping("/export")
+    @ResponseBody
+    public AjaxResult export()
+    {
+        List<EX_GDBS_SB> list = exService.selectTaskAll();
+        ExcelUtil<EX_GDBS_SB> util = new ExcelUtil<EX_GDBS_SB>(EX_GDBS_SB.class);
+        return util.exportExcel(list, "已审批事项数据");
+    }
 
 }

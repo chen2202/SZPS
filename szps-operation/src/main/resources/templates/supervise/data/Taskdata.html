@@ -51,7 +51,9 @@
 						</li>-->
 						<li>
 							<a class="btn btn-main btn-sm" onclick="searchs()" shiro:hasPermission="supervise:data:list" ><i class="fa fa-search"></i>&nbsp;搜索</a>
-
+							<a class="btn btn-main btn-sm" onclick="$.table.exportExcel()">
+								<i class="fa fa-download"></i> 导出
+							</a>
 						</li>
 						<!--<li style="float: right">
 							<a class="btn btn-main2 btn-sm" onclick="$.operate.add()" shiro:hasPermission="supervise:data:add">&nbsp;新增</a>

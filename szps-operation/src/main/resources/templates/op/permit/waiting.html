@@ -41,6 +41,9 @@
 
 						<li>
 							<a class="btn btn-main btn-sm" onclick="searchs()" shiro:hasPermission="op:permit:waiting"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							<a class="btn btn-main btn-sm" onclick="$.table.exportExcel()">
+								<i class="fa fa-download"></i> 导出
+							</a>
 							<!--<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>-->
 						</li>
 					</ul>
@@ -97,7 +100,7 @@
             removeUrl: prefix + "/remove",
             exportUrl: prefix + "/export",
             sortName: "sblsh",
-            modalName: "排口管理",
+            modalName: "已审批事项",
             uniqueId:"byzd2",
             columns: [
                 {

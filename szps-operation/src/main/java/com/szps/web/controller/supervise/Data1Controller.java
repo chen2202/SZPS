@@ -6,6 +6,8 @@ import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
+import com.szps.common.utils.poi.ExcelUtil;
+import com.szps.web.domain.supervise.TbHouse;
 import com.szps.web.domain.supervise.TbStaff;
 import com.szps.web.service.supervise.StaffService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -117,5 +119,15 @@ public class Data1Controller extends BaseController {
         String a=request.getParameter("keyword");
 
         return AjaxResult.success("success",staffService.selectStaffName(a));
+    }
+
+    //导出数据
+    @PostMapping("/export")
+    @ResponseBody
+    public AjaxResult export()
+    {
+        List<TbStaff> list = staffService.selectStaffAll();
+        ExcelUtil<TbStaff> util = new ExcelUtil<TbStaff>(TbStaff.class);
+        return util.exportExcel(list, "执法人员数据");
     }
 }

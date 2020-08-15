@@ -6,7 +6,11 @@ import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
+import com.szps.common.utils.poi.ExcelUtil;
+import com.szps.web.domain.supervise.TaskUncheck;
 import com.szps.web.domain.supervise.TbHouse;
+import com.szps.web.domain.supervise.TbStaff;
+import com.szps.web.domain.supervise.TbTaskStaff;
 import com.szps.web.service.supervise.HouseService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +20,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 
@@ -145,5 +150,15 @@ public class HouseController extends BaseController {
 
         return false;
 
+    }
+
+    //导出数据
+    @PostMapping("/export")
+    @ResponseBody
+    public AjaxResult export()
+    {
+        List<TbHouse> list = houseService.selectHouseAll();
+        ExcelUtil<TbHouse> util = new ExcelUtil<TbHouse>(TbHouse.class);
+        return util.exportExcel(list, "检查对象数据");
     }
 }

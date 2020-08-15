@@ -1,18 +1,27 @@
 package com.szps.web.domain.supervise;
+import com.szps.common.annotation.Excel;
 
 public class TbStaff {
+
+    @Excel(name = "人员编号", prompt = "人员编号")
     private String staffNumber;
 
+    @Excel(name = "人员姓名", prompt = "人员姓名")
     private String staffName;
 
+    @Excel(name = "执法范围", prompt = "执法范围")
     private String staffArea;
 
+    @Excel(name = "证件编号", prompt = "证件编号")
     private String staffCart;
 
+    @Excel(name = "类型", prompt = "类型")
     private String staffPost;
 
+    @Excel(name = "所属单位名称", prompt = "所属单位名称")
     private String staffDept;
 
+    @Excel(name = "状态", prompt = "状态")
     private String staffW;
 
     public String getStaffNumber() {

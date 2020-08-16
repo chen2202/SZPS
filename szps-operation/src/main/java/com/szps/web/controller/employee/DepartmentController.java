@@ -17,7 +17,9 @@ import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
+import com.szps.common.utils.poi.ExcelUtil;
 import com.szps.web.domain.employee.Department;
+import com.szps.web.domain.employee.Worker;
 import com.szps.web.service.employee.DepartmentService;
 
 /**
@@ -154,6 +156,21 @@ public class DepartmentController extends BaseController{
     	}catch(Exception e) {
     		 return error(e.getMessage());
     	}
+    }
+    
+    /**
+	 * 导出部门信息到excel表
+	 * @param worker
+	 * @return
+	 */
+	@RequiresPermissions("employee:department:export")
+    @PostMapping("/department/export")
+    @ResponseBody
+    public AjaxResult export(Department department)
+    {
+        List<Department> list = departmentService.selectAllDepartment(department);
+        ExcelUtil<Department> util = new ExcelUtil<Department>(Department.class);
+        return util.exportExcel(list, "部门数据");
     }
     
 }

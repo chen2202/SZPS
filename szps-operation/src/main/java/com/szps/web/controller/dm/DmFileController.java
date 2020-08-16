@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.CollectionUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 import java.util.zip.Deflater;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -104,6 +106,21 @@ public class DmFileController extends BaseController {
         List<DmFile> list = fileService.selectFileListByDataId(dataId);
 
         return getDataTable(list);
+    }
+
+    /**
+     * 下载单个文件
+     */
+    @Log(title = "下载规划资料文件", businessType = BusinessType.OTHER)
+    @GetMapping("/download/single")
+    @ResponseBody
+    public void resourceDownloadSingle(@RequestParam("id") Long dataId, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        List<DmFile> dmFiles = fileService.selectFileListByDataId(dataId);
+        if (!CollectionUtils.isEmpty(dmFiles)) {
+            List<String> collect = dmFiles.stream().map(o -> o.getFileId().toString()).collect(Collectors.toList());
+            String ids = String.join(",", collect);
+            resourceDownload(ids, request, response);
+        }
     }
 
 

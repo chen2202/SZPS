@@ -180,10 +180,10 @@
                     field: 'dataBorough',
                     title: '所属区域'
                 },
-                {
-                    field: 'dataCompany',
-                    title: '编制单位'
-                },
+                // {
+                //     field: 'dataCompany',
+                //     title: '编制单位'
+                // },
                 {
                     field: 'dataDate',
                     title: '编制时间',
@@ -191,6 +191,10 @@
                     formatter: function (value, row, index) {
                         return formatDate(value);
                     }
+                },
+                {
+                    field: 'dataDesc',
+                    title: '说明',
                 },
                 {
                     field: 'updateTime',
@@ -207,6 +211,7 @@
                         // actions.push('<a class="btn btn-primary btn-xs href="javascript:void(0)" onclick="getPermission(\'' + row.dataId + '\')"><i class="fa fa-edit"></i>申请访问</a> ');
                         actions.push('<a class="btn btn-info btn-xs" href="javascript:void(0)" onclick="dataView(\'' + row.dataId + '\')"><i class="fa fa-edit"></i>查看</a> ');
                         actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.editTab(\'' + row.dataId + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="downloadSingle(\'' + row.dataId + '\')"><i class="fa fa-edit"></i>下载</a> ');
                         actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.dataId + '\')"><i class="fa fa-trash"></i>删除</a>');
                         return actions.join('');
                     }
@@ -256,6 +261,11 @@
 
             return [year, month, day].join('-');
         }
+    }
+
+    function downloadSingle(dataId) {
+        var url = file_prefix + '/download/single?id=' + dataId;
+        location.href = url;
     }
 </script>
 </body>

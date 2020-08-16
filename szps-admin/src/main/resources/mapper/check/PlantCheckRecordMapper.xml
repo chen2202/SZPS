@@ -64,7 +64,7 @@
             <if test="checkSubmitTime != null ">CHECK_SUBMIT_TIME,</if>
             <if test="checkUser != null  and checkUser != ''">CHECK_USER,</if>
             <if test="checkDetail != null  and checkDetail != ''">CHECK_DETAIL,</if>
-            <if test="checkDept !=null and checkDept !=''">CHECK_DEPT</if>
+            <if test="checkDept !=null and checkDept !=''">CHECK_DEPT,</if>
             <if test="checkPhone !=null and checkPhone !=''" >CHECK_PHONE</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -75,7 +75,7 @@
             <if test="checkSubmitTime != null ">#{checkSubmitTime},</if>
             <if test="checkUser != null  and checkUser != ''">#{checkUser},</if>
             <if test="checkDetail != null  and checkDetail != ''">#{checkDetail},</if>
-            <if test="checkDept !=null and checkDept !=''">#{checkDept}</if>
+            <if test="checkDept !=null and checkDept !=''">#{checkDept},</if>
             <if test="checkPhone !=null and checkPhone !=''" >#{checkPhone}</if>
         </trim>
     </insert>

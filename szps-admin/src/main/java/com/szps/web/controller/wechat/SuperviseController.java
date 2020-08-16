@@ -1,28 +1,24 @@
 package com.szps.web.controller.wechat;
 
+import com.szps.common.config.Global;
 import com.szps.common.core.controller.BaseController;
+import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.framework.util.ShiroUtils;
 import com.szps.framework.web.domain.server.Sys;
 import com.szps.system.domain.SysUser;
-import com.szps.web.domain.supervise.TbHouse;
-import com.szps.web.domain.supervise.TbStaff;
-import com.szps.web.domain.supervise.TbTask;
-import com.szps.web.domain.supervise.TbTaskStaff;
+import com.szps.web.domain.check.CheckPicture;
+import com.szps.web.domain.supervise.*;
 import com.szps.web.service.supervise.*;
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import com.szps.common.utils.file.FileUploadUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 
 @Controller
@@ -44,6 +40,9 @@ public class SuperviseController extends BaseController {
     @Autowired
     private RuleService ruleService;
 
+    @Autowired
+    private PictureService pictureService;
+
     /**
      * 初始化数据拉取
      *
@@ -64,14 +63,15 @@ public class SuperviseController extends BaseController {
         tbTask.setTaskFlag("完成");
 
         List<TbTask> list = Service.selectTaskList(tbTask);
-
-        List<TbTask> list2 = new ArrayList<>();
+        List<TBALL> list1 = new ArrayList<>();
+//        List<TbTask> list2 = new ArrayList<>();
 
 
         for (int i = 0; i < list.size(); i++) {
             String a = list.get(i).getTaskHouse();
             //System.out.println(a);
             TbHouse tbHouse = houseService.selectHouseById(a);
+            TBALL tball=new TBALL();
             TbTask tbTask1 = new TbTask();
 
 
@@ -97,7 +97,11 @@ public class SuperviseController extends BaseController {
                     }
                     tbTask1.setTbStaffList(tbStaffs);
                     tbTask1.setTbHouse(tbHouse);
-                    list2.add(tbTask1);
+                    List<TbPicture> pictures=pictureService.selectPictureById(tbTask1.getTaskNumber());
+                    tball.setTbTask(tbTask1);
+                    tball.setPictureList(getTbPictures(pictures));
+                    list1.add(tball);
+
                 }
             } else {
                 if (tbHouse.getHouseRule().equals(name)) {
@@ -120,7 +124,10 @@ public class SuperviseController extends BaseController {
                     }
                     tbTask1.setTbStaffList(tbStaffs);
                     tbTask1.setTbHouse(tbHouse);
-                    list2.add(tbTask1);
+                    List<TbPicture> pictures=pictureService.selectPictureById(tbTask1.getTaskNumber());
+                    tball.setTbTask(tbTask1);
+                    tball.setPictureList(getTbPictures(pictures));
+                    list1.add(tball);
                 }
             }
 
@@ -128,9 +135,20 @@ public class SuperviseController extends BaseController {
         }
 
 
-        return getDataTable(list2);
+        return getDataTable(list1);
 
     }
+
+
+  protected  List<TbPicture> getTbPictures(List<TbPicture> tbPictures){
+
+      for (TbPicture tbPicture : tbPictures) {
+          String url = tbPicture.getPictureLocation();
+          url = "https://vx.newground.cn:7000" + url;
+          tbPicture.setPictureLocation(url);
+      }
+      return tbPictures;
+  }
 
     /**
      * 初始化数据统计
@@ -288,7 +306,6 @@ public class SuperviseController extends BaseController {
                 }
 
 
-
             }
 
 
@@ -300,6 +317,12 @@ public class SuperviseController extends BaseController {
     }
 
 
+    /**
+     * 排水监督检查文字上传
+     *
+     * @param params
+     * @return
+     */
     @PostMapping(value = "/Supervise/add")
     @ResponseBody
     public int add(@RequestBody Map<String, Object> params) {
@@ -329,4 +352,41 @@ public class SuperviseController extends BaseController {
 
     }
 
+    /**
+     * 排水监督检查图片上传
+     *
+     * @param multipartFile
+     * @param feedbackId
+     * @return
+     */
+    @PostMapping(value = "/uploadPicture")
+    @ResponseBody
+    public AjaxResult uploadPicture(@RequestParam("picture") MultipartFile[] multipartFile, @RequestParam(required = true) String feedbackId) {
+        try {
+            if (multipartFile.length == 0) {
+                return error("文件为空,上传失败");
+            }
+            String filePath = Global.getUploadPath();
+            String fileName[] = new String[10];
+            String url[] = new String[10];
+            for (int i = 0; i < multipartFile.length; i++) {
+                fileName[i] = FileUploadUtils.upload(filePath, multipartFile[i]);
+                url[i] = "/profile" + fileName[i];
+                int radomInt = new Random().nextInt(999999);
+                String s = String.valueOf(radomInt);
+                while (pictureService.checkPicture(s) == 1) {
+                    s = String.valueOf(new Random().nextInt(999999));
+                }
+                TbPicture picture = new TbPicture();
+                picture.setFeedbackId(feedbackId);
+                picture.setPictureId(s);
+                picture.setPictureLocation(url[i]);
+                picture.setPictureName(multipartFile[i].getOriginalFilename());
+                pictureService.insertRule(picture);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return success("上传成功!");
+    }
 }

@@ -246,7 +246,7 @@ public class CheckController {
 
         List<type> s = new ArrayList<>();
 
-        if (loginController.getSysRole().equals("市水务局人员")) {
+        if (loginController.getSysRole().equals("市水务局人员")||loginController.getSysRole().equals("业务操作员")) {
             String[][] strings = new String[55][];
 
             List<type> types = new ArrayList<>();

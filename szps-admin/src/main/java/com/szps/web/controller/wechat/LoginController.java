@@ -66,9 +66,19 @@ public class LoginController {
 
             }else {
                 if(getSysRole1(sysUserRole1)==1){
-                    str="市水务局人员";
+                    if(getSysRole3(sysUserRole1)==-1){
+                        str="市水务局人员";
+                    }else {
+                        str="业务操作员";
+                    }
+
                 }else {
-                    str="区水务局人员";
+                    if(getSysRole3(sysUserRole1)==-1){
+                        str="区水务局人员";
+                    }else {
+                        str="业务操作员";
+                    }
+
                 }
             }
 

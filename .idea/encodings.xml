@@ -3,9 +3,17 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/szps-admin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/szps-admin/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/szps-admin/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/szps-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/szps-common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/szps-framework" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/szps-framework/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/szps-operation" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/szps-operation/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/szps-operation/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/szps-system" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/szps-system/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/szps-system/src/main/resources" charset="UTF-8" />
   </component>
 </project>

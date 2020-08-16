@@ -101,7 +101,7 @@ shiro:
     loginUrl: /login
     # 权限认证失败地址
     unauthorizedUrl: /unauth
-    csrfUrl: http://localhost:8086;https://servicewechat.com
+    csrfUrl: http://localhost:8086;https://servicewechat.com;https://vx.newground.cn:7000
 
     # 首页地址
     indexUrl: /index

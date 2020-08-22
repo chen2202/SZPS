@@ -103,9 +103,6 @@
 	<script>
         var prefix = ctx + "dm/data";
 
-		// 防止表单重复提交
-		var flag = true;
-
         $("#form-data-add").validate({
             onkeyup: false,
             focusCleanup: true
@@ -123,13 +120,7 @@
 
         function submitHandler() {
             if ($.validate.form()) {
-                if(flag){
-                    flag = false;
-                    uploadFile();
-				}else{
-                    $.modal.alertWarning("请勿重复提交!");
-				}
-
+				uploadFile();
             }
         }
 
@@ -137,7 +128,6 @@
             var formData = new FormData();
             if ($('#filePath')[0].files[0] == null) {
                 $.modal.alertWarning("请先选择文件路径");
-                flag = true;		// 没有选择文件，此时虽点击提交，但并未提交
                 return false;
             }
 

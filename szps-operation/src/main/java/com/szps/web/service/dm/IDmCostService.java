@@ -18,7 +18,7 @@ public interface IDmCostService {
      * @param dmCost 污水费资料信息
      * @return 资料信息集合信息
      */
-    public List<DmCost> selectCostList(DmCost dmCost);
+    List<DmCost> selectCostList(DmCost dmCost);
 
 
     /**
@@ -27,7 +27,7 @@ public interface IDmCostService {
      * @param dmCost 污水费资料信息
      * @return 结果
      */
-    public int insertCost(DmCost dmCost);
+    int insertCost(DmCost dmCost);
 
 
     /**
@@ -37,7 +37,7 @@ public interface IDmCostService {
      * @return 结果
      * @throws Exception 异常
      */
-    public int deleteCostByIds(Long[] ids) throws Exception;
+    int deleteCostByIds(Long[] ids);
 
 
     /**
@@ -46,15 +46,7 @@ public interface IDmCostService {
      * @param costId 资料ID
      * @return 用户对象信息
      */
-    public DmCost selectCostById(Long costId);
-
-    /**
-     * 通过资料编码查询资料
-     *
-     * @param costCode 资料编码
-     * @return 用户对象信息
-     */
-    public DmCost selectCostByCode(String costCode);
+    DmCost selectCostById(Long costId);
 
     /**
      * 修改资料

@@ -1,10 +1,8 @@
 package com.szps.web.service.dm.impl;
 
-import com.szps.common.core.text.Convert;
 import com.szps.web.domain.dm.DmFile;
 import com.szps.web.mapper.dm.DmFileMapper;
 import com.szps.web.service.dm.IDmFileService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,14 +20,13 @@ public class DmFileServiceImpl implements IDmFileService {
     }
 
     @Override
-    public List<DmFile> selectFileListByDataId(Long dataId) {
-        return fileMapper.selectFileListByDataId(dataId);
+    public List<DmFile> selectFileListByIds(Long[] ids) {
+        return fileMapper.selectFileListByIds(ids);
     }
 
     @Override
-    public List<DmFile> selectFileListByFileIds(String ids) {
-        Long[] fileIds = Convert.toLongArray(ids);
-        return fileMapper.selectFileListByFileIds(fileIds);
+    public List<DmFile> selectFileListByUuid(String uuid) {
+        return fileMapper.selectFileListByUuid(uuid);
     }
 
     @Override
@@ -37,6 +34,8 @@ public class DmFileServiceImpl implements IDmFileService {
         return fileMapper.deleteFileById(fileId);
     }
 
-
-
+    @Override
+    public DmFile selectFileById(Long fileId) {
+        return fileMapper.selectFileById(fileId);
+    }
 }

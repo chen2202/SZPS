@@ -13,8 +13,7 @@
         <result property="costPunishMoney"     column="cost_punish_money"      />
         <result property="costPunishReason"     column="cost_punish_reason"      />
         <result property="costRemark"     column="cost_remark"      />
-        <result property="costFileName"     column="cost_file_name"      />
-        <result property="costFilePath"     column="cost_file_path"      />
+        <result property="costUuid"       column="cost_uuid"        />
     </resultMap>
 
     <update id="updateCost" parameterType="com.szps.web.domain.dm.DmCost">
@@ -68,8 +67,7 @@
         <if test="costPunishMoney != null and costPunishMoney != ''">cost_punish_money,</if>
         <if test="costPunishReason != null and costPunishReason != ''">cost_punish_reason,</if>
         <if test="costRemark != null and costRemark != ''">cost_remark,</if>
-        <if test="costFileName != null and costFileName != ''">cost_file_name,</if>
-        <if test="costFilePath != null and costFilePath != ''">cost_file_path,</if>
+        <if test="costUuid != null and costUuid != ''">cost_uuid,</if>
         create_time
         )values(
         <if test="costId != null and costId != 0">#{costId},</if>
@@ -82,8 +80,7 @@
         <if test="costPunishMoney != null and costPunishMoney != ''">#{costPunishMoney},</if>
         <if test="costPunishReason != null and costPunishReason != ''">#{costPunishReason},</if>
         <if test="costRemark != null and costRemark != ''">#{costRemark},</if>
-        <if test="costFileName != null and costFileName != ''">#{costFileName},</if>
-        <if test="costFilePath != null and costFilePath != ''">#{costFilePath},</if>
+        <if test="costUuid != null and costUuid != ''">#{costUuid},</if>
         sysdate
         )
     </insert>

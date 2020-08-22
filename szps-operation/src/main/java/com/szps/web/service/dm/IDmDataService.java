@@ -29,23 +29,6 @@ public interface IDmDataService {
     public List<DmData> selectApprovalDataList(DmData dmData);
 
     /**
-     * 根据条件分页查询审批通过的资料列表
-     *
-     * @param dmData 资料信息
-     * @return 资料信息集合信息
-     */
-    public List<DmData> selectPassDataList(DmData dmData);
-
-    /**
-     * 根据条件分页查询全部被删除的资料列表(状态被修改，实际未删除)
-     *
-     * @param dmData 资料信息
-     * @return 资料信息集合信息
-     */
-    public List<DmData> selectDeletedDataList(DmData dmData);
-
-
-    /**
      * 通过资料ID查询资料
      *
      * @param dataId 资料ID
@@ -61,17 +44,6 @@ public interface IDmDataService {
      */
     public DmData selectDataByUuid(String dataUuid);
 
-
-    /**
-     * 批量删除资料(只改变状态)
-     *
-     * @param ids 需要删除的数据ID
-     * @return 结果
-     * @throws Exception 异常
-     */
-    public int changeDataFlagByIds(String ids, String flag) throws Exception;
-
-
     /**
      * 批量删除资料(从回收站删除)
      *
@@ -79,9 +51,7 @@ public interface IDmDataService {
      * @return 结果
      * @throws Exception 异常
      */
-    public int deleteDataByIds(String ids) throws Exception;
-
-
+    public int deleteDataByIds(String ids);
 
     /**
      * 保存资料信息
@@ -91,14 +61,6 @@ public interface IDmDataService {
      */
     public int insertData(DmData data);
 
-
-    /**
-     * 审批状态修改
-     *
-     * @param dmData 角色信息
-     * @return 结果
-     */
-    public int changeStatus(DmData dmData);
 
     /**
      * 保存资料信息

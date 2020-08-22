@@ -5,7 +5,6 @@ import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
 import com.szps.framework.util.ShiroUtils;
-import com.szps.system.domain.SysRole;
 import com.szps.system.domain.SysUser;
 import com.szps.system.service.ISysUserService;
 import com.szps.web.domain.dm.DmAudit;
@@ -14,8 +13,6 @@ import com.szps.web.service.dm.IDmAuditService;
 import com.szps.web.service.dm.IDmDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import com.szps.common.core.controller.BaseController;
@@ -86,29 +83,4 @@ public class DmAuditController extends BaseController{
         }
         return error();
     }
-
-//    /**
-//     * 审批结果集合--->已通过
-//     * */
-//    @PostMapping("/pass")
-//    @ResponseBody
-//    public TableDataInfo pass(DmData dmData)
-//    {
-//        startPage();
-//        List<DmData> list = dataService.selectPassDataList(dmData);
-//        return getDataTable(list);
-//    }
-
-//    /**
-//     * 审批结果集合--->驳回
-//     */
-//    @PostMapping("/reject")
-//    @ResponseBody
-//    public TableDataInfo reject(DmData dmData)
-//    {
-//        startPage();
-//        List<DmData> list = dataService.selectRejectDataList(dmData);
-//        return getDataTable(list);
-//    }
-
 }

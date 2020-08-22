@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <th:block th:include="include :: header('新增资料')" />
+    <th:block th:include="include :: header('修改资料')" />
     <th:block th:include="include :: bootstrap-fileinput-css" />
     <link th:href="@{/css/dm/dm.css}" rel="stylesheet"/>
     <link th:href="@{/css/dm/operation.css}" rel="stylesheet"/>
-    <script th:src="@{/js/dm/dm.js}" type="text/javascript"></script>
 </head>
 <body class="white-bg">
 <div class="wrapper wrapper-content animated fadeInRight ibox-content">
@@ -115,20 +114,73 @@
         </div>
     </form>
 
+    <div class="row">&nbsp;</div>
+
+    <h4 class="form-header h4">附属文件</h4>
     <div class="row">
-        <div class="col-sm-offset-5 col-sm-10">
-            <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>提 交</button>&nbsp;
-            <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
+        <div class="btn-group-sm" id="toolbar" role="group">
+            <a class="btn multiple disabled" onclick="downloadSelected()">
+                <i class="fa fa-download"></i> 下载
+            </a>
+            </a>
+        </div>
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table" data-mobile-responsive="true"></table>
         </div>
     </div>
+
+    <div class="row">&nbsp;</div>
+    <div class="row">&nbsp;</div>
 </div>
+
+<div class="row">
+    <div class="col-sm-offset-5 col-sm-10">
+        <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>提 交</button>&nbsp;
+        <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
+    </div>
+</div>
+
 <th:block th:include="include :: footer" />
 <th:block th:include="include :: bootstrap-fileinput-js" />
+<script th:src="@{/js/dm/dm.js}" type="text/javascript"></script>
 <script type="text/javascript">
 
-    var prefix = ctx+"dm/cost";
+    let prefix = ctx+"dm/cost";
+    let file_prefix = ctx + "dm/file";
 
     $(document).ready(function () {
+        var options = {
+            url: file_prefix+ "/select?uuid=[[${cost.costUuid}]]",
+            modalName: "附属文件",
+            showSearch:false,
+            showRefresh:false,
+            showColumns:false,
+            columns: [{
+                checkbox: true
+            },
+                {
+                    field: 'fileId',
+                    title: '文件编号',
+                    sortable: true
+                },
+                {
+                    field: 'fileName',
+                    title: '文件名',
+                    sortable: true
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-primary btn-xs" href="javascript:void(0)" onclick="fileDownload(\'' + row.fileId + '\')"><i class="fa fa-download"></i>下载</a> ');
+                        actions.push('<a class="btn btn-primary btn-xs" href="javascript:void(0)" onclick="fileDelete(\'' + row.fileId + '\')"><i class="fa fa-trash"></i>删除</a> ');
+                        return actions.join('');
+                    }
+                }]
+        };
+        $.table.init(options);
+
         $("#filePath").fileinput({
             'uploadUrl': '#',
             overwriteInitial: false,
@@ -171,6 +223,35 @@
                 $.operate.successCallback(result);
             }
         });
+    }
+
+    // 文件下载(单个)
+    function fileDownload(fileId){
+        $.modal.confirm("确认下载该文件？", function() {
+            var url = file_prefix + "/download/ids?ids="+fileId;
+            window.location.href = url;
+        });
+    }
+
+    //文件下载(多选)
+    function downloadSelected(){
+        var rows = $.common.isEmpty($.table._option.uniqueId) ? $.table.selectFirstColumns() : $.table.selectColumns($.table._option.uniqueId);
+        if (rows.length == 0) {
+            $.modal.alertWarning("请至少选择一个文件");
+            return;
+        }
+        $.modal.confirm("确认要下载选中的" + rows.length + "个文件吗?", function() {
+            var url = file_prefix + "/download/ids?ids="+rows.join();
+            window.location.href = url;
+        });
+    }
+
+    function fileDelete(fileId) {
+        $.modal.confirm("确认删除该文件？", function() {
+            var url = file_prefix+"/delete?fileId="+fileId;
+            $.operate.post(url);
+            $("#bootstrap-table").bootstrapTable('refresh', options);
+        })
     }
 </script>
 </body>

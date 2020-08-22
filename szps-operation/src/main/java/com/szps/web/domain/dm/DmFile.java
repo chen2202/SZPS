@@ -4,7 +4,7 @@ public class DmFile {
 
     private Long fileId;
 
-    private Long dataId;
+    private String dataId;
 
     private String fileName;
 
@@ -18,11 +18,11 @@ public class DmFile {
         this.fileId = fileId;
     }
 
-    public Long getDataId() {
+    public String getDataId() {
         return dataId;
     }
 
-    public void setDataId(Long dataId) {
+    public void setDataId(String dataId) {
         this.dataId = dataId;
     }
 

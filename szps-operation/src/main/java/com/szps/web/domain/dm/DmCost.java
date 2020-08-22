@@ -61,6 +61,8 @@ public class DmCost extends BaseEntity {
     /** 文件相对路径 */
     private String costFilePath;
 
+    private String costUuid;
+
 //    其他属性
     private String type;
 
@@ -176,5 +178,13 @@ public class DmCost extends BaseEntity {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getCostUuid() {
+        return costUuid;
+    }
+
+    public void setCostUuid(String costUuid) {
+        this.costUuid = costUuid;
     }
 }

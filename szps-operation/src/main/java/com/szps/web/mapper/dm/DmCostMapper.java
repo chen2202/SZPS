@@ -15,7 +15,7 @@ public interface DmCostMapper {
      * @param dmCost 污水费资料信息
      * @return 资料信息集合信息
      */
-    public List<DmCost> selectCostList(DmCost dmCost);
+    List<DmCost> selectCostList(DmCost dmCost);
 
 
     /**
@@ -24,7 +24,7 @@ public interface DmCostMapper {
      * @param dmCost 污水费资料信息
      * @return 结果
      */
-    public int insertCost(DmCost dmCost);
+    int insertCost(DmCost dmCost);
 
 
     /**
@@ -34,7 +34,7 @@ public interface DmCostMapper {
      * @return 结果
      * @throws Exception 异常
      */
-    public int deleteCostByIds(Long[] ids) throws Exception;
+    int deleteCostByIds(Long[] ids);
 
     /**
      * 通过资料ID查询资料
@@ -42,7 +42,7 @@ public interface DmCostMapper {
      * @param costId 资料ID
      * @return 用户对象信息
      */
-    public DmCost selectCostById(Long costId);
+    DmCost selectCostById(Long costId);
 
     /**
      * 通过资料编码查询资料
@@ -50,7 +50,7 @@ public interface DmCostMapper {
      * @param costCode 资料编码
      * @return 用户对象信息
      */
-    public DmCost selectCostByCode(String costCode);
+    DmCost selectCostByCode(String costCode);
 
     /**
      * 修改资料

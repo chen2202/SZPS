@@ -12,12 +12,15 @@ import com.szps.common.enums.BusinessType;
 import com.szps.common.utils.StringUtils;
 import com.szps.common.utils.file.FileUploadUtils;
 import com.szps.common.utils.file.FileUtils;
+import com.szps.common.utils.poi.ExcelUtil;
 import com.szps.framework.util.ShiroUtils;
 import com.szps.system.domain.SysUser;
 import com.szps.system.service.ISysUserService;
 import com.szps.web.domain.dm.DmCost;
+import com.szps.web.domain.dm.DmData;
 import com.szps.web.service.dm.IDmCostService;
 import org.apache.ibatis.annotations.Param;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -106,9 +109,9 @@ public class DmCostController extends BaseController {
 
         int result = costService.insertCost(dmCost);
         if(result>0){
-            return success("添加成功");
+            return success();
         }else{
-            return error("添加失败!");
+            return error();
         }
 
     }
@@ -201,6 +204,9 @@ public class DmCostController extends BaseController {
     }
 
     public static boolean sql_inj(String str){
+        if (StringUtils.isEmpty(str)) {
+            return false;
+        }
 
         String inj_str = "'|and|exec|insert|select|delete|update|count|*|%|chr|mid|master|truncate|char|declare|;|or|-|+|,";
 
@@ -209,13 +215,20 @@ public class DmCostController extends BaseController {
         for (String anInj_stra : inj_stra) {
 
             if (str.contains(anInj_stra)) {
-
                 return true;
-
             }
-
         }
-
         return false;
+    }
+
+    @Log(title = "资料导出", businessType = BusinessType.EXPORT)
+    @RequiresPermissions("dm:data:export")
+    @PostMapping("/export")
+    @ResponseBody
+    public AjaxResult export(DmCost dmCost)
+    {
+        List<DmCost> list = costService.selectCostList(dmCost);
+        ExcelUtil<DmCost> util = new ExcelUtil<DmCost>(DmCost.class);
+        return util.exportExcel(list, "资料数据");
     }
 }

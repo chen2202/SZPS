@@ -36,11 +36,22 @@
         }
         function submitHandler() {
 
-            $("#content-iframe").contents().find("#iBtnOk").click();
+           $("#content-iframe").contents().find("#iBtnOk").click();
+           //console.log(a);
+//            $.modal.close();
+//            window.parent.$.modal.msgSuccess("操作成功");
+//            window.parent.$.table.refresh();
+
+        }
+        function fatock1() {
             $.modal.close();
             window.parent.$.modal.msgSuccess("操作成功");
             window.parent.$.table.refresh();
-
+        }
+        function fatock2() {
+            $.modal.close();
+            window.parent.$.modal.msgSuccess("没有符合条件的数据了");
+            window.parent.$.table.refresh();
         }
 
 

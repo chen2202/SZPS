@@ -100,17 +100,7 @@ public class DataController extends BaseController {
         Random random = new Random();
         ArrayList<String> listnew = new ArrayList<String>();
 
-
-
-
-
-
-
-
         //拿到相应抽取事项的检查对象（满足抽取事项，且没被抽查过）
-
-
-
 
         int blint= Integer.parseInt(value3);
 
@@ -160,6 +150,9 @@ public class DataController extends BaseController {
            task.setTaskHouse(listnew.get(i));
            task.setTaskFlag("未完成");
            task.setTaskBc("无");
+           Date a=new Date();
+           java.sql.Date b=new java.sql.Date(a.getTime());
+           task.setUpdateTime(b);
 
            TbHouse house=houseService.selectHouseById(listnew.get(i));
            //String address=house.getHouseRegion().substring(3,6);
@@ -449,6 +442,9 @@ public class DataController extends BaseController {
 
             }
             int max3 = staff2.size();
+            if(max3==0){
+                return AjaxResult.success(max3);
+           }
             int number = random.nextInt(max3);
             tbTaskStaff.setBcStaff(staff2.get(number).getStaffNumber());
 
@@ -468,6 +464,9 @@ public class DataController extends BaseController {
 
             }
             int max3 = staff2.size();
+            if(max3==0){
+                return AjaxResult.success(max3);
+            }
             int number = random.nextInt(max3);
             tbTaskStaff.setBcStaff(staff2.get(number).getStaffNumber());
 
@@ -498,12 +497,13 @@ public class DataController extends BaseController {
 
     @PostMapping("/bchedit")
     @ResponseBody
-    public AjaxResult editBchSave(@Validated TbTask task) {
+    public AjaxResult editBchSave(@Validated TbTask task) throws Exception {
         Random random = new Random();
         List<TbHouse> list=houseService.selectHouseCheckList(task.getRuleName());
         int max = list.size();
         if(max==0){
-            return AjaxResult.error("暂时无可抽查的任务");
+
+            return AjaxResult.success(max);
         }
         int number = random.nextInt(max);
 

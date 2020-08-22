@@ -28,7 +28,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.sql.Timestamp;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 
@@ -313,6 +315,10 @@ public class CompleteController extends BaseController {
     {
         if(task.getTaskResult()!=""||task.getTaskCheckTime()!=""||task.getTaskHandle()!="")
         task.setTaskFlag("完成");
+        Date a=new Date();
+        java.sql.Date b=new java.sql.Date(a.getTime());
+        System.out.println(b);
+        task.setUpdateTime(b);
         return toAjax(Service.updateTask(task));
     }
 

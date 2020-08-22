@@ -11,6 +11,8 @@
     <result column="TASK_CHECKTIME" jdbcType="VARCHAR" property="taskCheckTime"/>
     <result column="TASK_FILE" jdbcType="VARCHAR" property="taskFile"/>
     <result column="TASK_BC" jdbcType="VARCHAR" property="taskBc"/>
+    <result column="UPDATE_TIME" jdbcType="DATE" property="updateTime"/>
+
   </resultMap>
 
   <resultMap id="ExportResultMap" type="com.szps.web.domain.supervise.TaskUncheck">
@@ -30,11 +32,11 @@
   <insert id="insert" parameterType="com.szps.web.domain.supervise.TbTask">
     insert into TB_TASK (TASK_NUMBER, TASK_TIME, TASK_HOUSE,
       TASK_RESULT, TASK_HANDLE, TASK_FLAG,
-      TASK_CHECKTIME,TASK_BC
+      TASK_CHECKTIME,TASK_BC,UPDATE_TIME
       )
     values (#{taskNumber,jdbcType=VARCHAR}, #{taskTime,jdbcType=VARCHAR}, #{taskHouse,jdbcType=VARCHAR},
       #{taskResult,jdbcType=VARCHAR}, #{taskHandle,jdbcType=VARCHAR}, #{taskFlag,jdbcType=VARCHAR},
-      #{taskCheckTime,jdbcType=VARCHAR},#{taskBc,jdbcType=VARCHAR}
+      #{taskCheckTime,jdbcType=VARCHAR},#{taskBc,jdbcType=VARCHAR},sysdate
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.szps.web.domain.supervise.TbTask">
@@ -44,7 +46,8 @@
       TASK_FLAG = #{taskFlag,jdbcType=VARCHAR},
       TASK_CHECKTIME = #{taskCheckTime,jdbcType=VARCHAR},
       TASK_BC= #{taskBc,jdbcType=VARCHAR},
-      TASK_HOUSE=#{taskHouse,jdbcType=VARCHAR}
+      TASK_HOUSE=#{taskHouse,jdbcType=VARCHAR},
+      UPDATE_TIME=sysdate
     where TASK_NUMBER = #{taskNumber,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
@@ -73,7 +76,7 @@
   </select>
 
   <select id="selectTaskList" parameterType="com.szps.web.domain.supervise.TbTask" resultMap="BaseResultMap">
-    select TASK_NUMBER, TASK_TIME, TASK_HOUSE,TASK_RESULT,TASK_HANDLE,TASK_CHECKTIME,TASK_BC
+    select TASK_NUMBER, TASK_TIME, TASK_HOUSE,TASK_RESULT,TASK_HANDLE,TASK_CHECKTIME,TASK_BC,UPDATE_TIME
     from TB_TASK,TB_RULE,TB_HOUSE
 
    <where>
@@ -92,6 +95,7 @@
     </if>-->
 
    </where>
+
   </select>
 
 

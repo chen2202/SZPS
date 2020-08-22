@@ -134,7 +134,8 @@ public class HouseController extends BaseController {
 
     public static boolean sql_inj(String str){
 
-        String inj_str = "'|and|exec|insert|select|delete|update|count|*|%|chr|mid|master|truncate|char|declare|;|or|-|+|,";
+//        String inj_str = "'|and|exec|insert|select|delete|update|count|*|%|chr|mid|master|truncate|char|declare|;|or|-|+|,";
+        String inj_str = "insert|select|delete|update";
 
         String inj_stra[] = inj_str.split("|");
 

@@ -102,11 +102,14 @@
 
 				},
 				async : false,
-				error : function(request) {
-					$.modal.alertError("系统错误");
-				},
 				success : function(data) {
-					$.operate.successCallback(data);
+                    if(data.data==0)
+                    {
+                        parent.fatock2();
+                    }
+                    else {
+                        parent.fatock1();
+                    }
 				}
 			});
 		}

@@ -122,7 +122,7 @@ public class EventSubmitController extends BaseController {
         //图片路径修改为服务器路径
         for (EventPicture eventPicture1 : pictures) {
             String url = eventPicture1.getEventPictureUrl();
-            url = "http://localhost:8087" + url;
+            url = "/operation" + url;
             eventPicture1.setEventPictureUrl(url);
         }
 

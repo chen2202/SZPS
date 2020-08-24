@@ -33,6 +33,7 @@
             <if test="checkDept !=null and checkDept !='' ">and CHECK_DEPT=#{checkDept}</if>
             <if test="checkPhone !=null and checkPhone !=''">and CHECK_PHONE=#{checkPhone}</if>
         </where>
+        order by CHECK_SUBMIT_TIME DESC
     </select>
 
     <select id="selectCheckManagerById" parameterType="Long" resultMap="CheckManagerResult">

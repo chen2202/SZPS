@@ -194,7 +194,7 @@ public class CheckController {
 
         for (CheckPicture checkPicture : checkPictures) {
             String url = checkPicture.getGetCheckPictureUrl();
-            url = "https://vx.newground.cn:7000" + url;
+            url = "/operation" + url;
             checkPicture.setGetCheckPictureUrl(url);
         }
         return checkPictures;

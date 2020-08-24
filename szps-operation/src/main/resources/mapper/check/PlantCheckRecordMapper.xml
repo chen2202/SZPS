@@ -31,11 +31,13 @@
             <if test="checkPhone !=null and checkPhone !=''">and CHECK_PHONE=#{checkPhone}</if>
             <if test="checkDept !=null and checkDept !=''">and CHECK_DEPT=#{checkDept}</if>
         </where>
+        order by CHECK_SUBMIT_TIME desc
     </select>
 
     <select id="selectCheckManagerById" parameterType="Long" resultMap="CheckManagerResult">
         <include refid="selectCheckManagerVo"/>
         where CHECK_ID = #{checkId}
+
     </select>
 
 

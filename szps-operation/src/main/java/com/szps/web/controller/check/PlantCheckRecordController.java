@@ -205,7 +205,7 @@ public class PlantCheckRecordController extends BaseController {
         //图片路径修改成服务器图片路径
         for(CheckPicture picture:checkPictures){
             String url=picture.getGetCheckPictureUrl();
-            url="http://localhost:8087"+url;
+            url="/operation"+url;
             picture.setGetCheckPictureUrl(url);
         }
 

@@ -144,7 +144,7 @@ public class SuperviseController extends BaseController {
 
       for (TbPicture tbPicture : tbPictures) {
           String url = tbPicture.getPictureLocation();
-          url = "https://vx.newground.cn:7000" + url;
+          url = "/operation" + url;
           tbPicture.setPictureLocation(url);
       }
       return tbPictures;

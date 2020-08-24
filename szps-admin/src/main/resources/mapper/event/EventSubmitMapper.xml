@@ -35,6 +35,7 @@
             <if test="eventSubmitTime != null ">and EVENT_SUBMIT_TIME = #{eventSubmitTime}</if>
             <if test="eventArea !=null and eventArea!=''">and EVENT_AREA=#{eventArea}</if>
         </where>
+        order  by EVENT_SUBMIT_TIME DESC
     </select>
 
     <select id="selectEventSubmitById" parameterType="EventSubmit" resultMap="EventSubmitResult">

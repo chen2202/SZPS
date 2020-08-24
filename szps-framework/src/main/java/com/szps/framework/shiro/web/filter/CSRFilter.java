@@ -53,7 +53,7 @@ public class CSRFilter implements Filter {
             } else {
 
                 String url = (((HttpServletRequest) request).getRequestURL()).toString();
-                if (url.contains("http://localhost:8087/upload") || url.contains("https://vx.newground.cn:7000/upload")) {
+                if (url.contains("http://localhost:8087") || url.contains("https://vx.newground.cn:7000")) {
                     chain.doFilter(request, response);
                 } else {
                     //request.getRequestDispatcher("error.jsp").forward(request,response);

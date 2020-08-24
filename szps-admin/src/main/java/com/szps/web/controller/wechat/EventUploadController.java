@@ -181,7 +181,7 @@ public class EventUploadController {
 
         for (EventPicture eventPicture : pictures) {
             String url = eventPicture.getEventPictureUrl();
-            url = "https://vx.newground.cn:7000" + url;
+            url = "/operation" + url;
             eventPicture.setEventPictureUrl(url);
         }
         return pictures;

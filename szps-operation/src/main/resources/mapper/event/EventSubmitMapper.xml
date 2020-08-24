@@ -35,6 +35,7 @@
             <if test="eventUnit != null  and eventUnit != ''">and EVENT_UNIT = #{eventUnit}</if>
             <!--            <if test="eventSubmitTime != null "> and EVENT_SUBMIT_TIME = #{eventSubmitTime}</if>-->
         </where>
+        order by EVENT_SUBMIT_TIME DESC
     </select>
 
     <select id="selectEventSubmitList2" parameterType="EventSubmit" resultMap="EventSubmitResult">
@@ -51,6 +52,7 @@
             <if test="eventUnit != null  and eventUnit != ''">and EVENT_UNIT = #{eventUnit}</if>
             <!--            <if test="eventSubmitTime != null "> and EVENT_SUBMIT_TIME = #{eventSubmitTime}</if>-->
         </where>
+        order  by EVENT_SUBMIT_TIME DESC
     </select>
 
     <select id="selectEventSubmitById" parameterType="Integer" resultMap="EventSubmitResult">

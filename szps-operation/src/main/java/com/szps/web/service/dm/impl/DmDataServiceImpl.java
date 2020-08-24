@@ -3,8 +3,6 @@ package com.szps.web.service.dm.impl;
 import java.util.List;
 
 import com.szps.common.core.text.Convert;
-import com.szps.common.exception.BusinessException;
-import com.szps.system.domain.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,16 +27,6 @@ public class DmDataServiceImpl implements IDmDataService{
 	}
 
 	@Override
-	public List<DmData> selectPassDataList(DmData dmData) {
-		return dmDataMapper.selectPassDataList(dmData);
-	}
-
-	@Override
-	public List<DmData> selectDeletedDataList(DmData dmData) {
-		return dmDataMapper.selectDeletedDataList(dmData);
-	}
-
-	@Override
 	public DmData selectDataById(Long dataId) {
 		return dmDataMapper.selectDataById(dataId);
 	}
@@ -49,14 +37,7 @@ public class DmDataServiceImpl implements IDmDataService{
 	}
 
 	@Override
-	public int changeDataFlagByIds(String ids,String dataFlag) throws BusinessException
-	{
-		Long[] dataIds = Convert.toLongArray(ids);
-		return dmDataMapper.changeDataFlagByIds(dataIds,dataFlag);
-	}
-
-	@Override
-	public int deleteDataByIds(String ids) throws Exception {
+	public int deleteDataByIds(String ids){
 		Long[] dataIds = Convert.toLongArray(ids);
 		return dmDataMapper.deleteDataByIds(dataIds);
 	}
@@ -64,11 +45,6 @@ public class DmDataServiceImpl implements IDmDataService{
 	@Override
 	public int insertData(DmData data) {
 		return dmDataMapper.insertData(data);
-	}
-
-	@Override
-	public int changeStatus(DmData dmData) {
-		return dmDataMapper.changeStatus(dmData);
 	}
 
 	@Override

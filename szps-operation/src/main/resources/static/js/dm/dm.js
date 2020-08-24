@@ -34,6 +34,7 @@ function selectBrfTree() {
     };
     $.modal.openOptions(options);
 }
+
 function doSubmitBrf(index, layero){
     var tree = layero.find("iframe")[0].contentWindow.$._tree;
     var body = layer.getChildFrame('body', index);

@@ -2,8 +2,6 @@ package com.szps.web.mapper.dm;
 
 import java.util.List;
 
-import com.szps.system.domain.SysRole;
-import com.szps.system.domain.SysUser;
 import com.szps.web.domain.dm.DmData;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -80,7 +78,7 @@ public interface DmDataMapper {
      * @return 结果
      * @throws Exception 异常
      */
-    public int deleteDataByIds(Long[] ids) throws Exception;
+    public int deleteDataByIds(Long[] ids);
 
     /**
      * 保存资料信息
@@ -90,15 +88,6 @@ public interface DmDataMapper {
      */
     public int insertData(DmData data);
 
-
-    /**
-     * 修改资料信息
-     *
-     * @param dmData 角色信息
-     * @return 结果
-     */
-    public int changeStatus(DmData dmData);
-
     /**
      * 保存资料信息
      *
@@ -106,13 +95,4 @@ public interface DmDataMapper {
      * @return 结果
      */
     public int updateData(DmData dmData);
-
-    /**
-     * 恢复被删除的资料
-     *
-     * @param dataId 资料ID
-     * @return 结果
-     */
-    public int recoveryById(Long dataId);
-    
 }

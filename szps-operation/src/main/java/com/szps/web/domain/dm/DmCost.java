@@ -1,5 +1,6 @@
 package com.szps.web.domain.dm;
 
+import com.szps.common.annotation.Excel;
 import com.szps.common.core.domain.BaseEntity;
 
 import java.util.Date;
@@ -15,33 +16,43 @@ public class DmCost extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /** 编号 */
+    @Excel(name = "资料序号", prompt = "资料编号")
     private Long costId;
 
     /** 水质净化厂 */
+    @Excel(name = "水质净化厂")
     private String costFactory;
 
     /** 运营单位 */
+    @Excel(name = "运营单位")
     private String costCompany;
 
     /** 申请支付时间 */
+    @Excel(name = "申请支付时间")
     private String costApplyTime;
 
     /** 实际支付月份 */
+    @Excel(name = "实际支付月份")
     private String costPayTime;
 
     /** 实际处理水量 */
+    @Excel(name = "实际处理水量")
     private double costWaterVolume;
 
     /** 实付处理费 */
+    @Excel(name = "实付处理费")
     private double costPayMoney;
 
     /** 处罚金额 */
+    @Excel(name = "处罚金额")
     private double costPunishMoney;
 
     /** 处罚原因 */
+    @Excel(name = "处罚原因")
     private String costPunishReason;
 
     /** 备注 */
+    @Excel(name = "备注")
     private String costRemark;
 
     /** 文件名 */
@@ -49,6 +60,8 @@ public class DmCost extends BaseEntity {
 
     /** 文件相对路径 */
     private String costFilePath;
+
+    private String costUuid;
 
 //    其他属性
     private String type;
@@ -165,5 +178,13 @@ public class DmCost extends BaseEntity {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getCostUuid() {
+        return costUuid;
+    }
+
+    public void setCostUuid(String costUuid) {
+        this.costUuid = costUuid;
     }
 }

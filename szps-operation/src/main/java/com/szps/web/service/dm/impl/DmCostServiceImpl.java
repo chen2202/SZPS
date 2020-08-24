@@ -1,6 +1,5 @@
 package com.szps.web.service.dm.impl;
 
-import com.szps.common.core.text.Convert;
 import com.szps.web.domain.dm.DmCost;
 import com.szps.web.mapper.dm.DmCostMapper;
 import com.szps.web.service.dm.IDmCostService;
@@ -26,18 +25,13 @@ public class DmCostServiceImpl implements IDmCostService {
     }
 
     @Override
-    public int deleteCostByIds(Long[] ids) throws Exception {
+    public int deleteCostByIds(Long[] ids) {
         return dmCostMapper.deleteCostByIds(ids);
     }
 
     @Override
     public DmCost selectCostById(Long costId) {
         return dmCostMapper.selectCostById(costId);
-    }
-
-    @Override
-    public DmCost selectCostByCode(String costCode) {
-        return dmCostMapper.selectCostByCode(costCode);
     }
 
     @Override

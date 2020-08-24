@@ -1,6 +1,7 @@
 package com.szps.web.domain.supervise;
 
 
+import java.sql.Date;
 import java.util.List;
 
 public class TbTask {
@@ -35,6 +36,8 @@ public class TbTask {
     private String taskBc;
 
     private String taskBcStaff;
+
+    private Date updateTime;
 
 
 
@@ -166,5 +169,13 @@ public class TbTask {
 
     public void setTaskBcStaff(String taskBcStaff) {
         this.taskBcStaff = taskBcStaff;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

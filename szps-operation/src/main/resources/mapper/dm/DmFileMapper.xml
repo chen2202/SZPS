@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.szps.web.mapper.dm.DmFileMapper">
 
-    <resultMap type="DmFile" id="DmFileResult">
+    <resultMap type="com.szps.web.domain.dm.DmFile" id="DmFileResult">
         <id     property="fileId"       column="file_id"        />
         <result property="dataId"     column="data_id"      />
         <result property="fileName"     column="file_name"      />
@@ -29,7 +29,19 @@
         where f.data_id=#{dataId}
     </select>
 
-    <select id="selectFileListByFileIds" parameterType="Long" resultMap="DmFileResult">
+    <select id="selectFileListByUuid" parameterType="String" resultMap="DmFileResult">
+        select f.file_id,f.data_id,f.file_name,f.file_path
+        from dm_file f
+        where f.data_id = #{uuid}
+    </select>
+
+    <select id="selectFileById" parameterType="Long" resultMap="DmFileResult">
+        select f.file_id,f.data_id,f.file_name,f.file_path
+        from dm_file f
+        where f.file_id = #{fileId}
+    </select>
+
+    <select id="selectFileListByIds" resultMap="DmFileResult">
         select f.file_id,f.data_id,f.file_name,f.file_path
         from dm_file f
         where f.file_id in
@@ -39,7 +51,10 @@
     </select>
 
     <delete id="deleteFileById" parameterType="Long">
-        delete from dm_file where file_id=#{fileId}
+        delete from dm_file where file_id = #{fileId}
     </delete>
 
+    <delete id="deleteFileByUuid">
+        delete from dm_file where data_id = #{uuid}
+    </delete>
 </mapper>

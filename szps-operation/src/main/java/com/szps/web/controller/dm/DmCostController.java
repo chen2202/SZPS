@@ -87,7 +87,7 @@ public class DmCostController extends BaseController {
     @PostMapping("/add")
     @Transactional(rollbackFor = Exception.class)
     @ResponseBody
-    public AjaxResult addSave(DmCost dmCost, @RequestParam("file") MultipartFile []file) throws IOException {
+    public AjaxResult addSave(DmCost dmCost, @RequestParam("file") MultipartFile [] file) throws IOException {
 
         String uuid = UUID.randomUUID().toString().replaceAll("-","");
         dmCost.setCostUuid(uuid);

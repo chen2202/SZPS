@@ -71,4 +71,17 @@ public class TbStaff {
     public void setStaffW(String staffW) {
         this.staffW = staffW;
     }
+
+    @Override
+    public String toString() {
+        return "TbStaff{" +
+                "staffNumber='" + staffNumber + '\'' +
+                ", staffName='" + staffName + '\'' +
+                ", staffArea='" + staffArea + '\'' +
+                ", staffCart='" + staffCart + '\'' +
+                ", staffPost='" + staffPost + '\'' +
+                ", staffDept='" + staffDept + '\'' +
+                ", staffW='" + staffW + '\'' +
+                '}';
+    }
 }

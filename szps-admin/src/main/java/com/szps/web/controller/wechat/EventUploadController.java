@@ -11,6 +11,7 @@ import com.szps.system.domain.SysDept;
 import com.szps.system.domain.SysRole;
 import com.szps.system.domain.SysUser;
 import com.szps.system.service.ISysDeptService;
+import com.szps.web.config.Picture;
 import com.szps.web.domain.event.EventLists;
 import com.szps.web.domain.event.EventPicture;
 import com.szps.web.domain.event.EventSubmit;
@@ -43,6 +44,9 @@ public class EventUploadController {
 
     @Autowired
     private LoginController loginController;
+
+    @Autowired
+    private Picture picture;
 
 
     /**
@@ -181,7 +185,7 @@ public class EventUploadController {
 
         for (EventPicture eventPicture : pictures) {
             String url = eventPicture.getEventPictureUrl();
-            url = "/operation" + url;
+            url = picture.getUrl(url);
             eventPicture.setEventPictureUrl(url);
         }
         return pictures;

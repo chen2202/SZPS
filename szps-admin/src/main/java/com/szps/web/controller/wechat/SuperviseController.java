@@ -7,6 +7,7 @@ import com.szps.common.core.page.TableDataInfo;
 import com.szps.framework.util.ShiroUtils;
 import com.szps.framework.web.domain.server.Sys;
 import com.szps.system.domain.SysUser;
+import com.szps.web.config.Picture;
 import com.szps.web.domain.check.CheckPicture;
 import com.szps.web.domain.supervise.*;
 import com.szps.web.service.supervise.*;
@@ -43,6 +44,10 @@ public class SuperviseController extends BaseController {
     @Autowired
     private PictureService pictureService;
 
+    @Autowired
+    private Picture picture;
+
+
     /**
      * 初始化数据拉取
      *
@@ -71,7 +76,7 @@ public class SuperviseController extends BaseController {
             String a = list.get(i).getTaskHouse();
             //System.out.println(a);
             TbHouse tbHouse = houseService.selectHouseById(a);
-            TBALL tball=new TBALL();
+            TBALL tball = new TBALL();
             TbTask tbTask1 = new TbTask();
 
 
@@ -97,7 +102,7 @@ public class SuperviseController extends BaseController {
                     }
                     tbTask1.setTbStaffList(tbStaffs);
                     tbTask1.setTbHouse(tbHouse);
-                    List<TbPicture> pictures=pictureService.selectPictureById(tbTask1.getTaskNumber());
+                    List<TbPicture> pictures = pictureService.selectPictureById(tbTask1.getTaskNumber());
                     tball.setTbTask(tbTask1);
                     tball.setPictureList(getTbPictures(pictures));
                     list1.add(tball);
@@ -124,7 +129,7 @@ public class SuperviseController extends BaseController {
                     }
                     tbTask1.setTbStaffList(tbStaffs);
                     tbTask1.setTbHouse(tbHouse);
-                    List<TbPicture> pictures=pictureService.selectPictureById(tbTask1.getTaskNumber());
+                    List<TbPicture> pictures = pictureService.selectPictureById(tbTask1.getTaskNumber());
                     tball.setTbTask(tbTask1);
                     tball.setPictureList(getTbPictures(pictures));
                     list1.add(tball);
@@ -140,15 +145,15 @@ public class SuperviseController extends BaseController {
     }
 
 
-  protected  List<TbPicture> getTbPictures(List<TbPicture> tbPictures){
+    protected List<TbPicture> getTbPictures(List<TbPicture> tbPictures) {
 
-      for (TbPicture tbPicture : tbPictures) {
-          String url = tbPicture.getPictureLocation();
-          url = "/operation" + url;
-          tbPicture.setPictureLocation(url);
-      }
-      return tbPictures;
-  }
+        for (TbPicture tbPicture : tbPictures) {
+            String url = tbPicture.getPictureLocation();
+            url = picture.getUrl(url);
+            tbPicture.setPictureLocation(url);
+        }
+        return tbPictures;
+    }
 
     /**
      * 初始化数据统计
@@ -267,6 +272,7 @@ public class SuperviseController extends BaseController {
 
         List<TbTask> list = Service.selectTaskList(tbTask);
 
+        System.out.println(list.size());
         List<TbTask> list2 = new ArrayList<>();
 
 
@@ -276,6 +282,7 @@ public class SuperviseController extends BaseController {
             String a = list.get(i).getTaskHouse();
             //System.out.println(a);
             TbHouse tbHouse = houseService.selectHouseById(a);
+            System.out.println(tbHouse.toString());
             TbTask tbTask1 = new TbTask();
 
 
@@ -285,29 +292,31 @@ public class SuperviseController extends BaseController {
 
                 List<TbTaskStaff> tbTaskStaffs = taskStaffService.selectTbTaskStaffById(list.get(i).getTaskNumber());
                 List<TbStaff> tbStaffs = new ArrayList<TbStaff>();
+
                 for (int k = 0; k < tbTaskStaffs.size(); k++) {
                     //System.out.println(tbTaskStaffs.get(k));
                     TbStaff staff = staffService.selectStaffById(tbTaskStaffs.get(k).getStaffNumber());
 
-                    if (sysUser.getUserName().contains(staff.getStaffName())) {
+
+                       if(staff!=null){
+                           if (sysUser.getUserName().equals(staff.getStaffName())) {
 
 
-                        if (staff != null && Objects.equals(staff.getStaffPost(), "一类")) {
-                            tbStaffs.add(staff);
-                        }
-                        if (staff != null && Objects.equals(staff.getStaffPost(), "二类")) {
-                            tbStaffs.add(staff);
-                        }
+                               if (staff != null && Objects.equals(staff.getStaffPost(), "一类")) {
+                                   tbStaffs.add(staff);
+                               }
+                               if (staff != null && Objects.equals(staff.getStaffPost(), "二类")) {
+                                   tbStaffs.add(staff);
+                               }
 
-                        tbTask1.setTbStaffList(tbStaffs);
-                        tbTask1.setTbHouse(tbHouse);
-                        list2.add(tbTask1);
-                    }
+                               tbTask1.setTbStaffList(tbStaffs);
+                               tbTask1.setTbHouse(tbHouse);
+                               list2.add(tbTask1);
+                           }
+                       }
                 }
 
-
             }
-
 
         }
 
@@ -371,7 +380,7 @@ public class SuperviseController extends BaseController {
             String url[] = new String[10];
             for (int i = 0; i < multipartFile.length; i++) {
                 fileName[i] = FileUploadUtils.upload(filePath, multipartFile[i]);
-                url[i] = "/profile" + fileName[i];
+                url[i] = "/operation"+ fileName[i];
                 int radomInt = new Random().nextInt(999999);
                 String s = String.valueOf(radomInt);
                 while (pictureService.checkPicture(s) == 1) {

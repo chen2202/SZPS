@@ -12,6 +12,7 @@ import com.szps.system.domain.SysDept;
 import com.szps.system.domain.SysUser;
 import com.szps.system.service.ISysAreaService;
 import com.szps.system.service.ISysDeptService;
+import com.szps.web.config.Picture;
 import com.szps.web.domain.check.Check;
 import com.szps.web.domain.check.CheckPicture;
 import com.szps.web.domain.check.PlantCheckRecord;
@@ -48,6 +49,10 @@ public class CheckController {
 
     @Autowired
     private LoginController loginController;
+
+    @Autowired
+    private Picture picture;
+
 
 
     private String[] strings = {"水质净化厂", "泵站", "调蓄池", "分散式污水处理设施", "排水管网"};
@@ -194,7 +199,7 @@ public class CheckController {
 
         for (CheckPicture checkPicture : checkPictures) {
             String url = checkPicture.getGetCheckPictureUrl();
-            url = "/operation" + url;
+            url = picture.getUrl(url);
             checkPicture.setGetCheckPictureUrl(url);
         }
         return checkPictures;

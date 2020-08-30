@@ -36,19 +36,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc7b956e-4cbc-4a6b-8b84-b165eb2e201f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/config/Picture.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/config/Myconfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/config/UploadPicture.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/CheckController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/CheckController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/EventUploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/EventUploadController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/SuperviseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/controller/wechat/SuperviseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/check/PlantCheckRecordMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/check/PlantCheckRecordMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/event/EventSubmitMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/mapper/event/EventSubmitMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-framework/src/main/java/com/szps/framework/shiro/web/filter/CSRFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-framework/src/main/java/com/szps/framework/shiro/web/filter/CSRFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/PlantCheckRecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/check/PlantCheckRecordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/event/EventSubmitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/java/com/szps/web/controller/event/EventSubmitController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/supervise/TbHouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/supervise/TbHouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/supervise/TbStaff.java" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/java/com/szps/web/domain/supervise/TbStaff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/szps-admin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-admin/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/application-druid.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/check/PlantCheckRecordMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/check/PlantCheckRecordMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/event/EventSubmitMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/szps-operation/src/main/resources/mapper/event/EventSubmitMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,10 +121,12 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\resources\static\checkFonts" />
-      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\resources\templates\check\plant\plant" />
-      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\java\com\szps\web\controller\wechat" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\resources\static\checkFonts\css" />
+      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\resources\static\checkFonts\js" />
+      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\resources\templates\event\submit" />
+      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\resources\mapper\event" />
+      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\resources\mapper\check" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.szps.web.domain.event" />
@@ -135,12 +135,11 @@
       <recent name="com.szps.web.service.check.impl" />
       <recent name="com.szps.web.service.check" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\resources\static\checkFonts\css" />
-      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\resources\static\checkFonts\js" />
-      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\resources\templates\event\submit" />
-      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\resources\mapper\event" />
-      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\resources\mapper\check" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\B-Code\Z-深圳排水信息\szps-admin\src\main\resources\META-INF" />
+      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\resources\static\checkFonts" />
+      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\resources\templates\check\plant\plant" />
+      <recent name="E:\B-Code\Z-深圳排水信息\szps-operation\src\main\java\com\szps\web\controller\wechat" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -150,7 +149,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.OPApplication">
+  <component name="RunManager" selected="Spring Boot.SZPSApplication">
     <configuration name="OPApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="szps-operation" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.szps.OPApplication" />
@@ -350,7 +349,11 @@
       <workItem from="1597537654175" duration="5550000" />
       <workItem from="1597550701415" duration="2207000" />
       <workItem from="1597563464393" duration="211000" />
-      <workItem from="1598242164158" duration="1984000" />
+      <workItem from="1598242164158" duration="2736000" />
+      <workItem from="1598690484490" duration="831000" />
+      <workItem from="1598698778374" duration="6161000" />
+      <workItem from="1598744283269" duration="6611000" />
+      <workItem from="1598758446816" duration="213000" />
     </task>
     <servers />
   </component>
@@ -378,46 +381,62 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="249" y="0" key="#Project_Structure/0.0.1536.834@0.0.1536.834" timestamp="1597492872663" />
-    <state x="574" y="101" key="#com.intellij.ide.util.MemberChooser" timestamp="1597542986165">
+    <state x="574" y="101" key="#com.intellij.ide.util.MemberChooser" timestamp="1598773152614">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="574" y="101" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1597542986165" />
+    <state x="574" y="101" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1598773152614" />
     <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1597159990575">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1597159990575" />
-    <state width="1352" height="393" key="GridCell.Tab.0.bottom" timestamp="1598243531643">
+    <state width="1352" height="2" key="GridCell.Tab.0.bottom" timestamp="1598774063910">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1352" height="393" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1598243531643" />
-    <state width="1352" height="393" key="GridCell.Tab.0.center" timestamp="1598243531643">
+    <state width="1352" height="2" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1598774063910" />
+    <state width="1352" height="2" key="GridCell.Tab.0.center" timestamp="1598774063910">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1352" height="393" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1598243531643" />
-    <state width="1352" height="393" key="GridCell.Tab.0.left" timestamp="1598243531643">
+    <state width="1352" height="2" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1598774063910" />
+    <state width="1352" height="2" key="GridCell.Tab.0.left" timestamp="1598774063910">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1352" height="393" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1598243531643" />
-    <state width="1352" height="393" key="GridCell.Tab.0.right" timestamp="1598243531643">
+    <state width="1352" height="2" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1598774063910" />
+    <state width="1352" height="2" key="GridCell.Tab.0.right" timestamp="1598774063910">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1352" height="393" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1598243531643" />
-    <state width="1352" height="393" key="GridCell.Tab.1.bottom" timestamp="1598243531643">
+    <state width="1352" height="2" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1598774063910" />
+    <state width="1352" height="2" key="GridCell.Tab.1.bottom" timestamp="1598774063910">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1352" height="393" key="GridCell.Tab.1.bottom/0.0.1536.834@0.0.1536.834" timestamp="1598243531643" />
-    <state width="1352" height="393" key="GridCell.Tab.1.center" timestamp="1598243531643">
+    <state width="1352" height="2" key="GridCell.Tab.1.bottom/0.0.1536.834@0.0.1536.834" timestamp="1598774063910" />
+    <state width="1352" height="2" key="GridCell.Tab.1.center" timestamp="1598774063910">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1352" height="393" key="GridCell.Tab.1.center/0.0.1536.834@0.0.1536.834" timestamp="1598243531643" />
-    <state width="1352" height="393" key="GridCell.Tab.1.left" timestamp="1598243531643">
+    <state width="1352" height="2" key="GridCell.Tab.1.center/0.0.1536.834@0.0.1536.834" timestamp="1598774063910" />
+    <state width="1352" height="2" key="GridCell.Tab.1.left" timestamp="1598774063910">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1352" height="393" key="GridCell.Tab.1.left/0.0.1536.834@0.0.1536.834" timestamp="1598243531643" />
-    <state width="1352" height="393" key="GridCell.Tab.1.right" timestamp="1598243531643">
+    <state width="1352" height="2" key="GridCell.Tab.1.left/0.0.1536.834@0.0.1536.834" timestamp="1598774063910" />
+    <state width="1352" height="2" key="GridCell.Tab.1.right" timestamp="1598774063910">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1352" height="393" key="GridCell.Tab.1.right/0.0.1536.834@0.0.1536.834" timestamp="1598243531643" />
+    <state width="1352" height="2" key="GridCell.Tab.1.right/0.0.1536.834@0.0.1536.834" timestamp="1598774063910" />
+    <state width="1352" height="198" key="GridCell.Tab.2.bottom" timestamp="1598773330461">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1352" height="198" key="GridCell.Tab.2.bottom/0.0.1536.834@0.0.1536.834" timestamp="1598773330461" />
+    <state width="1352" height="198" key="GridCell.Tab.2.center" timestamp="1598773330460">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1352" height="198" key="GridCell.Tab.2.center/0.0.1536.834@0.0.1536.834" timestamp="1598773330460" />
+    <state width="1352" height="198" key="GridCell.Tab.2.left" timestamp="1598773330460">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1352" height="198" key="GridCell.Tab.2.left/0.0.1536.834@0.0.1536.834" timestamp="1598773330460" />
+    <state width="1352" height="198" key="GridCell.Tab.2.right" timestamp="1598773330461">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1352" height="198" key="GridCell.Tab.2.right/0.0.1536.834@0.0.1536.834" timestamp="1598773330461" />
     <state x="270" y="0" key="SettingsEditor" timestamp="1597492896032">
       <screen x="0" y="0" width="1536" height="834" />
     </state>

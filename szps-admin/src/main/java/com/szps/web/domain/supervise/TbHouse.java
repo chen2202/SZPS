@@ -117,4 +117,22 @@ public class TbHouse {
     public void setHouseItem(String houseItem) {
         this.houseItem = houseItem;
     }
+
+
+    @Override
+    public String toString() {
+        return "TbHouse{" +
+                "houseNumber='" + houseNumber + '\'' +
+                ", houseName='" + houseName + '\'' +
+                ", houseRegion='" + houseRegion + '\'' +
+                ", houseBegin='" + houseBegin + '\'' +
+                ", houseRole='" + houseRole + '\'' +
+                ", houseEnd='" + houseEnd + '\'' +
+                ", housePhone='" + housePhone + '\'' +
+                ", houseFlag='" + houseFlag + '\'' +
+                ", houseTime='" + houseTime + '\'' +
+                ", houseRule='" + houseRule + '\'' +
+                ", houseItem='" + houseItem + '\'' +
+                '}';
+    }
 }

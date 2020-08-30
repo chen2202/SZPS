@@ -159,7 +159,7 @@ public class DmFileController extends BaseController {
             for (DmFile f : files) {
                 // 数据库资源地址
                 //   /profile/upload/2019/09/19/1b637f0eed669b6181004542da9f24de.jpg 去掉 /profile/upload
-                String downloadPath = localPath + f.getFilePath().replace("/profile/upload", "");
+                String downloadPath = localPath + f.getFilePath().replace("/upload", "").replace("\\upload","");
 
                 ZipEntry ze = new ZipEntry(f.getFileName());
                 zos.putNextEntry(ze);

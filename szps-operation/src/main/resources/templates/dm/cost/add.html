@@ -172,6 +172,12 @@
             return false;
         }
 
+        var fileInput = document.getElementById("filePath");
+        var filess = fileInput.files;
+        for (var i = 0; i < filess.length; i++) {
+            formData.append("file",filess[i],filess[i].name);
+        }
+
         formData.append('costFactory',$("#treeNameBrf").val());
         formData.append('costCompany',$("#costCompany").val());
         formData.append('costApplyTime',$("#costApplyTime").val());
@@ -182,7 +188,6 @@
         formData.append('costPunishReason',$("#costPunishReason").val());
         formData.append('costRemark',$("#costRemark").val());
         formData.append('costFileName', $("#filePath").val());
-        formData.append('file', $('#filePath')[0].files[0]);
 
         $.ajax({
             url: prefix + "/add",

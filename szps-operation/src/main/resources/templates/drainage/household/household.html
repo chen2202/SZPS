@@ -434,15 +434,16 @@
 		        {
 		        	field: 'option',
 		            title: '操作',
-		            align: 'center',
+		            halign: 'center',
+		            width: 160,
 		            formatter: function(value, row, index) {
 		                var actions = [];
 		              	//用详情页面和编辑权限来显示排水户的详情信息
 		                actions.push('<a class="' + editFlag + '" href="javascript:void(0)" onclick="$.operate.detail(\'' + row.household_id + '\')">详情</a>');
-		              	actions.push(' <a>|</a> ');
+		              	actions.push(' <a> </a> ');
 		              	//actions.push('<a href="/map/index2?X=' + row.latitude + '&Y=' + row.longitude + '">定位</a>');
 		              	actions.push('<a href="javascript:void(0)" onclick="opengis(\'' + row.latitude  + '\',\''+ row.longitude + '\')">定位</a>');
-		                return actions.join('');
+		              	return actions.join('');
 		            }
 		        }]
 		    };

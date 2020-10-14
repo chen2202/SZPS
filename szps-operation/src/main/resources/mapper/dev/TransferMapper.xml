@@ -105,37 +105,37 @@
     <update id="update" parameterType="Transfer">
  		update dev_transfer
  		<set>
-			<if test=" deptId != null and deptId != ''">deptId = #{deptId},</if>
-			<if test=" applyDate != null and applyDate != ''">applyDate = #{applyDate},</if>
-			<if test=" applyDept != null and applyDept != ''">applyDept = #{applyDept},</if>
-			<if test=" applyEquip != null and applyEquip != ''">applyEquip = #{applyEquip},</if>
-			<if test=" devModel != null and devModel != ''">devModel = #{devModel},</if>
-			<if test=" origDept != null and origDept != ''">origDept = #{origDept},</if>
-			<if test=" devStatu != null and devStatu != ''">devStatu = #{devStatu},</if>
-			<if test=" devNumber != null and devNumber != ''">devNumber = #{devNumber},</if>
-			<if test=" transferType != null and transferType != ''">transferType = #{transferType},</if>
-			<if test=" origValue != null and origValue != ''">origValue = #{origValue},</if>
-			<if test=" devType != null and devType != ''">devType = #{devType},</if>
-			<if test=" planoutDate != null and planoutDate != ''">planoutDate = #{planoutDate},</if>
-			<if test=" depreciateYear != null and depreciateYear != ''">depreciateYear = #{depreciateYear},</if>
-			<if test=" supplier != null and supplier != ''">supplier = #{supplier},</if>
-			<if test=" planReturnDate != null and planReturnDate != ''">planReturnDate = #{planReturnDate},</if>
-			<if test=" dutyCost != null and dutyCost != ''">dutyCost = #{dutyCost},</if>
-			<if test=" buyDate != null and buyDate != ''">buyDate = #{buyDate},</if>
-			<if test=" tPart != null and tPart != ''">tPart = #{tPart},</if>
-			<if test=" accessory != null and accessory != ''">accessory = #{accessory},</if>
-			<if test=" applyReason != null and applyReason != ''">applyReason = #{applyReason},</if>
-			<if test=" applicant != null and applicant != ''">applicant = #{applicant},</if>
-			<if test=" origDeptOpinion != null and origDeptOpinion != ''">origDeptOpinion = #{origDeptOpinion},</if>
-			<if test=" origPeople != null and origPeople != ''">origPeople = #{origPeople},</if>
-			<if test=" equipDeptOpinion != null and equipDeptOpinion != ''">equipDeptOpinion = #{equipDeptOpinion},</if>
-			<if test=" equipPeople != null and equipPeople != ''">equipPeople = #{equipPeople},</if>
-			<if test=" leaderOpinion != null and leaderOpinion != ''">leaderOpinion = #{leaderOpinion},</if>
-			<if test=" leader != null and leader != ''">leader = #{leader},</if>
+			<if test=" deptId != null">deptId = #{deptId},</if>
+			<if test=" applyDate != null">applyDate = #{applyDate},</if>
+			<if test=" applyDept != null">applyDept = #{applyDept},</if>
+			<if test=" applyEquip != null">applyEquip = #{applyEquip},</if>
+			<if test=" devModel != null">devModel = #{devModel},</if>
+			<if test=" origDept != null">origDept = #{origDept},</if>
+			<if test=" devStatu != null">devStatu = #{devStatu},</if>
+			<if test=" devNumber != null">devNumber = #{devNumber},</if>
+			<if test=" transferType != null">transferType = #{transferType},</if>
+			<if test=" origValue != null">origValue = #{origValue},</if>
+			<if test=" devType != null">devType = #{devType},</if>
+			<if test=" planoutDate != null">planoutDate = #{planoutDate},</if>
+			<if test=" depreciateYear != null">depreciateYear = #{depreciateYear},</if>
+			<if test=" supplier != null">supplier = #{supplier},</if>
+			<if test=" planReturnDate != null">planReturnDate = #{planReturnDate},</if>
+			<if test=" dutyCost != null">dutyCost = #{dutyCost},</if>
+			<if test=" buyDate != null">buyDate = #{buyDate},</if>
+			<if test=" tPart != null">tPart = #{tPart},</if>
+			<if test=" accessory != null">accessory = #{accessory},</if>
+			<if test=" applyReason != null">applyReason = #{applyReason},</if>
+			<if test=" applicant != null">applicant = #{applicant},</if>
+			<if test=" origDeptOpinion != null">origDeptOpinion = #{origDeptOpinion},</if>
+			<if test=" origPeople != null">origPeople = #{origPeople},</if>
+			<if test=" equipDeptOpinion != null">equipDeptOpinion = #{equipDeptOpinion},</if>
+			<if test=" equipPeople != null">equipPeople = #{equipPeople},</if>
+			<if test=" leaderOpinion != null">leaderOpinion = #{leaderOpinion},</if>
+			<if test=" leader != null">leader = #{leader},</if>
 			
-			<if test=" delFlag != null and delFlag!= ''">delFlag = #{delFlag},</if>
-			<if test=" remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" delFlag != null">delFlag = #{delFlag},</if>
+			<if test=" remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -148,73 +148,73 @@
     
 		INSERT INTO dev_transfer(
 			<if test=" id != null and id!= 0">id,</if>
-			<if test=" deptId != null and  deptId != ''">deptId,</if>
-			<if test=" applyDate != null and  applyDate != ''">applyDate,</if>
-			<if test=" applyDept != null and  applyDept != ''">applyDept,</if>
-			<if test=" applyEquip != null and  applyEquip != ''">applyEquip,</if>
-			<if test=" devModel != null and  devModel != ''">devModel,</if>
-			<if test=" origDept != null and  origDept != ''">origDept,</if>
-			<if test=" devStatu != null and  devStatu != ''">devStatu,</if>
-			<if test=" devNumber != null and  devNumber != ''">devNumber,</if>
-			<if test=" transferType != null and  transferType != ''">transferType,</if>
-			<if test=" origValue != null and  origValue != ''">origValue,</if>
-			<if test=" devType != null and  devType != ''">devType,</if>
-			<if test=" planoutDate != null and  planoutDate != ''">planoutDate,</if>
-			<if test=" depreciateYear != null and  depreciateYear != ''">depreciateYear,</if>
-			<if test=" supplier != null and  supplier != ''">supplier,</if>
-			<if test=" planReturnDate != null and  planReturnDate != ''">planReturnDate,</if>
-			<if test=" dutyCost != null and  dutyCost != ''">dutyCost,</if>
-			<if test=" buyDate != null and  buyDate != ''">buyDate,</if>
-			<if test=" tPart != null and  tPart != ''">tPart,</if>
-			<if test=" accessory != null and  accessory != ''">accessory,</if>
-			<if test=" applyReason != null and  applyReason != ''">applyReason,</if>
-			<if test=" applicant != null and  applicant != ''">applicant,</if>
-			<if test=" origDeptOpinion != null and  origDeptOpinion != ''">origDeptOpinion,</if>
-			<if test=" origPeople != null and  origPeople != ''">origPeople,</if>
-			<if test=" equipDeptOpinion != null and  equipDeptOpinion != ''">equipDeptOpinion,</if>
-			<if test=" equipPeople != null and  equipPeople != ''">equipPeople,</if>
-			<if test=" leaderOpinion != null and  leaderOpinion != ''">leaderOpinion,</if>
-			<if test=" leader != null and  leader != ''">leader,</if>
+			<if test=" deptId != null">deptId,</if>
+			<if test=" applyDate != null">applyDate,</if>
+			<if test=" applyDept != null">applyDept,</if>
+			<if test=" applyEquip != null">applyEquip,</if>
+			<if test=" devModel != null">devModel,</if>
+			<if test=" origDept != null">origDept,</if>
+			<if test=" devStatu != null">devStatu,</if>
+			<if test=" devNumber != null">devNumber,</if>
+			<if test=" transferType != null">transferType,</if>
+			<if test=" origValue != null">origValue,</if>
+			<if test=" devType != null">devType,</if>
+			<if test=" planoutDate != null">planoutDate,</if>
+			<if test=" depreciateYear != null">depreciateYear,</if>
+			<if test=" supplier != null">supplier,</if>
+			<if test=" planReturnDate != null">planReturnDate,</if>
+			<if test=" dutyCost != null">dutyCost,</if>
+			<if test=" buyDate != null">buyDate,</if>
+			<if test=" tPart != null">tPart,</if>
+			<if test=" accessory != null">accessory,</if>
+			<if test=" applyReason != null">applyReason,</if>
+			<if test=" applicant != null">applicant,</if>
+			<if test=" origDeptOpinion != null">origDeptOpinion,</if>
+			<if test=" origPeople != null">origPeople,</if>
+			<if test=" equipDeptOpinion != null">equipDeptOpinion,</if>
+			<if test=" equipPeople != null">equipPeople,</if>
+			<if test=" leaderOpinion != null">leaderOpinion,</if>
+			<if test=" leader != null">leader,</if>
 
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" delFlag != null and delFlag!= ''">delFlag,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" delFlag != null">delFlag,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
-			<if test=" deptId != null and deptId != ''">#{deptId},</if>
-			<if test=" applyDate != null and applyDate != ''">#{applyDate},</if>
-			<if test=" applyDept != null and applyDept != ''">#{applyDept},</if>
-			<if test=" applyEquip != null and applyEquip != ''">#{applyEquip},</if>
-			<if test=" devModel != null and devModel != ''">#{devModel},</if>
-			<if test=" origDept != null and origDept != ''">#{origDept},</if>
-			<if test=" devStatu != null and devStatu != ''">#{devStatu},</if>
-			<if test=" devNumber != null and devNumber != ''">#{devNumber},</if>
-			<if test=" transferType != null and transferType != ''">#{transferType},</if>
-			<if test=" origValue != null and origValue != ''">#{origValue},</if>
-			<if test=" devType != null and devType != ''">#{devType},</if>
-			<if test=" planoutDate != null and planoutDate != ''">#{planoutDate},</if>
-			<if test=" depreciateYear != null and depreciateYear != ''">#{depreciateYear},</if>
-			<if test=" supplier != null and supplier != ''">#{supplier},</if>
-			<if test=" planReturnDate != null and planReturnDate != ''">#{planReturnDate},</if>
-			<if test=" dutyCost != null and dutyCost != ''">#{dutyCost},</if>
-			<if test=" buyDate != null and buyDate != ''">#{buyDate},</if>
-			<if test=" tPart != null and tPart != ''">#{tPart},</if>
-			<if test=" accessory != null and accessory != ''">#{accessory},</if>
-			<if test=" applyReason != null and applyReason != ''">#{applyReason},</if>
-			<if test=" applicant != null and applicant != ''">#{applicant},</if>
-			<if test=" origDeptOpinion != null and origDeptOpinion != ''">#{origDeptOpinion},</if>
-			<if test=" origPeople != null and origPeople != ''">#{origPeople},</if>
-			<if test=" equipDeptOpinion != null and equipDeptOpinion != ''">#{equipDeptOpinion},</if>
-			<if test=" equipPeople != null and equipPeople != ''">#{equipPeople},</if>
-			<if test=" leaderOpinion != null and leaderOpinion != ''">#{leaderOpinion},</if>
-			<if test=" leader != null and leader != ''">#{leader},</if>
+			<if test=" deptId != null">#{deptId},</if>
+			<if test=" applyDate != null">#{applyDate},</if>
+			<if test=" applyDept != null">#{applyDept},</if>
+			<if test=" applyEquip != null">#{applyEquip},</if>
+			<if test=" devModel != null">#{devModel},</if>
+			<if test=" origDept != null">#{origDept},</if>
+			<if test=" devStatu != null">#{devStatu},</if>
+			<if test=" devNumber != null">#{devNumber},</if>
+			<if test=" transferType != null">#{transferType},</if>
+			<if test=" origValue != null">#{origValue},</if>
+			<if test=" devType != null">#{devType},</if>
+			<if test=" planoutDate != null">#{planoutDate},</if>
+			<if test=" depreciateYear != null">#{depreciateYear},</if>
+			<if test=" supplier != null">#{supplier},</if>
+			<if test=" planReturnDate != null">#{planReturnDate},</if>
+			<if test=" dutyCost != null">#{dutyCost},</if>
+			<if test=" buyDate != null">#{buyDate},</if>
+			<if test=" tPart != null">#{tPart},</if>
+			<if test=" accessory != null">#{accessory},</if>
+			<if test=" applyReason != null">#{applyReason},</if>
+			<if test=" applicant != null">#{applicant},</if>
+			<if test=" origDeptOpinion != null">#{origDeptOpinion},</if>
+			<if test=" origPeople != null">#{origPeople},</if>
+			<if test=" equipDeptOpinion != null">#{equipDeptOpinion},</if>
+			<if test=" equipPeople != null">#{equipPeople},</if>
+			<if test=" leaderOpinion != null">#{leaderOpinion},</if>
+			<if test=" leader != null">#{leader},</if>
 
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" delFlag != null and delFlag!= ''">#{delFlag},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" delFlag != null">#{delFlag},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

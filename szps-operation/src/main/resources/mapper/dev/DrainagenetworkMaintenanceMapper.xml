@@ -89,16 +89,16 @@
     <update id="update" parameterType="DrainagenetworkMaintenance">
  		update DEV_DRAINAGENETWORK_MT
  		<set>
-			<if test=" optime != null and optime != ''">optime = #{optime},</if>
-			<if test=" devname != null and devname != ''">devname = #{devname},</if>
-			<if test=" optype != null and optype != ''">optype = #{optype},</if>
-			<if test=" opdetails != null and opdetails != ''">opdetails = #{opdetails},</if>
-			<if test=" replaceparts != null and replaceparts != ''">replaceparts = #{replaceparts},</if>
-			<if test=" operator != null and operator != ''">operator = #{operator},</if>
-			<if test=" attachmenturl != null and attachmenturl != ''">attachmenturl = #{attachmenturl},</if>
+			<if test=" optime != null">optime = #{optime},</if>
+			<if test=" devname != null">devname = #{devname},</if>
+			<if test=" optype != null">optype = #{optype},</if>
+			<if test=" opdetails != null">opdetails = #{opdetails},</if>
+			<if test=" replaceparts != null">replaceparts = #{replaceparts},</if>
+			<if test=" operator != null">operator = #{operator},</if>
+			<if test=" attachmenturl != null">attachmenturl = #{attachmenturl},</if>
 			
-			<if test=" remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -111,36 +111,36 @@
     
 		INSERT INTO DEV_DRAINAGENETWORK_MT(
 			<if test=" id != null and id!= 0">id,</if>
-<if test=" optime != null and  optime != ''">optime,</if>
-<if test=" devname != null and  devname != ''">devname,</if>
-<if test=" optype != null and  optype != ''">optype,</if>
-<if test=" opdetails != null and  opdetails != ''">opdetails,</if>
-<if test=" replaceparts != null and  replaceparts != ''">replaceparts,</if>
-<if test=" operator != null and  operator != ''">operator,</if>
-<if test=" attachmenturl != null and  attachmenturl != ''">attachmenturl,</if>
+<if test=" optime != null">optime,</if>
+<if test=" devname != null">devname,</if>
+<if test=" optype != null">optype,</if>
+<if test=" opdetails != null">opdetails,</if>
+<if test=" replaceparts != null">replaceparts,</if>
+<if test=" operator != null">operator,</if>
+<if test=" attachmenturl != null">attachmenturl,</if>
 
 
 			
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
-<if test=" optime != null and optime != ''">#{optime},</if>
-<if test=" devname != null and devname != ''">#{devname},</if>
-<if test=" optype != null and optype != ''">#{optype},</if>
-<if test=" opdetails != null and opdetails != ''">#{opdetails},</if>
-<if test=" replaceparts != null and replaceparts != ''">#{replaceparts},</if>
-<if test=" operator != null and operator != ''">#{operator},</if>
-<if test=" attachmenturl != null and attachmenturl != ''">#{attachmenturl},</if>
+<if test=" optime != null">#{optime},</if>
+<if test=" devname != null">#{devname},</if>
+<if test=" optype != null">#{optype},</if>
+<if test=" opdetails != null">#{opdetails},</if>
+<if test=" replaceparts != null">#{replaceparts},</if>
+<if test=" operator != null">#{operator},</if>
+<if test=" attachmenturl != null">#{attachmenturl},</if>
 
 
 
 			
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

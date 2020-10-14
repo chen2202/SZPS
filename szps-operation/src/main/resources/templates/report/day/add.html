@@ -3,6 +3,29 @@
 <head>
 	<th:block th:include="include :: header('添加日报')" />
 	<th:block th:include="include :: select2-css" />
+	<script th:inline="javascript">
+			function calloadrate()
+			{
+			    var t1 = document.forms[0].dscale.value;
+			    var t2 = document.forms[0].tcapacity.value;
+				 if(t1!="" &&  t2!=""  ){
+					
+					var result = (Number(t2)/Number(t1))*100;
+					 text = result.toString();
+					    var pointIndex = text.indexOf(".");
+					    if(pointIndex != -1){
+					        var pointText = text.substring(pointIndex + 1,text.length);
+					        if(pointText.length > 2){
+					            result = (result + 0.01).toFixed(2);
+					        }else{
+					            result = result.toFixed(2);
+					        }
+					    }
+					    document.getElementById("loadrate").value = result+"%"  ;
+				}
+				else {document.getElementById("loadrate").value = "";} 
+			}
+	</script>
 </head>
 <body>
     <div class="wrapper wrapper-content animated fadeInRight ibox-content">
@@ -41,7 +64,7 @@
 					<div class="form-group">
 						<label class="col-sm-6 control-label">设计规模：</label>
 						<div class="col-sm-6">
-							<input class="form-control" type="text" name="dscale" id="dscale" >
+							<input name="dscale" id="dscale"  class="form-control" type="number" onkeyup="calloadrate()" />		
 						</div>
 					</div>
 				</div>
@@ -51,7 +74,7 @@
 		        	<div class="form-group">
 						<label class="col-sm-6 control-label ">处理量(万吨)：</label>
 						<div class="col-sm-6">
-								<input class="form-control" type="text" name="tcapacity" id="tcapacity" >
+								<input class="form-control" type="number" name="tcapacity" id="tcapacity" onkeyup="calloadrate()" >
 						</div>
 					</div>
 				</div>
@@ -59,7 +82,7 @@
 					<div class="form-group">
 						<label class="col-sm-6 control-label">负荷率：</label>
 						<div class="col-sm-6">
-							<input class="form-control" type="text" name="loadrate" id="loadrate" >
+							<input class="form-control" type="text" name="loadrate" id="loadrate" readonly="readonly">
 						</div>
 					</div>
 				</div>
@@ -156,6 +179,44 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-6 control-label ">进水总氮(mg/L)：</label>
+						<div class="col-sm-6">
+								<input class="form-control" type="text" name="intn" id="intn" >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">出水BOD(mg/L)：</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text" name="outbod" id="outbod" >
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	        	<div class="col-sm-6">
+		        	<div class="form-group">
+						<label class="col-sm-6 control-label ">出水总氮(mg/L)：</label>
+						<div class="col-sm-6">
+								<input class="form-control" type="text" name="outtn" id="outtn" >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-6 control-label">出水SS(mg/L)：</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text" name="outss" id="outss" >
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ----------------- -->
 			<div class="row">
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
@@ -210,6 +271,7 @@
 					</div>
 				</div>
 			</div>
+			
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="form-group">
@@ -265,7 +327,7 @@
         function selectDeptTree() {
         	var treeId = $("#treeId").val();
         	var deptId = $.common.isEmpty(treeId) ? "1140" : $("#treeId").val();
-        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+        	var url = ctx + "system/dept/selectDeptTree2/1140" ;
 			var options = {
 				title: '选择部门',
 				width: "380",

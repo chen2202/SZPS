@@ -87,24 +87,24 @@
         insert into sys_area(
         <if test="areaId != null and areaId != 0">area_id,</if>
         <if test="parentId != null and parentId != 0">parent_id,</if>
-        <if test="areaName != null and areaName != ''">area_name,</if>
-        <if test="ancestors != null and ancestors != ''">ancestors,</if>
-        <if test="orderNum != null and orderNum != ''">order_num,</if>
-        <if test="areaCode != null and areaCode != ''">area_code,</if>
-        <if test="areaType != null and areaType != ''">area_type,</if>
-        <if test="createBy != null and createBy != ''">create_by,</if>
-        <if test="delFlag != null and delFlag != ''">create_by,</if>
+        <if test="areaName != null">area_name,</if>
+        <if test="ancestors != null">ancestors,</if>
+        <if test="orderNum != null">order_num,</if>
+        <if test="areaCode != null">area_code,</if>
+        <if test="areaType != null">area_type,</if>
+        <if test="createBy != null">create_by,</if>
+        <if test="delFlag != null">create_by,</if>
         create_time
         )values(
         <if test="areaId != null and areaId != 0">#{areaId},</if>
         <if test="parentId != null and parentId != 0">#{parentId},</if>
-        <if test="areaName != null and areaName != ''">#{areaName},</if>
-        <if test="ancestors != null and ancestors != ''">#{ancestors},</if>
-        <if test="orderNum != null and orderNum != ''">#{orderNum},</if>
-        <if test="areaCode != null and areaCode != ''">#{areaCode},</if>
-        <if test="areaType != null and areaType != ''">#{areaType},</if>
-        <if test="createBy != null and createBy != ''">#{createBy},</if>
-        <if test="delFlag != null and delFlag != ''">#{delFlag},</if>
+        <if test="areaName != null">#{areaName},</if>
+        <if test="ancestors != null">#{ancestors},</if>
+        <if test="orderNum != null">#{orderNum},</if>
+        <if test="areaCode != null">#{areaCode},</if>
+        <if test="areaType != null">#{areaType},</if>
+        <if test="createBy != null">#{createBy},</if>
+        <if test="delFlag != null">#{delFlag},</if>
         sysdate
         )
     </insert>
@@ -113,12 +113,12 @@
         update sys_area
         <set>
             <if test="parentId != null and parentId != 0">parent_id = #{parentId},</if>
-            <if test="areaName != null and areaName != ''">area_name = #{areaName},</if>
-            <if test="ancestors != null and ancestors != ''">ancestors = #{ancestors},</if>
+            <if test="areaName != null">area_name = #{areaName},</if>
+            <if test="ancestors != null">ancestors = #{ancestors},</if>
             <if test="orderNum != null">order_num = #{orderNum},</if>
             <if test="areaCode != null">area_code = #{areaCode},</if>
             <if test="areaType != null">area_type = #{areaType},</if>
-            <if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
             update_time = sysdate
         </set>
         where area_id = #{areaId}

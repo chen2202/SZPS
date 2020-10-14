@@ -56,7 +56,7 @@
 	        </div>
 	        
 	        <div class="col-sm-12 select-table table-striped">
-	            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+	            <table id="bootstrap-table" class="text-nowrap" data-mobile-responsive="true"></table>
 	        </div>
     	</div>
     </div>
@@ -71,8 +71,8 @@
         function selectDeptTree() {
         	
         	var treeId = $("#treeId").val();
-        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
-        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+        	var deptId = $.common.isEmpty(treeId) ? "1140" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree2/1140" ;
 			var options = {
 				title: '选择部门',
 				width: "380",
@@ -146,7 +146,7 @@
         function selectPurPlantTree() {
         	
         	var treeId = $("#plantTreeId").val();
-        	var deptId = $.common.isEmpty(treeId) ? "1" : $("#plantTreeId").val();
+        	var deptId = $.common.isEmpty(treeId) ? "1140" : $("#plantTreeId").val();
         	var url = ctx + "system/purplant/selectPurPlantTree/" + deptId;
         	var options = {
         		title: '选择',

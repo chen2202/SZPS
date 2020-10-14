@@ -791,6 +791,7 @@ label {
 /** 表格查询数据 **/
 .table-striped {
 	min-height: 75%;
+	
 }
 
 .table-striped .bootstrap-table {
@@ -800,7 +801,7 @@ label {
 .table-striped .table, .table-striped .table, .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
 	border-bottom: 1px solid #e7eaec!important;
 	/* background-color: transparent!important; */
-	border: 0px;
+	border: 1px;
 }
 
 .fixed-table-footer {
@@ -836,7 +837,7 @@ label {
 .left-fixed-table-columns, .left-fixed-body-columns {
     position: absolute;
     background-color: #fff;
-    display: none;
+    display: table;
     box-sizing: border-box;
     overflow: hidden;
 }

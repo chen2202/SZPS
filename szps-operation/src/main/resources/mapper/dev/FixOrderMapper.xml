@@ -105,41 +105,41 @@
     <update id="update" parameterType="FixOrder">
  		update dev_fix_order
  		<set>
-			<if test=" deptId != null and deptId != ''">deptId = #{deptId},</if>
-			<if test=" devName != null and devName != ''">devName = #{devName},</if>
-			<if test=" devNumber != null and devNumber != ''">devNumber = #{devNumber},</if>
-			<if test=" devModel != null and devModel != ''">devModel = #{devModel},</if>
-			<if test=" useDept != null and useDept != ''">useDept = #{useDept},</if>
-			<if test=" installPlace != null and installPlace != ''">installPlace = #{installPlace},</if>
-			<if test=" assetCode != null and assetCode != ''">assetCode = #{assetCode},</if>
-			<if test=" repairMan != null and repairMan != ''">repairMan = #{repairMan},</if>
-			<if test=" prodHead != null and prodHead != ''">prodHead = #{prodHead},</if>
-			<if test=" recordDate != null and recordDate != ''">recordDate = #{recordDate},</if>
-			<if test=" troubleSpec != null and troubleSpec != ''">troubleSpec = #{troubleSpec},</if>
-			<if test=" reason != null and reason != ''">reason = #{reason},</if>
-			<if test=" assayer != null and assayer != ''">assayer = #{assayer},</if>
-			<if test=" equiHead != null and equiHead != ''">equiHead = #{equiHead},</if>
-			<if test=" equiManager != null and equiManager != ''">equiManager = #{equiManager},</if>
-			<if test=" troubleType != null and troubleType != ''">troubleType = #{troubleType},</if>
-			<if test=" dutyPeople != null and dutyPeople != ''">dutyPeople = #{dutyPeople},</if>
-			<if test=" devSpec != null and devSpec != ''">devSpec = #{devSpec},</if>
-			<if test=" mechanic != null and mechanic != ''">mechanic = #{mechanic},</if>
-			<if test=" outServiceOpinion != null and outServiceOpinion != ''">outServiceOpinion = #{outServiceOpinion},</if>
-			<if test=" equiHeadOut != null and equiHeadOut != ''">equiHeadOut = #{equiHeadOut},</if>
-			<if test=" equiManagerOut != null and equiManagerOut != ''">equiManagerOut = #{equiManagerOut},</if>
-			<if test=" prodManager != null and prodManager != ''">prodManager = #{prodManager},</if>
-			<if test=" outRemarks != null and outRemarks != ''">outRemarks = #{outRemarks},</if>
-			<if test=" fixResult != null and fixResult != ''">fixResult = #{fixResult},</if>
-			<if test=" monitor != null and monitor != ''">monitor = #{monitor},</if>
-			<if test=" equiOwer != null and equiOwer != ''">equiOwer = #{equiOwer},</if>
-			<if test=" userManger != null and userManger != ''">userManger = #{userManger},</if>
-			<if test=" planTime != null and planTime != ''">planTime = #{planTime},</if>
-			<if test=" doneTime != null and doneTime != ''">doneTime = #{doneTime},</if>
-			<if test=" usesTime != null and usesTime != ''">usesTime = #{usesTime},</if>
+			<if test=" deptId != null">deptId = #{deptId},</if>
+			<if test=" devName != null">devName = #{devName},</if>
+			<if test=" devNumber != null">devNumber = #{devNumber},</if>
+			<if test=" devModel != null">devModel = #{devModel},</if>
+			<if test=" useDept != null">useDept = #{useDept},</if>
+			<if test=" installPlace != null">installPlace = #{installPlace},</if>
+			<if test=" assetCode != null">assetCode = #{assetCode},</if>
+			<if test=" repairMan != null">repairMan = #{repairMan},</if>
+			<if test=" prodHead != null">prodHead = #{prodHead},</if>
+			<if test=" recordDate != null">recordDate = #{recordDate},</if>
+			<if test=" troubleSpec != null">troubleSpec = #{troubleSpec},</if>
+			<if test=" reason != null">reason = #{reason},</if>
+			<if test=" assayer != null">assayer = #{assayer},</if>
+			<if test=" equiHead != null">equiHead = #{equiHead},</if>
+			<if test=" equiManager != null">equiManager = #{equiManager},</if>
+			<if test=" troubleType != null">troubleType = #{troubleType},</if>
+			<if test=" dutyPeople != null">dutyPeople = #{dutyPeople},</if>
+			<if test=" devSpec != null">devSpec = #{devSpec},</if>
+			<if test=" mechanic != null">mechanic = #{mechanic},</if>
+			<if test=" outServiceOpinion != null">outServiceOpinion = #{outServiceOpinion},</if>
+			<if test=" equiHeadOut != null">equiHeadOut = #{equiHeadOut},</if>
+			<if test=" equiManagerOut != null">equiManagerOut = #{equiManagerOut},</if>
+			<if test=" prodManager != null">prodManager = #{prodManager},</if>
+			<if test=" outRemarks != null">outRemarks = #{outRemarks},</if>
+			<if test=" fixResult != null">fixResult = #{fixResult},</if>
+			<if test=" monitor != null">monitor = #{monitor},</if>
+			<if test=" equiOwer != null">equiOwer = #{equiOwer},</if>
+			<if test=" userManger != null">userManger = #{userManger},</if>
+			<if test=" planTime != null">planTime = #{planTime},</if>
+			<if test=" doneTime != null">doneTime = #{doneTime},</if>
+			<if test=" usesTime != null">usesTime = #{usesTime},</if>
 
-			<if test=" delFlag != null and delFlag!= ''">delFlag = #{delFlag},</if>
-			<if test="  remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" delFlag != null">delFlag = #{delFlag},</if>
+			<if test="  remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -152,81 +152,81 @@
     
 		INSERT INTO dev_fix_order(
 			<if test=" id != null and id!= 0">id,</if>
-			<if test=" deptId != null and  deptId != ''">deptId,</if>
-			<if test=" devName != null and  devName != ''">devName,</if>
-			<if test=" devNumber != null and  devNumber != ''">devNumber,</if>
-			<if test=" devModel != null and  devModel != ''">devModel,</if>
-			<if test=" useDept != null and  useDept != ''">useDept,</if>
-			<if test=" installPlace != null and  installPlace != ''">installPlace,</if>
-			<if test=" assetCode != null and  assetCode != ''">assetCode,</if>
-			<if test=" repairMan != null and  repairMan != ''">repairMan,</if>
-			<if test=" prodHead != null and  prodHead != ''">prodHead,</if>
-			<if test=" recordDate != null and  recordDate != ''">recordDate,</if>
-			<if test=" troubleSpec != null and  troubleSpec != ''">troubleSpec,</if>
-			<if test=" reason != null and  reason != ''">reason,</if>
-			<if test=" assayer != null and  assayer != ''">assayer,</if>
-			<if test=" equiHead != null and  equiHead != ''">equiHead,</if>
-			<if test=" equiManager != null and  equiManager != ''">equiManager,</if>
-			<if test=" troubleType != null and  troubleType != ''">troubleType,</if>
-			<if test=" dutyPeople != null and  dutyPeople != ''">dutyPeople,</if>
-			<if test=" devSpec != null and  devSpec != ''">devSpec,</if>
-			<if test=" mechanic != null and  mechanic != ''">mechanic,</if>
-			<if test=" outServiceOpinion != null and  outServiceOpinion != ''">outServiceOpinion,</if>
-			<if test=" equiHeadOut != null and  equiHeadOut != ''">equiHeadOut,</if>
-			<if test=" equiManagerOut != null and  equiManagerOut != ''">equiManagerOut,</if>
-			<if test=" prodManager != null and  prodManager != ''">prodManager,</if>
-			<if test=" outRemarks != null and  outRemarks != ''">outRemarks,</if>
-			<if test=" fixResult != null and  fixResult != ''">fixResult,</if>
-			<if test=" monitor != null and  monitor != ''">monitor,</if>
-			<if test=" equiOwer != null and  equiOwer != ''">equiOwer,</if>
-			<if test=" userManger != null and  userManger != ''">userManger,</if>
-			<if test=" planTime != null and  planTime != ''">planTime,</if>
-			<if test=" doneTime != null and  doneTime != ''">doneTime,</if>
-			<if test=" usesTime != null and  usesTime != ''">usesTime,</if>
+			<if test=" deptId != null">deptId,</if>
+			<if test=" devName != null">devName,</if>
+			<if test=" devNumber != null">devNumber,</if>
+			<if test=" devModel != null">devModel,</if>
+			<if test=" useDept != null">useDept,</if>
+			<if test=" installPlace != null">installPlace,</if>
+			<if test=" assetCode != null">assetCode,</if>
+			<if test=" repairMan != null">repairMan,</if>
+			<if test=" prodHead != null">prodHead,</if>
+			<if test=" recordDate != null">recordDate,</if>
+			<if test=" troubleSpec != null">troubleSpec,</if>
+			<if test=" reason != null">reason,</if>
+			<if test=" assayer != null">assayer,</if>
+			<if test=" equiHead != null">equiHead,</if>
+			<if test=" equiManager != null">equiManager,</if>
+			<if test=" troubleType != null">troubleType,</if>
+			<if test=" dutyPeople != null">dutyPeople,</if>
+			<if test=" devSpec != null">devSpec,</if>
+			<if test=" mechanic != null">mechanic,</if>
+			<if test=" outServiceOpinion != null">outServiceOpinion,</if>
+			<if test=" equiHeadOut != null">equiHeadOut,</if>
+			<if test=" equiManagerOut != null">equiManagerOut,</if>
+			<if test=" prodManager != null">prodManager,</if>
+			<if test=" outRemarks != null">outRemarks,</if>
+			<if test=" fixResult != null">fixResult,</if>
+			<if test=" monitor != null">monitor,</if>
+			<if test=" equiOwer != null">equiOwer,</if>
+			<if test=" userManger != null">userManger,</if>
+			<if test=" planTime != null">planTime,</if>
+			<if test=" doneTime != null">doneTime,</if>
+			<if test=" usesTime != null">usesTime,</if>
 
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" delFlag != null and delFlag!= ''">delFlag,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" delFlag != null">delFlag,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
-			<if test=" deptId != null and deptId != ''">#{deptId},</if>
-			<if test=" devName != null and devName != ''">#{devName},</if>
-			<if test=" devNumber != null and devNumber != ''">#{devNumber},</if>
-			<if test=" devModel != null and devModel != ''">#{devModel},</if>
-			<if test=" useDept != null and useDept != ''">#{useDept},</if>
-			<if test=" installPlace != null and installPlace != ''">#{installPlace},</if>
-			<if test=" assetCode != null and assetCode != ''">#{assetCode},</if>
-			<if test=" repairMan != null and repairMan != ''">#{repairMan},</if>
-			<if test=" prodHead != null and prodHead != ''">#{prodHead},</if>
-			<if test=" recordDate != null and recordDate != ''">#{recordDate},</if>
-			<if test=" troubleSpec != null and troubleSpec != ''">#{troubleSpec},</if>
-			<if test=" reason != null and reason != ''">#{reason},</if>
-			<if test=" assayer != null and assayer != ''">#{assayer},</if>
-			<if test=" equiHead != null and equiHead != ''">#{equiHead},</if>
-			<if test=" equiManager != null and equiManager != ''">#{equiManager},</if>
-			<if test=" troubleType != null and troubleType != ''">#{troubleType},</if>
-			<if test=" dutyPeople != null and dutyPeople != ''">#{dutyPeople},</if>
-			<if test=" devSpec != null and devSpec != ''">#{devSpec},</if>
-			<if test=" mechanic != null and mechanic != ''">#{mechanic},</if>
-			<if test=" outServiceOpinion != null and outServiceOpinion != ''">#{outServiceOpinion},</if>
-			<if test=" equiHeadOut != null and equiHeadOut != ''">#{equiHeadOut},</if>
-			<if test=" equiManagerOut != null and equiManagerOut != ''">#{equiManagerOut},</if>
-			<if test=" prodManager != null and prodManager != ''">#{prodManager},</if>
-			<if test=" outRemarks != null and outRemarks != ''">#{outRemarks},</if>
-			<if test=" fixResult != null and fixResult != ''">#{fixResult},</if>
-			<if test=" monitor != null and monitor != ''">#{monitor},</if>
-			<if test=" equiOwer != null and equiOwer != ''">#{equiOwer},</if>
-			<if test=" userManger != null and userManger != ''">#{userManger},</if>
-			<if test=" planTime != null and planTime != ''">#{planTime},</if>
-			<if test=" doneTime != null and doneTime != ''">#{doneTime},</if>
-			<if test=" usesTime != null and usesTime != ''">#{usesTime},</if>
+			<if test=" deptId != null">#{deptId},</if>
+			<if test=" devName != null">#{devName},</if>
+			<if test=" devNumber != null">#{devNumber},</if>
+			<if test=" devModel != null">#{devModel},</if>
+			<if test=" useDept != null">#{useDept},</if>
+			<if test=" installPlace != null">#{installPlace},</if>
+			<if test=" assetCode != null">#{assetCode},</if>
+			<if test=" repairMan != null">#{repairMan},</if>
+			<if test=" prodHead != null">#{prodHead},</if>
+			<if test=" recordDate != null">#{recordDate},</if>
+			<if test=" troubleSpec != null">#{troubleSpec},</if>
+			<if test=" reason != null">#{reason},</if>
+			<if test=" assayer != null">#{assayer},</if>
+			<if test=" equiHead != null">#{equiHead},</if>
+			<if test=" equiManager != null">#{equiManager},</if>
+			<if test=" troubleType != null">#{troubleType},</if>
+			<if test=" dutyPeople != null">#{dutyPeople},</if>
+			<if test=" devSpec != null">#{devSpec},</if>
+			<if test=" mechanic != null">#{mechanic},</if>
+			<if test=" outServiceOpinion != null">#{outServiceOpinion},</if>
+			<if test=" equiHeadOut != null">#{equiHeadOut},</if>
+			<if test=" equiManagerOut != null">#{equiManagerOut},</if>
+			<if test=" prodManager != null">#{prodManager},</if>
+			<if test=" outRemarks != null">#{outRemarks},</if>
+			<if test=" fixResult != null">#{fixResult},</if>
+			<if test=" monitor != null">#{monitor},</if>
+			<if test=" equiOwer != null">#{equiOwer},</if>
+			<if test=" userManger != null">#{userManger},</if>
+			<if test=" planTime != null">#{planTime},</if>
+			<if test=" doneTime != null">#{doneTime},</if>
+			<if test=" usesTime != null">#{usesTime},</if>
 
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" delFlag != null and delFlag!= ''">#{delFlag},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" delFlag != null">#{delFlag},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

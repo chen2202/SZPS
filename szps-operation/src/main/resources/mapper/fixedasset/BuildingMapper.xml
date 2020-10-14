@@ -107,20 +107,20 @@
  		update dev_asset_building
  		<set>
 			<if test=" deptid != null ">deptid = #{deptid},</if>
-			<if test=" deptname != null and deptname != ''">deptname = #{deptname},</if>
-			<if test=" dlocation != null and dlocation != ''">dlocation = #{dlocation},</if>
-			<if test=" assetname != null and assetname != ''">assetname = #{assetname},</if>
-			<if test=" structure != null and structure != ''">structure = #{structure},</if>
+			<if test=" deptname != null">deptname = #{deptname},</if>
+			<if test=" dlocation != null">dlocation = #{dlocation},</if>
+			<if test=" assetname != null">assetname = #{assetname},</if>
+			<if test=" structure != null">structure = #{structure},</if>
 			<if test=" builttime != null ">builttime = #{builttime},</if>
-			<if test=" howmany != null and howmany != ''">howmany = #{howmany},</if>
-			<if test=" floors  != null and floors  != ''">floors  = #{floors},</if>
-			<if test=" darea  != null and darea  != ''">darea  = #{darea},</if>
-			<if test=" floorage != null and floorage != ''">floorage = #{floorage},</if>
-			<if test=" dstatus != null and dstatus != ''">dstatus = #{dstatus},</if>
-			<if test=" originalvalue != null and originalvalue != ''">originalvalue = #{originalvalue},</if>
+			<if test=" howmany != null">howmany = #{howmany},</if>
+			<if test=" floors  != null">floors  = #{floors},</if>
+			<if test=" darea  != null">darea  = #{darea},</if>
+			<if test=" floorage != null">floorage = #{floorage},</if>
+			<if test=" dstatus != null">dstatus = #{dstatus},</if>
+			<if test=" originalvalue != null">originalvalue = #{originalvalue},</if>
 			
-			<if test=" remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -134,40 +134,40 @@
 		INSERT INTO dev_asset_building(
 			<if test=" id != null and id!= 0">id,</if>
 			<if test=" deptid != null ">deptid,</if>
-			<if test=" deptname != null and  deptname != ''">deptname,</if>
-			<if test=" dlocation != null and  dlocation != ''">dlocation,</if>
-			<if test=" assetname != null and  assetname != ''">assetname,</if>
-			<if test=" structure != null and  structure != ''">structure,</if>
+			<if test=" deptname != null">deptname,</if>
+			<if test=" dlocation != null">dlocation,</if>
+			<if test=" assetname != null">assetname,</if>
+			<if test=" structure != null">structure,</if>
 			<if test=" builttime != null">builttime,</if>
-			<if test=" howmany != null and  howmany != ''">howmany,</if>
-			<if test=" floors  != null and  floors  != ''">floors,</if>
-			<if test=" darea  != null and  darea  != ''">darea,</if>
-			<if test=" floorage != null and  floorage != ''">floorage,</if>
-			<if test=" dstatus != null and  dstatus != ''">dstatus,</if>
-			<if test=" originalvalue != null and  originalvalue != ''">originalvalue,</if>
+			<if test=" howmany != null">howmany,</if>
+			<if test=" floors  != null">floors,</if>
+			<if test=" darea  != null">darea,</if>
+			<if test=" floorage != null">floorage,</if>
+			<if test=" dstatus != null">dstatus,</if>
+			<if test=" originalvalue != null">originalvalue,</if>
 			
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>		
+			<if test=" remark != null">REMARK,</if>
+			<if test=" createBy != null">create_by,</if>		
 			<if test=" dept_id != null ">dept_id,</if>
 			
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
 			<if test=" deptid != null ">#{deptid},</if>
-			<if test=" deptname != null and deptname != ''">#{deptname},</if>
-			<if test=" dlocation != null and dlocation != ''">#{dlocation},</if>
-			<if test=" assetname != null and assetname != ''">#{assetname},</if>
-			<if test=" structure != null and structure != ''">#{structure},</if>
+			<if test=" deptname != null">#{deptname},</if>
+			<if test=" dlocation != null">#{dlocation},</if>
+			<if test=" assetname != null">#{assetname},</if>
+			<if test=" structure != null">#{structure},</if>
 			<if test=" builttime != null ">#{builttime},</if>
-			<if test=" howmany != null and howmany != ''">#{howmany},</if>
-			<if test=" floors  != null and floors  != ''">#{floors },</if>
-			<if test=" darea  != null and darea  != ''">#{darea},</if>
-			<if test=" floorage != null and floorage != ''">#{floorage},</if>
-			<if test=" dstatus != null and dstatus != ''">#{dstatus},</if>
-			<if test=" originalvalue != null and originalvalue != ''">#{originalvalue},</if>
+			<if test=" howmany != null">#{howmany},</if>
+			<if test=" floors  != null">#{floors },</if>
+			<if test=" darea  != null">#{darea},</if>
+			<if test=" floorage != null">#{floorage},</if>
+			<if test=" dstatus != null">#{dstatus},</if>
+			<if test=" originalvalue != null">#{originalvalue},</if>
 			
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" createBy != null">#{createBy},</if>
 			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)

@@ -208,116 +208,116 @@
  		update report_yearappraisal
  		<set>
 			<if test=" deptid != null ">deptid = #{deptid},</if>
-			<if test=" deptname != null and deptname != ''">deptname = #{deptname},</if>
-			<if test=" dyear != null and dyear != ''">dyear = #{dyear},</if>
-			<if test=" opd != null and opd != ''">opd = #{opd},</if>
-			<if test=" scorer != null and scorer != ''">scorer = #{scorer},</if>
-			<if test=" total != null and total != ''">total = #{total},</if>
+			<if test=" deptname != null">deptname = #{deptname},</if>
+			<if test=" dyear != null">dyear = #{dyear},</if>
+			<if test=" opd != null">opd = #{opd},</if>
+			<if test=" scorer != null">scorer = #{scorer},</if>
+			<if test=" total != null">total = #{total},</if>
 			<if test=" areaid != null ">areaid = #{areaid},</if>
 			<if test=" darea != null ">darea = #{darea},</if>
-			<if test=" data1_t != null and data1_t != ''">data1_t = #{data1_t},</if>
-			<if test=" data1_s1 != null and data1_s1 != ''">data1_s1 = #{data1_s1},</if>
-			<if test=" data1_s2 != null and data1_s2 != ''">data1_s2 = #{data1_s2},</if>
-			<if test=" data1_s3 != null and data1_s3 != ''">data1_s3 = #{data1_s3},</if>
-			<if test=" data1_s4 != null and data1_s4 != ''">data1_s4 = #{data1_s4},</if>
-			<if test=" data1_s5 != null and data1_s5 != ''">data1_s5 = #{data1_s5},</if>
-			<if test=" data1_s6 != null and data1_s6 != ''">data1_s6 = #{data1_s6},</if>
-			<if test=" data1_s7 != null and data1_s7 != ''">data1_s7 = #{data1_s7},</if>
-			<if test=" data1_s8 != null and data1_s8 != ''">data1_s8 = #{data1_s8},</if>
-			<if test=" data1_s9 != null and data1_s9 != ''">data1_s9 = #{data1_s9},</if>
-			<if test=" data1_s10 != null and data1_s10 != ''">data1_s10 = #{data1_s10},</if>
-			<if test=" data1_s11 != null and data1_s11 != ''">data1_s11 = #{data1_s11},</if>
-			<if test=" data1_s12 != null and data1_s12 != ''">data1_s12 = #{data1_s12},</if>
-			<if test=" data1_s13 != null and data1_s13 != ''">data1_s13 = #{data1_s13},</if>
-			<if test=" data1_i1 != null and data1_i1 != ''">data1_i1 = #{data1_i1},</if>
-			<if test=" data1_i2 != null and data1_i2 != ''">data1_i2 = #{data1_i2},</if>
-			<if test=" data1_i3 != null and data1_i3 != ''">data1_i3 = #{data1_i3},</if>
-			<if test=" data1_i4 != null and data1_i4 != ''">data1_i4 = #{data1_i4},</if>
-			<if test=" data1_i5 != null and data1_i5 != ''">data1_i5 = #{data1_i5},</if>
-			<if test=" data1_i6 != null and data1_i6 != ''">data1_i6 = #{data1_i6},</if>
-			<if test=" data1_i7 != null and data1_i7 != ''">data1_i7 = #{data1_i7},</if>
-			<if test=" data1_i8 != null and data1_i8 != ''">data1_i8 = #{data1_i8},</if>
-			<if test=" data1_i9 != null and data1_i9 != ''">data1_i9 = #{data1_i9},</if>
-			<if test=" data1_i10 != null and data1_i10 != ''">data1_i10 = #{data1_i10},</if>
-			<if test=" data1_i11 != null and data1_i11 != ''">data1_i11 = #{data1_i11},</if>
-			<if test=" data1_i12 != null and data1_i12 != ''">data1_i12 = #{data1_i12},</if>
-			<if test=" data1_i13 != null and data1_i13 != ''">data1_i13 = #{data1_i13},</if>
-			<if test=" data2_t != null and data2_t != ''">data2_t = #{data2_t},</if>
-			<if test=" data2_s1 != null and data2_s1 != ''">data2_s1 = #{data2_s1},</if>
-			<if test=" data2_s2 != null and data2_s2 != ''">data2_s2 = #{data2_s2},</if>
-			<if test=" data2_s3 != null and data2_s3 != ''">data2_s3 = #{data2_s3},</if>
-			<if test=" data2_s4 != null and data2_s4 != ''">data2_s4 = #{data2_s4},</if>
-			<if test=" data2_s5 != null and data2_s5 != ''">data2_s5 = #{data2_s5},</if>
-			<if test=" data2_i1 != null and data2_i1 != ''">data2_i1 = #{data2_i1},</if>
-			<if test=" data2_i2 != null and data2_i2 != ''">data2_i2 = #{data2_i2},</if>
-			<if test=" data2_i3 != null and data2_i3 != ''">data2_i3 = #{data2_i3},</if>
-			<if test=" data2_i4 != null and data2_i4 != ''">data2_i4 = #{data2_i4},</if>
-			<if test=" data2_i5 != null and data2_i5 != ''">data2_i5 = #{data2_i5},</if>
-			<if test=" data3_t != null and data3_t != ''">data3_t = #{data3_t},</if>
-			<if test=" data3_s1 != null and data3_s1 != ''">data3_s1 = #{data3_s1},</if>
-			<if test=" data3_s2 != null and data3_s2 != ''">data3_s2 = #{data3_s2},</if>
-			<if test=" data3_s3 != null and data3_s3 != ''">data3_s3 = #{data3_s3},</if>
-			<if test=" data3_s4 != null and data3_s4 != ''">data3_s4 = #{data3_s4},</if>
-			<if test=" data3_s5 != null and data3_s5 != ''">data3_s5 = #{data3_s5},</if>
-			<if test=" data3_i1 != null and data3_i1 != ''">data3_i1 = #{data3_i1},</if>
-			<if test=" data3_i2 != null and data3_i2 != ''">data3_i2 = #{data3_i2},</if>
-			<if test=" data3_i3 != null and data3_i3 != ''">data3_i3 = #{data3_i3},</if>
-			<if test=" data3_i4 != null and data3_i4 != ''">data3_i4 = #{data3_i4},</if>
-			<if test=" data3_i5 != null and data3_i5 != ''">data3_i5 = #{data3_i5},</if>
-			<if test=" data4_t != null and data4_t != ''">data4_t = #{data4_t},</if>
-			<if test=" data4_s1 != null and data4_s1 != ''">data4_s1 = #{data4_s1},</if>
-			<if test=" data4_s2 != null and data4_s2 != ''">data4_s2 = #{data4_s2},</if>
-			<if test=" data4_s3 != null and data4_s3 != ''">data4_s3 = #{data4_s3},</if>
-			<if test=" data4_s4 != null and data4_s4 != ''">data4_s4 = #{data4_s4},</if>
-			<if test=" data4_s5 != null and data4_s5 != ''">data4_s5 = #{data4_s5},</if>
-			<if test=" data4_s6 != null and data4_s6 != ''">data4_s6 = #{data4_s6},</if>
-			<if test=" data4_s7 != null and data4_s7 != ''">data4_s7 = #{data4_s7},</if>
-			<if test=" data4_s8 != null and data4_s8 != ''">data4_s8 = #{data4_s8},</if>
-			<if test=" data4_s9 != null and data4_s9 != ''">data4_s9 = #{data4_s9},</if>
-			<if test=" data4_s10 != null and data4_s10 != ''">data4_s10 = #{data4_s10},</if>
-			<if test=" data4_i1 != null and data4_i1 != ''">data4_i1 = #{data4_i1},</if>
-			<if test=" data4_i2 != null and data4_i2 != ''">data4_i2 = #{data4_i2},</if>
-			<if test=" data4_i3 != null and data4_i3 != ''">data4_i3 = #{data4_i3},</if>
-			<if test=" data4_i4 != null and data4_i4 != ''">data4_i4 = #{data4_i4},</if>
-			<if test=" data4_i5 != null and data4_i5 != ''">data4_i5 = #{data4_i5},</if>
-			<if test=" data4_i6 != null and data4_i6 != ''">data4_i6 = #{data4_i6},</if>
-			<if test=" data4_i7 != null and data4_i7 != ''">data4_i7 = #{data4_i7},</if>
-			<if test=" data4_i8 != null and data4_i8 != ''">data4_i8 = #{data4_i8},</if>
-			<if test=" data4_i9 != null and data4_i9 != ''">data4_i9 = #{data4_i9},</if>
-			<if test=" data4_i10 != null and data4_i10 != ''">data4_i10 = #{data4_i10},</if>
-			<if test=" data5_t != null and data5_t != ''">data5_t = #{data5_t},</if>
-			<if test=" data5_s1 != null and data5_s1 != ''">data5_s1 = #{data5_s1},</if>
-			<if test=" data5_s2 != null and data5_s2 != ''">data5_s2 = #{data5_s2},</if>
-			<if test=" data5_s3 != null and data5_s3 != ''">data5_s3 = #{data5_s3},</if>
-			<if test=" data5_i1 != null and data5_i1 != ''">data5_i1 = #{data5_i1},</if>
-			<if test=" data5_i2 != null and data5_i2 != ''">data5_i2 = #{data5_i2},</if>
-			<if test=" data5_i3 != null and data5_i3 != ''">data5_i3 = #{data5_i3},</if>
-			<if test=" data6_t != null and data6_t != ''">data6_t = #{data6_t},</if>
-			<if test=" data6_s1 != null and data6_s1 != ''">data6_s1 = #{data6_s1},</if>
-			<if test=" data6_s2 != null and data6_s2 != ''">data6_s2 = #{data6_s2},</if>
-			<if test=" data6_s3 != null and data6_s3 != ''">data6_s3 = #{data6_s3},</if>
-			<if test=" data6_s4 != null and data6_s4 != ''">data6_s4 = #{data6_s4},</if>
-			<if test=" data6_i1 != null and data6_i1 != ''">data6_i1 = #{data6_i1},</if>
-			<if test=" data6_i2 != null and data6_i2 != ''">data6_i2 = #{data6_i2},</if>
-			<if test=" data6_i3 != null and data6_i3 != ''">data6_i3 = #{data6_i3},</if>
-			<if test=" data6_i4 != null and data6_i4 != ''">data6_i4 = #{data6_i4},</if>
-			<if test=" data7_t != null and data7_t != ''">data7_t = #{data7_t},</if>
-			<if test=" data7_s1 != null and data7_s1 != ''">data7_s1 = #{data7_s1},</if>
-			<if test=" data7_s2 != null and data7_s2 != ''">data7_s2 = #{data7_s2},</if>
-			<if test=" data7_s3 != null and data7_s3 != ''">data7_s3 = #{data7_s3},</if>
-			<if test=" data7_s4 != null and data7_s4 != ''">data7_s4 = #{data7_s4},</if>
-			<if test=" data7_s5 != null and data7_s5 != ''">data7_s5 = #{data7_s5},</if>
-			<if test=" data7_s6 != null and data7_s6 != ''">data7_s6 = #{data7_s6},</if>
-			<if test=" data7_i1 != null and data7_i1 != ''">data7_i1 = #{data7_i1},</if>
-			<if test=" data7_i2 != null and data7_i2 != ''">data7_i2 = #{data7_i2},</if>
-			<if test=" data7_i3 != null and data7_i3 != ''">data7_i3 = #{data7_i3},</if>
-			<if test=" data7_i4 != null and data7_i4 != ''">data7_i4 = #{data7_i4},</if>
-			<if test=" data7_i5 != null and data7_i5 != ''">data7_i5 = #{data7_i5},</if>
-			<if test=" data7_i6 != null and data7_i6 != ''">data7_i6 = #{data7_i6},</if>
+			<if test=" data1_t != null">data1_t = #{data1_t},</if>
+			<if test=" data1_s1 != null">data1_s1 = #{data1_s1},</if>
+			<if test=" data1_s2 != null">data1_s2 = #{data1_s2},</if>
+			<if test=" data1_s3 != null">data1_s3 = #{data1_s3},</if>
+			<if test=" data1_s4 != null">data1_s4 = #{data1_s4},</if>
+			<if test=" data1_s5 != null">data1_s5 = #{data1_s5},</if>
+			<if test=" data1_s6 != null">data1_s6 = #{data1_s6},</if>
+			<if test=" data1_s7 != null">data1_s7 = #{data1_s7},</if>
+			<if test=" data1_s8 != null">data1_s8 = #{data1_s8},</if>
+			<if test=" data1_s9 != null">data1_s9 = #{data1_s9},</if>
+			<if test=" data1_s10 != null">data1_s10 = #{data1_s10},</if>
+			<if test=" data1_s11 != null">data1_s11 = #{data1_s11},</if>
+			<if test=" data1_s12 != null">data1_s12 = #{data1_s12},</if>
+			<if test=" data1_s13 != null">data1_s13 = #{data1_s13},</if>
+			<if test=" data1_i1 != null">data1_i1 = #{data1_i1},</if>
+			<if test=" data1_i2 != null">data1_i2 = #{data1_i2},</if>
+			<if test=" data1_i3 != null">data1_i3 = #{data1_i3},</if>
+			<if test=" data1_i4 != null">data1_i4 = #{data1_i4},</if>
+			<if test=" data1_i5 != null">data1_i5 = #{data1_i5},</if>
+			<if test=" data1_i6 != null">data1_i6 = #{data1_i6},</if>
+			<if test=" data1_i7 != null">data1_i7 = #{data1_i7},</if>
+			<if test=" data1_i8 != null">data1_i8 = #{data1_i8},</if>
+			<if test=" data1_i9 != null">data1_i9 = #{data1_i9},</if>
+			<if test=" data1_i10 != null">data1_i10 = #{data1_i10},</if>
+			<if test=" data1_i11 != null">data1_i11 = #{data1_i11},</if>
+			<if test=" data1_i12 != null">data1_i12 = #{data1_i12},</if>
+			<if test=" data1_i13 != null">data1_i13 = #{data1_i13},</if>
+			<if test=" data2_t != null">data2_t = #{data2_t},</if>
+			<if test=" data2_s1 != null">data2_s1 = #{data2_s1},</if>
+			<if test=" data2_s2 != null">data2_s2 = #{data2_s2},</if>
+			<if test=" data2_s3 != null">data2_s3 = #{data2_s3},</if>
+			<if test=" data2_s4 != null">data2_s4 = #{data2_s4},</if>
+			<if test=" data2_s5 != null">data2_s5 = #{data2_s5},</if>
+			<if test=" data2_i1 != null">data2_i1 = #{data2_i1},</if>
+			<if test=" data2_i2 != null">data2_i2 = #{data2_i2},</if>
+			<if test=" data2_i3 != null">data2_i3 = #{data2_i3},</if>
+			<if test=" data2_i4 != null">data2_i4 = #{data2_i4},</if>
+			<if test=" data2_i5 != null">data2_i5 = #{data2_i5},</if>
+			<if test=" data3_t != null">data3_t = #{data3_t},</if>
+			<if test=" data3_s1 != null">data3_s1 = #{data3_s1},</if>
+			<if test=" data3_s2 != null">data3_s2 = #{data3_s2},</if>
+			<if test=" data3_s3 != null">data3_s3 = #{data3_s3},</if>
+			<if test=" data3_s4 != null">data3_s4 = #{data3_s4},</if>
+			<if test=" data3_s5 != null">data3_s5 = #{data3_s5},</if>
+			<if test=" data3_i1 != null">data3_i1 = #{data3_i1},</if>
+			<if test=" data3_i2 != null">data3_i2 = #{data3_i2},</if>
+			<if test=" data3_i3 != null">data3_i3 = #{data3_i3},</if>
+			<if test=" data3_i4 != null">data3_i4 = #{data3_i4},</if>
+			<if test=" data3_i5 != null">data3_i5 = #{data3_i5},</if>
+			<if test=" data4_t != null">data4_t = #{data4_t},</if>
+			<if test=" data4_s1 != null">data4_s1 = #{data4_s1},</if>
+			<if test=" data4_s2 != null">data4_s2 = #{data4_s2},</if>
+			<if test=" data4_s3 != null">data4_s3 = #{data4_s3},</if>
+			<if test=" data4_s4 != null">data4_s4 = #{data4_s4},</if>
+			<if test=" data4_s5 != null">data4_s5 = #{data4_s5},</if>
+			<if test=" data4_s6 != null">data4_s6 = #{data4_s6},</if>
+			<if test=" data4_s7 != null">data4_s7 = #{data4_s7},</if>
+			<if test=" data4_s8 != null">data4_s8 = #{data4_s8},</if>
+			<if test=" data4_s9 != null">data4_s9 = #{data4_s9},</if>
+			<if test=" data4_s10 != null">data4_s10 = #{data4_s10},</if>
+			<if test=" data4_i1 != null">data4_i1 = #{data4_i1},</if>
+			<if test=" data4_i2 != null">data4_i2 = #{data4_i2},</if>
+			<if test=" data4_i3 != null">data4_i3 = #{data4_i3},</if>
+			<if test=" data4_i4 != null">data4_i4 = #{data4_i4},</if>
+			<if test=" data4_i5 != null">data4_i5 = #{data4_i5},</if>
+			<if test=" data4_i6 != null">data4_i6 = #{data4_i6},</if>
+			<if test=" data4_i7 != null">data4_i7 = #{data4_i7},</if>
+			<if test=" data4_i8 != null">data4_i8 = #{data4_i8},</if>
+			<if test=" data4_i9 != null">data4_i9 = #{data4_i9},</if>
+			<if test=" data4_i10 != null">data4_i10 = #{data4_i10},</if>
+			<if test=" data5_t != null">data5_t = #{data5_t},</if>
+			<if test=" data5_s1 != null">data5_s1 = #{data5_s1},</if>
+			<if test=" data5_s2 != null">data5_s2 = #{data5_s2},</if>
+			<if test=" data5_s3 != null">data5_s3 = #{data5_s3},</if>
+			<if test=" data5_i1 != null">data5_i1 = #{data5_i1},</if>
+			<if test=" data5_i2 != null">data5_i2 = #{data5_i2},</if>
+			<if test=" data5_i3 != null">data5_i3 = #{data5_i3},</if>
+			<if test=" data6_t != null">data6_t = #{data6_t},</if>
+			<if test=" data6_s1 != null">data6_s1 = #{data6_s1},</if>
+			<if test=" data6_s2 != null">data6_s2 = #{data6_s2},</if>
+			<if test=" data6_s3 != null">data6_s3 = #{data6_s3},</if>
+			<if test=" data6_s4 != null">data6_s4 = #{data6_s4},</if>
+			<if test=" data6_i1 != null">data6_i1 = #{data6_i1},</if>
+			<if test=" data6_i2 != null">data6_i2 = #{data6_i2},</if>
+			<if test=" data6_i3 != null">data6_i3 = #{data6_i3},</if>
+			<if test=" data6_i4 != null">data6_i4 = #{data6_i4},</if>
+			<if test=" data7_t != null">data7_t = #{data7_t},</if>
+			<if test=" data7_s1 != null">data7_s1 = #{data7_s1},</if>
+			<if test=" data7_s2 != null">data7_s2 = #{data7_s2},</if>
+			<if test=" data7_s3 != null">data7_s3 = #{data7_s3},</if>
+			<if test=" data7_s4 != null">data7_s4 = #{data7_s4},</if>
+			<if test=" data7_s5 != null">data7_s5 = #{data7_s5},</if>
+			<if test=" data7_s6 != null">data7_s6 = #{data7_s6},</if>
+			<if test=" data7_i1 != null">data7_i1 = #{data7_i1},</if>
+			<if test=" data7_i2 != null">data7_i2 = #{data7_i2},</if>
+			<if test=" data7_i3 != null">data7_i3 = #{data7_i3},</if>
+			<if test=" data7_i4 != null">data7_i4 = #{data7_i4},</if>
+			<if test=" data7_i5 != null">data7_i5 = #{data7_i5},</if>
+			<if test=" data7_i6 != null">data7_i6 = #{data7_i6},</if>
 
 			
-			<if test=" remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -331,233 +331,233 @@
 		INSERT INTO report_yearappraisal(
 			<if test=" id != null and id!= 0">id,</if>
 			<if test=" deptid != null ">deptid,</if>
-			<if test=" deptname != null and  deptname != ''">deptname,</if>
-			<if test=" dyear != null and  dyear != ''">dyear,</if>
-			<if test=" opd != null and  opd != ''">opd,</if>
-			<if test=" scorer != null and  scorer != ''">scorer,</if>
-			<if test=" total != null and  total != ''">total,</if>
+			<if test=" deptname != null">deptname,</if>
+			<if test=" dyear != null">dyear,</if>
+			<if test=" opd != null">opd,</if>
+			<if test=" scorer != null">scorer,</if>
+			<if test=" total != null">total,</if>
 			<if test=" areaid != null">areaid,</if>
-			<if test=" darea != null and  darea != ''">darea,</if>
-			<if test=" data1_t != null and  data1_t != ''">data1_t,</if>
-			<if test=" data1_s1 != null and  data1_s1 != ''">data1_s1,</if>
-			<if test=" data1_s2 != null and  data1_s2 != ''">data1_s2,</if>
-			<if test=" data1_s3 != null and  data1_s3 != ''">data1_s3,</if>
-			<if test=" data1_s4 != null and  data1_s4 != ''">data1_s4,</if>
-			<if test=" data1_s5 != null and  data1_s5 != ''">data1_s5,</if>
-			<if test=" data1_s6 != null and  data1_s6 != ''">data1_s6,</if>
-			<if test=" data1_s7 != null and  data1_s7 != ''">data1_s7,</if>
-			<if test=" data1_s8 != null and  data1_s8 != ''">data1_s8,</if>
-			<if test=" data1_s9 != null and  data1_s9 != ''">data1_s9,</if>
-			<if test=" data1_s10 != null and  data1_s10 != ''">data1_s10,</if>
-			<if test=" data1_s11 != null and  data1_s11 != ''">data1_s11,</if>
-			<if test=" data1_s12 != null and  data1_s12 != ''">data1_s12,</if>
-			<if test=" data1_s13 != null and  data1_s13 != ''">data1_s13,</if>
-			<if test=" data1_i1 != null and  data1_i1 != ''">data1_i1,</if>
-			<if test=" data1_i2 != null and  data1_i2 != ''">data1_i2,</if>
-			<if test=" data1_i3 != null and  data1_i3 != ''">data1_i3,</if>
-			<if test=" data1_i4 != null and  data1_i4 != ''">data1_i4,</if>
-			<if test=" data1_i5 != null and  data1_i5 != ''">data1_i5,</if>
-			<if test=" data1_i6 != null and  data1_i6 != ''">data1_i6,</if>
-			<if test=" data1_i7 != null and  data1_i7 != ''">data1_i7,</if>
-			<if test=" data1_i8 != null and  data1_i8 != ''">data1_i8,</if>
-			<if test=" data1_i9 != null and  data1_i9 != ''">data1_i9,</if>
-			<if test=" data1_i10 != null and  data1_i10 != ''">data1_i10,</if>
-			<if test=" data1_i11 != null and  data1_i11 != ''">data1_i11,</if>
-			<if test=" data1_i12 != null and  data1_i12 != ''">data1_i12,</if>
-			<if test=" data1_i13 != null and  data1_i13 != ''">data1_i13,</if>
-			<if test=" data2_t != null and  data2_t != ''">data2_t,</if>
-			<if test=" data2_s1 != null and  data2_s1 != ''">data2_s1,</if>
-			<if test=" data2_s2 != null and  data2_s2 != ''">data2_s2,</if>
-			<if test=" data2_s3 != null and  data2_s3 != ''">data2_s3,</if>
-			<if test=" data2_s4 != null and  data2_s4 != ''">data2_s4,</if>
-			<if test=" data2_s5 != null and  data2_s5 != ''">data2_s5,</if>
-			<if test=" data2_i1 != null and  data2_i1 != ''">data2_i1,</if>
-			<if test=" data2_i2 != null and  data2_i2 != ''">data2_i2,</if>
-			<if test=" data2_i3 != null and  data2_i3 != ''">data2_i3,</if>
-			<if test=" data2_i4 != null and  data2_i4 != ''">data2_i4,</if>
-			<if test=" data2_i5 != null and  data2_i5 != ''">data2_i5,</if>
-			<if test=" data3_t != null and  data3_t != ''">data3_t,</if>
-			<if test=" data3_s1 != null and  data3_s1 != ''">data3_s1,</if>
-			<if test=" data3_s2 != null and  data3_s2 != ''">data3_s2,</if>
-			<if test=" data3_s3 != null and  data3_s3 != ''">data3_s3,</if>
-			<if test=" data3_s4 != null and  data3_s4 != ''">data3_s4,</if>
-			<if test=" data3_s5 != null and  data3_s5 != ''">data3_s5,</if>
-			<if test=" data3_i1 != null and  data3_i1 != ''">data3_i1,</if>
-			<if test=" data3_i2 != null and  data3_i2 != ''">data3_i2,</if>
-			<if test=" data3_i3 != null and  data3_i3 != ''">data3_i3,</if>
-			<if test=" data3_i4 != null and  data3_i4 != ''">data3_i4,</if>
-			<if test=" data3_i5 != null and  data3_i5 != ''">data3_i5,</if>
-			<if test=" data4_t != null and  data4_t != ''">data4_t,</if>
-			<if test=" data4_s1 != null and  data4_s1 != ''">data4_s1,</if>
-			<if test=" data4_s2 != null and  data4_s2 != ''">data4_s2,</if>
-			<if test=" data4_s3 != null and  data4_s3 != ''">data4_s3,</if>
-			<if test=" data4_s4 != null and  data4_s4 != ''">data4_s4,</if>
-			<if test=" data4_s5 != null and  data4_s5 != ''">data4_s5,</if>
-			<if test=" data4_s6 != null and  data4_s6 != ''">data4_s6,</if>
-			<if test=" data4_s7 != null and  data4_s7 != ''">data4_s7,</if>
-			<if test=" data4_s8 != null and  data4_s8 != ''">data4_s8,</if>
-			<if test=" data4_s9 != null and  data4_s9 != ''">data4_s9,</if>
-			<if test=" data4_s10 != null and  data4_s10 != ''">data4_s10,</if>
-			<if test=" data4_i1 != null and  data4_i1 != ''">data4_i1,</if>
-			<if test=" data4_i2 != null and  data4_i2 != ''">data4_i2,</if>
-			<if test=" data4_i3 != null and  data4_i3 != ''">data4_i3,</if>
-			<if test=" data4_i4 != null and  data4_i4 != ''">data4_i4,</if>
-			<if test=" data4_i5 != null and  data4_i5 != ''">data4_i5,</if>
-			<if test=" data4_i6 != null and  data4_i6 != ''">data4_i6,</if>
-			<if test=" data4_i7 != null and  data4_i7 != ''">data4_i7,</if>
-			<if test=" data4_i8 != null and  data4_i8 != ''">data4_i8,</if>
-			<if test=" data4_i9 != null and  data4_i9 != ''">data4_i9,</if>
-			<if test=" data4_i10 != null and  data4_i10 != ''">data4_i10,</if>
-			<if test=" data5_t != null and  data5_t != ''">data5_t,</if>
-			<if test=" data5_s1 != null and  data5_s1 != ''">data5_s1,</if>
-			<if test=" data5_s2 != null and  data5_s2 != ''">data5_s2,</if>
-			<if test=" data5_s3 != null and  data5_s3 != ''">data5_s3,</if>
-			<if test=" data5_i1 != null and  data5_i1 != ''">data5_i1,</if>
-			<if test=" data5_i2 != null and  data5_i2 != ''">data5_i2,</if>
-			<if test=" data5_i3 != null and  data5_i3 != ''">data5_i3,</if>
-			<if test=" data6_t != null and  data6_t != ''">data6_t,</if>
-			<if test=" data6_s1 != null and  data6_s1 != ''">data6_s1,</if>
-			<if test=" data6_s2 != null and  data6_s2 != ''">data6_s2,</if>
-			<if test=" data6_s3 != null and  data6_s3 != ''">data6_s3,</if>
-			<if test=" data6_s4 != null and  data6_s4 != ''">data6_s4,</if>
-			<if test=" data6_i1 != null and  data6_i1 != ''">data6_i1,</if>
-			<if test=" data6_i2 != null and  data6_i2 != ''">data6_i2,</if>
-			<if test=" data6_i3 != null and  data6_i3 != ''">data6_i3,</if>
-			<if test=" data6_i4 != null and  data6_i4 != ''">data6_i4,</if>
-			<if test=" data7_t != null and  data7_t != ''">data7_t,</if>
-			<if test=" data7_s1 != null and  data7_s1 != ''">data7_s1,</if>
-			<if test=" data7_s2 != null and  data7_s2 != ''">data7_s2,</if>
-			<if test=" data7_s3 != null and  data7_s3 != ''">data7_s3,</if>
-			<if test=" data7_s4 != null and  data7_s4 != ''">data7_s4,</if>
-			<if test=" data7_s5 != null and  data7_s5 != ''">data7_s5,</if>
-			<if test=" data7_s6 != null and  data7_s6 != ''">data7_s6,</if>
-			<if test=" data7_i1 != null and  data7_i1 != ''">data7_i1,</if>
-			<if test=" data7_i2 != null and  data7_i2 != ''">data7_i2,</if>
-			<if test=" data7_i3 != null and  data7_i3 != ''">data7_i3,</if>
-			<if test=" data7_i4 != null and  data7_i4 != ''">data7_i4,</if>
-			<if test=" data7_i5 != null and  data7_i5 != ''">data7_i5,</if>
-			<if test=" data7_i6 != null and  data7_i6 != ''">data7_i6,</if>
+			<if test=" darea != null">darea,</if>
+			<if test=" data1_t != null">data1_t,</if>
+			<if test=" data1_s1 != null">data1_s1,</if>
+			<if test=" data1_s2 != null">data1_s2,</if>
+			<if test=" data1_s3 != null">data1_s3,</if>
+			<if test=" data1_s4 != null">data1_s4,</if>
+			<if test=" data1_s5 != null">data1_s5,</if>
+			<if test=" data1_s6 != null">data1_s6,</if>
+			<if test=" data1_s7 != null">data1_s7,</if>
+			<if test=" data1_s8 != null">data1_s8,</if>
+			<if test=" data1_s9 != null">data1_s9,</if>
+			<if test=" data1_s10 != null">data1_s10,</if>
+			<if test=" data1_s11 != null">data1_s11,</if>
+			<if test=" data1_s12 != null">data1_s12,</if>
+			<if test=" data1_s13 != null">data1_s13,</if>
+			<if test=" data1_i1 != null">data1_i1,</if>
+			<if test=" data1_i2 != null">data1_i2,</if>
+			<if test=" data1_i3 != null">data1_i3,</if>
+			<if test=" data1_i4 != null">data1_i4,</if>
+			<if test=" data1_i5 != null">data1_i5,</if>
+			<if test=" data1_i6 != null">data1_i6,</if>
+			<if test=" data1_i7 != null">data1_i7,</if>
+			<if test=" data1_i8 != null">data1_i8,</if>
+			<if test=" data1_i9 != null">data1_i9,</if>
+			<if test=" data1_i10 != null">data1_i10,</if>
+			<if test=" data1_i11 != null">data1_i11,</if>
+			<if test=" data1_i12 != null">data1_i12,</if>
+			<if test=" data1_i13 != null">data1_i13,</if>
+			<if test=" data2_t != null">data2_t,</if>
+			<if test=" data2_s1 != null">data2_s1,</if>
+			<if test=" data2_s2 != null">data2_s2,</if>
+			<if test=" data2_s3 != null">data2_s3,</if>
+			<if test=" data2_s4 != null">data2_s4,</if>
+			<if test=" data2_s5 != null">data2_s5,</if>
+			<if test=" data2_i1 != null">data2_i1,</if>
+			<if test=" data2_i2 != null">data2_i2,</if>
+			<if test=" data2_i3 != null">data2_i3,</if>
+			<if test=" data2_i4 != null">data2_i4,</if>
+			<if test=" data2_i5 != null">data2_i5,</if>
+			<if test=" data3_t != null">data3_t,</if>
+			<if test=" data3_s1 != null">data3_s1,</if>
+			<if test=" data3_s2 != null">data3_s2,</if>
+			<if test=" data3_s3 != null">data3_s3,</if>
+			<if test=" data3_s4 != null">data3_s4,</if>
+			<if test=" data3_s5 != null">data3_s5,</if>
+			<if test=" data3_i1 != null">data3_i1,</if>
+			<if test=" data3_i2 != null">data3_i2,</if>
+			<if test=" data3_i3 != null">data3_i3,</if>
+			<if test=" data3_i4 != null">data3_i4,</if>
+			<if test=" data3_i5 != null">data3_i5,</if>
+			<if test=" data4_t != null">data4_t,</if>
+			<if test=" data4_s1 != null">data4_s1,</if>
+			<if test=" data4_s2 != null">data4_s2,</if>
+			<if test=" data4_s3 != null">data4_s3,</if>
+			<if test=" data4_s4 != null">data4_s4,</if>
+			<if test=" data4_s5 != null">data4_s5,</if>
+			<if test=" data4_s6 != null">data4_s6,</if>
+			<if test=" data4_s7 != null">data4_s7,</if>
+			<if test=" data4_s8 != null">data4_s8,</if>
+			<if test=" data4_s9 != null">data4_s9,</if>
+			<if test=" data4_s10 != null">data4_s10,</if>
+			<if test=" data4_i1 != null">data4_i1,</if>
+			<if test=" data4_i2 != null">data4_i2,</if>
+			<if test=" data4_i3 != null">data4_i3,</if>
+			<if test=" data4_i4 != null">data4_i4,</if>
+			<if test=" data4_i5 != null">data4_i5,</if>
+			<if test=" data4_i6 != null">data4_i6,</if>
+			<if test=" data4_i7 != null">data4_i7,</if>
+			<if test=" data4_i8 != null">data4_i8,</if>
+			<if test=" data4_i9 != null">data4_i9,</if>
+			<if test=" data4_i10 != null">data4_i10,</if>
+			<if test=" data5_t != null">data5_t,</if>
+			<if test=" data5_s1 != null">data5_s1,</if>
+			<if test=" data5_s2 != null">data5_s2,</if>
+			<if test=" data5_s3 != null">data5_s3,</if>
+			<if test=" data5_i1 != null">data5_i1,</if>
+			<if test=" data5_i2 != null">data5_i2,</if>
+			<if test=" data5_i3 != null">data5_i3,</if>
+			<if test=" data6_t != null">data6_t,</if>
+			<if test=" data6_s1 != null">data6_s1,</if>
+			<if test=" data6_s2 != null">data6_s2,</if>
+			<if test=" data6_s3 != null">data6_s3,</if>
+			<if test=" data6_s4 != null">data6_s4,</if>
+			<if test=" data6_i1 != null">data6_i1,</if>
+			<if test=" data6_i2 != null">data6_i2,</if>
+			<if test=" data6_i3 != null">data6_i3,</if>
+			<if test=" data6_i4 != null">data6_i4,</if>
+			<if test=" data7_t != null">data7_t,</if>
+			<if test=" data7_s1 != null">data7_s1,</if>
+			<if test=" data7_s2 != null">data7_s2,</if>
+			<if test=" data7_s3 != null">data7_s3,</if>
+			<if test=" data7_s4 != null">data7_s4,</if>
+			<if test=" data7_s5 != null">data7_s5,</if>
+			<if test=" data7_s6 != null">data7_s6,</if>
+			<if test=" data7_i1 != null">data7_i1,</if>
+			<if test=" data7_i2 != null">data7_i2,</if>
+			<if test=" data7_i3 != null">data7_i3,</if>
+			<if test=" data7_i4 != null">data7_i4,</if>
+			<if test=" data7_i5 != null">data7_i5,</if>
+			<if test=" data7_i6 != null">data7_i6,</if>
 
 
 			
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
 			<if test=" deptid != null ">#{deptid},</if>
-			<if test=" deptname != null and deptname != ''">#{deptname},</if>
-			<if test=" dyear != null and dyear != ''">#{dyear},</if>
-			<if test=" opd != null and opd != ''">#{opd},</if>
-			<if test=" scorer != null and scorer != ''">#{scorer},</if>
-			<if test=" total != null and total != ''">#{total},</if>
+			<if test=" deptname != null">#{deptname},</if>
+			<if test=" dyear != null">#{dyear},</if>
+			<if test=" opd != null">#{opd},</if>
+			<if test=" scorer != null">#{scorer},</if>
+			<if test=" total != null">#{total},</if>
 			<if test=" areaid != null ">#{areaid},</if>
-			<if test=" darea != null and darea != ''">#{darea},</if>
-			<if test=" data1_t != null and data1_t != ''">#{data1_t},</if>
-			<if test=" data1_s1 != null and data1_s1 != ''">#{data1_s1},</if>
-			<if test=" data1_s2 != null and data1_s2 != ''">#{data1_s2},</if>
-			<if test=" data1_s3 != null and data1_s3 != ''">#{data1_s3},</if>
-			<if test=" data1_s4 != null and data1_s4 != ''">#{data1_s4},</if>
-			<if test=" data1_s5 != null and data1_s5 != ''">#{data1_s5},</if>
-			<if test=" data1_s6 != null and data1_s6 != ''">#{data1_s6},</if>
-			<if test=" data1_s7 != null and data1_s7 != ''">#{data1_s7},</if>
-			<if test=" data1_s8 != null and data1_s8 != ''">#{data1_s8},</if>
-			<if test=" data1_s9 != null and data1_s9 != ''">#{data1_s9},</if>
-			<if test=" data1_s10 != null and data1_s10 != ''">#{data1_s10},</if>
-			<if test=" data1_s11 != null and data1_s11 != ''">#{data1_s11},</if>
-			<if test=" data1_s12 != null and data1_s12 != ''">#{data1_s12},</if>
-			<if test=" data1_s13 != null and data1_s13 != ''">#{data1_s13},</if>
-			<if test=" data1_i1 != null and data1_i1 != ''">#{data1_i1},</if>
-			<if test=" data1_i2 != null and data1_i2 != ''">#{data1_i2},</if>
-			<if test=" data1_i3 != null and data1_i3 != ''">#{data1_i3},</if>
-			<if test=" data1_i4 != null and data1_i4 != ''">#{data1_i4},</if>
-			<if test=" data1_i5 != null and data1_i5 != ''">#{data1_i5},</if>
-			<if test=" data1_i6 != null and data1_i6 != ''">#{data1_i6},</if>
-			<if test=" data1_i7 != null and data1_i7 != ''">#{data1_i7},</if>
-			<if test=" data1_i8 != null and data1_i8 != ''">#{data1_i8},</if>
-			<if test=" data1_i9 != null and data1_i9 != ''">#{data1_i9},</if>
-			<if test=" data1_i10 != null and data1_i10 != ''">#{data1_i10},</if>
-			<if test=" data1_i11 != null and data1_i11 != ''">#{data1_i11},</if>
-			<if test=" data1_i12 != null and data1_i12 != ''">#{data1_i12},</if>
-			<if test=" data1_i13 != null and data1_i13 != ''">#{data1_i13},</if>
-			<if test=" data2_t != null and data2_t != ''">#{data2_t},</if>
-			<if test=" data2_s1 != null and data2_s1 != ''">#{data2_s1},</if>
-			<if test=" data2_s2 != null and data2_s2 != ''">#{data2_s2},</if>
-			<if test=" data2_s3 != null and data2_s3 != ''">#{data2_s3},</if>
-			<if test=" data2_s4 != null and data2_s4 != ''">#{data2_s4},</if>
-			<if test=" data2_s5 != null and data2_s5 != ''">#{data2_s5},</if>
-			<if test=" data2_i1 != null and data2_i1 != ''">#{data2_i1},</if>
-			<if test=" data2_i2 != null and data2_i2 != ''">#{data2_i2},</if>
-			<if test=" data2_i3 != null and data2_i3 != ''">#{data2_i3},</if>
-			<if test=" data2_i4 != null and data2_i4 != ''">#{data2_i4},</if>
-			<if test=" data2_i5 != null and data2_i5 != ''">#{data2_i5},</if>
-			<if test=" data3_t != null and data3_t != ''">#{data3_t},</if>
-			<if test=" data3_s1 != null and data3_s1 != ''">#{data3_s1},</if>
-			<if test=" data3_s2 != null and data3_s2 != ''">#{data3_s2},</if>
-			<if test=" data3_s3 != null and data3_s3 != ''">#{data3_s3},</if>
-			<if test=" data3_s4 != null and data3_s4 != ''">#{data3_s4},</if>
-			<if test=" data3_s5 != null and data3_s5 != ''">#{data3_s5},</if>
-			<if test=" data3_i1 != null and data3_i1 != ''">#{data3_i1},</if>
-			<if test=" data3_i2 != null and data3_i2 != ''">#{data3_i2},</if>
-			<if test=" data3_i3 != null and data3_i3 != ''">#{data3_i3},</if>
-			<if test=" data3_i4 != null and data3_i4 != ''">#{data3_i4},</if>
-			<if test=" data3_i5 != null and data3_i5 != ''">#{data3_i5},</if>
-			<if test=" data4_t != null and data4_t != ''">#{data4_t},</if>
-			<if test=" data4_s1 != null and data4_s1 != ''">#{data4_s1},</if>
-			<if test=" data4_s2 != null and data4_s2 != ''">#{data4_s2},</if>
-			<if test=" data4_s3 != null and data4_s3 != ''">#{data4_s3},</if>
-			<if test=" data4_s4 != null and data4_s4 != ''">#{data4_s4},</if>
-			<if test=" data4_s5 != null and data4_s5 != ''">#{data4_s5},</if>
-			<if test=" data4_s6 != null and data4_s6 != ''">#{data4_s6},</if>
-			<if test=" data4_s7 != null and data4_s7 != ''">#{data4_s7},</if>
-			<if test=" data4_s8 != null and data4_s8 != ''">#{data4_s8},</if>
-			<if test=" data4_s9 != null and data4_s9 != ''">#{data4_s9},</if>
-			<if test=" data4_s10 != null and data4_s10 != ''">#{data4_s10},</if>
-			<if test=" data4_i1 != null and data4_i1 != ''">#{data4_i1},</if>
-			<if test=" data4_i2 != null and data4_i2 != ''">#{data4_i2},</if>
-			<if test=" data4_i3 != null and data4_i3 != ''">#{data4_i3},</if>
-			<if test=" data4_i4 != null and data4_i4 != ''">#{data4_i4},</if>
-			<if test=" data4_i5 != null and data4_i5 != ''">#{data4_i5},</if>
-			<if test=" data4_i6 != null and data4_i6 != ''">#{data4_i6},</if>
-			<if test=" data4_i7 != null and data4_i7 != ''">#{data4_i7},</if>
-			<if test=" data4_i8 != null and data4_i8 != ''">#{data4_i8},</if>
-			<if test=" data4_i9 != null and data4_i9 != ''">#{data4_i9},</if>
-			<if test=" data4_i10 != null and data4_i10 != ''">#{data4_i10},</if>
-			<if test=" data5_t != null and data5_t != ''">#{data5_t},</if>
-			<if test=" data5_s1 != null and data5_s1 != ''">#{data5_s1},</if>
-			<if test=" data5_s2 != null and data5_s2 != ''">#{data5_s2},</if>
-			<if test=" data5_s3 != null and data5_s3 != ''">#{data5_s3},</if>
-			<if test=" data5_i1 != null and data5_i1 != ''">#{data5_i1},</if>
-			<if test=" data5_i2 != null and data5_i2 != ''">#{data5_i2},</if>
-			<if test=" data5_i3 != null and data5_i3 != ''">#{data5_i3},</if>
-			<if test=" data6_t != null and data6_t != ''">#{data6_t},</if>
-			<if test=" data6_s1 != null and data6_s1 != ''">#{data6_s1},</if>
-			<if test=" data6_s2 != null and data6_s2 != ''">#{data6_s2},</if>
-			<if test=" data6_s3 != null and data6_s3 != ''">#{data6_s3},</if>
-			<if test=" data6_s4 != null and data6_s4 != ''">#{data6_s4},</if>
-			<if test=" data6_i1 != null and data6_i1 != ''">#{data6_i1},</if>
-			<if test=" data6_i2 != null and data6_i2 != ''">#{data6_i2},</if>
-			<if test=" data6_i3 != null and data6_i3 != ''">#{data6_i3},</if>
-			<if test=" data6_i4 != null and data6_i4 != ''">#{data6_i4},</if>
-			<if test=" data7_t != null and data7_t != ''">#{data7_t},</if>
-			<if test=" data7_s1 != null and data7_s1 != ''">#{data7_s1},</if>
-			<if test=" data7_s2 != null and data7_s2 != ''">#{data7_s2},</if>
-			<if test=" data7_s3 != null and data7_s3 != ''">#{data7_s3},</if>
-			<if test=" data7_s4 != null and data7_s4 != ''">#{data7_s4},</if>
-			<if test=" data7_s5 != null and data7_s5 != ''">#{data7_s5},</if>
-			<if test=" data7_s6 != null and data7_s6 != ''">#{data7_s6},</if>
-			<if test=" data7_i1 != null and data7_i1 != ''">#{data7_i1},</if>
-			<if test=" data7_i2 != null and data7_i2 != ''">#{data7_i2},</if>
-			<if test=" data7_i3 != null and data7_i3 != ''">#{data7_i3},</if>
-			<if test=" data7_i4 != null and data7_i4 != ''">#{data7_i4},</if>
-			<if test=" data7_i5 != null and data7_i5 != ''">#{data7_i5},</if>
-			<if test=" data7_i6 != null and data7_i6 != ''">#{data7_i6},</if>
+			<if test=" darea != null">#{darea},</if>
+			<if test=" data1_t != null">#{data1_t},</if>
+			<if test=" data1_s1 != null">#{data1_s1},</if>
+			<if test=" data1_s2 != null">#{data1_s2},</if>
+			<if test=" data1_s3 != null">#{data1_s3},</if>
+			<if test=" data1_s4 != null">#{data1_s4},</if>
+			<if test=" data1_s5 != null">#{data1_s5},</if>
+			<if test=" data1_s6 != null">#{data1_s6},</if>
+			<if test=" data1_s7 != null">#{data1_s7},</if>
+			<if test=" data1_s8 != null">#{data1_s8},</if>
+			<if test=" data1_s9 != null">#{data1_s9},</if>
+			<if test=" data1_s10 != null">#{data1_s10},</if>
+			<if test=" data1_s11 != null">#{data1_s11},</if>
+			<if test=" data1_s12 != null">#{data1_s12},</if>
+			<if test=" data1_s13 != null">#{data1_s13},</if>
+			<if test=" data1_i1 != null">#{data1_i1},</if>
+			<if test=" data1_i2 != null">#{data1_i2},</if>
+			<if test=" data1_i3 != null">#{data1_i3},</if>
+			<if test=" data1_i4 != null">#{data1_i4},</if>
+			<if test=" data1_i5 != null">#{data1_i5},</if>
+			<if test=" data1_i6 != null">#{data1_i6},</if>
+			<if test=" data1_i7 != null">#{data1_i7},</if>
+			<if test=" data1_i8 != null">#{data1_i8},</if>
+			<if test=" data1_i9 != null">#{data1_i9},</if>
+			<if test=" data1_i10 != null">#{data1_i10},</if>
+			<if test=" data1_i11 != null">#{data1_i11},</if>
+			<if test=" data1_i12 != null">#{data1_i12},</if>
+			<if test=" data1_i13 != null">#{data1_i13},</if>
+			<if test=" data2_t != null">#{data2_t},</if>
+			<if test=" data2_s1 != null">#{data2_s1},</if>
+			<if test=" data2_s2 != null">#{data2_s2},</if>
+			<if test=" data2_s3 != null">#{data2_s3},</if>
+			<if test=" data2_s4 != null">#{data2_s4},</if>
+			<if test=" data2_s5 != null">#{data2_s5},</if>
+			<if test=" data2_i1 != null">#{data2_i1},</if>
+			<if test=" data2_i2 != null">#{data2_i2},</if>
+			<if test=" data2_i3 != null">#{data2_i3},</if>
+			<if test=" data2_i4 != null">#{data2_i4},</if>
+			<if test=" data2_i5 != null">#{data2_i5},</if>
+			<if test=" data3_t != null">#{data3_t},</if>
+			<if test=" data3_s1 != null">#{data3_s1},</if>
+			<if test=" data3_s2 != null">#{data3_s2},</if>
+			<if test=" data3_s3 != null">#{data3_s3},</if>
+			<if test=" data3_s4 != null">#{data3_s4},</if>
+			<if test=" data3_s5 != null">#{data3_s5},</if>
+			<if test=" data3_i1 != null">#{data3_i1},</if>
+			<if test=" data3_i2 != null">#{data3_i2},</if>
+			<if test=" data3_i3 != null">#{data3_i3},</if>
+			<if test=" data3_i4 != null">#{data3_i4},</if>
+			<if test=" data3_i5 != null">#{data3_i5},</if>
+			<if test=" data4_t != null">#{data4_t},</if>
+			<if test=" data4_s1 != null">#{data4_s1},</if>
+			<if test=" data4_s2 != null">#{data4_s2},</if>
+			<if test=" data4_s3 != null">#{data4_s3},</if>
+			<if test=" data4_s4 != null">#{data4_s4},</if>
+			<if test=" data4_s5 != null">#{data4_s5},</if>
+			<if test=" data4_s6 != null">#{data4_s6},</if>
+			<if test=" data4_s7 != null">#{data4_s7},</if>
+			<if test=" data4_s8 != null">#{data4_s8},</if>
+			<if test=" data4_s9 != null">#{data4_s9},</if>
+			<if test=" data4_s10 != null">#{data4_s10},</if>
+			<if test=" data4_i1 != null">#{data4_i1},</if>
+			<if test=" data4_i2 != null">#{data4_i2},</if>
+			<if test=" data4_i3 != null">#{data4_i3},</if>
+			<if test=" data4_i4 != null">#{data4_i4},</if>
+			<if test=" data4_i5 != null">#{data4_i5},</if>
+			<if test=" data4_i6 != null">#{data4_i6},</if>
+			<if test=" data4_i7 != null">#{data4_i7},</if>
+			<if test=" data4_i8 != null">#{data4_i8},</if>
+			<if test=" data4_i9 != null">#{data4_i9},</if>
+			<if test=" data4_i10 != null">#{data4_i10},</if>
+			<if test=" data5_t != null">#{data5_t},</if>
+			<if test=" data5_s1 != null">#{data5_s1},</if>
+			<if test=" data5_s2 != null">#{data5_s2},</if>
+			<if test=" data5_s3 != null">#{data5_s3},</if>
+			<if test=" data5_i1 != null">#{data5_i1},</if>
+			<if test=" data5_i2 != null">#{data5_i2},</if>
+			<if test=" data5_i3 != null">#{data5_i3},</if>
+			<if test=" data6_t != null">#{data6_t},</if>
+			<if test=" data6_s1 != null">#{data6_s1},</if>
+			<if test=" data6_s2 != null">#{data6_s2},</if>
+			<if test=" data6_s3 != null">#{data6_s3},</if>
+			<if test=" data6_s4 != null">#{data6_s4},</if>
+			<if test=" data6_i1 != null">#{data6_i1},</if>
+			<if test=" data6_i2 != null">#{data6_i2},</if>
+			<if test=" data6_i3 != null">#{data6_i3},</if>
+			<if test=" data6_i4 != null">#{data6_i4},</if>
+			<if test=" data7_t != null">#{data7_t},</if>
+			<if test=" data7_s1 != null">#{data7_s1},</if>
+			<if test=" data7_s2 != null">#{data7_s2},</if>
+			<if test=" data7_s3 != null">#{data7_s3},</if>
+			<if test=" data7_s4 != null">#{data7_s4},</if>
+			<if test=" data7_s5 != null">#{data7_s5},</if>
+			<if test=" data7_s6 != null">#{data7_s6},</if>
+			<if test=" data7_i1 != null">#{data7_i1},</if>
+			<if test=" data7_i2 != null">#{data7_i2},</if>
+			<if test=" data7_i3 != null">#{data7_i3},</if>
+			<if test=" data7_i4 != null">#{data7_i4},</if>
+			<if test=" data7_i5 != null">#{data7_i5},</if>
+			<if test=" data7_i6 != null">#{data7_i6},</if>
 
 			
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

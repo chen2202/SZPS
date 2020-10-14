@@ -10,6 +10,7 @@ public class DayReportStat {
 	String inbod;//进水BOD
 	String inan;//进水氨氮
 	String inp;//进水总磷
+	String remark;//进水总磷
 	public String getBasin() {
 		return basin;
 	}
@@ -54,7 +55,13 @@ public class DayReportStat {
 	}
 	
 	   
-    public DayReportStat statReport(List<DayReportW> list,int lastIndex,int k) {
+    public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+	public DayReportStat statReport(List<DayReportW> list,int lastIndex,int k) {
 		Double tcapacity  = 0d;//处理量
 		Double loadrate = 0d;//负荷率
 		Double incod = 0d;//进水COD
@@ -70,7 +77,11 @@ public class DayReportStat {
 			} catch (Exception e) {
 			}
 			try {
-				loadrate = loadrate +Double.valueOf(t.getLoadrate());
+				String s = t.getLoadrate();
+				if (s!=null && s.contains("%")) {
+					s=s.replace("%", "");
+				}
+				loadrate = loadrate +Double.valueOf(s);
 			} catch (Exception e) {
 			}
 			try {
@@ -90,7 +101,7 @@ public class DayReportStat {
 		//w.setBasin(lt.getBasin());
 		w.setBasin(basin);
 		w.setTcapacity(String.format("%.2f", tcapacity));
-		w.setLoadrate(String.format("%.2f", loadrate));
+		w.setLoadrate(String.format("%.2f", loadrate)+"%");
 		w.setIncod(String.format("%.2f", incod));
 		w.setInan(String.format("%.2f", inan));
 		w.setInp(String.format("%.2f", inp));

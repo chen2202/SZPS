@@ -15,17 +15,17 @@
 			<div class="row">
 				<div class="col-sm-6">
 					   <div class="form-group">
-						   <label class="col-sm-3 control-label">项目编号：</label>
+						   <label class="col-sm-3 control-label"><span style="color: red; ">*</span>项目编号：</label>
 						   <div class="col-sm-8">
-							   <input name="prj_no" class="form-control" type="text"  >
+							   <input name="prj_no" class="form-control" type="text"  required="required">
 						   </div>
 					   </div>
 				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
-						<label class="col-sm-3 control-label">项目名称：</label>
+						<label class="col-sm-3 control-label"><span style="color: red; ">*</span>项目名称：</label>
 						<div class="col-sm-8">
-								<input name="prj_name" class="form-control" type="text"  >
+								<input name="prj_name" class="form-control" type="text"  required="required">
 						</div>
 					</div>
 				</div>
@@ -34,9 +34,9 @@
 			<div class="row">
 				<div class="col-sm-6">
 					   <div class="form-group">
-						   <label class="col-sm-3 control-label">排水管道唯一编号：</label>
+						   <label class="col-sm-3 control-label"><span style="color: red; ">*</span>排水管道唯一编号：</label>
 						   <div class="col-sm-8">
-							   <input name="lno" class="form-control" type="text"  >
+							   <input name="lno" class="form-control" type="text" required="required" >
 						   </div>
 					   </div>
 				</div>
@@ -371,12 +371,6 @@
 		</div>
 
 	</form>
-    </div>
-    <div class="row">
-        <div class="col-sm-offset-5 col-sm-10">
-            <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>保 存</button>&nbsp;
-            <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
-        </div>
     </div>
 	<th:block th:include="include :: footer" />
 	<th:block th:include="include :: select2-js" />

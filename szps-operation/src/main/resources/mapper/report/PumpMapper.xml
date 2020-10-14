@@ -87,11 +87,11 @@
  		update report_pump
  		<set>
  			<if test=" deptid != null ">deptid = #{deptid},</if>
-			<if test=" deptname != null and deptname != ''">deptname = #{deptname},</if>
-			<if test=" pumpname != null and pumpname != ''">pumpname = #{pumpname},</if>
-			<if test=" recorddate != null and recorddate != ''">recorddate = #{recorddate},</if>
-			<if test="  remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" deptname != null">deptname = #{deptname},</if>
+			<if test=" pumpname != null">pumpname = #{pumpname},</if>
+			<if test=" recorddate != null">recorddate = #{recorddate},</if>
+			<if test="  remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -105,25 +105,25 @@
 		INSERT INTO report_pump(
 			<if test=" id != null and id!= 0">id,</if>
 			<if test=" deptid != null ">deptid,</if>
-			<if test=" deptname != null and  deptname != ''">deptname,</if>
-			<if test=" pumpname != null and  pumpname != ''">pumpname,</if>
-			<if test=" recorddate != null and  recorddate != ''">recorddate,</if>
+			<if test=" deptname != null">deptname,</if>
+			<if test=" pumpname != null">pumpname,</if>
+			<if test=" recorddate != null">recorddate,</if>
 
 
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
 			<if test=" deptid != null ">#{deptid},</if>
-			<if test=" deptname != null and deptname != ''">#{deptname},</if>
-			<if test=" pumpname != null and pumpname != ''">#{pumpname},</if>
-			<if test=" recorddate != null and recorddate != ''">#{recorddate},</if>
+			<if test=" deptname != null">#{deptname},</if>
+			<if test=" pumpname != null">#{pumpname},</if>
+			<if test=" recorddate != null">#{recorddate},</if>
 
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

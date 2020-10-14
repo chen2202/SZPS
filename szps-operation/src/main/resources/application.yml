@@ -13,6 +13,7 @@ szps:
   profile: C:/szpsinfo/uploadfile
   # 获取ip地址开关
   addressEnabled: true
+  mapURL: https://vx.newground.cn:7000
 
 # 开发环境配置  基于cookie 的session，在springboot配置中修改 server.servlet.session.cookie.max-age=-1s 将cookie的有效期设为0或-1
 server:

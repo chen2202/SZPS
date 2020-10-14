@@ -26,7 +26,7 @@
 			</div>
 			
 	        <div class="btn-group-sm" id="toolbar" role="group">
-		        <a class="btn btn-success" onclick="$.operate.addTab()" shiro:hasPermission="dev:pumpstationspare:add">
+		        <a class="btn btn-success" onclick="$.operate.addFull()" shiro:hasPermission="dev:pumpstationspare:add">
 		            <i class="fa fa-plus"></i> 新增
 		        </a>
 		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="dev:pumpstationspare:delete">
@@ -37,7 +37,7 @@
 		        </a> -->
 	        </div>
 	        <div class="col-sm-12 select-table table-striped">
-	            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+	            <table id="bootstrap-table" class="text-nowrap" data-mobile-responsive="true"></table>
 	        </div>
     	</div>
     </div>

@@ -116,40 +116,40 @@
     <update id="update" parameterType="MaintainRecord">
  		update dev_maintain_record
  		<set>
-			<if test=" deptId != null and deptId != ''">deptId = #{deptId},</if>
-			<if test=" useDept != null and useDept != ''">useDept = #{useDept},</if>
-			<if test=" recordDate != null and recordDate != ''">recordDate = #{recordDate},</if>
-			<if test=" devName != null and devName != ''">devName = #{devName},</if>
-			<if test=" devNumber != null and devNumber != ''">devNumber = #{devNumber},</if>
-			<if test=" devModel != null and devModel != ''">devModel = #{devModel},</if>
-			<if test=" devSpec != null and devSpec != ''">devSpec = #{devSpec},</if>
-			<if test=" mType != null and mType != ''">mType = #{mType},</if>
-			<if test=" mCycle != null and mCycle != ''">mCycle = #{mCycle},</if>
-			<if test=" installPlace != null and installPlace != ''">installPlace = #{installPlace},</if>
-			<if test=" devType != null and devType != ''">devType = #{devType},</if>
-			<if test=" lastDate != null and lastDate != ''">lastDate = #{lastDate},</if>
-			<if test=" content != null and content != ''">content = #{content},</if>
-			<if test=" maintainRemarks != null and maintainRemarks != ''">maintainRemarks = #{maintainRemarks},</if>
-			<if test=" planStartTime != null and planStartTime != ''">planStartTime = #{planStartTime},</if>
-			<if test=" planEndTime != null and planEndTime != ''">planEndTime = #{planEndTime},</if>
-			<if test=" planUseTime != null and planUseTime != ''">planUseTime = #{planUseTime},</if>
-			<if test=" startTime != null and startTime != ''">startTime = #{startTime},</if>
-			<if test=" endTime != null and endTime != ''">endTime = #{endTime},</if>
-			<if test=" useTime != null and useTime != ''">useTime = #{useTime},</if>
-			<if test=" commodities != null and commodities != ''">commodities = #{commodities},</if>
-			<if test=" monitor != null and monitor != ''">monitor = #{monitor},</if>
-			<if test=" result != null and result != ''">result = #{result},</if>
-			<if test=" maintainPerson != null and maintainPerson != ''">maintainPerson = #{maintainPerson},</if>
-			<if test=" operator != null and operator != ''">operator = #{operator},</if>
-			<if test=" operatorConfirmTime != null and operatorConfirmTime != ''">operatorConfirmTime = #{operatorConfirmTime},</if>
-			<if test=" prodSupr != null and prodSupr != ''">prodSupr = #{prodSupr},</if>
-			<if test=" prodSuperConfirmTime != null and prodSuperConfirmTime != ''">prodSuperConfirmTime = #{prodSuperConfirmTime},</if>
-			<if test=" faciSuper != null and faciSuper != ''">faciSuper = #{faciSuper},</if>
-			<if test=" faciSuperConfirmTime != null and faciSuperConfirmTime != ''">faciSuperConfirmTime = #{faciSuperConfirmTime},</if>
+			<if test=" deptId != null">deptId = #{deptId},</if>
+			<if test=" useDept != null">useDept = #{useDept},</if>
+			<if test=" recordDate != null">recordDate = #{recordDate},</if>
+			<if test=" devName != null">devName = #{devName},</if>
+			<if test=" devNumber != null">devNumber = #{devNumber},</if>
+			<if test=" devModel != null">devModel = #{devModel},</if>
+			<if test=" devSpec != null">devSpec = #{devSpec},</if>
+			<if test=" mType != null">mType = #{mType},</if>
+			<if test=" mCycle != null">mCycle = #{mCycle},</if>
+			<if test=" installPlace != null">installPlace = #{installPlace},</if>
+			<if test=" devType != null">devType = #{devType},</if>
+			<if test=" lastDate != null">lastDate = #{lastDate},</if>
+			<if test=" content != null">content = #{content},</if>
+			<if test=" maintainRemarks != null">maintainRemarks = #{maintainRemarks},</if>
+			<if test=" planStartTime != null">planStartTime = #{planStartTime},</if>
+			<if test=" planEndTime != null">planEndTime = #{planEndTime},</if>
+			<if test=" planUseTime != null">planUseTime = #{planUseTime},</if>
+			<if test=" startTime != null">startTime = #{startTime},</if>
+			<if test=" endTime != null">endTime = #{endTime},</if>
+			<if test=" useTime != null">useTime = #{useTime},</if>
+			<if test=" commodities != null">commodities = #{commodities},</if>
+			<if test=" monitor != null">monitor = #{monitor},</if>
+			<if test=" result != null">result = #{result},</if>
+			<if test=" maintainPerson != null">maintainPerson = #{maintainPerson},</if>
+			<if test=" operator != null">operator = #{operator},</if>
+			<if test=" operatorConfirmTime != null">operatorConfirmTime = #{operatorConfirmTime},</if>
+			<if test=" prodSupr != null">prodSupr = #{prodSupr},</if>
+			<if test=" prodSuperConfirmTime != null">prodSuperConfirmTime = #{prodSuperConfirmTime},</if>
+			<if test=" faciSuper != null">faciSuper = #{faciSuper},</if>
+			<if test=" faciSuperConfirmTime != null">faciSuperConfirmTime = #{faciSuperConfirmTime},</if>
 
-			<if test=" delFlag != null and delFlag!= ''">delFlag = #{delFlag},</if>
-			<if test="  remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" delFlag != null">delFlag = #{delFlag},</if>
+			<if test="  remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -162,79 +162,79 @@
     
 		INSERT INTO dev_maintain_record(
 			<if test=" id != null and id!= 0">id,</if>
-			<if test=" deptId != null and  deptId != ''">deptId,</if>
-			<if test=" useDept != null and  useDept != ''">useDept,</if>
-			<if test=" recordDate != null and  recordDate != ''">recordDate,</if>
-			<if test=" devName != null and  devName != ''">devName,</if>
-			<if test=" devNumber != null and  devNumber != ''">devNumber,</if>
-			<if test=" devModel != null and  devModel != ''">devModel,</if>
-			<if test=" devSpec != null and  devSpec != ''">devSpec,</if>
-			<if test=" mType != null and  mType != ''">mType,</if>
-			<if test=" mCycle != null and  mCycle != ''">mCycle,</if>
-			<if test=" installPlace != null and  installPlace != ''">installPlace,</if>
-			<if test=" devType != null and  devType != ''">devType,</if>
-			<if test=" lastDate != null and  lastDate != ''">lastDate,</if>
-			<if test=" content != null and  content != ''">content,</if>
-			<if test=" maintainRemarks != null and  maintainRemarks != ''">maintainRemarks,</if>
-			<if test=" planStartTime != null and  planStartTime != ''">planStartTime,</if>
-			<if test=" planEndTime != null and  planEndTime != ''">planEndTime,</if>
-			<if test=" planUseTime != null and  planUseTime != ''">planUseTime,</if>
-			<if test=" startTime != null and  startTime != ''">startTime,</if>
-			<if test=" endTime != null and  endTime != ''">endTime,</if>
-			<if test=" useTime != null and  useTime != ''">useTime,</if>
-			<if test=" commodities != null and  commodities != ''">commodities,</if>
-			<if test=" monitor != null and  monitor != ''">monitor,</if>
-			<if test=" result != null and  result != ''">result,</if>
-			<if test=" maintainPerson != null and  maintainPerson != ''">maintainPerson,</if>
-			<if test=" operator != null and  operator != ''">operator,</if>
-			<if test=" operatorConfirmTime != null and  operatorConfirmTime != ''">operatorConfirmTime,</if>
-			<if test=" prodSupr != null and  prodSupr != ''">prodSupr,</if>
-			<if test=" prodSuperConfirmTime != null and  prodSuperConfirmTime != ''">prodSuperConfirmTime,</if>
-			<if test=" faciSuper != null and  faciSuper != ''">faciSuper,</if>
-			<if test=" faciSuperConfirmTime != null and  faciSuperConfirmTime != ''">faciSuperConfirmTime,</if>
+			<if test=" deptId != null">deptId,</if>
+			<if test=" useDept != null">useDept,</if>
+			<if test=" recordDate != null">recordDate,</if>
+			<if test=" devName != null">devName,</if>
+			<if test=" devNumber != null">devNumber,</if>
+			<if test=" devModel != null">devModel,</if>
+			<if test=" devSpec != null">devSpec,</if>
+			<if test=" mType != null">mType,</if>
+			<if test=" mCycle != null">mCycle,</if>
+			<if test=" installPlace != null">installPlace,</if>
+			<if test=" devType != null">devType,</if>
+			<if test=" lastDate != null">lastDate,</if>
+			<if test=" content != null">content,</if>
+			<if test=" maintainRemarks != null">maintainRemarks,</if>
+			<if test=" planStartTime != null">planStartTime,</if>
+			<if test=" planEndTime != null">planEndTime,</if>
+			<if test=" planUseTime != null">planUseTime,</if>
+			<if test=" startTime != null">startTime,</if>
+			<if test=" endTime != null">endTime,</if>
+			<if test=" useTime != null">useTime,</if>
+			<if test=" commodities != null">commodities,</if>
+			<if test=" monitor != null">monitor,</if>
+			<if test=" result != null">result,</if>
+			<if test=" maintainPerson != null">maintainPerson,</if>
+			<if test=" operator != null">operator,</if>
+			<if test=" operatorConfirmTime != null">operatorConfirmTime,</if>
+			<if test=" prodSupr != null">prodSupr,</if>
+			<if test=" prodSuperConfirmTime != null">prodSuperConfirmTime,</if>
+			<if test=" faciSuper != null">faciSuper,</if>
+			<if test=" faciSuperConfirmTime != null">faciSuperConfirmTime,</if>
 
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" delFlag != null and delFlag!= ''">delFlag,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" delFlag != null">delFlag,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
-			<if test=" deptId != null and deptId != ''">#{deptId},</if>
-			<if test=" useDept != null and useDept != ''">#{useDept},</if>
-			<if test=" recordDate != null and recordDate != ''">#{recordDate},</if>
-			<if test=" devName != null and devName != ''">#{devName},</if>
-			<if test=" devNumber != null and devNumber != ''">#{devNumber},</if>
-			<if test=" devModel != null and devModel != ''">#{devModel},</if>
-			<if test=" devSpec != null and devSpec != ''">#{devSpec},</if>
-			<if test=" mType != null and mType != ''">#{mType},</if>
-			<if test=" mCycle != null and mCycle != ''">#{mCycle},</if>
-			<if test=" installPlace != null and installPlace != ''">#{installPlace},</if>
-			<if test=" devType != null and devType != ''">#{devType},</if>
-			<if test=" lastDate != null and lastDate != ''">#{lastDate},</if>
-			<if test=" content != null and content != ''">#{content},</if>
-			<if test=" maintainRemarks != null and maintainRemarks != ''">#{maintainRemarks},</if>
-			<if test=" planStartTime != null and planStartTime != ''">#{planStartTime},</if>
-			<if test=" planEndTime != null and planEndTime != ''">#{planEndTime},</if>
-			<if test=" planUseTime != null and planUseTime != ''">#{planUseTime},</if>
-			<if test=" startTime != null and startTime != ''">#{startTime},</if>
-			<if test=" endTime != null and endTime != ''">#{endTime},</if>
-			<if test=" useTime != null and useTime != ''">#{useTime},</if>
-			<if test=" commodities != null and commodities != ''">#{commodities},</if>
-			<if test=" monitor != null and monitor != ''">#{monitor},</if>
-			<if test=" result != null and result != ''">#{result},</if>
-			<if test=" maintainPerson != null and maintainPerson != ''">#{maintainPerson},</if>
-			<if test=" operator != null and operator != ''">#{operator},</if>
-			<if test=" operatorConfirmTime != null and operatorConfirmTime != ''">#{operatorConfirmTime},</if>
-			<if test=" prodSupr != null and prodSupr != ''">#{prodSupr},</if>
-			<if test=" prodSuperConfirmTime != null and prodSuperConfirmTime != ''">#{prodSuperConfirmTime},</if>
-			<if test=" faciSuper != null and faciSuper != ''">#{faciSuper},</if>
-			<if test=" faciSuperConfirmTime != null and faciSuperConfirmTime != ''">#{faciSuperConfirmTime},</if>
+			<if test=" deptId != null">#{deptId},</if>
+			<if test=" useDept != null">#{useDept},</if>
+			<if test=" recordDate != null">#{recordDate},</if>
+			<if test=" devName != null">#{devName},</if>
+			<if test=" devNumber != null">#{devNumber},</if>
+			<if test=" devModel != null">#{devModel},</if>
+			<if test=" devSpec != null">#{devSpec},</if>
+			<if test=" mType != null">#{mType},</if>
+			<if test=" mCycle != null">#{mCycle},</if>
+			<if test=" installPlace != null">#{installPlace},</if>
+			<if test=" devType != null">#{devType},</if>
+			<if test=" lastDate != null">#{lastDate},</if>
+			<if test=" content != null">#{content},</if>
+			<if test=" maintainRemarks != null">#{maintainRemarks},</if>
+			<if test=" planStartTime != null">#{planStartTime},</if>
+			<if test=" planEndTime != null">#{planEndTime},</if>
+			<if test=" planUseTime != null">#{planUseTime},</if>
+			<if test=" startTime != null">#{startTime},</if>
+			<if test=" endTime != null">#{endTime},</if>
+			<if test=" useTime != null">#{useTime},</if>
+			<if test=" commodities != null">#{commodities},</if>
+			<if test=" monitor != null">#{monitor},</if>
+			<if test=" result != null">#{result},</if>
+			<if test=" maintainPerson != null">#{maintainPerson},</if>
+			<if test=" operator != null">#{operator},</if>
+			<if test=" operatorConfirmTime != null">#{operatorConfirmTime},</if>
+			<if test=" prodSupr != null">#{prodSupr},</if>
+			<if test=" prodSuperConfirmTime != null">#{prodSuperConfirmTime},</if>
+			<if test=" faciSuper != null">#{faciSuper},</if>
+			<if test=" faciSuperConfirmTime != null">#{faciSuperConfirmTime},</if>
 
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" delFlag != null and delFlag!= ''">#{delFlag},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" delFlag != null">#{delFlag},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

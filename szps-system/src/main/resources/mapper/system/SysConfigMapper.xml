@@ -70,21 +70,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</selectKey>
         insert into sys_config (
             <if test="configId != null and configId != 0 ">config_id,</if>
-			<if test="configName != null and configName != '' ">config_name,</if>
-			<if test="configKey != null and configKey != '' ">config_key,</if>
-			<if test="configValue != null and configValue != '' ">config_value,</if>
-			<if test="configType != null and configType != '' ">config_type,</if>
-			<if test="createBy != null and createBy != ''">create_by,</if>
-			<if test="remark != null and remark != ''">remark,</if>
+			<if test="configName != null ">config_name,</if>
+			<if test="configKey != null ">config_key,</if>
+			<if test="configValue != null ">config_value,</if>
+			<if test="configType != null ">config_type,</if>
+			<if test="createBy != null">create_by,</if>
+			<if test="remark != null">remark,</if>
  			create_time
         )values(
             <if test="configId != null and configId != 0 ">#{configId},</if>
-			<if test="configName != null and configName != ''">#{configName},</if>
-			<if test="configKey != null and configKey != ''">#{configKey},</if>
-			<if test="configValue != null and configValue != ''">#{configValue},</if>
-			<if test="configType != null and configType != ''">#{configType},</if>
-			<if test="createBy != null and createBy != ''">#{createBy},</if>
-			<if test="remark != null and remark != ''">#{remark},</if>
+			<if test="configName != null">#{configName},</if>
+			<if test="configKey != null">#{configKey},</if>
+			<if test="configValue != null">#{configValue},</if>
+			<if test="configType != null">#{configType},</if>
+			<if test="createBy != null">#{createBy},</if>
+			<if test="remark != null">#{remark},</if>
  			sysdate
 		)
     </insert>
@@ -92,11 +92,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <update id="updateConfig" parameterType="SysConfig">
         update sys_config 
         <set>
-            <if test="configName != null and configName != ''">config_name = #{configName},</if>
-            <if test="configKey != null and configKey != ''">config_key = #{configKey},</if>
-            <if test="configValue != null and configValue != ''">config_value = #{configValue},</if>
-            <if test="configType != null and configType != ''">config_type = #{configType},</if>
-            <if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+            <if test="configName != null">config_name = #{configName},</if>
+            <if test="configKey != null">config_key = #{configKey},</if>
+            <if test="configValue != null">config_value = #{configValue},</if>
+            <if test="configType != null">config_type = #{configType},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
             <if test="remark != null">remark = #{remark},</if>
  			update_time = sysdate
         </set>

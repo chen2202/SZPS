@@ -156,77 +156,77 @@
  		update REPORT_PS_PROGRESS
  		<set>
 			<if test=" areaid != null">areaid = #{areaid},</if>
-			<if test=" areaname != null and areaname != ''">areaname = #{areaname},</if>
-			<if test=" deadline != null and deadline != ''">deadline = #{deadline},</if>
-			<if test=" recruitmentmethod != null and recruitmentmethod != ''">recruitmentmethod = #{recruitmentmethod},</if>
-			<if test=" signingdate != null and signingdate != ''">signingdate = #{signingdate},</if>
-			<if test=" planfinishdate != null and planfinishdate != ''">planfinishdate = #{planfinishdate},</if>
-			<if test=" rq_completed_num != null and rq_completed_num != ''">rq_completed_num = #{rq_completed_num},</if>
-			<if test=" rq_entrust != null and rq_entrust != ''">rq_entrust = #{rq_entrust},</if>
-			<if test=" rq_actual != null and rq_actual != ''">rq_actual = #{rq_actual},</if>
-			<if test=" rq_reception_rate != null and rq_reception_rate != ''">rq_reception_rate = #{rq_reception_rate},</if>
-			<if test=" rq_network_length != null and rq_network_length != ''">rq_network_length = #{rq_network_length},</if>
-			<if test=" rq_detection_length != null and rq_detection_length != ''">rq_detection_length = #{rq_detection_length},</if>
-			<if test=" rq_mapping_length != null and rq_mapping_length != ''">rq_mapping_length = #{rq_mapping_length},</if>
-			<if test=" rq_dredging_capacity != null and rq_dredging_capacity != ''">rq_dredging_capacity = #{rq_dredging_capacity},</if>
-			<if test=" rq_renovation != null and rq_renovation != ''">rq_renovation = #{rq_renovation},</if>
-			<if test=" iq_completed_num != null and iq_completed_num != ''">iq_completed_num = #{iq_completed_num},</if>
-			<if test=" iq_entrust != null and iq_entrust != ''">iq_entrust = #{iq_entrust},</if>
-			<if test=" iq_actual != null and iq_actual != ''">iq_actual = #{iq_actual},</if>
-			<if test=" iq_reception_rate != null and iq_reception_rate != ''">iq_reception_rate = #{iq_reception_rate},</if>
-			<if test=" iq_network_length != null and iq_network_length != ''">iq_network_length = #{iq_network_length},</if>
-			<if test=" iq_detection_length != null and iq_detection_length != ''">iq_detection_length = #{iq_detection_length},</if>
-			<if test=" iq_mapping_length != null and iq_mapping_length != ''">iq_mapping_length = #{iq_mapping_length},</if>
-			<if test=" iq_dredging_capacity != null and iq_dredging_capacity != ''">iq_dredging_capacity = #{iq_dredging_capacity},</if>
-			<if test=" iq_renovation != null and iq_renovation != ''">iq_renovation = #{iq_renovation},</if>
-			<if test=" eq_completed_num != null and eq_completed_num != ''">eq_completed_num = #{eq_completed_num},</if>
-			<if test=" eq_entrust != null and eq_entrust != ''">eq_entrust = #{eq_entrust},</if>
-			<if test=" eq_actual != null and eq_actual != ''">eq_actual = #{eq_actual},</if>
-			<if test=" eq_reception_rate != null and eq_reception_rate != ''">eq_reception_rate = #{eq_reception_rate},</if>
-			<if test=" eq_network_length != null and eq_network_length != ''">eq_network_length = #{eq_network_length},</if>
-			<if test=" eq_detection_length != null and eq_detection_length != ''">eq_detection_length = #{eq_detection_length},</if>
-			<if test=" eq_mapping_length != null and eq_mapping_length != ''">eq_mapping_length = #{eq_mapping_length},</if>
-			<if test=" eq_dredging_capacity != null and eq_dredging_capacity != ''">eq_dredging_capacity = #{eq_dredging_capacity},</if>
-			<if test=" eq_renovation != null and eq_renovation != ''">eq_renovation = #{eq_renovation},</if>
-			<if test=" erq_completed_num != null and erq_completed_num != ''">erq_completed_num = #{erq_completed_num},</if>
-			<if test=" erq_entrust != null and erq_entrust != ''">erq_entrust = #{erq_entrust},</if>
-			<if test=" erq_actual != null and erq_actual != ''">erq_actual = #{erq_actual},</if>
-			<if test=" erq_reception_rate != null and erq_reception_rate != ''">erq_reception_rate = #{erq_reception_rate},</if>
-			<if test=" erq_network_length != null and erq_network_length != ''">erq_network_length = #{erq_network_length},</if>
-			<if test=" erq_detection_length != null and erq_detection_length != ''">erq_detection_length = #{erq_detection_length},</if>
-			<if test=" erq_mapping_length != null and erq_mapping_length != ''">erq_mapping_length = #{erq_mapping_length},</if>
-			<if test=" erq_dredging_capacity != null and erq_dredging_capacity != ''">erq_dredging_capacity = #{erq_dredging_capacity},</if>
-			<if test=" erq_renovation != null and erq_renovation != ''">erq_renovation = #{erq_renovation},</if>
-			<if test=" pq_completed_num != null and pq_completed_num != ''">pq_completed_num = #{pq_completed_num},</if>
-			<if test=" pq_entrust != null and pq_entrust != ''">pq_entrust = #{pq_entrust},</if>
-			<if test=" pq_actual != null and pq_actual != ''">pq_actual = #{pq_actual},</if>
-			<if test=" pq_reception_rate != null and pq_reception_rate != ''">pq_reception_rate = #{pq_reception_rate},</if>
-			<if test=" pq_network_length != null and pq_network_length != ''">pq_network_length = #{pq_network_length},</if>
-			<if test=" pq_detection_length != null and pq_detection_length != ''">pq_detection_length = #{pq_detection_length},</if>
-			<if test=" pq_mapping_length != null and pq_mapping_length != ''">pq_mapping_length = #{pq_mapping_length},</if>
-			<if test=" pq_dredging_capacity != null and pq_dredging_capacity != ''">pq_dredging_capacity = #{pq_dredging_capacity},</if>
-			<if test=" pq_renovation != null and pq_renovation != ''">pq_renovation = #{pq_renovation},</if>
-			<if test=" vq_completed_num != null and vq_completed_num != ''">vq_completed_num = #{vq_completed_num},</if>
-			<if test=" vq_entrust != null and vq_entrust != ''">vq_entrust = #{vq_entrust},</if>
-			<if test=" vq_actual != null and vq_actual != ''">vq_actual = #{vq_actual},</if>
-			<if test=" vq_reception_rate != null and vq_reception_rate != ''">vq_reception_rate = #{vq_reception_rate},</if>
-			<if test=" vq_network_length != null and vq_network_length != ''">vq_network_length = #{vq_network_length},</if>
-			<if test=" vq_detection_length != null and vq_detection_length != ''">vq_detection_length = #{vq_detection_length},</if>
-			<if test=" vq_mapping_length != null and vq_mapping_length != ''">vq_mapping_length = #{vq_mapping_length},</if>
-			<if test=" vq_dredging_capacity != null and vq_dredging_capacity != ''">vq_dredging_capacity = #{vq_dredging_capacity},</if>
-			<if test=" vq_renovation != null and vq_renovation != ''">vq_renovation = #{vq_renovation},</if>
-			<if test=" tq_completed_num != null and tq_completed_num != ''">tq_completed_num = #{tq_completed_num},</if>
-			<if test=" tq_entrust != null and tq_entrust != ''">tq_entrust = #{tq_entrust},</if>
-			<if test=" tq_actual != null and tq_actual != ''">tq_actual = #{tq_actual},</if>
-			<if test=" tq_reception_rate != null and tq_reception_rate != ''">tq_reception_rate = #{tq_reception_rate},</if>
-			<if test=" tq_network_length != null and tq_network_length != ''">tq_network_length = #{tq_network_length},</if>
-			<if test=" tq_detection_length != null and tq_detection_length != ''">tq_detection_length = #{tq_detection_length},</if>
-			<if test=" tq_mapping_length != null and tq_mapping_length != ''">tq_mapping_length = #{tq_mapping_length},</if>
-			<if test=" tq_dredging_capacity != null and tq_dredging_capacity != ''">tq_dredging_capacity = #{tq_dredging_capacity},</if>
-			<if test=" tq_renovation != null and tq_renovation != ''">tq_renovation = #{tq_renovation},</if>
+			<if test=" areaname != null">areaname = #{areaname},</if>
+			<if test=" deadline != null">deadline = #{deadline},</if>
+			<if test=" recruitmentmethod != null">recruitmentmethod = #{recruitmentmethod},</if>
+			<if test=" signingdate != null">signingdate = #{signingdate},</if>
+			<if test=" planfinishdate != null">planfinishdate = #{planfinishdate},</if>
+			<if test=" rq_completed_num != null">rq_completed_num = #{rq_completed_num},</if>
+			<if test=" rq_entrust != null">rq_entrust = #{rq_entrust},</if>
+			<if test=" rq_actual != null">rq_actual = #{rq_actual},</if>
+			<if test=" rq_reception_rate != null">rq_reception_rate = #{rq_reception_rate},</if>
+			<if test=" rq_network_length != null">rq_network_length = #{rq_network_length},</if>
+			<if test=" rq_detection_length != null">rq_detection_length = #{rq_detection_length},</if>
+			<if test=" rq_mapping_length != null">rq_mapping_length = #{rq_mapping_length},</if>
+			<if test=" rq_dredging_capacity != null">rq_dredging_capacity = #{rq_dredging_capacity},</if>
+			<if test=" rq_renovation != null">rq_renovation = #{rq_renovation},</if>
+			<if test=" iq_completed_num != null">iq_completed_num = #{iq_completed_num},</if>
+			<if test=" iq_entrust != null">iq_entrust = #{iq_entrust},</if>
+			<if test=" iq_actual != null">iq_actual = #{iq_actual},</if>
+			<if test=" iq_reception_rate != null">iq_reception_rate = #{iq_reception_rate},</if>
+			<if test=" iq_network_length != null">iq_network_length = #{iq_network_length},</if>
+			<if test=" iq_detection_length != null">iq_detection_length = #{iq_detection_length},</if>
+			<if test=" iq_mapping_length != null">iq_mapping_length = #{iq_mapping_length},</if>
+			<if test=" iq_dredging_capacity != null">iq_dredging_capacity = #{iq_dredging_capacity},</if>
+			<if test=" iq_renovation != null">iq_renovation = #{iq_renovation},</if>
+			<if test=" eq_completed_num != null">eq_completed_num = #{eq_completed_num},</if>
+			<if test=" eq_entrust != null">eq_entrust = #{eq_entrust},</if>
+			<if test=" eq_actual != null">eq_actual = #{eq_actual},</if>
+			<if test=" eq_reception_rate != null">eq_reception_rate = #{eq_reception_rate},</if>
+			<if test=" eq_network_length != null">eq_network_length = #{eq_network_length},</if>
+			<if test=" eq_detection_length != null">eq_detection_length = #{eq_detection_length},</if>
+			<if test=" eq_mapping_length != null">eq_mapping_length = #{eq_mapping_length},</if>
+			<if test=" eq_dredging_capacity != null">eq_dredging_capacity = #{eq_dredging_capacity},</if>
+			<if test=" eq_renovation != null">eq_renovation = #{eq_renovation},</if>
+			<if test=" erq_completed_num != null">erq_completed_num = #{erq_completed_num},</if>
+			<if test=" erq_entrust != null">erq_entrust = #{erq_entrust},</if>
+			<if test=" erq_actual != null">erq_actual = #{erq_actual},</if>
+			<if test=" erq_reception_rate != null">erq_reception_rate = #{erq_reception_rate},</if>
+			<if test=" erq_network_length != null">erq_network_length = #{erq_network_length},</if>
+			<if test=" erq_detection_length != null">erq_detection_length = #{erq_detection_length},</if>
+			<if test=" erq_mapping_length != null">erq_mapping_length = #{erq_mapping_length},</if>
+			<if test=" erq_dredging_capacity != null">erq_dredging_capacity = #{erq_dredging_capacity},</if>
+			<if test=" erq_renovation != null">erq_renovation = #{erq_renovation},</if>
+			<if test=" pq_completed_num != null">pq_completed_num = #{pq_completed_num},</if>
+			<if test=" pq_entrust != null">pq_entrust = #{pq_entrust},</if>
+			<if test=" pq_actual != null">pq_actual = #{pq_actual},</if>
+			<if test=" pq_reception_rate != null">pq_reception_rate = #{pq_reception_rate},</if>
+			<if test=" pq_network_length != null">pq_network_length = #{pq_network_length},</if>
+			<if test=" pq_detection_length != null">pq_detection_length = #{pq_detection_length},</if>
+			<if test=" pq_mapping_length != null">pq_mapping_length = #{pq_mapping_length},</if>
+			<if test=" pq_dredging_capacity != null">pq_dredging_capacity = #{pq_dredging_capacity},</if>
+			<if test=" pq_renovation != null">pq_renovation = #{pq_renovation},</if>
+			<if test=" vq_completed_num != null">vq_completed_num = #{vq_completed_num},</if>
+			<if test=" vq_entrust != null">vq_entrust = #{vq_entrust},</if>
+			<if test=" vq_actual != null">vq_actual = #{vq_actual},</if>
+			<if test=" vq_reception_rate != null">vq_reception_rate = #{vq_reception_rate},</if>
+			<if test=" vq_network_length != null">vq_network_length = #{vq_network_length},</if>
+			<if test=" vq_detection_length != null">vq_detection_length = #{vq_detection_length},</if>
+			<if test=" vq_mapping_length != null">vq_mapping_length = #{vq_mapping_length},</if>
+			<if test=" vq_dredging_capacity != null">vq_dredging_capacity = #{vq_dredging_capacity},</if>
+			<if test=" vq_renovation != null">vq_renovation = #{vq_renovation},</if>
+			<if test=" tq_completed_num != null">tq_completed_num = #{tq_completed_num},</if>
+			<if test=" tq_entrust != null">tq_entrust = #{tq_entrust},</if>
+			<if test=" tq_actual != null">tq_actual = #{tq_actual},</if>
+			<if test=" tq_reception_rate != null">tq_reception_rate = #{tq_reception_rate},</if>
+			<if test=" tq_network_length != null">tq_network_length = #{tq_network_length},</if>
+			<if test=" tq_detection_length != null">tq_detection_length = #{tq_detection_length},</if>
+			<if test=" tq_mapping_length != null">tq_mapping_length = #{tq_mapping_length},</if>
+			<if test=" tq_dredging_capacity != null">tq_dredging_capacity = #{tq_dredging_capacity},</if>
+			<if test=" tq_renovation != null">tq_renovation = #{tq_renovation},</if>
 			
-			<if test=" remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -240,11 +240,11 @@
 		INSERT INTO REPORT_PS_PROGRESS(
 			<if test=" id != null and id!= 0">id,</if>
 			<if test=" areaid != null ">areaid,</if>
-			<if test=" areaname != null and  areaname != ''">areaname,</if>
-			<if test=" deadline != null and  deadline != ''">deadline,</if>
-			<if test=" recruitmentmethod != null and  recruitmentmethod != ''">recruitmentmethod,</if>
-			<if test=" signingdate != null and  signingdate != ''">signingdate,</if>
-			<if test=" planfinishdate != null and  planfinishdate != ''">planfinishdate,</if>
+			<if test=" areaname != null">areaname,</if>
+			<if test=" deadline != null">deadline,</if>
+			<if test=" recruitmentmethod != null">recruitmentmethod,</if>
+			<if test=" signingdate != null">signingdate,</if>
+			<if test=" planfinishdate != null">planfinishdate,</if>
 			<if test=" rq_completed_num != null ">rq_completed_num,</if>
 			<if test=" rq_entrust != null ">rq_entrust,</if>
 			<if test=" rq_actual != null ">rq_actual,</if>
@@ -310,18 +310,18 @@
 			<if test=" tq_renovation != null ">tq_renovation,</if>
 
 			
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
 			<if test=" areaid != null ">#{areaid},</if>
-			<if test=" areaname != null and areaname != ''">#{areaname},</if>
-			<if test=" deadline != null and deadline != ''">#{deadline},</if>
-			<if test=" recruitmentmethod != null and recruitmentmethod != ''">#{recruitmentmethod},</if>
-			<if test=" signingdate != null and signingdate != ''">#{signingdate},</if>
-			<if test=" planfinishdate != null and planfinishdate != ''">#{planfinishdate},</if>
+			<if test=" areaname != null">#{areaname},</if>
+			<if test=" deadline != null">#{deadline},</if>
+			<if test=" recruitmentmethod != null">#{recruitmentmethod},</if>
+			<if test=" signingdate != null">#{signingdate},</if>
+			<if test=" planfinishdate != null">#{planfinishdate},</if>
 			<if test=" rq_completed_num != null  ">#{rq_completed_num},</if>
 			<if test=" rq_entrust != null  ">#{rq_entrust},</if>
 			<if test=" rq_actual != null  ">#{rq_actual},</if>
@@ -387,9 +387,9 @@
 			<if test=" tq_renovation != null  ">#{tq_renovation},</if>
 
 			
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

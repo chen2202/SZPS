@@ -102,23 +102,23 @@
     <update id="update" parameterType="DevInfo">
  		update dev_info
  		<set>
-			<if test=" dnumber != null and dnumber != ''">dnumber = #{dnumber},</if>
-			<if test=" dname != null and dname != ''">dname = #{dname},</if>
-			<if test=" dbrand != null and dbrand != ''">dbrand = #{dbrand},</if>
-			<if test=" dtype != null and dtype != ''">dtype = #{dtype},</if>
-			<if test=" dalias != null and dalias != ''">dalias = #{dalias},</if>
-			<if test=" dmodel != null and dmodel != ''">dmodel = #{dmodel},</if>
+			<if test=" dnumber != null">dnumber = #{dnumber},</if>
+			<if test=" dname != null">dname = #{dname},</if>
+			<if test=" dbrand != null">dbrand = #{dbrand},</if>
+			<if test=" dtype != null">dtype = #{dtype},</if>
+			<if test=" dalias != null">dalias = #{dalias},</if>
+			<if test=" dmodel != null">dmodel = #{dmodel},</if>
 			<if test=" buytime != null ">buytime = #{buytime},</if>
 			<if test=" beganusetime != null ">beganusetime = #{beganusetime},</if>
-			<if test=" installationsite != null and installationsite != ''">installationsite = #{installationsite},</if>
-			<if test=" dstatus != null and dstatus != ''">dstatus = #{dstatus},</if>
-			<if test=" picurl != null and picurl != ''">picurl = #{picurl},</if>
+			<if test=" installationsite != null">installationsite = #{installationsite},</if>
+			<if test=" dstatus != null">dstatus = #{dstatus},</if>
+			<if test=" picurl != null">picurl = #{picurl},</if>
 			<if test=" deptid != null">deptid = #{deptid},</if>
 			<if test=" supplierid != null">supplierid = #{supplierid},</if>
 
 			
-			<if test=" remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -131,45 +131,45 @@
     
 		INSERT INTO dev_info(
 			<if test=" id != null and id!= 0">id,</if>
-			<if test=" dnumber != null and  dnumber != ''">dnumber,</if>
-			<if test=" dname != null and  dname != ''">dname,</if>
-			<if test=" dbrand != null and  dbrand != ''">dbrand,</if>
-			<if test=" dtype != null and  dtype != ''">dtype,</if>
-			<if test=" dalias != null and  dalias != ''">dalias,</if>
-			<if test=" dmodel != null and  dmodel != ''">dmodel,</if>
+			<if test=" dnumber != null">dnumber,</if>
+			<if test=" dname != null">dname,</if>
+			<if test=" dbrand != null">dbrand,</if>
+			<if test=" dtype != null">dtype,</if>
+			<if test=" dalias != null">dalias,</if>
+			<if test=" dmodel != null">dmodel,</if>
 			<if test=" buytime != null ">buytime,</if>
 			<if test=" beganusetime != null ">beganusetime,</if>
-			<if test=" installationsite != null and  installationsite != ''">installationsite,</if>
-			<if test=" dstatus != null and  dstatus != ''">dstatus,</if>
-			<if test=" picurl != null and  picurl != ''">picurl,</if>
+			<if test=" installationsite != null">installationsite,</if>
+			<if test=" dstatus != null">dstatus,</if>
+			<if test=" picurl != null">picurl,</if>
 			<if test=" deptid != null ">deptid,</if>
 			<if test=" supplierid != null">supplierid,</if>
 
 			
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
-			<if test=" dnumber != null and dnumber != ''">#{dnumber},</if>
-			<if test=" dname != null and dname != ''">#{dname},</if>
-			<if test=" dbrand != null and dbrand != ''">#{dbrand},</if>
-			<if test=" dtype != null and dtype != ''">#{dtype},</if>
-			<if test=" dalias != null and dalias != ''">#{dalias},</if>
-			<if test=" dmodel != null and dmodel != ''">#{dmodel},</if>
+			<if test=" dnumber != null">#{dnumber},</if>
+			<if test=" dname != null">#{dname},</if>
+			<if test=" dbrand != null">#{dbrand},</if>
+			<if test=" dtype != null">#{dtype},</if>
+			<if test=" dalias != null">#{dalias},</if>
+			<if test=" dmodel != null">#{dmodel},</if>
 			<if test=" buytime != null ">#{buytime},</if>
 			<if test=" beganusetime != null ">#{beganusetime},</if>
-			<if test=" installationsite != null and installationsite != ''">#{installationsite},</if>
-			<if test=" dstatus != null and dstatus != ''">#{dstatus},</if>
-			<if test=" picurl != null and picurl != ''">#{picurl},</if>
+			<if test=" installationsite != null">#{installationsite},</if>
+			<if test=" dstatus != null">#{dstatus},</if>
+			<if test=" picurl != null">#{picurl},</if>
 			<if test=" deptid != null ">#{deptid},</if>
 			<if test=" supplierid != null ">#{supplierid},</if>
 
 			
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

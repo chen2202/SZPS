@@ -19,9 +19,9 @@
 					 <div class="row">
 						<div class="col-sm-6">
 							   <div class="form-group">
-								   <label class="col-sm-4 control-label">设备编号：</label>
+								   <label class="col-sm-4 control-label"><span style="color: red; ">*</span>设备编号：</label>
 								   <div class="col-sm-8">
-									   <input name="dnumber" class="form-control" type="text"  >
+									   <input name="dnumber" class="form-control" type="text"  required>
 								   </div>
 							   </div>
 						</div>
@@ -132,22 +132,6 @@
 			
 			
 				</div>
-				<div class="col-md-4">
-					<div class="text-center">
-						<div class="row">
-	                        <img class=" img-lg" th:src=" @{/img/sample.jpg} ">
-	                    </div>
-	                    <div class="row">
-	                    	<a href="">修改</a>
-	                    </div>
-	                    <div class="row">
-	                    	<a href="">生产设备二维码</a>
-	                    </div>
-	                    <div class="row">
-	                        <img class=" img-sm" th:src=" @{/img/sample2.jpg} ">
-	                    </div>
-                    </div>
-				</div>
 			</div>
 		</div>
         
@@ -157,50 +141,21 @@
 				   <div class="form-group">
 					   <label class="col-sm-2 control-label">选择供应商:</label>
 					   <div class="col-sm-8">
-					   	<textarea name="suppliername"  onclick="selectSupplier()" id="treeName" class="form-control" type="text"></textarea>
+					   	<textarea name="dsupplier"  onclick="selectSupplier()" id="treeName" class="form-control" type="text"></textarea>
 					   </div>
 				   </div>
 			</div>
 		</div>
 			
-		<h4 class="form-header h4">技术资料</h4>
-		<div class="row">
-			<div class="col-sm-10">
-				   <div class="form-group">
-					   <label class="col-sm-2 control-label">产品说明书:</label>
-					   <div class="col-sm-8 ">
-						   <input name="imgUrl" id="imgUrl" class="form-control" type="hidden">
-						   <input id="fileinput-demo-1" name="file" type="file" >
-					   </div>
-				   </div>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="col-sm-10">
-				   <div class="form-group">
-					   <label class="col-sm-2 control-label">操作手册:</label>
-					   <div class="col-sm-8 ">
-						   <input name="imgUrl2" id="imgUrl2" class="form-control" type="hidden">
-						   <input id="fileinput-demo-2" name="file" type="file" >
-					   </div>
-				   </div>
-			</div>
-		</div>
 	</form>
     </div>
-    <div class="row">
-        <div class="col-sm-offset-5 col-sm-10">
-            <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>保 存</button>&nbsp;
-            <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
-        </div>
-    </div>
+
 	<th:block th:include="include :: footer" />
 	<th:block th:include="include :: select2-js" />
     <th:block th:include="include :: bootstrap-fileinput-css" />
     <th:block th:include="include :: bootstrap-fileinput-js" />
 	<script>
-	    var prefix = ctx + "op/dev/info";
+	    var prefix = ctx + "op/dev/boinfo";
         $("#form").validate({
         	onkeyup: false,
         	rules:{
@@ -248,7 +203,7 @@
 		function submitHandler() {
 	        if ($.validate.form()) {
 	        	var data = $("#form").serializeArray();
-	        	$.operate.saveFile(prefix + "/add", data);
+	        	$.operate.save(prefix + "/add", data);
 	        }
 	    }
 		 // 上传文件

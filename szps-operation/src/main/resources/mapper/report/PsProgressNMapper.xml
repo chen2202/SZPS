@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szps.web.mapper.report.PsProgressNMapper">
+
+	<resultMap type="PsProgressN" id="result">
+    	<id     property="id"    column="id"    />
+		<result     property="xzqy_q"   column="xzqy_q"   />
+		<result     property="xzqy_j"   column="xzqy_j"   />
+		<result     property="duedate"   column="duedate"   />
+		<result     property="buildingtype"   column="buildingtype"   />
+		<result     property="jzxq_s"   column="jzxq_s"   />
+		<result     property="jzxq_q"   column="jzxq_q"   />
+		<result     property="jzxq_y"   column="jzxq_y"   />
+		<result     property="jzxq_z"   column="jzxq_z"   />
+		<result     property="psgwg_h"   column="psgwg_h"   />
+		<result     property="psgwg_y"   column="psgwg_y"   />
+		<result     property="psgwg_w"   column="psgwg_w"   />
+		<result     property="gwch_wg_xq"   column="gwch_wg_xq"   />
+		<result     property="gwch_wg_h"   column="gwch_wg_h"   />
+		<result     property="gwch_wg_y"   column="gwch_wg_y"   />
+		<result     property="gwch_wg_w"   column="gwch_wg_w"   />
+		<result     property="gwch_zzkz_xq"   column="gwch_zzkz_xq"   />
+		<result     property="gwch_zzkz_h"   column="gwch_zzkz_h"   />
+		<result     property="gwch_zzkz_y"   column="gwch_zzkz_y"   />
+		<result     property="gwch_zzkz_w"   column="gwch_zzkz_w"   />
+		<result     property="gwzc_wg_xq"   column="gwzc_wg_xq"   />
+		<result     property="gwzc_wg_h"   column="gwzc_wg_h"   />
+		<result     property="gwzc_wg_y"   column="gwzc_wg_y"   />
+		<result     property="gwzc_wg_w"   column="gwzc_wg_w"   />
+		<result     property="gwzc_zzkz_xq"   column="gwzc_zzkz_xq"   />
+		<result     property="gwzc_zzkz_h"   column="gwzc_zzkz_h"   />
+		<result     property="gwzc_zzkz_y"   column="gwzc_zzkz_y"   />
+		<result     property="gwzc_zzkz_w"   column="gwzc_zzkz_w"   />
+		<result     property="gwqy_wg_xq"   column="gwqy_wg_xq"   />
+		<result     property="gwqy_wg_h"   column="gwqy_wg_h"   />
+		<result     property="gwqy_wg_y"   column="gwqy_wg_y"   />
+		<result     property="gwqy_wg_w"   column="gwqy_wg_w"   />
+		<result     property="gwqy_wg_qy"   column="gwqy_wg_qy"   />
+		<result     property="gwqy_zzkz_xq"   column="gwqy_zzkz_xq"   />
+		<result     property="gwqy_zzkz_h"   column="gwqy_zzkz_h"   />
+		<result     property="gwqy_zzkz_y"   column="gwqy_zzkz_y"   />
+		<result     property="gwqy_zzkz_w"   column="gwqy_zzkz_w"   />
+		<result     property="gwqy_zzkz_qy"   column="gwqy_zzkz_qy"   />
+		<result     property="gwxf_wg_xq"   column="gwxf_wg_xq"   />
+		<result     property="gwxf_wg_h"   column="gwxf_wg_h"   />
+		<result     property="gwxf_wg_y"   column="gwxf_wg_y"   />
+		<result     property="gwxf_wg_w"   column="gwxf_wg_w"   />
+		<result     property="gwxf_wg_hld"   column="gwxf_wg_hld"   />
+		<result     property="gwxf_zzkz_xq"   column="gwxf_zzkz_xq"   />
+		<result     property="gwxf_zzkz_h"   column="gwxf_zzkz_h"   />
+		<result     property="gwxf_zzkz_y"   column="gwxf_zzkz_y"   />
+		<result     property="gwxf_zzkz_w"   column="gwxf_zzkz_w"   />
+		<result     property="gwxf_zzkz_hld"   column="gwxf_zzkz_hld"   />
+		<result     property="jcj_h"   column="jcj_h"   />
+		<result     property="jcj_y"   column="jcj_y"   />
+		<result     property="jcj_w"   column="jcj_w"   />
+		<result     property="ysk"   column="ysk"   />
+		<result     property="psh_h"   column="psh_h"   />
+		<result     property="psh_y"   column="psh_y"   />
+		<result     property="psh_e"   column="psh_e"   />
+		<result     property="hfc"   column="hfc"   />
+		<result     property="ljc"   column="ljc"   />
+		<result     property="gyc"   column="gyc"   />
+
+
+
+        <result property="createBy"      column="create_by"      />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"      column="update_by"      />
+        <result property="updateTime"    column="update_time"    />
+		<result property="remark"    column="remark"    />
+		<result property="delFlag"    column="delFlag"    />
+		<result     property="dept_id"   column="dept_id"   />
+
+    </resultMap>
+
+	<sql id="selectVo">
+        select *
+        from REPORT_PS_PROGRESS_N r
+    </sql>	
+	
+	<!-- 查询条件 -->
+	<sql id="sqlwhereSearch">
+		<where>
+        <if test=" id != null and id != 0">
+			AND id = #{id}
+		</if>
+			<if test=" xzqy_q != null  and xzqy_q != ''">
+				AND xzqy_q  like concat(concat('%',#{xzqy_q}),'%')
+			</if>
+			<if test=" xzqy_j != null and xzqy_j != ''">
+				AND xzqy_j  like concat(concat('%',#{xzqy_j}),'%')
+			</if>
+			<if test=" buildingtype != null and buildingtype != ''">
+				AND buildingtype  like concat(concat('%',#{buildingtype}),'%')
+			</if>
+			<if test="duedate != null and duedate != ''">
+				AND duedate = #{duedate}
+			</if>
+		</where>
+	</sql>
+	
+
+    
+    <select id="select" parameterType="PsProgressN" resultMap="result">
+        <include refid="selectVo"/>
+        <include refid="sqlwhereSearch"/>
+    </select>
+    
+    <select id="selectList" parameterType="PsProgressN" resultMap="result">
+        <include refid="selectVo"/>
+        where  1 = 1
+        <if test=" id != null and id != 0">
+			AND id = #{id}
+		</if>
+			<if test=" xzqy_q != null  and xzqy_q != ''">
+				AND xzqy_q  like concat(concat('%',#{xzqy_q}),'%')
+			</if>
+			<if test=" xzqy_j != null and xzqy_j != ''">
+				AND xzqy_j  like concat(concat('%',#{xzqy_j}),'%')
+			</if>
+			<if test=" buildingtype != null and buildingtype != ''">
+				AND buildingtype  like concat(concat('%',#{buildingtype}),'%')
+			</if>
+			<if test="duedate != null and duedate != ''">
+				AND duedate = #{duedate}
+			</if>
+		<!-- 数据范围过滤 -->
+		${params.dataScope}	
+		
+		order by r.duedate, r.id
+    </select>
+      <select id="selectByName" parameterType="Long" resultMap="result">
+		<include refid="selectVo"/>
+		where  1 = 1
+		<!-- <if test=" dname != null">
+				AND dname  like concat(concat('%',#{dname}),'%')
+		</if> -->
+	</select>
+	
+	<select id="selectById" parameterType="Long" resultMap="result">
+		<include refid="selectVo"/>
+		where r.id = #{id}
+	</select>
+	
+    <delete id="deleteById" parameterType="Long">
+		delete from REPORT_PS_PROGRESS_N where id = #{id}
+	</delete>
+	 <delete id="deleteByIds" parameterType="Long">
+ 		delete from REPORT_PS_PROGRESS_N where id in
+ 		<foreach collection="array" item="id" open="(" separator="," close=")">
+ 			#{id}
+        </foreach> 
+ 	</delete>
+    <update id="update" parameterType="PsProgressN">
+ 		update REPORT_PS_PROGRESS_N
+ 		<set>
+			<if test=" xzqy_q != null">xzqy_q = #{xzqy_q},</if>
+			<if test=" xzqy_j != null">xzqy_j = #{xzqy_j},</if>
+			<if test=" duedate != null">duedate = #{duedate},</if>
+			<if test=" buildingtype != null">buildingtype = #{buildingtype},</if>
+			<if test=" jzxq_s != null">jzxq_s = #{jzxq_s},</if>
+			<if test=" jzxq_q != null">jzxq_q = #{jzxq_q},</if>
+			<if test=" jzxq_y != null">jzxq_y = #{jzxq_y},</if>
+			<if test=" jzxq_z != null">jzxq_z = #{jzxq_z},</if>
+			<if test=" psgwg_h != null">psgwg_h = #{psgwg_h},</if>
+			<if test=" psgwg_y != null">psgwg_y = #{psgwg_y},</if>
+			<if test=" psgwg_w != null">psgwg_w = #{psgwg_w},</if>
+			<if test=" gwch_wg_xq != null">gwch_wg_xq = #{gwch_wg_xq},</if>
+			<if test=" gwch_wg_h != null">gwch_wg_h = #{gwch_wg_h},</if>
+			<if test=" gwch_wg_y != null">gwch_wg_y = #{gwch_wg_y},</if>
+			<if test=" gwch_wg_w != null">gwch_wg_w = #{gwch_wg_w},</if>
+			<if test=" gwch_zzkz_xq != null">gwch_zzkz_xq = #{gwch_zzkz_xq},</if>
+			<if test=" gwch_zzkz_h != null">gwch_zzkz_h = #{gwch_zzkz_h},</if>
+			<if test=" gwch_zzkz_y != null">gwch_zzkz_y = #{gwch_zzkz_y},</if>
+			<if test=" gwch_zzkz_w != null">gwch_zzkz_w = #{gwch_zzkz_w},</if>
+			<if test=" gwzc_wg_xq != null">gwzc_wg_xq = #{gwzc_wg_xq},</if>
+			<if test=" gwzc_wg_h != null">gwzc_wg_h = #{gwzc_wg_h},</if>
+			<if test=" gwzc_wg_y != null">gwzc_wg_y = #{gwzc_wg_y},</if>
+			<if test=" gwzc_wg_w != null">gwzc_wg_w = #{gwzc_wg_w},</if>
+			<if test=" gwzc_zzkz_xq != null">gwzc_zzkz_xq = #{gwzc_zzkz_xq},</if>
+			<if test=" gwzc_zzkz_h != null">gwzc_zzkz_h = #{gwzc_zzkz_h},</if>
+			<if test=" gwzc_zzkz_y != null">gwzc_zzkz_y = #{gwzc_zzkz_y},</if>
+			<if test=" gwzc_zzkz_w != null">gwzc_zzkz_w = #{gwzc_zzkz_w},</if>
+			<if test=" gwqy_wg_xq != null">gwqy_wg_xq = #{gwqy_wg_xq},</if>
+			<if test=" gwqy_wg_h != null">gwqy_wg_h = #{gwqy_wg_h},</if>
+			<if test=" gwqy_wg_y != null">gwqy_wg_y = #{gwqy_wg_y},</if>
+			<if test=" gwqy_wg_w != null">gwqy_wg_w = #{gwqy_wg_w},</if>
+			<if test=" gwqy_wg_qy != null">gwqy_wg_qy = #{gwqy_wg_qy},</if>
+			<if test=" gwqy_zzkz_xq != null">gwqy_zzkz_xq = #{gwqy_zzkz_xq},</if>
+			<if test=" gwqy_zzkz_h != null">gwqy_zzkz_h = #{gwqy_zzkz_h},</if>
+			<if test=" gwqy_zzkz_y != null">gwqy_zzkz_y = #{gwqy_zzkz_y},</if>
+			<if test=" gwqy_zzkz_w != null">gwqy_zzkz_w = #{gwqy_zzkz_w},</if>
+			<if test=" gwqy_zzkz_qy != null">gwqy_zzkz_qy = #{gwqy_zzkz_qy},</if>
+			<if test=" gwxf_wg_xq != null">gwxf_wg_xq = #{gwxf_wg_xq},</if>
+			<if test=" gwxf_wg_h != null">gwxf_wg_h = #{gwxf_wg_h},</if>
+			<if test=" gwxf_wg_y != null">gwxf_wg_y = #{gwxf_wg_y},</if>
+			<if test=" gwxf_wg_w != null">gwxf_wg_w = #{gwxf_wg_w},</if>
+			<if test=" gwxf_wg_hld != null">gwxf_wg_hld = #{gwxf_wg_hld},</if>
+			<if test=" gwxf_zzkz_xq != null">gwxf_zzkz_xq = #{gwxf_zzkz_xq},</if>
+			<if test=" gwxf_zzkz_h != null">gwxf_zzkz_h = #{gwxf_zzkz_h},</if>
+			<if test=" gwxf_zzkz_y != null">gwxf_zzkz_y = #{gwxf_zzkz_y},</if>
+			<if test=" gwxf_zzkz_w != null">gwxf_zzkz_w = #{gwxf_zzkz_w},</if>
+			<if test=" gwxf_zzkz_hld != null">gwxf_zzkz_hld = #{gwxf_zzkz_hld},</if>
+			<if test=" jcj_h != null">jcj_h = #{jcj_h},</if>
+			<if test=" jcj_y != null">jcj_y = #{jcj_y},</if>
+			<if test=" jcj_w != null">jcj_w = #{jcj_w},</if>
+			<if test=" ysk != null">ysk = #{ysk},</if>
+			<if test=" psh_h != null">psh_h = #{psh_h},</if>
+			<if test=" psh_y != null">psh_y = #{psh_y},</if>
+			<if test=" psh_e != null">psh_e = #{psh_e},</if>
+			<if test=" hfc != null">hfc = #{hfc},</if>
+			<if test=" ljc != null">ljc = #{ljc},</if>
+			<if test=" gyc != null">gyc = #{gyc},</if>
+			
+			<if test=" remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
+ 			update_time = sysdate
+ 		</set>
+ 		where id = #{id}
+	</update>
+	  
+    <insert id="insert" parameterType="PsProgressN">
+    	 <selectKey keyProperty="id" resultType="long" order="BEFORE">
+			SELECT seq_REPORT_PS_PROGRESS_N.NEXTVAL as id FROM DUAL
+		</selectKey>
+    
+		INSERT INTO REPORT_PS_PROGRESS_N(
+			<if test=" id != null and id!= 0">id,</if>
+			<if test=" xzqy_q != null">xzqy_q,</if>
+			<if test=" xzqy_j != null">xzqy_j,</if>
+			<if test=" duedate != null">duedate,</if>
+			<if test=" buildingtype != null">buildingtype,</if>
+			<if test=" jzxq_s != null">jzxq_s,</if>
+			<if test=" jzxq_q != null">jzxq_q,</if>
+			<if test=" jzxq_y != null">jzxq_y,</if>
+			<if test=" jzxq_z != null">jzxq_z,</if>
+			<if test=" psgwg_h != null">psgwg_h,</if>
+			<if test=" psgwg_y != null">psgwg_y,</if>
+			<if test=" psgwg_w != null">psgwg_w,</if>
+			<if test=" gwch_wg_xq != null">gwch_wg_xq,</if>
+			<if test=" gwch_wg_h != null">gwch_wg_h,</if>
+			<if test=" gwch_wg_y != null">gwch_wg_y,</if>
+			<if test=" gwch_wg_w != null">gwch_wg_w,</if>
+			<if test=" gwch_zzkz_xq != null">gwch_zzkz_xq,</if>
+			<if test=" gwch_zzkz_h != null">gwch_zzkz_h,</if>
+			<if test=" gwch_zzkz_y != null">gwch_zzkz_y,</if>
+			<if test=" gwch_zzkz_w != null">gwch_zzkz_w,</if>
+			<if test=" gwzc_wg_xq != null">gwzc_wg_xq,</if>
+			<if test=" gwzc_wg_h != null">gwzc_wg_h,</if>
+			<if test=" gwzc_wg_y != null">gwzc_wg_y,</if>
+			<if test=" gwzc_wg_w != null">gwzc_wg_w,</if>
+			<if test=" gwzc_zzkz_xq != null">gwzc_zzkz_xq,</if>
+			<if test=" gwzc_zzkz_h != null">gwzc_zzkz_h,</if>
+			<if test=" gwzc_zzkz_y != null">gwzc_zzkz_y,</if>
+			<if test=" gwzc_zzkz_w != null">gwzc_zzkz_w,</if>
+			<if test=" gwqy_wg_xq != null">gwqy_wg_xq,</if>
+			<if test=" gwqy_wg_h != null">gwqy_wg_h,</if>
+			<if test=" gwqy_wg_y != null">gwqy_wg_y,</if>
+			<if test=" gwqy_wg_w != null">gwqy_wg_w,</if>
+			<if test=" gwqy_wg_qy != null">gwqy_wg_qy,</if>
+			<if test=" gwqy_zzkz_xq != null">gwqy_zzkz_xq,</if>
+			<if test=" gwqy_zzkz_h != null">gwqy_zzkz_h,</if>
+			<if test=" gwqy_zzkz_y != null">gwqy_zzkz_y,</if>
+			<if test=" gwqy_zzkz_w != null">gwqy_zzkz_w,</if>
+			<if test=" gwqy_zzkz_qy != null">gwqy_zzkz_qy,</if>
+			<if test=" gwxf_wg_xq != null">gwxf_wg_xq,</if>
+			<if test=" gwxf_wg_h != null">gwxf_wg_h,</if>
+			<if test=" gwxf_wg_y != null">gwxf_wg_y,</if>
+			<if test=" gwxf_wg_w != null">gwxf_wg_w,</if>
+			<if test=" gwxf_wg_hld != null">gwxf_wg_hld,</if>
+			<if test=" gwxf_zzkz_xq != null">gwxf_zzkz_xq,</if>
+			<if test=" gwxf_zzkz_h != null">gwxf_zzkz_h,</if>
+			<if test=" gwxf_zzkz_y != null">gwxf_zzkz_y,</if>
+			<if test=" gwxf_zzkz_w != null">gwxf_zzkz_w,</if>
+			<if test=" gwxf_zzkz_hld != null">gwxf_zzkz_hld,</if>
+			<if test=" jcj_h != null">jcj_h,</if>
+			<if test=" jcj_y != null">jcj_y,</if>
+			<if test=" jcj_w != null">jcj_w,</if>
+			<if test=" ysk != null">ysk,</if>
+			<if test=" psh_h != null">psh_h,</if>
+			<if test=" psh_y != null">psh_y,</if>
+			<if test=" psh_e != null">psh_e,</if>
+			<if test=" hfc != null">hfc,</if>
+			<if test=" ljc != null">ljc,</if>
+			<if test=" gyc != null">gyc,</if>
+
+
+			
+			<if test=" remark != null">REMARK,</if>
+			<if test=" createBy != null">create_by,</if>
+			<if test=" dept_id != null ">dept_id,</if>
+			create_time
+		) VALUES (
+			<if test=" id != null and id!= 0">#{id},</if>
+		<if test=" xzqy_q != null">#{xzqy_q},</if>
+		<if test=" xzqy_j != null">#{xzqy_j},</if>
+		<if test=" duedate != null">#{duedate},</if>
+		<if test=" buildingtype != null">#{buildingtype},</if>
+		<if test=" jzxq_s != null">#{jzxq_s},</if>
+		<if test=" jzxq_q != null">#{jzxq_q},</if>
+		<if test=" jzxq_y != null">#{jzxq_y},</if>
+		<if test=" jzxq_z != null">#{jzxq_z},</if>
+		<if test=" psgwg_h != null">#{psgwg_h},</if>
+		<if test=" psgwg_y != null">#{psgwg_y},</if>
+		<if test=" psgwg_w != null">#{psgwg_w},</if>
+		<if test=" gwch_wg_xq != null">#{gwch_wg_xq},</if>
+		<if test=" gwch_wg_h != null">#{gwch_wg_h},</if>
+		<if test=" gwch_wg_y != null">#{gwch_wg_y},</if>
+		<if test=" gwch_wg_w != null">#{gwch_wg_w},</if>
+		<if test=" gwch_zzkz_xq != null">#{gwch_zzkz_xq},</if>
+		<if test=" gwch_zzkz_h != null">#{gwch_zzkz_h},</if>
+		<if test=" gwch_zzkz_y != null">#{gwch_zzkz_y},</if>
+		<if test=" gwch_zzkz_w != null">#{gwch_zzkz_w},</if>
+		<if test=" gwzc_wg_xq != null">#{gwzc_wg_xq},</if>
+		<if test=" gwzc_wg_h != null">#{gwzc_wg_h},</if>
+		<if test=" gwzc_wg_y != null">#{gwzc_wg_y},</if>
+		<if test=" gwzc_wg_w != null">#{gwzc_wg_w},</if>
+		<if test=" gwzc_zzkz_xq != null">#{gwzc_zzkz_xq},</if>
+		<if test=" gwzc_zzkz_h != null">#{gwzc_zzkz_h},</if>
+		<if test=" gwzc_zzkz_y != null">#{gwzc_zzkz_y},</if>
+		<if test=" gwzc_zzkz_w != null">#{gwzc_zzkz_w},</if>
+		<if test=" gwqy_wg_xq != null">#{gwqy_wg_xq},</if>
+		<if test=" gwqy_wg_h != null">#{gwqy_wg_h},</if>
+		<if test=" gwqy_wg_y != null">#{gwqy_wg_y},</if>
+		<if test=" gwqy_wg_w != null">#{gwqy_wg_w},</if>
+		<if test=" gwqy_wg_qy != null">#{gwqy_wg_qy},</if>
+		<if test=" gwqy_zzkz_xq != null">#{gwqy_zzkz_xq},</if>
+		<if test=" gwqy_zzkz_h != null">#{gwqy_zzkz_h},</if>
+		<if test=" gwqy_zzkz_y != null">#{gwqy_zzkz_y},</if>
+		<if test=" gwqy_zzkz_w != null">#{gwqy_zzkz_w},</if>
+		<if test=" gwqy_zzkz_qy != null">#{gwqy_zzkz_qy},</if>
+		<if test=" gwxf_wg_xq != null">#{gwxf_wg_xq},</if>
+		<if test=" gwxf_wg_h != null">#{gwxf_wg_h},</if>
+		<if test=" gwxf_wg_y != null">#{gwxf_wg_y},</if>
+		<if test=" gwxf_wg_w != null">#{gwxf_wg_w},</if>
+		<if test=" gwxf_wg_hld != null">#{gwxf_wg_hld},</if>
+		<if test=" gwxf_zzkz_xq != null">#{gwxf_zzkz_xq},</if>
+		<if test=" gwxf_zzkz_h != null">#{gwxf_zzkz_h},</if>
+		<if test=" gwxf_zzkz_y != null">#{gwxf_zzkz_y},</if>
+		<if test=" gwxf_zzkz_w != null">#{gwxf_zzkz_w},</if>
+		<if test=" gwxf_zzkz_hld != null">#{gwxf_zzkz_hld},</if>
+		<if test=" jcj_h != null">#{jcj_h},</if>
+		<if test=" jcj_y != null">#{jcj_y},</if>
+		<if test=" jcj_w != null">#{jcj_w},</if>
+		<if test=" ysk != null">#{ysk},</if>
+		<if test=" psh_h != null">#{psh_h},</if>
+		<if test=" psh_y != null">#{psh_y},</if>
+		<if test=" psh_e != null">#{psh_e},</if>
+		<if test=" hfc != null">#{hfc},</if>
+		<if test=" ljc != null">#{ljc},</if>
+		<if test=" gyc != null">#{gyc},</if>
+
+
+			
+			<if test=" remark != null">#{remark},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
+			sysdate			
+		)
+	</insert>
+    
+</mapper>

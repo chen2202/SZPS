@@ -50,6 +50,7 @@ public class IndexController extends BaseController {
 		mmap.put("menus", menus);
 		mmap.put("user", user);
 		mmap.put("copyrightYear", Global.getCopyrightYear());
+		mmap.put("mapURL", Global.getMapURL());
 		return "index";
 	}
 

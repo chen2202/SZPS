@@ -101,18 +101,18 @@
     <update id="update" parameterType="Pumpstation">
  		update dev_Pumpstation
  		<set>
-<if test=" dname != null and dname != ''">dname = #{dname},</if>
+<if test=" dname != null">dname = #{dname},</if>
 <if test=" areaid != null">areaid = #{areaid},</if>
-<if test=" areaname != null and areaname != ''">areaname = #{areaname},</if>
-<if test=" dtype != null and dtype != ''">dtype = #{dtype},</if>
+<if test=" areaname != null">areaname = #{areaname},</if>
+<if test=" dtype != null">dtype = #{dtype},</if>
 <if test=" supplierid != null">supplierid = #{supplierid},</if>
-<if test=" dsupplier != null and dsupplier != ''">dsupplier = #{dsupplier},</if>
-<if test=" dmodel != null and dmodel != ''">dmodel = #{dmodel},</if>
-<if test=" dunit != null and dunit != ''">dunit = #{dunit},</if>
+<if test=" dsupplier != null">dsupplier = #{dsupplier},</if>
+<if test=" dmodel != null">dmodel = #{dmodel},</if>
+<if test=" dunit != null">dunit = #{dunit},</if>
 <if test=" dqty != null ">dqty = #{dqty},</if>
 			
-			<if test=" remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -125,36 +125,36 @@
     
 		INSERT INTO dev_Pumpstation(
 			<if test=" id != null and id!= 0">id,</if>
-<if test=" dname != null and  dname != ''">dname,</if>
+<if test=" dname != null">dname,</if>
 <if test=" areaid != null ">areaid,</if>
-<if test=" areaname != null and  areaname != ''">areaname,</if>
-<if test=" dtype != null and  dtype != ''">dtype,</if>
+<if test=" areaname != null">areaname,</if>
+<if test=" dtype != null">dtype,</if>
 <if test=" supplierid != null ">supplierid,</if>
-<if test=" dsupplier != null and  dsupplier != ''">dsupplier,</if>
-<if test=" dmodel != null and  dmodel != ''">dmodel,</if>
-<if test=" dunit != null and  dunit != ''">dunit,</if>
-<if test=" dqty != null and  dqty != ''">dqty,</if>
+<if test=" dsupplier != null">dsupplier,</if>
+<if test=" dmodel != null">dmodel,</if>
+<if test=" dunit != null">dunit,</if>
+<if test=" dqty != null">dqty,</if>
 
 			
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
-<if test=" dname != null and dname != ''">#{dname},</if>
+<if test=" dname != null">#{dname},</if>
 <if test=" areaid != null ">#{areaid},</if>
-<if test=" areaname != null and areaname != ''">#{areaname},</if>
-<if test=" dtype != null and dtype != ''">#{dtype},</if>
+<if test=" areaname != null">#{areaname},</if>
+<if test=" dtype != null">#{dtype},</if>
 <if test=" supplierid != null ">#{supplierid},</if>
-<if test=" dsupplier != null and dsupplier != ''">#{dsupplier},</if>
-<if test=" dmodel != null and dmodel != ''">#{dmodel},</if>
-<if test=" dunit != null and dunit != ''">#{dunit},</if>
-<if test=" dqty != null and dqty != ''">#{dqty},</if>
+<if test=" dsupplier != null">#{dsupplier},</if>
+<if test=" dmodel != null">#{dmodel},</if>
+<if test=" dunit != null">#{dunit},</if>
+<if test=" dqty != null">#{dqty},</if>
 			
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

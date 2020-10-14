@@ -118,51 +118,51 @@
     <update id="updateReport" parameterType="MHC">
  		update report_mhc
  		<set>
-			<if test=" dprovince != null and dprovince != ''">dprovince = #{dprovince},</if>
-			<if test=" dcity != null and dcity != ''">dcity = #{dcity},</if>
-			<if test=" projectcode != null and projectcode != ''">projectcode = #{projectcode},</if>
-			<if test=" projectname != null and projectname != ''">projectname = #{projectname},</if>
-			<if test=" reportnumber != null and reportnumber != ''">reportnumber = #{reportnumber},</if>
-			<if test=" designscale != null and designscale != ''">designscale = #{designscale},</if>
-			<if test=" awtc != null and awtc != ''">awtc = #{awtc},</if>
-			<if test=" mdtc != null and mdtc != ''">mdtc = #{mdtc},</if>
-			<if test=" loadrate != null and loadrate != ''">loadrate = #{loadrate},</if>
-			<if test=" codrc != null and codrc != ''">codrc = #{codrc},</if>
-			<if test=" codr != null and codr != ''">codr = #{codr},</if>
-			<if test=" codcptw != null and codcptw != ''">codcptw = #{codcptw},</if>
-			<if test=" twr != null and twr != ''">twr = #{twr},</if>
-			<if test=" cec != null and cec != ''">cec = #{cec},</if>
-			<if test=" directcost != null and directcost != ''">directcost = #{directcost},</if>
-			<if test=" rwc != null and rwc != ''">rwc = #{rwc},</if>
-			<if test=" awsp != null and awsp != ''">awsp = #{awsp},</if>
-			<if test=" mcs != null and mcs != ''">mcs = #{mcs},</if>
-			<if test=" stc != null and stc != ''">stc = #{stc},</if>
-			<if test=" landuse != null and landuse != ''">landuse = #{landuse},</if>
-			<if test=" ubm != null and ubm != ''">ubm = #{ubm},</if>
-			<if test=" iu != null and iu != ''">iu = #{iu},</if>
-			<if test=" slc != null and slc != ''">slc = #{slc},</if>
-			<if test=" odc != null and odc != ''">odc = #{odc},</if>
-			<if test=" normaldays != null and normaldays != ''">normaldays = #{normaldays},</if>
-			<if test=" standarddays != null and standarddays != ''">standarddays = #{standarddays},</if>
-			<if test=" reasons != null and reasons != ''">reasons = #{reasons},</if>
-			<if test=" esp != null and esp != ''">esp = #{esp},</if>
-			<if test=" codin != null and codin != ''">codin = #{codin},</if>
-			<if test=" codout != null and codout != ''">codout = #{codout},</if>
-			<if test=" bodin != null and bodin != ''">bodin = #{bodin},</if>
-			<if test=" bodout != null and bodout != ''">bodout = #{bodout},</if>
-			<if test=" ssin != null and ssin != ''">ssin = #{ssin},</if>
-			<if test=" ssout != null and ssout != ''">ssout = #{ssout},</if>
-			<if test=" adin != null and adin != ''">adin = #{adin},</if>
-			<if test=" adout != null and adout != ''">adout = #{adout},</if>
-			<if test=" tnin != null and tnin != ''">tnin = #{tnin},</if>
-			<if test=" tnout != null and tnout != ''">tnout = #{tnout},</if>
-			<if test=" tpin != null and tpin != ''">tpin = #{tpin},</if>
-			<if test=" tpout != null and tpout != ''">tpout = #{tpout},</if>
-			<if test=" applicant != null and applicant != ''">applicant = #{applicant},</if>
-			<if test=" submissiondate != null and submissiondate != ''">submissiondate = #{submissiondate},</if>
+			<if test=" dprovince != null">dprovince = #{dprovince},</if>
+			<if test=" dcity != null">dcity = #{dcity},</if>
+			<if test=" projectcode != null">projectcode = #{projectcode},</if>
+			<if test=" projectname != null">projectname = #{projectname},</if>
+			<if test=" reportnumber != null">reportnumber = #{reportnumber},</if>
+			<if test=" designscale != null">designscale = #{designscale},</if>
+			<if test=" awtc != null">awtc = #{awtc},</if>
+			<if test=" mdtc != null">mdtc = #{mdtc},</if>
+			<if test=" loadrate != null">loadrate = #{loadrate},</if>
+			<if test=" codrc != null">codrc = #{codrc},</if>
+			<if test=" codr != null">codr = #{codr},</if>
+			<if test=" codcptw != null">codcptw = #{codcptw},</if>
+			<if test=" twr != null">twr = #{twr},</if>
+			<if test=" cec != null">cec = #{cec},</if>
+			<if test=" directcost != null">directcost = #{directcost},</if>
+			<if test=" rwc != null">rwc = #{rwc},</if>
+			<if test=" awsp != null">awsp = #{awsp},</if>
+			<if test=" mcs != null">mcs = #{mcs},</if>
+			<if test=" stc != null">stc = #{stc},</if>
+			<if test=" landuse != null">landuse = #{landuse},</if>
+			<if test=" ubm != null">ubm = #{ubm},</if>
+			<if test=" iu != null">iu = #{iu},</if>
+			<if test=" slc != null">slc = #{slc},</if>
+			<if test=" odc != null">odc = #{odc},</if>
+			<if test=" normaldays != null">normaldays = #{normaldays},</if>
+			<if test=" standarddays != null">standarddays = #{standarddays},</if>
+			<if test=" reasons != null">reasons = #{reasons},</if>
+			<if test=" esp != null">esp = #{esp},</if>
+			<if test=" codin != null">codin = #{codin},</if>
+			<if test=" codout != null">codout = #{codout},</if>
+			<if test=" bodin != null">bodin = #{bodin},</if>
+			<if test=" bodout != null">bodout = #{bodout},</if>
+			<if test=" ssin != null">ssin = #{ssin},</if>
+			<if test=" ssout != null">ssout = #{ssout},</if>
+			<if test=" adin != null">adin = #{adin},</if>
+			<if test=" adout != null">adout = #{adout},</if>
+			<if test=" tnin != null">tnin = #{tnin},</if>
+			<if test=" tnout != null">tnout = #{tnout},</if>
+			<if test=" tpin != null">tpin = #{tpin},</if>
+			<if test=" tpout != null">tpout = #{tpout},</if>
+			<if test=" applicant != null">applicant = #{applicant},</if>
+			<if test=" submissiondate != null">submissiondate = #{submissiondate},</if>
 
-			<if test="  remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test="  remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -175,101 +175,101 @@
     
 		INSERT INTO report_mhc(
 			<if test=" id != null and id!= 0">id,</if>
-			<if test=" dprovince != null and  dprovince != ''">dprovince,</if>
-			<if test=" dcity != null and  dcity != ''">dcity,</if>
-			<if test=" projectcode != null and  projectcode != ''">projectcode,</if>
-			<if test=" projectname != null and  projectname != ''">projectname,</if>
-			<if test=" reportnumber != null and  reportnumber != ''">reportnumber,</if>
-			<if test=" designscale != null and  designscale != ''">designscale,</if>
-			<if test=" awtc != null and  awtc != ''">awtc,</if>
-			<if test=" mdtc != null and  mdtc != ''">mdtc,</if>
-			<if test=" loadrate != null and  loadrate != ''">loadrate,</if>
-			<if test=" codrc != null and  codrc != ''">codrc,</if>
-			<if test=" codr != null and  codr != ''">codr,</if>
-			<if test=" codcptw != null and  codcptw != ''">codcptw,</if>
-			<if test=" twr != null and  twr != ''">twr,</if>
-			<if test=" cec != null and  cec != ''">cec,</if>
-			<if test=" directcost != null and  directcost != ''">directcost,</if>
-			<if test=" rwc != null and  rwc != ''">rwc,</if>
-			<if test=" awsp != null and  awsp != ''">awsp,</if>
-			<if test=" mcs != null and  mcs != ''">mcs,</if>
-			<if test=" stc != null and  stc != ''">stc,</if>
-			<if test=" landuse != null and  landuse != ''">landuse,</if>
-			<if test=" ubm != null and  ubm != ''">ubm,</if>
-			<if test=" iu != null and  iu != ''">iu,</if>
-			<if test=" slc != null and  slc != ''">slc,</if>
-			<if test=" odc != null and  odc != ''">odc,</if>
-			<if test=" normaldays != null and  normaldays != ''">normaldays,</if>
-			<if test=" standarddays != null and  standarddays != ''">standarddays,</if>
-			<if test=" reasons != null and  reasons != ''">reasons,</if>
-			<if test=" esp != null and  esp != ''">esp,</if>
-			<if test=" codin != null and  codin != ''">codin,</if>
-			<if test=" codout != null and  codout != ''">codout,</if>
-			<if test=" bodin != null and  bodin != ''">bodin,</if>
-			<if test=" bodout != null and  bodout != ''">bodout,</if>
-			<if test=" ssin != null and  ssin != ''">ssin,</if>
-			<if test=" ssout != null and  ssout != ''">ssout,</if>
-			<if test=" adin != null and  adin != ''">adin,</if>
-			<if test=" adout != null and  adout != ''">adout,</if>
-			<if test=" tnin != null and  tnin != ''">tnin,</if>
-			<if test=" tnout != null and  tnout != ''">tnout,</if>
-			<if test=" tpin != null and  tpin != ''">tpin,</if>
-			<if test=" tpout != null and  tpout != ''">tpout,</if>
-			<if test=" applicant != null and  applicant != ''">applicant,</if>
-			<if test=" submissiondate != null and  submissiondate != ''">submissiondate,</if>
+			<if test=" dprovince != null">dprovince,</if>
+			<if test=" dcity != null">dcity,</if>
+			<if test=" projectcode != null">projectcode,</if>
+			<if test=" projectname != null">projectname,</if>
+			<if test=" reportnumber != null">reportnumber,</if>
+			<if test=" designscale != null">designscale,</if>
+			<if test=" awtc != null">awtc,</if>
+			<if test=" mdtc != null">mdtc,</if>
+			<if test=" loadrate != null">loadrate,</if>
+			<if test=" codrc != null">codrc,</if>
+			<if test=" codr != null">codr,</if>
+			<if test=" codcptw != null">codcptw,</if>
+			<if test=" twr != null">twr,</if>
+			<if test=" cec != null">cec,</if>
+			<if test=" directcost != null">directcost,</if>
+			<if test=" rwc != null">rwc,</if>
+			<if test=" awsp != null">awsp,</if>
+			<if test=" mcs != null">mcs,</if>
+			<if test=" stc != null">stc,</if>
+			<if test=" landuse != null">landuse,</if>
+			<if test=" ubm != null">ubm,</if>
+			<if test=" iu != null">iu,</if>
+			<if test=" slc != null">slc,</if>
+			<if test=" odc != null">odc,</if>
+			<if test=" normaldays != null">normaldays,</if>
+			<if test=" standarddays != null">standarddays,</if>
+			<if test=" reasons != null">reasons,</if>
+			<if test=" esp != null">esp,</if>
+			<if test=" codin != null">codin,</if>
+			<if test=" codout != null">codout,</if>
+			<if test=" bodin != null">bodin,</if>
+			<if test=" bodout != null">bodout,</if>
+			<if test=" ssin != null">ssin,</if>
+			<if test=" ssout != null">ssout,</if>
+			<if test=" adin != null">adin,</if>
+			<if test=" adout != null">adout,</if>
+			<if test=" tnin != null">tnin,</if>
+			<if test=" tnout != null">tnout,</if>
+			<if test=" tpin != null">tpin,</if>
+			<if test=" tpout != null">tpout,</if>
+			<if test=" applicant != null">applicant,</if>
+			<if test=" submissiondate != null">submissiondate,</if>
 
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
-			<if test=" dprovince != null and dprovince != ''">#{dprovince},</if>
-			<if test=" dcity != null and dcity != ''">#{dcity},</if>
-			<if test=" projectcode != null and projectcode != ''">#{projectcode},</if>
-			<if test=" projectname != null and projectname != ''">#{projectname},</if>
-			<if test=" reportnumber != null and reportnumber != ''">#{reportnumber},</if>
-			<if test=" designscale != null and designscale != ''">#{designscale},</if>
-			<if test=" awtc != null and awtc != ''">#{awtc},</if>
-			<if test=" mdtc != null and mdtc != ''">#{mdtc},</if>
-			<if test=" loadrate != null and loadrate != ''">#{loadrate},</if>
-			<if test=" codrc != null and codrc != ''">#{codrc},</if>
-			<if test=" codr != null and codr != ''">#{codr},</if>
-			<if test=" codcptw != null and codcptw != ''">#{codcptw},</if>
-			<if test=" twr != null and twr != ''">#{twr},</if>
-			<if test=" cec != null and cec != ''">#{cec},</if>
-			<if test=" directcost != null and directcost != ''">#{directcost},</if>
-			<if test=" rwc != null and rwc != ''">#{rwc},</if>
-			<if test=" awsp != null and awsp != ''">#{awsp},</if>
-			<if test=" mcs != null and mcs != ''">#{mcs},</if>
-			<if test=" stc != null and stc != ''">#{stc},</if>
-			<if test=" landuse != null and landuse != ''">#{landuse},</if>
-			<if test=" ubm != null and ubm != ''">#{ubm},</if>
-			<if test=" iu != null and iu != ''">#{iu},</if>
-			<if test=" slc != null and slc != ''">#{slc},</if>
-			<if test=" odc != null and odc != ''">#{odc},</if>
-			<if test=" normaldays != null and normaldays != ''">#{normaldays},</if>
-			<if test=" standarddays != null and standarddays != ''">#{standarddays},</if>
-			<if test=" reasons != null and reasons != ''">#{reasons},</if>
-			<if test=" esp != null and esp != ''">#{esp},</if>
-			<if test=" codin != null and codin != ''">#{codin},</if>
-			<if test=" codout != null and codout != ''">#{codout},</if>
-			<if test=" bodin != null and bodin != ''">#{bodin},</if>
-			<if test=" bodout != null and bodout != ''">#{bodout},</if>
-			<if test=" ssin != null and ssin != ''">#{ssin},</if>
-			<if test=" ssout != null and ssout != ''">#{ssout},</if>
-			<if test=" adin != null and adin != ''">#{adin},</if>
-			<if test=" adout != null and adout != ''">#{adout},</if>
-			<if test=" tnin != null and tnin != ''">#{tnin},</if>
-			<if test=" tnout != null and tnout != ''">#{tnout},</if>
-			<if test=" tpin != null and tpin != ''">#{tpin},</if>
-			<if test=" tpout != null and tpout != ''">#{tpout},</if>
-			<if test=" applicant != null and applicant != ''">#{applicant},</if>
-			<if test=" submissiondate != null and submissiondate != ''">#{submissiondate},</if>
+			<if test=" dprovince != null">#{dprovince},</if>
+			<if test=" dcity != null">#{dcity},</if>
+			<if test=" projectcode != null">#{projectcode},</if>
+			<if test=" projectname != null">#{projectname},</if>
+			<if test=" reportnumber != null">#{reportnumber},</if>
+			<if test=" designscale != null">#{designscale},</if>
+			<if test=" awtc != null">#{awtc},</if>
+			<if test=" mdtc != null">#{mdtc},</if>
+			<if test=" loadrate != null">#{loadrate},</if>
+			<if test=" codrc != null">#{codrc},</if>
+			<if test=" codr != null">#{codr},</if>
+			<if test=" codcptw != null">#{codcptw},</if>
+			<if test=" twr != null">#{twr},</if>
+			<if test=" cec != null">#{cec},</if>
+			<if test=" directcost != null">#{directcost},</if>
+			<if test=" rwc != null">#{rwc},</if>
+			<if test=" awsp != null">#{awsp},</if>
+			<if test=" mcs != null">#{mcs},</if>
+			<if test=" stc != null">#{stc},</if>
+			<if test=" landuse != null">#{landuse},</if>
+			<if test=" ubm != null">#{ubm},</if>
+			<if test=" iu != null">#{iu},</if>
+			<if test=" slc != null">#{slc},</if>
+			<if test=" odc != null">#{odc},</if>
+			<if test=" normaldays != null">#{normaldays},</if>
+			<if test=" standarddays != null">#{standarddays},</if>
+			<if test=" reasons != null">#{reasons},</if>
+			<if test=" esp != null">#{esp},</if>
+			<if test=" codin != null">#{codin},</if>
+			<if test=" codout != null">#{codout},</if>
+			<if test=" bodin != null">#{bodin},</if>
+			<if test=" bodout != null">#{bodout},</if>
+			<if test=" ssin != null">#{ssin},</if>
+			<if test=" ssout != null">#{ssout},</if>
+			<if test=" adin != null">#{adin},</if>
+			<if test=" adout != null">#{adout},</if>
+			<if test=" tnin != null">#{tnin},</if>
+			<if test=" tnout != null">#{tnout},</if>
+			<if test=" tpin != null">#{tpin},</if>
+			<if test=" tpout != null">#{tpout},</if>
+			<if test=" applicant != null">#{applicant},</if>
+			<if test=" submissiondate != null">#{submissiondate},</if>
 
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

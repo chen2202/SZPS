@@ -149,18 +149,18 @@
 	<update id="updateMenu" parameterType="SysMenu">
 		update sys_menu
 		<set>
-			<if test="menuName != null and menuName != ''">menu_name = #{menuName},</if>
+			<if test="menuName != null">menu_name = #{menuName},</if>
 			<if test="parentId != null and parentId != 0">parent_id = #{parentId},</if>
-			<if test="orderNum != null and orderNum != ''">order_num = #{orderNum},</if>
-			<if test="url != null and url != ''">url = #{url},</if>
-			<if test="target != null and target != ''">target = #{target},</if>
-			<if test="menuType != null and menuType != ''">menu_type = #{menuType},</if>
+			<if test="orderNum != null">order_num = #{orderNum},</if>
+			<if test="url != null">url = #{url},</if>
+			<if test="target != null">target = #{target},</if>
+			<if test="menuType != null">menu_type = #{menuType},</if>
 			<if test="visible != null">visible = #{visible},</if>
 			<if test="perms !=null">perms = #{perms},</if>
-			<if test="icon !=null and icon != ''">icon = #{icon},</if>
-			<if test="remark != null and remark != ''">remark = #{remark},</if>
-			<if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
-			<if test="subsysFlag != null and subsysFlag != ''">subsys_flag = #{subsysFlag},</if>
+			<if test="icon !=null">icon = #{icon},</if>
+			<if test="remark != null">remark = #{remark},</if>
+			<if test="updateBy != null">update_by = #{updateBy},</if>
+			<if test="subsysFlag != null">subsys_flag = #{subsysFlag},</if>
 			update_time = sysdate
 		</set>
 		where menu_id = #{menuId}
@@ -173,32 +173,32 @@
 		insert into sys_menu(
 		<if test="menuId != null and menuId != 0">menu_id,</if>
 		<if test="parentId != null and parentId != 0">parent_id,</if>
-		<if test="menuName != null and menuName != ''">menu_name,</if>
-		<if test="orderNum != null and orderNum != ''">order_num,</if>
-		<if test="url != null and url != ''">url,</if>
-		<if test="target != null and target != ''">target,</if>
-		<if test="menuType != null and menuType != ''">menu_type,</if>
+		<if test="menuName != null">menu_name,</if>
+		<if test="orderNum != null">order_num,</if>
+		<if test="url != null">url,</if>
+		<if test="target != null">target,</if>
+		<if test="menuType != null">menu_type,</if>
 		<if test="visible != null">visible,</if>
-		<if test="perms !=null and perms != ''">perms,</if>
-		<if test="icon != null and icon != ''">icon,</if>
-		<if test="remark != null and remark != ''">remark,</if>
-		<if test="createBy != null and createBy != ''">create_by,</if>
-		<if test="subsysFlag != null and subsysFlag != ''">subsys_flag,</if>
+		<if test="perms !=null">perms,</if>
+		<if test="icon != null">icon,</if>
+		<if test="remark != null">remark,</if>
+		<if test="createBy != null">create_by,</if>
+		<if test="subsysFlag != null">subsys_flag,</if>
 		create_time
 		)values(
 		<if test="menuId != null and menuId != 0">#{menuId},</if>
 		<if test="parentId != null and parentId != 0">#{parentId},</if>
-		<if test="menuName != null and menuName != ''">#{menuName},</if>
-		<if test="orderNum != null and orderNum != ''">#{orderNum},</if>
-		<if test="url != null and url != ''">#{url},</if>
-		<if test="target != null and target != ''">#{target},</if>
-		<if test="menuType != null and menuType != ''">#{menuType},</if>
+		<if test="menuName != null">#{menuName},</if>
+		<if test="orderNum != null">#{orderNum},</if>
+		<if test="url != null">#{url},</if>
+		<if test="target != null">#{target},</if>
+		<if test="menuType != null">#{menuType},</if>
 		<if test="visible != null">#{visible},</if>
-		<if test="perms !=null and perms != ''">#{perms},</if>
-		<if test="icon != null and icon != ''">#{icon},</if>
-		<if test="remark != null and remark != ''">#{remark},</if>
-		<if test="createBy != null and createBy != ''">#{createBy},</if>
-		<if test="subsysFlag != null and subsysFlag != ''">#{subsysFlag},</if>
+		<if test="perms !=null">#{perms},</if>
+		<if test="icon != null">#{icon},</if>
+		<if test="remark != null">#{remark},</if>
+		<if test="createBy != null">#{createBy},</if>
+		<if test="subsysFlag != null">#{subsysFlag},</if>
 		sysdate
 		)
 	</insert>

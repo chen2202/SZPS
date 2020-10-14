@@ -135,65 +135,65 @@
     <update id="update" parameterType="Asset">
  		update dev_asset
  		<set>
-			<if test=" deptId != null and deptId != ''">deptId = #{deptId},</if>
-			<if test=" name != null and name != ''">DEVNAME = #{name},</if>
-			<if test=" number != null and number != ''">devnumber = #{number},</if>
-			<if test=" model != null and model != ''">devmodel = #{model},</if>
-			<if test=" specs != null and specs != ''">DEVSPECS = #{specs},</if>
-			<if test=" abcCategory != null and abcCategory != ''">abcCategory = #{abcCategory},</if>
-			<if test=" devType != null and devType != ''">devType = #{devType},</if>
-			<if test=" status != null and status != ''">DEVSTATUS = #{status},</if>
-			<if test=" purpost != null and purpost != ''">purpost = #{purpost},</if>
-			<if test=" useDep != null and useDep != ''">useDep = #{useDep},</if>
-			<if test=" installPlace != null and installPlace != ''">installPlace = #{installPlace},</if>
-			<if test=" code != null and code != ''">ASSETCODE = #{code},</if>
-			<if test=" manufacturer != null and manufacturer != ''">manufacturer = #{manufacturer},</if>
-			<if test=" makeCountry != null and makeCountry != ''">makeCountry = #{makeCountry},</if>
-			<if test=" proDate != null and proDate != ''">proDate = #{proDate},</if>
-			<if test=" proCode != null and proCode != ''">proCode = #{proCode},</if>
-			<if test=" useDate != null and useDate != ''">useDate = #{useDate},</if>
-			<if test=" assetName != null and assetName != ''">assetName = #{assetName},</if>
-			<if test=" supplier != null and supplier != ''">supplier = #{supplier},</if>
-			<if test=" supplierPhone != null and supplierPhone != ''">supplierPhone = #{supplierPhone},</if>
-			<if test=" gPeriod != null and gPeriod != ''">gPeriod = #{gPeriod},</if>
-			<if test=" mCycle != null and mCycle != ''">mCycle = #{mCycle},</if>
-			<if test=" oValue != null and oValue != ''">oValue = #{oValue},</if>
-			<if test=" assetType != null and assetType != ''">assetType = #{assetType},</if>
-			<if test=" devVoltage != null and devVoltage != ''">devVoltage = #{devVoltage},</if>
-			<if test=" lift != null and lift != ''">lift = #{lift},</if>
-			<if test=" packWeight != null and packWeight != ''">packWeight = #{packWeight},</if>
-			<if test=" remark1 != null and remark1 != ''">remark1 = #{remark1},</if>
-			<if test=" DPower != null and DPower != ''">DPower = #{DPower},</if>
-			<if test=" flow != null and flow != ''">DEVFLOW = #{flow},</if>
-			<if test=" pipeCaliber != null and pipeCaliber != ''">pipeCaliber = #{pipeCaliber},</if>
-			<if test=" remark2 != null and remark2 != ''">remark2 = #{remark2},</if>
-			<if test=" Dcurrent != null and Dcurrent != ''">Dcurrent = #{Dcurrent},</if>
-			<if test=" wight != null and wight != ''">wight = #{wight},</if>
-			<if test=" material != null and material != ''">material = #{material},</if>
-			<if test=" remark3 != null and remark3 != ''">remark3 = #{remark3},</if>
-			<if test=" volume != null and volume != ''">volume = #{volume},</if>
-			<if test=" pressure != null and pressure != ''">pressure = #{pressure},</if>
-			<if test=" revolution != null and revolution != ''">revolution = #{revolution},</if>
-			<if test=" remark4 != null and remark4 != ''">remark4 = #{remark4},</if>
-			<if test=" auNameFirst != null and auNameFirst != ''">auNameFirst = #{auNameFirst},</if>
-			<if test=" auNameSec != null and auNameSec != ''">auNameSec = #{auNameSec},</if>
-			<if test=" auPower != null and auPower != ''">auPower = #{auPower},</if>
-			<if test=" auModelFirst != null and auModelFirst != ''">auModelFirst = #{auModelFirst},</if>
-			<if test=" auModelSec != null and auModelSec != ''">auModelSec = #{auModelSec},</if>
-			<if test=" auCurrent != null and auCurrent != ''">auCurrent = #{auCurrent},</if>
-			<if test=" remark5 != null and remark5 != ''">remark5 = #{remark5},</if>
-			<if test=" auNumber != null and auNumber != ''">auNumber = #{auNumber},</if>
-			<if test=" auVoltage != null and auVoltage != ''">auVoltage = #{auVoltage},</if>
-			<if test=" remark6 != null and remark6 != ''">remark6 = #{remark6},</if>
-			<if test=" auManufacturer != null and auManufacturer != ''">auManufacturer = #{auManufacturer},</if>
-			<if test=" auMPhone != null and auMPhone != ''">auMPhone = #{auMPhone},</if>
-			<if test=" auSupplier != null and auSupplier != ''">auSupplier = #{auSupplier},</if>
-			<if test=" auSPhone != null and auSPhone != ''">auSPhone = #{auSPhone},</if>
-			<if test=" remark7 != null and remark7 != ''">remark7 = #{remark7},</if>
+			<if test=" deptId != null">deptId = #{deptId},</if>
+			<if test=" name != null">DEVNAME = #{name},</if>
+			<if test=" number != null">devnumber = #{number},</if>
+			<if test=" model != null">devmodel = #{model},</if>
+			<if test=" specs != null">DEVSPECS = #{specs},</if>
+			<if test=" abcCategory != null">abcCategory = #{abcCategory},</if>
+			<if test=" devType != null">devType = #{devType},</if>
+			<if test=" status != null">DEVSTATUS = #{status},</if>
+			<if test=" purpost != null">purpost = #{purpost},</if>
+			<if test=" useDep != null">useDep = #{useDep},</if>
+			<if test=" installPlace != null">installPlace = #{installPlace},</if>
+			<if test=" code != null">ASSETCODE = #{code},</if>
+			<if test=" manufacturer != null">manufacturer = #{manufacturer},</if>
+			<if test=" makeCountry != null">makeCountry = #{makeCountry},</if>
+			<if test=" proDate != null">proDate = #{proDate},</if>
+			<if test=" proCode != null">proCode = #{proCode},</if>
+			<if test=" useDate != null">useDate = #{useDate},</if>
+			<if test=" assetName != null">assetName = #{assetName},</if>
+			<if test=" supplier != null">supplier = #{supplier},</if>
+			<if test=" supplierPhone != null">supplierPhone = #{supplierPhone},</if>
+			<if test=" gPeriod != null">gPeriod = #{gPeriod},</if>
+			<if test=" mCycle != null">mCycle = #{mCycle},</if>
+			<if test=" oValue != null">oValue = #{oValue},</if>
+			<if test=" assetType != null">assetType = #{assetType},</if>
+			<if test=" devVoltage != null">devVoltage = #{devVoltage},</if>
+			<if test=" lift != null">lift = #{lift},</if>
+			<if test=" packWeight != null">packWeight = #{packWeight},</if>
+			<if test=" remark1 != null">remark1 = #{remark1},</if>
+			<if test=" DPower != null">DPower = #{DPower},</if>
+			<if test=" flow != null">DEVFLOW = #{flow},</if>
+			<if test=" pipeCaliber != null">pipeCaliber = #{pipeCaliber},</if>
+			<if test=" remark2 != null">remark2 = #{remark2},</if>
+			<if test=" Dcurrent != null">Dcurrent = #{Dcurrent},</if>
+			<if test=" wight != null">wight = #{wight},</if>
+			<if test=" material != null">material = #{material},</if>
+			<if test=" remark3 != null">remark3 = #{remark3},</if>
+			<if test=" volume != null">volume = #{volume},</if>
+			<if test=" pressure != null">pressure = #{pressure},</if>
+			<if test=" revolution != null">revolution = #{revolution},</if>
+			<if test=" remark4 != null">remark4 = #{remark4},</if>
+			<if test=" auNameFirst != null">auNameFirst = #{auNameFirst},</if>
+			<if test=" auNameSec != null">auNameSec = #{auNameSec},</if>
+			<if test=" auPower != null">auPower = #{auPower},</if>
+			<if test=" auModelFirst != null">auModelFirst = #{auModelFirst},</if>
+			<if test=" auModelSec != null">auModelSec = #{auModelSec},</if>
+			<if test=" auCurrent != null">auCurrent = #{auCurrent},</if>
+			<if test=" remark5 != null">remark5 = #{remark5},</if>
+			<if test=" auNumber != null">auNumber = #{auNumber},</if>
+			<if test=" auVoltage != null">auVoltage = #{auVoltage},</if>
+			<if test=" remark6 != null">remark6 = #{remark6},</if>
+			<if test=" auManufacturer != null">auManufacturer = #{auManufacturer},</if>
+			<if test=" auMPhone != null">auMPhone = #{auMPhone},</if>
+			<if test=" auSupplier != null">auSupplier = #{auSupplier},</if>
+			<if test=" auSPhone != null">auSPhone = #{auSPhone},</if>
+			<if test=" remark7 != null">remark7 = #{remark7},</if>
 
-			<if test=" delFlag != null and delFlag!= ''">delFlag = #{delFlag},</if>
-			<if test="  remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" delFlag != null">delFlag = #{delFlag},</if>
+			<if test="  remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -206,129 +206,129 @@
     
 		INSERT INTO dev_asset(
 			<if test=" id != null and id!= 0">id,</if>
-			<if test=" deptId != null and  deptId != ''">deptId,</if>
-			<if test=" name != null and  name != ''">DEVNAME,</if>
-			<if test=" number != null and  number != ''">devnumber,</if>
-			<if test=" model != null and  model != ''">devmodel,</if>
-			<if test=" specs != null and  specs != ''">DEVSPECS,</if>
-			<if test=" abcCategory != null and  abcCategory != ''">abcCategory,</if>
-			<if test=" devType != null and  devType != ''">devType,</if>
-			<if test=" status != null and  status != ''">DEVSTATUS,</if>
-			<if test=" purpost != null and  purpost != ''">purpost,</if>
-			<if test=" useDep != null and  useDep != ''">useDep,</if>
-			<if test=" installPlace != null and  installPlace != ''">installPlace,</if>
-			<if test=" code != null and  code != ''">ASSETCODE,</if>
-			<if test=" manufacturer != null and  manufacturer != ''">manufacturer,</if>
-			<if test=" makeCountry != null and  makeCountry != ''">makeCountry,</if>
-			<if test=" proDate != null and  proDate != ''">proDate,</if>
-			<if test=" proCode != null and  proCode != ''">proCode,</if>
-			<if test=" useDate != null and  useDate != ''">useDate,</if>
-			<if test=" assetName != null and  assetName != ''">assetName,</if>
-			<if test=" supplier != null and  supplier != ''">supplier,</if>
-			<if test=" supplierPhone != null and  supplierPhone != ''">supplierPhone,</if>
-			<if test=" gPeriod != null and  gPeriod != ''">gPeriod,</if>
-			<if test=" mCycle != null and  mCycle != ''">mCycle,</if>
-			<if test=" oValue != null and  oValue != ''">oValue,</if>
-			<if test=" assetType != null and  assetType != ''">assetType,</if>
-			<if test=" devVoltage != null and  devVoltage != ''">devVoltage,</if>
-			<if test=" lift != null and  lift != ''">lift,</if>
-			<if test=" packWeight != null and  packWeight != ''">packWeight,</if>
-			<if test=" remark1 != null and  remark1 != ''">remark1,</if>
-			<if test=" DPower != null and  DPower != ''">DPower,</if>
-			<if test=" flow != null and  flow != ''">DEVFLOW,</if>
-			<if test=" pipeCaliber != null and  pipeCaliber != ''">pipeCaliber,</if>
-			<if test=" remark2 != null and  remark2 != ''">remark2,</if>
-			<if test=" Dcurrent != null and  Dcurrent != ''">Dcurrent,</if>
-			<if test=" wight != null and  wight != ''">wight,</if>
-			<if test=" material != null and  material != ''">material,</if>
-			<if test=" remark3 != null and  remark3 != ''">remark3,</if>
-			<if test=" volume != null and  volume != ''">volume,</if>
-			<if test=" pressure != null and  pressure != ''">pressure,</if>
-			<if test=" revolution != null and  revolution != ''">revolution,</if>
-			<if test=" remark4 != null and  remark4 != ''">remark4,</if>
-			<if test=" auNameFirst != null and  auNameFirst != ''">auNameFirst,</if>
-			<if test=" auNameSec != null and  auNameSec != ''">auNameSec,</if>
-			<if test=" auPower != null and  auPower != ''">auPower,</if>
-			<if test=" auModelFirst != null and  auModelFirst != ''">auModelFirst,</if>
-			<if test=" auModelSec != null and  auModelSec != ''">auModelSec,</if>
-			<if test=" auCurrent != null and  auCurrent != ''">auCurrent,</if>
-			<if test=" remark5 != null and  remark5 != ''">remark5,</if>
-			<if test=" auNumber != null and  auNumber != ''">auNumber,</if>
-			<if test=" auVoltage != null and  auVoltage != ''">auVoltage,</if>
-			<if test=" remark6 != null and  remark6 != ''">remark6,</if>
-			<if test=" auManufacturer != null and  auManufacturer != ''">auManufacturer,</if>
-			<if test=" auMPhone != null and  auMPhone != ''">auMPhone,</if>
-			<if test=" auSupplier != null and  auSupplier != ''">auSupplier,</if>
-			<if test=" auSPhone != null and  auSPhone != ''">auSPhone,</if>
-			<if test=" remark7 != null and  remark7 != ''">remark7,</if>
+			<if test=" deptId != null">deptId,</if>
+			<if test=" name != null">DEVNAME,</if>
+			<if test=" number != null">devnumber,</if>
+			<if test=" model != null">devmodel,</if>
+			<if test=" specs != null">DEVSPECS,</if>
+			<if test=" abcCategory != null">abcCategory,</if>
+			<if test=" devType != null">devType,</if>
+			<if test=" status != null">DEVSTATUS,</if>
+			<if test=" purpost != null">purpost,</if>
+			<if test=" useDep != null">useDep,</if>
+			<if test=" installPlace != null">installPlace,</if>
+			<if test=" code != null">ASSETCODE,</if>
+			<if test=" manufacturer != null">manufacturer,</if>
+			<if test=" makeCountry != null">makeCountry,</if>
+			<if test=" proDate != null">proDate,</if>
+			<if test=" proCode != null">proCode,</if>
+			<if test=" useDate != null">useDate,</if>
+			<if test=" assetName != null">assetName,</if>
+			<if test=" supplier != null">supplier,</if>
+			<if test=" supplierPhone != null">supplierPhone,</if>
+			<if test=" gPeriod != null">gPeriod,</if>
+			<if test=" mCycle != null">mCycle,</if>
+			<if test=" oValue != null">oValue,</if>
+			<if test=" assetType != null">assetType,</if>
+			<if test=" devVoltage != null">devVoltage,</if>
+			<if test=" lift != null">lift,</if>
+			<if test=" packWeight != null">packWeight,</if>
+			<if test=" remark1 != null">remark1,</if>
+			<if test=" DPower != null">DPower,</if>
+			<if test=" flow != null">DEVFLOW,</if>
+			<if test=" pipeCaliber != null">pipeCaliber,</if>
+			<if test=" remark2 != null">remark2,</if>
+			<if test=" Dcurrent != null">Dcurrent,</if>
+			<if test=" wight != null">wight,</if>
+			<if test=" material != null">material,</if>
+			<if test=" remark3 != null">remark3,</if>
+			<if test=" volume != null">volume,</if>
+			<if test=" pressure != null">pressure,</if>
+			<if test=" revolution != null">revolution,</if>
+			<if test=" remark4 != null">remark4,</if>
+			<if test=" auNameFirst != null">auNameFirst,</if>
+			<if test=" auNameSec != null">auNameSec,</if>
+			<if test=" auPower != null">auPower,</if>
+			<if test=" auModelFirst != null">auModelFirst,</if>
+			<if test=" auModelSec != null">auModelSec,</if>
+			<if test=" auCurrent != null">auCurrent,</if>
+			<if test=" remark5 != null">remark5,</if>
+			<if test=" auNumber != null">auNumber,</if>
+			<if test=" auVoltage != null">auVoltage,</if>
+			<if test=" remark6 != null">remark6,</if>
+			<if test=" auManufacturer != null">auManufacturer,</if>
+			<if test=" auMPhone != null">auMPhone,</if>
+			<if test=" auSupplier != null">auSupplier,</if>
+			<if test=" auSPhone != null">auSPhone,</if>
+			<if test=" remark7 != null">remark7,</if>
 
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" delFlag != null and delFlag!= ''">delFlag,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" delFlag != null">delFlag,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
-			<if test=" deptId != null and deptId != ''">#{deptId},</if>
-			<if test=" name != null and name != ''">#{name},</if>
-			<if test=" number != null and number != ''">#{number},</if>
-			<if test=" model != null and model != ''">#{model},</if>
-			<if test=" specs != null and specs != ''">#{specs},</if>
-			<if test=" abcCategory != null and abcCategory != ''">#{abcCategory},</if>
-			<if test=" devType != null and devType != ''">#{devType},</if>
-			<if test=" status != null and status != ''">#{status},</if>
-			<if test=" purpost != null and purpost != ''">#{purpost},</if>
-			<if test=" useDep != null and useDep != ''">#{useDep},</if>
-			<if test=" installPlace != null and installPlace != ''">#{installPlace},</if>
-			<if test=" code != null and code != ''">#{code},</if>
-			<if test=" manufacturer != null and manufacturer != ''">#{manufacturer},</if>
-			<if test=" makeCountry != null and makeCountry != ''">#{makeCountry},</if>
-			<if test=" proDate != null and proDate != ''">#{proDate},</if>
-			<if test=" proCode != null and proCode != ''">#{proCode},</if>
-			<if test=" useDate != null and useDate != ''">#{useDate},</if>
-			<if test=" assetName != null and assetName != ''">#{assetName},</if>
-			<if test=" supplier != null and supplier != ''">#{supplier},</if>
-			<if test=" supplierPhone != null and supplierPhone != ''">#{supplierPhone},</if>
-			<if test=" gPeriod != null and gPeriod != ''">#{gPeriod},</if>
-			<if test=" mCycle != null and mCycle != ''">#{mCycle},</if>
-			<if test=" oValue != null and oValue != ''">#{oValue},</if>
-			<if test=" assetType != null and assetType != ''">#{assetType},</if>
-			<if test=" devVoltage != null and devVoltage != ''">#{devVoltage},</if>
-			<if test=" lift != null and lift != ''">#{lift},</if>
-			<if test=" packWeight != null and packWeight != ''">#{packWeight},</if>
-			<if test=" remark1 != null and remark1 != ''">#{remark1},</if>
-			<if test=" DPower != null and DPower != ''">#{DPower},</if>
-			<if test=" flow != null and flow != ''">#{flow},</if>
-			<if test=" pipeCaliber != null and pipeCaliber != ''">#{pipeCaliber},</if>
-			<if test=" remark2 != null and remark2 != ''">#{remark2},</if>
-			<if test=" Dcurrent != null and Dcurrent != ''">#{Dcurrent},</if>
-			<if test=" wight != null and wight != ''">#{wight},</if>
-			<if test=" material != null and material != ''">#{material},</if>
-			<if test=" remark3 != null and remark3 != ''">#{remark3},</if>
-			<if test=" volume != null and volume != ''">#{volume},</if>
-			<if test=" pressure != null and pressure != ''">#{pressure},</if>
-			<if test=" revolution != null and revolution != ''">#{revolution},</if>
-			<if test=" remark4 != null and remark4 != ''">#{remark4},</if>
-			<if test=" auNameFirst != null and auNameFirst != ''">#{auNameFirst},</if>
-			<if test=" auNameSec != null and auNameSec != ''">#{auNameSec},</if>
-			<if test=" auPower != null and auPower != ''">#{auPower},</if>
-			<if test=" auModelFirst != null and auModelFirst != ''">#{auModelFirst},</if>
-			<if test=" auModelSec != null and auModelSec != ''">#{auModelSec},</if>
-			<if test=" auCurrent != null and auCurrent != ''">#{auCurrent},</if>
-			<if test=" remark5 != null and remark5 != ''">#{remark5},</if>
-			<if test=" auNumber != null and auNumber != ''">#{auNumber},</if>
-			<if test=" auVoltage != null and auVoltage != ''">#{auVoltage},</if>
-			<if test=" remark6 != null and remark6 != ''">#{remark6},</if>
-			<if test=" auManufacturer != null and auManufacturer != ''">#{auManufacturer},</if>
-			<if test=" auMPhone != null and auMPhone != ''">#{auMPhone},</if>
-			<if test=" auSupplier != null and auSupplier != ''">#{auSupplier},</if>
-			<if test=" auSPhone != null and auSPhone != ''">#{auSPhone},</if>
-			<if test=" remark7 != null and remark7 != ''">#{remark7},</if>
+			<if test=" deptId != null">#{deptId},</if>
+			<if test=" name != null">#{name},</if>
+			<if test=" number != null">#{number},</if>
+			<if test=" model != null">#{model},</if>
+			<if test=" specs != null">#{specs},</if>
+			<if test=" abcCategory != null">#{abcCategory},</if>
+			<if test=" devType != null">#{devType},</if>
+			<if test=" status != null">#{status},</if>
+			<if test=" purpost != null">#{purpost},</if>
+			<if test=" useDep != null">#{useDep},</if>
+			<if test=" installPlace != null">#{installPlace},</if>
+			<if test=" code != null">#{code},</if>
+			<if test=" manufacturer != null">#{manufacturer},</if>
+			<if test=" makeCountry != null">#{makeCountry},</if>
+			<if test=" proDate != null">#{proDate},</if>
+			<if test=" proCode != null">#{proCode},</if>
+			<if test=" useDate != null">#{useDate},</if>
+			<if test=" assetName != null">#{assetName},</if>
+			<if test=" supplier != null">#{supplier},</if>
+			<if test=" supplierPhone != null">#{supplierPhone},</if>
+			<if test=" gPeriod != null">#{gPeriod},</if>
+			<if test=" mCycle != null">#{mCycle},</if>
+			<if test=" oValue != null">#{oValue},</if>
+			<if test=" assetType != null">#{assetType},</if>
+			<if test=" devVoltage != null">#{devVoltage},</if>
+			<if test=" lift != null">#{lift},</if>
+			<if test=" packWeight != null">#{packWeight},</if>
+			<if test=" remark1 != null">#{remark1},</if>
+			<if test=" DPower != null">#{DPower},</if>
+			<if test=" flow != null">#{flow},</if>
+			<if test=" pipeCaliber != null">#{pipeCaliber},</if>
+			<if test=" remark2 != null">#{remark2},</if>
+			<if test=" Dcurrent != null">#{Dcurrent},</if>
+			<if test=" wight != null">#{wight},</if>
+			<if test=" material != null">#{material},</if>
+			<if test=" remark3 != null">#{remark3},</if>
+			<if test=" volume != null">#{volume},</if>
+			<if test=" pressure != null">#{pressure},</if>
+			<if test=" revolution != null">#{revolution},</if>
+			<if test=" remark4 != null">#{remark4},</if>
+			<if test=" auNameFirst != null">#{auNameFirst},</if>
+			<if test=" auNameSec != null">#{auNameSec},</if>
+			<if test=" auPower != null">#{auPower},</if>
+			<if test=" auModelFirst != null">#{auModelFirst},</if>
+			<if test=" auModelSec != null">#{auModelSec},</if>
+			<if test=" auCurrent != null">#{auCurrent},</if>
+			<if test=" remark5 != null">#{remark5},</if>
+			<if test=" auNumber != null">#{auNumber},</if>
+			<if test=" auVoltage != null">#{auVoltage},</if>
+			<if test=" remark6 != null">#{remark6},</if>
+			<if test=" auManufacturer != null">#{auManufacturer},</if>
+			<if test=" auMPhone != null">#{auMPhone},</if>
+			<if test=" auSupplier != null">#{auSupplier},</if>
+			<if test=" auSPhone != null">#{auSPhone},</if>
+			<if test=" remark7 != null">#{remark7},</if>
 
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" delFlag != null and delFlag!= ''">#{delFlag},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" delFlag != null">#{delFlag},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

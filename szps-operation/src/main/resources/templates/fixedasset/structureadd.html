@@ -10,9 +10,9 @@
         	<div class="row">
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-3 control-label ">单位名称：</label>
+						<label class="col-sm-3 control-label "><span style="color: red; ">*</span>单位名称：</label>
 						<div class="col-sm-8">
-								<input name="deptname" onclick="selectDeptTree()" type="text" id="treeName" class="form-control" />
+								<input name="deptname" onclick="selectDeptTree()" type="text" id="treeName" class="form-control" required/>
 						</div>
 					</div>
 				</div>
@@ -128,12 +128,6 @@
 			</div>
 	</form>
     </div>
-    <div class="row">
-        <div class="col-sm-offset-5 col-sm-10">
-            <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>保 存</button>&nbsp;
-            <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
-        </div>
-    </div>
 	<th:block th:include="include :: footer" />
 	<script>
 	    var prefix = ctx + "op/fixedasset/structure";
@@ -168,8 +162,8 @@
         function selectDeptTree() {
         	
         	var treeId = $("#treeId").val();
-        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
-        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+        	var deptId = $.common.isEmpty(treeId) ? "1140" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree2/1140" ;
 			var options = {
 				title: '选择部门',
 				width: "380",

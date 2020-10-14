@@ -83,20 +83,20 @@
     <update id="updateReport" parameterType="OpLog">
  		update report_op_log
  		<set>
-			<if test=" poolId != null and poolId!= ''">poolId = #{poolId},</if>
+			<if test=" poolId != null">poolId = #{poolId},</if>
 			<if test=" deptId != null and deptId !=''">deptId = #{deptId},</if>
 			<if test=" logDate != null and logDate !=''">logDate = #{logDate},</if>
 			<if test=" weather != null and weather !=''">weather = #{weather},</if>
 			<if test=" waterStartTime != null and waterStartTime !=''">waterStartTime = #{waterStartTime},</if>
 			<if test=" waterEndTime != null and waterEndTime !=''">waterEndTime = #{waterEndTime},</if>
-			<if test=" waterUsage != null and waterUsage != ''">waterUsage = #{waterUsage},</if>
-			<if test=" dryHour != null and dryHour != ''">dryHour = #{dryHour},</if>
-			<if test=" dryMin != null and dryMin != ''">dryMin = #{dryMin},</if>
-			<if test=" logRemarks != null and logRemarks != ''">logRemarks = #{logRemarks},</if>
-			<if test=" logRecorder != null and logRecorder != ''">logRecorder = #{logRecorder},</if>
-			<if test=" delFlag != null and delFlag!= ''">delFlag = #{delFlag},</if>
-			<if test="  remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" waterUsage != null">waterUsage = #{waterUsage},</if>
+			<if test=" dryHour != null">dryHour = #{dryHour},</if>
+			<if test=" dryMin != null">dryMin = #{dryMin},</if>
+			<if test=" logRemarks != null">logRemarks = #{logRemarks},</if>
+			<if test=" logRecorder != null">logRecorder = #{logRecorder},</if>
+			<if test=" delFlag != null">delFlag = #{delFlag},</if>
+			<if test="  remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -109,41 +109,41 @@
     
 		INSERT INTO report_op_log(
 			<if test=" id != null and id!= 0">id,</if>
-			<if test=" deptId != null and deptId!= ''">deptId,</if>
-			<if test=" deptName != null and deptName!= ''">deptName,</if>
-			<if test=" poolId != null and poolId != ''">poolId,</if>
-			<if test=" logDate != null and logDate != ''">logDate,</if>
-			<if test=" weather != null and weather != ''">weather,</if>
-			<if test=" waterStartTime != null and waterStartTime != ''">waterStartTime,</if>
-			<if test=" waterEndTime != null and waterEndTime != ''">waterEndTime,</if>
-			<if test=" waterUsage != null and waterUsage != ''">waterUsage,</if>
-			<if test=" dryHour != null and dryHour != ''">dryHour,</if>
-			<if test=" dryMin != null and dryMin != ''">dryMin,</if>
-			<if test=" logRemarks != null and logRemarks != ''">logRemarks,</if>
-			<if test=" logRecorder != null and logRecorder != ''">logRecorder,</if>
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" delFlag != null and delFlag!= ''">delFlag,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" deptId != null">deptId,</if>
+			<if test=" deptName != null">deptName,</if>
+			<if test=" poolId != null">poolId,</if>
+			<if test=" logDate != null">logDate,</if>
+			<if test=" weather != null">weather,</if>
+			<if test=" waterStartTime != null">waterStartTime,</if>
+			<if test=" waterEndTime != null">waterEndTime,</if>
+			<if test=" waterUsage != null">waterUsage,</if>
+			<if test=" dryHour != null">dryHour,</if>
+			<if test=" dryMin != null">dryMin,</if>
+			<if test=" logRemarks != null">logRemarks,</if>
+			<if test=" logRecorder != null">logRecorder,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" delFlag != null">delFlag,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
-			<if test=" deptId != null and deptId!= ''">#{deptId},</if>
-			<if test=" deptName != null and deptName!= ''">#{deptName},</if>
+			<if test=" deptId != null">#{deptId},</if>
+			<if test=" deptName != null">#{deptName},</if>
 			<if test=" poolId != null and poolId !=''">#{poolId},</if>
-			<if test=" logDate != null and logDate != ''">#{logDate},</if>
-			<if test=" weather != null and weather != ''">#{weather},</if>
-			<if test=" waterStartTime != null and waterStartTime != ''">#{waterStartTime},</if>
-			<if test=" waterEndTime != null and waterEndTime != ''">#{waterEndTime},</if>
-			<if test=" waterUsage != null and waterUsage != ''">#{waterUsage},</if>
-			<if test=" dryHour != null and dryHour != ''">#{dryHour},</if>
-			<if test=" dryMin != null and dryMin != ''">#{dryMin},</if>
+			<if test=" logDate != null">#{logDate},</if>
+			<if test=" weather != null">#{weather},</if>
+			<if test=" waterStartTime != null">#{waterStartTime},</if>
+			<if test=" waterEndTime != null">#{waterEndTime},</if>
+			<if test=" waterUsage != null">#{waterUsage},</if>
+			<if test=" dryHour != null">#{dryHour},</if>
+			<if test=" dryMin != null">#{dryMin},</if>
 			<if test=" logRemarks != null and logRemarks !=''">#{logRemarks},</if>
-			<if test=" logRecorder != null and logRecorder != ''">#{logRecorder},</if>
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" delFlag != null and delFlag!= ''">#{delFlag},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" logRecorder != null">#{logRecorder},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" delFlag != null">#{delFlag},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

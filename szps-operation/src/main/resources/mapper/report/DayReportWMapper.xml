@@ -29,6 +29,11 @@
 		<result     property="operation"   column="operation"   />
 		<result     property="dtype"   column="dtype"   />
 
+		<result     property="intn"   column="intn"   />
+		<result     property="outbod"   column="outbod"   />
+		<result     property="outtn"   column="outtn"   />
+		<result     property="outss"   column="outss"   />
+
         <result property="createBy"      column="create_by"      />
         <result property="createTime"    column="create_time"    />
         <result property="updateBy"      column="update_by"      />
@@ -86,7 +91,7 @@
 		<!-- 数据范围过滤 -->
 		${params.dataScope}	
 		
-		order by r.basin, r.deptname, r.darea
+		order by r.reportdate, r.basin, r.deptname, r.darea
     </select>
 
     
@@ -119,32 +124,37 @@
  		update REPORT_DAY_W
  		<set>
  		 	<if test=" deptid != null ">deptid = #{deptid},</if>
-			<if test=" deptname != null and deptname != ''">deptname = #{deptname},</if>
-			<if test=" basin != null and basin != ''">basin = #{basin},</if>
-			<if test=" reportdate != null and reportdate != ''">reportdate = #{reportdate},</if>
-			<if test=" dscale != null and dscale != ''">dscale = #{dscale},</if>
-			<if test=" tcapacity != null and tcapacity != ''">tcapacity = #{tcapacity},</if>
-			<if test=" loadrate != null and loadrate != ''">loadrate = #{loadrate},</if>
-			<if test=" incod != null and incod != ''">incod = #{incod},</if>
-			<if test=" inan != null and inan != ''">inan = #{inan},</if>
-			<if test=" darea != null and darea != ''">darea = #{darea},</if>
-			<if test=" inp != null and inp != ''">inp = #{inp},</if>
-			<if test=" inss != null and inss != ''">inss = #{inss},</if>
-			<if test=" inbod != null and inbod != ''">inbod = #{inbod},</if>
-			<if test=" outcod != null and outcod != ''">outcod = #{outcod},</if>
-			<if test=" outan != null and outan != ''">outan = #{outan},</if>
-			<if test=" outp != null and outp != ''">outp = #{outp},</if>
-			<if test=" outdo != null and outdo != ''">outdo = #{outdo},</if>
-			<if test=" dlevel != null and dlevel != ''">dlevel = #{dlevel},</if>
-			<if test=" aleave != null and aleave != ''">aleave = #{aleave},</if>
-			<if test=" sludec != null and sludec != ''">sludec = #{sludec},</if>
-			<if test=" lanfilll != null and lanfilll != ''">lanfilll = #{lanfilll},</if>
-			<if test=" sol != null and sol != ''">sol = #{sol},</if>
-			<if test=" operation != null and operation != ''">operation = #{operation},</if>
-			<if test=" dtype != null and dtype != ''">dtype = #{dtype},</if>
+			<if test=" deptname != null">deptname = #{deptname},</if>
+			<if test=" basin != null">basin = #{basin},</if>
+			<if test=" reportdate != null">reportdate = #{reportdate},</if>
+			<if test=" dscale != null">dscale = #{dscale},</if>
+			<if test=" tcapacity != null">tcapacity = #{tcapacity},</if>
+			<if test=" loadrate != null">loadrate = #{loadrate},</if>
+			<if test=" incod != null">incod = #{incod},</if>
+			<if test=" inan != null">inan = #{inan},</if>
+			<if test=" darea != null">darea = #{darea},</if>
+			<if test=" inp != null">inp = #{inp},</if>
+			<if test=" inss != null">inss = #{inss},</if>
+			<if test=" inbod != null">inbod = #{inbod},</if>
+			<if test=" outcod != null">outcod = #{outcod},</if>
+			<if test=" outan != null">outan = #{outan},</if>
+			<if test=" outp != null">outp = #{outp},</if>
+			<if test=" outdo != null">outdo = #{outdo},</if>
+			<if test=" dlevel != null">dlevel = #{dlevel},</if>
+			<if test=" aleave != null">aleave = #{aleave},</if>
+			<if test=" sludec != null">sludec = #{sludec},</if>
+			<if test=" lanfilll != null">lanfilll = #{lanfilll},</if>
+			<if test=" sol != null">sol = #{sol},</if>
+			<if test=" operation != null">operation = #{operation},</if>
+			<if test=" dtype != null">dtype = #{dtype},</if>
 			
-			<if test=" remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" intn != null">intn = #{intn},</if>
+			<if test=" outbod != null">outbod = #{outbod},</if>
+			<if test=" outtn != null">outtn = #{outtn},</if>
+			<if test=" outss != null">outss = #{outss},</if>
+			
+			<if test=" remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -158,64 +168,72 @@
 		INSERT INTO REPORT_DAY_W(
 			<if test=" id != null and id!= 0">id,</if>
 			<if test=" deptid != null ">deptid,</if>
-			<if test=" deptname != null and  deptname != ''">deptname,</if>
-			<if test=" basin != null and  basin != ''">basin,</if>
-			<if test=" reportdate != null and  reportdate != ''">reportdate,</if>
-			<if test=" dscale != null and  dscale != ''">dscale,</if>
-			<if test=" tcapacity != null and  tcapacity != ''">tcapacity,</if>
-			<if test=" loadrate != null and  loadrate != ''">loadrate,</if>
-			<if test=" incod != null and  incod != ''">incod,</if>
-			<if test=" inan != null and  inan != ''">inan,</if>
-			<if test=" darea != null and  darea != ''">darea,</if>
-			<if test=" inp != null and  inp != ''">inp,</if>
-			<if test=" inss != null and  inss != ''">inss,</if>
-			<if test=" inbod != null and  inbod != ''">inbod,</if>
-			<if test=" outcod != null and  outcod != ''">outcod,</if>
-			<if test=" outan != null and  outan != ''">outan,</if>
-			<if test=" outp != null and  outp != ''">outp,</if>
-			<if test=" outdo != null and  outdo != ''">outdo,</if>
-			<if test=" dlevel != null and  dlevel != ''">dlevel,</if>
-			<if test=" aleave != null and  aleave != ''">aleave,</if>
-			<if test=" sludec != null and  sludec != ''">sludec,</if>
-			<if test=" lanfilll != null and  lanfilll != ''">lanfilll,</if>
-			<if test=" sol != null and  sol != ''">sol,</if>
-			<if test=" operation != null and  operation != ''">operation,</if>
-			<if test=" dtype != null and  dtype != ''">dtype,</if>
+			<if test=" deptname != null">deptname,</if>
+			<if test=" basin != null">basin,</if>
+			<if test=" reportdate != null">reportdate,</if>
+			<if test=" dscale != null">dscale,</if>
+			<if test=" tcapacity != null">tcapacity,</if>
+			<if test=" loadrate != null">loadrate,</if>
+			<if test=" incod != null">incod,</if>
+			<if test=" inan != null">inan,</if>
+			<if test=" darea != null">darea,</if>
+			<if test=" inp != null">inp,</if>
+			<if test=" inss != null">inss,</if>
+			<if test=" inbod != null">inbod,</if>
+			<if test=" outcod != null">outcod,</if>
+			<if test=" outan != null">outan,</if>
+			<if test=" outp != null">outp,</if>
+			<if test=" outdo != null">outdo,</if>
+			<if test=" dlevel != null">dlevel,</if>
+			<if test=" aleave != null">aleave,</if>
+			<if test=" sludec != null">sludec,</if>
+			<if test=" lanfilll != null">lanfilll,</if>
+			<if test=" sol != null">sol,</if>
+			<if test=" operation != null">operation,</if>
+			<if test=" dtype != null">dtype,</if>
 			
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" intn != null">intn,</if>
+			<if test=" outbod != null">outbod,</if>
+			<if test=" outtn != null">outtn,</if>
+			<if test=" outss != null">outss,</if>
+			
+			<if test=" remark != null">REMARK,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
 			<if test=" deptid != null ">#{deptid},</if>
-			<if test=" deptname != null and deptname != ''">#{deptname},</if>
-			<if test=" basin != null and basin != ''">#{basin},</if>
-			<if test=" reportdate != null and reportdate != ''">#{reportdate},</if>
-			<if test=" dscale != null and dscale != ''">#{dscale},</if>
-			<if test=" tcapacity != null and tcapacity != ''">#{tcapacity},</if>
-			<if test=" loadrate != null and loadrate != ''">#{loadrate},</if>
-			<if test=" incod != null and incod != ''">#{incod},</if>
-			<if test=" inan != null and inan != ''">#{inan},</if>
-			<if test=" darea != null and darea != ''">#{darea},</if>
-			<if test=" inp != null and inp != ''">#{inp},</if>
-			<if test=" inss != null and inss != ''">#{inss},</if>
-			<if test=" inbod != null and inbod != ''">#{inbod},</if>
-			<if test=" outcod != null and outcod != ''">#{outcod},</if>
-			<if test=" outan != null and outan != ''">#{outan},</if>
-			<if test=" outp != null and outp != ''">#{outp},</if>
-			<if test=" outdo != null and outdo != ''">#{outdo},</if>
-			<if test=" dlevel != null and dlevel != ''">#{dlevel},</if>
-			<if test=" aleave != null and aleave != ''">#{aleave},</if>
-			<if test=" sludec != null and sludec != ''">#{sludec},</if>
-			<if test=" lanfilll != null and lanfilll != ''">#{lanfilll},</if>
-			<if test=" sol != null and sol != ''">#{sol},</if>
-			<if test=" operation != null and operation != ''">#{operation},</if>
-			<if test=" dtype != null and dtype != ''">#{dtype},</if>
-			
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" deptname != null">#{deptname},</if>
+			<if test=" basin != null">#{basin},</if>
+			<if test=" reportdate != null">#{reportdate},</if>
+			<if test=" dscale != null">#{dscale},</if>
+			<if test=" tcapacity != null">#{tcapacity},</if>
+			<if test=" loadrate != null">#{loadrate},</if>
+			<if test=" incod != null">#{incod},</if>
+			<if test=" inan != null">#{inan},</if>
+			<if test=" darea != null">#{darea},</if>
+			<if test=" inp != null">#{inp},</if>
+			<if test=" inss != null">#{inss},</if>
+			<if test=" inbod != null">#{inbod},</if>
+			<if test=" outcod != null">#{outcod},</if>
+			<if test=" outan != null">#{outan},</if>
+			<if test=" outp != null">#{outp},</if>
+			<if test=" outdo != null">#{outdo},</if>
+			<if test=" dlevel != null">#{dlevel},</if>
+			<if test=" aleave != null">#{aleave},</if>
+			<if test=" sludec != null">#{sludec},</if>
+			<if test=" lanfilll != null">#{lanfilll},</if>
+			<if test=" sol != null">#{sol},</if>
+			<if test=" operation != null">#{operation},</if>
+			<if test=" dtype != null">#{dtype},</if>
+			<if test=" intn != null">#{intn},</if>
+			<if test=" outbod != null">#{outbod},</if>
+			<if test=" outtn != null">#{outtn},</if>
+			<if test=" outss != null">#{outss},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

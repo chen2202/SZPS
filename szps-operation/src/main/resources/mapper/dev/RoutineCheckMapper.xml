@@ -102,34 +102,34 @@
     <update id="update" parameterType="RoutineCheck">
  		update dev_routine_check
  		<set>
-			<if test=" deptId != null and deptId != ''">deptId = #{deptId},</if>
-			<if test=" recordDate != null and recordDate != ''">recordDate = #{recordDate},</if>
-			<if test=" devName != null and devName != ''">devName = #{devName},</if>
-			<if test=" devNumber != null and devNumber != ''">devNumber = #{devNumber},</if>
-			<if test=" devModel != null and devModel != ''">devModel = #{devModel},</if>
-			<if test=" useDept != null and useDept != ''">useDept = #{useDept},</if>
-			<if test=" checkManager != null and checkManager != ''">checkManager = #{checkManager},</if>
-			<if test=" manager != null and manager != ''">manager = #{manager},</if>
-			<if test=" maintainResult1 != null and maintainResult1 != ''">maintainResult1 = #{maintainResult1},</if>
-			<if test=" maintainResult2 != null and maintainResult2 != ''">maintainResult2 = #{maintainResult2},</if>
-			<if test=" maintainResult3 != null and maintainResult3 != ''">maintainResult3 = #{maintainResult3},</if>
-			<if test=" maintainResult4 != null and maintainResult4 != ''">maintainResult4 = #{maintainResult4},</if>
-			<if test=" maintainResult5 != null and maintainResult5 != ''">maintainResult5 = #{maintainResult5},</if>
-			<if test=" maintainResult6 != null and maintainResult6 != ''">maintainResult6 = #{maintainResult6},</if>
-			<if test=" maintainResult7 != null and maintainResult7 != ''">maintainResult7 = #{maintainResult7},</if>
-			<if test=" maintainResult8 != null and maintainResult8 != ''">maintainResult8 = #{maintainResult8},</if>
-			<if test=" maintainResult9 != null and maintainResult9 != ''">maintainResult9 = #{maintainResult9},</if>
-			<if test=" maintainResult10 != null and maintainResult10 != ''">maintainResult10 = #{maintainResult10},</if>
-			<if test=" maintainResult11 != null and maintainResult11 != ''">maintainResult11 = #{maintainResult11},</if>
-			<if test=" maintainPeople != null and maintainPeople != ''">maintainPeople = #{maintainPeople},</if>
-			<if test=" maintainResult != null and maintainResult != ''">maintainResult = #{maintainResult},</if>
-			<if test=" custodian != null and custodian != ''">custodian = #{custodian},</if>
-			<if test=" spotCheckResult != null and spotCheckResult != ''">spotCheckResult = #{spotCheckResult},</if>
-			<if test=" spotCheckSign != null and spotCheckSign != ''">spotCheckSign = #{spotCheckSign},</if>
+			<if test=" deptId != null">deptId = #{deptId},</if>
+			<if test=" recordDate != null">recordDate = #{recordDate},</if>
+			<if test=" devName != null">devName = #{devName},</if>
+			<if test=" devNumber != null">devNumber = #{devNumber},</if>
+			<if test=" devModel != null">devModel = #{devModel},</if>
+			<if test=" useDept != null">useDept = #{useDept},</if>
+			<if test=" checkManager != null">checkManager = #{checkManager},</if>
+			<if test=" manager != null">manager = #{manager},</if>
+			<if test=" maintainResult1 != null">maintainResult1 = #{maintainResult1},</if>
+			<if test=" maintainResult2 != null">maintainResult2 = #{maintainResult2},</if>
+			<if test=" maintainResult3 != null">maintainResult3 = #{maintainResult3},</if>
+			<if test=" maintainResult4 != null">maintainResult4 = #{maintainResult4},</if>
+			<if test=" maintainResult5 != null">maintainResult5 = #{maintainResult5},</if>
+			<if test=" maintainResult6 != null">maintainResult6 = #{maintainResult6},</if>
+			<if test=" maintainResult7 != null">maintainResult7 = #{maintainResult7},</if>
+			<if test=" maintainResult8 != null">maintainResult8 = #{maintainResult8},</if>
+			<if test=" maintainResult9 != null">maintainResult9 = #{maintainResult9},</if>
+			<if test=" maintainResult10 != null">maintainResult10 = #{maintainResult10},</if>
+			<if test=" maintainResult11 != null">maintainResult11 = #{maintainResult11},</if>
+			<if test=" maintainPeople != null">maintainPeople = #{maintainPeople},</if>
+			<if test=" maintainResult != null">maintainResult = #{maintainResult},</if>
+			<if test=" custodian != null">custodian = #{custodian},</if>
+			<if test=" spotCheckResult != null">spotCheckResult = #{spotCheckResult},</if>
+			<if test=" spotCheckSign != null">spotCheckSign = #{spotCheckSign},</if>
 
-			<if test=" delFlag != null and delFlag!= ''">delFlag = #{delFlag},</if>
-			<if test=" remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" delFlag != null">delFlag = #{delFlag},</if>
+			<if test=" remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -142,67 +142,67 @@
     
 		INSERT INTO dev_routine_check(
 			<if test=" id != null and id!= 0">id,</if>
-			<if test=" deptId != null and  deptId != ''">deptId,</if>
-			<if test=" recordDate != null and  recordDate != ''">recordDate,</if>
-			<if test=" devName != null and  devName != ''">devName,</if>
-			<if test=" devNumber != null and  devNumber != ''">devNumber,</if>
-			<if test=" devModel != null and  devModel != ''">devModel,</if>
-			<if test=" useDept != null and  useDept != ''">useDept,</if>
-			<if test=" checkManager != null and  checkManager != ''">checkManager,</if>
-			<if test=" manager != null and  manager != ''">manager,</if>
-			<if test=" maintainResult1 != null and  maintainResult1 != ''">maintainResult1,</if>
-			<if test=" maintainResult2 != null and  maintainResult2 != ''">maintainResult2,</if>
-			<if test=" maintainResult3 != null and  maintainResult3 != ''">maintainResult3,</if>
-			<if test=" maintainResult4 != null and  maintainResult4 != ''">maintainResult4,</if>
-			<if test=" maintainResult5 != null and  maintainResult5 != ''">maintainResult5,</if>
-			<if test=" maintainResult6 != null and  maintainResult6 != ''">maintainResult6,</if>
-			<if test=" maintainResult7 != null and  maintainResult7 != ''">maintainResult7,</if>
-			<if test=" maintainResult8 != null and  maintainResult8 != ''">maintainResult8,</if>
-			<if test=" maintainResult9 != null and  maintainResult9 != ''">maintainResult9,</if>
-			<if test=" maintainResult10 != null and  maintainResult10 != ''">maintainResult10,</if>
-			<if test=" maintainResult11 != null and  maintainResult11 != ''">maintainResult11,</if>
-			<if test=" maintainPeople != null and  maintainPeople != ''">maintainPeople,</if>
-			<if test=" maintainResult != null and  maintainResult != ''">maintainResult,</if>
-			<if test=" custodian != null and  custodian != ''">custodian,</if>
-			<if test=" spotCheckResult != null and  spotCheckResult != ''">spotCheckResult,</if>
-			<if test=" spotCheckSign != null and  spotCheckSign != ''">spotCheckSign,</if>
+			<if test=" deptId != null">deptId,</if>
+			<if test=" recordDate != null">recordDate,</if>
+			<if test=" devName != null">devName,</if>
+			<if test=" devNumber != null">devNumber,</if>
+			<if test=" devModel != null">devModel,</if>
+			<if test=" useDept != null">useDept,</if>
+			<if test=" checkManager != null">checkManager,</if>
+			<if test=" manager != null">manager,</if>
+			<if test=" maintainResult1 != null">maintainResult1,</if>
+			<if test=" maintainResult2 != null">maintainResult2,</if>
+			<if test=" maintainResult3 != null">maintainResult3,</if>
+			<if test=" maintainResult4 != null">maintainResult4,</if>
+			<if test=" maintainResult5 != null">maintainResult5,</if>
+			<if test=" maintainResult6 != null">maintainResult6,</if>
+			<if test=" maintainResult7 != null">maintainResult7,</if>
+			<if test=" maintainResult8 != null">maintainResult8,</if>
+			<if test=" maintainResult9 != null">maintainResult9,</if>
+			<if test=" maintainResult10 != null">maintainResult10,</if>
+			<if test=" maintainResult11 != null">maintainResult11,</if>
+			<if test=" maintainPeople != null">maintainPeople,</if>
+			<if test=" maintainResult != null">maintainResult,</if>
+			<if test=" custodian != null">custodian,</if>
+			<if test=" spotCheckResult != null">spotCheckResult,</if>
+			<if test=" spotCheckSign != null">spotCheckSign,</if>
 
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" delFlag != null and delFlag!= ''">delFlag,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" delFlag != null">delFlag,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
-			<if test=" deptId != null and deptId != ''">#{deptId},</if>
-			<if test=" recordDate != null and recordDate != ''">#{recordDate},</if>
-			<if test=" devName != null and devName != ''">#{devName},</if>
-			<if test=" devNumber != null and devNumber != ''">#{devNumber},</if>
-			<if test=" devModel != null and devModel != ''">#{devModel},</if>
-			<if test=" useDept != null and useDept != ''">#{useDept},</if>
-			<if test=" checkManager != null and checkManager != ''">#{checkManager},</if>
-			<if test=" manager != null and manager != ''">#{manager},</if>
-			<if test=" maintainResult1 != null and maintainResult1 != ''">#{maintainResult1},</if>
-			<if test=" maintainResult2 != null and maintainResult2 != ''">#{maintainResult2},</if>
-			<if test=" maintainResult3 != null and maintainResult3 != ''">#{maintainResult3},</if>
-			<if test=" maintainResult4 != null and maintainResult4 != ''">#{maintainResult4},</if>
-			<if test=" maintainResult5 != null and maintainResult5 != ''">#{maintainResult5},</if>
-			<if test=" maintainResult6 != null and maintainResult6 != ''">#{maintainResult6},</if>
-			<if test=" maintainResult7 != null and maintainResult7 != ''">#{maintainResult7},</if>
-			<if test=" maintainResult8 != null and maintainResult8 != ''">#{maintainResult8},</if>
-			<if test=" maintainResult9 != null and maintainResult9 != ''">#{maintainResult9},</if>
-			<if test=" maintainResult10 != null and maintainResult10 != ''">#{maintainResult10},</if>
-			<if test=" maintainResult11 != null and maintainResult11 != ''">#{maintainResult11},</if>
-			<if test=" maintainPeople != null and maintainPeople != ''">#{maintainPeople},</if>
-			<if test=" maintainResult != null and maintainResult != ''">#{maintainResult},</if>
-			<if test=" custodian != null and custodian != ''">#{custodian},</if>
-			<if test=" spotCheckResult != null and spotCheckResult != ''">#{spotCheckResult},</if>
-			<if test=" spotCheckSign != null and spotCheckSign != ''">#{spotCheckSign},</if>
+			<if test=" deptId != null">#{deptId},</if>
+			<if test=" recordDate != null">#{recordDate},</if>
+			<if test=" devName != null">#{devName},</if>
+			<if test=" devNumber != null">#{devNumber},</if>
+			<if test=" devModel != null">#{devModel},</if>
+			<if test=" useDept != null">#{useDept},</if>
+			<if test=" checkManager != null">#{checkManager},</if>
+			<if test=" manager != null">#{manager},</if>
+			<if test=" maintainResult1 != null">#{maintainResult1},</if>
+			<if test=" maintainResult2 != null">#{maintainResult2},</if>
+			<if test=" maintainResult3 != null">#{maintainResult3},</if>
+			<if test=" maintainResult4 != null">#{maintainResult4},</if>
+			<if test=" maintainResult5 != null">#{maintainResult5},</if>
+			<if test=" maintainResult6 != null">#{maintainResult6},</if>
+			<if test=" maintainResult7 != null">#{maintainResult7},</if>
+			<if test=" maintainResult8 != null">#{maintainResult8},</if>
+			<if test=" maintainResult9 != null">#{maintainResult9},</if>
+			<if test=" maintainResult10 != null">#{maintainResult10},</if>
+			<if test=" maintainResult11 != null">#{maintainResult11},</if>
+			<if test=" maintainPeople != null">#{maintainPeople},</if>
+			<if test=" maintainResult != null">#{maintainResult},</if>
+			<if test=" custodian != null">#{custodian},</if>
+			<if test=" spotCheckResult != null">#{spotCheckResult},</if>
+			<if test=" spotCheckSign != null">#{spotCheckSign},</if>
 
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" delFlag != null and delFlag!= ''">#{delFlag},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" delFlag != null">#{delFlag},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

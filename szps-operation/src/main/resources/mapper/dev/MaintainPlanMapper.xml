@@ -103,27 +103,27 @@
     <update id="update" parameterType="MaintainPlan">
  		update dev_maintain_plan
  		<set>
-			<if test=" deptId != null and deptId != ''">deptId = #{deptId},</if>
-			<if test=" useDept != null and useDept != ''">useDept = #{useDept},</if>
-			<if test=" recordDate != null and recordDate != ''">recordDate = #{recordDate},</if>
-			<if test=" devName != null and devName != ''">devName = #{devName},</if>
-			<if test=" devNumber != null and devNumber != ''">devNumber = #{devNumber},</if>
-			<if test=" devModel != null and devModel != ''">devModel = #{devModel},</if>
-			<if test=" devProDate != null and devProDate != ''">devProDate = #{devProDate},</if>
-			<if test=" devType != null and devType != ''">devType = #{devType},</if>
-			<if test=" mType != null and mType != ''">mType = #{mType},</if>
-			<if test=" mCycle != null and mCycle != ''">mCycle = #{mCycle},</if>
-			<if test=" lastDate != null and lastDate != ''">lastDate = #{lastDate},</if>
-			<if test=" lastEffect != null and lastEffect != ''">lastEffect = #{lastEffect},</if>
-			<if test=" reason != null and reason != ''">reason = #{reason},</if>
-			<if test=" planDate != null and planDate != ''">planDate = #{planDate},</if>
-			<if test=" effect != null and effect != ''">effect = #{effect},</if>
-			<if test=" maker != null and maker != ''">maker = #{maker},</if>
-			<if test=" approver != null and approver != ''">approver = #{approver},</if>
+			<if test=" deptId != null">deptId = #{deptId},</if>
+			<if test=" useDept != null">useDept = #{useDept},</if>
+			<if test=" recordDate != null">recordDate = #{recordDate},</if>
+			<if test=" devName != null">devName = #{devName},</if>
+			<if test=" devNumber != null">devNumber = #{devNumber},</if>
+			<if test=" devModel != null">devModel = #{devModel},</if>
+			<if test=" devProDate != null">devProDate = #{devProDate},</if>
+			<if test=" devType != null">devType = #{devType},</if>
+			<if test=" mType != null">mType = #{mType},</if>
+			<if test=" mCycle != null">mCycle = #{mCycle},</if>
+			<if test=" lastDate != null">lastDate = #{lastDate},</if>
+			<if test=" lastEffect != null">lastEffect = #{lastEffect},</if>
+			<if test=" reason != null">reason = #{reason},</if>
+			<if test=" planDate != null">planDate = #{planDate},</if>
+			<if test=" effect != null">effect = #{effect},</if>
+			<if test=" maker != null">maker = #{maker},</if>
+			<if test=" approver != null">approver = #{approver},</if>
 
-			<if test=" delFlag != null and delFlag!= ''">delFlag = #{delFlag},</if>
-			<if test="  remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" delFlag != null">delFlag = #{delFlag},</if>
+			<if test="  remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -136,53 +136,53 @@
     
 		INSERT INTO dev_maintain_plan(
 			<if test=" id != null and id!= 0">id,</if>
-			<if test=" deptId != null and  deptId != ''">deptId,</if>
-			<if test=" useDept != null and  useDept != ''">useDept,</if>
-			<if test=" recordDate != null and  recordDate != ''">recordDate,</if>
-			<if test=" devName != null and  devName != ''">devName,</if>
-			<if test=" devNumber != null and  devNumber != ''">devNumber,</if>
-			<if test=" devModel != null and  devModel != ''">devModel,</if>
-			<if test=" devProDate != null and  devProDate != ''">devProDate,</if>
-			<if test=" devType != null and  devType != ''">devType,</if>
-			<if test=" mType != null and  mType != ''">mType,</if>
-			<if test=" mCycle != null and  mCycle != ''">mCycle,</if>
-			<if test=" lastDate != null and  lastDate != ''">lastDate,</if>
-			<if test=" lastEffect != null and  lastEffect != ''">lastEffect,</if>
-			<if test=" reason != null and  reason != ''">reason,</if>
-			<if test=" planDate != null and  planDate != ''">planDate,</if>
-			<if test=" effect != null and  effect != ''">effect,</if>
-			<if test=" maker != null and  maker != ''">maker,</if>
-			<if test=" approver != null and  approver != ''">approver,</if>
+			<if test=" deptId != null">deptId,</if>
+			<if test=" useDept != null">useDept,</if>
+			<if test=" recordDate != null">recordDate,</if>
+			<if test=" devName != null">devName,</if>
+			<if test=" devNumber != null">devNumber,</if>
+			<if test=" devModel != null">devModel,</if>
+			<if test=" devProDate != null">devProDate,</if>
+			<if test=" devType != null">devType,</if>
+			<if test=" mType != null">mType,</if>
+			<if test=" mCycle != null">mCycle,</if>
+			<if test=" lastDate != null">lastDate,</if>
+			<if test=" lastEffect != null">lastEffect,</if>
+			<if test=" reason != null">reason,</if>
+			<if test=" planDate != null">planDate,</if>
+			<if test=" effect != null">effect,</if>
+			<if test=" maker != null">maker,</if>
+			<if test=" approver != null">approver,</if>
 
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" delFlag != null and delFlag!= ''">delFlag,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" delFlag != null">delFlag,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
-			<if test=" deptId != null and deptId != ''">#{deptId},</if>
-			<if test=" useDept != null and useDept != ''">#{useDept},</if>
-			<if test=" recordDate != null and recordDate != ''">#{recordDate},</if>
-			<if test=" devName != null and devName != ''">#{devName},</if>
-			<if test=" devNumber != null and devNumber != ''">#{devNumber},</if>
-			<if test=" devModel != null and devModel != ''">#{devModel},</if>
-			<if test=" devProDate != null and devProDate != ''">#{devProDate},</if>
-			<if test=" devType != null and devType != ''">#{devType},</if>
-			<if test=" mType != null and mType != ''">#{mType},</if>
-			<if test=" mCycle != null and mCycle != ''">#{mCycle},</if>
-			<if test=" lastDate != null and lastDate != ''">#{lastDate},</if>
-			<if test=" lastEffect != null and lastEffect != ''">#{lastEffect},</if>
-			<if test=" reason != null and reason != ''">#{reason},</if>
-			<if test=" planDate != null and planDate != ''">#{planDate},</if>
-			<if test=" effect != null and effect != ''">#{effect},</if>
-			<if test=" maker != null and maker != ''">#{maker},</if>
-			<if test=" approver != null and approver != ''">#{approver},</if>
+			<if test=" deptId != null">#{deptId},</if>
+			<if test=" useDept != null">#{useDept},</if>
+			<if test=" recordDate != null">#{recordDate},</if>
+			<if test=" devName != null">#{devName},</if>
+			<if test=" devNumber != null">#{devNumber},</if>
+			<if test=" devModel != null">#{devModel},</if>
+			<if test=" devProDate != null">#{devProDate},</if>
+			<if test=" devType != null">#{devType},</if>
+			<if test=" mType != null">#{mType},</if>
+			<if test=" mCycle != null">#{mCycle},</if>
+			<if test=" lastDate != null">#{lastDate},</if>
+			<if test=" lastEffect != null">#{lastEffect},</if>
+			<if test=" reason != null">#{reason},</if>
+			<if test=" planDate != null">#{planDate},</if>
+			<if test=" effect != null">#{effect},</if>
+			<if test=" maker != null">#{maker},</if>
+			<if test=" approver != null">#{approver},</if>
 
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" delFlag != null and delFlag!= ''">#{delFlag},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" delFlag != null">#{delFlag},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

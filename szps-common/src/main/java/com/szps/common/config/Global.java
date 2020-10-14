@@ -149,4 +149,8 @@ public class Global
     {
         return getProfile() +File.separator;
     }
+    public static String getMapURL()
+    {
+        return StringUtils.nvl(getConfig("szps.mapURL"), "/");
+    }
 }

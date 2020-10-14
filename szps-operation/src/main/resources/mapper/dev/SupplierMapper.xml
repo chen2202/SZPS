@@ -61,6 +61,7 @@
 				AND sname  like concat(concat('%',#{sname}),'%')
 		</if>
 		
+		
 		<!-- 数据范围过滤
 		${params.dataScope}	 -->
 		order by r.id
@@ -83,13 +84,13 @@
     <update id="update" parameterType="Supplier">
  		update dev_supplier
  		<set>
-			<if test=" sname != null and sname != ''">sname = #{sname},</if>
-			<if test=" contact != null and contact != ''">contact = #{contact},</if>
-			<if test=" tel != null and tel != ''">tel = #{tel},</if>
-			<if test=" addr != null and addr != ''">addr = #{addr},</if>
+			<if test=" sname != null">sname = #{sname},</if>
+			<if test=" contact != null">contact = #{contact},</if>
+			<if test=" tel != null">tel = #{tel},</if>
+			<if test=" addr != null">addr = #{addr},</if>
 			
-			<if test=" remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -102,27 +103,27 @@
     
 		INSERT INTO dev_supplier(
 			<if test=" id != null and id!= 0">id,</if>
-			<if test=" sname != null and  sname != ''">sname,</if>
-			<if test=" contact != null and  contact != ''">contact,</if>
-			<if test=" tel != null and  tel != ''">tel,</if>
-			<if test=" addr != null and  addr != ''">addr,</if>
+			<if test=" sname != null">sname,</if>
+			<if test=" contact != null">contact,</if>
+			<if test=" tel != null">tel,</if>
+			<if test=" addr != null">addr,</if>
 			<if test=" stype != null ">stype,</if>
 			
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
-			<if test=" sname != null and sname != ''">#{sname},</if>
-			<if test=" contact != null and  contact != ''">#{contact},</if>
-			<if test=" tel != null and  tel != ''">#{tel},</if>
-			<if test=" addr != null and  addr != ''">#{addr},</if>
+			<if test=" sname != null">#{sname},</if>
+			<if test=" contact != null">#{contact},</if>
+			<if test=" tel != null">#{tel},</if>
+			<if test=" addr != null">#{addr},</if>
 			<if test=" stype != null ">#{stype},</if>
 			
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

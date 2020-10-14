@@ -84,14 +84,14 @@
     <update id="update" parameterType="TechInfo">
  		update dev_tech_info
  		<set>
-			<if test=" tname != null and tname != ''">tname = #{tname},</if>
-			<if test=" tversion != null and tversion != ''">tversion = #{tversion},</if>
-			<if test=" url != null and url != ''">url = #{url},</if>
+			<if test=" tname != null">tname = #{tname},</if>
+			<if test=" tversion != null">tversion = #{tversion},</if>
+			<if test=" url != null">url = #{url},</if>
 			<if test=" devid != null ">devid = #{devid},</if>
 
 			
-			<if test=" remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -104,26 +104,26 @@
     
 		INSERT INTO dev_tech_info(
 			<if test=" id != null and id!= 0">id,</if>
-			<if test=" tname != null and  tname != ''">tname,</if>
-			<if test=" tversion != null and  tversion != ''">tversion,</if>
-			<if test=" url != null and  url != ''">url,</if>
+			<if test=" tname != null">tname,</if>
+			<if test=" tversion != null">tversion,</if>
+			<if test=" url != null">url,</if>
 			<if test=" devid != null ">devid,</if>
 
 			
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
-			<if test=" tname != null and tname != ''">#{tname},</if>
-			<if test=" tversion != null and tversion != ''">#{tversion},</if>
-			<if test=" url != null and url != ''">#{url},</if>
+			<if test=" tname != null">#{tname},</if>
+			<if test=" tversion != null">#{tversion},</if>
+			<if test=" url != null">#{url},</if>
 			<if test=" devid != null ">#{devid},</if>
 			
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

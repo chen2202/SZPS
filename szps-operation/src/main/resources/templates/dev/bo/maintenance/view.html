@@ -7,7 +7,7 @@
     <div class="container-div">
 		<div class="row">
 			<div class="col-sm-12 search-collapse">
-				<form id="maintenance-form">
+				<form id="bomaintenance-form">
 					<input name=deptid type="hidden" id="treeId"/>
 					<div class="select-list">
 						<ul>
@@ -16,26 +16,21 @@
                             	<input name="devname"  id="devname" type="text" >
 							</li>
 							<li>
-		                         <label >所属厂站：</label>
-                            	<input name="deptname" onclick="selectDeptTree()" id="treeName" type="text" placeholder="" >
-                            	
-							</li>
-							<li>
-		                         <label >任务状态：</label>
-                            	<select class="selectpicker" name="taskstatus"  id="taskstatus">
-                            	 <option disabled selected value="">default</option>
-								  <option>没完成</option>
-								  <option>已完成</option>
+		                         <label >类型：</label>
+                            	<select class="selectpicker" name="optype"  id="optype">
+                            		<option selected value=""></option>
+                            	 	<option  value="维修">维修</option>
+								  	<option value="保养">保养</option>
 								</select>
 							</li>
-							<li>
+<!-- 							<li>
 		                        <label >维保类别：</label>
                             	<select class="selectpicker" name="mtype"  id="mtype">
 									<option>保养</option>
 									<option>维修</option>
 									<option>大修</option>
 								</select>
-							</li>
+							</li> -->
 							
 							<li>
 								<a class="btn  btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
@@ -45,7 +40,6 @@
 					</div>
 				</form>
 			</div>
-			
 	        <div class="btn-group-sm" id="toolbar" role="group">
 		        <a class="btn btn-success" onclick="$.operate.addFull()" shiro:hasPermission="dev:bomaintenance:add">
 		            <i class="fa fa-plus"></i> 新增
@@ -59,7 +53,7 @@
 	        </div>
 	        
 	        <div class="col-sm-12 select-table table-striped">
-	            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+	            <table id="bootstrap-table" class="text-nowrap" data-mobile-responsive="true"></table>
 	        </div>
     	</div>
     </div>
@@ -86,53 +80,13 @@
 					field : 'id', 
 					title : '序号' 
 				},
-				{
-					field : 'mtype', 
-					title : '维保类别' 
-				},
-				{
-					field : 'tasknumber', 
-					title : '工单编号' 
-				},
-				{
-		            field: 'taskstatus',
-		            title: '任务状态',
-		        },
-		        {
-		            field: 'duetime',
-		            title: '完成期限',
-		        },
-		        {
-		            field: 'responsibleperson',
-		            title: '责任人',
-		        },
-		        {
-		            field: 'taskcreatetime',
-		            title: '任务创建时间',
-		        },		        
-		        {
-		            field: 'creator',
-		            title: '创建人',
-		        },{
-		            field: 'mrank',
-		            title: '维保类别',
-		        },
-		        {
-		            field: 'mpart',
-		            title: '维保部位',
-		        },
-		        {
-		            field: 'mspec',
-		            title: '描述',
-		        },
-		        {
-		            field: 'usetime',
-		            title: '实际使用时间',
-		        },		        
-		        {
-		            field: 'operator',
-		            title: '维保人员',
-		        },
+				{field: 'optime',title: '时间',},
+				{field: 'devname',title: '设备名称',},
+				{field: 'optype',title: '类型',},
+				{field: 'opdetails',title: '内容',},
+				{field: 'replaceparts',title: '更换零配件',},
+				{field: 'operator',title: '操作人员',},
+
 		        {
                     title: '操作',
                     align: 'center',

@@ -33,35 +33,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</selectKey>
 		insert into sys_oper_log(
 			<if test="operId != null and operId != 0">oper_id,</if>
-			<if test="title != null and title != ''">title,</if>
-			<if test="businessType != null and businessType != ''">business_type,</if>
-			<if test="method != null and method != ''">method,</if>
-			<if test="requestMethod != null and requestMethod != ''">request_method,</if>
-			<if test="operatorType != null and operatorType != ''">operator_type,</if>
-			<if test="operName != null and operName != ''">oper_name,</if>
-			<if test="deptName != null and deptName != ''">dept_name,</if>
-			<if test="operUrl != null and operUrl != ''">oper_url,</if>
-			<if test="operIp != null and operIp != ''">oper_ip,</if>
-			<if test="operLocation != null and operLocation != ''">oper_location,</if>
-			<if test="operParam != null and operParam != ''">oper_param,</if>
-			<if test="status != null and status != ''">status,</if>
-			<if test="errorMsg != null and errorMsg != ''">error_msg,</if>
+			<if test="title != null">title,</if>
+			<if test="businessType != null">business_type,</if>
+			<if test="method != null">method,</if>
+			<if test="requestMethod != null">request_method,</if>
+			<if test="operatorType != null">operator_type,</if>
+			<if test="operName != null">oper_name,</if>
+			<if test="deptName != null">dept_name,</if>
+			<if test="operUrl != null">oper_url,</if>
+			<if test="operIp != null">oper_ip,</if>
+			<if test="operLocation != null">oper_location,</if>
+			<if test="operParam != null">oper_param,</if>
+			<if test="status != null">status,</if>
+			<if test="errorMsg != null">error_msg,</if>
 			oper_time
 		)values(
 			<if test="operId != null and operId != 0">#{operId},</if>
-			<if test="title != null and title != ''">#{title},</if>
-			<if test="businessType != null and businessType != ''">#{businessType},</if>
-			<if test="method != null and method != ''">#{method},</if>
-			<if test="requestMethod != null and requestMethod != ''">#{requestMethod},</if>
-			<if test="operatorType != null and operatorType != ''">#{operatorType},</if>
-			<if test="operName != null and operName != ''">#{operName},</if>
-			<if test="deptName != null and deptName != ''">#{deptName},</if>
-			<if test="operUrl != null and operUrl != ''">#{operUrl},</if>
-			<if test="operIp != null and operIp != ''">#{operIp},</if>
-			<if test="operLocation != null and operLocation != ''">#{operLocation},</if>
-			<if test="operParam != null and operParam != ''">#{operParam},</if>
-			<if test="status != null and status != ''">#{status},</if>
-			<if test="errorMsg != null and errorMsg != ''">#{errorMsg},</if>
+			<if test="title != null">#{title},</if>
+			<if test="businessType != null">#{businessType},</if>
+			<if test="method != null">#{method},</if>
+			<if test="requestMethod != null">#{requestMethod},</if>
+			<if test="operatorType != null">#{operatorType},</if>
+			<if test="operName != null">#{operName},</if>
+			<if test="deptName != null">#{deptName},</if>
+			<if test="operUrl != null">#{operUrl},</if>
+			<if test="operIp != null">#{operIp},</if>
+			<if test="operLocation != null">#{operLocation},</if>
+			<if test="operParam != null">#{operParam},</if>
+			<if test="status != null">#{status},</if>
+			<if test="errorMsg != null">#{errorMsg},</if>
 			sysdate
 		)
 	</insert>

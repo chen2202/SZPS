@@ -26,7 +26,7 @@
         <div >
             <ul class="nav" id="side-menu">
             	<li >
-            		<span style="font-size: 15px;">业务运营管理系统（演示版）</span>
+            		<span style="font-size: 15px;">业务运营管理系统</span>
             	</li>
             	<li >
             		<a class="menuItem icon-10" th:href="@{/system/main}">首页</a>
@@ -167,8 +167,14 @@
 <script th:src="@{/ajax/libs/fullscreen/jquery.fullscreen.js}"></script>
 <script th:inline="javascript"> 
 var ctx = [[@{/}]];
+
+	var areaCode = [[${user.areaCode}]]
+	sessionStorage.setItem("district", areaCode);
+	var mapURL = [[${mapURL}]]
+	sessionStorage.setItem('mapURL',mapURL)
+
 	/*用户管理-重置密码*/
-	function resetPwd() {
+	function resetPwd() { 
 	    var url = ctx + 'system/user/profile/resetPwd';
 	    $.modal.open("重置密码", url, '800', '500');
 	}

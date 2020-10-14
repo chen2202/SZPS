@@ -109,27 +109,27 @@
  		update dev_asset_pipeline
  		<set>
 			<if test=" deptid != null ">deptid = #{deptid},</if>
-			<if test=" deptname != null and deptname != ''">deptname = #{deptname},</if>
-			<if test=" dlocation != null and dlocation != ''">dlocation = #{dlocation},</if>
-			<if test=" assetname != null and assetname != ''">assetname = #{assetname},</if>
-			<if test=" startingplace != null and startingplace != ''">startingplace = #{startingplace},</if>
-			<if test=" endplace != null and endplace != ''">endplace = #{endplace},</if>
-			<if test=" dlength != null and dlength != ''">dlength = #{dlength},</if>
-			<if test=" ddepth != null and ddepth != ''">ddepth = #{ddepth},</if>
-			<if test=" dhigh != null and dhigh != ''">dhigh = #{dhigh},</if>
-			<if test=" material != null and material != ''">material = #{material},</if>
-			<if test=" insulation != null and insulation != ''">insulation = #{insulation},</if>
-			<if test=" layway != null and layway != ''">layway = #{layway},</if>
-			<if test=" aczoiling != null and aczoiling != ''">aczoiling = #{aczoiling},</if>
-			<if test=" heatinsulatingmaterial != null and heatinsulatingmaterial != ''">heatinsulatingmaterial = #{heatinsulatingmaterial},</if>
+			<if test=" deptname != null">deptname = #{deptname},</if>
+			<if test=" dlocation != null">dlocation = #{dlocation},</if>
+			<if test=" assetname != null">assetname = #{assetname},</if>
+			<if test=" startingplace != null">startingplace = #{startingplace},</if>
+			<if test=" endplace != null">endplace = #{endplace},</if>
+			<if test=" dlength != null">dlength = #{dlength},</if>
+			<if test=" ddepth != null">ddepth = #{ddepth},</if>
+			<if test=" dhigh != null">dhigh = #{dhigh},</if>
+			<if test=" material != null">material = #{material},</if>
+			<if test=" insulation != null">insulation = #{insulation},</if>
+			<if test=" layway != null">layway = #{layway},</if>
+			<if test=" aczoiling != null">aczoiling = #{aczoiling},</if>
+			<if test=" heatinsulatingmaterial != null">heatinsulatingmaterial = #{heatinsulatingmaterial},</if>
 			<if test=" builttime != null ">builttime = #{builttime},</if>
-			<if test=" dstatus != null and dstatus != ''">dstatus = #{dstatus},</if>
-			<if test=" originalvalue != null and originalvalue != ''">originalvalue = #{originalvalue},</if>
+			<if test=" dstatus != null">dstatus = #{dstatus},</if>
+			<if test=" originalvalue != null">originalvalue = #{originalvalue},</if>
 
 
 			
-			<if test=" remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -143,53 +143,53 @@
 		INSERT INTO dev_asset_pipeline(
 			<if test=" id != null and id!= 0">id,</if>
 			<if test=" deptid != null ">deptid,</if>
-			<if test=" deptname != null and  deptname != ''">deptname,</if>
-			<if test=" dlocation != null and  dlocation != ''">dlocation,</if>
-			<if test=" assetname != null and  assetname != ''">assetname,</if>
-			<if test=" startingplace != null and  startingplace != ''">startingplace,</if>
-			<if test=" endplace != null and  endplace != ''">endplace,</if>
-			<if test=" dlength != null and  dlength != ''">dlength,</if>
-			<if test=" ddepth != null and  ddepth != ''">ddepth,</if>
-			<if test=" dhigh != null and  dhigh != ''">dhigh,</if>
-			<if test=" material != null and  material != ''">material,</if>
-			<if test=" insulation != null and  insulation != ''">insulation,</if>
-			<if test=" layway != null and  layway != ''">layway,</if>
-			<if test=" aczoiling != null and  aczoiling != ''">aczoiling,</if>
-			<if test=" heatinsulatingmaterial != null and  heatinsulatingmaterial != ''">heatinsulatingmaterial,</if>
+			<if test=" deptname != null">deptname,</if>
+			<if test=" dlocation != null">dlocation,</if>
+			<if test=" assetname != null">assetname,</if>
+			<if test=" startingplace != null">startingplace,</if>
+			<if test=" endplace != null">endplace,</if>
+			<if test=" dlength != null">dlength,</if>
+			<if test=" ddepth != null">ddepth,</if>
+			<if test=" dhigh != null">dhigh,</if>
+			<if test=" material != null">material,</if>
+			<if test=" insulation != null">insulation,</if>
+			<if test=" layway != null">layway,</if>
+			<if test=" aczoiling != null">aczoiling,</if>
+			<if test=" heatinsulatingmaterial != null">heatinsulatingmaterial,</if>
 			<if test=" builttime != null ">builttime,</if>
-			<if test=" dstatus != null and  dstatus != ''">dstatus,</if>
-			<if test=" originalvalue != null and  originalvalue != ''">originalvalue,</if>
+			<if test=" dstatus != null">dstatus,</if>
+			<if test=" originalvalue != null">originalvalue,</if>
 
 
 			
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>		
+			<if test=" remark != null">REMARK,</if>
+			<if test=" createBy != null">create_by,</if>		
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
 			<if test=" deptid != null ">#{deptid},</if>
-			<if test=" deptname != null and deptname != ''">#{deptname},</if>
-			<if test=" dlocation != null and dlocation != ''">#{dlocation},</if>
-			<if test=" assetname != null and assetname != ''">#{assetname},</if>
-			<if test=" startingplace != null and startingplace != ''">#{startingplace},</if>
-			<if test=" endplace != null and endplace != ''">#{endplace},</if>
-			<if test=" dlength != null and dlength != ''">#{dlength},</if>
-			<if test=" ddepth != null and ddepth != ''">#{ddepth},</if>
-			<if test=" dhigh != null and dhigh != ''">#{dhigh},</if>
-			<if test=" material != null and material != ''">#{material},</if>
-			<if test=" insulation != null and insulation != ''">#{insulation},</if>
-			<if test=" layway != null and layway != ''">#{layway},</if>
-			<if test=" aczoiling != null and aczoiling != ''">#{aczoiling},</if>
-			<if test=" heatinsulatingmaterial != null and heatinsulatingmaterial != ''">#{heatinsulatingmaterial},</if>
+			<if test=" deptname != null">#{deptname},</if>
+			<if test=" dlocation != null">#{dlocation},</if>
+			<if test=" assetname != null">#{assetname},</if>
+			<if test=" startingplace != null">#{startingplace},</if>
+			<if test=" endplace != null">#{endplace},</if>
+			<if test=" dlength != null">#{dlength},</if>
+			<if test=" ddepth != null">#{ddepth},</if>
+			<if test=" dhigh != null">#{dhigh},</if>
+			<if test=" material != null">#{material},</if>
+			<if test=" insulation != null">#{insulation},</if>
+			<if test=" layway != null">#{layway},</if>
+			<if test=" aczoiling != null">#{aczoiling},</if>
+			<if test=" heatinsulatingmaterial != null">#{heatinsulatingmaterial},</if>
 			<if test=" builttime != null ">#{builttime},</if>
-			<if test=" dstatus != null and dstatus != ''">#{dstatus},</if>
-			<if test=" originalvalue != null and originalvalue != ''">#{originalvalue},</if>
+			<if test=" dstatus != null">#{dstatus},</if>
+			<if test=" originalvalue != null">#{originalvalue},</if>
 
 
 			
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" createBy != null">#{createBy},</if>
 			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)

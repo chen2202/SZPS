@@ -61,22 +61,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		insert into sys_brf(
  			<if test="brfId != null and brfId != 0">brf_id,</if>
  			<if test="parentId != null and parentId != 0">parent_id,</if>
- 			<if test="brfName != null and brfName != ''">brf_name,</if>
- 			<if test="ancestors != null and ancestors != ''">ancestors,</if>
- 			<if test="orderNum != null and orderNum != ''">order_num,</if>
+ 			<if test="brfName != null">brf_name,</if>
+ 			<if test="ancestors != null">ancestors,</if>
+ 			<if test="orderNum != null">order_num,</if>
  			
- 			<if test="createBy != null and createBy != ''">create_by,</if>
- 			<if test="delFlag != null and delFlag != ''">create_by,</if>
+ 			<if test="createBy != null">create_by,</if>
+ 			<if test="delFlag != null">create_by,</if>
  			create_time
  		)values(
  			<if test="brfId != null and brfId != 0">#{brfId},</if>
  			<if test="parentId != null and parentId != 0">#{parentId},</if>
- 			<if test="brfName != null and brfName != ''">#{brfName},</if>
- 			<if test="ancestors != null and ancestors != ''">#{ancestors},</if>
- 			<if test="orderNum != null and orderNum != ''">#{orderNum},</if>
+ 			<if test="brfName != null">#{brfName},</if>
+ 			<if test="ancestors != null">#{ancestors},</if>
+ 			<if test="orderNum != null">#{orderNum},</if>
  			
- 			<if test="createBy != null and createBy != ''">#{createBy},</if>
- 			<if test="delFlag != null and delFlag != ''">#{delFlag},</if>
+ 			<if test="createBy != null">#{createBy},</if>
+ 			<if test="delFlag != null">#{delFlag},</if>
  			sysdate
  		)
 	</insert>
@@ -85,11 +85,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		update sys_brf
  		<set>
  			<if test="parentId != null and parentId != 0">parent_id = #{parentId},</if>
- 			<if test="brfName != null and brfName != ''">brf_name = #{brfName},</if>
- 			<if test="ancestors != null and ancestors != ''">ancestors = #{ancestors},</if>
+ 			<if test="brfName != null">brf_name = #{brfName},</if>
+ 			<if test="ancestors != null">ancestors = #{ancestors},</if>
  			<if test="orderNum != null">order_num = #{orderNum},</if>
  			
- 			<if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+ 			<if test="updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where brf_id = #{brfId}

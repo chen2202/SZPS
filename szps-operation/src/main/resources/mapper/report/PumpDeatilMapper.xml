@@ -72,15 +72,15 @@
     <update id="updateReport" parameterType="PumpDetail">
  		update report_pumpdetail
  		<set>
-			<if test=" dtype != null and dtype != ''">dtype = #{dtype},</if>
+			<if test=" dtype != null">dtype = #{dtype},</if>
 			<if test=" dnumber != null ">dnumber = #{dnumber},</if>
-			<if test=" assetname != null and assetname != ''">assetname = #{assetname},</if>
-			<if test=" supplyer != null and supplyer != ''">supplyer = #{supplyer},</if>
-			<if test=" dspec != null and dspec != ''">dspec = #{dspec},</if>
-			<if test=" dunit != null and dunit != ''">dunit = #{dunit},</if>
-			<if test=" areaorquantity != null and areaorquantity != ''">areaorquantity = #{areaorquantity},</if>
-			<if test="  remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" assetname != null">assetname = #{assetname},</if>
+			<if test=" supplyer != null">supplyer = #{supplyer},</if>
+			<if test=" dspec != null">dspec = #{dspec},</if>
+			<if test=" dunit != null">dunit = #{dunit},</if>
+			<if test=" areaorquantity != null">areaorquantity = #{areaorquantity},</if>
+			<if test="  remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -94,33 +94,33 @@
 		INSERT INTO report_pumpdetail(
 			<if test=" id != null and id!= 0">id,</if>
 			<if test=" pumpid != null ">pumpid,</if>
-			<if test=" dtype != null and  dtype != ''">dtype,</if>
+			<if test=" dtype != null">dtype,</if>
 			<if test=" dnumber != null ">dnumber,</if>
-			<if test=" assetname != null and  assetname != ''">assetname,</if>
-			<if test=" supplyer != null and  supplyer != ''">supplyer,</if>
-			<if test=" dspec != null and  dspec != ''">dspec,</if>
-			<if test=" dunit != null and  dunit != ''">dunit,</if>
-			<if test=" areaorquantity != null and  areaorquantity != ''">areaorquantity,</if>
+			<if test=" assetname != null">assetname,</if>
+			<if test=" supplyer != null">supplyer,</if>
+			<if test=" dspec != null">dspec,</if>
+			<if test=" dunit != null">dunit,</if>
+			<if test=" areaorquantity != null">areaorquantity,</if>
 
 
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
 			<if test=" pumpid != null ">#{pumpid},</if>
-			<if test=" dtype != null and dtype != ''">#{dtype},</if>
+			<if test=" dtype != null">#{dtype},</if>
 			<if test=" dnumber != null ">#{dnumber},</if>
-			<if test=" assetname != null and assetname != ''">#{assetname},</if>
-			<if test=" supplyer != null and supplyer != ''">#{supplyer},</if>
-			<if test=" dspec != null and dspec != ''">#{dspec},</if>
-			<if test=" dunit != null and dunit != ''">#{dunit},</if>
-			<if test=" areaorquantity != null and areaorquantity != ''">#{areaorquantity},</if>
+			<if test=" assetname != null">#{assetname},</if>
+			<if test=" supplyer != null">#{supplyer},</if>
+			<if test=" dspec != null">#{dspec},</if>
+			<if test=" dunit != null">#{dunit},</if>
+			<if test=" areaorquantity != null">#{areaorquantity},</if>
 
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

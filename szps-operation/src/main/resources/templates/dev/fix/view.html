@@ -23,7 +23,7 @@
 								<label >设备名称：</label>
 								<input id="devName" name ="devName" />
 							</li>
-							<li>
+							<!-- <li>
 								<label>设备编号：</label>
 								<input id="devNumber" name ="devNumber" />
 							</li>
@@ -34,7 +34,7 @@
 							<li>
 								<label>派工单号：</label>
 								<input id="jobnumber" name ="jobnumber"  />
-							</li>
+							</li> -->
 	
 							<li>
 								<a class="btn  btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
@@ -66,8 +66,8 @@
 		        </a> -->
 	        </div>
 	        
-	        <div class="col-sm-12 select-table table-striped">
-	            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+	        <div class="col-sm-12 select-table table-striped ">
+	            <table id="bootstrap-table" class="text-nowrap" data-mobile-responsive="true" ></table>
 	        </div>
     	</div>
     </div>
@@ -82,8 +82,8 @@
         function selectDeptTree() {
         	
         	var treeId = $("#treeId").val();
-        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
-        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+        	var deptId = $.common.isEmpty(treeId) ? "1140" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree2/1140" ;
 			var options = {
 				title: '选择部门',
 				width: "380",

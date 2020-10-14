@@ -12,14 +12,29 @@
 					<div class="select-list">
 						<ul>
 							<li>
-		                        <label >所属区：</label>
-                            	<input name="areaname" onclick="selectAreaTree()" id="treeNameArea" type="text" placeholder="" >
+		                        <label >区：</label>
+                            	<input name="xzqy_q" onclick="selectAreaTree()" id="treeNameArea" type="text"  >
 							</li>
-							
 							<li>
-		                         <label >专营单位招采方式：</label>
-                            	<input name="recruitmentmethod"  id="recruitmentmethod" type="text" >
+		                        <label >街道：</label>
+                            	<input name="xzqy_j"  type="text"  >
+							</li>							
+							<li class="select-time">
+								<label>截止时间： </label>
+								<input type="text" class="time-input" id="duedate"  name="duedate"/>
 							</li>
+							<!-- <li>
+		                         <label >建筑类型：</label>
+                            	<select name="buildingtype"  type="text" >
+		                           	<option value="住宅">住宅</option>
+		                           	<option value="工业">工业</option>
+		                           	<option value="商业">商业</option>
+		                           	<option value="商混">商混</option>
+		                           	<option value="公共机构">公共机构</option>
+		                           	<option value="城中村">城中村</option>
+		                           	<option value="合计">合计</option>
+		                         </select>
+							</li> -->
 							<li>
 								<a class="btn  btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
 								<a class="btn  btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
@@ -32,16 +47,16 @@
 		        <a class="btn btn-success" onclick="$.operate.addFull()" shiro:hasPermission="report:psprogress:add">
 		            <i class="fa fa-plus"></i> 新增
 		        </a>
-		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="report:psprogress:delete">
+		       <!--  <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="report:psprogress:delete">
 		            <i class="fa fa-remove"></i> 删除
-		        </a>
+		        </a> -->
 		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="report:psprogress:export">
 		            <i class="fa fa-download"></i> 导出
 		        </a> -->
 	        </div>
 	        
 	        <div class="col-sm-12 select-table table-striped">
-	            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+	            <table id="bootstrap-table" class="text-nowrap" data-mobile-responsive="true"></table>
 	        </div>
     	</div>
     </div>
@@ -61,39 +76,89 @@
                 removeUrl: prefix + "/remove",
                 
                 modalName: "排水管理进小区",
-                columns: [{
-		            checkbox: true
-		        },
-				{
-					field : 'id', 
-					title : '序号' 
-				},
-				{
-		            field: 'areaname',
-		            title: '所属区',
-		        },
-		        {
-		            field: 'deadline',
-		            title: '截止时间',
-		        },
-		        {
-		            field: 'recruitmentmethod',
-		            title: '专营单位招采方式',
-		        },
-		        {
-		            field: 'signingdate',
-		            title: '专营协议签订时间',
-		        },
-		        {
-                    title: '操作',
-                    align: 'center',
-                    formatter: function(value, row, index) {
-                        var actions = [];
-                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.editFull(\'' + row.id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
-                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.id + '\')"><i class="fa fa-remove"></i>删除</a>');
-                        return actions.join('');
+                height:$(document).height()-20,
+
+                columns:[
+                	[
+                        {
+                            "title": "排水管理进小区工作基础数据统计表",
+                            "halign":"center",
+                            "align":"center",
+                            "colspan": 59
+                        }
+                    ],
+                    
+                    [
+                	{field: 'xzqy_q',title: '行政区域--区',},
+                	{field: 'xzqy_j',title: '行政区域--街道',},
+                	{field: 'duedate',title: '截止时间',},
+                	{field: 'buildingtype',title: '建筑类型',},
+                	{field: 'jzxq_s',title: '建筑小区 实有数量（个）',},
+                	{field: 'jzxq_q',title: '建筑小区 签订协议（个）',},
+                	{field: 'jzxq_y',title: '建筑小区 移交接管（个）',},
+                	{field: 'jzxq_z',title: '建筑小区 自行管养（个）',},
+                	{field: 'psgwg_h',title: '排水管网估算长度 合计',},
+                	{field: 'psgwg_y',title: '排水管网估算长度 雨水',},
+                	{field: 'psgwg_w',title: '排水管网估算长度 污水',},
+                	{field: 'gwch_wg_xq',title: '管网测绘（公里）已完工 建筑小区',},
+                	{field: 'gwch_wg_h',title: '管网测绘（公里）已完工 合计',},
+                	{field: 'gwch_wg_y',title: '管网测绘（公里）已完工 雨水',},
+                	{field: 'gwch_wg_w',title: '管网测绘（公里）已完工 污水',},
+                	{field: 'gwch_zzkz_xq',title: '管网测绘（公里）正在开展 建筑小区',},
+                	{field: 'gwch_zzkz_h',title: '管网测绘（公里）正在开展 合计',},
+                	{field: 'gwch_zzkz_y',title: '管网测绘（公里）正在开展 雨水',},
+                	{field: 'gwch_zzkz_w',title: '管网测绘（公里）正在开展 污水',},
+                	{field: 'gwzc_wg_xq',title: '管网检测（公里）已完工 建筑小区',},
+                	{field: 'gwzc_wg_h',title: '管网检测（公里）已完工 合计',},
+                	{field: 'gwzc_wg_y',title: '管网检测（公里）已完工 雨水',},
+                	{field: 'gwzc_wg_w',title: '管网检测（公里）已完工 污水',},
+                	{field: 'gwzc_zzkz_xq',title: '管网检测（公里）正在开展 建筑小区',},
+                	{field: 'gwzc_zzkz_h',title: '管网检测（公里）正在开展 合计',},
+                	{field: 'gwzc_zzkz_y',title: '管网检测（公里）正在开展 雨水',},
+                	{field: 'gwzc_zzkz_w',title: '管网检测（公里）正在开展 污水',},
+                	{field: 'gwqy_wg_xq',title: '管网清淤（公里）已完工 建筑小区',},
+                	{field: 'gwqy_wg_h',title: '管网清淤（公里）已完工 合计',},
+                	{field: 'gwqy_wg_y',title: '管网清淤（公里）已完工 雨水',},
+                	{field: 'gwqy_wg_w',title: '管网清淤（公里）已完工 污水',},
+                	{field: 'gwqy_wg_qy',title: '管网清淤（公里）已完工 清淤量',},
+                	{field: 'gwqy_zzkz_xq',title: '管网清淤（公里）正在开展 建筑小区',},
+                	{field: 'gwqy_zzkz_h',title: '管网清淤（公里）正在开展 合计',},
+                	{field: 'gwqy_zzkz_y',title: '管网清淤（公里）正在开展 雨水',},
+                	{field: 'gwqy_zzkz_w',title: '管网清淤（公里）正在开展 污水',},
+                	{field: 'gwqy_zzkz_qy',title: '管网清淤（公里）正在开展 清淤量',},
+                	{field: 'gwxf_wg_xq',title: '管网修复（点）已完工 建筑小区',},
+                	{field: 'gwxf_wg_h',title: '管网修复（点）已完工 合计',},
+                	{field: 'gwxf_wg_y',title: '管网修复（点）已完工 雨水',},
+                	{field: 'gwxf_wg_w',title: '管网修复（点）已完工 污水',},
+                	{field: 'gwxf_wg_hld',title: '管网修复（点）已完工 混流点整改',},
+                	{field: 'gwxf_zzkz_xq',title: '管网修复（点）正在开展 建筑小区',},
+                	{field: 'gwxf_zzkz_h',title: '管网修复（点）正在开展 合计',},
+                	{field: 'gwxf_zzkz_y',title: '管网修复（点）正在开展 雨水',},
+                	{field: 'gwxf_zzkz_w',title: '管网修复（点）正在开展 污水',},
+                	{field: 'gwxf_zzkz_hld',title: '管网修复（点）正在开展 混流点整改',},
+                	{field: 'jcj_h',title: '检查井合计',},
+                	{field: 'jcj_y',title: '检查井雨水',},
+                	{field: 'jcj_w',title: '检查井污水',},
+                	{field: 'ysk',title: '雨水口（个）',},
+                	{field: 'psh_h',title: '排水户合计',},
+                	{field: 'psh_y',title: '排水户一级',},
+                	{field: 'psh_e',title: '排水户二级',},
+                	{field: 'hfc',title: '化粪池（个）',},
+                	{field: 'ljc',title: '垃圾池(个）',},
+                	{field: 'gyc',title: '隔油池（个）',},
+                	
+    		        {
+                        title: '操作',
+                        align: 'center',
+                        formatter: function(value, row, index) {
+                            var actions = [];
+                            actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="javascript:void(0)" onclick="$.operate.editFull(\'' + row.id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                            actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.id + '\')"><i class="fa fa-remove"></i>删除</a>');
+                            return actions.join('');
+                        }
                     }
-                }]
+					]
+                ]
             };
             $.table.init(options);
         });

@@ -48,13 +48,13 @@
 		        <a class="btn  btn-success " onclick="statistic()" shiro:hasPermission="report:day:delete">
 		            <i ></i>运行情况概览
 		        </a>
-		        <!-- <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="report:day:export">
+		        <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="report:day:export">
 		            <i class="fa fa-download"></i> 导出
-		        </a> -->
+		        </a>
 	        </div>
 	        
 	        <div class="col-sm-12 select-table table-striped">
-	            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+	            <table id="bootstrap-table" class="text-nowrap" data-mobile-responsive="true"></table>
 	        </div>
     	</div>
     </div>
@@ -95,7 +95,7 @@
                 updateUrl: prefix + "/edit/{id}",
                 removeUrl: prefix + "/remove",
                 statUrl: prefix + "/stat/{rd}",
-                
+                exportUrl: prefix + "/export",
                 modalName: "数据",
                 columns: [
 				{
@@ -105,22 +105,26 @@
 				{field: 'basin',title: '流域',},
 				{field: 'deptname',title: '分散式污水处理设施',},
 				{field: 'darea',title: '辖区',},
-				{field: 'dscale',title: '设计规模',},
-				{field: 'tcapacity',title: '实际处理量',},
+				{field: 'dscale',title: '设计规模(万吨/日)',},
+				{field: 'tcapacity',title: '实际处理量(万吨)',},
 				{field: 'loadrate',title: '负荷率',},
-				{field: 'incod',title: '进水COD',},
-				{field: 'inan',title: '进水氨氮',},
-				{field: 'inp',title: '进水总磷',},
-				{field: 'inss',title: '进水SS',},
-				{field: 'inbod',title: '进水BOD',},
-				{field: 'outcod',title: '出水COD',},
-				{field: 'outan',title: '出水氨氮',},
-				{field: 'outp',title: '出水总磷',},
-				{field: 'outdo',title: '出水DO',},
-				{field: 'dlevel',title: '提升泵坑 设计液位',},
-				{field: 'aleave',title: '提升泵坑 实际液位',},
-				{field: 'sludec',title: '污泥浓度',},
-				{field: 'lanfilll',title: '垃圾渗滤液',},
+				{field: 'incod',title: '进水COD(mg/L)',},
+				{field: 'inan',title: '进水氨氮(mg/L)',},
+				{field: 'inp',title: '进水总磷(mg/L)',},
+				{field: 'inss',title: '进水SS(mg/L)',},
+				{field: 'inbod',title: '进水BOD(mg/L)',},
+				{field: 'outcod',title: '出水COD(mg/L)',},
+				{field: 'outan',title: '出水氨氮(mg/L)',},
+				{field: 'outp',title: '出水总磷(mg/L)',},
+				{field: 'outdo',title: '出水DO(mg/L)',},				
+				{field: 'intn',title: '进水总氮(mg/L)',},
+				{field: 'outbod',title: '出水BOD(mg/L)',},
+				{field: 'outtn',title: '出水总氮(mg/L)',},
+				{field: 'outss',title: '出水SS(mg/L)',},				
+				{field: 'dlevel',title: '提升泵坑 设计液位(m)',},
+				{field: 'aleave',title: '提升泵坑 实际液位(m)',},
+				{field: 'sludec',title: '污泥浓度(mg/L)',},
+				{field: 'lanfilll',title: '垃圾渗滤液(吨)',},
 				{field: 'sol',title: '渗滤液来源',},
 				{field: 'operation',title: '运营单位',},
 

@@ -40,7 +40,7 @@
 								</li>
 								<li class="select-time">
 									<label>年份： </label>
-									<input name="startTime1" id="startTime1" class="time-input form-control" type="text"  data-type="date" data-format="yyyy" />
+										<input type="text" name="startTime1" class="form-control" id="laydate-year" >
 									</li>
 								</li>
 								<li>
@@ -54,10 +54,13 @@
 			</div>
 			<div class="btn-group-sm" id="toolbar" role="group">
 		        <a class="btn  btn-success " onclick="$.operate.yearStatistic()" shiro:hasPermission="report:day:delete">总览</a>
+	        	<a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="report:day:export">
+		            <i class="fa fa-download"></i> 导出
+		        </a> 
 	        </div>
 	        
 	        <div class="col-sm-12 select-table table-striped">
-	            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+	            <table id="bootstrap-table" class="text-nowrap" data-mobile-responsive="true"></table>
 	        </div>
     	</div>
     </div>
@@ -75,8 +78,8 @@
                 updateUrl: prefix + "/edit/{id}",
                 removeUrl: prefix + "/remove",
                 statUrl: prefix + "/stat",
-                
-                modalName: "月报",
+                exportUrl: prefix + "/export",
+                modalName: "年度汇总",
                 columns: [
                 	{
     					field : 'id', 
@@ -86,18 +89,18 @@
     				{field: 'deptname',title: '水质净化厂',},
     				{field: 'darea',title: '辖区',},
     				{field: 'dscale',title: '设计规模（万吨/日）',},
-    				{field: 'tcapacity1',title: '1月处理水量',},
-    				{field: 'tcapacity2',title: '2月处理水量',},
-    				{field: 'tcapacity3',title: '3月处理水量',},
-    				{field: 'tcapacity4',title: '4月处理水量',},
-    				{field: 'tcapacity5',title: '5月处理水量',},
-    				{field: 'tcapacity6',title: '6月处理水量',},
-    				{field: 'tcapacity7',title: '7月处理水量',},
-    				{field: 'tcapacity8',title: '8月处理水量',},
-    				{field: 'tcapacity9',title: '9月处理水量',},
-    				{field: 'tcapacity10',title: '10月处理水量',},
-    				{field: 'tcapacity11',title: '11月处理水量',},
-    				{field: 'tcapacity12',title: '12月处理水量',},
+    				{field: 'tcapacity1',title: '1月处理水量(万吨)',},
+    				{field: 'tcapacity2',title: '2月处理水量(万吨)',},
+    				{field: 'tcapacity3',title: '3月处理水量(万吨)',},
+    				{field: 'tcapacity4',title: '4月处理水量(万吨)',},
+    				{field: 'tcapacity5',title: '5月处理水量(万吨)',},
+    				{field: 'tcapacity6',title: '6月处理水量(万吨)',},
+    				{field: 'tcapacity7',title: '7月处理水量(万吨)',},
+    				{field: 'tcapacity8',title: '8月处理水量(万吨)',},
+    				{field: 'tcapacity9',title: '9月处理水量(万吨)',},
+    				{field: 'tcapacity10',title: '10月处理水量(万吨)',},
+    				{field: 'tcapacity11',title: '11月处理水量(万吨)',},
+    				{field: 'tcapacity12',title: '12月处理水量(万吨)',},
    
     				]
             };
@@ -112,7 +115,33 @@
                 location.href = ctx + 'op/report/collect/year-bo';
             }
         };
-        
+        $(function(){
+        	layui.use('laydate', function(){
+         		  var laydate = layui.laydate;
+         		  
+         		  laydate.render({
+         		    elem: '#laydate-year',
+         		    type: 'year'
+         		  });
+         		  
+         		  laydate.render({ 
+         		    elem: '#year-month',
+         		    type: 'month'
+         		  });
+         		  
+         		  laydate.render({ 
+         		    elem: '#laydate-demo-3',
+         		    type: 'datetime',
+         		    trigger: 'click'
+         		  });
+         		  
+         		  laydate.render({
+         		    elem: '#laydate-demo-4',
+         		    range: true
+         		  });
+         		
+         	   });
+        });
 
     </script>
 </body>

@@ -135,50 +135,50 @@
     <update id="update" parameterType="PS_COMB">
  		update PS_COMB
  		<set>
-<if test=" prj_no != null and prj_no != ''">Prj_No = #{prj_no},</if>
-<if test=" prj_name != null and prj_name != ''">Prj_Name = #{prj_name},</if>
-<if test=" mapcode != null and mapcode != ''">MapCode = #{mapcode},</if>
-<!-- <if test=" exp_no != null and exp_no != ''">Exp_No = #{exp_no},</if> -->
-<if test=" sewagesystem_id != null and sewagesystem_id != ''">SewageSystem_ID = #{sewagesystem_id},</if>
-<if test=" stormsystem_id != null and stormsystem_id != ''">StormSystem_ID = #{stormsystem_id},</if>
-<if test=" type != null and type != ''">Type = #{type},</if>
-<if test=" x != null and x != ''">X = #{x},</if>
-<if test=" y != null and y != ''">Y = #{y},</if>
-<if test=" high != null and high != ''">High = #{high},</if>
-<if test=" welldeep != null and welldeep != ''">WellDeep = #{welldeep},</if>
-<if test=" offset != null and offset != ''">Offset = #{offset},</if>
-<if test=" rotation != null and rotation != ''">Rotation = #{rotation},</if>
-<if test=" code != null and code != ''">Code = #{code},</if>
-<if test=" inlet_type != null and inlet_type != ''">Inlet_Type = #{inlet_type},</if>
-<if test=" wellshape != null and wellshape != ''">WellShape = #{wellshape},</if>
-<if test=" wellmaterial != null and wellmaterial != ''">WellMaterial = #{wellmaterial},</if>
-<if test=" wellsize != null and wellsize != ''">WellSize = #{wellsize},</if>
-<if test=" model != null and model != ''">Model = #{model},</if>
-<if test=" wellpipes != null and wellpipes != ''">WellPipes = #{wellpipes},</if>
-<if test=" address != null and address != ''">Address = #{address},</if>
-<if test=" pointposition != null and pointposition != ''">PointPosition = #{pointposition},</if>
-<if test=" datasource != null and datasource != ''">DataSource = #{datasource},</if>
-<if test=" visibility != null and visibility != ''">Visibility = #{visibility},</if>
-<if test=" sunit != null and sunit != ''">SUnit = #{sunit},</if>
-<if test=" sdate != null and sdate != ''">SDate = #{sdate},</if>
-<if test=" updatetime != null and updatetime != ''">UpdateTime = #{updatetime},</if>
-<if test=" mdate != null and mdate != ''">MDate = #{mdate},</if>
-<if test=" comb_type != null and comb_type != ''">Comb_Type = #{comb_type},</if>
-<if test=" status != null and status != ''">status = #{status},</if>
-<if test=" ename != null and ename != ''">Ename = #{ename},</if>
-<if test=" design_dept != null and design_dept != ''">Design_Dept = #{design_dept},</if>
-<if test=" conster_dept != null and conster_dept != ''">Conster_Dept = #{conster_dept},</if>
-<if test=" belong != null and belong != ''">Belong = #{belong},</if>
-<if test=" operator != null and operator != ''">Operator = #{operator},</if>
-<if test=" note != null and note != ''">Note = #{note},</if>
-<if test=" objectid != null and objectid != ''">OBJECTID = #{objectid},</if>
-<if test=" areaid != null and areaid != ''">AREAID = #{areaid},</if>
-<if test=" areaname != null and areaname != ''">AREANAME = #{areaname},</if>
+<if test=" prj_no != null">Prj_No = #{prj_no},</if>
+<if test=" prj_name != null">Prj_Name = #{prj_name},</if>
+<if test=" mapcode != null">MapCode = #{mapcode},</if>
+<!-- <if test=" exp_no != null">Exp_No = #{exp_no},</if> -->
+<if test=" sewagesystem_id != null">SewageSystem_ID = #{sewagesystem_id},</if>
+<if test=" stormsystem_id != null">StormSystem_ID = #{stormsystem_id},</if>
+<if test=" type != null">Type = #{type},</if>
+<if test=" x != null">X = #{x},</if>
+<if test=" y != null">Y = #{y},</if>
+<if test=" high != null">High = #{high},</if>
+<if test=" welldeep != null">WellDeep = #{welldeep},</if>
+<if test=" offset != null">Offset = #{offset},</if>
+<if test=" rotation != null">Rotation = #{rotation},</if>
+<if test=" code != null">Code = #{code},</if>
+<if test=" inlet_type != null">Inlet_Type = #{inlet_type},</if>
+<if test=" wellshape != null">WellShape = #{wellshape},</if>
+<if test=" wellmaterial != null">WellMaterial = #{wellmaterial},</if>
+<if test=" wellsize != null">WellSize = #{wellsize},</if>
+<if test=" model != null">Model = #{model},</if>
+<if test=" wellpipes != null">WellPipes = #{wellpipes},</if>
+<if test=" address != null">Address = #{address},</if>
+<if test=" pointposition != null">PointPosition = #{pointposition},</if>
+<if test=" datasource != null">DataSource = #{datasource},</if>
+<if test=" visibility != null">Visibility = #{visibility},</if>
+<if test=" sunit != null">SUnit = #{sunit},</if>
+<if test=" sdate != null">SDate = #{sdate},</if>
+<if test=" updatetime != null">UpdateTime = #{updatetime},</if>
+<if test=" mdate != null">MDate = #{mdate},</if>
+<if test=" comb_type != null">Comb_Type = #{comb_type},</if>
+<if test=" status != null">status = #{status},</if>
+<if test=" ename != null">Ename = #{ename},</if>
+<if test=" design_dept != null">Design_Dept = #{design_dept},</if>
+<if test=" conster_dept != null">Conster_Dept = #{conster_dept},</if>
+<if test=" belong != null">Belong = #{belong},</if>
+<if test=" operator != null">Operator = #{operator},</if>
+<if test=" note != null">Note = #{note},</if>
+<if test=" objectid != null">OBJECTID = #{objectid},</if>
+<if test=" areaid != null">AREAID = #{areaid},</if>
+<if test=" areaname != null">AREANAME = #{areaname},</if>
 
 
 			
-			<!-- <if test=" remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<!-- <if test=" remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate -->
  		</set>
  		where "Exp_No" = #{exp_no}
@@ -187,95 +187,95 @@
     <insert id="insert" parameterType="PS_COMB">
     
 		INSERT INTO PS_COMB(
-<if test=" prj_no != null and  prj_no != ''">"Prj_No",</if>
-<if test=" prj_name != null and  prj_name != ''">"Prj_Name",</if>
-<if test=" mapcode != null and  mapcode != ''">"MapCode",</if>
-<if test=" exp_no != null and  exp_no != ''">"Exp_No",</if>
-<if test=" sewagesystem_id != null and  sewagesystem_id != ''">"SewageSystem_ID",</if>
-<if test=" stormsystem_id != null and  stormsystem_id != ''">"StormSystem_ID",</if>
-<if test=" type != null and  type != ''">"Type",</if>
-<if test=" x != null and  x != ''">"X",</if>
-<if test=" y != null and  y != ''">"Y",</if>
-<if test=" high != null and  high != ''">"High",</if>
-<if test=" welldeep != null and  welldeep != ''">"WellDeep",</if>
-<if test=" offset != null and  offset != ''">"Offset",</if>
-<if test=" rotation != null and  rotation != ''">"Rotation",</if>
-<if test=" code != null and  code != ''">"Code",</if>
-<if test=" inlet_type != null and  inlet_type != ''">"Inlet_Type",</if>
-<if test=" wellshape != null and  wellshape != ''">"WellShape",</if>
-<if test=" wellmaterial != null and  wellmaterial != ''">"WellMaterial",</if>
-<if test=" wellsize != null and  wellsize != ''">"WellSize",</if>
-<if test=" model != null and  model != ''">"Model",</if>
-<if test=" wellpipes != null and  wellpipes != ''">"WellPipes",</if>
-<if test=" address != null and  address != ''">"Address",</if>
-<if test=" pointposition != null and  pointposition != ''">"PointPosition",</if>
-<if test=" datasource != null and  datasource != ''">"DataSource",</if>
-<if test=" visibility != null and  visibility != ''">"Visibility",</if>
-<if test=" sunit != null and  sunit != ''">"SUnit",</if>
-<if test=" sdate != null and  sdate != ''">"SDate",</if>
-<if test=" updatetime != null and  updatetime != ''">"UpdateTime",</if>
-<if test=" mdate != null and  mdate != ''">"MDate",</if>
-<if test=" comb_type != null and  comb_type != ''">"Comb_Type",</if>
-<if test=" status != null and  status != ''">"status",</if>
-<if test=" ename != null and  ename != ''">"Ename",</if>
-<if test=" design_dept != null and  design_dept != ''">"Design_Dept",</if>
-<if test=" conster_dept != null and  conster_dept != ''">"Conster_Dept",</if>
-<if test=" belong != null and  belong != ''">"Belong",</if>
-<if test=" operator != null and  operator != ''">"Operator",</if>
-<if test=" note != null and  note != ''">"Note",</if>
-<if test=" objectid != null and  objectid != ''">"OBJECTID",</if>
-<if test=" areaid != null and  areaid != ''">"AREAID",</if>
-<if test=" areaname != null and  areaname != ''">"AREANAME",</if>
+<if test=" prj_no != null">"Prj_No",</if>
+<if test=" prj_name != null">"Prj_Name",</if>
+<if test=" mapcode != null">"MapCode",</if>
+<if test=" exp_no != null">"Exp_No",</if>
+<if test=" sewagesystem_id != null">"SewageSystem_ID",</if>
+<if test=" stormsystem_id != null">"StormSystem_ID",</if>
+<if test=" type != null">"Type",</if>
+<if test=" x != null">"X",</if>
+<if test=" y != null">"Y",</if>
+<if test=" high != null">"High",</if>
+<if test=" welldeep != null">"WellDeep",</if>
+<if test=" offset != null">"Offset",</if>
+<if test=" rotation != null">"Rotation",</if>
+<if test=" code != null">"Code",</if>
+<if test=" inlet_type != null">"Inlet_Type",</if>
+<if test=" wellshape != null">"WellShape",</if>
+<if test=" wellmaterial != null">"WellMaterial",</if>
+<if test=" wellsize != null">"WellSize",</if>
+<if test=" model != null">"Model",</if>
+<if test=" wellpipes != null">"WellPipes",</if>
+<if test=" address != null">"Address",</if>
+<if test=" pointposition != null">"PointPosition",</if>
+<if test=" datasource != null">"DataSource",</if>
+<if test=" visibility != null">"Visibility",</if>
+<if test=" sunit != null">"SUnit",</if>
+<if test=" sdate != null">"SDate",</if>
+<if test=" updatetime != null">"UpdateTime",</if>
+<if test=" mdate != null">"MDate",</if>
+<if test=" comb_type != null">"Comb_Type",</if>
+<if test=" status != null">"status",</if>
+<if test=" ename != null">"Ename",</if>
+<if test=" design_dept != null">"Design_Dept",</if>
+<if test=" conster_dept != null">"Conster_Dept",</if>
+<if test=" belong != null">"Belong",</if>
+<if test=" operator != null">"Operator",</if>
+<if test=" note != null">"Note",</if>
+<if test=" objectid != null">"OBJECTID",</if>
+<if test=" areaid != null">"AREAID",</if>
+<if test=" areaname != null">"AREANAME",</if>
 			
-			<!-- <if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>-->
+			<!-- <if test=" remark != null">REMARK,</if>
+			<if test=" createBy != null">create_by,</if>-->
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time 
 		) VALUES (
-<if test=" prj_no != null and prj_no != ''">#{prj_no},</if>
-<if test=" prj_name != null and prj_name != ''">#{prj_name},</if>
-<if test=" mapcode != null and mapcode != ''">#{mapcode},</if>
-<if test=" exp_no != null and exp_no != ''">#{exp_no},</if>
-<if test=" sewagesystem_id != null and sewagesystem_id != ''">#{sewagesystem_id},</if>
-<if test=" stormsystem_id != null and stormsystem_id != ''">#{stormsystem_id},</if>
-<if test=" type != null and type != ''">#{type},</if>
-<if test=" x != null and x != ''">#{x},</if>
-<if test=" y != null and y != ''">#{y},</if>
-<if test=" high != null and high != ''">#{high},</if>
-<if test=" welldeep != null and welldeep != ''">#{welldeep},</if>
-<if test=" offset != null and offset != ''">#{offset},</if>
-<if test=" rotation != null and rotation != ''">#{rotation},</if>
-<if test=" code != null and code != ''">#{code},</if>
-<if test=" inlet_type != null and inlet_type != ''">#{inlet_type},</if>
-<if test=" wellshape != null and wellshape != ''">#{wellshape},</if>
-<if test=" wellmaterial != null and wellmaterial != ''">#{wellmaterial},</if>
-<if test=" wellsize != null and wellsize != ''">#{wellsize},</if>
-<if test=" model != null and model != ''">#{model},</if>
-<if test=" wellpipes != null and wellpipes != ''">#{wellpipes},</if>
-<if test=" address != null and address != ''">#{address},</if>
-<if test=" pointposition != null and pointposition != ''">#{pointposition},</if>
-<if test=" datasource != null and datasource != ''">#{datasource},</if>
-<if test=" visibility != null and visibility != ''">#{visibility},</if>
-<if test=" sunit != null and sunit != ''">#{sunit},</if>
-<if test=" sdate != null and sdate != ''">#{sdate},</if>
-<if test=" updatetime != null and updatetime != ''">#{updatetime},</if>
-<if test=" mdate != null and mdate != ''">#{mdate},</if>
-<if test=" comb_type != null and comb_type != ''">#{comb_type},</if>
-<if test=" status != null and status != ''">#{status},</if>
-<if test=" ename != null and ename != ''">#{ename},</if>
-<if test=" design_dept != null and design_dept != ''">#{design_dept},</if>
-<if test=" conster_dept != null and conster_dept != ''">#{conster_dept},</if>
-<if test=" belong != null and belong != ''">#{belong},</if>
-<if test=" operator != null and operator != ''">#{operator},</if>
-<if test=" note != null and note != ''">#{note},</if>
-<if test=" objectid != null and objectid != ''">#{objectid},</if>
-<if test=" areaid != null and areaid != ''">#{areaid},</if>
-<if test=" areaname != null and areaname != ''">#{areaname},</if>
+<if test=" prj_no != null">#{prj_no},</if>
+<if test=" prj_name != null">#{prj_name},</if>
+<if test=" mapcode != null">#{mapcode},</if>
+<if test=" exp_no != null">#{exp_no},</if>
+<if test=" sewagesystem_id != null">#{sewagesystem_id},</if>
+<if test=" stormsystem_id != null">#{stormsystem_id},</if>
+<if test=" type != null">#{type},</if>
+<if test=" x != null">#{x},</if>
+<if test=" y != null">#{y},</if>
+<if test=" high != null">#{high},</if>
+<if test=" welldeep != null">#{welldeep},</if>
+<if test=" offset != null">#{offset},</if>
+<if test=" rotation != null">#{rotation},</if>
+<if test=" code != null">#{code},</if>
+<if test=" inlet_type != null">#{inlet_type},</if>
+<if test=" wellshape != null">#{wellshape},</if>
+<if test=" wellmaterial != null">#{wellmaterial},</if>
+<if test=" wellsize != null">#{wellsize},</if>
+<if test=" model != null">#{model},</if>
+<if test=" wellpipes != null">#{wellpipes},</if>
+<if test=" address != null">#{address},</if>
+<if test=" pointposition != null">#{pointposition},</if>
+<if test=" datasource != null">#{datasource},</if>
+<if test=" visibility != null">#{visibility},</if>
+<if test=" sunit != null">#{sunit},</if>
+<if test=" sdate != null">#{sdate},</if>
+<if test=" updatetime != null">#{updatetime},</if>
+<if test=" mdate != null">#{mdate},</if>
+<if test=" comb_type != null">#{comb_type},</if>
+<if test=" status != null">#{status},</if>
+<if test=" ename != null">#{ename},</if>
+<if test=" design_dept != null">#{design_dept},</if>
+<if test=" conster_dept != null">#{conster_dept},</if>
+<if test=" belong != null">#{belong},</if>
+<if test=" operator != null">#{operator},</if>
+<if test=" note != null">#{note},</if>
+<if test=" objectid != null">#{objectid},</if>
+<if test=" areaid != null">#{areaid},</if>
+<if test=" areaname != null">#{areaname},</if>
 
 			
-			<!-- <if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>-->
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<!-- <if test=" remark != null">#{remark},</if>
+			<if test=" createBy != null">#{createBy},</if>-->
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate	 		
 		)
 	</insert>

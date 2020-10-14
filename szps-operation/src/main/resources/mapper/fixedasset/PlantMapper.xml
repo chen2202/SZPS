@@ -100,18 +100,18 @@
  		update dev_asset_plant
  		<set>
  			<if test=" deptid != null ">deptid = #{deptid},</if>
-			<if test=" deptname != null and deptname != ''">deptname = #{deptname},</if>
-			<if test=" dlocation != null and dlocation != ''">dlocation = #{dlocation},</if>
-			<if test=" assetname != null and assetname != ''">assetname = #{assetname},</if>
-			<if test=" height != null and height != ''">height = #{height},</if>
-			<if test=" dbh != null and dbh != ''">dbh = #{dbh},</if>
-			<if test=" crowndiameter != null and crowndiameter != ''">crowndiameter = #{crowndiameter},</if>
-			<if test=" measurement != null and measurement != ''">measurement = #{measurement},</if>
-			<if test=" realquantity != null and realquantity != ''">realquantity = #{realquantity},</if>
-			<if test=" originalvalue != null and originalvalue != ''">originalvalue = #{originalvalue},</if>
+			<if test=" deptname != null">deptname = #{deptname},</if>
+			<if test=" dlocation != null">dlocation = #{dlocation},</if>
+			<if test=" assetname != null">assetname = #{assetname},</if>
+			<if test=" height != null">height = #{height},</if>
+			<if test=" dbh != null">dbh = #{dbh},</if>
+			<if test=" crowndiameter != null">crowndiameter = #{crowndiameter},</if>
+			<if test=" measurement != null">measurement = #{measurement},</if>
+			<if test=" realquantity != null">realquantity = #{realquantity},</if>
+			<if test=" originalvalue != null">originalvalue = #{originalvalue},</if>
 			
-			<if test=" remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -125,35 +125,35 @@
 		INSERT INTO dev_asset_plant(
 			<if test=" id != null and id!= 0">id,</if>
 			<if test=" deptid != null ">deptid,</if>
-			<if test=" deptname != null and  deptname != ''">deptname,</if>
-			<if test=" dlocation != null and  dlocation != ''">dlocation,</if>
-			<if test=" assetname != null and  assetname != ''">assetname,</if>
-			<if test=" height != null and  height != ''">height,</if>
-			<if test=" dbh != null and  dbh != ''">dbh,</if>
-			<if test=" crowndiameter != null and  crowndiameter != ''">crowndiameter,</if>
-			<if test=" measurement != null and  measurement != ''">measurement,</if>
-			<if test=" realquantity != null and  realquantity != ''">realquantity,</if>
-			<if test=" originalvalue != null and  originalvalue != ''">originalvalue,</if>
+			<if test=" deptname != null">deptname,</if>
+			<if test=" dlocation != null">dlocation,</if>
+			<if test=" assetname != null">assetname,</if>
+			<if test=" height != null">height,</if>
+			<if test=" dbh != null">dbh,</if>
+			<if test=" crowndiameter != null">crowndiameter,</if>
+			<if test=" measurement != null">measurement,</if>
+			<if test=" realquantity != null">realquantity,</if>
+			<if test=" originalvalue != null">originalvalue,</if>
 			
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>	
+			<if test=" remark != null">REMARK,</if>
+			<if test=" createBy != null">create_by,</if>	
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
 			<if test=" deptid != null ">#{deptid},</if>
-			<if test=" deptname != null and deptname != ''">#{deptname},</if>
-			<if test=" dlocation != null and dlocation != ''">#{dlocation},</if>
-			<if test=" assetname != null and assetname != ''">#{assetname},</if>
-			<if test=" height != null and height != ''">#{height},</if>
-			<if test=" dbh != null and dbh != ''">#{dbh},</if>
-			<if test=" crowndiameter != null and crowndiameter != ''">#{crowndiameter},</if>
-			<if test=" measurement != null and measurement != ''">#{measurement},</if>
-			<if test=" realquantity != null and realquantity != ''">#{realquantity},</if>
-			<if test=" originalvalue != null and originalvalue != ''">#{originalvalue},</if>
+			<if test=" deptname != null">#{deptname},</if>
+			<if test=" dlocation != null">#{dlocation},</if>
+			<if test=" assetname != null">#{assetname},</if>
+			<if test=" height != null">#{height},</if>
+			<if test=" dbh != null">#{dbh},</if>
+			<if test=" crowndiameter != null">#{crowndiameter},</if>
+			<if test=" measurement != null">#{measurement},</if>
+			<if test=" realquantity != null">#{realquantity},</if>
+			<if test=" originalvalue != null">#{originalvalue},</if>
 			
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" createBy != null">#{createBy},</if>
 			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)

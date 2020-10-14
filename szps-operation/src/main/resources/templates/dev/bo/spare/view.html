@@ -7,34 +7,13 @@
     <div class="container-div">
 		<div class="row">
 			<div class="col-sm-12 search-collapse">
-				<form id="maintenance-form">
+				<form id="bospare-form">
 					<input name=deptid type="hidden" id="treeId"/>
 					<div class="select-list">
 						<ul>
 							<li>
-		                         <label >设备名称：</label>
+		                         <label >名称：</label>
                             	<input name="devname"  id="devname" type="text" >
-							</li>
-							<li>
-		                         <label >所属厂站：</label>
-                            	<input name="deptname" onclick="selectDeptTree()" id="treeName" type="text" placeholder="" >
-                            	
-							</li>
-							<li>
-		                         <label >任务状态：</label>
-                            	<select class="selectpicker" name="taskstatus"  id="taskstatus">
-                            	 <option disabled selected value="">default</option>
-								  <option>没完成</option>
-								  <option>已完成</option>
-								</select>
-							</li>
-							<li>
-		                        <label >维保类别：</label>
-                            	<select class="selectpicker" name="mtype"  id="mtype">
-									<option>保养</option>
-									<option>维修</option>
-									<option>大修</option>
-								</select>
 							</li>
 							
 							<li>
@@ -45,7 +24,7 @@
 					</div>
 				</form>
 			</div>
-			
+				
 	        <div class="btn-group-sm" id="toolbar" role="group">
 		        <a class="btn btn-success" onclick="$.operate.addFull()" shiro:hasPermission="dev:bospare:add">
 		            <i class="fa fa-plus"></i> 新增
@@ -59,7 +38,7 @@
 	        </div>
 	        
 	        <div class="col-sm-12 select-table table-striped">
-	            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+	            <table id="bootstrap-table" class="text-nowrap" data-mobile-responsive="true"></table>
 	        </div>
     	</div>
     </div>
@@ -86,53 +65,17 @@
 					field : 'id', 
 					title : '序号' 
 				},
-				{
-					field : 'mtype', 
-					title : '维保类别' 
-				},
-				{
-					field : 'tasknumber', 
-					title : '工单编号' 
-				},
-				{
-		            field: 'taskstatus',
-		            title: '任务状态',
-		        },
-		        {
-		            field: 'duetime',
-		            title: '完成期限',
-		        },
-		        {
-		            field: 'responsibleperson',
-		            title: '责任人',
-		        },
-		        {
-		            field: 'taskcreatetime',
-		            title: '任务创建时间',
-		        },		        
-		        {
-		            field: 'creator',
-		            title: '创建人',
-		        },{
-		            field: 'mrank',
-		            title: '维保类别',
-		        },
-		        {
-		            field: 'mpart',
-		            title: '维保部位',
-		        },
-		        {
-		            field: 'mspec',
-		            title: '描述',
-		        },
-		        {
-		            field: 'usetime',
-		            title: '实际使用时间',
-		        },		        
-		        {
-		            field: 'operator',
-		            title: '维保人员',
-		        },
+				{field: 'devname',title: '备件名称',},
+				{field: 'dtype',title: '类型',},
+				{field: 'dnumber',title: '编号',},
+				{field: 'dmodel',title: '型号规格',},
+				{field: 'quantity',title: '数量',},
+				{field: 'unit',title: '单位',},
+				{field: 'unitprice',title: '单价',},
+				{field: 'idnumber',title: '出厂编号',},
+				{field: 'releasedate',title: '出厂日期',},
+				{field: 'supplier',title: '供应商',},
+
 		        {
                     title: '操作',
                     align: 'center',

@@ -1,6 +1,7 @@
 package com.szps.web.controller.report;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,8 @@ import com.szps.common.core.controller.BaseController;
 import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
+import com.szps.common.utils.DateUtils;
+import com.szps.common.utils.poi.ExcelUtil;
 import com.szps.framework.util.ShiroUtils;
 import com.szps.system.domain.SysBRF;
 import com.szps.system.domain.SysDept;
@@ -60,48 +63,15 @@ public class DayReportBOController extends BaseController {
         startPage();
         if (null != dayReport) {
         	dayReport.setDtype("b");
+			/*
+			 * String reportDate = dayReport.getReportdate(); if (reportDate==null ||
+			 * reportDate.equals("")) { reportDate = DateUtils.getDistanceDay(new Date(),
+			 * -1); } dayReport.setReportdate(reportDate);
+			 */
 		}
         List<DayReportW> list = reportService.selectList(dayReport);
-        List<DayReportW> nlist = new ArrayList<DayReportW>();
-        if (null != list && list.size()>0) {
-        	Map<String, List<DayReportW>> map = new HashMap<>();
-        	int k = 0;
-        	int lastIndex = k;
-        	Long id = 1L;
-        	for (DayReportW dayReportW : list) {
-        		List<DayReportW> tmpList = map.get(dayReportW.getBasin());
-        		if (tmpList == null) {
-        			if (k > 0) {
-        				DayReportW lt =list.get(k-1);
-        				DayReportW w = dayReportW.calReport(list, lastIndex, k);
-        				//String.valueOf(/t1)
-        				List<DayReportW> tList = map.get(lt.getBasin());
-        				tList.add(w);
-        				nlist.addAll(tList);
-        				lastIndex = k;
-        				id=1L;
-					}
-        			tmpList = new ArrayList<>();
-        			dayReportW.setId(id);
-        			tmpList.add(dayReportW);
-        			map.put(dayReportW.getBasin(), tmpList);
-        		} else {
-        			id++;
-        			dayReportW.setId(id);
-        			tmpList.add(dayReportW);
-        		}
-        		k++;
-			}
-        	if (k>lastIndex) {
-        		DayReportW lt =list.get(k-1);
-				DayReportW w = lt.calReport(list, lastIndex, k);
-				//String.valueOf(/t1)
-				List<DayReportW> tList = map.get(lt.getBasin());
-				tList.add(w);
-				nlist.addAll(tList);
-			}
-        	
-		}
+        List<DayReportW> nlist = dayReport.totalReport(list);
+ 
         return getDataTable(nlist);
     }
     /**
@@ -196,6 +166,16 @@ public class DayReportBOController extends BaseController {
     	List<DayReportW> list = reportService.selectList(dayReport);
     	List<DayReportStat> nlist = new ArrayList<DayReportStat>();
     	DayReportStat ds = new DayReportStat();
+    	StringBuffer loadratelt90 = new StringBuffer("");
+    	StringBuffer inOver1 = new StringBuffer("");
+    	StringBuffer inOver2 = new StringBuffer("");
+    	StringBuffer inOver3 = new StringBuffer("");
+    	StringBuffer inless1 = new StringBuffer("");
+    	StringBuffer inless2 = new StringBuffer("");
+    	StringBuffer inless3 = new StringBuffer("");
+    	StringBuffer outCOD = new StringBuffer("");
+    	StringBuffer sludecHigh1 = new StringBuffer("");
+    	StringBuffer sludecHigh2 = new StringBuffer("");
         if (null != list && list.size()>0) {
         	Map<String, List<DayReportW>> map = new HashMap<>();
         	int k = 0;
@@ -220,6 +200,69 @@ public class DayReportBOController extends BaseController {
         			tmpList.add(dayReportW);
         		}
         		k++;
+        		try {
+        			String a = dayReportW.getLoadrate();
+                	if (a!=null && a.contains("%")) {
+        				a=a.replace("%", "");
+        			}
+                	if (Double.valueOf(a)<90) {
+                		loadratelt90.append(dayReportW.getDeptname()+"  ");
+        			}
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+        		
+        		
+        		try {
+        			//inOver;
+        			String a = dayReportW.getIncod();
+                	
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+        		try {
+        			//inless;
+        			String a = dayReportW.getIncod();
+        			if (Double.valueOf(a)<180) {
+						inless1.append(dayReportW.getDeptname()+"  ");
+					}
+        			
+        			String b = dayReportW.getInan();
+        			if (Double.valueOf(b)<18) {
+						inless2.append(dayReportW.getDeptname()+"  ");
+					}
+        			
+        			String c = dayReportW.getInbod();
+        			if (Double.valueOf(b)<180) {
+						inless3.append(dayReportW.getDeptname()+"  ");
+					}
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+        		
+        		try {
+        			//outCOD;
+        			String a = dayReportW.getOutcod();
+                	
+                	if (Double.valueOf(a)<5) {
+                		outCOD.append(dayReportW.getDeptname()+"  ");
+        			}
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+        		try {
+        			//sludecHigh;
+        			String a = dayReportW.getSludec();
+                	
+                	if (Double.valueOf(a)>10000) {
+                		sludecHigh1.append(dayReportW.getDeptname()+"  ");
+        			}
+                	if (Double.valueOf(a)>=8000 && Double.valueOf(a)<=10000) {
+                		sludecHigh2.append(dayReportW.getDeptname()+"  ");
+        			}
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
 			}
         	if (k>lastIndex) {
         		DayReportStat w = ds.statReport(list, lastIndex, k);
@@ -239,19 +282,53 @@ public class DayReportBOController extends BaseController {
 				}
 				
 				try {
-					loadrate = loadrate + Double.valueOf(dayReportStat.getLoadrate());
+					String s = dayReportStat.getLoadrate();
+					if (s!=null && s.contains("%")) {
+						s=s.replace("%", "");
+					}
+					loadrate = loadrate + Double.valueOf(s);
 				} catch (Exception e) {
 				}
 			}
 			tStat.setTcapacity(String.format("%.2f", tcapacity));
-			tStat.setLoadrate(String.format("%.2f", loadrate));
+			tStat.setLoadrate(String.format("%.2f", loadrate)+"%");
 
 			nlist.add(tStat);
 		}
     	
+    	mmap.put("loadratelt90", loadratelt90.toString());
+    	mmap.put("inOver1", inOver1.toString());
+    	mmap.put("inOver2", inOver2.toString());
+    	mmap.put("inOver3", inOver3.toString());
+    	mmap.put("inless1", inless1.toString());
+    	mmap.put("inless2", inless2.toString());
+    	mmap.put("inless3", inless3.toString());
+    	mmap.put("outCOD", outCOD.toString());
+    	mmap.put("sludecHigh1", sludecHigh1.toString());
+    	mmap.put("sludecHigh2", sludecHigh2.toString());
     	mmap.put("reportDate", rd);
     	mmap.put("nlist", nlist);
         return prefix + "/stat";
     }
-    
+    @Log(title = "资料导出", businessType = BusinessType.EXPORT)
+    @RequiresPermissions("report:day:export")
+    @PostMapping("/export")
+    @ResponseBody
+    public AjaxResult export(DayReportW dayReport,ModelMap mmap)
+    {
+    	if (null != dayReport) {
+        	dayReport.setDtype("b");
+        	String reportDate = dayReport.getReportdate();
+        	if (reportDate==null || reportDate.equals("")) {
+				reportDate = DateUtils.getDistanceDay(new Date(), -1);
+			}
+        	dayReport.setReportdate(reportDate);
+        	mmap.put("reportdate", dayReport.getReportdate());
+		}
+    	List<DayReportW> list = reportService.selectList(dayReport);
+        List<DayReportW> nlist = dayReport.totalReport(list);
+    	
+        ExcelUtil<DayReportW> util = new ExcelUtil<DayReportW>(DayReportW.class);
+        return util.exportExcel(nlist, "资料数据");
+    }
 }

@@ -36,7 +36,7 @@
 								</li> -->
 								<li class="select-time">
 									<label>年份： </label>
-									<input name="startTime1" id="startTime1" class="time-input form-control" type="text"  data-type="date" data-format="yyyy" />
+									<input type="text" name="startTime1" class="form-control" id="laydate-year" >
 									</li>
 								</li>
 								<li>
@@ -50,10 +50,13 @@
 			</div>
 			<div class="btn-group-sm" id="toolbar" role="group">
 		        <a class="btn  btn-success " onclick="$.operate.yearStatistic()" shiro:hasPermission="report:day:delete">总览</a>
+	        	<a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="report:day:export">
+		            <i class="fa fa-download"></i> 导出
+		        </a> 
 	        </div>
 	        
 	        <div class="col-sm-12 select-table table-striped">
-	            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+	            <table id="bootstrap-table" class="text-nowrap" data-mobile-responsive="true"></table>
 	        </div>
     	</div>
     </div>
@@ -71,8 +74,8 @@
                 updateUrl: prefix + "/edit/{id}",
                 removeUrl: prefix + "/remove",
                 statUrl: prefix + "/stat",
-                
-                modalName: "月报",
+                exportUrl: prefix + "/export",
+                modalName: "年度汇总",
                 columns: [
                 	{
     					field : 'id', 
@@ -107,6 +110,31 @@
                 location.href = ctx + 'op/report/collect/year-bo';
             }
         };
+        layui.use('laydate', function(){
+   		  var laydate = layui.laydate;
+   		  
+   		  laydate.render({
+   		    elem: '#laydate-year',
+   		    type: 'year'
+   		  });
+   		  
+   		  laydate.render({ 
+   		    elem: '#year-month',
+   		    type: 'month'
+   		  });
+   		  
+   		  laydate.render({ 
+   		    elem: '#laydate-demo-3',
+   		    type: 'datetime',
+   		    trigger: 'click'
+   		  });
+   		  
+   		  laydate.render({
+   		    elem: '#laydate-demo-4',
+   		    range: true
+   		  });
+   		
+   	   });
     </script>
 </body>
 </html>

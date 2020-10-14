@@ -17,7 +17,8 @@ public class FixedAssetController extends BaseController {
     @GetMapping()
     public String view()
     {
-        return prefix + "/view";
+//        return prefix + "/view";
+    	return "map/fixedasset";
     }
   
 }

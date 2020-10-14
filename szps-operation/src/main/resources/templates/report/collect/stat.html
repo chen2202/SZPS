@@ -20,16 +20,16 @@
         <th>平均AD进水浓度(mg/L)</th>
     </tr>
     <tr  th:each="t: ${nlist}" >
-        <td th:text="${t.basin}"></td>
-        <td th:text="${t.tcapacity}"></td>
+        <td th:text="${t.whichYear}"></td>
+        <td th:text="${t.totalScale}"></td>
+        <th th:text="${t.calCapacity}"></th>
+        <th th:text="${t.realCapacity}"></th>
+        <th th:text="${t.avgDayCapacity}"></th>
         <th th:text="${t.loadrate}"></th>
-        <th th:text="${t.incod}"></th>
-        <th th:text="${t.inbod}"></th>
-        <th th:text="${t.inan}"></th>
-        <th th:text="${t.inp}"></th>
-        <th th:text="${t.inp}"></th>
-        <th th:text="${t.inp}"></th>
-        <th th:text="${t.inp}"></th>
+        <th th:text="${t.cod}"></th>
+        <th th:text="${t.ad}"></th>
+        <th th:text="${t.avgCod}"></th>
+        <th th:text="${t.avgAD}"></th>
     </tr>
 </table>
 

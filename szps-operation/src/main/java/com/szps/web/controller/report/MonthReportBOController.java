@@ -22,6 +22,7 @@ import com.szps.common.core.domain.AjaxResult;
 import com.szps.common.core.page.TableDataInfo;
 import com.szps.common.enums.BusinessType;
 import com.szps.common.utils.DateUtils;
+import com.szps.common.utils.poi.ExcelUtil;
 import com.szps.framework.util.ShiroUtils;
 import com.szps.system.domain.SysDept;
 import com.szps.system.domain.SysUser;
@@ -45,7 +46,7 @@ public class MonthReportBOController extends BaseController {
    {
        return prefix + "/report-bo";
    }
-   
+
    /**
     * 查询月报列表
     */
@@ -55,61 +56,41 @@ public class MonthReportBOController extends BaseController {
    public TableDataInfo list(DayReportW dayReport,ModelMap mmap)
    {
        startPage();
-       if (null != dayReport) {
-       	dayReport.setDtype("b");
-       	mmap.put("reportdate", dayReport.getReportdate());
-		}
-       String startTime1 = dayReport.getStartTime1();
-       String endTime1 = dayReport.getEndTime1();
-       if (null == startTime1 || startTime1.equals("")) {
-    	   startTime1 ="1900-01-01";
-       }
-       if (null == endTime1 || endTime1.equals("")) {
-   			endTime1 = DateUtils.getTomorrowStr();
-       }else {
-    	   endTime1 = endTime1 +"-31";
-       }
-       List<DayReportW> list = reportService.selectListBetween(dayReport.getDtype(), startTime1, endTime1);
-       List<DayReportW> nlist = new ArrayList<DayReportW>();
-       if (null != list && list.size()>0) {
-       	Map<String, List<DayReportW>> map = new HashMap<>();
-       	int k = 0;
-       	int lastIndex = k;
-       	Long id = 1L;
-       	for (DayReportW dayReportW : list) {
-       		List<DayReportW> tmpList = map.get(dayReportW.getBasin());
-       		if (tmpList == null) {
-       			if (k > 0) {
-       				DayReportW lt =list.get(k-1);
-       				DayReportW w = dayReportW.calReport(list, lastIndex, k);
-       				//String.valueOf(/t1)
-       				List<DayReportW> tList = map.get(lt.getBasin());
-       				tList.add(w);
-       				nlist.addAll(tList);
-       				lastIndex = k;
-       				id=1L;
-					}
-       			tmpList = new ArrayList<>();
-       			dayReportW.setId(id);
-       			tmpList.add(dayReportW);
-       			map.put(dayReportW.getBasin(), tmpList);
-       		} else {
-       			id++;
-       			dayReportW.setId(id);
-       			tmpList.add(dayReportW);
-       		}
-       		k++;
-			}
-       	if (k>lastIndex) {
-       		DayReportW lt =list.get(k-1);
-				DayReportW w = lt.calReport(list, lastIndex, k);
-				//String.valueOf(/t1)
-				List<DayReportW> tList = map.get(lt.getBasin());
-				tList.add(w);
-				nlist.addAll(tList);
-			}
-       	
-		}
+       
+       List<DayReportW> list = searchReport(dayReport);
+       List<DayReportW> nlist = dayReport.calMonthReport(list);
+       mmap.put("reportdate", dayReport.getReportdate());
        return getDataTable(nlist);
+   }
+   
+   @Log(title = "资料导出", businessType = BusinessType.EXPORT)
+   @RequiresPermissions("report:day:export")
+   @PostMapping("/export")
+   @ResponseBody
+   public AjaxResult export(DayReportW dayReport,ModelMap mmap)
+   {
+	   List<DayReportW> list = searchReport(dayReport);
+       List<DayReportW> nlist = dayReport.calMonthReport(list);
+       ExcelUtil<DayReportW> util = new ExcelUtil<DayReportW>(DayReportW.class);
+       return util.exportExcel(nlist, "资料数据");
+   }
+   
+   public List<DayReportW> searchReport(DayReportW dayReport){
+	   if (null != dayReport) {
+	       	dayReport.setDtype("b");
+	       	
+	   }
+      String startTime1 = dayReport.getStartTime1();
+      String endTime1 = dayReport.getEndTime1();
+      if (null == startTime1 || startTime1.equals("")) {
+   	   startTime1 ="1900-01-01";
+      }
+      if (null == endTime1 || endTime1.equals("")) {
+  			endTime1 = DateUtils.getTomorrowStr();
+      }else {
+   	   endTime1 = endTime1 +"-32";
+      }
+      List<DayReportW> list = reportService.selectListBetween(dayReport.getDtype(), startTime1, endTime1);
+      return list;
    }
 }

@@ -709,6 +709,38 @@
             	});
                 layer.full(index);
             },
+            
+            viewFull: function (title, url, width, height) {
+            	//如果是移动端，就使用自适应大小弹窗
+            	if (navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+            	    width = 'auto';
+            	    height = 'auto';
+            	}
+            	if ($.common.isEmpty(title)) {
+                    title = false;
+                }
+                if ($.common.isEmpty(url)) {
+                    url = "/404.html";
+                }
+                if ($.common.isEmpty(width)) {
+                	width = 800;
+                }
+                if ($.common.isEmpty(height)) {
+                	height = ($(window).height() - 50);
+                }
+                var index = layer.open({
+            		type: 2,
+            		area: [width + 'px', height + 'px'],
+            		fix: false,
+            		//不固定
+            		maxmin: true,
+            		shade: 0.3,
+            		title: title,
+            		content: url,
+            		
+            	});
+                layer.full(index);
+            },
 
             openStat: function (title, url, width, height) {
             	//如果是移动端，就使用自适应大小弹窗
@@ -971,6 +1003,16 @@
             	    url = $.table._option.updateUrl.replace("{id}", row);
             	}
             	$.modal.openFull("修改" + $.table._option.modalName, url);
+            },
+            vewOnlyFull: function(id) {
+            	var url = "/404.html";
+            	if ($.common.isNotEmpty(id)) {
+            	    url = $.table._option.updateUrl.replace("{id}", id);
+            	} else {
+            	    var row = $.common.isEmpty($.table._option.uniqueId) ? $.table.selectFirstColumns() : $.table.selectColumns($.table._option.uniqueId);
+            	    url = $.table._option.updateUrl.replace("{id}", row);
+            	}
+            	$.modal.viewFull("查看" + $.table._option.modalName, url);
             },
             // 修改访问地址
             editUrl: function(id) {

@@ -82,19 +82,19 @@
     <update id="update" parameterType="Apply">
  		update dev_apply
  		<set>
-			<if test=" devType != null and devType != ''">devType = #{devType},</if>
-			<if test=" applyDate != null and applyDate != ''">applyDate = #{applyDate},</if>
-			<if test=" applyDept != null and applyDept != ''">applyDept = #{applyDept},</if>
-			<if test=" applyDeptManager != null and applyDeptManager != ''">applyDeptManager = #{applyDeptManager},</if>
-			<if test=" requireDate != null and requireDate != ''">requireDate = #{requireDate},</if>
-			<if test=" applyPrj != null and applyPrj != ''">applyPrj = #{applyPrj},</if>
-			<if test=" applySpec != null and applySpec != ''">applySpec = #{applySpec},</if>
-			<if test=" verifier != null and verifier != ''">verifier = #{verifier},</if>
-			<if test=" approver != null and approver != ''">approver = #{approver},</if>
-			<if test=" deptId != null and deptId != 0">deptId = #{deptId},</if>
-			<if test=" delFlag != null and delFlag!= ''">delFlag = #{delFlag},</if>
-			<if test=" remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" devType != null ">devType = #{devType},</if>
+			<if test=" applyDate != null ">applyDate = #{applyDate},</if>
+			<if test=" applyDept != null">applyDept = #{applyDept},</if>
+			<if test=" applyDeptManager != null ">applyDeptManager = #{applyDeptManager},</if>
+			<if test=" requireDate != null ">requireDate = #{requireDate},</if>
+			<if test=" applyPrj != null ">applyPrj = #{applyPrj},</if>
+			<if test=" applySpec != null ">applySpec = #{applySpec},</if>
+			<if test=" verifier != null ">verifier = #{verifier},</if>
+			<if test=" approver != null ">approver = #{approver},</if>
+			<if test=" deptId != null ">deptId = #{deptId},</if>
+			<if test=" delFlag != null ">delFlag = #{delFlag},</if>
+			<if test=" remark != null ">remark = #{remark},</if>
+ 			<if test=" updateBy != null ">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -107,37 +107,37 @@
     
 		INSERT INTO dev_apply(
 			<if test=" id != null and id!= 0">id,</if>
-			<if test=" devType != null and  devType != ''">devType,</if>
-			<if test=" applyDate != null and  applyDate != ''">applyDate,</if>
-			<if test=" applyDept != null and  applyDept != ''">applyDept,</if>
-			<if test=" applyDeptManager != null and  applyDeptManager != ''">applyDeptManager,</if>
-			<if test=" requireDate != null and  requireDate != ''">requireDate,</if>
-			<if test=" applyPrj != null and  applyPrj != ''">applyPrj,</if>
-			<if test=" applySpec != null and  applySpec != ''">applySpec,</if>
-			<if test=" verifier != null and  verifier != ''">verifier,</if>
-			<if test=" approver != null and  approver != ''">approver,</if>
+			<if test=" devType != null">devType,</if>
+			<if test=" applyDate != null">applyDate,</if>
+			<if test=" applyDept != null">applyDept,</if>
+			<if test=" applyDeptManager != null">applyDeptManager,</if>
+			<if test=" requireDate != null">requireDate,</if>
+			<if test=" applyPrj != null">applyPrj,</if>
+			<if test=" applySpec != null">applySpec,</if>
+			<if test=" verifier != null">verifier,</if>
+			<if test=" approver != null">approver,</if>
 			<if test=" deptId != null and  deptId != 0">deptId,</if>
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" delFlag != null and delFlag!= ''">delFlag,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" delFlag != null">delFlag,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
-			<if test=" devType != null and devType != ''">#{devType},</if>
-			<if test=" applyDate != null and  applyDate != ''">#{applyDate},</if>
-			<if test=" applyDept != null and  applyDept != ''">#{applyDept},</if>
-			<if test=" applyDeptManager != null and  applyDeptManager != ''">#{applyDeptManager},</if>
-			<if test=" requireDate != null and  requireDate != ''">#{requireDate},</if>
-			<if test=" applyPrj != null and  applyPrj != ''">#{applyPrj},</if>
-			<if test=" applySpec != null and  applySpec != ''">#{applySpec},</if>
-			<if test=" verifier != null and  verifier != ''">#{verifier},</if>
-			<if test=" approver != null and  approver != ''">#{approver},</if>
-			<if test=" deptId != null and  deptId != ''">#{deptId},</if>
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" delFlag != null and delFlag!= ''">#{delFlag},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" devType != null ">#{devType},</if>
+			<if test=" applyDate != null ">#{applyDate},</if>
+			<if test=" applyDept != null ">#{applyDept},</if>
+			<if test=" applyDeptManager != null ">#{applyDeptManager},</if>
+			<if test=" requireDate != null ">#{requireDate},</if>
+			<if test=" applyPrj != null ">#{applyPrj},</if>
+			<if test=" applySpec != null ">#{applySpec},</if>
+			<if test=" verifier != null ">#{verifier},</if>
+			<if test=" approver != null ">#{approver},</if>
+			<if test=" deptId != null ">#{deptId},</if>
+			<if test=" remark != null ">#{remark},</if>
+			<if test=" delFlag != null ">#{delFlag},</if>
+			<if test=" createBy != null ">#{createBy},</if>
+			<if test=" dept_id != null ">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

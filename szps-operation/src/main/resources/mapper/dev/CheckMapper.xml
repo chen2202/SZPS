@@ -130,56 +130,56 @@
  		<set>
 			<if test=" deptId != null ">deptId = #{deptId},</if>
 			<if test=" checkDate != null ">checkDate = #{checkDate},</if>
-			<if test=" chineseName != null and chineseName != ''">chineseName = #{chineseName},</if>
-			<if test=" englishName != null and englishName != ''">englishName = #{englishName},</if>
-			<if test=" nameplate != null and nameplate != ''">nameplate = #{nameplate},</if>
-			<if test=" supplier != null and supplier != ''">supplier = #{supplier},</if>
-			<if test=" devModel != null and devModel != ''">devModel = #{devModel},</if>
-			<if test=" devNumber != null and devNumber != ''">devNumber = #{devNumber},</if>
-			<if test=" arrivalDate != null and arrivalDate != ''">arrivalDate = #{arrivalDate},</if>
-			<if test=" devSize != null and devSize != ''">devSize = #{devSize},</if>
-			<if test=" devPower != null and devPower != ''">devPower = #{devPower},</if>
-			<if test=" quantity != null and quantity != ''">quantity = #{quantity},</if>
-			<if test=" warrantyPeriod != null and warrantyPeriod != ''">warrantyPeriod = #{warrantyPeriod},</if>
-			<if test=" auxiliary != null and auxiliary != ''">auxiliary = #{auxiliary},</if>
-			<if test=" part != null and part != ''">part = #{part},</if>
-			<if test=" devType != null and devType != ''">devType = #{devType},</if>
-			<if test=" unitPrice != null and unitPrice != ''">unitPrice = #{unitPrice},</if>
-			<if test=" trafficCost != null and trafficCost != ''">trafficCost = #{trafficCost},</if>
-			<if test=" installCost != null and installCost != ''">installCost = #{installCost},</if>
-			<if test=" taxes != null and taxes != ''">taxes = #{taxes},</if>
-			<if test=" sumCost != null and sumCost != ''">sumCost = #{sumCost},</if>
-			<if test=" accessory != null and accessory != ''">accessory = #{accessory},</if>
-			<if test=" keeper != null and keeper != ''">keeper = #{keeper},</if>
-			<if test=" appearanceC != null and appearanceC != ''">appearanceC = #{appearanceC},</if>
-			<if test=" securityC != null and securityC != ''">securityC = #{securityC},</if>
-			<if test=" propertyC != null and propertyC != ''">propertyC = #{propertyC},</if>
-			<if test=" materialsC != null and materialsC != ''">materialsC = #{materialsC},</if>
-			<if test=" qualityC != null and qualityC != ''">qualityC = #{qualityC},</if>
-			<if test=" needFuncC != null and needFuncC != ''">needFuncC = #{needFuncC},</if>
-			<if test=" readFuncC != null and readFuncC != ''">readFuncC = #{readFuncC},</if>
-			<if test=" appearanceB != null and appearanceB != ''">appearanceB = #{appearanceB},</if>
-			<if test=" securityB != null and securityB != ''">securityB = #{securityB},</if>
-			<if test=" propertyB != null and propertyB != ''">propertyB = #{propertyB},</if>
-			<if test=" materialsB != null and materialsB != ''">materialsB = #{materialsB},</if>
-			<if test=" qualityB != null and qualityB != ''">qualityB = #{qualityB},</if>
-			<if test=" needFuncB != null and needFuncB != ''">needFuncB = #{needFuncB},</if>
-			<if test=" readFuncB != null and readFuncB != ''">readFuncB = #{readFuncB},</if>
-			<if test=" appearanceA != null and appearanceA != ''">appearanceA = #{appearanceA},</if>
-			<if test=" securityA != null and securityA != ''">securityA = #{securityA},</if>
-			<if test=" propertyA != null and propertyA != ''">propertyA = #{propertyA},</if>
-			<if test=" materialsA != null and materialsA != ''">materialsA = #{materialsA},</if>
-			<if test=" qualityA != null and qualityA != ''">qualityA = #{qualityA},</if>
-			<if test=" needFuncA != null and needFuncA != ''">needFuncA = #{needFuncA},</if>
-			<if test=" readFuncA != null and readFuncA != ''">readFuncA = #{readFuncA},</if>
-			<if test=" devSpec != null and devSpec != ''">devSpec = #{devSpec},</if>
-			<if test=" purcDeptSign != null and purcDeptSign != ''">purcDeptSign = #{purcDeptSign},</if>
-			<if test=" useDeptSign != null and useDeptSign != ''">useDeptSign = #{useDeptSign},</if>
-			<if test=" facDeptSign != null and facDeptSign != ''">facDeptSign = #{facDeptSign},</if>
-			<if test=" leaderSign != null and leaderSign != ''">leaderSign = #{leaderSign},</if>
-			<if test=" delFlag != null and delFlag!= ''">delFlag = #{delFlag},</if>
-			<if test="  remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" chineseName != null">chineseName = #{chineseName},</if>
+			<if test=" englishName != null">englishName = #{englishName},</if>
+			<if test=" nameplate != null">nameplate = #{nameplate},</if>
+			<if test=" supplier != null">supplier = #{supplier},</if>
+			<if test=" devModel != null">devModel = #{devModel},</if>
+			<if test=" devNumber != null">devNumber = #{devNumber},</if>
+			<if test=" arrivalDate != null">arrivalDate = #{arrivalDate},</if>
+			<if test=" devSize != null">devSize = #{devSize},</if>
+			<if test=" devPower != null">devPower = #{devPower},</if>
+			<if test=" quantity != null">quantity = #{quantity},</if>
+			<if test=" warrantyPeriod != null">warrantyPeriod = #{warrantyPeriod},</if>
+			<if test=" auxiliary != null">auxiliary = #{auxiliary},</if>
+			<if test=" part != null">part = #{part},</if>
+			<if test=" devType != null">devType = #{devType},</if>
+			<if test=" unitPrice != null">unitPrice = #{unitPrice},</if>
+			<if test=" trafficCost != null">trafficCost = #{trafficCost},</if>
+			<if test=" installCost != null">installCost = #{installCost},</if>
+			<if test=" taxes != null">taxes = #{taxes},</if>
+			<if test=" sumCost != null">sumCost = #{sumCost},</if>
+			<if test=" accessory != null">accessory = #{accessory},</if>
+			<if test=" keeper != null">keeper = #{keeper},</if>
+			<if test=" appearanceC != null">appearanceC = #{appearanceC},</if>
+			<if test=" securityC != null">securityC = #{securityC},</if>
+			<if test=" propertyC != null">propertyC = #{propertyC},</if>
+			<if test=" materialsC != null">materialsC = #{materialsC},</if>
+			<if test=" qualityC != null">qualityC = #{qualityC},</if>
+			<if test=" needFuncC != null">needFuncC = #{needFuncC},</if>
+			<if test=" readFuncC != null">readFuncC = #{readFuncC},</if>
+			<if test=" appearanceB != null">appearanceB = #{appearanceB},</if>
+			<if test=" securityB != null">securityB = #{securityB},</if>
+			<if test=" propertyB != null">propertyB = #{propertyB},</if>
+			<if test=" materialsB != null">materialsB = #{materialsB},</if>
+			<if test=" qualityB != null">qualityB = #{qualityB},</if>
+			<if test=" needFuncB != null">needFuncB = #{needFuncB},</if>
+			<if test=" readFuncB != null">readFuncB = #{readFuncB},</if>
+			<if test=" appearanceA != null">appearanceA = #{appearanceA},</if>
+			<if test=" securityA != null">securityA = #{securityA},</if>
+			<if test=" propertyA != null">propertyA = #{propertyA},</if>
+			<if test=" materialsA != null">materialsA = #{materialsA},</if>
+			<if test=" qualityA != null">qualityA = #{qualityA},</if>
+			<if test=" needFuncA != null">needFuncA = #{needFuncA},</if>
+			<if test=" readFuncA != null">readFuncA = #{readFuncA},</if>
+			<if test=" devSpec != null">devSpec = #{devSpec},</if>
+			<if test=" purcDeptSign != null">purcDeptSign = #{purcDeptSign},</if>
+			<if test=" useDeptSign != null">useDeptSign = #{useDeptSign},</if>
+			<if test=" facDeptSign != null">facDeptSign = #{facDeptSign},</if>
+			<if test=" leaderSign != null">leaderSign = #{leaderSign},</if>
+			<if test=" delFlag != null">delFlag = #{delFlag},</if>
+			<if test="  remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -192,117 +192,117 @@
     
 		INSERT INTO dev_check(
 			<if test=" id != null and id!= 0">id,</if>
-			<if test=" deptId != null and  deptId != ''">deptId,</if>
-			<if test=" checkDate != null and  checkDate != ''">checkDate,</if>
-			<if test=" chineseName != null and  chineseName != ''">chineseName,</if>
-			<if test=" englishName != null and  englishName != ''">englishName,</if>
-			<if test=" nameplate != null and  nameplate != ''">nameplate,</if>
-			<if test=" supplier != null and  supplier != ''">supplier,</if>
-			<if test=" devModel != null and  devModel != ''">devModel,</if>
-			<if test=" devNumber != null and  devNumber != ''">devNumber,</if>
-			<if test=" arrivalDate != null and  arrivalDate != ''">arrivalDate,</if>
-			<if test=" devSize != null and  devSize != ''">devSize,</if>
-			<if test=" devPower != null and  devPower != ''">devPower,</if>
-			<if test=" quantity != null and  quantity != ''">quantity,</if>
-			<if test=" warrantyPeriod != null and  warrantyPeriod != ''">warrantyPeriod,</if>
-			<if test=" auxiliary != null and  auxiliary != ''">auxiliary,</if>
-			<if test=" part != null and  part != ''">part,</if>
-			<if test=" devType != null and  devType != ''">devType,</if>
-			<if test=" unitPrice != null and  unitPrice != ''">unitPrice,</if>
-			<if test=" trafficCost != null and  trafficCost != ''">trafficCost,</if>
-			<if test=" installCost != null and  installCost != ''">installCost,</if>
-			<if test=" taxes != null and  taxes != ''">taxes,</if>
-			<if test=" sumCost != null and  sumCost != ''">sumCost,</if>
-			<if test=" accessory != null and  accessory != ''">accessory,</if>
-			<if test=" keeper != null and  keeper != ''">keeper,</if>
-			<if test=" appearanceC != null and  appearanceC != ''">appearanceC,</if>
-			<if test=" securityC != null and  securityC != ''">securityC,</if>
-			<if test=" propertyC != null and  propertyC != ''">propertyC,</if>
-			<if test=" materialsC != null and  materialsC != ''">materialsC,</if>
-			<if test=" qualityC != null and  qualityC != ''">qualityC,</if>
-			<if test=" needFuncC != null and  needFuncC != ''">needFuncC,</if>
-			<if test=" readFuncC != null and  readFuncC != ''">readFuncC,</if>
-			<if test=" appearanceB != null and  appearanceB != ''">appearanceB,</if>
-			<if test=" securityB != null and  securityB != ''">securityB,</if>
-			<if test=" propertyB != null and  propertyB != ''">propertyB,</if>
-			<if test=" materialsB != null and  materialsB != ''">materialsB,</if>
-			<if test=" qualityB != null and  qualityB != ''">qualityB,</if>
-			<if test=" needFuncB != null and  needFuncB != ''">needFuncB,</if>
-			<if test=" readFuncB != null and  readFuncB != ''">readFuncB,</if>
-			<if test=" appearanceA != null and  appearanceA != ''">appearanceA,</if>
-			<if test=" securityA != null and  securityA != ''">securityA,</if>
-			<if test=" propertyA != null and  propertyA != ''">propertyA,</if>
-			<if test=" materialsA != null and  materialsA != ''">materialsA,</if>
-			<if test=" qualityA != null and  qualityA != ''">qualityA,</if>
-			<if test=" needFuncA != null and  needFuncA != ''">needFuncA,</if>
-			<if test=" readFuncA != null and  readFuncA != ''">readFuncA,</if>
-			<if test=" devSpec != null and  devSpec != ''">devSpec,</if>
-			<if test=" purcDeptSign != null and  purcDeptSign != ''">purcDeptSign,</if>
-			<if test=" useDeptSign != null and  useDeptSign != ''">useDeptSign,</if>
-			<if test=" facDeptSign != null and  facDeptSign != ''">facDeptSign,</if>
-			<if test=" leaderSign != null and  leaderSign != ''">leaderSign,</if>
+			<if test=" deptId != null">deptId,</if>
+			<if test=" checkDate != null">checkDate,</if>
+			<if test=" chineseName != null">chineseName,</if>
+			<if test=" englishName != null">englishName,</if>
+			<if test=" nameplate != null">nameplate,</if>
+			<if test=" supplier != null">supplier,</if>
+			<if test=" devModel != null">devModel,</if>
+			<if test=" devNumber != null">devNumber,</if>
+			<if test=" arrivalDate != null">arrivalDate,</if>
+			<if test=" devSize != null">devSize,</if>
+			<if test=" devPower != null">devPower,</if>
+			<if test=" quantity != null">quantity,</if>
+			<if test=" warrantyPeriod != null">warrantyPeriod,</if>
+			<if test=" auxiliary != null">auxiliary,</if>
+			<if test=" part != null">part,</if>
+			<if test=" devType != null">devType,</if>
+			<if test=" unitPrice != null">unitPrice,</if>
+			<if test=" trafficCost != null">trafficCost,</if>
+			<if test=" installCost != null">installCost,</if>
+			<if test=" taxes != null">taxes,</if>
+			<if test=" sumCost != null">sumCost,</if>
+			<if test=" accessory != null">accessory,</if>
+			<if test=" keeper != null">keeper,</if>
+			<if test=" appearanceC != null">appearanceC,</if>
+			<if test=" securityC != null">securityC,</if>
+			<if test=" propertyC != null">propertyC,</if>
+			<if test=" materialsC != null">materialsC,</if>
+			<if test=" qualityC != null">qualityC,</if>
+			<if test=" needFuncC != null">needFuncC,</if>
+			<if test=" readFuncC != null">readFuncC,</if>
+			<if test=" appearanceB != null">appearanceB,</if>
+			<if test=" securityB != null">securityB,</if>
+			<if test=" propertyB != null">propertyB,</if>
+			<if test=" materialsB != null">materialsB,</if>
+			<if test=" qualityB != null">qualityB,</if>
+			<if test=" needFuncB != null">needFuncB,</if>
+			<if test=" readFuncB != null">readFuncB,</if>
+			<if test=" appearanceA != null">appearanceA,</if>
+			<if test=" securityA != null">securityA,</if>
+			<if test=" propertyA != null">propertyA,</if>
+			<if test=" materialsA != null">materialsA,</if>
+			<if test=" qualityA != null">qualityA,</if>
+			<if test=" needFuncA != null">needFuncA,</if>
+			<if test=" readFuncA != null">readFuncA,</if>
+			<if test=" devSpec != null">devSpec,</if>
+			<if test=" purcDeptSign != null">purcDeptSign,</if>
+			<if test=" useDeptSign != null">useDeptSign,</if>
+			<if test=" facDeptSign != null">facDeptSign,</if>
+			<if test=" leaderSign != null">leaderSign,</if>
 
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" delFlag != null and delFlag!= ''">delFlag,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" delFlag != null">delFlag,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
-			<if test=" deptId != null and deptId != ''">#{deptId},</if>
-			<if test=" checkDate != null and checkDate != ''">#{checkDate},</if>
-			<if test=" chineseName != null and chineseName != ''">#{chineseName},</if>
-			<if test=" englishName != null and englishName != ''">#{englishName},</if>
-			<if test=" nameplate != null and nameplate != ''">#{nameplate},</if>
-			<if test=" supplier != null and supplier != ''">#{supplier},</if>
-			<if test=" devModel != null and devModel != ''">#{devModel},</if>
-			<if test=" devNumber != null and devNumber != ''">#{devNumber},</if>
-			<if test=" arrivalDate != null and arrivalDate != ''">#{arrivalDate},</if>
-			<if test=" devSize != null and devSize != ''">#{devSize},</if>
-			<if test=" devPower != null and devPower != ''">#{devPower},</if>
-			<if test=" quantity != null and quantity != ''">#{quantity},</if>
-			<if test=" warrantyPeriod != null and warrantyPeriod != ''">#{warrantyPeriod},</if>
-			<if test=" auxiliary != null and auxiliary != ''">#{auxiliary},</if>
-			<if test=" part != null and part != ''">#{part},</if>
-			<if test=" devType != null and devType != ''">#{devType},</if>
-			<if test=" unitPrice != null and unitPrice != ''">#{unitPrice},</if>
-			<if test=" trafficCost != null and trafficCost != ''">#{trafficCost},</if>
-			<if test=" installCost != null and installCost != ''">#{installCost},</if>
-			<if test=" taxes != null and taxes != ''">#{taxes},</if>
-			<if test=" sumCost != null and sumCost != ''">#{sumCost},</if>
-			<if test=" accessory != null and accessory != ''">#{accessory},</if>
-			<if test=" keeper != null and keeper != ''">#{keeper},</if>
-			<if test=" appearanceC != null and appearanceC != ''">#{appearanceC},</if>
-			<if test=" securityC != null and securityC != ''">#{securityC},</if>
-			<if test=" propertyC != null and propertyC != ''">#{propertyC},</if>
-			<if test=" materialsC != null and materialsC != ''">#{materialsC},</if>
-			<if test=" qualityC != null and qualityC != ''">#{qualityC},</if>
-			<if test=" needFuncC != null and needFuncC != ''">#{needFuncC},</if>
-			<if test=" readFuncC != null and readFuncC != ''">#{readFuncC},</if>
-			<if test=" appearanceB != null and appearanceB != ''">#{appearanceB},</if>
-			<if test=" securityB != null and securityB != ''">#{securityB},</if>
-			<if test=" propertyB != null and propertyB != ''">#{propertyB},</if>
-			<if test=" materialsB != null and materialsB != ''">#{materialsB},</if>
-			<if test=" qualityB != null and qualityB != ''">#{qualityB},</if>
-			<if test=" needFuncB != null and needFuncB != ''">#{needFuncB},</if>
-			<if test=" readFuncB != null and readFuncB != ''">#{readFuncB},</if>
-			<if test=" appearanceA != null and appearanceA != ''">#{appearanceA},</if>
-			<if test=" securityA != null and securityA != ''">#{securityA},</if>
-			<if test=" propertyA != null and propertyA != ''">#{propertyA},</if>
-			<if test=" materialsA != null and materialsA != ''">#{materialsA},</if>
-			<if test=" qualityA != null and qualityA != ''">#{qualityA},</if>
-			<if test=" needFuncA != null and needFuncA != ''">#{needFuncA},</if>
-			<if test=" readFuncA != null and readFuncA != ''">#{readFuncA},</if>
-			<if test=" devSpec != null and devSpec != ''">#{devSpec},</if>
-			<if test=" purcDeptSign != null and purcDeptSign != ''">#{purcDeptSign},</if>
-			<if test=" useDeptSign != null and useDeptSign != ''">#{useDeptSign},</if>
-			<if test=" facDeptSign != null and facDeptSign != ''">#{facDeptSign},</if>
-			<if test=" leaderSign != null and leaderSign != ''">#{leaderSign},</if>
+			<if test=" deptId != null">#{deptId},</if>
+			<if test=" checkDate != null">#{checkDate},</if>
+			<if test=" chineseName != null">#{chineseName},</if>
+			<if test=" englishName != null">#{englishName},</if>
+			<if test=" nameplate != null">#{nameplate},</if>
+			<if test=" supplier != null">#{supplier},</if>
+			<if test=" devModel != null">#{devModel},</if>
+			<if test=" devNumber != null">#{devNumber},</if>
+			<if test=" arrivalDate != null">#{arrivalDate},</if>
+			<if test=" devSize != null">#{devSize},</if>
+			<if test=" devPower != null">#{devPower},</if>
+			<if test=" quantity != null">#{quantity},</if>
+			<if test=" warrantyPeriod != null">#{warrantyPeriod},</if>
+			<if test=" auxiliary != null">#{auxiliary},</if>
+			<if test=" part != null">#{part},</if>
+			<if test=" devType != null">#{devType},</if>
+			<if test=" unitPrice != null">#{unitPrice},</if>
+			<if test=" trafficCost != null">#{trafficCost},</if>
+			<if test=" installCost != null">#{installCost},</if>
+			<if test=" taxes != null">#{taxes},</if>
+			<if test=" sumCost != null">#{sumCost},</if>
+			<if test=" accessory != null">#{accessory},</if>
+			<if test=" keeper != null">#{keeper},</if>
+			<if test=" appearanceC != null">#{appearanceC},</if>
+			<if test=" securityC != null">#{securityC},</if>
+			<if test=" propertyC != null">#{propertyC},</if>
+			<if test=" materialsC != null">#{materialsC},</if>
+			<if test=" qualityC != null">#{qualityC},</if>
+			<if test=" needFuncC != null">#{needFuncC},</if>
+			<if test=" readFuncC != null">#{readFuncC},</if>
+			<if test=" appearanceB != null">#{appearanceB},</if>
+			<if test=" securityB != null">#{securityB},</if>
+			<if test=" propertyB != null">#{propertyB},</if>
+			<if test=" materialsB != null">#{materialsB},</if>
+			<if test=" qualityB != null">#{qualityB},</if>
+			<if test=" needFuncB != null">#{needFuncB},</if>
+			<if test=" readFuncB != null">#{readFuncB},</if>
+			<if test=" appearanceA != null">#{appearanceA},</if>
+			<if test=" securityA != null">#{securityA},</if>
+			<if test=" propertyA != null">#{propertyA},</if>
+			<if test=" materialsA != null">#{materialsA},</if>
+			<if test=" qualityA != null">#{qualityA},</if>
+			<if test=" needFuncA != null">#{needFuncA},</if>
+			<if test=" readFuncA != null">#{readFuncA},</if>
+			<if test=" devSpec != null">#{devSpec},</if>
+			<if test=" purcDeptSign != null">#{purcDeptSign},</if>
+			<if test=" useDeptSign != null">#{useDeptSign},</if>
+			<if test=" facDeptSign != null">#{facDeptSign},</if>
+			<if test=" leaderSign != null">#{leaderSign},</if>
 
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" delFlag != null and delFlag!= ''">#{delFlag},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" delFlag != null">#{delFlag},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

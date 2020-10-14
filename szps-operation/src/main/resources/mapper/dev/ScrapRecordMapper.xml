@@ -100,25 +100,25 @@
     <update id="update" parameterType="ScrapRecord">
  		update dev_scrap_record
  		<set>
-			<if test=" deptId != null and deptId != ''">deptId = #{deptId},</if>
-			<if test=" devName != null and devName != ''">devName = #{devName},</if>
-			<if test=" devSpecs != null and devSpecs != ''">devSpecs = #{devSpecs},</if>
-			<if test=" manufacturer != null and manufacturer != ''">manufacturer = #{manufacturer},</if>
-			<if test=" devNumber != null and devNumber != ''">devNumber = #{devNumber},</if>
-			<if test=" buyDate != null and buyDate != ''">buyDate = #{buyDate},</if>
-			<if test=" price != null and price != ''">price = #{price},</if>
-			<if test=" applyScrapDate != null and applyScrapDate != ''">applyScrapDate = #{applyScrapDate},</if>
-			<if test=" useDept != null and useDept != ''">useDept = #{useDept},</if>
-			<if test=" scrapReason != null and scrapReason != ''">scrapReason = #{scrapReason},</if>
-			<if test=" applyDept != null and applyDept != ''">applyDept = #{applyDept},</if>
-			<if test=" applyDate != null and applyDate != ''">applyDate = #{applyDate},</if>
-			<if test=" verifier != null and verifier != ''">verifier = #{verifier},</if>
-			<if test=" verifyDate != null and verifyDate != ''">verifyDate = #{verifyDate},</if>
-			<if test=" approver != null and approver != ''">approver = #{approver},</if>
-			<if test=" approveDate != null and approveDate != ''">approveDate = #{approveDate},</if>
-			<if test=" delFlag != null and delFlag!= ''">delFlag = #{delFlag},</if>
-			<if test=" remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" deptId != null">deptId = #{deptId},</if>
+			<if test=" devName != null">devName = #{devName},</if>
+			<if test=" devSpecs != null">devSpecs = #{devSpecs},</if>
+			<if test=" manufacturer != null">manufacturer = #{manufacturer},</if>
+			<if test=" devNumber != null">devNumber = #{devNumber},</if>
+			<if test=" buyDate != null">buyDate = #{buyDate},</if>
+			<if test=" price != null">price = #{price},</if>
+			<if test=" applyScrapDate != null">applyScrapDate = #{applyScrapDate},</if>
+			<if test=" useDept != null">useDept = #{useDept},</if>
+			<if test=" scrapReason != null">scrapReason = #{scrapReason},</if>
+			<if test=" applyDept != null">applyDept = #{applyDept},</if>
+			<if test=" applyDate != null">applyDate = #{applyDate},</if>
+			<if test=" verifier != null">verifier = #{verifier},</if>
+			<if test=" verifyDate != null">verifyDate = #{verifyDate},</if>
+			<if test=" approver != null">approver = #{approver},</if>
+			<if test=" approveDate != null">approveDate = #{approveDate},</if>
+			<if test=" delFlag != null">delFlag = #{delFlag},</if>
+			<if test=" remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -131,49 +131,49 @@
     
 		INSERT INTO dev_scrap_record(
 			<if test=" id != null and id!= 0">id,</if>
-			<if test=" deptId != null and  deptId != ''">deptId,</if>
-			<if test=" devName != null and  devName != ''">devName,</if>
-			<if test=" devSpecs != null and  devSpecs != ''">devSpecs,</if>
-			<if test=" manufacturer != null and  manufacturer != ''">manufacturer,</if>
-			<if test=" devNumber != null and  devNumber != ''">devNumber,</if>
-			<if test=" buyDate != null and  buyDate != ''">buyDate,</if>
-			<if test=" price != null and  price != ''">price,</if>
-			<if test=" applyScrapDate != null and  applyScrapDate != ''">applyScrapDate,</if>
-			<if test=" useDept != null and  useDept != ''">useDept,</if>
-			<if test=" scrapReason != null and  scrapReason != ''">scrapReason,</if>
-			<if test=" applyDept != null and  applyDept != ''">applyDept,</if>
-			<if test=" applyDate != null and  applyDate != ''">applyDate,</if>
-			<if test=" verifier != null and  verifier != ''">verifier,</if>
-			<if test=" verifyDate != null and  verifyDate != ''">verifyDate,</if>
-			<if test=" approver != null and  approver != ''">approver,</if>
-			<if test=" approveDate != null and  approveDate != ''">approveDate,</if>
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" delFlag != null and delFlag!= ''">delFlag,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" deptId != null">deptId,</if>
+			<if test=" devName != null">devName,</if>
+			<if test=" devSpecs != null">devSpecs,</if>
+			<if test=" manufacturer != null">manufacturer,</if>
+			<if test=" devNumber != null">devNumber,</if>
+			<if test=" buyDate != null">buyDate,</if>
+			<if test=" price != null">price,</if>
+			<if test=" applyScrapDate != null">applyScrapDate,</if>
+			<if test=" useDept != null">useDept,</if>
+			<if test=" scrapReason != null">scrapReason,</if>
+			<if test=" applyDept != null">applyDept,</if>
+			<if test=" applyDate != null">applyDate,</if>
+			<if test=" verifier != null">verifier,</if>
+			<if test=" verifyDate != null">verifyDate,</if>
+			<if test=" approver != null">approver,</if>
+			<if test=" approveDate != null">approveDate,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" delFlag != null">delFlag,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
-			<if test=" deptId != null and deptId != ''">#{deptId},</if>
-			<if test=" devName != null and devName != ''">#{devName},</if>
-			<if test=" devSpecs != null and devSpecs != ''">#{devSpecs},</if>
-			<if test=" manufacturer != null and manufacturer != ''">#{manufacturer},</if>
-			<if test=" devNumber != null and devNumber != ''">#{devNumber},</if>
-			<if test=" buyDate != null and buyDate != ''">#{buyDate},</if>
-			<if test=" price != null and price != ''">#{price},</if>
-			<if test=" applyScrapDate != null and applyScrapDate != ''">#{applyScrapDate},</if>
-			<if test=" useDept != null and useDept != ''">#{useDept},</if>
-			<if test=" scrapReason != null and scrapReason != ''">#{scrapReason},</if>
-			<if test=" applyDept != null and applyDept != ''">#{applyDept},</if>
-			<if test=" applyDate != null and applyDate != ''">#{applyDate},</if>
-			<if test=" verifier != null and verifier != ''">#{verifier},</if>
-			<if test=" verifyDate != null and verifyDate != ''">#{verifyDate},</if>
-			<if test=" approver != null and approver != ''">#{approver},</if>
-			<if test=" approveDate != null and approveDate != ''">#{approveDate},</if>
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" delFlag != null and delFlag!= ''">#{delFlag},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" deptId != null">#{deptId},</if>
+			<if test=" devName != null">#{devName},</if>
+			<if test=" devSpecs != null">#{devSpecs},</if>
+			<if test=" manufacturer != null">#{manufacturer},</if>
+			<if test=" devNumber != null">#{devNumber},</if>
+			<if test=" buyDate != null">#{buyDate},</if>
+			<if test=" price != null">#{price},</if>
+			<if test=" applyScrapDate != null">#{applyScrapDate},</if>
+			<if test=" useDept != null">#{useDept},</if>
+			<if test=" scrapReason != null">#{scrapReason},</if>
+			<if test=" applyDept != null">#{applyDept},</if>
+			<if test=" applyDate != null">#{applyDate},</if>
+			<if test=" verifier != null">#{verifier},</if>
+			<if test=" verifyDate != null">#{verifyDate},</if>
+			<if test=" approver != null">#{approver},</if>
+			<if test=" approveDate != null">#{approveDate},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" delFlag != null">#{delFlag},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

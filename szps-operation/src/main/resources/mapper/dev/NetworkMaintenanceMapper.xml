@@ -93,26 +93,26 @@
     <update id="update" parameterType="NetworkMaintenance">
  		update DEV_NETWORK_MAINTENANCE
  		<set>
-			<if test=" s_point != null and s_point != ''">s_point = #{s_point},</if>
-			<if test=" e_point != null and e_point != ''">e_point = #{e_point},</if>
-			<if test=" maintain_date != null and maintain_date != ''">maintain_date = #{maintain_date},</if>
-			<if test=" weather != null and weather != ''">weather = #{weather},</if>
-			<if test=" maintain_dept != null and maintain_dept != ''">maintain_dept = #{maintain_dept},</if>
-			<if test=" maintain_pe != null and maintain_pe != ''">maintain_pe = #{maintain_pe},</if>
-			<if test=" maintain_type != null and maintain_type != ''">maintain_type = #{maintain_type},</if>
-			<if test=" operation_status != null and operation_status != ''">operation_status = #{operation_status},</if>
-			<if test=" functional_defect != null and functional_defect != ''">functional_defect = #{functional_defect},</if>
-			<if test=" structural_defect != null and structural_defect != ''">structural_defect = #{structural_defect},</if>
-			<if test=" psize != null and psize != ''">psize = #{psize},</if>
-			<if test=" maintain_method != null and maintain_method != ''">maintain_method = #{maintain_method},</if>
+			<if test=" s_point != null">s_point = #{s_point},</if>
+			<if test=" e_point != null">e_point = #{e_point},</if>
+			<if test=" maintain_date != null">maintain_date = #{maintain_date},</if>
+			<if test=" weather != null">weather = #{weather},</if>
+			<if test=" maintain_dept != null">maintain_dept = #{maintain_dept},</if>
+			<if test=" maintain_pe != null">maintain_pe = #{maintain_pe},</if>
+			<if test=" maintain_type != null">maintain_type = #{maintain_type},</if>
+			<if test=" operation_status != null">operation_status = #{operation_status},</if>
+			<if test=" functional_defect != null">functional_defect = #{functional_defect},</if>
+			<if test=" structural_defect != null">structural_defect = #{structural_defect},</if>
+			<if test=" psize != null">psize = #{psize},</if>
+			<if test=" maintain_method != null">maintain_method = #{maintain_method},</if>
 			<if test=" maintain_length != null">maintain_length = #{maintain_length},</if>
 			<if test=" maintain_amount != null">maintain_amount = #{maintain_amount},</if>
 			<if test=" maintain_cost != null">maintain_cost = #{maintain_cost},</if>
-			<if test=" note != null and note != ''">note = #{note},</if>
-			<if test=" attachmenturl != null and attachmenturl != ''">attachmenturl = #{attachmenturl},</if>			
+			<if test=" note != null">note = #{note},</if>
+			<if test=" attachmenturl != null">attachmenturl = #{attachmenturl},</if>			
 			
-			<if test=" remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate 
  		</set>
  		where workid = #{workid}
@@ -121,53 +121,53 @@
     <insert id="insert" parameterType="NetworkMaintenance">
     
 		INSERT INTO DEV_NETWORK_MAINTENANCE(
-			<if test=" workid != null and  workid != ''">workid,</if>
-			<if test=" s_point != null and  s_point != ''">s_point,</if>
-			<if test=" e_point != null and  e_point != ''">e_point,</if>
-			<if test=" maintain_date != null and  maintain_date != ''">maintain_date,</if>
-			<if test=" weather != null and  weather != ''">weather,</if>
-			<if test=" maintain_dept != null and  maintain_dept != ''">maintain_dept,</if>
-			<if test=" maintain_pe != null and  maintain_pe != ''">maintain_pe,</if>
-			<if test=" maintain_type != null and  maintain_type != ''">maintain_type,</if>
-			<if test=" operation_status != null and  operation_status != ''">operation_status,</if>
-			<if test=" functional_defect != null and  functional_defect != ''">functional_defect,</if>
-			<if test=" structural_defect != null and  structural_defect != ''">structural_defect,</if>
-			<if test=" psize != null and  psize != ''">psize,</if>
-			<if test=" maintain_method != null and  maintain_method != ''">maintain_method,</if>
+			<if test=" workid != null">workid,</if>
+			<if test=" s_point != null">s_point,</if>
+			<if test=" e_point != null">e_point,</if>
+			<if test=" maintain_date != null">maintain_date,</if>
+			<if test=" weather != null">weather,</if>
+			<if test=" maintain_dept != null">maintain_dept,</if>
+			<if test=" maintain_pe != null">maintain_pe,</if>
+			<if test=" maintain_type != null">maintain_type,</if>
+			<if test=" operation_status != null">operation_status,</if>
+			<if test=" functional_defect != null">functional_defect,</if>
+			<if test=" structural_defect != null">structural_defect,</if>
+			<if test=" psize != null">psize,</if>
+			<if test=" maintain_method != null">maintain_method,</if>
 			<if test=" maintain_length != null">maintain_length,</if>
 			<if test=" maintain_amount != null">maintain_amount,</if>
 			<if test=" maintain_cost != null">maintain_cost,</if>
-			<if test=" note != null and  note != ''">note,</if>
-			<if test=" attachmenturl != null and  attachmenturl != ''">attachmenturl,</if>
+			<if test=" note != null">note,</if>
+			<if test=" attachmenturl != null">attachmenturl,</if>
 
 			
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time 
 		) VALUES (
-				<if test=" workid != null and workid != ''">#{workid},</if>
-				<if test=" s_point != null and s_point != ''">#{s_point},</if>
-				<if test=" e_point != null and e_point != ''">#{e_point},</if>
-				<if test=" maintain_date != null and maintain_date != ''">#{maintain_date},</if>
-				<if test=" weather != null and weather != ''">#{weather},</if>
-				<if test=" maintain_dept != null and maintain_dept != ''">#{maintain_dept},</if>
-				<if test=" maintain_pe != null and maintain_pe != ''">#{maintain_pe},</if>
-				<if test=" maintain_type != null and maintain_type != ''">#{maintain_type},</if>
-				<if test=" operation_status != null and operation_status != ''">#{operation_status},</if>
-				<if test=" functional_defect != null and functional_defect != ''">#{functional_defect},</if>
-				<if test=" structural_defect != null and structural_defect != ''">#{structural_defect},</if>
-				<if test=" psize != null and psize != ''">#{psize},</if>
-				<if test=" maintain_method != null and maintain_method != ''">#{maintain_method},</if>
+				<if test=" workid != null">#{workid},</if>
+				<if test=" s_point != null">#{s_point},</if>
+				<if test=" e_point != null">#{e_point},</if>
+				<if test=" maintain_date != null">#{maintain_date},</if>
+				<if test=" weather != null">#{weather},</if>
+				<if test=" maintain_dept != null">#{maintain_dept},</if>
+				<if test=" maintain_pe != null">#{maintain_pe},</if>
+				<if test=" maintain_type != null">#{maintain_type},</if>
+				<if test=" operation_status != null">#{operation_status},</if>
+				<if test=" functional_defect != null">#{functional_defect},</if>
+				<if test=" structural_defect != null">#{structural_defect},</if>
+				<if test=" psize != null">#{psize},</if>
+				<if test=" maintain_method != null">#{maintain_method},</if>
 				<if test=" maintain_length != null ">#{maintain_length},</if>
 				<if test=" maintain_amount != null">#{maintain_amount},</if>
 				<if test=" maintain_cost != null">#{maintain_cost},</if>
-				<if test=" note != null and note != ''">#{note},</if>
-				<if test=" attachmenturl != null and attachmenturl != ''">#{attachmenturl},</if>
+				<if test=" note != null">#{note},</if>
+				<if test=" attachmenturl != null">#{attachmenturl},</if>
 			
-			 	<if test=" remark != null and remark != ''">#{remark},</if>
-				<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			 	<if test=" remark != null">#{remark},</if>
+				<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 				sysdate	 		
 		)
 	</insert>

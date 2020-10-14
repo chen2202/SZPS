@@ -15,6 +15,7 @@
         <th>进水BOD</th>
         <th>进水氨氮</th>
         <th>进水总磷</th>
+        <th>备注</th>
     </tr>
     <tr  th:each="t: ${nlist}" >
         <td th:text="${t.basin}"></td>
@@ -24,77 +25,28 @@
         <th th:text="${t.inbod}"></th>
         <th th:text="${t.inan}"></th>
         <th th:text="${t.inp}"></th>
+        <th th:text="${t.remark}"></th>
     </tr>
 </table>
-
-
+1、负荷低于90%的厂：<br> [[${loadratelt90}]] <br>
+<br>
+2、进水超标：：<br>
+COD：  [[${inOver1}]]  <br>
+TP：  [[${inOver2}]]  <br>
+SS： [[${inOver3}]]   <br>
+<br>
+3、进水浓度偏低：<br>
+COD＜180： [[${inless1}]]  <br>
+氨氮＜18：[[${inless2}]]  <br>
+BOD＜100：[[${inless3}]]  <br>
+<br>
+4.出水DO浓度偏低（＜5）： [[${outCOD}]]  <br>
+<br>
+5.污泥浓度偏高：<br>
+≥10000：[[${sludecHigh1}]]   <br>
+8000-10000：[[${sludecHigh2}]]   <br>
 	<th:block th:include="include :: footer" />
 	<th:block th:include="include :: select2-js" />
-	<script>
-	    var prefix = ctx + "op/report/day";
-	
-        $("#form-dayreport-add").validate({
-        	onkeyup: false,
-        	rules:{
-        		
-        	},
-        	messages: {
-                "loginName": {
-                    remote: "用户已经存在"
-                },
-        		"email": {
-                    remote: "Email已经存在"
-                },
-        		"phonenumber":{
-                	remote: "手机号码已经存在"
-        		}
-            },
-            focusCleanup: true
-        });
-        
-        function submitHandler() {
-	        if ($.validate.form()) {
-	        	var data = $("#form-dayreport-add").serializeArray();
-	        	/* var status = $("input[id='status']").is(':checked') == true ? 0 : 1;
-	        	var roleIds = $.form.selectCheckeds("role");
-	        	var postIds = $.form.selectSelects("post");
-	        	data.push({"name": "status", "value": status});
-	        	data.push({"name": "roleIds", "value": roleIds});
-	        	data.push({"name": "postIds", "value": postIds}); */
-	        	$.operate.save(prefix + "/add", data);
-	        }
-	    }
-         
-        /*用户管理-新增-选择部门树*/
-        function selectDeptTree() {
-        	var treeId = $("#treeId").val();
-        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
-        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
-			var options = {
-				title: '选择部门',
-				width: "380",
-				url: url,
-				callBack: doSubmit
-			};
-			$.modal.openOptions(options);
-		}
-		
-		function doSubmit(index, layero){
-			var tree = layero.find("iframe")[0].contentWindow.$._tree;
-			//if ($.tree.notAllowParents(tree)) {
-				var body = layer.getChildFrame('body', index);
-    			$("#treeId").val(body.find('#treeId').val());
-    			$("#treeName").val(body.find('#treeName').val());
-    			layer.close(index);
-			//}
-		}
 
-		$(function() {
-            $('#post').select2({
-                placeholder:"请选择岗位",
-                allowClear: true
-            });
-        })
-    </script>
 </body>
 </html>

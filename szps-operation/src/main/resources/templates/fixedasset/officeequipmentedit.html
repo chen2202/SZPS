@@ -11,9 +11,9 @@
         	<div class="row">
 	        	<div class="col-sm-6">
 		        	<div class="form-group">
-						<label class="col-sm-3 control-label ">单位名称：</label>
+						<label class="col-sm-3 control-label "><span style="color: red; ">*</span>单位名称：</label>
 						<div class="col-sm-8">
-								<input name="deptname" id="treeName"  th:field="*{deptname}"  onclick="selectDeptTree()" type="text"  class="form-control" />
+								<input name="deptname" id="treeName"  th:field="*{deptname}"  onclick="selectDeptTree()" type="text"  class="form-control" required/>
 						</div>
 					</div>
 				</div>
@@ -201,8 +201,8 @@
         function selectDeptTree() {
         	
         	var treeId = $("#treeId").val();
-        	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
-        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+        	var deptId = $.common.isEmpty(treeId) ? "1140" : $("#treeId").val();
+        	var url = ctx + "system/dept/selectDeptTree2/1140" ;
 			var options = {
 				title: '选择部门',
 				width: "380",

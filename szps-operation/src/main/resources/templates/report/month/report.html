@@ -32,14 +32,14 @@
 									<label>日期： </label>
 									<input type="text" class="time-input" id="reportDate"  name="reportDate"/>
 								</li> -->
-								<li class="select-time">
-									<label>日期： </label>
-									<input name="startTime1" id="startTime1" class="time-input form-control" type="text"  data-type="date" data-format="yyyy-MM" placeholder="开始时间"/>
+									<li class="select-time">
+										<label>日期： </label>
+										<input type="text"  name="startTime1" class="form-control" id="laydate-month" >
 									</li>
 									<span>-</span>
 									<li class="select-time">
-									<input name="endTime1" id="endTime1" class="time-input form-control" type="text"  data-type="date" data-format="yyyy-MM" placeholder="结束时间" />
-								</li>
+										<input type="text" name="endTime1" class="form-control" id="laydate-month2" >
+									</li>
 								<li>
 									<a class="btn btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
 									<a class="btn btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
@@ -49,20 +49,20 @@
 					</form>
 				</div> 
 			</div>
-<!-- 	        <div class="btn-group-sm" id="toolbar" role="group">
-		        <a class="btn btn-success" onclick="$.operate.addFull()" shiro:hasPermission="report:month:add">
+ 	        <div class="btn-group-sm" id="toolbar" role="group">
+		       <!-- <a class="btn btn-success" onclick="$.operate.addFull()" shiro:hasPermission="report:month:add">
 		            <i class="fa fa-plus"></i> 新增
 		        </a>
 		        <a class="btn btn-danger multiple disabled" onclick="$.operate.removeAll()" shiro:hasPermission="report:month:delete">
 		            <i class="fa fa-remove"></i> 删除
-		        </a>
+		        </a>-->
 		        <a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="system:config:export">
 		            <i class="fa fa-download"></i> 导出
 		        </a>
-	        </div> -->
+	        </div> 
 	        
-	        <div class="col-sm-12 select-table table-striped">
-	            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+	        <div class="col-sm-12 select-table table-striped ">
+	            <table id="bootstrap-table" class="text-nowrap"  data-mobile-responsive="true" ></table>
 	        </div>
     	</div>
     </div>
@@ -102,7 +102,7 @@
                 createUrl: prefix + "/add",
                 updateUrl: prefix + "/edit/{id}",
                 removeUrl: prefix + "/remove",
-                
+                exportUrl: prefix + "/export",
                 
                 modalName: "月报",
                 columns: [
@@ -113,22 +113,26 @@
     				{field: 'basin',title: '流域',},
     				{field: 'deptname',title: '水质净化厂',},
     				{field: 'darea',title: '辖区',},
-    				{field: 'dscale',title: '设计规模',},
-    				{field: 'tcapacity',title: '实际处理量',},
+    				{field: 'dscale',title: '设计规模(万吨/日)',},
+    				{field: 'tcapacity',title: '实际处理量(万吨)',},
     				{field: 'loadrate',title: '负荷率',},
-    				{field: 'incod',title: '进水COD',},
-    				{field: 'inan',title: '进水氨氮',},
-    				{field: 'inp',title: '进水总磷',},
-    				{field: 'inss',title: '进水SS',},
-    				{field: 'inbod',title: '进水BOD',},
-    				{field: 'outcod',title: '出水COD',},
-    				{field: 'outan',title: '出水氨氮',},
-    				{field: 'outp',title: '出水总磷',},
-    				{field: 'outdo',title: '出水DO',},
-    				{field: 'dlevel',title: '提升泵坑 设计液位',},
-    				{field: 'aleave',title: '提升泵坑 实际液位',},
-    				{field: 'sludec',title: '污泥浓度',},
-    				{field: 'lanfilll',title: '垃圾渗滤液',},
+    				{field: 'incod',title: '进水COD(mg/L)',},
+    				{field: 'inan',title: '进水氨氮(mg/L)',},
+    				{field: 'inp',title: '进水总磷(mg/L)',},
+    				{field: 'inss',title: '进水SS(mg/L)',},
+    				{field: 'inbod',title: '进水BOD(mg/L)',},
+    				{field: 'outcod',title: '出水COD(mg/L)',},
+    				{field: 'outan',title: '出水氨氮(mg/L)',},
+    				{field: 'outp',title: '出水总磷(mg/L)',},
+    				{field: 'outdo',title: '出水DO(mg/L)',},				
+    				{field: 'intn',title: '进水总氮(mg/L)',},
+    				{field: 'outbod',title: '出水BOD(mg/L)',},
+    				{field: 'outtn',title: '出水总氮(mg/L)',},
+    				{field: 'outss',title: '出水SS(mg/L)',},				
+    				{field: 'dlevel',title: '提升泵坑 设计液位(m)',},
+    				{field: 'aleave',title: '提升泵坑 实际液位(m)',},
+    				{field: 'sludec',title: '污泥浓度(mg/L)',},
+    				{field: 'lanfilll',title: '垃圾渗滤液(吨)',},
     				{field: 'sol',title: '渗滤液来源',},
     				{field: 'operation',title: '运营单位',},
     				]
@@ -144,6 +148,34 @@
                 location.href = ctx + 'op/report/month-bo';
             }
         };
+        layui.use('laydate', function(){
+   		  var laydate = layui.laydate;
+   		  
+   		  laydate.render({
+   		    elem: '#laydate-year',
+   		    type: 'year'
+   		  });
+   		  
+   		  laydate.render({ 
+   		    elem: '#laydate-month',
+   		    type: 'month'
+   		  });
+   		laydate.render({ 
+   		    elem: '#laydate-month2',
+   		    type: 'month'
+   		  });
+   		  laydate.render({ 
+   		    elem: '#laydate-demo-3',
+   		    type: 'datetime',
+   		    trigger: 'click'
+   		  });
+   		  
+   		  laydate.render({
+   		    elem: '#laydate-demo-4',
+   		    range: true
+   		  });
+   		
+   	   });
     </script>
 </body>
 </html>

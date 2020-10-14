@@ -103,21 +103,21 @@
  		<set>
 			<if test=" devid != null ">devid = #{devid},</if>
 			<if test=" deptid != null ">deptid = #{deptid},</if>
-			<if test=" tasknumber != null and tasknumber != ''">tasknumber = #{tasknumber},</if>
-			<if test=" taskstatus != null and taskstatus != ''">taskstatus = #{taskstatus},</if>
+			<if test=" tasknumber != null">tasknumber = #{tasknumber},</if>
+			<if test=" taskstatus != null">taskstatus = #{taskstatus},</if>
 			<if test=" duetime != null ">duetime = #{duetime},</if>
-			<if test=" responsibleperson != null and responsibleperson != ''">responsibleperson = #{responsibleperson},</if>
+			<if test=" responsibleperson != null">responsibleperson = #{responsibleperson},</if>
 			<if test=" taskcreatetime != null ">taskcreatetime = #{taskcreatetime},</if>
-			<if test=" creator != null and creator != ''">creator = #{creator},</if>
-			<if test=" mrank != null and mrank != ''">mrank = #{mrank},</if>
-			<if test=" mpart != null and mpart != ''">mpart = #{mpart},</if>
-			<if test=" mspec != null and mspec != ''">mspec = #{mspec},</if>
-			<if test=" usetime != null and usetime != ''">usetime = #{usetime},</if>
-			<if test=" operator != null and operator != ''">operator = #{operator},</if>
-			<if test=" mtype != null and mtype != ''">mtype = #{mtype},</if>
+			<if test=" creator != null">creator = #{creator},</if>
+			<if test=" mrank != null">mrank = #{mrank},</if>
+			<if test=" mpart != null">mpart = #{mpart},</if>
+			<if test=" mspec != null">mspec = #{mspec},</if>
+			<if test=" usetime != null">usetime = #{usetime},</if>
+			<if test=" operator != null">operator = #{operator},</if>
+			<if test=" mtype != null">mtype = #{mtype},</if>
 			
-			<if test=" remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -132,45 +132,45 @@
 			<if test=" id != null and id!= 0">id,</if>
 			<if test=" devid != null ">devid,</if>
 			<if test=" deptid != null ">deptid,</if>
-			<if test=" tasknumber != null and  tasknumber != ''">tasknumber,</if>
-			<if test=" taskstatus != null and  taskstatus != ''">taskstatus,</if>
+			<if test=" tasknumber != null">tasknumber,</if>
+			<if test=" taskstatus != null">taskstatus,</if>
 			<if test=" duetime != null ">duetime,</if>
-			<if test=" responsibleperson != null and  responsibleperson != ''">responsibleperson,</if>
+			<if test=" responsibleperson != null">responsibleperson,</if>
 			<if test=" taskcreatetime != null ">taskcreatetime,</if>
-			<if test=" creator != null and  creator != ''">creator,</if>
-			<if test=" mrank != null and  mrank != ''">mrank,</if>
-			<if test=" mpart != null and  mpart != ''">mpart,</if>
-			<if test=" mspec != null and  mspec != ''">mspec,</if>
-			<if test=" usetime != null and  usetime != ''">usetime,</if>
-			<if test=" operator != null and  operator != ''">operator,</if>
-			<if test=" mtype != null and mtype != '' ">mtype,</if>
+			<if test=" creator != null">creator,</if>
+			<if test=" mrank != null">mrank,</if>
+			<if test=" mpart != null">mpart,</if>
+			<if test=" mspec != null">mspec,</if>
+			<if test=" usetime != null">usetime,</if>
+			<if test=" operator != null">operator,</if>
+			<if test=" mtype != null ">mtype,</if>
 
 			
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>
+			<if test=" remark != null">REMARK,</if>
+			<if test=" createBy != null">create_by,</if>
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
 			<if test=" devid != null ">#{devid},</if>
 			<if test=" deptid != null ">#{deptid},</if>
-			<if test=" tasknumber != null and tasknumber != ''">#{tasknumber},</if>
-			<if test=" taskstatus != null and taskstatus != ''">#{taskstatus},</if>
+			<if test=" tasknumber != null">#{tasknumber},</if>
+			<if test=" taskstatus != null">#{taskstatus},</if>
 			<if test=" duetime != null ">#{duetime},</if>
-			<if test=" responsibleperson != null and responsibleperson != ''">#{responsibleperson},</if>
+			<if test=" responsibleperson != null">#{responsibleperson},</if>
 			<if test=" taskcreatetime != null ">#{taskcreatetime},</if>
-			<if test=" creator != null and creator != ''">#{creator},</if>
-			<if test=" mrank != null and mrank != ''">#{mrank},</if>
-			<if test=" mpart != null and mpart != ''">#{mpart},</if>
-			<if test=" mspec != null and mspec != ''">#{mspec},</if>
-			<if test=" usetime != null and usetime != ''">#{usetime},</if>
-			<if test=" operator != null and operator != ''">#{operator},</if>
-			<if test=" mtype != null and mtype != '' ">#{mtype},</if>
+			<if test=" creator != null">#{creator},</if>
+			<if test=" mrank != null">#{mrank},</if>
+			<if test=" mpart != null">#{mpart},</if>
+			<if test=" mspec != null">#{mspec},</if>
+			<if test=" usetime != null">#{usetime},</if>
+			<if test=" operator != null">#{operator},</if>
+			<if test=" mtype != null ">#{mtype},</if>
 
 			
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
-			<if test=" dept_id != null and dept_id != ''">#{dept_id},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" createBy != null">#{createBy},</if>
+			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)
 	</insert>

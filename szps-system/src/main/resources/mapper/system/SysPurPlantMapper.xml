@@ -61,20 +61,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		insert into sys_purplant(
  			<if test="plantId != null and plantId != 0">plant_id,</if>
  			<if test="parentId != null and parentId != 0">parent_id,</if>
- 			<if test="plantName != null and plantName != ''">plant_name,</if>
- 			<if test="ancestors != null and ancestors != ''">ancestors,</if>
- 			<if test="orderNum != null and orderNum != ''">order_num,</if>
- 			<if test="plantType != null and plantType != ''">plant_type,</if>
- 			<if test="createBy != null and createBy != ''">create_by,</if>
+ 			<if test="plantName != null">plant_name,</if>
+ 			<if test="ancestors != null">ancestors,</if>
+ 			<if test="orderNum != null">order_num,</if>
+ 			<if test="plantType != null">plant_type,</if>
+ 			<if test="createBy != null">create_by,</if>
  			create_time
  		)values(
  			<if test="plantId != null and plantId != 0">#{plantId},</if>
  			<if test="parentId != null and parentId != 0">#{parentId},</if>
- 			<if test="plantName != null and plantName != ''">#{plantName},</if>
- 			<if test="ancestors != null and ancestors != ''">#{ancestors},</if>
- 			<if test="orderNum != null and orderNum != ''">#{orderNum},</if>
- 			<if test="plantType != null and plantType != ''">#{plantType},</if>
- 			<if test="createBy != null and createBy != ''">#{createBy},</if>
+ 			<if test="plantName != null">#{plantName},</if>
+ 			<if test="ancestors != null">#{ancestors},</if>
+ 			<if test="orderNum != null">#{orderNum},</if>
+ 			<if test="plantType != null">#{plantType},</if>
+ 			<if test="createBy != null">#{createBy},</if>
  			sysdate
  		)
 	</insert>
@@ -83,11 +83,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		update sys_purplant
  		<set>
  			<if test="parentId != null and parentId != 0">parent_id = #{parentId},</if>
- 			<if test="plantName != null and plantName != ''">plant_name = #{plantName},</if>
- 			<if test="ancestors != null and ancestors != ''">ancestors = #{ancestors},</if>
+ 			<if test="plantName != null">plant_name = #{plantName},</if>
+ 			<if test="ancestors != null">ancestors = #{ancestors},</if>
  			<if test="orderNum != null">order_num = #{orderNum},</if>
  			<if test="plantType != null">plant_type = #{plantType},</if>
- 			<if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+ 			<if test="updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where plant_id = #{plantId}

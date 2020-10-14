@@ -7,7 +7,7 @@
 	<div class="wrapper wrapper-content animated fadeInRight ibox-content">
         <form id="form"  class="form-horizontal m">
         <div class="form-group">
-				<label class="col-sm-3 control-label ">名称：</label>
+				<label class="col-sm-3 control-label "><span style="color: red; ">*</span>名称：</label>
 				<div class="col-sm-8">
 						<input name="sname"  type="text" id="sname" class="form-control" required/>
 				</div>
@@ -37,12 +37,6 @@
 				</div>
 			</div>
 	</form>
-    </div>
-    <div class="row">
-        <div class="col-sm-offset-5 col-sm-10">
-            <button type="button" class="btn btn-sm btn-primary" onclick="submitHandler()"><i class="fa fa-check"></i>保 存</button>&nbsp;
-            <button type="button" class="btn btn-sm btn-danger" onclick="closeItem()"><i class="fa fa-reply-all"></i>关 闭 </button>
-        </div>
     </div>
 	<th:block th:include="include :: footer" />
 	<script>

@@ -158,22 +158,45 @@ public class SysDeptController extends BaseController
     }
 
     /**
+     * 选择部门树
+     */
+    @GetMapping("/selectDeptTree2/{deptId}")
+    public String selectDeptTree2(@PathVariable("deptId") Long deptId, ModelMap mmap)
+    {
+        mmap.put("dept", deptService.selectDeptById(deptId));
+        return prefix + "/tree2";
+    }
+    
+    /**
+     * 加载部门列表树
+     */
+    @GetMapping("/treeData2/{deptId}")
+    @ResponseBody
+    public List<Ztree> treeData2(@PathVariable("deptId") Long deptId)
+    {
+    	SysDept dept = new SysDept();
+    	if (null == deptId) {
+			deptId = 0L;
+		}
+    	dept.setParentId(deptId);
+    	
+        List<Ztree> ztrees = deptService.selectDeptTree(dept);
+        return ztrees;
+    }
+
+    
+    /**
      * 加载部门列表树
      */
     @GetMapping("/treeData/{deptId}")
     @ResponseBody
     public List<Ztree> treeData(@PathVariable("deptId") Long deptId)
     {
-    	/**SysDept dept = new SysDept();
-    	if (null == deptId) {
-			deptId = 0L;
-		}
-    	dept.setParentId(deptId);
-    	**/
-        List<Ztree> ztrees = deptService.selectDeptTree(new SysDept());
+    	SysDept dept = new SysDept();
+        List<Ztree> ztrees = deptService.selectDeptTree(dept);
         return ztrees;
     }
-
+    
     /**
      * 加载角色部门（数据权限）列表树
      */

@@ -24,9 +24,17 @@
 					 <div class="row">
 						 <div class="col-sm-6">
 								<div class="form-group">
-									<label class="col-sm-3 control-label">所属区：</label>
+									<label class="col-sm-3 control-label">行政区域：</label>
 									<div class="col-sm-8">
-											<input name="areaname" onclick="selectAreaTree()" id="treeNameArea" class="form-control" type="text" >
+											<input name="xzqy_q" onclick="selectAreaTree()" id="treeNameArea" class="form-control" type="text" >
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="col-sm-3 control-label">街道：</label>
+									<div class="col-sm-8">
+											<input name="xzqy_j"  class="form-control" type="text" >
 									</div>
 								</div>
 							</div>
@@ -34,147 +42,484 @@
 							   <div class="form-group">
 								   <label class="col-sm-3 control-label">截止时间：</label>
 								   <div class="col-sm-8">
-									   <input id="deadline" name="deadline" class="time-input form-control " data-type="date" data-format="yyyy-MM-dd"/>
+									   <input id="duedate" name="duedate" class="time-input form-control " data-type="date" data-format="yyyy-MM-dd"/>
 								   </div>
 							   </div>
 						</div>
 						
 					</div>
-					<div class="row">
-						<div class="col-sm-6">
-							   <div class="form-group">
-								   <label class="col-sm-3 control-label">专营单位招采方式：</label>
-								   <div class="col-sm-8">
-									   <input name="recruitmentmethod" class="form-control" type="text"  >
-								   </div>
-							   </div>
-						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								<label class="col-sm-3 control-label">专营协议签订时间：</label>
-								<div class="col-sm-8">
-										<input id="signingdate" name="signingdate" class="time-input form-control " data-type="date" data-format="yyyy-MM-dd"/>
-								</div>
-							</div>
-						</div>
-					</div>
-			
-					 <div class="row">
-						<div class="col-sm-6">
-							   <div class="form-group">
-								   <label class="col-sm-3 control-label">首次进场（检测、测绘、清疏、修复）计划完成时间：</label>
-								   <div class="col-sm-8">
-										<input id="planfinishdate" name="planfinishdate" class="time-input form-control " data-type="date" data-format="yyyy-MM-dd"/>
-								</div>
-							   </div>
-						</div>
-						<!-- <div class="col-sm-6">
-							<div class="form-group">
-								<label class="col-sm-3 control-label">规格型号：</label>
-								<div class="col-sm-8">
-										<input name="dmodel" class="form-control" type="text" >
-								</div>
-							</div>
-						</div> -->
-					</div>
-			 <table class="table table-bordered ">
-			  <tr>
-			    <td width="8%">小区类型</td>
-			    <td>完成摸排数量（个）</td>
-			    <td>委托管理协议签（份）</td>
-			    <td>实际接收管理小区数（个）</td>
-			    <td>小区接收率（%）</td>
-			    <td>接收管网长度（km）</td>
-			    <td>完成检测长度（km）</td>
-			    <td>完成测绘长度（km）</td>
-			    <td>完成清淤量（m3）</td>
-			    <td>完成修复改造量（km）</td>
-			  </tr>
-			  <tr>
-			    <td>住宅小区</td>
-			    <td><input name="rq_completed_num" 	id="rq_completed_num"	 class="form-control"  type="number"/></td>
-			    <td><input name="rq_entrust" 	id="rq_entrust"	 class="form-control"  type="number"/></td>
-			    <td><input name="rq_actual" 	id="rq_actual"  class="form-control"  type="number"/></td>
-			    <td><input name="rq_reception_rate" 	id="rq_reception_rate"  class="form-control"  type="number"/></td>
-			    <td><input name="rq_network_length" 	id="rq_network_length"  class="form-control"  type="number"/></td>
-			    <td><input name="rq_detection_length" 	id="rq_detection_length"  class="form-control"  type="number"/></td>
-			    <td><input name="rq_mapping_length" 	id="rq_mapping_length"  class="form-control"  type="number"/></td>
-			    <td><input name="rq_dredging_capacity" 	id="rq_dredging_capacity"  class="form-control"  type="number"/></td>
-			    <td><input name=rq_renovation 	id="rq_renovation"  class="form-control"  type="number"/></td>
-			  </tr>
-			  <tr>
-			    <td>工业小区</td>
-			    <td><input name="iq_completed_num" id="iq_completed_num" 	 class="form-control"  type="number"/></td>
-			    <td><input name="iq_entrust" id="iq_entrust"	 class="form-control"  type="number"/></td>
-			    <td><input name="iq_actual" 	id="iq_actual" 	 class="form-control"  type="number"/></td>
-			    <td><input name="iq_reception_rate" 	id="iq_reception_rate" 	 class="form-control"  type="number"/></td>
-			    <td><input name="iq_network_length" 	id="iq_network_length" 	 class="form-control"  type="number"/></td>
-			    <td><input name="iq_detection_length" 	id="iq_detection_length" 	 class="form-control"  type="number"/></td>
-			    <td><input name="iq_mapping_length" 	id="iq_mapping_length" 	 class="form-control"  type="number"/></td>
-			    <td><input name="iq_dredging_capacity" 	id="iq_dredging_capacity" 	 class="form-control"  type="number"/></td>
-			    <td><input name="iq_renovation" 	id="iq_renovation" 	 class="form-control"  type="number"/></td>
-			  </tr>
-			   <tr>
-			    <td>商业小区</td>
-			    <td><input name="eq_completed_num" id="eq_completed_num" 	 class="form-control"  type="number"/></td>
-			    <td><input name="eq_entrust" id="eq_entrust"	 class="form-control"  type="number"/></td>
-			    <td><input name="eq_actual" 	id="eq_actual" 	 class="form-control"  type="number"/></td>
-			    <td><input name="eq_reception_rate" 	id="eq_reception_rate" 	 class="form-control"  type="number"/></td>
-			    <td><input name="eq_network_length" 	id="eq_network_length" 	 class="form-control"  type="number"/></td>
-			    <td><input name="eq_detection_length" 	id="eq_detection_length" 	 class="form-control"  type="number"/></td>
-			    <td><input name="eq_mapping_length" 	id="eq_mapping_length" 	 class="form-control"  type="number"/></td>
-			    <td><input name="eq_dredging_capacity" 	id="eq_dredging_capacity" 	 class="form-control"  type="number"/></td>
-			    <td><input name="eq_renovation" 	id="eq_renovation" 	 class="form-control"  type="number"/></td>
-			  </tr>
-			   <tr>
-			    <td>商住两用</td>
-			    <td><input name="erq_completed_num" id="erq_completed_num" 	 class="form-control"  type="number"/></td>
-			    <td><input name="erq_entrust" id="erq_entrust"	 class="form-control"  type="number"/></td>
-			    <td><input name="erq_actual" 	id="erq_actual" 	 class="form-control"  type="number"/></td>
-			    <td><input name="erq_reception_rate" 	id="erq_reception_rate" 	 class="form-control"  type="number"/></td>
-			    <td><input name="erq_network_length" 	id="erq_network_length" 	 class="form-control"  type="number"/></td>
-			    <td><input name="erq_detection_length" 	id="erq_detection_length" 	 class="form-control"  type="number"/></td>
-			    <td><input name="erq_mapping_length" 	id="erq_mapping_length" 	 class="form-control"  type="number"/></td>
-			    <td><input name="erq_dredging_capacity" 	id="erq_dredging_capacity" 	 class="form-control"  type="number"/></td>
-			    <td><input name="erq_renovation" 	id="erq_renovation" 	 class="form-control"  type="number"/></td>
-			  </tr>
-			   <tr>
-			    <td>公共机构</td>
-			    <td><input name="pq_completed_num" id="pq_completed_num" 	 class="form-control"  type="number"/></td>
-			    <td><input name="pq_entrust" id="pq_entrust"	 class="form-control"  type="number"/></td>
-			    <td><input name="pq_actual" 	id="pq_actual" 	 class="form-control"  type="number"/></td>
-			    <td><input name="pq_reception_rate" 	id="pq_reception_rate" 	 class="form-control"  type="number"/></td>
-			    <td><input name="pq_network_length" 	id="pq_network_length" 	 class="form-control"  type="number"/></td>
-			    <td><input name="pq_detection_length" 	id="pq_detection_length" 	 class="form-control"  type="number"/></td>
-			    <td><input name="pq_mapping_length" 	id="pq_mapping_length" 	 class="form-control"  type="number"/></td>
-			    <td><input name="pq_dredging_capacity" 	id="pq_dredging_capacity" 	 class="form-control"  type="number"/></td>
-			    <td><input name="pq_renovation" 	id="pq_renovation" 	 class="form-control"  type="number"/></td>
-			  </tr>
-			   <tr>
-			    <td>城中村</td>
-			    <td><input name="vq_completed_num" id="vq_completed_num" 	 class="form-control"  type="number"/></td>
-			    <td><input name="vq_entrust" id="vq_entrust"	 class="form-control"  type="number"/></td>
-			    <td><input name="vq_actual" 	id="vq_actual" 	 class="form-control"  type="number"/></td>
-			    <td><input name="vq_reception_rate" 	id="vq_reception_rate" 	 class="form-control"  type="number"/></td>
-			    <td><input name="vq_network_length" 	id="vq_network_length" 	 class="form-control"  type="number"/></td>
-			    <td><input name="vq_detection_length" 	id="vq_detection_length" 	 class="form-control"  type="number"/></td>
-			    <td><input name="vq_mapping_length" 	id="vq_mapping_length" 	 class="form-control"  type="number"/></td>
-			    <td><input name="vq_dredging_capacity" 	id="vq_dredging_capacity" 	 class="form-control"  type="number"/></td>
-			    <td><input name="vq_renovation" 	id="vq_renovation" 	 class="form-control"  type="number"/></td>
-			  </tr>
-			   <tr>
-			    <td>总计</td>
-			    <td><input name="tq_completed_num" id="tq_completed_num" 	 class="form-control"  type="number"/></td>
-			    <td><input name="tq_entrust" id="tq_entrust"	 class="form-control"  type="number"/></td>
-			    <td><input name="tq_actual" 	id="tq_actual" 	 class="form-control"  type="number"/></td>
-			    <td><input name="tq_reception_rate" 	id="tq_reception_rate" 	 class="form-control"  type="number"/></td>
-			    <td><input name="tq_network_length" 	id="tq_network_length" 	 class="form-control"  type="number"/></td>
-			    <td><input name="tq_detection_length" 	id="tq_detection_length" 	 class="form-control"  type="number"/></td>
-			    <td><input name="tq_mapping_length" 	id="tq_mapping_length" 	 class="form-control"  type="number"/></td>
-			    <td><input name="tq_dredging_capacity" 	id="tq_dredging_capacity" 	 class="form-control"  type="number"/></td>
-			    <td><input name="tq_renovation" 	id="tq_renovation" 	 class="form-control"  type="number"/></td>
-			  </tr>
-			</table>
+				<div style="overflow:scroll; ">
+					 <table width="3200" class="table-bordered" >
+					   <tr >
+					    <th rowspan="3" scope="col" width="85" ><center>建筑类型</center></th>
+					    <th colspan="4" rowspan="2" scope="col"><center>建筑小区</center></th>
+					    <th colspan="3" rowspan="2" scope="col"><center>排水管网估算长度</center></th>
+					    <th colspan="8" scope="col"><center>管网测绘（公里）</center></th>
+					    <th colspan="8" scope="col"><center>管网检测（公里）</center></th>
+					    <th colspan="10" scope="col"><center>管网清淤（公里）</center></th>
+					    <th colspan="10" scope="col"><center>管网修复（点）</center></th>
+					    <th colspan="3" rowspan="2" scope="col"><center>检查井</center></th>
+					    <th rowspan="3" scope="col"><center>雨水口（个）</center></th>
+					    <th colspan="3" rowspan="2" scope="col"><center>排水户</center></th>
+					    <th rowspan="3" scope="col"><center>化粪池（个）</center></th>
+					    <th rowspan="3" scope="col"><center>垃圾池 （个）</center></th>
+					    <th rowspan="3" scope="col"><center>隔油池（个）</center></th>
+					  </tr>
+					  <tr>
+					    <td colspan="4"><center>已完工</td>
+					    <td colspan="4"><center>正在开展</td>
+					    <td colspan="4"><center>已完工</td>
+					    <td colspan="4"><center>正在开展</td>
+					    <td colspan="5"><center>已完工</td>
+					    <td colspan="5"><center>正在开展</td>
+					    <td colspan="5"><center>已完工</td>
+					    <td colspan="5"><center>正在开展</td>
+					  </tr>
+					  <tr>
+					    <td>实有数量 （个）</td>
+					    <td>签订协议（个）</td>
+					    <td>移交接管（个）</td>
+					    <td>自行管养（个）</td>
+					    <td>合计</td>
+					    <td>雨水</td>
+					    <td>污水</td>
+					    <td>建筑小区</td>
+					    <td>合计</td>
+					    <td>雨水</td>
+					    <td>污水</td>
+					    <td>建筑小区</td>
+					    <td>合计</td>
+					    <td>雨水</td>
+					    <td>污水</td>
+					    <td>建筑小区</td>
+					    <td>合计</td>
+					    <td>雨水</td>
+					    <td>污水</td>
+					    <td>建筑小区</td>
+					    <td>合计</td>
+					    <td>雨水</td>
+					    <td>污水</td>
+					    <td>建筑小区</td>
+					    <td>合计</td>
+					    <td>雨水</td>
+					    <td>污水</td>
+					    <td>清淤量</td>
+					    <td>建筑小区</td>
+					    <td>合计</td>
+					    <td>雨水</td>
+					    <td>污水</td>
+					    <td>清淤量</td>
+					    <td>建筑小区</td>
+					    <td>合计</td>
+					    <td>雨水</td>
+					    <td>污水</td>
+					    <td>混流点整改</td>
+					    <td>建筑小区</td>
+					    <td>合计</td>
+					    <td>雨水</td>
+					    <td>污水</td>
+					    <td>混流点整改</td>
+					    <td>合计</td>
+					    <td>雨水</td>
+					    <td>污水</td>
+					    <td>合计</td>
+					    <td>一级</td>
+					    <td>二级</td>
+					  </tr>
+					  <tr>
+					    <td><input name="buildingtype"	id="buildingtype" class="form-control" value="住宅" readonly="readonly"/></td>
+						<td><input name="jzxq_s"	id="jzxq_s" class="form-control"   type="number"/></td>
+						<td><input name="jzxq_q"	id="jzxq_q" class="form-control"  type="number"/></td>
+						<td><input name="jzxq_y"	id="jzxq_y" class="form-control"  type="number"/></td>
+						<td><input name="jzxq_z"	id="jzxq_z" class="form-control"  type="number"/></td>
+						<td><input name="psgwg_h"	id="psgwg_h" class="form-control"  type="number"/></td>
+						<td><input name="psgwg_y"	id="psgwg_y" class="form-control"  type="number"/></td>
+						<td><input name="psgwg_w"	id="psgwg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_xq"	id="gwch_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_h"	id="gwch_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_y"	id="gwch_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_w"	id="gwch_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_xq"	id="gwch_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_h"	id="gwch_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_y"	id="gwch_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_w"	id="gwch_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_xq"	id="gwzc_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_h"	id="gwzc_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_y"	id="gwzc_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_w"	id="gwzc_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_xq"	id="gwzc_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_h"	id="gwzc_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_y"	id="gwzc_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_w"	id="gwzc_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_xq"	id="gwqy_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_h"	id="gwqy_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_y"	id="gwqy_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_w"	id="gwqy_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_qy"	id="gwqy_wg_qy" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_xq"	id="gwqy_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_h"	id="gwqy_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_y"	id="gwqy_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_w"	id="gwqy_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_qy"	id="gwqy_zzkz_qy" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_xq"	id="gwxf_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_h"	id="gwxf_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_y"	id="gwxf_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_w"	id="gwxf_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_hld"	id="gwxf_wg_hld" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_xq"	id="gwxf_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_h"	id="gwxf_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_y"	id="gwxf_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_w"	id="gwxf_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_hld"	id="gwxf_zzkz_hld" class="form-control"  type="number"/></td>
+						<td><input name="jcj_h"	id="jcj_h" class="form-control"  type="number"/></td>
+						<td><input name="jcj_y"	id="jcj_y" class="form-control"  type="number"/></td>
+						<td><input name="jcj_w"	id="jcj_w" class="form-control"  type="number"/></td>
+						<td><input name="ysk"	id="ysk" class="form-control"  type="number"/></td>
+						<td><input name="psh_h"	id="psh_h" class="form-control"  type="number"/></td>
+						<td><input name="psh_y"	id="psh_y" class="form-control"  type="number"/></td>
+						<td><input name="psh_e"	id="psh_e" class="form-control"  type="number"/></td>
+						<td><input name="hfc"	id="hfc" class="form-control"  type="number"/></td>
+						<td><input name="ljc"	id="ljc" class="form-control"  type="number"/></td>
+						<td><input name="gyc"	id="gyc" class="form-control"  type="number"/></td>
+					  </tr>
+					    <tr>
+					    <td><input name="buildingtype"	id="buildingtype" class="form-control" value="工业" readonly="readonly"/></td>
+						<td><input name="jzxq_s"	id="jzxq_s" class="form-control"   type="number"/></td>
+						<td><input name="jzxq_q"	id="jzxq_q" class="form-control"  type="number"/></td>
+						<td><input name="jzxq_y"	id="jzxq_y" class="form-control"  type="number"/></td>
+						<td><input name="jzxq_z"	id="jzxq_z" class="form-control"  type="number"/></td>
+						<td><input name="psgwg_h"	id="psgwg_h" class="form-control"  type="number"/></td>
+						<td><input name="psgwg_y"	id="psgwg_y" class="form-control"  type="number"/></td>
+						<td><input name="psgwg_w"	id="psgwg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_xq"	id="gwch_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_h"	id="gwch_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_y"	id="gwch_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_w"	id="gwch_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_xq"	id="gwch_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_h"	id="gwch_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_y"	id="gwch_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_w"	id="gwch_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_xq"	id="gwzc_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_h"	id="gwzc_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_y"	id="gwzc_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_w"	id="gwzc_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_xq"	id="gwzc_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_h"	id="gwzc_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_y"	id="gwzc_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_w"	id="gwzc_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_xq"	id="gwqy_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_h"	id="gwqy_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_y"	id="gwqy_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_w"	id="gwqy_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_qy"	id="gwqy_wg_qy" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_xq"	id="gwqy_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_h"	id="gwqy_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_y"	id="gwqy_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_w"	id="gwqy_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_qy"	id="gwqy_zzkz_qy" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_xq"	id="gwxf_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_h"	id="gwxf_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_y"	id="gwxf_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_w"	id="gwxf_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_hld"	id="gwxf_wg_hld" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_xq"	id="gwxf_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_h"	id="gwxf_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_y"	id="gwxf_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_w"	id="gwxf_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_hld"	id="gwxf_zzkz_hld" class="form-control"  type="number"/></td>
+						<td><input name="jcj_h"	id="jcj_h" class="form-control"  type="number"/></td>
+						<td><input name="jcj_y"	id="jcj_y" class="form-control"  type="number"/></td>
+						<td><input name="jcj_w"	id="jcj_w" class="form-control"  type="number"/></td>
+						<td><input name="ysk"	id="ysk" class="form-control"  type="number"/></td>
+						<td><input name="psh_h"	id="psh_h" class="form-control"  type="number"/></td>
+						<td><input name="psh_y"	id="psh_y" class="form-control"  type="number"/></td>
+						<td><input name="psh_e"	id="psh_e" class="form-control"  type="number"/></td>
+						<td><input name="hfc"	id="hfc" class="form-control"  type="number"/></td>
+						<td><input name="ljc"	id="ljc" class="form-control"  type="number"/></td>
+						<td><input name="gyc"	id="gyc" class="form-control"  type="number"/></td>
+					  </tr>
+					    <tr>
+					    <td><input name="buildingtype"	id="buildingtype" class="form-control" value="商业" readonly="readonly"/></td>
+						<td><input name="jzxq_s"	id="jzxq_s" class="form-control"   type="number"/></td>
+						<td><input name="jzxq_q"	id="jzxq_q" class="form-control"  type="number"/></td>
+						<td><input name="jzxq_y"	id="jzxq_y" class="form-control"  type="number"/></td>
+						<td><input name="jzxq_z"	id="jzxq_z" class="form-control"  type="number"/></td>
+						<td><input name="psgwg_h"	id="psgwg_h" class="form-control"  type="number"/></td>
+						<td><input name="psgwg_y"	id="psgwg_y" class="form-control"  type="number"/></td>
+						<td><input name="psgwg_w"	id="psgwg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_xq"	id="gwch_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_h"	id="gwch_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_y"	id="gwch_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_w"	id="gwch_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_xq"	id="gwch_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_h"	id="gwch_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_y"	id="gwch_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_w"	id="gwch_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_xq"	id="gwzc_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_h"	id="gwzc_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_y"	id="gwzc_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_w"	id="gwzc_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_xq"	id="gwzc_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_h"	id="gwzc_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_y"	id="gwzc_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_w"	id="gwzc_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_xq"	id="gwqy_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_h"	id="gwqy_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_y"	id="gwqy_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_w"	id="gwqy_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_qy"	id="gwqy_wg_qy" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_xq"	id="gwqy_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_h"	id="gwqy_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_y"	id="gwqy_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_w"	id="gwqy_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_qy"	id="gwqy_zzkz_qy" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_xq"	id="gwxf_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_h"	id="gwxf_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_y"	id="gwxf_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_w"	id="gwxf_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_hld"	id="gwxf_wg_hld" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_xq"	id="gwxf_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_h"	id="gwxf_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_y"	id="gwxf_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_w"	id="gwxf_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_hld"	id="gwxf_zzkz_hld" class="form-control"  type="number"/></td>
+						<td><input name="jcj_h"	id="jcj_h" class="form-control"  type="number"/></td>
+						<td><input name="jcj_y"	id="jcj_y" class="form-control"  type="number"/></td>
+						<td><input name="jcj_w"	id="jcj_w" class="form-control"  type="number"/></td>
+						<td><input name="ysk"	id="ysk" class="form-control"  type="number"/></td>
+						<td><input name="psh_h"	id="psh_h" class="form-control"  type="number"/></td>
+						<td><input name="psh_y"	id="psh_y" class="form-control"  type="number"/></td>
+						<td><input name="psh_e"	id="psh_e" class="form-control"  type="number"/></td>
+						<td><input name="hfc"	id="hfc" class="form-control"  type="number"/></td>
+						<td><input name="ljc"	id="ljc" class="form-control"  type="number"/></td>
+						<td><input name="gyc"	id="gyc" class="form-control"  type="number"/></td>
+					  </tr>
+					    <tr>
+					    <td><input name="buildingtype"	id="buildingtype" class="form-control" value="商混" readonly="readonly"/></td>
+						<td><input name="jzxq_s"	id="jzxq_s" class="form-control"   type="number"/></td>
+						<td><input name="jzxq_q"	id="jzxq_q" class="form-control"  type="number"/></td>
+						<td><input name="jzxq_y"	id="jzxq_y" class="form-control"  type="number"/></td>
+						<td><input name="jzxq_z"	id="jzxq_z" class="form-control"  type="number"/></td>
+						<td><input name="psgwg_h"	id="psgwg_h" class="form-control"  type="number"/></td>
+						<td><input name="psgwg_y"	id="psgwg_y" class="form-control"  type="number"/></td>
+						<td><input name="psgwg_w"	id="psgwg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_xq"	id="gwch_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_h"	id="gwch_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_y"	id="gwch_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_w"	id="gwch_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_xq"	id="gwch_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_h"	id="gwch_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_y"	id="gwch_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_w"	id="gwch_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_xq"	id="gwzc_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_h"	id="gwzc_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_y"	id="gwzc_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_w"	id="gwzc_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_xq"	id="gwzc_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_h"	id="gwzc_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_y"	id="gwzc_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_w"	id="gwzc_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_xq"	id="gwqy_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_h"	id="gwqy_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_y"	id="gwqy_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_w"	id="gwqy_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_qy"	id="gwqy_wg_qy" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_xq"	id="gwqy_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_h"	id="gwqy_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_y"	id="gwqy_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_w"	id="gwqy_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_qy"	id="gwqy_zzkz_qy" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_xq"	id="gwxf_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_h"	id="gwxf_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_y"	id="gwxf_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_w"	id="gwxf_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_hld"	id="gwxf_wg_hld" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_xq"	id="gwxf_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_h"	id="gwxf_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_y"	id="gwxf_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_w"	id="gwxf_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_hld"	id="gwxf_zzkz_hld" class="form-control"  type="number"/></td>
+						<td><input name="jcj_h"	id="jcj_h" class="form-control"  type="number"/></td>
+						<td><input name="jcj_y"	id="jcj_y" class="form-control"  type="number"/></td>
+						<td><input name="jcj_w"	id="jcj_w" class="form-control"  type="number"/></td>
+						<td><input name="ysk"	id="ysk" class="form-control"  type="number"/></td>
+						<td><input name="psh_h"	id="psh_h" class="form-control"  type="number"/></td>
+						<td><input name="psh_y"	id="psh_y" class="form-control"  type="number"/></td>
+						<td><input name="psh_e"	id="psh_e" class="form-control"  type="number"/></td>
+						<td><input name="hfc"	id="hfc" class="form-control"  type="number"/></td>
+						<td><input name="ljc"	id="ljc" class="form-control"  type="number"/></td>
+						<td><input name="gyc"	id="gyc" class="form-control"  type="number"/></td>
+					  </tr>
+					    <tr>
+					    <td><input name="buildingtype"	id="buildingtype" class="form-control" value="公共机构" readonly="readonly"/></td>
+						<td><input name="jzxq_s"	id="jzxq_s" class="form-control"   type="number"/></td>
+						<td><input name="jzxq_q"	id="jzxq_q" class="form-control"  type="number"/></td>
+						<td><input name="jzxq_y"	id="jzxq_y" class="form-control"  type="number"/></td>
+						<td><input name="jzxq_z"	id="jzxq_z" class="form-control"  type="number"/></td>
+						<td><input name="psgwg_h"	id="psgwg_h" class="form-control"  type="number"/></td>
+						<td><input name="psgwg_y"	id="psgwg_y" class="form-control"  type="number"/></td>
+						<td><input name="psgwg_w"	id="psgwg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_xq"	id="gwch_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_h"	id="gwch_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_y"	id="gwch_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_w"	id="gwch_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_xq"	id="gwch_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_h"	id="gwch_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_y"	id="gwch_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_w"	id="gwch_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_xq"	id="gwzc_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_h"	id="gwzc_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_y"	id="gwzc_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_w"	id="gwzc_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_xq"	id="gwzc_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_h"	id="gwzc_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_y"	id="gwzc_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_w"	id="gwzc_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_xq"	id="gwqy_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_h"	id="gwqy_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_y"	id="gwqy_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_w"	id="gwqy_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_qy"	id="gwqy_wg_qy" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_xq"	id="gwqy_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_h"	id="gwqy_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_y"	id="gwqy_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_w"	id="gwqy_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_qy"	id="gwqy_zzkz_qy" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_xq"	id="gwxf_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_h"	id="gwxf_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_y"	id="gwxf_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_w"	id="gwxf_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_hld"	id="gwxf_wg_hld" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_xq"	id="gwxf_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_h"	id="gwxf_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_y"	id="gwxf_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_w"	id="gwxf_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_hld"	id="gwxf_zzkz_hld" class="form-control"  type="number"/></td>
+						<td><input name="jcj_h"	id="jcj_h" class="form-control"  type="number"/></td>
+						<td><input name="jcj_y"	id="jcj_y" class="form-control"  type="number"/></td>
+						<td><input name="jcj_w"	id="jcj_w" class="form-control"  type="number"/></td>
+						<td><input name="ysk"	id="ysk" class="form-control"  type="number"/></td>
+						<td><input name="psh_h"	id="psh_h" class="form-control"  type="number"/></td>
+						<td><input name="psh_y"	id="psh_y" class="form-control"  type="number"/></td>
+						<td><input name="psh_e"	id="psh_e" class="form-control"  type="number"/></td>
+						<td><input name="hfc"	id="hfc" class="form-control"  type="number"/></td>
+						<td><input name="ljc"	id="ljc" class="form-control"  type="number"/></td>
+						<td><input name="gyc"	id="gyc" class="form-control"  type="number"/></td>
+					  </tr>
+					    <tr>
+					    <td><input name="buildingtype"	id="buildingtype" class="form-control" value="城中村" readonly="readonly"/></td>
+						<td><input name="jzxq_s"	id="jzxq_s" class="form-control"   type="number"/></td>
+						<td><input name="jzxq_q"	id="jzxq_q" class="form-control"  type="number"/></td>
+						<td><input name="jzxq_y"	id="jzxq_y" class="form-control"  type="number"/></td>
+						<td><input name="jzxq_z"	id="jzxq_z" class="form-control"  type="number"/></td>
+						<td><input name="psgwg_h"	id="psgwg_h" class="form-control"  type="number"/></td>
+						<td><input name="psgwg_y"	id="psgwg_y" class="form-control"  type="number"/></td>
+						<td><input name="psgwg_w"	id="psgwg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_xq"	id="gwch_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_h"	id="gwch_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_y"	id="gwch_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_w"	id="gwch_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_xq"	id="gwch_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_h"	id="gwch_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_y"	id="gwch_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_w"	id="gwch_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_xq"	id="gwzc_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_h"	id="gwzc_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_y"	id="gwzc_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_w"	id="gwzc_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_xq"	id="gwzc_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_h"	id="gwzc_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_y"	id="gwzc_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_w"	id="gwzc_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_xq"	id="gwqy_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_h"	id="gwqy_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_y"	id="gwqy_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_w"	id="gwqy_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_qy"	id="gwqy_wg_qy" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_xq"	id="gwqy_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_h"	id="gwqy_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_y"	id="gwqy_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_w"	id="gwqy_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_qy"	id="gwqy_zzkz_qy" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_xq"	id="gwxf_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_h"	id="gwxf_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_y"	id="gwxf_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_w"	id="gwxf_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_hld"	id="gwxf_wg_hld" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_xq"	id="gwxf_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_h"	id="gwxf_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_y"	id="gwxf_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_w"	id="gwxf_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_hld"	id="gwxf_zzkz_hld" class="form-control"  type="number"/></td>
+						<td><input name="jcj_h"	id="jcj_h" class="form-control"  type="number"/></td>
+						<td><input name="jcj_y"	id="jcj_y" class="form-control"  type="number"/></td>
+						<td><input name="jcj_w"	id="jcj_w" class="form-control"  type="number"/></td>
+						<td><input name="ysk"	id="ysk" class="form-control"  type="number"/></td>
+						<td><input name="psh_h"	id="psh_h" class="form-control"  type="number"/></td>
+						<td><input name="psh_y"	id="psh_y" class="form-control"  type="number"/></td>
+						<td><input name="psh_e"	id="psh_e" class="form-control"  type="number"/></td>
+						<td><input name="hfc"	id="hfc" class="form-control"  type="number"/></td>
+						<td><input name="ljc"	id="ljc" class="form-control"  type="number"/></td>
+						<td><input name="gyc"	id="gyc" class="form-control"  type="number"/></td>
+					  </tr>
+					   <tr>
+					    <td><input name="buildingtype"	id="buildingtype" class="form-control" value="合计" readonly="readonly"/></td>
+						<td><input name="jzxq_s"	id="jzxq_s" class="form-control"   type="number"/></td>
+						<td><input name="jzxq_q"	id="jzxq_q" class="form-control"  type="number"/></td>
+						<td><input name="jzxq_y"	id="jzxq_y" class="form-control"  type="number"/></td>
+						<td><input name="jzxq_z"	id="jzxq_z" class="form-control"  type="number"/></td>
+						<td><input name="psgwg_h"	id="psgwg_h" class="form-control"  type="number"/></td>
+						<td><input name="psgwg_y"	id="psgwg_y" class="form-control"  type="number"/></td>
+						<td><input name="psgwg_w"	id="psgwg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_xq"	id="gwch_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_h"	id="gwch_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_y"	id="gwch_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwch_wg_w"	id="gwch_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_xq"	id="gwch_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_h"	id="gwch_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_y"	id="gwch_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwch_zzkz_w"	id="gwch_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_xq"	id="gwzc_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_h"	id="gwzc_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_y"	id="gwzc_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_wg_w"	id="gwzc_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_xq"	id="gwzc_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_h"	id="gwzc_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_y"	id="gwzc_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwzc_zzkz_w"	id="gwzc_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_xq"	id="gwqy_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_h"	id="gwqy_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_y"	id="gwqy_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_w"	id="gwqy_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_wg_qy"	id="gwqy_wg_qy" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_xq"	id="gwqy_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_h"	id="gwqy_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_y"	id="gwqy_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_w"	id="gwqy_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwqy_zzkz_qy"	id="gwqy_zzkz_qy" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_xq"	id="gwxf_wg_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_h"	id="gwxf_wg_h" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_y"	id="gwxf_wg_y" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_w"	id="gwxf_wg_w" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_wg_hld"	id="gwxf_wg_hld" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_xq"	id="gwxf_zzkz_xq" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_h"	id="gwxf_zzkz_h" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_y"	id="gwxf_zzkz_y" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_w"	id="gwxf_zzkz_w" class="form-control"  type="number"/></td>
+						<td><input name="gwxf_zzkz_hld"	id="gwxf_zzkz_hld" class="form-control"  type="number"/></td>
+						<td><input name="jcj_h"	id="jcj_h" class="form-control"  type="number"/></td>
+						<td><input name="jcj_y"	id="jcj_y" class="form-control"  type="number"/></td>
+						<td><input name="jcj_w"	id="jcj_w" class="form-control"  type="number"/></td>
+						<td><input name="ysk"	id="ysk" class="form-control"  type="number"/></td>
+						<td><input name="psh_h"	id="psh_h" class="form-control"  type="number"/></td>
+						<td><input name="psh_y"	id="psh_y" class="form-control"  type="number"/></td>
+						<td><input name="psh_e"	id="psh_e" class="form-control"  type="number"/></td>
+						<td><input name="hfc"	id="hfc" class="form-control"  type="number"/></td>
+						<td><input name="ljc"	id="ljc" class="form-control"  type="number"/></td>
+						<td><input name="gyc"	id="gyc" class="form-control"  type="number"/></td>
+					  </tr>
+					</table>
+			</div>	
 			</div>
 				
 		</div>
@@ -265,7 +610,7 @@
         	
         	var treeId = $("#treeId").val();
         	var deptId = $.common.isEmpty(treeId) ? "100" : $("#treeId").val();
-        	var url = ctx + "system/dept/selectDeptTree/" + deptId;
+        	var url = ctx + "system/dept/selectDeptTree2/" + deptId;
 			var options = {
 				title: '选择部门',
 				width: "380",

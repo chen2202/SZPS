@@ -1,7 +1,11 @@
 package com.szps.web.domain.report;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import com.szps.common.annotation.Excel;
 import com.szps.common.core.domain.BaseEntity;
 
 public class DayReportW extends BaseEntity {
@@ -10,36 +14,105 @@ public class DayReportW extends BaseEntity {
 	 * 
 	 */
 	private static final long serialVersionUID = 12653304690408370L;
+	@Excel(name = "序号")
 	Long id;
 	Long deptid;
-	String deptname;// 名称
+	
+	@Excel(name = "流域")
 	String basin;//所属流域
-	String reportdate;//日期
-	String dscale;//设计规模
-	String tcapacity;//处理量
-	String loadrate;//负荷率
-	String incod;//进水COD
-	String inan;//进水氨氮
+	
+	@Excel(name = "水质净化厂")
+	String deptname;// 名称
+	@Excel(name = "辖区")
 	String darea;//辖区
+
+	@Excel(name = "上报日期")
+	String reportdate;//日期
+	@Excel(name = "设计规模(万吨/日)")
+	String dscale;//设计规模
+	@Excel(name = "实际处理量(万吨/日)")
+	String tcapacity;//处理量
+	@Excel(name = "负荷率")
+	String loadrate;//负荷率
+	@Excel(name = "进水COD(mg/L)")
+	String incod;//进水COD
+	@Excel(name = "进水氨氮(mg/L)")
+	String inan;//进水氨氮
+	@Excel(name = "进水总磷(mg/L)")
 	String inp;//进水总磷
+	@Excel(name = "进水SS(mg/L)")
 	String inss;//进水SS
+	@Excel(name = "进水BOD(mg/L)")
 	String inbod;//进水BOD
+	@Excel(name = "出水COD(mg/L)")
 	String outcod;//出水COD
+	@Excel(name = "出水氨氮(mg/L)")
 	String outan;//出水氨氮
+	@Excel(name = "出水总磷(mg/L)")
 	String outp;//出水总磷
+	@Excel(name = "出水DO(mg/L)")
 	String outdo;//出水DO
+	@Excel(name = "进水总氮(mg/L)")
+	String intn;//
+	@Excel(name = "出水BOD(mg/L)")
+	String outbod;//
+	@Excel(name = "出水总氮(mg/L)")
+	String outtn;//
+	@Excel(name = "出水SS(mg/L")
+	String outss;//
+	@Excel(name = "提升泵坑 设计液位(m)")
 	String dlevel;//提升泵坑 设计液位
+	@Excel(name = "提升泵坑 实际液位(m)")
 	String aleave;//提升泵坑 实际液位
+	@Excel(name = "污泥浓度(mg/L)")
 	String sludec;//污泥浓度
+	@Excel(name = "垃圾渗滤液(吨)")
 	String lanfilll;//垃圾渗滤液
+	@Excel(name = "渗滤液来源")
 	String sol;//渗滤液来源
+	@Excel(name = "运营单位")
 	String operation;//运营单位
 	String dtype;//类型
 	Long dept_id;//CREATE_BY 部门ID
 	String startTime1;
 	String endTime1;
+	@Excel(name = "备注")
+	private String remark;
+	
+
 	
 	
+	
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+	public String getIntn() {
+		return intn;
+	}
+	public void setIntn(String intn) {
+		this.intn = intn;
+	}
+	public String getOutbod() {
+		return outbod;
+	}
+	public void setOutbod(String outbod) {
+		this.outbod = outbod;
+	}
+	public String getOuttn() {
+		return outtn;
+	}
+	public void setOuttn(String outtn) {
+		this.outtn = outtn;
+	}
+	public String getOutss() {
+		return outss;
+	}
+	public void setOutss(String outss) {
+		this.outss = outss;
+	}
 	public String getStartTime1() {
 		return startTime1;
 	}
@@ -229,6 +302,12 @@ public class DayReportW extends BaseEntity {
 		Double aleave = 0d;//提升泵坑 实际液位
 		Double sludec = 0d;//污泥浓度
 		Double lanfilll = 0d;//垃圾渗滤液
+		
+		Double intn = 0d;//
+		Double outbod = 0d;//
+		Double outtn = 0d;//
+		Double outss = 0d;//
+		
 		for(int i = lastIndex ;i<k;i++) {
 			DayReportW t =list.get(i);
 			try {
@@ -240,7 +319,11 @@ public class DayReportW extends BaseEntity {
 			} catch (Exception e) {
 			}
 			try {
-				loadrate = loadrate +Double.valueOf(t.getLoadrate());
+				String s = t.getLoadrate();
+				if (s!=null && s.contains("%")) {
+					s=s.replace("%", "");
+				}
+				loadrate = loadrate +Double.valueOf(s);
 			} catch (Exception e) {
 			}
 			try {
@@ -294,6 +377,24 @@ public class DayReportW extends BaseEntity {
 			try {
 				lanfilll = lanfilll + Double.valueOf(t.getLanfilll());
 			} catch (Exception e) {
+			}		
+	
+			
+			try {
+				intn = intn + Double.valueOf(t.getIntn());
+			} catch (Exception e) {
+			}
+			try {
+				outbod = outbod + Double.valueOf(t.getOutbod());
+			} catch (Exception e) {
+			}
+			try {
+				outtn = outtn+ Double.valueOf(t.getOuttn());
+			} catch (Exception e) {
+			}
+			try {
+				outss = outss + Double.valueOf(t.getOutss());
+			} catch (Exception e) {
 			}
 		}
 		int t1 = k-lastIndex;
@@ -303,21 +404,120 @@ public class DayReportW extends BaseEntity {
 		w.setDeptname("合计");
 		w.setDscale(String.format("%.2f", dscale));
 		w.setTcapacity(String.format("%.2f", tcapacity));
-		w.setLoadrate(String.format("%.2f", loadrate/t1));
+		w.setLoadrate(String.format("%.2f", loadrate/t1)+"%");
 		w.setIncod(String.format("%.2f", incod/t1));
 		w.setInan(String.format("%.2f", inan/t1));
 		w.setInp(String.format("%.2f", inp/t1));
-		//w.setInss(String.format("%.2f", inss/t1));
+		w.setInss(String.format("%.2f", inss/t1));
 		w.setInbod(String.format("%.2f", inbod/t1));
 		w.setOutcod(String.format("%.2f", outcod/t1));
 		w.setOutan(String.format("%.2f", outan/t1));
 		w.setOutp(String.format("%.2f", outp/t1));
 		w.setOutdo(String.format("%.2f", outdo/t1));
+		w.setIntn(String.format("%.2f", intn/t1));
+		w.setOutbod(String.format("%.2f", outbod/t1));
+		w.setOuttn(String.format("%.2f", outtn/t1));
+		w.setOutss(String.format("%.2f", outss/t1));
 		w.setDlevel(String.format("%.2f", dlevel/t1));
 		w.setAleave(String.format("%.2f", aleave/t1));
 		w.setSludec(String.format("%.2f", sludec/t1));
 		w.setLanfilll(String.format("%.2f", lanfilll/t1));
+		
+
 		return w;
     }
     
+    
+
+    public List<DayReportW> totalReport( List<DayReportW> list ){
+    	List<DayReportW> nlist = new ArrayList<DayReportW>();
+    	if (null == list || list.size()<=0) {
+        	return nlist;
+        	
+		}
+    	Map<String, List<DayReportW>> map = new HashMap<>();
+    	int k = 0;
+    	int lastIndex = k;
+    	Long id = 1L;
+    	for (DayReportW dayReportW : list) {
+    		List<DayReportW> tmpList = map.get(dayReportW.getBasin());
+    		if (tmpList == null) {
+    			if (k > 0) {
+    				DayReportW lt =list.get(k-1);
+    				DayReportW w = calReport(list, lastIndex, k);
+    				//String.valueOf(/t1)
+    				List<DayReportW> tList = map.get(lt.getBasin());
+    				tList.add(w);
+    				nlist.addAll(tList);
+    				lastIndex = k;
+    				id=1L;
+				}
+    			tmpList = new ArrayList<>();
+    			dayReportW.setId(id);
+    			tmpList.add(dayReportW);
+    			map.put(dayReportW.getBasin(), tmpList);
+    		} else {
+    			id++;
+    			dayReportW.setId(id);
+    			tmpList.add(dayReportW);
+    		}
+    		k++;
+		}
+    	if (k>lastIndex) {
+    		DayReportW lt =list.get(k-1);
+			DayReportW w = calReport(list, lastIndex, k);
+			//String.valueOf(/t1)
+			List<DayReportW> tList = map.get(lt.getBasin());
+			tList.add(w);
+			nlist.addAll(tList);
+		}
+    	return nlist;
+    }
+    
+    
+    
+    public List<DayReportW> calMonthReport(List<DayReportW> list) {
+    	List<DayReportW> nlist = new ArrayList<DayReportW>();
+    	if (null == list || list.size()<=0) {
+        	return nlist;
+        	
+		}
+ 		Map<String, List<DayReportW>> map = new HashMap<>();
+        	int k = 0;
+        	int lastIndex = k;
+        	Long id = 1L;
+        	for (DayReportW dayReportW : list) {
+        		List<DayReportW> tmpList = map.get(dayReportW.getBasin());
+        		if (tmpList == null) {
+        			if (k > 0) {
+        				DayReportW lt =list.get(k-1);
+        				DayReportW w = dayReportW.calReport(list, lastIndex, k);
+        				//String.valueOf(/t1)
+        				List<DayReportW> tList = map.get(lt.getBasin());
+        				tList.add(w);
+        				nlist.addAll(tList);
+        				lastIndex = k;
+        				id=1L;
+ 					}
+        			tmpList = new ArrayList<>();
+        			dayReportW.setId(id);
+        			tmpList.add(dayReportW);
+        			map.put(dayReportW.getBasin(), tmpList);
+        		} else {
+        			id++;
+        			dayReportW.setId(id);
+        			tmpList.add(dayReportW);
+        		}
+        		k++;
+ 			}
+        	if (k>lastIndex) {
+        		DayReportW lt =list.get(k-1);
+ 				DayReportW w = lt.calReport(list, lastIndex, k);
+ 				//String.valueOf(/t1)
+ 				List<DayReportW> tList = map.get(lt.getBasin());
+ 				tList.add(w);
+ 				nlist.addAll(tList);
+ 			}
+        	return nlist;
+    }
 }

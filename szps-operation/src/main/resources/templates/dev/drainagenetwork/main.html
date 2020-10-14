@@ -7,14 +7,14 @@
 <body class="gray-bg">
     <!-- 标签页导航区 -->
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a onclick="toggle('op/dev/pscombinfo')" role="tab" data-toggle="tab">雨水口</a></li>
+<!--         <li role="presentation" class="active"><a onclick="toggle('op/dev/pscombinfo')" role="tab" data-toggle="tab">雨水口</a></li>
         <li role="presentation"><a onclick="toggle('op/dev/psconduitinfo')" role="tab" data-toggle="tab">渠</a></li>
         <li role="presentation"><a onclick="toggle('op/dev/psmanholeinfo')" role="tab" data-toggle="tab">检查井</a></li>
         <li role="presentation"><a onclick="toggle('op/dev/psoutfallinfo')" role="tab" data-toggle="tab">排放口</a></li>
         <li role="presentation"><a onclick="toggle('op/dev/pspipeinfo')" role="tab" data-toggle="tab">管</a></li>
         <li role="presentation"><a onclick="toggle('op/dev/pspointinfo')" role="tab" data-toggle="tab">特征点</a></li>
-        <li role="presentation"><a onclick="toggle('op/dev/ed')" role="tab" data-toggle="tab">内窥检测</a></li>
-        <li role="presentation"><a onclick="toggle('op/dev/nm')" role="tab" data-toggle="tab">管网养护</a></li>
+        <li role="presentation"><a onclick="toggle('op/dev/ed')" role="tab" data-toggle="tab">内窥检测</a></li> -->
+        <li role="presentation" class="active"><a onclick="toggle('op/dev/nm')" role="tab" data-toggle="tab">管网养护</a></li>
         <li role="presentation"><a onclick="toggle('op/dev/drainagenetworkmaintenance')" role="tab" data-toggle="tab">维保数据</a></li>
         <li role="presentation"><a onclick="toggle('op/dev/drainagenetworkspare')" role="tab" data-toggle="tab">备品备件</a></li>
         <li role="presentation"><a onclick="toggle('op/dev/drainagenetworksupplier')" role="tab" data-toggle="tab">供应商</a></li>
@@ -22,8 +22,8 @@
 	
 	<div class="container-div">
 		<div class="row" style="width:100%;height:100%;" id="content-main">
-        	<iframe class="RuoYi_iframe" id="content-iframe" name="iframe0" width="100%" height="100%" data-id="/op/dev/pscombinfo"
-                th:src="@{/op/dev/pscombinfo}" frameborder="0" seamless></iframe>
+        	<iframe class="RuoYi_iframe" id="content-iframe" name="iframe0" width="100%" height="100%" data-id="/op/dev/nm"
+                th:src="@{/op/dev/nm}" frameborder="0" seamless></iframe>
     	</div>
 	</div>
 

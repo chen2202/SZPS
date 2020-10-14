@@ -110,28 +110,28 @@
  		update dev_asset_car
  		<set>
 			<if test=" deptid != null ">deptid = #{deptid},</if>
-			<if test=" deptname != null and deptname != ''">deptname = #{deptname},</if>
-			<if test=" deptname2 != null and deptname2 != ''">deptname2 = #{deptname2},</if>
-			<if test=" licenseaccount != null and licenseaccount != ''">licenseaccount = #{licenseaccount},</if>
-			<if test=" carnumber != null and carnumber != ''">carnumber = #{carnumber},</if>
-			<if test=" carname != null and carname != ''">carname = #{carname},</if>
-			<if test=" dtype != null and dtype != ''">dtype = #{dtype},</if>
-			<if test=" manufacturer != null and manufacturer != ''">manufacturer = #{manufacturer},</if>
-			<if test=" measurement != null and measurement != ''">measurement = #{measurement},</if>
+			<if test=" deptname != null">deptname = #{deptname},</if>
+			<if test=" deptname2 != null">deptname2 = #{deptname2},</if>
+			<if test=" licenseaccount != null">licenseaccount = #{licenseaccount},</if>
+			<if test=" carnumber != null">carnumber = #{carnumber},</if>
+			<if test=" carname != null">carname = #{carname},</if>
+			<if test=" dtype != null">dtype = #{dtype},</if>
+			<if test=" manufacturer != null">manufacturer = #{manufacturer},</if>
+			<if test=" measurement != null">measurement = #{measurement},</if>
 			<if test=" purchasedate != null ">purchasedate = #{purchasedate},</if>
 			<if test=" registrationdate != null ">registrationdate = #{registrationdate},</if>
-			<if test=" mileage != null and mileage != ''">mileage = #{mileage},</if>
-			<if test=" displacement != null and displacement != ''">displacement = #{displacement},</if>
-			<if test=" fueltypes != null and fueltypes != ''">fueltypes = #{fueltypes},</if>
-			<if test=" carcolour != null and carcolour != ''">carcolour = #{carcolour},</if>
-			<if test=" dstatus != null and dstatus != ''">dstatus = #{dstatus},</if>
-			<if test=" effectivedeadline != null and effectivedeadline != ''">effectivedeadline = #{effectivedeadline},</if>
-			<if test=" bookquantity != null and bookquantity != ''">bookquantity = #{bookquantity},</if>
-			<if test=" realquantity != null and realquantity != ''">realquantity = #{realquantity},</if>
-			<if test=" originalvalue != null and originalvalue != ''">originalvalue = #{originalvalue},</if>
+			<if test=" mileage != null">mileage = #{mileage},</if>
+			<if test=" displacement != null">displacement = #{displacement},</if>
+			<if test=" fueltypes != null">fueltypes = #{fueltypes},</if>
+			<if test=" carcolour != null">carcolour = #{carcolour},</if>
+			<if test=" dstatus != null">dstatus = #{dstatus},</if>
+			<if test=" effectivedeadline != null">effectivedeadline = #{effectivedeadline},</if>
+			<if test=" bookquantity != null">bookquantity = #{bookquantity},</if>
+			<if test=" realquantity != null">realquantity = #{realquantity},</if>
+			<if test=" originalvalue != null">originalvalue = #{originalvalue},</if>
 			
-			<if test=" remark != null and remark != ''">remark = #{remark},</if>
- 			<if test=" updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+			<if test=" remark != null">remark = #{remark},</if>
+ 			<if test=" updateBy != null">update_by = #{updateBy},</if>
  			update_time = sysdate
  		</set>
  		where id = #{id}
@@ -144,56 +144,56 @@
     
 		INSERT INTO dev_asset_car(
 			<if test=" id != null and id!= 0">id,</if>
-			<if test=" deptid != null and  deptid != ''">deptid,</if>
-			<if test=" deptname != null and  deptname != ''">deptname,</if>
-			<if test=" deptname2 != null and  deptname2 != ''">deptname2,</if>
-			<if test=" licenseaccount != null and  licenseaccount != ''">licenseaccount,</if>
-			<if test=" carnumber != null and  carnumber != ''">carnumber,</if>
-			<if test=" carname != null and  carname != ''">carname,</if>
-			<if test=" dtype != null and  dtype != ''">dtype,</if>
-			<if test=" manufacturer != null and  manufacturer != ''">manufacturer,</if>
-			<if test=" measurement != null and  measurement != ''">measurement,</if>
+			<if test=" deptid != null">deptid,</if>
+			<if test=" deptname != null">deptname,</if>
+			<if test=" deptname2 != null">deptname2,</if>
+			<if test=" licenseaccount != null">licenseaccount,</if>
+			<if test=" carnumber != null">carnumber,</if>
+			<if test=" carname != null">carname,</if>
+			<if test=" dtype != null">dtype,</if>
+			<if test=" manufacturer != null">manufacturer,</if>
+			<if test=" measurement != null">measurement,</if>
 			<if test=" purchasedate != null ">purchasedate,</if>
 			<if test=" registrationdate != null ">registrationdate,</if>
-			<if test=" mileage != null and  mileage != ''">mileage,</if>
-			<if test=" displacement != null and  displacement != ''">displacement,</if>
-			<if test=" fueltypes != null and  fueltypes != ''">fueltypes,</if>
-			<if test=" carcolour != null and  carcolour != ''">carcolour,</if>
-			<if test=" dstatus != null and  dstatus != ''">dstatus,</if>
-			<if test=" effectivedeadline != null and  effectivedeadline != ''">effectivedeadline,</if>
-			<if test=" bookquantity != null and  bookquantity != ''">bookquantity,</if>
-			<if test=" realquantity != null and  realquantity != ''">realquantity,</if>
-			<if test=" originalvalue != null and  originalvalue != ''">originalvalue,</if>
+			<if test=" mileage != null">mileage,</if>
+			<if test=" displacement != null">displacement,</if>
+			<if test=" fueltypes != null">fueltypes,</if>
+			<if test=" carcolour != null">carcolour,</if>
+			<if test=" dstatus != null">dstatus,</if>
+			<if test=" effectivedeadline != null">effectivedeadline,</if>
+			<if test=" bookquantity != null">bookquantity,</if>
+			<if test=" realquantity != null">realquantity,</if>
+			<if test=" originalvalue != null">originalvalue,</if>
 			
-			<if test=" remark != null and remark != ''">REMARK,</if>
-			<if test=" createBy != null and createBy != ''">create_by,</if>		
+			<if test=" remark != null">REMARK,</if>
+			<if test=" createBy != null">create_by,</if>		
 			<if test=" dept_id != null ">dept_id,</if>
 			create_time
 		) VALUES (
 			<if test=" id != null and id!= 0">#{id},</if>
 			<if test=" deptid != null ">#{deptid},</if>
-			<if test=" deptname != null and deptname != ''">#{deptname},</if>
-			<if test=" deptname2 != null and deptname2 != ''">#{deptname2},</if>
-			<if test=" licenseaccount != null and licenseaccount != ''">#{licenseaccount},</if>
-			<if test=" carnumber != null and carnumber != ''">#{carnumber},</if>
-			<if test=" carname != null and carname != ''">#{carname},</if>
-			<if test=" dtype != null and dtype != ''">#{dtype},</if>
-			<if test=" manufacturer != null and manufacturer != ''">#{manufacturer},</if>
-			<if test=" measurement != null and measurement != ''">#{measurement},</if>
+			<if test=" deptname != null">#{deptname},</if>
+			<if test=" deptname2 != null">#{deptname2},</if>
+			<if test=" licenseaccount != null">#{licenseaccount},</if>
+			<if test=" carnumber != null">#{carnumber},</if>
+			<if test=" carname != null">#{carname},</if>
+			<if test=" dtype != null">#{dtype},</if>
+			<if test=" manufacturer != null">#{manufacturer},</if>
+			<if test=" measurement != null">#{measurement},</if>
 			<if test=" purchasedate != null ">#{purchasedate},</if>
 			<if test=" registrationdate != null ">#{registrationdate},</if>
-			<if test=" mileage != null and mileage != ''">#{mileage},</if>
-			<if test=" displacement != null and displacement != ''">#{displacement},</if>
-			<if test=" fueltypes != null and fueltypes != ''">#{fueltypes},</if>
-			<if test=" carcolour != null and carcolour != ''">#{carcolour},</if>
-			<if test=" dstatus != null and dstatus != ''">#{dstatus},</if>
-			<if test=" effectivedeadline != null and effectivedeadline != ''">#{effectivedeadline},</if>
-			<if test=" bookquantity != null and bookquantity != ''">#{bookquantity},</if>
-			<if test=" realquantity != null and realquantity != ''">#{realquantity},</if>
-			<if test=" originalvalue != null and originalvalue != ''">#{originalvalue},</if>
+			<if test=" mileage != null">#{mileage},</if>
+			<if test=" displacement != null">#{displacement},</if>
+			<if test=" fueltypes != null">#{fueltypes},</if>
+			<if test=" carcolour != null">#{carcolour},</if>
+			<if test=" dstatus != null">#{dstatus},</if>
+			<if test=" effectivedeadline != null">#{effectivedeadline},</if>
+			<if test=" bookquantity != null">#{bookquantity},</if>
+			<if test=" realquantity != null">#{realquantity},</if>
+			<if test=" originalvalue != null">#{originalvalue},</if>
 	
-			<if test=" remark != null and remark != ''">#{remark},</if>
-			<if test=" createBy != null and createBy != ''">#{createBy},</if>
+			<if test=" remark != null">#{remark},</if>
+			<if test=" createBy != null">#{createBy},</if>
 			<if test=" dept_id != null">#{dept_id},</if>
 			sysdate			
 		)

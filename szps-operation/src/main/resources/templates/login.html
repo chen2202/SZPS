@@ -28,7 +28,6 @@
     <fs:csrf/>
     
 </head>
-<script th:inline="javascript"> var ctx = [[@{/}]]; var captchaType = [[${captchaType}]]; </script>
 
 <body class="signin">
 <!-- auto begin -->
@@ -38,7 +37,6 @@
             </div>
             <div class="col-sm-5">
                 <form id="signupForm">
-<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
                     <h3 class="no-margins">登录：</h3>
                     <input type="text"     name="username" class="form-control uname"     placeholder="用户名"    />
                     <input type="password" name="password" class="form-control pword"     placeholder="密码"  />
@@ -60,35 +58,7 @@
             </div>
         </div>
     </div>
-    
- <script>
-       <!--
-        // 获取登录判断条件 "username","password","access_token","refresh_token" 
-        var username=sessionStorage.getItem("username");
-        var password=sessionStorage.getItem("password");
-        var access_token=sessionStorage.getItem("access_token");
-        var refresh_token=sessionStorage.getItem("refresh_token");
-        $.ajax({
-            type: "post",
-            url: ctx + "login",
-            xhr.setRequestHeader("${_csrf.parameterName}", "${_csrf.token}");
-            data: {
-                "username": username,
-                "password": password
-            },
-            success: function(r) {
-            	
-                if (r.code == 0) {
-                    location.href = ctx + 'index';
-                } else {
-                	window.location.href="https://vx.newground.cn:9000/#/login";
-                }
-            }
-        }); 
-       -->
-    </script> 
-     <!-- auto end -->
-  
+<script th:inline="javascript"> var ctx = [[@{/}]]; var captchaType = [[${captchaType}]]; </script>
 
     
 <!-- 全局js -->
@@ -101,6 +71,32 @@
 <script src="../static/ajax/libs/blockUI/jquery.blockUI.js" th:src="@{/ajax/libs/blockUI/jquery.blockUI.js}"></script>
 <script src="../static/ruoyi/js/ry-ui.js" th:src="@{/ruoyi/js/ry-ui.js?v=3.4.0}"></script>
 <script src="../static/ruoyi/login.js" th:src="@{/ruoyi/login.js}"></script>
-       
+         
+ <script>
+        // 获取登录判断条件 "username","password","access_token","refresh_token" 
+        var username=sessionStorage.getItem("username");
+        var password=sessionStorage.getItem("password");
+        var access_token=sessionStorage.getItem("access_token");
+        var refresh_token=sessionStorage.getItem("refresh_token");
+        $.ajax({
+            type: "post",
+            url: ctx + "login",
+            data: {
+                "username": username,
+                "password": password
+            },
+            success: function(r) {
+            	
+                if (r.code == 0) {
+                    location.href = ctx + 'index';
+                } else {
+                	window.location.href="https://vx.newground.cn:7000/";
+                }
+            }
+        }); 
+    </script> 
+     <!-- auto end -->
+  
+  
 </body>
 </html>
